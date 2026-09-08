@@ -1491,10 +1491,13 @@ local function route_observe(scan)
   local target=ROUTE_STATE.target
   local previous=ROUTE_STATE.position
   if not ROUTE_STATE.recovery and target then
+    local status=ROUTE_STATE.done[target.branch..":"..target.depth]
+    local pending=status~="clear" and not (AUTOCrawl_ROUTE.allow_partial and status=="partial")
     local return_depth=target.branch==branch and target.depth
         or (BOT.route_shaft and previous and previous.branch==branch and previous.depth)
-    if return_depth and depth>return_depth and previous
-        and previous.branch==branch and depth>previous.depth then
+    if return_depth and depth>return_depth and
+        ((target.branch==branch and pending) or
+          (BOT.route_shaft and previous and previous.branch==branch and depth>previous.depth)) then
       ROUTE_STATE.recovery={branch=branch,depth=return_depth}
       say("route recovery: "..level_key().." -> "..branch..":"..return_depth)
     end
@@ -1749,7 +1752,7 @@ function c_message(text, channel)
   crawl.more_autoclear(true)
   if previous_c_message then previous_c_message(text, channel) end
   local s = string.lower(tostring(text or "")):gsub("<[^>]*>", "")
-  if s:find("shaft",1,true) and s:find("you fall",1,true) then
+  if s:find("into a shaft and drop",1,true) then
     BOT.route_shaft=true
   end
   local e=BOT.encounter

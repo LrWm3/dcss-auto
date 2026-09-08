@@ -50,6 +50,10 @@ local saved=c_save(); ROUTE_STATE=nil; assert(load(saved))()
 assert(ROUTE_STATE.recovery.depth==11,"save preserves recovery")
 depth=11; observe(scan)
 assert(not ROUTE_STATE.recovery and not recover(scan))
+-- Loading below the target must work without witnessing a level transition.
+ROUTE_STATE.position=nil; depth=14; observe(scan)
+assert(ROUTE_STATE.recovery.depth==11)
+depth=11; observe(scan)
 -- Planned D14 travel is not an overshoot.
 ROUTE_STATE.target.depth=14; depth=14; observe(scan)
 assert(not ROUTE_STATE.recovery)
@@ -57,7 +61,7 @@ assert(not ROUTE_STATE.recovery)
 ROUTE_STATE.target={branch="Lair",depth=1}
 depth=10; observe(scan); depth=11; observe(scan)
 assert(not ROUTE_STATE.recovery)
-c_message("You fall into a shaft and drop 3 floors!")
+c_message("You are sucked into a shaft and drop 3 floors!")
 depth=14; observe(scan)
 assert(ROUTE_STATE.recovery.depth==11)
 -- Unknown exit: one ordinary step, even when standing on downstairs.
