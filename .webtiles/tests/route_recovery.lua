@@ -12,11 +12,15 @@ end
 local observe=assert(find(ready,"route_observe"))
 local recover=assert(find(ready,"route_recovery_action"))
 local depth=11
+local hp=100
 local keys={}
 you={branch=function() return "D" end,depth=function() return depth end,
+  hp=function() return hp,100 end,berserk=function() return false end,
+  slowed=function() return false end,exhausted=function() return false end,
   confused=function() return false end}
 crawl.mpr=function() end
 crawl.sendkeys=function(key) keys[#keys+1]=key end
+crawl.do_commands=function(cmds) keys[#keys+1]=cmds[1] end
 view={feature_at=function() return "floor" end,can_reach=function() return true end,
   is_safe_square=function() return true end}
 local function cell(x,feature,frontier)
@@ -28,6 +32,9 @@ ROUTE_STATE.target={branch="D",depth=11}
 observe(scan); depth=14; observe(scan)
 assert(ROUTE_STATE.recovery.depth==11 and ROUTE_STATE.index==1)
 assert(recover(scan) and keys[#keys]=="l","prefer upstairs path")
+hp=50
+assert(recover(scan) and keys[#keys]=="CMD_WAIT","heal before further discovery")
+hp=100
 scan.any=true; scan.reachable_adjacent=true
 assert(not recover(scan),"adjacent combat keeps priority")
 scan.reachable_adjacent=false

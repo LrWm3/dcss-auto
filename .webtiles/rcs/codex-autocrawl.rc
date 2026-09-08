@@ -1585,6 +1585,12 @@ local function route_recovery_action(scan)
       or scan.reachable_adjacent or BOT.disturbance_warning
       or (BOT.encounter and BOT.encounter.hidden_missing) then return false end
   if regular_up() then crawl.sendkeys("<"); return true end
+  if not scan.any then
+    local hp,mhp=you.hp()
+    if hp<mhp or you.berserk() or berserk_recovering() then
+      crawl.do_commands({"CMD_WAIT"}); return true
+    end
+  end
   local cells={}
   for key,cell in pairs(scan.cells) do
     if not cell.invisible_monster and not cell.feature:find("trap",1,true) then
