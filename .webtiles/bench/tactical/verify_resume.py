@@ -43,6 +43,9 @@ def main():
         fidelity='pending equivalence verification')
     (migrated/'case.json').write_text(json.dumps(metadata,indent=2)+'\n')
     reference=[json.loads(line) for line in args.reference.read_text().splitlines()]
+    warmup=metadata.get('warmup_decisions',0)
+    prefix,reference=reference[:warmup],reference[warmup:]
+    assert reference, 'No reference decisions after checkpoint'
     summary={'engine_sha256':bench.sha(bench.ENGINE),'case':str(migrated),
              'reference':str(args.reference.resolve()),
              'reference_sha256':bench.sha(args.reference),'trials':[]}
@@ -51,6 +54,10 @@ def main():
         trial={'mode':mode,'matched':0,'passed':False}
         try:
             initial=env.launch() if mode=='fresh' else env.reset(migrated)
+            if mode=='fresh':
+                for row in prefix:
+                    initial=env.step(row['action'])
+                    assert normalized(initial)==normalized(row['next_observation']), 'Warmup differs'
             assert normalized(initial)==normalized(reference[0]['observation']), 'Initial state differs'
             for index,row in enumerate(reference):
                 after=env.step(row['action'])

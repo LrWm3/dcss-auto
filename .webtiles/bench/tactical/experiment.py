@@ -58,15 +58,15 @@ def recovered(state):
             and not state['poisoned'] and not state['on_fire'])
 
 
-def episode(case, workspace, policy, q, rng, budget=200, training=False):
+def episode(case, workspace, policy, q, rng, budget=200, training=False, fresh=False):
     env=Environment(workspace)
     started=time.monotonic()
-    result={'policy':policy,'training':training,'case':str(case),
+    result={'policy':policy,'training':training,'fresh':fresh,'case':str(case),
             'engine_sha256':sha(ENGINE),'outcome':'budget_truncated'}
     safe_since=None
     noops=0
     try:
-        state=env.reset(case)
+        state=env.launch() if fresh else env.reset(case)
         result['initial_turn']=state['turn']
         result['reset_seconds']=round(time.monotonic()-started,3)
         for step in range(budget):

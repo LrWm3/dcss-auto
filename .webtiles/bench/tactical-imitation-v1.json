@@ -1,0 +1,10 @@
+{"version":"tactical-imitation-v1","stale_seconds":90,
+ "rc":".webtiles/bench/tactical/artifacts/eustachio-imitation-v1.rc",
+ "model":".webtiles/bench/tactical/models/eustachio-imitation-v1.json",
+ "sessions":[
+ {"session":"codex-tactical1","character":"CodexTactModel1","seed":"6144198052690956201"},
+ {"session":"codex-tactical2","character":"CodexTactModel2","seed":"13772526223844354029"},
+ {"session":"codex-tactical3","character":"CodexTactModel3","seed":"1760771545328102746"},
+ {"session":"codex-tactical4","character":"CodexTactModel4","seed":"17908030050512890810"},
+ {"session":"codex-tactical5","character":"CodexTactModel5","seed":"103583508244309201"}
+]}

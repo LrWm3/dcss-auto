@@ -7,6 +7,7 @@ from unittest.mock import Mock
 from bench import Environment, make_rc
 from experiment import recovered, retreat, options, key
 from verify_resume import normalized
+from export_model import lua_key
 
 
 class TacticalTests(unittest.TestCase):
@@ -38,6 +39,10 @@ class TacticalTests(unittest.TestCase):
         self.assertIn('berserk',options(s))
         self.assertNotIn('berserk',options({**s,'cooldown':True}))
         self.assertIsInstance(key(s),str)
+
+    def test_export_key_matches_lua_features(self):
+        self.assertEqual(lua_key(key(self.state())), '4|0|3|false|false|false')
+        with self.assertRaises(ValueError):lua_key('(1, 2)')
 
     def test_no_action_sent_before_interpreter_confirmation(self):
         with tempfile.TemporaryDirectory() as temp:

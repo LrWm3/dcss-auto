@@ -1172,3 +1172,23 @@ metadata and unchanged save/RC checksums. Original cases/results remain untouche
 Other cases still require migration and equivalence checks. Portable engine patch,
 verification script, and evidence are tracked under tactical/. Nine tactical
 unit tests pass. No learned-policy or full-five-seed performance claim.
+
+## 2026-09-08: faithful demonstrations and imitation candidate
+
+Revalidated return3528 and critical3541 saves under the greeting fix: two loads
+and one fresh replay each match the uninterrupted reference to death (19 and6
+remaining decisions). Original altered-fight pilot rows remain historical only.
+
+First-contact faithful baseline dies after41 decisions twice. Tab+wait achieves
+safe recovery in180; adjacent-berserk+Tab+wait in56. Fitted a small state/action
+table from the successful56-decision demonstration. Imitation greedy evaluation
+recovers in56 twice; fresh uninterrupted encounter evaluation also recovers in56.
+Six epsilon-greedy RL refinement episodes:5 recoveries/1 death; both final greedy
+evaluations recover in56, so no observed advantage over the simpler imitation.
+
+Exported imitation model as a guarded Eustachio-only experimental RC: leaves
+canonical RC untouched, hands back on unfamiliar state/floor change/budget/noop
+guard, and hands back after sustained safe recovery. Does not claim unseen-unique
+generalization. Ten Python tactical tests,7 Lua hook cases,22 canonical suites
+pass. Next paired full-five batches tactical-baseline-v1/tactical-imitation-v1 use
+the same patched engine, fresh characters, frozen snapshots, and tracked model.
