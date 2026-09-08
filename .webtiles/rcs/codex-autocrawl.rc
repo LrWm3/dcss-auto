@@ -33,6 +33,7 @@ AUTOCrawl_TACTICS = {
   retreat_moves = 6,
   early_commit = false, early_commit_xl = 4, early_commit_hp = 20,
   hidden_memory = 20, blind_probe_limit = 3,
+  hidden_hand_cooldown = 8,
 }
 
 -- Editable progression plan. A stage covers every floor in [from, to].
@@ -518,7 +519,7 @@ local function survival_action(scan)
     if count>=policy.fear_enemy_count and use_known_consumable("scroll","fear") then return true end
   end
   if encounter and encounter.hidden_caster and not you.status("regenerating")
-      and survival_ability("Trog's Hand",policy.hand_cooldown) then return true end
+      and survival_ability("Trog's Hand",policy.hidden_hand_cooldown) then return true end
   if hp<policy.allies_hp and (count>=policy.allies_enemy_count or scan.worst>=3)
       and survival_ability("Brothers in Arms",policy.allies_cooldown) then return true end
   if hp<policy.hand_hp and (scan.reachable_adjacent or (encounter and encounter.unseen))
@@ -592,7 +593,7 @@ end
 
 local function should_berserk(scan)
   local policy=AUTOCrawl_TACTICS
-  if BOT.encounter and BOT.encounter.hidden_missing then return false end
+  if BOT.encounter and BOT.encounter.hidden_caster then return false end
   -- If emergency items failed and retreat cannot separate adjacent enemies,
   -- don't let the abstract disengage intent veto the only usable power spike.
   if policy.early_commit and you.xl and you.xl()<=policy.early_commit_xl
@@ -1843,12 +1844,21 @@ function ready()
     end
 
     local cmd
+    local approach
     for _, cell in pairs(scan.cells) do
-      if cell.invisible_monster and math.max(math.abs(cell.x), math.abs(cell.y)) == 1 then
+      local distance=math.max(math.abs(cell.x), math.abs(cell.y))
+      if cell.invisible_monster and distance == 1 then
         local move = CONFUSED_MOVE_COMMANDS[map_key(cell.x, cell.y)]
         cmd = move and move:gsub("CMD_MOVE_", "CMD_ATTACK_")
         break
+      elseif cell.invisible_monster and distance==2 and not movement_locked()
+          and not (you.mesmerised and you.mesmerised()) then
+        approach=scan.first_step[map_key(cell.x,cell.y)]
       end
+    end
+    if not cmd and approach then
+      say("unseen threat: closing to marked disturbance")
+      crawl.sendkeys(approach); return
     end
     if not cmd and BOT.disturbance_turns>=AUTOCrawl_TACTICS.blind_probe_limit
         and ((BOT.encounter and BOT.encounter.hidden_missing)
@@ -1856,7 +1866,8 @@ function ready()
       -- Stop blind direction cycling. Try a known upstairs route, never an
       -- unexplored tile, and keep a finite movement budget for this encounter.
       local e=BOT.encounter
-      if e and not you.berserk() and not you.confused() and not movement_locked()
+      if e and not you.berserk() and not berserk_recovering()
+          and not you.confused() and not movement_locked()
           and not (you.mesmerised and you.mesmerised())
           and e.retreats<AUTOCrawl_TACTICS.retreat_moves then
         if regular_up() then crawl.sendkeys("<"); return end
