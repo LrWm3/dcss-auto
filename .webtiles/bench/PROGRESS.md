@@ -246,3 +246,34 @@ or D:12–14 clearing. Cleared telemetry remains unknown for every run. This is
 the best observed full-batch minimum so far, but only one screening batch on
 this policy; a replicated full batch is needed before claiming robust improvement.
 RC retained unchanged; five result rows and morgue evidence committed.
+
+## D14 shaft / off-route recovery
+
+The D11 -> D14 shaft exposed a priority inversion: the route controller attempted
+return travel only after encounters, equipment, and other ordinary actions, with
+native exploration as a failed-travel fallback. Added persistent target/position
+and recovery state. Below an unfinished same-branch target, prioritize upstairs
+and one-turn discovery of upstairs, without descending or advancing route stages.
+Explicit shafts during interbranch travel return to the departure depth. Loaded
+off-target characters and airborne shaft messages are covered too. Emergency
+survival, immobility/confusion, unseen threats, and adjacent combat retain their
+gates; heal safely between encounters before further discovery. No safe exit or
+frontier produces an explicit pause, not fabricated floor completion.
+
+Eight Lua suites and nine runner tests pass. New mocked tests cover D14 -> D13 ->
+D12 -> D11, unchanged target/clear state, adjacent versus distant monsters,
+unknown upstairs discovery without descent, safe healing, blocked exits, save/
+load, loading already below target, and legitimate planned/interbranch travel.
+These establish controller behavior, not live survival through D14.
+
+Reused codex-bench2 for three natural replays of seed 13772526223844354029:
+shaft-recovery-v1/CodexShaft1 (ac15585), v2/CodexShaft2 (e56b322), and
+v3/CodexShaft3 (447facc). All died on D10 to Lodul's ogre at turn8064, XL10.
+No observed stalls or gameplay intervention. None reached the prior D11 shaft,
+so live shaft recovery remains UNVERIFIED. This is a lower reached result than
+the earlier D14 run, but these deaths occurred before exercising the intended
+recovery; the reason for the changed pre-shaft trajectory is not established.
+Do not claim a benchmark improvement or successful D14 ascent from these runs.
+Final RC SHA256:
+b414e3f917b571cc88f71a9649b80c3c11e0076f1febe9337841f1048995f364.
+All three death rows and immutable evidence retained. No test games left running.
