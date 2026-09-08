@@ -2515,6 +2515,55 @@ local function route_pocket_action(scan)
   return route_block("pocket recovery unexpected depth")
 end
 
+-- Missing Lair is a search problem, not permission to skip the branch.
+-- Two bounded passes over D8-11; start on the current candidate floor.
+local function missing_lair_action(scan)
+  if ROUTE_STATE.entrances.Lair or travel.find_deepest_explored("Lair")>0 then
+    if ROUTE_STATE.entrance_search then crawl.take_note("Lair search: entrance found") end
+    ROUTE_STATE.entrance_search=nil
+    return false
+  end
+  if scan.any or you.confused() or movement_locked() then return false end
+  local s=ROUTE_STATE.entrance_search
+  if not s then
+    local order={}
+    if you.branch()=="D" and you.depth()>=8 and you.depth()<=11 then order[1]=you.depth() end
+    for n=11,8,-1 do if n~=order[1] then order[#order+1]=n end end
+    s={order=order,index=1,pass=1,started=you.turns(),travel_tries=0}
+    ROUTE_STATE.entrance_search=s
+    crawl.take_note("Lair search: revisiting D8-11")
+  end
+  if you.turns()-s.started>2000 then return route_block("Lair search exceeded 2000 turns") end
+  local function advance()
+    s.index=s.index+1; s.exploring=nil; s.cloud_wait=0; s.travel_tries=0
+    if s.index>#s.order then s.index=1; s.pass=s.pass+1 end
+    return missing_lair_action(scan)
+  end
+  if s.pass>2 then return route_block("Lair search exhausted two passes of D8-11") end
+  local depth=s.order[s.index]
+  if you.branch()~="D" or you.depth()~=depth then
+    s.travel_tries=s.last_travel==you.turns() and s.travel_tries+1 or 0
+    s.last_travel=you.turns()
+    if s.travel_tries>=3 then return advance() end
+    guarded_keys("GD"..depth.."\r"); return true
+  end
+  -- Clouds can temporarily hide a whole floor behind its arrival corridor.
+  local cloud=false
+  for _,c in pairs(scan.cells) do if c.visible and c.cloud then cloud=true end end
+  if cloud then
+    s.cloud_wait=(s.cloud_wait or 0)+1
+    if s.cloud_wait>40 then return advance() end
+    crawl.do_commands({"CMD_WAIT"}); return true
+  end
+  if not s.exploring then
+    s.exploring=true
+    ROUTE_STATE.done[level_key()]=nil
+    BOT.floor_done[level_key()]=nil; BOT.floor_partial[level_key()]=nil
+    crawl.take_note("Lair search: explore "..level_key().." pass "..s.pass)
+  elseif ROUTE_STATE.done[level_key()] then return advance() end
+  return explore_frontier(scan,true)
+end
+
 local function route_action(scan)
   if not AUTOCrawl_ROUTE.enabled then return false end
   -- A combat interruption must not let the isolated-enemy route shortcut
@@ -2528,6 +2577,7 @@ local function route_action(scan)
   route_observe(scan)
   if ROUTE_STATE.recovery then return route_recovery_action(scan) end
   if ROUTE_STATE.pocket then return route_pocket_action(scan) end
+  if ROUTE_STATE.entrance_search and missing_lair_action(scan) then return true end
   -- The route owns progression; the legacy stair-dipping state machine must
   -- never descend beyond a stage boundary or compete with interbranch travel.
   BOT.dive={phase="normal"}
@@ -2581,6 +2631,7 @@ local function route_action(scan)
       end
       if branch~="D" and not ROUTE_STATE.entrances[branch]
           and travel.find_deepest_explored(branch)==0 then
+        if branch=="Lair" then return missing_lair_action(scan) end
         return route_block("entrance to "..branch.." has not been discovered")
       end
       local turn=you.turns()
