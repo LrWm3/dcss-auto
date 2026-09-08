@@ -35,6 +35,7 @@ AUTOCrawl_TACTICS = {
   hidden_memory = 20, blind_probe_limit = 3,
   hidden_hand_cooldown = 8,
   steam_charge = true, steam_charge_memory = 12, steam_charge_steps = 8,
+  approach_mode = 0, approach_waits = 4, approach_backsteps = 2,
   debug_encounters = false,
   steam_debug = false, -- diagnostic single-action replay; never a benchmark
   steam_debug_entry = false, -- start at D:6 arrival, record notes automatically
@@ -534,6 +535,7 @@ local function observe_encounter(scan)
   local count=#scan.monsters
   if active and e.phase=="idle" then
     e.started=turn; e.peak=0; e.retreats=0
+    e.approach=nil
   end
   e.peak=math.max(e.peak,count)
   e.active=active
@@ -1146,6 +1148,80 @@ local function manage_encounter(scan)
   if e.phase=="recover" and not scan.any and not e.unseen then
     return recovery_wait()
   end
+  return false
+end
+
+-- Small, bounded first-contact experiments: 1 hold, 2 lure toward the
+-- entry/rest anchor then hold, 3 hold only when pursuit would touch frontier.
+local function approach_action(scan)
+  local mode=AUTOCrawl_TACTICS.approach_mode
+  local e=BOT.encounter
+  if mode==0 or not e or not scan.any or not scan.reachable_any
+      or you.berserk() or you.confused() or movement_locked()
+      or (you.mesmerised and you.mesmerised()) then return false end
+  local s=e.approach
+  if not s then s={waits=0,moves=0,hp=you.hp()}; e.approach=s end
+  if scan.reachable_adjacent then s.done=true; return false end
+  if s.done then return false end
+  local hp=you.hp()
+  if hp<s.hp then s.done=true; return false end -- never wait through damage
+  s.hp=hp
+  local ranged=false
+  local near=100
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    if m and m.name and m:name()=="steam dragon" then return false end
+    if not m or not m.range or m:range()>1 then ranged=true end
+    near=math.min(near,math.max(math.abs(enemy.x),math.abs(enemy.y)))
+  end
+  local function note(action)
+    say("approach: "..action)
+    if crawl.take_note then crawl.take_note("Approach "..mode..": "..action.." enemies="..#scan.monsters.." HP="..hp) end
+  end
+  if mode==2 and s.moves<AUTOCrawl_TACTICS.approach_backsteps then
+    local a=BOT.recovery_anchor
+    local px,py
+    if a and a.level==level_key() and travel and travel.waypoint_delta then px,py=travel.waypoint_delta(9) end
+    if px and py then
+      local goal=a.rest or a.entry
+      local gx,gy=goal.x-px,goal.y-py
+      local distance=math.max(math.abs(gx),math.abs(gy))
+      for i,d in ipairs(MOVE_DELTAS) do
+        local c=scan.cells[map_key(d[1],d[2])]
+        local away=true
+        for _,enemy in ipairs(scan.monsters) do
+          if math.max(math.abs(enemy.x-d[1]),math.abs(enemy.y-d[2]))<near then away=false end
+        end
+        if c and c.visible and not c.frontier and c.feature=="floor" and away
+            and math.max(math.abs(gx-d[1]),math.abs(gy-d[2]))<distance
+            and can_step(scan.cells,0,0,d[1],d[2],scan.blocked) then
+          s.moves=s.moves+1; note("lure"); crawl.sendkeys(MOVE_KEYS[i]); return true
+        end
+      end
+    end
+  end
+  if ranged then s.done=true; return false end
+  if mode==3 then
+    local frontier=false
+    for _,enemy in ipairs(scan.monsters) do
+      if enemy.reachable then
+        for _,d in ipairs(MOVE_DELTAS) do
+          local step=scan.first_step[map_key(enemy.x+d[1],enemy.y+d[2])]
+          for i,k in ipairs(MOVE_KEYS) do
+            if step==k then
+              local cell=scan.cells[map_key(MOVE_DELTAS[i][1],MOVE_DELTAS[i][2])]
+              if cell and cell.frontier then frontier=true end
+            end
+          end
+        end
+      end
+    end
+    if not frontier then return false end
+  end
+  if s.waits<AUTOCrawl_TACTICS.approach_waits then
+    s.waits=s.waits+1; note("hold"); crawl.do_commands({"CMD_WAIT"}); return true
+  end
+  s.done=true
   return false
 end
 
@@ -2415,6 +2491,7 @@ function ready()
     end
   end
   if steam_charge_action(scan) then return end
+  if approach_action(scan) then return end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
   if isolated_recovery_action(scan) then return end
