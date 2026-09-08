@@ -1430,3 +1430,26 @@ Tests pass:12training,14tactical,13mining,3direct-transport cases,23RC suites.
 Tracked evidence tactical/evidence/rl-harness-v1.json. All private workers closed.
 Next work is improving/training the policy and recovery objective, not claiming
 that a functioning RL loop has already solved the D7 encounter.
+
+## 2026-09-08 — coherent tactical sweep and reward correction
+
+Removed the per-turn reward cost that preferred early death over longer survival:
+death now returns -100, observable recovery +100, other transitions zero. Supplied
+training configs use gamma=1. No new model trained in this experiment.
+Added fixed stateful hold/rage/retreat comparators, parallel config-driven sweeps,
+and a no-turn-stall guard for post-recovery RC handoff. Retreat uses conservative
+visible movement and enemy separation; it does not know remembered entry stairs.
+
+Verified D7 encounter-005 seed83017005, two repeats each: baseline dies103decisions,
+hold dies40, rage_hold dies14; retreat recovers126 and retreat_fight recovers132.
+Initial160-decision handoffs stay alive but do not establish lasting recovery.
+Longer600-decision handoff audits v1 and final-code v2 agree: retreat hands back
+to unchanged RC and reaches D8 alive after470 more decisions; retreat_fight after
+455. Both repeat twice, HP89 at arrival, no harness errors. D8 is NOT cleared;
+arrival is not labelled recovered. Repeats are not independent training cases.
+
+This identifies simple retreat as a candidate teacher/initialisation tactic for
+this checkpoint, not a learned policy or general improvement. Canonical RC and
+production model remain unchanged. Tests pass:13training,5tactics,14legacy
+tactical,13mining,23RC suites,3direct-transport cases; compile and diff checks pass.
+Evidence tactical/evidence/d7-tactic-sweep-v1.json; heavy traces in artifacts.

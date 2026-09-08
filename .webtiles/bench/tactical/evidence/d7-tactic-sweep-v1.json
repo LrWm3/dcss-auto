@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-08",
+  "case": "collection/encounter-005",
+  "seed": "83017005",
+  "start": {"floor": "D:7", "turn": 5831, "hp": 79},
+  "dataset_sha256": "012bae63469e6c87902b8e51945dcc06f4ba1b0e53edd972f9522d42175eda91",
+  "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "canonical_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "sweep": {
+    "artifact": "artifacts/d7-tactic-sweep-v1",
+    "summary_sha256": "946ead84b4a3f9454977ebeb187dfb5465a82b45213dd665cad1c59cf27e837e",
+    "repeats_per_policy": 2,
+    "results": {
+      "baseline": {"outcome": "death", "decisions": [103, 103]},
+      "hold": {"outcome": "death", "decisions": [40, 40]},
+      "rage_hold": {"outcome": "death", "decisions": [14, 14]},
+      "retreat": {"outcome": "safe_recovery", "decisions": [126, 126]},
+      "retreat_fight": {"outcome": "safe_recovery", "decisions": [132, 132]}
+    }
+  },
+  "final_handoff_audit": {
+    "artifact": "artifacts/d7-tactic-handoff-v2",
+    "summary_sha256": "f065c9e6062cdc8f777ddd497b5768bd0ad487128b735f9259139c2af43f7c74",
+    "budget": 600,
+    "retreat": {"recovery_decisions": [126, 126], "handoff_decisions": [470, 470]},
+    "retreat_fight": {"recovery_decisions": [132, 132], "handoff_decisions": [455, 455]},
+    "all_four": {"outcome": "floor_change", "floor": "D:8", "hp": 89, "recovered_at_end": false},
+    "harness_errors": 0,
+    "matches_prior_audit": "artifacts/d7-tactic-handoff-v1"
+  },
+  "changes": [
+    "Terminal-only reward removes preference for earlier death; supplied training configs use gamma=1.",
+    "Stateful fixed tactical comparators and config-driven parallel sweep.",
+    "RC handoff detects repeated no-turn stalls."
+  ],
+  "tests_passed": {"training": 13, "tactics": 5, "legacy_tactical": 14, "mining": 13, "rc_suites": 23, "direct_transport": 3},
+  "limitations": [
+    "Same checkpoint repeated; in-sample tactic selection, not independent encounters or held-out generalisation.",
+    "D:8 reached alive, not cleared and not recovered at arrival.",
+    "No new model trained; no production RC or model deployment.",
+    "Retreat maximises visible enemy separation, not pathfinding to remembered stairs."
+  ]
+}

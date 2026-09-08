@@ -429,9 +429,11 @@ inventory items yet. The conservative mask avoids known clouds/occupied or
 unknown cells, confused movement and some immobilising statuses. It is not a
 complete engine legality oracle; errors and no-turn stalls remain observable.
 
-Reward is +100 for the miner's observable recovery condition, -100 for death,
-and a small elapsed-turn cost. There is no HP-gain, damage or kill reward to farm.
-Variable-duration macro-actions use elapsed-turn discounting. Decision/turn
+Reward (schema v2) is +100 for the miner's observable recovery condition, -100
+for death, and zero otherwise. The old per-turn penalty favoured earlier deaths
+among failed episodes and has been removed. There is no HP-gain, damage or kill
+reward to farm. The supplied configs use gamma=1 so elapsed time alone does not
+change terminal reward preference; optional discounting remains supported. Decision/turn
 budgets bootstrap rather than pretending to be victories; floor exits and
 no-turn stalls end the tactical task without a positive terminal reward.
 Harness errors never count as deaths and stop the batch.
@@ -447,3 +449,26 @@ per-episode outcomes/action counts/timings, a model snapshot, and a summary.
 Inventory changes can be inspected in transition observations; automatic
 resource-use aggregation is not implemented yet. Evaluation weights are checked
 unchanged. Repeated resets are reproducibility checks, not independent samples.
+
+### Fixed-tactic discovery before further RL
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/sweep_tactics.py \
+  .webtiles/bench/tactical/d7-tactic-sweep-v1.json \
+  .webtiles/bench/tactical/artifacts/my-tactic-sweep
+```
+
+This compares RC, hold position, berserk-and-fight, visible-terrain retreat, and
+retreat with a berserk commitment if blocked. Each fixed intention checks the
+current state every decision. Retreat maximises visible enemy separation on
+traversable tiles; it does **not** know where the last rest spot or entry stairs
+are. Confusion/poison/fire delegate to RC, and no policy knowingly walks into
+clouds. These are candidate teachers, not a newly trained model or production
+changes. `d7-tactic-handoff-v1.json` audits the retreat variants with a longer
+600-decision RC continuation after proxy recovery.
+
+The sweep records separate initial outcomes and handoff outcomes; alive at a
+budget is bounded survival, not a cleared encounter. Floor-change continuation
+stops at the boundary and is not proof of clearing the new floor. Repeats of the
+same checkpoint are in-sample reproducibility checks. Positive discovery alone
+does not certify save/load fidelity for every alternative-action trajectory.

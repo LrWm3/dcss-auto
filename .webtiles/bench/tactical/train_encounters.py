@@ -16,7 +16,7 @@ from bench import Environment, ENGINE, ROOT, HERE, sha
 from experiment import DIRECTIONS
 from mine_encounters import encounter_recovered
 
-VERSION = 1
+VERSION = 2
 
 
 def write(path, value):
@@ -97,11 +97,12 @@ def outcome(after, initial_floor, decisions, elapsed, noops, cfg):
 
 
 def reward_for(label, turns):
-    # No damage/kill/HP-increase reward: healing loops cannot earn positive return.
-    return (100 if label=='safe_recovery' else -100 if label=='death' else 0)-.02*max(1,turns)
+    # Equal terminal reward irrespective of time spent: do not prefer early death.
+    # Budgets remain unfinished, and healing/waiting cannot farm positive reward.
+    return 100 if label=='safe_recovery' else -100 if label=='death' else 0
 
 
-def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0):
+def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0, controller=None):
     env=Environment(root);start=time.monotonic()
     result=dict(case_id=entry['id'],seed=entry['seed'],policy=policy,training=training,
                 outcome='harness_error',decisions=0,total_reward=0.,actions={})
@@ -116,7 +117,10 @@ def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0)
         for decision in range(1,cfg['steps']+1):
             memory['peak_threat']=max(memory['peak_threat'],max((e['threat'] for e in enemies(state)),default=0))
             f=features(state,memory)
-            if policy=='baseline': action='baseline'
+            if controller is not None:
+                action=controller(state)
+                if action not in actions(state):raise ValueError('Tactic chose masked action: '+action)
+            elif policy=='baseline': action='baseline'
             elif policy=='melee': action='melee' if 'melee' in actions(state) else 'baseline'
             else: action=choose(model,state,memory,rng,epsilon if training else 0)
             after=env.step(action);counts[action]+=1
@@ -147,14 +151,20 @@ def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0)
         # do not turn its later actions into learner rewards or mutate eval weights.
         if result['outcome']=='safe_recovery' and not training and cfg.get('handoff_steps',0):
             handoff=dict(outcome='budget_alive',decisions=0)
+            handoff_noops=0
             try:
                 for i in range(cfg['handoff_steps']):
+                    previous_turn=state['turn']
                     state=env.step('baseline');handoff['decisions']=i+1
                     if state.get('terminal'):
                         handoff['outcome']='death';break
+                    handoff_noops=handoff_noops+1 if state['turn']==previous_turn else 0
+                    if handoff_noops>=cfg.get('max_noops',8):
+                        handoff['outcome']='no_turn_stall';break
                     if state['floor']!=floor:
                         handoff['outcome']='floor_change';break
-                handoff.update(final_hp=state.get('hp'),final_floor=state.get('floor'))
+                handoff.update(final_hp=state.get('hp'),final_floor=state.get('floor'),
+                               recovered_at_end=not state.get('terminal') and encounter_recovered(state))
             except Exception as exc:
                 handoff.update(outcome='harness_error',error=str(exc))
             result['handoff']=handoff

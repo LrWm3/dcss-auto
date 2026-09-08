@@ -10,7 +10,7 @@
   "handoff_steps": 60,
   "eval_repeats": 2,
   "alpha": 0.15,
-  "gamma": 0.995,
+  "gamma": 1.0,
   "epsilon": 0.3,
   "random_seed": 7
 }

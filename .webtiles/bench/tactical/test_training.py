@@ -69,9 +69,11 @@ class TrainingTests(unittest.TestCase):
 
     def test_only_recovery_gets_positive_reward(self):
         for label in (None,'death','floor_change','no_turn_stall','budget_truncated'):
-            self.assertLess(reward_for(label,0),0)
+            self.assertLessEqual(reward_for(label,0),0)
         self.assertGreater(reward_for('safe_recovery',1),0)
-        self.assertLess(reward_for(None,100),reward_for(None,1))
+        self.assertEqual(reward_for(None,100),0)
+        self.assertEqual(reward_for('death',100),reward_for('death',1))
+        self.assertEqual(sum(reward_for(None,1) for _ in range(102))+reward_for('death',1),-100)
 
     def test_episode_evaluation_is_frozen_and_records_terminal(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -137,6 +139,20 @@ class TrainingTests(unittest.TestCase):
             self.assertAlmostEqual(learn.call_args.args[5],CFG['gamma']**2)
             row=json.loads((root/'rewards.jsonl').read_text())
             self.assertTrue(row['truncated']);self.assertFalse(row['terminated'])
+
+    def test_handoff_no_turn_loop_is_not_alive_success(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            class Fake:
+                work=root
+                def reset(self,case):return state()
+                def step(self,action):return state(turn=11,monsters={},safe=True)
+                def close(self):pass
+            with patch('train_encounters.Environment',return_value=Fake()):
+                r=run_episode(dict(id='x',seed='1',case='unused'),root,'q',{},random.Random(1),
+                              {**CFG,'handoff_steps':10,'max_noops':2})
+            self.assertEqual(r['handoff']['outcome'],'no_turn_stall')
+            self.assertEqual(r['handoff']['decisions'],2)
 
     def test_seed_split_integrity_and_fidelity_gate(self):
         with tempfile.TemporaryDirectory() as tmp:

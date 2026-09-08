@@ -1,0 +1,17 @@
+{
+  "dataset": ".webtiles/bench/tactical/artifacts/mining-deeper-v1/dataset/index.json",
+  "dataset_sha256": "012bae63469e6c87902b8e51945dcc06f4ba1b0e53edd972f9522d42175eda91",
+  "train_cases": ["collection/encounter-005"],
+  "eval_cases": ["collection/encounter-005"],
+  "evaluation_mode": "in_sample",
+  "policies": ["retreat", "retreat_fight"],
+  "episodes": 1,
+  "steps": 240,
+  "turns": 1000,
+  "handoff_steps": 600,
+  "eval_repeats": 2,
+  "alpha": 0.15,
+  "gamma": 1.0,
+  "epsilon": 0.3,
+  "jobs": 4
+}
