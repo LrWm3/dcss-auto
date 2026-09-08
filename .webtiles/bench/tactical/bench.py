@@ -14,7 +14,8 @@ import pexpect
 
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
-ENGINE = ROOT / 'crawl-0.35/crawl-ref/source/crawl-webtiles'
+ENGINE = Path(os.environ.get('DCSS_TACTICAL_ENGINE',
+    str(ROOT / 'crawl-0.35/crawl-ref/source/crawl-observation-rng'))).resolve()
 RC = ROOT / '.webtiles/rcs/codex-autocrawl.rc'
 NAME = 'TacticalEustachio'
 SEED = '1760771545328102746'
@@ -30,11 +31,12 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def make_rc(path):
-    source = RC.read_text()
+def make_rc(path, source_rc=None):
+    source = (source_rc or RC).read_text()
     at = source.rfind('>')
     assert at > 0 and not source[at + 1:].strip()
     path.write_text(source[:at] + '\n' + (HERE / 'bridge.lua').read_text()
+                    + '\n' + (HERE / 'direct_transport.lua').read_text()
                     + '\n>\ndump_order += tactical_dump\n')
 
 
@@ -44,10 +46,11 @@ class Environment:
     step is one controller decision, not necessarily one game turn: baseline
     and Tab are macro-actions. Invalid/no-turn actions remain in the dataset.
     """
-    def __init__(self, workspace):
+    def __init__(self, workspace, source_rc=None):
         self.workspace = Path(workspace).resolve()
         self.workspace.mkdir(parents=True, exist_ok=True)
         self.child = None
+        self.source_rc = source_rc
 
     def launch(self, checkpoint=None):
         self.close()
@@ -67,7 +70,7 @@ class Environment:
             shutil.copy2(case / 'checkpoint.cs', self.work / 'saves' / (NAME+'.cs'))
             shutil.copy2(case / 'trial.rc', rc)
         else:
-            make_rc(rc)
+            make_rc(rc,self.source_rc)
         args = ['-name', NAME, '-rc', str(rc), '-seed', SEED,
                 '-no-player-bones', '-extra-opt-last', 'species=Minotaur',
                 '-extra-opt-last', 'background=Berserker',
@@ -75,11 +78,13 @@ class Environment:
         for option, folder in [('save_dir','saves'), ('morgue_dir','morgue'),
                                ('macro_dir','macros')]:
             args += ['-extra-opt-last', f'{option}={self.work / folder}/']
+        self.direct_transport = 'TB_DIRECT_TRANSPORT=true' in rc.read_text()
         self.transcript = (self.work / 'terminal.txt').open('w')
         (self.work/'run.json').write_text(json.dumps({
             'schema_version':1,'case':str(checkpoint) if checkpoint else None,
             'engine_sha256':sha(ENGINE),'rc_sha256':sha(rc),
             'adapter_sha256':sha(Path(__file__)),'seed':SEED,'character':NAME,
+            'transport':'ready_getch' if self.direct_transport else 'legacy_console',
             'checkpoint_sha256':sha(Path(checkpoint)/'checkpoint.cs') if checkpoint else None,
             'started_unix':time.time()},indent=2)+'\n')
         self.child = pexpect.spawn(str(ENGINE), args, cwd=str(ENGINE.parent),
@@ -93,9 +98,20 @@ class Environment:
         deadline = time.monotonic() + (180 if startup else 20)
         probed = False
         while time.monotonic() < deadline:
+            if getattr(self,'direct_transport',False):
+                # getch inside ready need not flush the terminal message window.
+                # The completed structured dump is the authoritative boundary.
+                try:
+                    match=re.search(r'^TBJSON (.+)$',
+                        (self.work/'morgue'/(NAME+'.txt')).read_text(),re.M)
+                    state=json.loads(match[1]) if match else None
+                    if state and (expected_seq is None or state['seq']==expected_seq):
+                        self.state=state
+                        return state
+                except (OSError,ValueError):pass
             i = self.child.expect([r'TBREADY (\d+) END', r'You die\.\.\.',
                 r'Hit .* to (?:continue|start)', r'Press .* to (?:continue|start)',
-                pexpect.EOF, pexpect.TIMEOUT], timeout=2)
+                pexpect.EOF, pexpect.TIMEOUT], timeout=0.05 if getattr(self,'direct_transport',False) else 2)
             if i == 0:
                 seq = int(self.child.match.group(1))
                 if expected_seq is not None and seq < expected_seq:
@@ -115,7 +131,7 @@ class Environment:
                 self.child.send(' ')
             elif i == 4:
                 raise RuntimeError(f'Unexpected engine exit; see {self.work}')
-            elif i == 5 and not startup and not probed:
+            elif i == 5 and not startup and not probed and not getattr(self,'direct_transport',False):
                 # No-op commands need not trigger another ready(). Confirm the
                 # interpreter before asking for a read-only boundary snapshot.
                 probed = True
@@ -135,6 +151,8 @@ class Environment:
         raise TimeoutError(f'No decision boundary (not counted as death); see {self.work}')
 
     def console(self, code):
+        if getattr(self,'direct_transport',False):
+            self.child.send('\x1b')
         self.child.send('\x04')
         # Never type Lua into a game/menu: require explicit interpreter handshake.
         self.child.expect_exact('[Hit ESC to exit interpreter.]', timeout=5)
@@ -150,7 +168,10 @@ class Environment:
         if before.get('terminal'):
             raise RuntimeError('Episode is terminal; reset before stepping')
         try:
-            self.console('tb_request('+json.dumps(ACTIONS[action])+')')
+            if self.direct_transport:
+                self.child.send(chr(97+list(ACTIONS).index(action)))
+            else:
+                self.console('tb_request('+json.dumps(ACTIONS[action])+')')
             after = self.await_state(expected_seq=before['seq']+1)
         except Exception as exc:
             with (self.work/'errors.jsonl').open('a') as f:

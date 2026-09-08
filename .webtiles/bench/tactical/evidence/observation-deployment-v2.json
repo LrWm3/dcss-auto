@@ -1,0 +1,206 @@
+{
+  "observation-probe-v1/results.json": [
+    {
+      "reads": 0,
+      "turn": 3519,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-probe-v1/worker-niwbqlih",
+      "sentinel": [
+        "3519 | D:4      | RNG sentinel 210107792"
+      ]
+    },
+    {
+      "reads": 1,
+      "turn": 3519,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-probe-v1/worker-v1_pt49_",
+      "sentinel": [
+        "3519 | D:4      | RNG sentinel 210107792"
+      ]
+    },
+    {
+      "reads": 10,
+      "turn": 3519,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-probe-v1/worker-3miaurde",
+      "sentinel": [
+        "3519 | D:4      | RNG sentinel 210107792"
+      ]
+    }
+  ],
+  "autonomous-equivalence-v2/results.json": {
+    "states": 23,
+    "expected": 59,
+    "mismatches": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/autonomous-equivalence-v2/worker-ofh80ycn",
+    "outcome": "death"
+  },
+  "autonomous-equivalence-v3/results.json": {
+    "states": 59,
+    "expected": 59,
+    "mismatches": [],
+    "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/autonomous-equivalence-v3/worker-tlyj94r9",
+    "outcome": "finished"
+  },
+  "autonomous-equivalence-v4/results.json": {
+    "states": 71,
+    "expected": 71,
+    "mismatches": [],
+    "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/autonomous-equivalence-v4/worker-uxns290m",
+    "outcome": "finished"
+  },
+  "autonomous-equivalence-v5/results.json": {
+    "states": 71,
+    "expected": 71,
+    "mismatches": [],
+    "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/autonomous-equivalence-v5/worker-7x1o6oik",
+    "outcome": "finished"
+  },
+  "observation-tactics-v1/results.json": [
+    {
+      "policy": "baseline",
+      "training": false,
+      "fresh": false,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-case-v1",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "outcome": "death",
+      "initial_turn": 3506,
+      "reset_seconds": 4.602,
+      "decisions": 41,
+      "final_turn": 3546,
+      "final_hp": 0,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-tactics-v1/worker-6s92a5en",
+      "elapsed_seconds": 7.655
+    },
+    {
+      "policy": "baseline",
+      "training": false,
+      "fresh": false,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-case-v1",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "outcome": "death",
+      "initial_turn": 3506,
+      "reset_seconds": 5.16,
+      "decisions": 41,
+      "final_turn": 3546,
+      "final_hp": 0,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-tactics-v1/worker-ty267cwn",
+      "elapsed_seconds": 8.19
+    },
+    {
+      "policy": "tab",
+      "training": false,
+      "fresh": false,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-case-v1",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "outcome": "safe_recovery",
+      "initial_turn": 3506,
+      "reset_seconds": 4.94,
+      "decisions": 180,
+      "final_turn": 3686,
+      "final_hp": 61,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-tactics-v1/worker-vz1ipsdm",
+      "elapsed_seconds": 18.434
+    },
+    {
+      "policy": "charge",
+      "training": false,
+      "fresh": false,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-case-v1",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "outcome": "safe_recovery",
+      "initial_turn": 3506,
+      "reset_seconds": 8.277,
+      "decisions": 70,
+      "final_turn": 3576,
+      "final_hp": 61,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-tactics-v1/worker-e32oafu0",
+      "elapsed_seconds": 12.56
+    },
+    {
+      "policy": "q",
+      "training": false,
+      "fresh": false,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-case-v1",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "outcome": "death",
+      "initial_turn": 3506,
+      "reset_seconds": 5.01,
+      "decisions": 30,
+      "final_turn": 3535,
+      "final_hp": 0,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-tactics-v1/worker-jtras4ij",
+      "elapsed_seconds": 6.974
+    },
+    {
+      "policy": "q",
+      "training": false,
+      "fresh": false,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-case-v1",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "outcome": "death",
+      "initial_turn": 3506,
+      "reset_seconds": 5.265,
+      "decisions": 30,
+      "final_turn": 3535,
+      "final_hp": 0,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/observation-tactics-v1/worker-hfsk7gxw",
+      "elapsed_seconds": 7.286
+    }
+  ],
+  "deployment-equivalence-v1/results.json": [
+    {
+      "mode": "disabled",
+      "matched": 41,
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "passed": true,
+      "outcome": "death",
+      "turn": null,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/deployment-equivalence-v1/worker-gxxd7xmm"
+    },
+    {
+      "mode": "active",
+      "matched": 70,
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "passed": true,
+      "outcome": "alive",
+      "turn": 3576,
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/deployment-equivalence-v1/worker-wpxy8gnz"
+    }
+  ],
+  "deployment-smoke-v3/results.json": [
+    {
+      "label": "seed1",
+      "seed": "6144198052690956201",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "610e23edceb167728f3234f9cb633600a3230630ec3af2fdc096b7a4fd6b0f30",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/deployment-smoke-v3/seed1",
+      "outcome": "reached_D5"
+    },
+    {
+      "label": "seed2",
+      "seed": "1760771545328102746",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "610e23edceb167728f3234f9cb633600a3230630ec3af2fdc096b7a4fd6b0f30",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/deployment-smoke-v3/seed2",
+      "outcome": "reached_D5"
+    }
+  ]
+}

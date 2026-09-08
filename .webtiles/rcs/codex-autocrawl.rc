@@ -3055,7 +3055,9 @@ function ready()
   end
   BOT.immobile_announced = false
 
-  if feat_here() == "enter_shop" then
+  -- Entering a shop is forbidden while berserk and must not preempt combat.
+  -- A rejected '<' spends no turn and otherwise loops forever on this tile.
+  if feat_here() == "enter_shop" and not you.berserk() and not scan.any then
     if scan.cells[map_key(0,0)] and scan.cells[map_key(0,0)].unvisited then
       -- '<' ENTERS a shop. Visit once to register its stock, then close the
       -- menu with Escape. Never reopen it on every ready() at the same tile.

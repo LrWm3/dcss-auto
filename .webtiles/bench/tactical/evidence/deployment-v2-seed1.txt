@@ -1,0 +1,451 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 6144198052690956201 (custom seed)
+
+TacticalSmoke the Chopper (Minotaur Berserker)      Turns: 3740, Time: 00:00:25
+
+Health: 55/55      AC: 11    Str: 26    XL:     6   Next: 54%
+Magic:  5/5        EV:  9    Int:  4    God:    Trog [***...]
+Gold:   182        SH:  0    Dex: 10    Spells: 5/5 levels left
+
+rFire   . . .  (100%)   f - +0 hand axe (heavy)
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +2 chain mail of Wasted Space {rPois Str+3}
+rPois   +      (33%)    (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    +....           (no amulet)
+Stlth                   b - ring of willpower
+HPRegen 0.29/turn       (no ring)
+MPRegen 0.09/turn
+
+%: no passive effects
+@: no status effects
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (0%)
+
+
+You are on level 5 of the Dungeon.
+You worship Trog.
+Trog is most pleased with you.
+You have visited 1 branch of the dungeon, and seen 5 of its levels.
+
+You have collected 215 gold pieces.
+You have spent 33 gold pieces at shops.
+
+Inventory:
+
+Hand Weapons
+ f - a +0 heavy hand axe (weapon)
+Missiles
+ d - 6 boomerangs (quivered)
+ e - 5 poisoned darts
+Armour
+ c - the +2 chain mail of Wasted Space (worn) {rPois Str+3}
+   (You found it on level 4 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   Str+3:     It affects your strength (+3).
+   
+   It cannot be enchanted further.
+Jewellery
+ b - a ring of willpower (worn)
+Wands
+ c - a wand of iceblast (10)
+ p - a wand of polymorph (12)
+Scrolls
+ e - a scroll labelled KYKUMU GITOISS
+ h - a scroll labelled CUASHRU FOGENG
+ l - a scroll labelled ITAQUBU PIHEAHE
+ m - a scroll labelled SEMUAS QOAWN
+ n - a scroll labelled IBLYRI JAHE
+ a - a scroll of enchant armour
+ t - a scroll of teleportation
+Potions
+ i - a potion of invisibility
+ d - a smoky clear potion
+ a - a potion of ambrosia
+ j - a fuming puce potion
+ k - a lumpy inky potion
+ p - a blue potion
+
+
+   Skills:
+ + Level 4.9 Fighting
+ * Level 6.0 Axes
+ + Level 2.3 Throwing
+ + Level 4.1 Armour
+ + Level 3.6 Dodging
+
+
+You have 5 spell levels left.
+You don't know any spells.
+Your spell library is empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (5/15)            
+Temple: D:4-7       
+
+Altars:
+Ashenzari
+Okawaru
+Zin
+
+Shops:
+D:1 (*(:
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You continue removing your +0 plate armour. x5
+You finish removing your +0 plate armour.
+You start putting on your armour.
+You continue putting on the +2 chain mail of Wasted Space {rPois Str+3}. x5
+You finish putting on the +2 chain mail of Wasted Space {rPois Str+3}.
+You feel stronger.
+You drop a +0 plate armour.
+Unknown command.
+You now have 161 gold pieces (gained 8).
+c - a wand of iceblast (10)
+Unknown command.
+Unknown command.
+Unknown command.
+There is a stone staircase leading up, spattered with blood here.
+Things that are here:
+a +2 rapier of holy wrath; a +3 leather armour of cold resistance; the human
+skeleton of Eustachio
+Things that are here:
+a +0 club; a stone; a kobold skeleton
+There is a stone staircase leading down here.
+You now have 173 gold pieces (gained 12).
+t - a scroll of teleportation
+Unknown command.
+Unknown command.
+Unknown command.
+You now have 182 gold pieces (gained 9).
+Done exploring.
+Unknown command.
+Unknown command.
+(D) Dungeon   
+Where to? (* - list waypoints, Tab/Enter - D:4, ? - help) 
+What level of the Dungeon? (default 4, ? - help) 
+Unknown command.
+There is a stone staircase leading down here.
+You climb downwards.
+You hear the hiss of flowing sand.
+There is an entrance to an ossuary on this level. Hurry and find it before the
+portal is buried!
+There is a stone staircase leading up here.
+Unknown command.
+Unknown command.
+SMOKE DONE
+
+     ##
+     ..
+     #.
+    ##.#####
+     ......#
+     #.....####
+..#.##.........
+.......@...#
+..####..>..#
+     #######
+
+
+There are no monsters in sight!
+
+Vanquished Creatures
+  Eustachio (D:4)
+  A howler monkey (D:3)
+  2 hounds (D:4)
+  5 gnolls
+  3 adders
+  3 dart slugs
+  5 ribbon worms
+  4 orcs
+  7 endoplasms
+  5 hobgoblins (D:1)
+  3 jackals (D:3)
+  2 quokkas (D:1)
+  13 ball pythons
+  6 bats
+  5 frilled lizards
+  6 goblins
+  13 kobolds
+  2 rats (D:2)
+86 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | TacticalSmoke the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+     7 | D:1      | Approach 2: lure enemies=1 HP=19
+     8 | D:1      | Approach 2: lure enemies=1 HP=19
+     9 | D:1      | Approach 2: hold enemies=1 HP=19
+    10 | D:1      | Approach 2: hold enemies=1 HP=19
+    11 | D:1      | Approach 2: hold enemies=1 HP=19
+    22 | D:1      | Found Keclu's Weapon Shop.
+    25 | D:1      | Approach 2: lure enemies=1 HP=19
+    35 | D:1      | Approach 2: lure enemies=1 HP=19
+    36 | D:1      | Approach 2: hold enemies=1 HP=19
+    37 | D:1      | Approach 2: hold enemies=1 HP=19
+    38 | D:1      | Approach 2: hold enemies=1 HP=19
+    74 | D:1      | Found Zelu's General Store.
+   147 | D:1      | Approach 2: hold enemies=1 HP=20
+   148 | D:1      | Approach 2: hold enemies=1 HP=20
+   149 | D:1      | Approach 2: hold enemies=1 HP=20
+   150 | D:1      | Approach 2: hold enemies=1 HP=20
+   204 | D:1      | Approach 2: lure enemies=1 HP=20
+   205 | D:1      | Approach 2: lure enemies=1 HP=20
+   206 | D:1      | Approach 2: hold enemies=1 HP=20
+   207 | D:1      | Approach 2: hold enemies=1 HP=20
+   239 | D:1      | Approach 2: lure enemies=2 HP=20
+   240 | D:1      | Approach 2: lure enemies=1 HP=20
+   241 | D:1      | Approach 2: hold enemies=1 HP=20
+   242 | D:1      | Approach 2: hold enemies=1 HP=20
+   243 | D:1      | Approach 2: hold enemies=1 HP=20
+   244 | D:1      | Approach 2: hold enemies=1 HP=20
+   289 | D:1      | Found Ryshroff's Antique Weapon Emporium.
+   291 | D:1      | Approach 2: lure enemies=1 HP=20
+   292 | D:1      | Approach 2: hold enemies=1 HP=20
+   293 | D:1      | Approach 2: hold enemies=1 HP=20
+   294 | D:1      | Approach 2: hold enemies=1 HP=20
+   295 | D:1      | Approach 2: hold enemies=1 HP=20
+   320 | D:1      | Approach 2: lure enemies=1 HP=20
+   321 | D:1      | Approach 2: lure enemies=1 HP=20
+   322 | D:1      | Approach 2: hold enemies=1 HP=20
+   324 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   342 | D:1      | Approach 2: lure enemies=1 HP=27
+   343 | D:1      | Approach 2: hold enemies=1 HP=27
+   344 | D:1      | Approach 2: hold enemies=1 HP=27
+   345 | D:1      | Approach 2: hold enemies=1 HP=27
+   346 | D:1      | Approach 2: hold enemies=1 HP=27
+   350 | D:1      | Reached skill level 4 in Axes
+   401 | D:1      | Approach 2: hold enemies=1 HP=27
+   402 | D:1      | Approach 2: hold enemies=1 HP=27
+   403 | D:1      | Approach 2: hold enemies=1 HP=27
+   418 | D:1      | Approach 2: lure enemies=1 HP=27
+   419 | D:1      | Approach 2: lure enemies=1 HP=27
+   420 | D:1      | Approach 2: hold enemies=1 HP=27
+   421 | D:1      | Approach 2: hold enemies=1 HP=27
+   422 | D:1      | Approach 2: hold enemies=1 HP=27
+   423 | D:1      | Approach 2: hold enemies=1 HP=27
+   491 | D:1      | Approach 2: lure enemies=1 HP=27
+   492 | D:1      | Approach 2: lure enemies=1 HP=27
+   493 | D:1      | Approach 2: hold enemies=1 HP=27
+   494 | D:1      | Approach 2: hold enemies=1 HP=27
+   510 | D:1      | Approach 2: lure enemies=1 HP=27
+   512 | D:1      | Approach 2: hold enemies=1 HP=27
+   525 | D:1      | Approach 2: lure enemies=1 HP=27
+   526 | D:1      | Approach 2: lure enemies=1 HP=27
+   527 | D:1      | Approach 2: hold enemies=1 HP=27
+   528 | D:1      | Approach 2: hold enemies=1 HP=27
+   614 | D:1      | Approach 2: hold enemies=1 HP=27
+   647 | D:1      | Throwing training unlocked: 3 boomerangs
+   664 | D:1      | Approach 2: lure enemies=1 HP=27
+   665 | D:1      | Approach 2: lure enemies=1 HP=27
+   666 | D:1      | Approach 2: hold enemies=1 HP=27
+   667 | D:1      | Approach 2: hold enemies=1 HP=27
+   668 | D:1      | Approach 2: hold enemies=1 HP=27
+   669 | D:1      | Approach 2: hold enemies=1 HP=27
+   710 | D:1      | Approach 2: hold enemies=1 HP=27
+   711 | D:1      | Approach 2: hold enemies=1 HP=27
+   712 | D:1      | Approach 2: hold enemies=1 HP=27
+   713 | D:1      | Approach 2: hold enemies=1 HP=27
+   730 | D:1      | Approach 2: lure enemies=1 HP=27
+   731 | D:1      | Approach 2: lure enemies=1 HP=27
+   732 | D:1      | Reached ** piety under Trog
+   743 | D:1      | Approach 2: lure enemies=1 HP=27
+   744 | D:1      | Approach 2: lure enemies=1 HP=27
+   747 | D:1      | Approach 2: hold enemies=1 HP=27
+   748 | D:1      | Approach 2: hold enemies=1 HP=27
+   749 | D:1      | Approach 2: hold enemies=1 HP=27
+   765 | D:1      | Approach 2: lure enemies=1 HP=27
+   799 | D:1      | Found Akaosiqoes's Book Shoppe.
+   814 | D:1      | Approach 2: lure enemies=1 HP=27
+   815 | D:1      | Approach 2: lure enemies=1 HP=27
+   816 | D:1      | Approach 2: hold enemies=1 HP=27
+   817 | D:1      | Approach 2: hold enemies=1 HP=27
+   818 | D:1      | Approach 2: hold enemies=1 HP=27
+   819 | D:1      | Approach 2: hold enemies=1 HP=27
+   821 | D:1      | Reached XP level 3. HP: 33/33 MP: 2/2
+   947 | D:1      | Approach 2: hold enemies=1 HP=33
+   982 | D:1      | Approach 2: lure enemies=2 HP=33
+   984 | D:1      | Approach 2: hold enemies=1 HP=33
+  1161 | D:1      | Found a faded altar of an unknown god.
+  1351 | D:1      | Bought a scroll of teleportation for 33 gold pieces
+  1401 | D:2      | Throw 1/3: 3 boomerangs -> gnoll
+  1402 | D:2      | Throw 2/3: 3 boomerangs -> gnoll
+  1403 | D:2      | Throw 3/3: 3 boomerangs -> gnoll
+  1410 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1411 | D:2      | Reached skill level 1 in Throwing
+  1490 | D:2      | Approach 2: lure enemies=1 HP=40
+  1491 | D:2      | Approach 2: lure enemies=1 HP=40
+  1492 | D:2      | Approach 2: hold enemies=1 HP=40
+  1493 | D:2      | Approach 2: hold enemies=1 HP=40
+  1531 | D:2      | Approach 2: lure enemies=1 HP=40
+  1533 | D:2      | Approach 2: hold enemies=1 HP=40
+  1534 | D:2      | Approach 2: hold enemies=1 HP=40
+  1535 | D:2      | Approach 2: hold enemies=1 HP=40
+  1558 | D:2      | Approach 2: lure enemies=1 HP=40
+  1559 | D:2      | Approach 2: lure enemies=1 HP=40
+  1600 | D:2      | Approach 2: lure enemies=1 HP=40
+  1651 | D:2      | Approach 2: lure enemies=1 HP=40
+  1652 | D:2      | Approach 2: lure enemies=1 HP=40
+  1653 | D:2      | Approach 2: hold enemies=1 HP=40
+  1654 | D:2      | Approach 2: hold enemies=1 HP=40
+  1655 | D:2      | Approach 2: hold enemies=1 HP=40
+  1656 | D:2      | Approach 2: hold enemies=1 HP=40
+  1716 | D:2      | Approach 2: lure enemies=1 HP=40
+  1717 | D:2      | Approach 2: hold enemies=1 HP=40
+  1718 | D:2      | Approach 2: hold enemies=1 HP=40
+  1821 | D:2      | Approach 2: lure enemies=1 HP=40
+  1822 | D:2      | Approach 2: lure enemies=1 HP=40
+  1823 | D:2      | Approach 2: hold enemies=1 HP=40
+  1824 | D:2      | Approach 2: hold enemies=1 HP=40
+  1825 | D:2      | Approach 2: hold enemies=1 HP=40
+  1826 | D:2      | Approach 2: hold enemies=1 HP=40
+  1843 | D:2      | Found a glowing silver altar of Zin.
+  1973 | D:2      | Identified the quill talisman "Fiatir" {+Inv Will+}
+  2050 | D:2      | Approach 2: hold enemies=1 HP=40
+  2088 | D:3      | Found a broken altar of Ashenzari.
+  2105 | D:3      | Approach 2: lure enemies=1 HP=40
+  2106 | D:3      | Approach 2: lure enemies=1 HP=40
+  2111 | D:3      | Approach 2: hold enemies=1 HP=40
+  2112 | D:3      | Approach 2: hold enemies=1 HP=40
+  2166 | D:3      | Approach 2: lure enemies=1 HP=40
+  2167 | D:3      | Approach 2: hold enemies=1 HP=40
+  2183 | D:3      | Approach 2: lure enemies=1 HP=40
+  2184 | D:3      | Approach 2: lure enemies=1 HP=40
+  2185 | D:3      | Approach 2: hold enemies=1 HP=40
+  2186 | D:3      | Approach 2: hold enemies=1 HP=40
+  2216 | D:3      | Approach 2: lure enemies=1 HP=41
+  2217 | D:3      | Approach 2: lure enemies=1 HP=41
+  2218 | D:3      | Approach 2: hold enemies=1 HP=41
+  2219 | D:3      | Approach 2: hold enemies=1 HP=41
+  2220 | D:3      | Approach 2: hold enemies=1 HP=41
+  2221 | D:3      | Approach 2: hold enemies=1 HP=41
+  2245 | D:3      | Approach 2: lure enemies=1 HP=41
+  2246 | D:3      | Approach 2: lure enemies=1 HP=41
+  2249 | D:3      | Approach 2: hold enemies=1 HP=41
+  2301 | D:3      | Reached skill level 5 in Axes
+  2329 | D:3      | Approach 2: lure enemies=1 HP=41
+  2331 | D:3      | Approach 2: hold enemies=1 HP=41
+  2332 | D:3      | Approach 2: hold enemies=1 HP=41
+  2360 | D:3      | Approach 2: lure enemies=3 HP=41
+  2361 | D:3      | Approach 2: lure enemies=3 HP=41
+  2362 | D:3      | Approach 2: hold enemies=1 HP=41
+  2363 | D:3      | Approach 2: hold enemies=1 HP=41
+  2364 | D:3      | Approach 2: hold enemies=2 HP=41
+  2367 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2559 | D:3      | Approach 2: lure enemies=1 HP=47
+  2561 | D:3      | Approach 2: hold enemies=1 HP=47
+  2562 | D:3      | Approach 2: hold enemies=1 HP=47
+  2563 | D:3      | Reached *** piety under Trog
+  2575 | D:3      | Approach 2: lure enemies=1 HP=47
+  2576 | D:3      | Approach 2: lure enemies=1 HP=47
+  2582 | D:3      | Approach 2: hold enemies=1 HP=47
+  2583 | D:3      | Approach 2: hold enemies=1 HP=47
+  2810 | D:4      | Approach 2: hold enemies=1 HP=47
+  2811 | D:4      | Approach 2: hold enemies=1 HP=47
+  2812 | D:4      | Approach 2: hold enemies=1 HP=47
+  2813 | D:4      | Approach 2: hold enemies=1 HP=47
+  2886 | D:4      | Approach 2: lure enemies=1 HP=47
+  2887 | D:4      | Approach 2: lure enemies=1 HP=47
+  2910 | D:4      | Approach 2: lure enemies=1 HP=47
+  2911 | D:4      | Approach 2: hold enemies=1 HP=47
+  2912 | D:4      | Approach 2: hold enemies=1 HP=47
+  2913 | D:4      | Approach 2: hold enemies=1 HP=47
+  2977 | D:4      | Encountered Eustachio
+  2978 | D:4      | learned Eustachio: activate
+  2978 | D:4      | learned Eustachio: handoff unusable combat target
+  3118 | D:4      | Approach 2: lure enemies=1 HP=47
+  3119 | D:4      | Approach 2: lure enemies=1 HP=47
+  3120 | D:4      | Approach 2: hold enemies=1 HP=47
+  3121 | D:4      | Approach 2: hold enemies=1 HP=47
+  3122 | D:4      | Approach 2: hold enemies=1 HP=47
+  3233 | D:4      | Throw 1/3: 6 boomerangs -> Eustachio
+  3234 | D:4      | Throw 2/3: 6 boomerangs -> Eustachio
+  3259 | D:4      | Killed Eustachio
+  3260 | D:4      | Reached skill level 6 in Axes
+  3260 | D:4      | Reached XP level 6. HP: 43/55 MP: 5/5
+  3307 | D:4      | Found an iron altar of Okawaru.
+  3331 | D:4      | Approach 2: lure enemies=1 HP=55
+  3332 | D:4      | Approach 2: hold enemies=1 HP=55
+  3333 | D:4      | Approach 2: hold enemies=1 HP=55
+  3334 | D:4      | Approach 2: hold enemies=1 HP=55
+  3357 | D:4      | Approach 2: hold enemies=1 HP=55
+  3358 | D:4      | Approach 2: hold enemies=1 HP=55
+  3359 | D:4      | Approach 2: hold enemies=1 HP=55
+  3360 | D:4      | Approach 2: hold enemies=1 HP=55
+  3461 | D:4      | Approach 2: lure enemies=1 HP=55
+  3462 | D:4      | Approach 2: lure enemies=1 HP=55
+  3463 | D:4      | Approach 2: hold enemies=1 HP=55
+  3464 | D:4      | Approach 2: hold enemies=1 HP=55
+  3475 | D:4      | Approach 2: lure enemies=1 HP=55
+  3476 | D:4      | Approach 2: lure enemies=1 HP=55
+  3477 | D:4      | Approach 2: hold enemies=1 HP=55
+  3531 | D:4      | Approach 2: lure enemies=1 HP=55
+  3532 | D:4      | Approach 2: lure enemies=1 HP=55
+  3533 | D:4      | Approach 2: hold enemies=1 HP=55
+  3593 | D:4      | Identified the +2 chain mail of Wasted Space {rPois Str+3}
+  3739 | D:5      | Entered Level 5 of the Dungeon
+  3740 | D:5      | SMOKE reached D:5
+
+Illustrated notes
+
+Skill      XL: |  1  2  3  4  5 |
+---------------+----------------+-----
+Axes           |     4     5  6 |  6.0
+Fighting       |        4       |  4.9
+Armour         |        3     4 |  4.1
+Throwing       |           1  2 |  2.3
+Dodging        |           3    |  3.6
+
+Action                     |  1- 3 |  4- 6 || total
+---------------------------+-------+-------++-------
+ Attack: Normal            |    56 |   113 ||   169
+  Melee: Hand axe          |    64 |   127 ||   191
+         Headbutt          |    14 |    30 ||    44
+  Throw: Boomerang         |     3 |     2 ||     5
+ Invoke: Berserk           |     2 |     4 ||     6
+         Trog's Hand       |       |     3 ||     3
+   Read: Teleportation     |       |     3 ||     3
+         Identify          |       |     2 ||     2
+         Enchant armour    |       |     1 ||     1
+ Armour: Ring mail         |    42 |    37 ||    79
+         Plate armour      |       |    39 ||    39
+  Dodge: Dodged            |    32 |    57 ||    89
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   3859 |   3710 |    149 |      0 |   1731 |   5 |  771.8 |
+       Dungeon |   3859 |   3710 |    149 |      0 |   1731 |   5 |  771.8 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:1: 1439 daAuts
+     D:4: 1111 daAuts
+     D:2: 701 daAuts
+     D:3: 606 daAuts
+     D:5: 1 daAuts
+
+DLua errors:

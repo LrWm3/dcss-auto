@@ -1228,3 +1228,39 @@ observation equivalence, trace deployment versus stepped evaluation, and add
 real-engine action rejection tests before spending more on RL. Production RC
 unchanged. Archived faithful training/fidelity evidence and reproduction docs;
 10 tactical Python tests and9 batch tests pass again.
+
+## 2026-09-08: observation/deployment fidelity and rejection fixes
+
+Found two transport effects, not a learned tactical regression: console input
+cycles randomly round berserk speed during _prep_input; character dumps also
+consume gameplay RNG. A macro-only transport still differed. Direct getch inside
+ready removes extra input/macro cycles. An identical-action automatic replay
+without dumps diverged; adding per-step dumps matched59/59 states, isolating the
+second effect. Extra get_map reads at sampledturn3519 did not alter an RNG sentinel.
+
+Built separate crawl-observation-rng SHA393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206
+with dump_char on UI RNG. Normal crawl-webtiles binary and existing live games
+not redeployed. Lab defaults to corrected binary; old cases keep their pins.
+Preserved portable patch and explicit observation-case-v1 migration. Earlier
+console-stepped berserk imitation/RL rows are historical, not faithful evidence.
+
+Corrected charge policy safely recovers in70 decisions; two automatic replays
+match all71 observations exactly. Fresh disabled adapter matches41 baseline
+decisions through death. Fresh active export matches70 corrected demonstration
+decisions. Refitted imitation-v2 from the new trace, no additional RL training.
+
+Adapter now reuses canonical scan (no extra pre-activation scan), preflights
+unreachable/confused combat, and handles no-turn rejection immediately with a
+wait and handoff rather than relying on another ready callback. Dry interception
+of paused CodexTactModel3 identified its later loop as process_keys('<'+Escapes)
+on enter_shop while berserk. Canonical shop-entry guard now excludes berserk and
+visible combat. No model was promoted into canonical RC. Canonical SHA now
+0c424b8e7f5a856d7d5d574efaaf43f15722b01afde07a1b76fd75285958f7fa.
+
+Fresh uninterrupted smoke-v3: seed1 unreachable-target handoff2978, normal-control
+Eustachio kill3259, D:5 at3740; seed3 kill3523, safe handoff3576, D:5 at4681. Both
+ran without tactical intervention. Stopped intentionally atD:5, not full-seed
+results and not added to progression runs.jsonl. Smoke-v1/v2 had a harness timeout
+classification bug; preserved as invalid diagnostics, superseded byv3. Twelve
+Python tactical tests,10 Lua hook cases,9 batch tests,22 canonical suites pass.
+Evidence: tactical/evidence/observation-deployment-v2.json plus two character dumps.

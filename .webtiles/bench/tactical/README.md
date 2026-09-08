@@ -1,11 +1,67 @@
 # Tactical encounter lab (prototype)
 
-This is a separate local initiative. It does not change the production RC,
-touch live tmux/WebTiles sessions, or port the old dcss-ai-wrapper.
+This is a separate local initiative, not a port of dcss-ai-wrapper. Learned
+policies remain experimental exports. The latest work also fixes a canonical
+RC bug: do not enter shops while berserk or while visible enemies need combat.
+
+## Current verified path (supersedes earlier imitation claims)
+
+The old console-stepped **berserk** evaluations were not faithful to autonomous
+play. Two observation mechanisms consumed gameplay randomness: extra input-cycle
+preparation (`player_speed()` randomly rounds berserk timing), and character dump
+generation. Replaying exactly the same actions without those mechanisms changed
+the fight. The earlier non-berserk baseline equivalence remains valid; do not
+reuse the old imitation model as evidence of autonomous performance.
+
+The bench now reads action keys with `crawl.getch()` **inside ready**, without a
+console round-trip or Lua macro delay. Structured dump sequence IDs are polled
+from the private worker directory. Dump generation uses UI RNG in a separate
+lab binary, `crawl-observation-rng`; the normal `crawl-webtiles` binary was not
+replaced. Default lab engine is this corrected binary; `DCSS_TACTICAL_ENGINE`
+can explicitly select another. Original saves, models, and engine pins remain
+untouched. Administrative console calls are not the decision transport.
+
+```sh
+make -C crawl-0.35/crawl-ref/source WEBTILES=y GAME=crawl-observation-rng -j4 crawl-observation-rng
+/usr/bin/python3 .webtiles/bench/tactical/autonomous_replay.py \
+  --case .webtiles/bench/tactical/artifacts/observation-case-v1 \
+  --reference .webtiles/bench/tactical/artifacts/observation-tactics-v1/worker-e32oafu0/transitions.jsonl \
+  --output .webtiles/bench/tactical/artifacts/equivalence-repeat
+```
+
+The lab build includes the resume-greeting and character-dump patches under
+`engine-patches/`. Tested SHA256:
+`393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206`.
+`migrate_transport.py` creates labelled copies with explicit RC/engine changes;
+it never silently relaxes checksums. New checkpoint families, especially saves
+during speed-changing statuses, still require their own fidelity verification.
+
+Corrected adjacent-berserk demonstration: safe recovery in **70 decisions**.
+Two automatic replays match **all 71 observed states**, without per-step dumps.
+The exported disabled adapter matches all 41 baseline decisions from a fresh
+game; the active adapter matches all 70 corrected demonstration decisions from
+a fresh game. `models/eustachio-imitation-v2.json` is fitted from this new trace;
+no RL improvement is claimed. The adapter reuses the canonical scan, rejects
+unreachable/confused combat before Tab, and spends one wait then hands back if
+an attempted action is rejected without consuming a turn.
+
+Fresh uninterrupted smoke tests of seeds 1 and 3 both reached D:5. Seed 1 handed
+off the unreachable target at2978, killed Eustachio under normal control at3259,
+and reached D:5 at3740. Seed 3 killed Eustachio at3523, handed off after recovery
+at3576, and reached D:5 at4681. These are **bounded integration tests, not full
+five-seed progression benchmarks**. The two earlier smoke attempts incorrectly
+treated a pattern-match timeout as a stall; they are harness failures, superseded
+by v3's unchanged-output check.
+
+[Tracked evidence](evidence/observation-deployment-v2.json),
+[seed 1 dump](evidence/deployment-v2-seed1.txt),
+[seed 3 dump](evidence/deployment-v2-seed3.txt).
+`verify_deployment.py` reproduces the fresh comparisons; `smoke_deployment.py`
+runs private two-seed games to D:5; neither changes existing live sessions.
 
 ## Run
 
-Requires the existing Crawl binary and Python 3 with `pexpect` (available in
+Requires the corrected lab binary above and Python 3 with `pexpect` (available in
 `/usr/bin/python3` on this machine). Run from the repository root:
 
 ```sh

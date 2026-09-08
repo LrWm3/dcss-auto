@@ -1,0 +1,22 @@
+diff --git a/crawl-ref/source/chardump.cc b/crawl-ref/source/chardump.cc
+index 5c3679a..6df4cd5 100644
+--- a/crawl-ref/source/chardump.cc
++++ b/crawl-ref/source/chardump.cc
+@@ -5,6 +5,8 @@
+ 
+ #include "AppHdr.h"
+ 
++#include "random.h"
++
+ #include "chardump.h"
+ 
+ #include <string>
+@@ -191,6 +193,9 @@ static dump_params _get_dump(bool full_id = false,
+ bool dump_char(const string &fname, bool quiet, bool full_id,
+                const scorefile_entry *se)
+ {
++    // Character inspection must not alter subsequent combat rolls. Some dump
++    // descriptions calculate randomly rounded values (e.g. berserk speed).
++    rng::generator ui(rng::UI);
+     return _write_dump(fname, _get_dump(full_id, se), quiet);
+ }

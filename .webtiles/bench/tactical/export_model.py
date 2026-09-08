@@ -21,7 +21,11 @@ def export(model, output):
         fields=','.join('['+json.dumps(a)+']='+repr(float(v)) for a,v in sorted(scores.items()))
         lines.append('['+json.dumps(lua_key(key))+']={'+fields+'},')
     lines.append('}')
-    source=RC.read_text();at=source.rfind('>')
+    source=RC.read_text()
+    anchor='  if debug_encounter_pause(scan) then return end\n'
+    assert source.count(anchor)==1
+    source=source.replace(anchor,anchor+'  if ml_encounter_action(scan) then return end\n')
+    at=source.rfind('>')
     with output.open('x') as f:
         f.write(source[:at]+'\n'+'\n'.join(lines)+'\n'+(HERE/'model_hook.lua').read_text()+'\n>\n')
 

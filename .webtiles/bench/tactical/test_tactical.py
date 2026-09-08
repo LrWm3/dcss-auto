@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock
 
-from bench import Environment, make_rc
+from bench import Environment, make_rc, RC
 from experiment import recovered, retreat, options, key
 from verify_resume import normalized
 from export_model import lua_key
@@ -43,6 +43,17 @@ class TacticalTests(unittest.TestCase):
     def test_export_key_matches_lua_features(self):
         self.assertEqual(lua_key(key(self.state())), '4|0|3|false|false|false')
         with self.assertRaises(ValueError):lua_key('(1, 2)')
+
+    def test_shop_entry_does_not_preempt_berserk_or_combat(self):
+        self.assertIn('if feat_here() == "enter_shop" and not you.berserk() and not scan.any then',RC.read_text())
+
+    def test_direct_step_does_not_enter_interpreter(self):
+        with tempfile.TemporaryDirectory() as temp:
+            env=Environment(temp);env.work=Path(temp);env.direct_transport=True
+            env.state=self.state();env.child=Mock();env.await_state=Mock(return_value=self.state(turn=101,seq=3))
+            env.console=Mock();env.step('tab')
+            env.child.send.assert_called_once_with('c')
+            env.console.assert_not_called()
 
     def test_no_action_sent_before_interpreter_confirmation(self):
         with tempfile.TemporaryDirectory() as temp:

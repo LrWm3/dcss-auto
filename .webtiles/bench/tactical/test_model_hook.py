@@ -8,7 +8,7 @@ hook=(Path(__file__).parent/'model_hook.lua').read_text()
 def vm():
     lua=LuaRuntime()
     lua.execute('''
-      tick=100; floor="D:4"; count=1; distance=6; hp=100; calls=0
+      tick=100; floor="D:4"; count=1; distance=6; hp=100; calls=0; spent=false; reachable=true
       BOT={}; AUTOCrawl_DEBUG_STATE={}
       MODEL_Q={ ["4|1|3|false|false|false"]={tab=10},
         ["4|1|1|false|false|false"]={berserk=10},
@@ -19,8 +19,9 @@ def vm():
       function say() end
       function level_key() return floor end
       function berserk_recovering() return false end
+      function turn_spent() return spent end
       function scan_hostiles()
-        return {any=count>0,monsters=count>0 and {{x=distance,y=0,
+        return {any=count>0,reachable_any=reachable,monsters=count>0 and {{x=distance,y=0,
           monster={name=function() return "Eustachio" end}}} or {}}
       end
       you={species=function() return "Minotaur" end,class=function() return "Berserker" end,
@@ -28,10 +29,12 @@ def vm():
         berserk=function() return false end,confused=function() return false end,
         feel_safe=function() return count==0 end,status=function() return "" end,
         poisoned=function() return false end,on_fire=function() return false end,
-        activate_ability=function() action="berserk";return true end}
-      crawl={take_note=function() end,do_commands=function(c) action=c[1] end}
+        activate_ability=function() action="berserk";spent=not reject;return spent end}
+      crawl={take_note=function() end,do_commands=function(c)
+        action=c[1];spent=(not reject or action=="CMD_WAIT") end}
     ''')
     lua.execute(hook)
+    lua.execute('function ready() spent=false;if not ml_encounter_action(scan_hostiles()) then calls=calls+1 end end')
     return lua
 
 
@@ -42,4 +45,7 @@ lua=vm();lua.execute('BOT.paused=true;ready();assert(calls==1 and not ML_EUSTACH
 lua=vm();lua.execute('ready();floor="D:5";ready();assert(calls==1 and not ML_EUSTACHIO.active)')
 lua=vm();lua.execute('ready();for i=1,8 do ready() end;assert(calls==1 and not ML_EUSTACHIO.active)')
 lua=vm();lua.execute('ready();count=0;for i=1,11 do tick=tick+1;ready() end;assert(calls==1 and not ML_EUSTACHIO.active)')
-print('7 learned-hook regression cases passed')
+lua=vm();lua.execute('reachable=false;ready();assert(calls==1 and not ML_EUSTACHIO.active and action==nil)')
+lua=vm();lua.execute('reject=true;ready();assert(action=="CMD_WAIT" and not ML_EUSTACHIO.active and spent)')
+lua=vm();lua.execute('ML_POLICY_DISABLED=true;ready();assert(calls==1 and not ML_EUSTACHIO.seen)')
+print('10 learned-hook regression cases passed')
