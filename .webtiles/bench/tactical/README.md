@@ -54,13 +54,21 @@ Sequence numbers reject redrawn historical readiness messages. A confirmed
 read-only console probe handles commands that consume no turn and do not call
 `ready()` again. Unexpected prompts/errors stop the trial, not count as deaths.
 
-## Crucial fidelity limitation
+## Save/load fidelity
+
+**Update: the observed first-contact divergence is fixed and verified.** The
+resume-only god greeting consumed gameplay RNG through the weighted speech
+selector, even for Trog's single greeting (default weight 10). The engine now
+uses UI RNG for that resume greeting. New-game greeting draws are unchanged.
+Two loaded replays and one fresh replay matched all 41 decisions of the original
+uninterrupted trace, through death. This verifies this case, not every possible
+save/location/status combination. The following describes the original finding:
 
 **A save-loaded encounter is not yet proven equivalent to uninterrupted play.**
 The fresh, stepped seed-3 trajectory reproduces the original Eustachio death.
 But reloading the first-contact save changes the next monster action and outcome.
 Repeated resets of that save agree with one another. Preserving `BOT` alone did
-not fix the discrepancy; the engine's full save/load fidelity needs investigation.
+not fix the discrepancy; the resume greeting fix above was required.
 
 Therefore these cases are labelled **save-loaded variants**, not exact historical
 replays. The later critical case still has a reproducibly losing baseline, making
@@ -99,7 +107,7 @@ predate `run.json`; their case metadata and frozen trial RC remain available.
 Large artifacts are local and git-ignored. Small evidence summaries are tracked.
 Identical reset evaluations test repeatability, **not generalization**.
 
-Next: fix or characterize save/load divergence; capture earlier losing decisions
+Next: extend save/load equivalence checks beyond the first-contact case; capture earlier losing decisions
 with an uninterrupted replay fallback; expose consumables and safe action masks;
 expand to multiple encounters with held-out cases before scaling training.
 
@@ -127,3 +135,34 @@ The RC-baseline return trials exhausted 180 decisions while continuing normal
 play; they were not relabelled victories merely because the player remained
 alive. Recorded death `final_turn` is the last observed decision boundary, not
 necessarily the morgue's terminal turn. All worker artifacts remain local.
+
+## Resume-greeting patch and verified case
+
+The source change is in `crawl-0.35/crawl-ref/source/main.cc`; a portable copy is
+tracked in [engine-patches/resume-greeting-ui-rng.patch](engine-patches/resume-greeting-ui-rng.patch).
+No production RC change was needed. The patched binary is installed at the usual
+`crawl-webtiles` path, SHA-256
+`58edc03bb6522429a632fe4f7908997ef60316740942ef878e2e5cbd66b73556`.
+The prior binary is preserved locally under `artifacts/engines/`, named with its
+original SHA-256 `54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38`.
+Running sessions were not restarted.
+
+Old cases and pilot results remain untouched and pinned to the old engine. For
+the patched engine, the verified first-contact case is
+`artifacts/resume-rng-verification-v1/case`. Its save bytes and RC are unchanged;
+its metadata explicitly records the engine migration. Other old cases have not
+yet been migrated/revalidated. Engine-hash enforcement remains enabled.
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/bench.py rollout \
+  .webtiles/bench/tactical/artifacts/resume-rng-verification-v1/case --steps 60
+```
+
+[Verification evidence](evidence/resume-rng-verification-v1.json) records all
+three comparisons. `verify_resume.py` reproduces the check with explicit
+`--engine`, `--case`, `--reference` (uninterrupted transitions JSONL), and a new
+`--output` directory. It preserves original cases, creates a labelled migrated
+case, compares player-visible observations excluding UI messages/sequence IDs,
+and fails on any gameplay-state difference. The patch was built with
+`make -C crawl-0.35/crawl-ref/source WEBTILES=y GAME=crawl-resume-rng -j4 crawl-resume-rng`
+and installed by renaming the tested binary over the normal launch path.

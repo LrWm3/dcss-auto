@@ -1152,3 +1152,23 @@ policy improvement or generalization claim. Evidence and hashes are tracked in
 `tactical/evidence/initial-pilots.json`; saves/models/transcripts stay local under
 git-ignored `tactical/artifacts/`. Eight new Python tests,9 batch tests,22 Lua
 suites pass. No full-seed rerun and no production deployment this turn.
+
+## 2026-09-08: fix resume-only greeting RNG divergence
+
+Source diagnosis: TAG_YOU restores RNG, but main.cc then prints the god greeting
+using getSpeakString. Its weighted selector calls random2(10) even for Trog's
+single fixed welcome message. An isolated uninterrupted run with one extra
+random2(10) at first contact matched all100 observations of the old loaded run.
+
+Patched only the resume greeting to use rng::UI; kept new-game draws unchanged.
+Built and deployed engine SHA58edc03bb6522429a632fe4f7908997ef60316740942ef878e2e5cbd66b73556.
+Old engine54cdf448... retained in tactical/artifacts/engines; no live-session
+restart and no production RC edit. Unrelated engine webserver edits preserved.
+
+Two checkpoint loads plus one fresh run each match all41 baseline decisions of
+the original uninterrupted trace, including death. Verified case lives under
+tactical/artifacts/resume-rng-verification-v1/case, with explicit engine migration
+metadata and unchanged save/RC checksums. Original cases/results remain untouched.
+Other cases still require migration and equivalence checks. Portable engine patch,
+verification script, and evidence are tracked under tactical/. Nine tactical
+unit tests pass. No learned-policy or full-five-seed performance claim.

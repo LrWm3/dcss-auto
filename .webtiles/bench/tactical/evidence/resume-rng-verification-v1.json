@@ -1,0 +1,29 @@
+{
+  "engine_sha256": "58edc03bb6522429a632fe4f7908997ef60316740942ef878e2e5cbd66b73556",
+  "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/resume-rng-verification-v1/case",
+  "reference": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/worker-tak9pdi4/transitions.jsonl",
+  "reference_sha256": "aa8d6da7fdc075b48c9d035a1128b30a78135f93fb82159184ebcf33122e0605",
+  "trials": [
+    {
+      "mode": "loaded",
+      "matched": 41,
+      "passed": true,
+      "result": "death",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/resume-rng-verification-v1/worker-lueig677"
+    },
+    {
+      "mode": "loaded-repeat",
+      "matched": 41,
+      "passed": true,
+      "result": "death",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/resume-rng-verification-v1/worker-3_h7b33c"
+    },
+    {
+      "mode": "fresh",
+      "matched": 41,
+      "passed": true,
+      "result": "death",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/resume-rng-verification-v1/worker-d4mzledc"
+    }
+  ]
+}

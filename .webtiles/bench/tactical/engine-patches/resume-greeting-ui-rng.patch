@@ -1,0 +1,21 @@
+diff --git a/crawl-ref/source/main.cc b/crawl-ref/source/main.cc
+index 6ecd266..97d74c0 100644
+--- a/crawl-ref/source/main.cc
++++ b/crawl-ref/source/main.cc
+@@ -461,7 +461,15 @@ NORETURN static void _launch_game()
+     if (game_start)
+        _announce_goal_message();
+ 
+-    _god_greeting_message(game_start);
++    if (game_start)
++        _god_greeting_message(true);
++    else
++    {
++        // Loading a save must not consume gameplay randomness merely to pick
++        // a welcome message. Keep new-game draws unchanged for seeded games.
++        rng::generator ui(rng::UI);
++        _god_greeting_message(false);
++    }
+ 
+     if (!crawl_state.game_is_tutorial())
+         mpr("Press <w>?</w> for a list of commands and other information.");

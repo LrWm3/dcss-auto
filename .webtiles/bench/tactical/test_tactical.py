@@ -6,6 +6,7 @@ from unittest.mock import Mock
 
 from bench import Environment, make_rc
 from experiment import recovered, retreat, options, key
+from verify_resume import normalized
 
 
 class TacticalTests(unittest.TestCase):
@@ -54,6 +55,12 @@ class TacticalTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             env=Environment(temp);env.state={'terminal':'death'}
             with self.assertRaisesRegex(RuntimeError,'reset'):env.step('tab')
+
+    def test_replay_comparison_ignores_transport_not_gameplay(self):
+        s=self.state()
+        self.assertEqual(normalized(s),normalized({**s,'seq':99,'messages':{'1':'Welcome back'}}))
+        self.assertNotEqual(normalized(s),normalized({**s,'hp':55}))
+        self.assertNotEqual(normalized(s),normalized({**s,'turn':101}))
 
     def test_rc_keeps_source_and_adds_bridge_inside_lua(self):
         with tempfile.TemporaryDirectory() as temp:
