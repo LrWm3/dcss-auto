@@ -124,6 +124,11 @@ local function hp_percent()
   return math.floor(100 * hp / mhp)
 end
 
+local function berserk_recovering()
+  return you.slowed() or you.exhausted()
+      or (you.status and you.status("on berserk cooldown"))
+end
+
 -- Synchronous Crawl actions may spend a turn before turns() increments.
 -- All fallbacks must use this test, never the counter alone.
 local function turn_spent(start_turn)
@@ -448,7 +453,7 @@ local function observe_encounter(scan)
   e.peak=math.max(e.peak,count)
   e.active=active
   e.unseen=unseen
-  local cooldown=you.slowed() or you.exhausted()
+  local cooldown=berserk_recovering()
   local phase="idle"
   if active then
     if not you.berserk() and (hp<AUTOCrawl_TACTICS.retreat_hp or
@@ -561,7 +566,7 @@ local function should_berserk(scan)
   if policy.early_commit and you.xl and you.xl()<=policy.early_commit_xl
       and scan.reachable_adjacent and (scan.worst>=2 or #scan.monsters>=2)
       and hp_percent()>=policy.early_commit_hp
-      and not you.berserk() and not you.exhausted() and not you.slowed() then
+      and not you.berserk() and not berserk_recovering() then
     return true
   end
   local crowded=policy.crowd_berserk and scan.reachable_adjacent
@@ -578,7 +583,7 @@ local function should_berserk(scan)
     crowded=crowded and adjacent>=2 and #scan.monsters<=4
   end
   return (scan.yellow_adjacent or crowded) and hp_percent()>=policy.berserk_hp
-      and not you.berserk() and not you.exhausted() and not you.slowed()
+      and not you.berserk() and not berserk_recovering()
 end
 
 local function positioning_action(scan)
@@ -1895,7 +1900,7 @@ function ready()
 
   -- No visible enemies: wait out berserk/slow/exhaustion and heal fully.
   local hp, mhp = you.hp()
-  if you.berserk() or you.slowed() or you.exhausted() or hp < mhp then
+  if you.berserk() or berserk_recovering() or hp < mhp then
     -- CMD_SAFE_WAIT (`5`) refuses to advance when Crawl reports an unseen
     -- disturbance, which can re-enter ready() forever.  CMD_WAIT is a real
     -- one-turn wait; visible threats were already handled above.

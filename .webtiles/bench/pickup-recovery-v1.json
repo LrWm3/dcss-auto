@@ -1,0 +1,11 @@
+{
+  "version": "pickup-recovery-v1",
+  "stale_seconds": 90,
+  "sessions": [
+    {"session": "codex-bench1", "character": "CodexRecovery1", "seed": "6144198052690956201"},
+    {"session": "codex-bench2", "character": "CodexRecovery2", "seed": "13772526223844354029"},
+    {"session": "codex-bench3", "character": "CodexRecovery3", "seed": "1760771545328102746"},
+    {"session": "codex-bench4", "character": "CodexRecovery4", "seed": "17908030050512890810"},
+    {"session": "codex-bench5", "character": "CodexRecovery5", "seed": "103583508244309201"}
+  ]
+}

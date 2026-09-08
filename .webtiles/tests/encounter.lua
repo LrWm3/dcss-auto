@@ -46,6 +46,11 @@ scan.any=false; scan.monsters={}; scan.reachable_adjacent=false
 observe(scan); assert(BOT.encounter.phase=="recover")
 assert(manage(scan) and commands[#commands]=="CMD_WAIT","recover without exploring")
 slow=false; turn=20; observe(scan); assert(BOT.encounter.phase=="idle")
+you.status=function(s) return s=="on berserk cooldown" end
+observe(scan); assert(BOT.encounter.phase=="recover","cooldown is distinct from exhaustion/slow")
+assert(manage(scan),"wait out actual berserk cooldown before exploring")
+you.status=function() return false end
+observe(scan); assert(BOT.encounter.phase=="idle")
 BOT.disturbance_warning=true; BOT.disturbance_last_seen=turn
 hp=40; observe(scan)
 assert(BOT.encounter.active and BOT.encounter.unseen and BOT.encounter.phase=="disengage")
