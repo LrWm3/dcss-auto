@@ -1,0 +1,11 @@
+{
+ "version":"required-entrance-resume-v1",
+ "character":"CodexLureAlly4","session":"codex-bench4",
+ "seed":"17908030050512890810","kind":"saved-position-fix-verification",
+ "start":{"level":"D:11","turn":13448,"hp":99},
+ "fix_commit":"7c9e99e",
+ "intervention":"Verified Lua console, saved without a gameplay turn, archived checkpoint, restarted same character with revised RC. No manual combat or movement.",
+ "result":"Entered Lair1 at13469; natural basilisk death13645 on Lair1.",
+ "autonomous_full_seed_benchmark":false,
+ "evidence":".webtiles/bench/evidence/required-entrance-resume-v1-CodexLureAlly4.txt"
+}

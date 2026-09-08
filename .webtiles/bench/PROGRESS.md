@@ -652,3 +652,49 @@ do not advertise this as benchmark improvement or an all-terminal success.
 This comparison includes approach/steam/anchor changes since the prior full
 batch, not an isolated estimate of the ally guard's effect. Kept the experiment
 for iteration; next weaknesses are seed3 early Sigmund and seed4 Lair routing.
+
+## Seed4 required entrance fix; seed3 Sigmund death review
+
+Read-only console at the paused seed4 position established enter_lair at(8,-4)
+was excluded, surrounded by plants and two oklob plants (also listed in dump
+annotations). Native G refused this genuinely dangerous exclusion; additional
+exploration of the already-complete floor could not change that.
+
+Added required_entrance_action after repeated failed native travel, and before
+ordinary approach/recovery once active. It targets only the locally known
+required branch entrance, replans one movement step each ready and permits
+travel-excluded terrain without deleting exclusions. Clouds/traps/runed doors,
+protected occupants and adjacent combat remain guarded; survival runs first.
+This deliberately accepts oklob exposure to enter the required branch, not a
+claim that the excluded area is harmless.15 Lua suites/9 runner tests pass.
+
+Verified from SAME saved position: confirmed console, CMD_SAVE_GAME_NOW,
+archived checkpoint, stopped old process, restarted same character with
+commit7c9e99e RC. Socket was already cleaned up by process exit; attempted
+archive move reported missing and no socket deletion was needed. Entered Lair1
+at13469 (21 turns after blocked state), continued naturally, then died to a
+basilisk13645. Saved immutable continuation morgue and diagnostic metadata.
+Original five-seed row remains paused; this resumed/fixed character is NOT a
+fresh autonomous full-seed trial. No manual attacks/movement were supplied.
+
+Seed3 death review (no Sigmund policy edits this turn):
+- Encountered Sigmund2959; lure actions2960–2961 at49/56 then50/56HP.
+- Unseen-attacker messages explicitly show hits followed by repeated poisoning.
+  Exact weapon brand not recorded; do not claim a particular venom weapon.
+- Natasha joined2966. Trog's Hand used during this sequence; regeneration
+  and willpower did not keep pace with incoming hits/poison. Natasha killed2972.
+- Same turn a something-hit8 left2/56HP. At2973 controller again chose
+  "closing to marked disturbance" and succumbed to Sigmund's poison. Final
+  poison projection was lethally negative. This was NOT a rest-in-steam death.
+- Final inventory: no curing, heal wounds, teleport, fear or wands. Four
+  teleport scrolls had been used atXL1–3 and two fear atXL4–6 (exact earlier
+  encounters not reconstructed). No potion quaffs recorded. Unknown blinking,
+  fog and silence remained, unusable by the known-only consumable policy.
+  Scarf of invisibility was in inventory, not equipped.
+
+Thus no ignored identified antidote is demonstrated. The two actionable
+policy concerns are lure steps spent against a ranged invisibility-capable
+unique, and marked-disturbance closing overriding the need to disengage while
+already badly poisoned. Last action hastened poison ticking but2HP with lethal
+poison was already critical; evidence does not establish a guaranteed escape.
+This is message/notes/source reconstruction, not a new single-turn replay.
