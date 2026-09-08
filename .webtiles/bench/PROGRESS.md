@@ -514,3 +514,22 @@ sign, visible anchors, HP latch, LOS loss, retreat exhaustion, ranged/unseen
 threats and floor reset. This is local implementation/unit validation only:
 CodexD6Entry1 is still paused on its original RC at5973; no live rerun or
 autonomous benchmark result claimed.
+
+## Fresh seed4 anchor retest: new early pause
+
+User authorized wiping the paused diagnostic game. Verified codex-bench4
+belonged to CodexD6Entry1, stopped that session, and moved its exact save to
+batches/d6-entry-debug-v1/CodexD6Entry1.discarded.cs (recoverable). Prior trace
+evidence remains unchanged. Relaunched same session/seed as CodexAnchor1 with
+canonical commit2bbc8a3, clean RC snapshot a0c054c09b6f1a9bb9e4ce85eb52fd1c20ebb967c9854f301b4bfe4380e755b4,
+diagnostic pauses OFF. No tactical inputs or edits during the trial.
+
+Autonomously paused at3483 on D:7 after shaft, XL6,50/56HP: steam dragon
+became unreachable behind steam and the new isolated-recovery ranged safety
+branch had no safe anchor path. This is a new regression, not death or progress
+success; it did not reach the target D6 black-bear scenario. Recorded outcome
+paused in runs.jsonl with immutable dump. Only read-only dump command after
+the pause; character remains there for diagnosis. The gate conflates temporary
+cloud isolation with the recovery-anchor case and needs an autonomous fallback
+for transient barriers/ranged danger. No additional tactical changes in this
+retest turn.
