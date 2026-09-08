@@ -30,6 +30,13 @@ BOT.encounter={}; AUTOCrawl_TACTICS.approach_mode=2
 BOT.recovery_anchor={level="D:6",entry={x=0,y=0}}
 travel={waypoint_delta=function() return 0,-5 end}
 assert(act(scan) and last=="j","lure toward entry and away from enemy")
+range=7; name="centaur"
+for i=1,3 do
+ BOT.encounter={}; last=nil
+ assert(not act(scan) and last==nil and BOT.encounter.approach.done,
+   "ranged enemies never receive a lure step, even after encounter reset")
+end
+range=1; name="orc"; BOT.encounter={}
 scan.cells["0:1"].frontier=true; BOT.encounter={}
 assert(act(scan) and last=="CMD_WAIT","never lure onto frontier")
 AUTOCrawl_TACTICS.approach_mode=3; BOT.encounter={}

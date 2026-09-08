@@ -1241,6 +1241,10 @@ local function approach_action(scan)
     if not m or not m.range or m:range()>1 then ranged=true end
     near=math.min(near,math.max(math.abs(enemy.x),math.abs(enemy.y)))
   end
+  -- Do this BEFORE backstepping: breaking LOS to a shooter can reset the
+  -- encounter during healing and grant a fresh lure allowance forever.
+  -- Genuine disengagement is handled separately by the encounter controller.
+  if ranged then s.done=true; return false end
   local function note(action)
     say("approach: "..action)
     if crawl.take_note then crawl.take_note("Approach "..mode..": "..action.." enemies="..#scan.monsters.." HP="..hp) end
@@ -1267,7 +1271,6 @@ local function approach_action(scan)
       end
     end
   end
-  if ranged then s.done=true; return false end
   if mode==3 then
     local frontier=false
     for _,enemy in ipairs(scan.monsters) do
