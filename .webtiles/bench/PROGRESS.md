@@ -217,3 +217,32 @@ Thus 2/2 final-policy replays pass this encounter; deterministic agreement on
 one seed is not broad statistical validation. Seven Lua suites and nine runner
 tests pass. Current RC retains v6; six completed deaths and one saved pause are
 recorded across this targeted iteration series, with no games left running.
+
+## Full-batch regression check of Sigmund policy
+
+Ran unchanged final targeted RC (SHA256
+0d8f8d8dbcde5f528494798ca9b10f0250b2ea4068ba079598b07a8e6414b8b0)
+as sigmund-full-v1. Five fresh fixed-seed games, all autonomous deaths, no
+observed stalls or gameplay intervention. Reused finished sessions; left the
+saved CodexSigmund4 diagnostic untouched. No bot code changed for this check.
+
+| Fixed seed order | Prior pickup-recovery-v1 | sigmund-full-v1 | Rank delta |
+| --- | --- | --- | --- |
+| 1 | Lair:5 (16) | D:10 (10) | -6 |
+| 2 | D:11 (11) | D:14 (21) | +10 |
+| 3 | D:3 (3) | D:7 (7) | +4 |
+| 4 | D:6 (6) | D:6 (6) | 0 |
+| 5 | D:8 (8) | D:9 (9) | +1 |
+
+Minimum reached rank improves **3 -> 6**, above historical-original's 4.
+One clear per-seed regression: seed1 died to a D:10 boulder beetle instead of
+reaching Lair:5. Seed4 remains an electric-eel death on D:6, now the bottleneck.
+The targeted seed again killed Sigmund at turn2389 and died on D:7 (turn6628,
+slightly different from the two earlier turn6631 deaths).
+
+Important: seed2 reached D:14 by a three-floor shaft from D:11 at turn9637,
+then died to a centaur. Its rank increase is not evidence of route completion
+or D:12–14 clearing. Cleared telemetry remains unknown for every run. This is
+the best observed full-batch minimum so far, but only one screening batch on
+this policy; a replicated full batch is needed before claiming robust improvement.
+RC retained unchanged; five result rows and morgue evidence committed.

@@ -1,0 +1,373 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 103583508244309201 (custom seed)
+
+2824 CodexSigFull5 the Cleaver (level 9, -1/80 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by a killer bee (7 damage)
+             ... on level 9 of the Dungeon.
+             The game lasted 00:00:32 (6344 turns).
+
+CodexSigFull5 the Cleaver (Minotaur Berserker)      Turns: 6344, Time: 00:00:33
+
+Health: -1/80      AC: 11    Str: 25    XL:     9   Next: 45%
+Magic:  8/8        EV:  8    Int:  4    God:    Trog [**....]
+Gold:   344        SH:  0    Dex: 11    Spells: 8/8 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   j - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   c - +0 cloak
+rCorr   +      (50%)    e - +0 pair of gloves
+SInv    .               b - +0 pair of boots {Fly}
+Will    ++...           g - amulet of chemistry
+Stlth                   f - ring of resist corrosion
+HPRegen 1.33/turn       (no ring)
+MPRegen 0.11/turn
+
+%: no passive effects
+@: strong-willed (expiring), corroded (-6), on berserk cooldown, flying,
+regenerating (expiring), slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You were on level 9 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 8 of its levels.
+
+You collected 344 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ b - a +0 pair of boots of flying (worn)
+ c - a +0 cloak (worn)
+ d - the +6 chain mail of Heasu {rPois rC++ Int-4 Dex+3}
+   (You found it on level 2 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   rC++:      It greatly protects you from cold.
+   Int-4:     It affects your intelligence (-4).
+   Dex+3:     It affects your dexterity (+3).
+   
+   It cannot be enchanted further.
+ e - a +0 pair of gloves (worn)
+ j - a +0 plate armour (worn)
+Jewellery
+ f - a ring of resist corrosion (worn)
+ g - an amulet of chemistry (worn)
+ i - an amulet of magic regeneration
+Wands
+ b - a wand of light (10)
+ f - a wand of mindburst (19)
+Scrolls
+ c - a scroll of teleportation {unknown}
+ d - a scroll of vulnerability {unknown}
+Potions
+ M - 2 potions of mutation
+ w - a potion of heal wounds
+ L - 3 potions of lignification
+ C - 2 potions of cancellation
+ c - a potion of curing
+ A - a potion of attraction
+ h - a potion of haste
+ j - a potion of might {unknown}
+
+
+   Skills:
+ + Level 7.6 Fighting
+ * Level 10.2 Axes
+ + Level 7.1 Armour
+ + Level 6.4 Dodging
+ + Level 3.0 Evocations
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)             Temple (0/1) D:4         
+
+The Realm of Zot is guarded by orbs of winter.
+
+Altars:
+Elyvilon
+Gozag
+Makhleb
+Qazlal
+Uskayaw
+Zin
+Ignis
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You feel much better.
+The killer bee stings you but does no damage. x2
+The iron imp hits you but does no damage.
+The rust devil hits you. The rust devil corrodes you!
+The kobold brigand hits you with a +0 dagger.
+The killer bee stings you but does no damage.
+The iron imp completely misses you. You furiously retaliate!
+You headbutt the iron imp!
+You kill the iron imp!
+The iron imp disappears in a puff of smoke!
+Unknown command.
+Unknown command.
+Unknown command.
+You hit the kobold brigand.
+The kobold brigand is heavily wounded.
+You completely miss the sixfirhy. You hit the kobold but do no damage.
+You miss the killer bee. You completely miss the rust devil.
+You miss the kobold demonologist. The killer bee barely misses you.
+The sixfirhy hits you! The sixfirhy shocks you!
+You encounter a kobold brigand. It is wielding a +0 whip and quivering poisoned
+darts.
+The kobold brigand hits you with a +0 dagger.
+The rust devil barely misses you.
+The kobold demonologist closely misses you.
+You furiously retaliate! You headbutt the kobold demonologist.
+The kobold closely misses you.
+The killer bee stings you but does no damage.
+The sixfirhy hits you. The sixfirhy shocks you!
+* * * LOW HITPOINT WARNING * * *
+[MiBe bot] survival: heal wounds
+You feel much better.
+The kobold brigand shouts!
+The sixfirhy barely misses you. You furiously retaliate!
+You headbutt the sixfirhy. The sixfirhy hits you! The sixfirhy shocks you!
+* * * LOW HITPOINT WARNING * * *
+The sixfirhy hits you.
+* * * LOW HITPOINT WARNING * * *
+The sixfirhy shocks you!
+* * * LOW HITPOINT WARNING * * *
+The killer bee stings you!
+You die...
+
+                  #.#
+                  #)#
+                  #)#
+                 ##.##
+   #             #..)######
+  ##K##########  ##........
+  #...........# ###........
+###....[.K4§..# #..........
+#y'..T...K@>..###.#........
+#.#......yK3..'...#........
+  #...........#####........
+  ####+########   #########
+
+
+You could see a rust devil (summoned), a kobold demonologist, a troll, a
+sixfirhy (summoned), 2 kobold brigands, a killer bee and a kobold.
+
+Vanquished Creatures
+  Pikel (D:6)
+  A wraith (D:9)
+  A wyvern (D:7)
+  Menkaure (D:6)
+  Duvessa (D:5)
+  A kobold geomancer (D:9)
+  A sky beast (D:5)
+  A black bear (D:5)
+  3 lemures (D:6)
+  3 phantoms
+  2 kobold brigands
+  5 scorpions
+  A marrowcuda (D:6)
+  Dowan (D:5)
+  A bes kemwar (D:5)
+  4 killer bees (D:9)
+  2 bombardier beetles
+  3 hounds
+  2 jellies
+  An orc priest (D:4)
+  A gnoll bouda (D:5)
+  2 iguanas
+  3 orc wizards (D:4)
+  5 gnolls
+  8 adders
+  4 ribbon worms
+  3 dart slugs
+  12 orcs
+  9 endoplasms
+  12 hobgoblins
+  5 jackals (D:4)
+  9 quokkas
+  4 ball pythons
+  8 bats
+  3 frilled lizards
+  3 goblins
+  18 kobolds
+  5 rats
+150 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexSigFull5 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    61 | D:1      | Reached skill level 4 in Axes
+    61 | D:1      | Reached XP level 2. HP: 20/27 MP: 1/1
+   869 | D:2      | Found a faded altar of an unknown god.
+   896 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1032 | D:2      | Identified the +6 chain mail of Heasu {rPois rC++ Int-4
+                  | Dex+3}
+  1156 | D:2      | Reached ** piety under Trog
+  1376 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1463 | D:3      | Found a glowing silver altar of Zin.
+  1463 | D:3      | Found an opulent altar of Gozag.
+  1940 | D:3      | Reached skill level 5 in Axes
+  2026 | D:3      | Found a white marble altar of Elyvilon.
+  2052 | D:3      | Found a hide-covered altar of Uskayaw.
+  2276 | D:4      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2640 | D:4      | Found a statue of an orb of winter.
+  2640 | D:4      | Found a staircase to the Ecumenical Temple.
+  2640 | D:4      | Found a statue of an orb of winter.
+  2665 | D:4      | Reached skill level 6 in Axes
+  2665 | D:4      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2667 | D:4      | Reached skill level 5 in Fighting
+  3550 | D:5      | Entered Level 5 of the Dungeon
+  3668 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3998 | D:5      | Reached skill level 7 in Axes
+  4162 | D:5      | Encountered Dowan
+  4163 | D:5      | Encountered Duvessa
+  4165 | D:5      | Found a stormy altar of Qazlal.
+  4169 | D:5      | Reached skill level 5 in Armour
+  4171 | D:5      | Killed Dowan
+  4178 | D:5      | Killed Duvessa
+  4324 | D:5      | Reached skill level 5 in Dodging
+  4324 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4327 | D:5      | Reached skill level 8 in Axes
+  5176 | D:6      | Reached skill level 1 in Evocations
+  5225 | D:6      | Encountered Pikel
+  5239 | D:6      | Killed Pikel
+  5240 | D:6      | Reached skill level 9 in Axes
+  5417 | D:6      | Encountered Menkaure
+  5426 | D:6      | Killed Menkaure
+  5468 | D:6      | Reached XP level 9. HP: 79/79 MP: 8/8
+  6083 | D:7      | Found a candlelit altar of Ignis.
+  6085 | D:7      | Found a burning altar of Makhleb.
+  6156 | D:7      | You are sucked into a shaft and drop 2 floors!
+  6265 | D:9      | Reached skill level 10 in Axes
+  6332 | D:9      | Encountered a kobold demonologist
+  6340 | D:9      | Encountered a rust devil
+  6341 | D:9      | Encountered a sixfirhy
+  6344 | D:9      | Slain by a killer bee
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      evilmike_arrival_rings, layout_basic
+D:2:      layout_rooms, shapermc_ecumenical_altar_mp_ritualfount,
+          minmay_increasing_density
+D:3:      layout_loops_ring, grunt_temple_overflow_gold_and_silver,
+          mainiacjoe_overflow_big_doors, grunt_ministairs_7
+D:4:      layout_layer_cave, minmay_temple_entry_tees, hangedman_decor_riveting
+D:5:      layout_layer_cave, nicolae_qazlal_beasts_of_the_sky,
+          corexii_item_surrounded_by_moat, kennysheep_small_spiral, uniq_duvessa
+D:6:      layout_cave_pools, uniq_menkaure, uniq_pikel
+D:7:      layout_loops_ring, xom_redecorated,
+          dolorous_makhleb_big_flames_little_flames
+D:9:      layout_roguey, grunt_temple_overflow_cloverleaf, serial_bayou_pond_d,
+          grunt_pizzeria
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Axes           |  4        5  6     7  9 10 | 10.2
+Fighting       |        4        5  6  7    |  7.6
+Armour         |        3     4     5  6  7 |  7.1
+Dodging        |           3     4  5     6 |  6.4
+Evocations     |                       2  3 |  3.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    77 |   132 |   132 ||   341
+  Melee: Hand axe          |    84 |   170 |   187 ||   441
+         Headbutt          |    14 |    31 |    52 ||    97
+ Invoke: Berserk           |     1 |     7 |    19 ||    27
+         Trog's Hand       |     1 |     5 |     1 ||     7
+  Drink: Heal wounds       |       |       |     2 ||     2
+         Curing            |       |       |     1 ||     1
+   Read: Identify          |     1 |     5 |     1 ||     7
+         Fear              |       |       |     2 ||     2
+ Armour: Animal skin       |     2 |       |       ||     2
+         Leather armour    |    11 |       |       ||    11
+         Ring mail         |     1 |       |       ||     1
+         Scale mail        |    25 |    89 |       ||   114
+         Chain mail        |       |    12 |    68 ||    80
+         Plate armour      |       |       |    57 ||    57
+  Dodge: Dodged            |    43 |    71 |    71 ||   185
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   6580 |   6428 |    152 |      0 |   3816 |   8 |  822.5 |
+       Dungeon |   6580 |   6428 |    152 |      0 |   3816 |   8 |  822.5 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1626 daAuts
+     D:4: 1462 daAuts
+     D:1: 782 daAuts
+     D:3: 743 daAuts
+     D:6: 637 daAuts
+     D:2: 637 daAuts
+     D:7: 480 daAuts
+     D:9: 209 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    26 |    38 |    28 ||    91
+         Kill Undead  |     0 |     1 |     4 ||     5
+         Kill Wizard  |     0 |     2 |     2 ||     3
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    38 |    59 |    43 ||   140
+         Kill Undead  |     0 |     1 |     6 ||     7
+         Kill Wizard  |     0 |     3 |     3 ||     6
+----------------------+-------+-------+-------++-------
+
