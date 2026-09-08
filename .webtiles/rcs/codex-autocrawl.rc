@@ -35,6 +35,7 @@ AUTOCrawl_TACTICS = {
   hidden_memory = 20, blind_probe_limit = 3,
   hidden_hand_cooldown = 8,
   debug_encounters = false,
+  steam_debug = false, -- diagnostic single-action replay; never a benchmark
   combat_wands = true, charm_min_chance = 60, mindburst_min_chance = 65,
 }
 
@@ -2421,6 +2422,83 @@ function ready()
   -- remains the fallback for monster/no-op interruptions.
   if visit_shop_action(scan) then return end
   explore_frontier(scan, true)
+end
+
+-- Opt-in diagnosis only: pause before the D:6 steam dragon, then authorize
+-- exactly one ready() decision per console request (including no-turn actions).
+if AUTOCrawl_TACTICS.steam_debug then
+  AUTOCrawl_STEAM_TRACE = {started=false, permit=false, lines={}, n=0}
+  local t=AUTOCrawl_STEAM_TRACE
+  local function log(s) t.lines[#t.lines+1]=s end
+  local function wrap(name,fn)
+    return function(...)
+      local result=fn(...)
+      if t.started and result then log("selected "..name) end
+      return result
+    end
+  end
+  survival_action=wrap("survival",survival_action)
+  combat_wand_action=wrap("wand",combat_wand_action)
+  manage_encounter=wrap("encounter",manage_encounter)
+  unsafe_square_action=wrap("leave unsafe square",unsafe_square_action)
+  rejected_autofight_action=wrap("rejected autofight fallback",rejected_autofight_action)
+  isolated_enemy_action=wrap("isolated enemy",isolated_enemy_action)
+  explore_frontier=wrap("exploration",explore_frontier)
+  for _,name in ipairs({"sendkeys","do_commands","process_keys"}) do
+    local original=crawl[name]
+    crawl[name]=function(value,...)
+      if t.started then
+        local s=type(value)=="table" and table.concat(value,",") or tostring(value)
+        log(name.." "..s:gsub("\027","<ESC>"):gsub("\t","<TAB>"))
+      end
+      return original(value,...)
+    end
+  end
+  local function snapshot()
+    local scan=scan_hostiles()
+    local e=BOT.encounter or {}
+    log("turn="..you.turns().." HP="..you.hp().."/"..select(2,you.hp())
+      .." feat="..feat_here().." phase="..tostring(e.phase)
+      .." retreats="..tostring(e.retreats).." hidden="..tostring(e.hidden_missing)
+      .." unseen="..tostring(e.unseen).." disturbance="..tostring(BOT.disturbance_warning)
+      .." probes="..tostring(BOT.disturbance_turns).." rejected="..tostring(BOT.autofight_rejected)
+      .." rage="..tostring(you.berserk()).." cooldown="..tostring(berserk_recovering())
+      .." confused="..tostring(you.confused()))
+    for _,m in ipairs(scan.monsters) do
+      log("enemy "..m.monster:name().." "..m.x..","..m.y.." threat="..m.threat
+        .." reachable="..tostring(m.reachable))
+    end
+    for _,d in ipairs(MOVE_DELTAS) do
+      local c=scan.cells[map_key(d[1],d[2])]
+      log("tile "..d[1]..","..d[2].." "..(c and c.feature or "unknown")
+        .." cloud="..tostring(c and c.cloud).." safe="..tostring(view.is_safe_square(d[1],d[2]))
+        .." step="..tostring(can_step(scan.cells,0,0,d[1],d[2],scan.blocked)))
+    end
+  end
+  function autocrawl_steam_report()
+    snapshot()
+    for _,s in ipairs(t.lines) do crawl.mpr("TRACE "..s) end
+    t.lines={}
+  end
+  function autocrawl_steam_step() t.permit=true end
+  local original_ready=ready
+  function ready()
+    if not t.started and level_key()=="D:6" then
+      for _,m in ipairs(scan_hostiles().monsters) do
+        if m.monster:name()=="steam dragon" then
+          t.started=true
+          say("DEBUG PAUSE: D:6 steam dragon; use autocrawl_steam_step()")
+          return
+        end
+      end
+    end
+    if t.started then
+      if not t.permit then return end
+      t.permit=false; t.n=t.n+1
+      log("DECISION "..t.n); snapshot()
+    end
+    original_ready()
+  end
 end
 
 >

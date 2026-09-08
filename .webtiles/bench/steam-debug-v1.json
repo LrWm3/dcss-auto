@@ -1,0 +1,8 @@
+{
+  "version": "steam-debug-v1",
+  "stale_seconds": 90,
+  "tactics": {"steam_debug": true},
+  "sessions": [
+    {"session": "codex-bench4", "character": "CodexSteamDebug1", "seed": "17908030050512890810"}
+  ]
+}
