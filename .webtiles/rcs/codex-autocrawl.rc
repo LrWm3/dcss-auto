@@ -2715,6 +2715,85 @@ local function check_committed_return()
   end
 end
 
+-- Emergency banishment mode: exits, movement and escape resources, not a
+-- normal floor-clear/combat stage. Replan against the shifting map each turn.
+local function abyss_action(scan)
+  if you.branch()~="Abyss" then
+    if BOT.abyss then
+      crawl.take_note("Abyss escape mode: returned to "..level_key())
+      BOT.abyss=nil; BOT.encounter=nil; BOT.recovery_anchor=nil
+    end
+    return false
+  end
+  local a=BOT.abyss
+  if not a then
+    a={dx=1,dy=1,last_resource=-1000}; BOT.abyss=a
+    shop_abort("banishment")
+    crawl.take_note("Abyss escape mode: arrived "..level_key().." HP="..you.hp())
+  end
+  local here=scan.cells["0:0"]
+  if here and here.feature=="exit_abyss" then
+    crawl.take_note("Abyss escape mode: taking exit")
+    crawl.sendkeys(">"); return true
+  end
+  if you.confused() then
+    if use_known_consumable("potion","curing") then return true end
+    if not confused_combat_action(scan) then crawl.do_commands({"CMD_WAIT"}) end
+    return true
+  end
+  local _,_,exit_step=bfs(scan.cells,scan.blocked,function(c) return c.feature=="exit_abyss" end)
+  if exit_step and not movement_locked() then
+    if not a.exit_seen then crawl.take_note("Abyss escape mode: approaching known exit"); a.exit_seen=true end
+    crawl.sendkeys(exit_step); return true
+  end
+  a.exit_seen=nil
+  local hp=hp_percent()
+  if hp<55 and use_known_consumable("potion","heal wounds") then return true end
+  if (you.poisoned() or hp<20) and use_known_consumable("potion","curing") then return true end
+  if scan.any and (hp<70 or #scan.monsters>=3) and not you.status("about to teleport")
+      and use_known_consumable("scroll","teleportation") then return true end
+  if scan.any and you.turns()-a.last_resource>=10 then
+    if (scan.reachable_adjacent and use_known_consumable("scroll","fear"))
+        or (hp<80 and use_known_consumable("scroll","fog")) then
+      a.last_resource=you.turns(); return true
+    end
+  end
+  if movement_locked() then crawl.do_commands({"CMD_WAIT"}); return true end
+  local function danger(x,y)
+    local cost=0
+    for _,m in ipairs(scan.monsters) do
+      local dist=math.max(math.abs(m.x-x),math.abs(m.y-y))
+      cost=cost+(dist<=1 and 40 or 12/math.max(1,dist))
+    end
+    return cost
+  end
+  -- Head toward reachable unexplored edges, preferring steps away from enemies.
+  -- A persistent heading breaks symmetric back-and-forth movement choices.
+  local best,score
+  for i,d in ipairs(MOVE_DELTAS) do
+    local key=MOVE_KEYS[i]
+    if can_step(scan.cells,0,0,d[1],d[2],scan.blocked) then
+      local value=d[1]*a.dx+d[2]*a.dy-danger(d[1],d[2])
+      for pos,c in pairs(scan.cells) do
+        if c.frontier and scan.first_step[pos]==key then
+          value=value+8+1/(1+math.abs(c.x)+math.abs(c.y)); break
+        end
+      end
+      if not score or value>score then best,score=i,value end
+    end
+  end
+  if best then
+    local d=MOVE_DELTAS[best]; a.dx,a.dy=d[1],d[2]
+    crawl.sendkeys(MOVE_KEYS[best]); return true
+  end
+  -- Boxed in: attack only an adjacent blocker, never Tab-pursue or berserk.
+  for _,m in ipairs(scan.monsters) do
+    local cmd=CONFUSED_MOVE_COMMANDS[map_key(m.x,m.y)]
+    if cmd then crawl.do_commands({(cmd:gsub("CMD_MOVE_","CMD_ATTACK_"))}); return true end
+  end
+  crawl.do_commands({"CMD_WAIT"}); return true
+end
+
 function ready()
   -- This rc is intentionally a MiBe-only controller.
   if you.species() ~= "Minotaur" or you.class() ~= "Berserker" then return end
@@ -2757,6 +2836,7 @@ function ready()
   end
 
   local scan = scan_hostiles()
+  if abyss_action(scan) then return end
   if debug_encounter_pause(scan) then return end
   observe_recovery_anchor(scan)
   observe_steam_dragon(scan)
