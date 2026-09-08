@@ -39,6 +39,12 @@ inventory={consumable("scroll","scroll of teleportation",true)}
 assert(survival(scan) and commands[1]=="ra\027\027\027")
 statuses["about to teleport"]=true; commands={}
 assert(not survival(scan) and #commands==0,"do not cancel pending teleport with another scroll")
+turn=turn+1; commands={}
+inventory={consumable("scroll","scroll of fear",true)}
+scan.monsters={{},{}}
+assert(survival(scan) and commands[1]=="raf\027\027\027",
+  "confirm known fear area preview before escape guards")
+scan.monsters={{}}
 local safe=assert(upvalue(ready,"safe_stats"))
 assert(not safe({artprops={Int=-4}}),"reject stat-zero armour")
 assert(safe({artprops={Int=-2}}),"allow safe negative modifier")

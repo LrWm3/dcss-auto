@@ -398,7 +398,10 @@ local function use_known_consumable(kind, name)
     if item_class(it)==kind and it.is_identified and item_name(it):find(name,1,true) then
       BOT.item_attempts[name]=turn
       say("survival: "..name)
-      guarded_keys((kind=="potion" and "q" or "r")..inv_letter(it))
+      -- Known fear opens a non-directional area preview in this Crawl build.
+      -- Confirm it before the guards; Escape alone cancels without using it.
+      local confirm=(kind=="scroll" and name=="fear") and "f" or ""
+      guarded_keys((kind=="potion" and "q" or "r")..inv_letter(it)..confirm)
       return turn_spent(turn)
     end
   end
