@@ -988,3 +988,48 @@ Resource handling remains at least as important: seed1 died with blink, fog,
 invisibility, charged wands and enchantment scrolls; seed4 had4 identify scrolls
 with heal wounds/might/invisibility still unknown at death. These inventories
 suggest opportunities but do not prove legality/usefulness on the final turn.
+
+## Throwing first pass (throwing-full-v1)
+
+914cbbb adds pickup of nets/darts/javelins/boomerangs and enables Throwing with
+target4 alongside existing skills after eligible ammunition is held. Safe-time
+skill updates detect acquisition; no training for merely spotted items. Yellow
+preparation uses boomerangs; red targets prefer curare unless poison-resistant
+or already slow/poisoned. Three TOTAL spent throws per encounter, including
+curare attempts, reset with normal encounter lifecycle; same-turn rejection
+guard. Uses explicit F item menu and player-relative target. Conservative clear
+shot rectangle, reachable visible target <=7 tiles, no adjacent hostile, no
+berserk/confusion/cooldown/movement lock/unseen warning or disengage. Earlier
+survival, recovery and positioning retain priority. Nets/other darts/javelins
+are collected but not thrown. No autonomous ammo retrieval added.
+
+20 Lua suites and9 runner tests pass. Throw suite checks boomerang input,
+curare preference, already-poisoned fallback, three-shot cap, same-turn retry,
+disengage, obstruction and adjacent hostile veto. Live notes/action tables
+verify boomerang firing, three-shot cap and target4 reached. No live curare
+throw occurred, so curare input/effect integration remains unverified.
+
+Same five sessions reset via runner, unchanged snapshot
+a9b08ab54c55a194e93c9dc33c39ee99cc28a605b638bc9527f17875f2760523.
+Seed | Previous abyss-full-v1 | Throwing | Outcome | Boomerang throws
+--- | --- | --- | --- | ---
+1 | Lair2 | D11 | Centaur arrow death7830 | 17
+2 | D9 | D12 after Lair5 | Pyromancer liquid-fire death16524 | 31
+3 | D4 | D4 | Eustachio iron-imp death3546, unchanged | 0
+4 | D5 | D6 | Native unresolved-unseen-threat recovery pause6106 | 3
+5 | D5 | D5 | Bombardier beetle liquid-fire death4152 | 7
+
+Four natural deaths, one native pause (not a successful autonomous completion).
+Seed4 killed steam dragon then paused with orc priest/marrowcuda visible,
+HP63/106 while berserk. Verified console entry, read-only dump, then saved with
+Ctrl-S; no manual combat/movement. Save remains CodexThrowFull4.cs. Recorded
+paused row and immutable dump, not death. Other games had no intervention.
+All five dumps have empty DLua error sections. No full-batch success: minimum
+reached rank remains4 and seed1 regresses; seed2 improves substantially but
+this does not isolate throwing damage from training/RNG trajectory changes.
+
+Seed3 collected no ammunition and repeats exactly the earlier death. The other
+four collected ammunition;58 total boomerang throws. Seed4/2 hold curare but
+never used it in this run. Next priorities: liquid-fire handling (both seed2
+and5 killed the source but continued burning to death) and the existing D6
+isolated-recovery pause. Keep these results separate from a future fix batch.
