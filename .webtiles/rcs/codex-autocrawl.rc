@@ -41,6 +41,7 @@ AUTOCrawl_TACTICS = {
 -- Diagnostic breakpoints are opt-in and never benchmark wins or stalls.
 AUTOCrawl_DEBUG_NAMES = {lodul=true}
 AUTOCrawl_DEBUG_STATE = AUTOCrawl_DEBUG_STATE or {seen={},paused=false}
+AUTOCrawl_WAND_STATE = AUTOCrawl_WAND_STATE or {active=false}
 
 -- Editable progression plan. A stage covers every floor in [from, to].
 -- Alternative groups resolve to the branch actually generated in this game.
@@ -602,16 +603,67 @@ local function wand_clear_shot(scan,x,y)
   return true
 end
 
+local function wand_scores(scan)
+  local hp,mhp=you.hp()
+  local hp_score=math.max(0,math.min(10,math.floor(10*hp/mhp)))
+  local threat_score=0
+  for _,enemy in ipairs(scan.monsters) do
+    threat_score=threat_score+(enemy.threat==3 and 6 or enemy.threat==2 and 1 or 0)
+  end
+  return hp_score,threat_score
+end
+
+local function wand_cap_note(state)
+  if state.uses<4 then return end
+  local names={}
+  for name,count in pairs(state.enemies) do names[#names+1]=count.."x "..name end
+  table.sort(names)
+  local roster=table.concat(names,", ")
+  if state.noted_roster==roster then return end
+  state.noted_roster=roster
+  local message="WAND CAP 4/4: encounter "..state.started.." at "..state.level
+      .."; enemies seen (peak simultaneous per kind): "..roster
+  say(message)
+  if crawl.take_note then crawl.take_note(message) end
+end
+
+local function observe_wand_encounter(scan)
+  local state=AUTOCrawl_WAND_STATE
+  if not state.active and scan.any then
+    state={active=true,uses=0,last=-10000,charm_last=-10000,
+      started=you.turns(),level=level_key(),enemies={}}
+    AUTOCrawl_WAND_STATE=state
+  end
+  if not state.active then return state end
+  local counts={}
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    local name=(m and m.name and m:name() or "unknown").." [threat "..tostring(enemy.threat).."]"
+    counts[name]=(counts[name] or 0)+1
+  end
+  for name,count in pairs(counts) do
+    state.enemies[name]=math.max(state.enemies[name] or 0,count)
+  end
+  wand_cap_note(state)
+  -- Leaving LOS or changing floors must not replenish the budget. End only
+  -- after encounter memory expires and the character is fully recovered.
+  if not scan.any and not (BOT.encounter and BOT.encounter.active)
+      and not BOT.disturbance_warning and hp_percent()>=100
+      and not you.berserk() and not berserk_recovering() then
+    state.active=false
+  end
+  return state
+end
+
 local function wand_options(scan)
   local options={}
+  local state=observe_wand_encounter(scan)
   if not items or not items.inventory
       or not AUTOCrawl_TACTICS.combat_wands or not scan.any
       or you.berserk() or you.confused() then return options end
   local turn=you.turns()
-  local state=BOT.wand_state or {uses=0,last=-10000,charm_last=-10000}
-  if turn-state.last>20 then state.uses=0 end
-  BOT.wand_state=state
-  if state.last==turn or state.uses>=6 then return options end
+  local hp_score,threat_score=wand_scores(scan)
+  if hp_score>=threat_score or state.last==turn or state.uses>=4 then return options end
   local ally=false
   for _,c in pairs(scan.cells) do
     if c.visible and c.monster and c.monster:attitude()~=0 then ally=true end
@@ -683,12 +735,14 @@ local function combat_wand_action(scan)
   local option=wand_options(scan)[1]
   if not option then return false end
   local turn=you.turns()
-  local state=BOT.wand_state
-  -- Budget attempts too: rejected shots must not create a turnless loop.
-  state.last=turn; state.uses=state.uses+1
+  local state=AUTOCrawl_WAND_STATE
+  -- Rejected shots block same-turn retries but do not consume the cast budget.
+  state.last=turn
   if option.kind=="charming" then state.charm_last=turn end
+  local hp_score,threat_score=wand_scores(scan)
   say("wand: "..option.kind.." -> "..option.target.." ("..option.x..","..option.y
-      ..") "..(option.chance and option.chance.."%; " or "")..option.reason)
+      ..") "..(option.chance and option.chance.."%; " or "")..option.reason
+      .."; HP score "..hp_score.." < threat "..threat_score.."; cast "..(state.uses+1).."/4")
   -- In this checkout item.slot is a category letter, whereas items.fire takes
   -- the backing inventory index. Use the wand-only evoke menu, reset targeting
   -- to the player ('r'), then move to the explicitly evaluated destination.
@@ -696,6 +750,7 @@ local function combat_wand_action(scan)
       ..string.rep(option.y<0 and "k" or "j",math.abs(option.y))
   guarded_keys("V"..items.index_to_letter(option.slot).."r"..aim.."f")
   local spent=turn_spent(turn)
+  if spent then state.uses=state.uses+1; wand_cap_note(state) end
   say("wand result: "..(spent and "action spent; reassess" or "rejected; use ordinary policy"))
   return spent
 end
@@ -1895,6 +1950,7 @@ function c_save()
   local old=previous_c_save and previous_c_save() or ""
   return old.."\nROUTE_STATE="..route_serialize(ROUTE_STATE)
       .."\nAUTOCrawl_DEBUG_STATE="..route_serialize(AUTOCrawl_DEBUG_STATE).."\n"
+      .."AUTOCrawl_WAND_STATE="..route_serialize(AUTOCrawl_WAND_STATE).."\n"
 end
 
 local previous_c_answer_prompt = c_answer_prompt
@@ -2088,6 +2144,7 @@ function ready()
     BOT.dive={phase="normal"}
   end
   observe_encounter(scan)
+  observe_wand_encounter(scan)
   if survival_action(scan) then return end
   if combat_wand_action(scan) then return end
   -- Central gate covers combat pursuit, confusion, exploration, shops and

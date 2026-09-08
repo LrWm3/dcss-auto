@@ -9,9 +9,10 @@ local function find(fn,wanted,seen)
 end
 local options=assert(find(ready,"wand_options"))
 local action=assert(find(ready,"combat_wand_action"))
-local turn,rage,spent=100,false,false
+local turn,rage,spent,hp=100,false,false,10
 you={turns=function() return turn end,berserk=function() return rage end,
-  confused=function() return false end,hp=function() return 91,91 end,
+  confused=function() return false end,hp=function() return hp,100 end,
+  branch=function() return "D" end,depth=function() return 10 end,
   slowed=function() return false end,exhausted=function() return false end,
   turn_is_over=function() return spent end}
 crawl.mpr=function() end
@@ -55,4 +56,28 @@ assert(not action(scan) and fired==1)
 assert(not action(scan) and fired==1,"rejected shot cannot repeat same turn")
 turn=101; spent=true
 assert(action(scan) and fired==2)
+assert(AUTOCrawl_WAND_STATE.uses==1,"only spent actions count")
+local scores=assert(find(ready,"wand_scores"))
+for _,pair in ipairs({{100,10},{99,9},{90,9},{89,8},{10,1},{9,0}}) do
+  hp=pair[1]; assert(scores(scan)==pair[2])
+end
+hp=20; assert(#options(scan)==0,"equality must not allow wands")
+scan.monsters[2].threat=3
+local h,t=scores(scan); assert(h==2 and t==7)
+hp=10
+local notes={}; crawl.take_note=function(s) notes[#notes+1]=s end
+for n=102,104 do turn=n; assert(action(scan)) end
+assert(AUTOCrawl_WAND_STATE.uses==4 and #notes==1)
+assert(notes[1]:find("ogre",1,true) and notes[1]:find("threat 3",1,true))
+turn=200; assert(not action(scan),"time alone must not reset cap")
+assert(#notes==1,"cap note must not spam every turn")
+local save=c_save(); AUTOCrawl_WAND_STATE=nil; assert(load(save))()
+assert(AUTOCrawl_WAND_STATE.uses==4,"cap survives save/load")
+local observe=assert(find(ready,"observe_wand_encounter"))
+local empty={any=false,monsters={}}
+BOT.encounter={active=true}; hp=100; observe(empty)
+assert(AUTOCrawl_WAND_STATE.active,"brief LOS loss retains budget")
+BOT.encounter.active=false; observe(empty)
+assert(not AUTOCrawl_WAND_STATE.active)
+hp=10; turn=201; assert(#options(scan)>0 and AUTOCrawl_WAND_STATE.uses==0)
 print("wand regression cases passed")
