@@ -1,0 +1,11 @@
+{
+  "version": "encounter-v1",
+  "stale_seconds": 120,
+  "sessions": [
+    {"session": "codex-support1", "character": "CodexEncounter1", "seed": "6144198052690956201"},
+    {"session": "codex-support2", "character": "CodexEncounter2", "seed": "13772526223844354029"},
+    {"session": "codex-support3", "character": "CodexEncounter3", "seed": "1760771545328102746"},
+    {"session": "codex-support4", "character": "CodexEncounter4", "seed": "17908030050512890810"},
+    {"session": "codex-support5", "character": "CodexEncounter5", "seed": "103583508244309201"}
+  ]
+}

@@ -4,11 +4,14 @@ local function setup(form, status, confused, threat, adjacent)
   state = {turn = 1, form = form or "", status = status, confused = confused}
   commands, messages = {}, {}
   BOT.paused = false
+  BOT.encounter = nil
   BOT.move_rejected_at = nil
   BOT.move_rejected_announced = false
   BOT.immobile_announced = false
   BOT.red_announced = false
   you = {
+    branch = function() return "D" end,
+    depth = function() return 2 end,
     hp = function() return 100,100 end,
     species = function() return "Minotaur" end,
     class = function() return "Berserker" end,
@@ -21,7 +24,9 @@ local function setup(form, status, confused, threat, adjacent)
     slowed = function() return false end,
     activate_ability = function() return false end,
   }
-  crawl.mpr = function(s) messages[#messages+1] = s end
+  crawl.mpr = function(s)
+    if not s:find("encounter:",1,true) then messages[#messages+1] = s end
+  end
   crawl.sendkeys = function(s) commands[#commands+1] = s end
   crawl.do_commands = function(cs)
     assert(#cs == 1, "multiple commands bypass per-turn checks")

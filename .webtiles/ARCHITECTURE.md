@@ -14,9 +14,21 @@ tests and benchmark tooling live beside it, not inside the game's Lua runtime.
   invocation. Consumable/ability helpers own availability and retry checks.
 - `combat_action(scan)`: rejected-Tab recovery, isolated-enemy handling, berserk,
   then native autofight. Red encounters retain a separate customization boundary.
-- `ready()`: orchestration. Movement restrictions precede survival; then confusion,
-  hazards, invisible activity, encounter handling, recovery, gear/ID, and routing.
-  This ordering is deliberate and is not changed by the current refactor.
+- `observe_encounter(scan)`: persistent, non-action encounter state: idle,
+  prepare, fight, disengage, recover. Tracks recent danger, unseen activity,
+  HP loss, peak group size and retreat budget across LOS interruptions.
+- `manage_encounter(scan)`: executes preparation, bounded retreat, or recovery;
+  otherwise delegates to the existing combat/invisible-activity helpers.
+- `ready()`: observes the encounter and attempts emergency resources before the
+  movement-restriction gate; then confusion, hazards, encounter management,
+  invisible activity, combat, recovery, gear/ID, and routing. Thus an immobile
+  or unseen-threat situation need not bypass non-movement emergency resources.
+
+Encounter control is selectable with `encounter_control=false` for comparison.
+The first version uses a short threat memory and logs phase transitions. Retreat
+only increases distance on known safe terrain with no adjacent melee attackers;
+it is not a full cover/path planner or stair-escape strategy. Crowd berserk needs
+multiple adjacent foes and a bounded visible group. Yellow/red triggers remain.
 
 Legacy stair-survey behavior still exists for route-disabled mode. Do not delete
 it or merge it into route travel without dedicated coverage. Further cleanup

@@ -29,6 +29,8 @@ AUTOCrawl_TACTICS = {
   berserk_hp = 55, crowd_berserk = true, berserk_enemy_count = 3,
   positioning = true, position_enemy_count = 3, position_moves = 6,
   position_waits = 3,
+  encounter_control = true, encounter_memory = 8, retreat_hp = 65,
+  retreat_moves = 6,
 }
 
 -- Editable progression plan. A stage covers every floor in [from, to].
@@ -418,6 +420,46 @@ local function survival_ability(name, cooldown)
   return false
 end
 
+-- An encounter outlives individual LOS scans. Observation never spends a turn;
+-- execution below chooses at most one action, then ready() observes again.
+local function observe_encounter(scan)
+  if not AUTOCrawl_TACTICS.encounter_control then BOT.encounter=nil; return end
+  local turn,hp=you.turns(),hp_percent()
+  local e=BOT.encounter
+  if not e or e.level~=level_key() then
+    e={level=level_key(),phase="idle",hp=hp,last_seen=-10000,
+       peak=0,retreats=0,started=turn}
+    BOT.encounter=e
+  end
+  local unseen=BOT.disturbance_warning and
+      turn-(BOT.disturbance_last_seen or -10000)<=AUTOCrawl_TACTICS.encounter_memory
+  local damaged=hp<e.hp
+  e.hp=hp
+  if scan.any or unseen or (damaged and e.phase~="idle") then e.last_seen=turn end
+  local active=scan.any or unseen or turn-e.last_seen<=AUTOCrawl_TACTICS.encounter_memory
+  local count=#scan.monsters
+  if active and e.phase=="idle" then
+    e.started=turn; e.peak=0; e.retreats=0
+  end
+  e.peak=math.max(e.peak,count)
+  e.active=active
+  e.unseen=unseen
+  local cooldown=you.slowed() or you.exhausted()
+  local phase="idle"
+  if active then
+    if not you.berserk() and (hp<AUTOCrawl_TACTICS.retreat_hp or
+        (cooldown and scan.any) or (unseen and damaged)) then
+      phase="disengage"
+    elseif not scan.any then phase="recover"
+    elseif scan.reachable_adjacent or you.berserk() then phase="fight"
+    else phase="prepare" end
+  elseif hp<100 or cooldown or you.berserk() then phase="recover" end
+  if phase~=e.phase then
+    say("encounter: "..e.phase.." -> "..phase.." (HP "..math.floor(hp).."%, peak "..e.peak..")")
+    e.phase=phase
+  end
+end
+
 local function survival_action(scan)
   if you.berserk() then return false end
   local policy=AUTOCrawl_TACTICS
@@ -430,15 +472,16 @@ local function survival_action(scan)
     if use_known_consumable("potion","curing") then return true end
   end
   if hp<policy.heal_hp and use_known_consumable("potion","heal wounds") then return true end
-  if not scan.any then return false end
+  local encounter=BOT.encounter
+  if not scan.any and not (encounter and encounter.active) then return false end
   local count=#scan.monsters
-  if hp<policy.escape_hp then
+  if hp<policy.escape_hp or (encounter and encounter.phase=="disengage") then
     if not you.status("about to teleport") and use_known_consumable("scroll","teleportation") then return true end
     if count>=policy.fear_enemy_count and use_known_consumable("scroll","fear") then return true end
   end
   if hp<policy.allies_hp and (count>=policy.allies_enemy_count or scan.worst>=3)
       and survival_ability("Brothers in Arms",policy.allies_cooldown) then return true end
-  if hp<policy.hand_hp and scan.reachable_adjacent
+  if hp<policy.hand_hp and (scan.reachable_adjacent or (encounter and encounter.unseen))
       and not you.status("regenerating") and survival_ability("Trog's Hand",policy.hand_cooldown) then return true end
   if hp<policy.haste_hp and not you.status("hasted") and use_known_consumable("potion","haste") then return true end
   if hp<policy.might_hp and scan.reachable_adjacent and not you.status("mighty")
@@ -511,6 +554,17 @@ local function should_berserk(scan)
   local policy=AUTOCrawl_TACTICS
   local crowded=policy.crowd_berserk and scan.reachable_adjacent
       and #scan.monsters>=policy.berserk_enemy_count
+  local e=BOT.encounter
+  if e and policy.encounter_control then
+    if e.phase=="disengage" then return false end
+    -- Do not commit to berserk solely because a large/expanding pack is in LOS.
+    -- Require multiple actual melee opponents and a bounded visible group.
+    local adjacent=0
+    for _,m in ipairs(scan.monsters) do
+      if m.reachable and math.max(math.abs(m.x),math.abs(m.y))==1 then adjacent=adjacent+1 end
+    end
+    crowded=crowded and adjacent>=2 and #scan.monsters<=4
+  end
   return (scan.yellow_adjacent or crowded) and hp_percent()>=policy.berserk_hp
       and not you.berserk() and not you.exhausted() and not you.slowed()
 end
@@ -581,11 +635,45 @@ local function positioning_action(scan)
   return false
 end
 
+local function manage_encounter(scan)
+  local e=BOT.encounter
+  if not e or you.confused() or movement_locked() then return false end
+  if e.phase=="prepare" then return positioning_action(scan) end
+  if e.phase=="disengage" and scan.any and not scan.reachable_adjacent
+      and not you.berserk() and e.retreats<AUTOCrawl_TACTICS.retreat_moves then
+    -- Bounded retreat on known safe ground only. Do not walk away from melee
+    -- attackers or pretend a narrower tile necessarily blocks ranged fire.
+    local function distance(x,y)
+      local nearest=100
+      for _,m in ipairs(scan.monsters) do
+        nearest=math.min(nearest,math.max(math.abs(m.x-x),math.abs(m.y-y)))
+      end
+      return nearest
+    end
+    local best,score=nil,distance(0,0)
+    for i,d in ipairs(MOVE_DELTAS) do
+      local c=scan.cells[map_key(d[1],d[2])]
+      if c and c.visible and (c.feature=="floor" or c.feature=="open_door")
+          and can_step(scan.cells,0,0,d[1],d[2],scan.blocked)
+          and distance(d[1],d[2])>score then
+        best,score=MOVE_KEYS[i],distance(d[1],d[2])
+      end
+    end
+    if best then e.retreats=e.retreats+1; crawl.sendkeys(best); return true end
+  end
+  -- Keep the encounter open through recovery. An unseen attacker must still
+  -- reach disturbance handling, rather than being rested against indefinitely.
+  if e.phase=="recover" and not scan.any and not e.unseen then
+    crawl.do_commands({"CMD_WAIT"}); return true
+  end
+  return false
+end
+
 local function combat_action(scan)
   if not scan.any then BOT.positioning=nil; return false end
   if rejected_autofight_action(scan) then return true end
   if not scan.reachable_any then return isolated_enemy_action(scan) end
-  if positioning_action(scan) then return true end
+  if not BOT.encounter and positioning_action(scan) then return true end
   if should_berserk(scan) then
     if you.activate_ability("Berserk", 0, 0) then
       return true
@@ -1644,9 +1732,12 @@ function ready()
 
   local scan = scan_hostiles()
   if AUTOCrawl_ROUTE.enabled then
+    -- Route observation is bookkeeping; encounter decisions remain above travel.
     route_observe(scan)
     BOT.dive={phase="normal"}
   end
+  observe_encounter(scan)
+  if survival_action(scan) then return end
   -- Central gate covers combat pursuit, confusion, exploration, shops and
   -- stair travel. Adjacent melee remains available when not confused.
   if movement_locked() then
@@ -1673,11 +1764,11 @@ function ready()
     end
   end
 
-  if survival_action(scan) then return end
   if you.confused() and confused_combat_action(scan) then return end
   if not you.confused() then BOT.confused_announced = false end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
+  if manage_encounter(scan) then return end
 
   -- Invisible or otherwise unclassified activity cannot be resolved by the
   -- visible-monster scanner.  Probe adjacent squares instead of resting into
