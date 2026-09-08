@@ -86,4 +86,13 @@ assert(BOT.encounter.hidden_missing and BOT.encounter.unseen,
 assert(not rage(scan),"unresolved invisible caster vetoes berserk")
 c_message("You kill Sigmund!","plain")
 assert(not BOT.encounter.hidden_caster,"confirmed death clears threat memory")
+scan.monsters={{x=1,y=0,reachable=true,threat=2,monster={
+  name=function() return "Sigmund" end,spells=function() return {"Invisibility"} end}}}
+scan.reachable_any=true; scan.any=true; hp=60; turn=110
+observe(scan)
+local combat=assert(find(ready,"combat_action"))
+crawl.do_commands=function(cs)
+  assert(#cs==1 and cs[1]=="CMD_ATTACK_RIGHT","one directed caster attack, no gsub count")
+end
+assert(combat(scan),"remembered adjacent caster receives the attack")
 print("encounter regression cases passed")

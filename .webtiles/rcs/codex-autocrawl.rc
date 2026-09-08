@@ -765,7 +765,7 @@ local function combat_action(scan)
     for _,enemy in ipairs(scan.monsters) do
       if enemy.monster and enemy.monster.name and enemy.monster:name()==memory.name then
         local cmd=CONFUSED_MOVE_COMMANDS[map_key(enemy.x,enemy.y)]
-        if cmd then crawl.do_commands({cmd:gsub("CMD_MOVE_","CMD_ATTACK_")}); return true end
+        if cmd then crawl.do_commands({(cmd:gsub("CMD_MOVE_","CMD_ATTACK_"))}); return true end
       end
     end
   end
