@@ -19,6 +19,8 @@ ROUTE_STATE.shopping={shops={[0]={offers={d}}},checked={},next_slot=1}
 ROUTE_STATE.done["D:4"]="clear"
 local scan={any=false}
 assert(action(scan) and last=="G0\027\027\027")
+local route=assert(find(ready,"route_action"))
+assert(not route(scan),"route progression cannot compete with active shopping")
 scan.any=true; assert(not action(scan) and ROUTE_STATE.shopping.active,"combat interrupts without travel")
 scan.any=false; action(scan); assert(not action(scan) and not ROUTE_STATE.shopping.active,"bounded no-progress abort")
 assert(not action(scan),"same departure must not restart aborted shopping")
@@ -38,4 +40,8 @@ catalogue()
 assert(ROUTE_STATE.shopping.shops[0].offers[1].index==3,"price-order rank, not raw API index")
 items.shop_inventory=function() return {{scroll("scroll of teleportation"),33},{scroll("scroll of fear"),33}} end
 catalogue(); assert(#ROUTE_STATE.shopping.shops[0].offers==0,"ambiguous equal-price entries skipped")
+ROUTE_STATE.shopping.checked={}; ROUTE_STATE.shopping.shops[0].offers={d}
+travel.waypoint_delta=function() return 3,0 end
+action(scan); turn=401
+assert(not action(scan) and not ROUTE_STATE.shopping.active,"total travel budget bounds moving loops")
 print("shopping regression cases passed")

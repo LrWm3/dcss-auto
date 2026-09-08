@@ -1666,7 +1666,7 @@ local function shopping_action(scan)
     if not d or d.index>26 or #items.inventory()>=50 then a.failed[best.slot]=true; return true end
     local gold=you.gold()
     guarded_keys("</"..string.char(96+d.index).."\rY")
-    if you.gold()<gold then
+    if gold-you.gold()==d.price then
       a.buys=a.buys+1
       say("shopping bought: "..d.name.." for "..(gold-you.gold()))
       shop_catalogue()
@@ -2416,6 +2416,9 @@ end
 
 local function route_action(scan)
   if not AUTOCrawl_ROUTE.enabled then return false end
+  -- A combat interruption must not let the isolated-enemy route shortcut
+  -- start a competing progression trip while shopping still owns travel.
+  if ROUTE_STATE.shopping and ROUTE_STATE.shopping.active then return false end
   if not route_started then
     ROUTE_STATE.travel_attempts=0
     ROUTE_STATE.last_travel_turn=nil
