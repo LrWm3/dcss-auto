@@ -560,6 +560,7 @@ local function observe_encounter(scan)
   if active and e.phase=="idle" then
     e.started=turn; e.peak=0; e.retreats=0
     e.approach=nil
+    e.throws=0; e.throw_last=nil
   end
   e.peak=math.max(e.peak,count)
   e.active=active
@@ -789,6 +790,49 @@ local function combat_wand_action(scan)
 end
 
 function autocrawl_wand_step() return combat_wand_action(scan_hostiles()) end
+
+-- Conservative opener only: three total throws (including curare) per encounter.
+local function throwing_action(scan)
+  local e=BOT.encounter
+  if not e or e.phase~="prepare" or (e.throws or 0)>=3
+      or e.throw_last==you.turns() or scan.worst<2 or you.berserk()
+      or you.confused() or berserk_recovering() or movement_locked()
+      or BOT.disturbance_warning or e.hidden_missing then return false end
+  for _,enemy in ipairs(scan.monsters) do
+    if math.max(math.abs(enemy.x),math.abs(enemy.y))<=1 then return false end
+  end
+  local boom,curare
+  for _,it in ipairs(items.inventory()) do
+    if item_class(it)=="missile" then
+      local n=item_name(it)
+      if n:find("boomerang",1,true) then boom=it end
+      if n:find("curare",1,true) then curare=it end
+    end
+  end
+  local best,ammo,score
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    local d=math.max(math.abs(enemy.x),math.abs(enemy.y))
+    if enemy.threat>=2 and d<=7 and enemy.reachable
+        and wand_clear_shot(scan,enemy.x,enemy.y) then
+      local it=boom
+      if enemy.threat>=3 and curare and m:res_poison()<=0
+          and not m:status("slow") and not m:status("poisoned") then it=curare end
+      local s=enemy.threat*10-d
+      if it and (not score or s>score) then best,ammo,score=enemy,it,s end
+    end
+  end
+  if not best then return false end
+  local turn=you.turns(); e.throw_last=turn
+  local aim=string.rep(best.x<0 and "h" or "l",math.abs(best.x))
+      ..string.rep(best.y<0 and "k" or "j",math.abs(best.y))
+  say("throw: "..item_name(ammo).." -> "..best.monster:name().."; "..((e.throws or 0)+1).."/3")
+  guarded_keys("F"..items.index_to_letter(ammo.slot).."r"..aim.."f")
+  if not turn_spent(turn) then return false end
+  e.throws=(e.throws or 0)+1
+  crawl.take_note("Throw "..e.throws.."/3: "..item_name(ammo).." -> "..best.monster:name())
+  return true
+end
 
 local function rejected_autofight_action(scan)
   -- Tab can reject targets it filters internally. Fall back to one ordinary
@@ -1468,6 +1512,16 @@ local function update_skills()
   if you.xl() >= 8 and you.skill("Evocations") < 8 then
     train("Evocations", 1, 8)
   end
+  for _,it in ipairs(items.inventory()) do
+    local n=item_name(it)
+    if item_class(it)=="missile" and (n:find("throwing net",1,true)
+        or n:find("dart",1,true) or n:find("javelin",1,true)
+        or n:find("boomerang",1,true)) then
+      if not BOT.throwing_found then crawl.take_note("Throwing training unlocked: "..n) end
+      BOT.throwing_found=true
+    end
+  end
+  if BOT.throwing_found and you.skill("Throwing")<4 then train("Throwing",1,4) end
 end
 
 -- -------------------------------------------------------------------------
@@ -1533,6 +1587,11 @@ local ARMOUR_SLOTS = {
 local function pickup_for_bot(it, name)
   if not it or it.is_useless then return nil end
   if it.dropped then return false end
+  if item_class(it)=="missile" then
+    local n=item_name(it)
+    if n:find("throwing net",1,true) or n:find("dart",1,true)
+        or n:find("javelin",1,true) or n:find("boomerang",1,true) then return true end
+  end
   if it.is_weapon and it.weap_skill == "Axes" then
     local cur = items.equipped_at("Weapon")
     return not cur or weapon_score(it) > weapon_score(cur)
@@ -2938,6 +2997,7 @@ function ready()
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
   if isolated_recovery_action(scan) then return end
   if route_recovery_action(scan) then return end
+  if throwing_action(scan) then return end
   if manage_encounter(scan) then return end
 
   -- Invisible or otherwise unclassified activity cannot be resolved by the
