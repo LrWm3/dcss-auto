@@ -809,3 +809,37 @@ Saved both morgues and diagnostic metadata under interventions. Original full
 batch seed2 row remains PAUSED; these checkpoint continuations are not fresh
 full-seed benchmark replacements. Final tested RC SHA
 b6c299f2593ccf8029bbc90b291741bc38b564eb61c681b5c45272444705fabd.
+
+## Fresh five-seed repeat with Shoals pocket fix
+
+shoals-pocket-full-v1 from clean RC at efb1b51, RC SHA
+b6c299f2593ccf8029bbc90b291741bc38b564eb61c681b5c45272444705fabd,
+same engine54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38.
+Reused the five named sessions. For support2, verified diagnostic character's
+death dump, no save, process identity and postmortem screen before closing it;
+original benchmark paused row remains unchanged. Initial start preflight raced
+process shutdown, refused without launching any games; after confirmed shutdown
+the same config launched normally. All five fresh games ran without gameplay
+input, RC changes or checkpoint intervention and reached natural deaths.
+
+| Seed | Previous no-lure full batch | New | Turns / XL | Cause |
+| --- | --- | --- | --- | --- |
+| 1 | D11 death10287 | D11 death | 10287 / 11 | centaur warrior arrow11 |
+| 2 | Shoals2 paused27837 | Lair2 death | 12169 / 12 | rime drake icy flash freeze17 |
+| 3 | D11 death12720 | Lair5 death | 17500 / 13 | cyan ugly thing13 |
+| 4 | Lair1 death13741 | Lair1 death | 13741 / 11 | cane toad18 |
+| 5 | D6 death2336 | D6 death | 2336 / 5 | Pikel's lemure5 |
+
+Seeds1/4/5 match previous death floor, turn and cause. Seed3 killed Sigmund2966
+again. Seed2's first differing notes (ignoring character-name line) are already
+on D8: old lure7103 vs new lure7124–7125/hold7126, after matching altar6968.
+No Route pocket notes in ANY of the five dumps: this batch never exercised
+the new recovery, and does not independently verify passage through Shoals.
+It also does not establish that the pocket policy caused seed2's earlier death;
+full action trajectories are not deterministic from the seed alone.
+
+Reached ranks [11,13,16,12,6], paired changes vs previous [0,-11,+5,0,0].
+Minimum remains6 (seed5), below older wand-mesmerism minimum7. All5 autonomous
+terminal deaths, no pauses/observed stalls, no clear-prefix claims. Therefore
+not the same results overall and not an improvement in the weakest-seed metric.
+Saved all five immutable morgues and append-only benchmark rows.
