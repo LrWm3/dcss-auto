@@ -47,10 +47,17 @@ def collect(root,source,row):
         trajectories=[]
         for mode in ('reset','reset_repeat','uninterrupted'):
             state=env.launch() if mode=='uninterrupted' else env.reset(case)
+            if state.get('terminal'):
+                raise RuntimeError(mode+' died before the capture trigger (no encounter trajectory)')
             if mode=='uninterrupted':
-                for _ in range(row.get('warmup',0)):state=env.step('baseline')
+                for _ in range(row.get('warmup',0)):
+                    state=env.step('baseline')
+                    if state.get('terminal'):
+                        raise RuntimeError('Uninterrupted replay died before the warmup boundary')
             states,outcome=rollout(env,state,row.get('steps',120))
             trajectories.append(states)
+            if len(trajectories)==2:
+                result['repeatability']=compare(trajectories[0],trajectories[1])
             result['trials'].append(dict(mode=mode,outcome=outcome,decisions=len(states)-1,
                 worker=str(env.work),transitions_sha256=sha(env.work/'transitions.jsonl')))
             env.close()

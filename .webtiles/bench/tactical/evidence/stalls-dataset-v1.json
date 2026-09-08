@@ -1,0 +1,73 @@
+{
+  "code_commit": "caf4011",
+  "canonical_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "full_runs": [
+    {
+      "label": "seed2",
+      "seed": "13772526223844354029",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "e3d125c54795d3b62496980c4f1f9ec0e7b05710df0d58a6c9079aba7211dd82",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/stall-fixes-full-v6/seed2",
+      "outcome": "death"
+    },
+    {
+      "label": "seed4",
+      "seed": "17908030050512890810",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "e3d125c54795d3b62496980c4f1f9ec0e7b05710df0d58a6c9079aba7211dd82",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/stall-fixes-full-v6/seed4",
+      "outcome": "death"
+    }
+  ],
+  "paired_resume": [
+    {
+      "label": "seed2-old",
+      "seed": "13772526223844354029",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "a962f155f00b4e8ce736842a4cb5856563460a613293b3ecd0289dfc5434ee2f",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/stall-resume-v6/seed2-old",
+      "checkpoint_sha256": "4d2c226bfc2d751290ef04ef38dfa7aec2a90065c0f6baf3f895395221983261",
+      "outcome": "reached_D13"
+    },
+    {
+      "label": "seed2-fixed",
+      "seed": "13772526223844354029",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "be2868aa0626096d5493d2586e5784853059245c08ec4350d57c67146f55e8bd",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/stall-resume-v6/seed2-fixed",
+      "checkpoint_sha256": "4d2c226bfc2d751290ef04ef38dfa7aec2a90065c0f6baf3f895395221983261",
+      "outcome": "reached_D13"
+    },
+    {
+      "label": "seed4-old",
+      "seed": "17908030050512890810",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "a962f155f00b4e8ce736842a4cb5856563460a613293b3ecd0289dfc5434ee2f",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/stall-resume-v6/seed4-old",
+      "checkpoint_sha256": "b69f89bffbf5d180521fd70211b8741ce24c8048de0f0dfd4e8362bb937bd99c",
+      "outcome": "paused"
+    },
+    {
+      "label": "seed4-fixed",
+      "seed": "17908030050512890810",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "rc_sha256": "be2868aa0626096d5493d2586e5784853059245c08ec4350d57c67146f55e8bd",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/stall-resume-v6/seed4-fixed",
+      "checkpoint_sha256": "b69f89bffbf5d180521fd70211b8741ce24c8048de0f0dfd4e8362bb937bd99c",
+      "outcome": "reached_D13"
+    }
+  ],
+  "dataset_index": "evidence/dataset-v1.json",
+  "dataset_index_sha256": "2a295ecb961441167a9ca423423aa27c0663d4e427df1ec0373e5750890c2df0",
+  "limitations": [
+    "Only seeds2/4 rerun in full; neither run is a D15 clear.",
+    "Seed4 old/fixed paired replay is causal route evidence; seed2 reload alone also revives the old stalled callback. Saved failed[3]=true and the stale-offer unit test identify the shop bug.",
+    "Dataset source is frozen pre-fix imitation-v2, not the updated route/shop RC.",
+    "Three eligible cases, 264 transitions; same-family centaur checkpoints must stay in the same split.",
+    "Berserk checkpoints diverge from uninterrupted replay despite repeatable resets.",
+    "Amaemon/Orc encounters show fresh-prefix divergence; no historical-equivalence claim.",
+    "Orc direct-save-v2 reset trials both die in15 decisions; fresh replay dies at D8 before the trigger. Collector initially reported missing transitions file; this early-death reporting path is now fixed.",
+    "direct-save-v1 harness workers were terminated after a reported-observation latch bug was identified; artifacts are invalid diagnostics, not deaths.",
+    "Travel-input experiments v1/v2 were reverted. Route-exit versions before exclusion confirmation were blocked on a prompt; final v6 passes."
+  ]
+}

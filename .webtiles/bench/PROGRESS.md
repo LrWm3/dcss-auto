@@ -1296,3 +1296,61 @@ count. Seed5 differs without model activation; do not attribute that to learned
 tactics. Minimum reached milestone rises fromD:4 toD:10, but reached is not
 cleared (seed1 shafted D:8 toD:11), and two pauses prevent autonomous-success
 claims. Next priorities are the Orc:2 shop stall and Lair return-routing blocker.
+
+## 2026-09-08: fix both stalls; build fidelity-gated encounter dataset
+
+Code commit caf4011. Shop save confirms active.failed[3]=true, buys=0 at20493:
+the stale/unusable-offer branch returned true with no queued input and no turn.
+It now spends one safe wait and skips that shop next decision. Normal shop
+visits/purchases retain their old behavior. Earlier experiments added extra
+waits to these paths and changed early combat outcomes; those changes were
+removed. Added stale-offer/purchase regression tests.
+
+Lair return failed because the D:11 landing square was travel-excluded. A
+local-upstairs fallback exits the completed branch while preserving targetD:12;
+it narrowly confirms that specific exclusion warning for the deliberate exit,
+then relinquishes control to ordinary combat/routing. Exclusions elsewhere
+remain intact. Experiments changing G's trailing input did not fix this and
+were reverted. Saved originals remain intact; tests use private copies.
+
+Final paired replay stall-resume-v6: old seed4 pauses again; fixed seed4 reaches
+D:13. Both old and fixed seed2 resume toD:13 because loading supplies another
+ready callback; the saved failed[3] state and no-input regression identify that
+bug, not a misleading old/fixed survival comparison. No tactical rescue.
+
+Final fresh tests stall-fixes-full-v6, exported RC
+e3d125c54795d3b62496980c4f1f9ec0e7b05710df0d58a6c9079aba7211dd82:
+seed2 passes Orc:2 shop and diesD:15 to large slime creature,23693turns;
+seed4 diesLair:1 to yak,12798turns, before the old return point. Both finish
+without intervention. Two rows appended under stall-fixes-v6, not a full-five
+minimum comparison. D:15 reached is not cleared. Private games both use actual
+character name TacticalSmoke; evidence filenames additionally distinguish seeds.
+
+Generalized lab capture by explicit seed, visible monster, floor, minimum turn,
+warmup and budget. Every candidate gets two reset baselines and an uninterrupted
+replay comparison. Direct administrative save avoids a console cycle; loaded
+workers republish initial state. A first direct-save experiment missed that
+latch and was stopped as an invalid harness diagnostic; a regression covers it.
+Corrected early-death reporting when a fresh replay dies before its trigger.
+
+Indexed11 capture attempts,3 fidelity-passing checkpoints and264 baseline
+transitions (verification repeats excluded):
+- seed1D:11 six-centaur first contact,7698HP79/79: death133decisions;
+- same family's recovery state,7738HP66/79: death93decisions;
+- seed5D:8 ogre+steam dragon+howler monkey,7682HP81/81: death38decisions.
+All three match complete normalized trajectories across both resets and fresh
+instrumented play. Centaur checkpoints share a split group; split by seed.
+
+Other captures are retained but excluded: berserk critical/ogre variants repeat
+after load yet diverge from uninterrupted play; Amaemon and Orc:2 have fresh
+prefix divergence. The Orc:2 checkpoint itself produces15-decision deaths twice,
+but its fresh comparison diesD:8 to Amaemon before reaching the trigger. Sonja
+was not reached in the initial private replay. These are not claimed faithful
+historical replays or learned improvements. No model was trained/promoted.
+
+Artifacts: tactical/artifacts/dataset-v1/{index.json,transitions.jsonl}; tracked
+index tactical/evidence/dataset-v1.json and summary stalls-dataset-v1.json.
+Canonical23Lua suites,14tactical Python tests,10hook tests,3direct-transport cases
+and10batch tests pass. Next useful work: train/evaluate on the verified centaur
+and mixed ogre cases, and resolve prefix/save fidelity before using quarantined
+Orc/Amaemon/berserk cases as deployment evidence.

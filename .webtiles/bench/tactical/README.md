@@ -4,6 +4,52 @@ This is a separate local initiative, not a port of dcss-ai-wrapper. Learned
 policies remain experimental exports. The latest work also fixes a canonical
 RC bug: do not enter shops while berserk or while visible enemies need combat.
 
+## Configured dataset collection
+
+`collect_cases.py` accepts a source RC/hash plus cases with main seed index,
+visible monster name, floor, optional minimum turn, optional baseline warmup,
+and a decision budget. It captures a private save, runs two reset baselines,
+then independently launches the uninterrupted seed to the same trigger and
+compares every normalized observation. A matching death alone is insufficient.
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/collect_cases.py \
+  .webtiles/bench/tactical/death-cases-v2.json \
+  .webtiles/bench/tactical/artifacts/new-collection --jobs 3
+/usr/bin/python3 .webtiles/bench/tactical/index_cases.py \
+  .webtiles/bench/tactical/artifacts/new-dataset \
+  .webtiles/bench/tactical/artifacts/new-collection
+```
+
+Destinations must be new. The index verifies checkpoint/RC/trace hashes and
+exports only fidelity-passing cases, one baseline trajectory per case. Repeated
+validation rollouts are not extra training examples. Split by **seed**, never
+randomly by transition: first-contact, recovery, and critical checkpoints from
+one encounter are correlated. No train/held-out generalization claim is made
+for the already heavily tested five main seeds.
+
+New captures save with an administrative `z` inside the existing ready/getch
+boundary, avoiding a console round-trip. This is not a learner action. The save
+clears the reported-observation latch so the loaded worker publishes its initial
+state. Save/load fidelity remains case-specific: active berserk checkpoints can
+repeat perfectly after load yet diverge from uninterrupted play. Such cases,
+fresh-prefix divergences, missing encounters, errors, and incomplete capture
+attempts are retained but excluded from the primary training file. `budget`
+is never relabelled as victory. Transport verification does not by itself prove
+equivalence to an earlier uninstrumented full-game death.
+
+The initial configs deliberately freeze the full-five imitation-v2 source RC
+to revisit those failures; they do not silently switch to newer production RCs.
+Checkpoints include complete private save/RC snapshots and engine pins. Heavy
+artifacts remain local under `artifacts/`; the tracked evidence index points to
+them. No model has been retrained or promoted by this collection step.
+
+`verify_stalls.py FIXED_RC NEW_OUTPUT` copies the saved seed2/seed4 stalls and
+runs paired old/fixed private games, stopping intentionally at D:13. It does
+not overwrite the original saves. `smoke_deployment.py --full --seeds 2,4`
+runs fresh versions through death, a stall, or a bounded wall-clock budget;
+without `--full` it retains the original D:5 smoke-test behavior.
+
 ## Current verified path (supersedes earlier imitation claims)
 
 The old console-stepped **berserk** evaluations were not faithful to autonomous
@@ -77,8 +123,8 @@ Requires the corrected lab binary above and Python 3 with `pexpect` (available i
 
 Case and experiment destinations must be new; existing results are not replaced.
 `--warmup` takes that many baseline decisions **after first Eustachio contact**,
-before saving. Capture currently targets main seed 3, Minotaur Berserker, and
-Eustachio explicitly. Other encounter types need capture configuration added.
+before saving. The legacy CLI defaults to main seed 3 and Eustachio; use the
+configured collector above for other seeds and encounters. All use MiBe.
 
 ## Environment contract
 

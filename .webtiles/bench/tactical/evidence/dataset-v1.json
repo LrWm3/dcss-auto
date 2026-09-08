@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "death-cases-v1/seed1-d11-centaurs",
+      "seed": "6144198052690956201",
+      "split_group": "6144198052690956201",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v1/seed1-d11-centaurs/result.json",
+      "result_sha256": "3ed191896d3ce18d78f8dacd6472a841b0dcdb640f13f8365d1511330f457d18",
+      "eligible": true,
+      "fidelity": {
+        "passed": true,
+        "lengths": [
+          134,
+          134
+        ],
+        "first_difference": null
+      },
+      "repeatability": {
+        "passed": true,
+        "lengths": [
+          134,
+          134
+        ],
+        "first_difference": null
+      },
+      "error": null,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v1/seed1-d11-centaurs/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "92bba4b9ad2577864c848a41bf344b1d8672e229c0b5226e77d20a650696b4c2",
+      "rc_sha256": "0d6a3d32b189d42cf917b46c6fcc81542eab1cb0c7b1f4d70b7d2b799d415644",
+      "initial": {
+        "floor": "D:11",
+        "hp": 79,
+        "max_hp": 79,
+        "monsters": {
+          "1": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": -3,
+            "y": -6
+          },
+          "2": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": -2,
+            "y": -4
+          },
+          "3": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": -2,
+            "y": -3
+          },
+          "4": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": -2,
+            "y": -6
+          },
+          "5": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": -2,
+            "y": -5
+          },
+          "6": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": -1,
+            "y": -4
+          }
+        },
+        "status": "",
+        "turn": 7698
+      },
+      "outcome": "death",
+      "decisions": 133
+    },
+    {
+      "id": "death-cases-v1/seed3-orc2-sorcerer",
+      "seed": "1760771545328102746",
+      "split_group": "1760771545328102746",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v1/seed3-orc2-sorcerer/result.json",
+      "result_sha256": "20cd53abb72290ffd545a69a7e7ba77970597f104d5eab407c7a1b3a7cea9635",
+      "eligible": false,
+      "fidelity": null,
+      "repeatability": null,
+      "error": "No decision boundary (not counted as death); see /home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v1/seed3-orc2-sorcerer/worker-djfj28gj"
+    },
+    {
+      "id": "death-cases-v1/seed5-d10-sonja",
+      "seed": "103583508244309201",
+      "split_group": "103583508244309201",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v1/seed5-d10-sonja/result.json",
+      "result_sha256": "42b39bc00da12edc58ad71876c40bb866ddc358e2c9e4dfa7eef83abfa6ed41f",
+      "eligible": false,
+      "fidelity": null,
+      "repeatability": null,
+      "error": "Died before first-contact checkpoint"
+    },
+    {
+      "id": "death-cases-v2/seed1-d11-centaurs-critical",
+      "seed": "6144198052690956201",
+      "split_group": "6144198052690956201",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v2/seed1-d11-centaurs-critical/result.json",
+      "result_sha256": "9143ea3e6b3ab50c90632b261bde24148eb019c6d4e1d3ff865311b253a3167d",
+      "eligible": false,
+      "fidelity": {
+        "passed": false,
+        "lengths": [
+          26,
+          34
+        ],
+        "first_difference": 1
+      },
+      "repeatability": {
+        "passed": true,
+        "lengths": [
+          26,
+          26
+        ],
+        "first_difference": null
+      },
+      "error": null,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v2/seed1-d11-centaurs-critical/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "762d235be493c49cdacc6cdff81d6eb99bb3eb101cdede55a10a8ea2e3ac57e0",
+      "rc_sha256": "0d6a3d32b189d42cf917b46c6fcc81542eab1cb0c7b1f4d70b7d2b799d415644",
+      "initial": {
+        "floor": "D:11",
+        "hp": 91,
+        "max_hp": 118,
+        "monsters": {
+          "1": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": 0,
+            "y": 3
+          }
+        },
+        "status": "berserking (expiring)",
+        "turn": 7798
+      }
+    },
+    {
+      "id": "death-cases-v2/seed3-orc2-sorcerer",
+      "seed": "1760771545328102746",
+      "split_group": "1760771545328102746",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v2/seed3-orc2-sorcerer/result.json",
+      "result_sha256": "d23b3312a8357ebda51b55020eec997cd7d327f777c1878315544d6d17ef8111",
+      "eligible": false,
+      "fidelity": null,
+      "repeatability": null,
+      "error": "Died before first-contact checkpoint"
+    },
+    {
+      "id": "death-cases-v2/seed5-d8-twoheaded-ogre",
+      "seed": "103583508244309201",
+      "split_group": "103583508244309201",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v2/seed5-d8-twoheaded-ogre/result.json",
+      "result_sha256": "549c5828b2d37fd65e319d9f6002fdcba16e1722853a82084dc2be6e61c6fed0",
+      "eligible": false,
+      "fidelity": {
+        "passed": false,
+        "lengths": [
+          181,
+          181
+        ],
+        "first_difference": 2
+      },
+      "repeatability": {
+        "passed": true,
+        "lengths": [
+          181,
+          181
+        ],
+        "first_difference": null
+      },
+      "error": null,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v2/seed5-d8-twoheaded-ogre/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "90a29b7a20089a87b2f9557766daeb91ccea225a4f0deb6bc47aa5436e9a1095",
+      "rc_sha256": "6b9f69d9d667f2f072505cb8a31526e7cea878010a5ba14a91cfd67b268766fd",
+      "initial": {
+        "floor": "D:8",
+        "hp": 118,
+        "max_hp": 121,
+        "monsters": {
+          "1": {
+            "name": "rock fish",
+            "reachable": true,
+            "threat": 2,
+            "x": 2,
+            "y": -2
+          },
+          "2": {
+            "name": "two-headed ogre",
+            "reachable": true,
+            "threat": 3,
+            "x": 5,
+            "y": -7
+          },
+          "3": {
+            "name": "rock fish",
+            "reachable": true,
+            "threat": 2,
+            "x": 1,
+            "y": -1
+          }
+        },
+        "status": "berserking,marked,flying",
+        "turn": 7701
+      }
+    },
+    {
+      "id": "death-cases-v3/seed1-d11-centaurs-recovery",
+      "seed": "6144198052690956201",
+      "split_group": "6144198052690956201",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v3/seed1-d11-centaurs-recovery/result.json",
+      "result_sha256": "856a9bfee084dacf75df88579a29da5467f0a24f70d725a1976fb0bd4513bea9",
+      "eligible": true,
+      "fidelity": {
+        "passed": true,
+        "lengths": [
+          94,
+          94
+        ],
+        "first_difference": null
+      },
+      "repeatability": {
+        "passed": true,
+        "lengths": [
+          94,
+          94
+        ],
+        "first_difference": null
+      },
+      "error": null,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v3/seed1-d11-centaurs-recovery/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "7af0fe03e1a8fb0d02914d05a03cbfd3a123f4297a2b918e1866c517e58aa155",
+      "rc_sha256": "0d6a3d32b189d42cf917b46c6fcc81542eab1cb0c7b1f4d70b7d2b799d415644",
+      "initial": {
+        "floor": "D:11",
+        "hp": 66,
+        "max_hp": 79,
+        "monsters": {},
+        "status": "",
+        "turn": 7738
+      },
+      "outcome": "death",
+      "decisions": 93
+    },
+    {
+      "id": "death-cases-v3/seed3-d8-amaemon",
+      "seed": "1760771545328102746",
+      "split_group": "1760771545328102746",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v3/seed3-d8-amaemon/result.json",
+      "result_sha256": "88cec4b1ef41dddbc388c2d0ca178075e5a293548f38e388596b0f768e0cc672",
+      "eligible": false,
+      "fidelity": {
+        "passed": false,
+        "lengths": [
+          167,
+          11
+        ],
+        "first_difference": 0
+      },
+      "repeatability": {
+        "passed": true,
+        "lengths": [
+          167,
+          167
+        ],
+        "first_difference": null
+      },
+      "error": null,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-v3/seed3-d8-amaemon/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "9a0ff28b959184366a8ea2032d344244a1200d74d075ae1cd596f85d1ec9e0f7",
+      "rc_sha256": "db501ace903f75900e1f48f601150b61daa537b2821c3f859082ae240212050d",
+      "initial": {
+        "floor": "D:8",
+        "hp": 90,
+        "max_hp": 90,
+        "monsters": {
+          "1": {
+            "name": "Amaemon",
+            "reachable": true,
+            "threat": 3,
+            "x": 6,
+            "y": 0
+          }
+        },
+        "status": "",
+        "turn": 8582
+      }
+    },
+    {
+      "id": "death-cases-direct-save-v2/seed1-d11-centaurs-critical",
+      "seed": "6144198052690956201",
+      "split_group": "6144198052690956201",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-direct-save-v2/seed1-d11-centaurs-critical/result.json",
+      "result_sha256": "c8259f2b3c36c9a67a9e930e7a473ee1b6f9a2e97c56e52d742f84d11f9ca4e2",
+      "eligible": false,
+      "fidelity": {
+        "passed": false,
+        "lengths": [
+          17,
+          34
+        ],
+        "first_difference": 1
+      },
+      "repeatability": {
+        "passed": true,
+        "lengths": [
+          17,
+          17
+        ],
+        "first_difference": null
+      },
+      "error": null,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-direct-save-v2/seed1-d11-centaurs-critical/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "4f540c9594b9da759d9a40e6c4c9459636242827006f8cb1063dd0f0708c4c2d",
+      "rc_sha256": "6fb37c20513bce678b203765805eb9ef48792b40c08d4a6bdbfbcfc86d733692",
+      "initial": {
+        "floor": "D:11",
+        "hp": 91,
+        "max_hp": 118,
+        "monsters": {
+          "1": {
+            "name": "centaur",
+            "reachable": true,
+            "threat": 2,
+            "x": 0,
+            "y": 3
+          }
+        },
+        "status": "berserking (expiring)",
+        "turn": 7798
+      }
+    },
+    {
+      "id": "death-cases-direct-save-v2/seed3-orc2-sorcerer",
+      "seed": "1760771545328102746",
+      "split_group": "1760771545328102746",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-direct-save-v2/seed3-orc2-sorcerer/result.json",
+      "result_sha256": "fc57e77ecf075000cbe46d039c679d7edfb45cbbe73200f602c0a7270968d4da",
+      "eligible": false,
+      "fidelity": null,
+      "repeatability": null,
+      "error": "[Errno 2] No such file or directory: '/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-direct-save-v2/seed3-orc2-sorcerer/worker-_bjuzrj7/transitions.jsonl'",
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-direct-save-v2/seed3-orc2-sorcerer/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "c9281a0a2efd5ebabed0d49f7c649ee6deb654322d7c6efb5fd3e6735d3226f6",
+      "rc_sha256": "91167ec715a9fe334d0274c354297cc258892e43a62b28d340620f6df41e118f",
+      "initial": {
+        "floor": "Orc:2",
+        "hp": 85,
+        "max_hp": 133,
+        "monsters": {
+          "1": {
+            "name": "orc sorcerer",
+            "reachable": true,
+            "threat": 2,
+            "x": 6,
+            "y": -4
+          },
+          "2": {
+            "name": "orc wizard",
+            "reachable": true,
+            "threat": 0,
+            "x": 3,
+            "y": 0
+          },
+          "3": {
+            "name": "orc wizard",
+            "reachable": true,
+            "threat": 0,
+            "x": 3,
+            "y": -2
+          },
+          "4": {
+            "name": "orc wizard",
+            "reachable": true,
+            "threat": 0,
+            "x": 6,
+            "y": -2
+          },
+          "5": {
+            "name": "orc warrior",
+            "reachable": true,
+            "threat": 1,
+            "x": 1,
+            "y": 0
+          }
+        },
+        "status": "parry,flying",
+        "turn": 22209
+      }
+    },
+    {
+      "id": "death-cases-direct-save-v2/seed5-d8-twoheaded-ogre",
+      "seed": "103583508244309201",
+      "split_group": "103583508244309201",
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-direct-save-v2/seed5-d8-twoheaded-ogre/result.json",
+      "result_sha256": "0e5a92bb4cbd20065ce334671445a9a6e94aa63cdd93b9702ca21fd90e824dbe",
+      "eligible": true,
+      "fidelity": {
+        "passed": true,
+        "lengths": [
+          39,
+          39
+        ],
+        "first_difference": null
+      },
+      "repeatability": {
+        "passed": true,
+        "lengths": [
+          39,
+          39
+        ],
+        "first_difference": null
+      },
+      "error": null,
+      "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/death-cases-direct-save-v2/seed5-d8-twoheaded-ogre/case",
+      "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+      "save_sha256": "cf1842aaec0d247ddafe1d3a0145bc5c82bb1bbae903c76469252a0ed09496b3",
+      "rc_sha256": "228926a1652b1a7c46ff2450baca13619449e5f2c529f0ef602f81c8fcb513ac",
+      "initial": {
+        "floor": "D:8",
+        "hp": 81,
+        "max_hp": 81,
+        "monsters": {
+          "1": {
+            "name": "steam dragon",
+            "reachable": true,
+            "threat": 2,
+            "x": 4,
+            "y": 7
+          },
+          "2": {
+            "name": "howler monkey",
+            "reachable": true,
+            "threat": 1,
+            "x": 1,
+            "y": 2
+          },
+          "3": {
+            "name": "two-headed ogre",
+            "reachable": true,
+            "threat": 3,
+            "x": 1,
+            "y": 6
+          }
+        },
+        "status": "flying",
+        "turn": 7682
+      },
+      "outcome": "death",
+      "decisions": 38
+    }
+  ],
+  "transitions": 264,
+  "split_policy": "Group by seed; related checkpoints and repeats must never cross splits.",
+  "scope": "Verified against uninterrupted instrumented replay, not proof of historical full-game equivalence.",
+  "transitions_file": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/dataset-v1/transitions.jsonl",
+  "transitions_sha256": "c752749da6fd131ab02a9db3df184553eacd78961c30fe41fd2354a1ad0a898b"
+}
