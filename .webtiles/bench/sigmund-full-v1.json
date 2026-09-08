@@ -1,0 +1,11 @@
+{
+  "version": "sigmund-full-v1",
+  "stale_seconds": 90,
+  "sessions": [
+    {"session": "codex-bench1", "character": "CodexSigFull1", "seed": "6144198052690956201"},
+    {"session": "codex-bench2", "character": "CodexSigFull2", "seed": "13772526223844354029"},
+    {"session": "codex-support1", "character": "CodexSigFull3", "seed": "1760771545328102746"},
+    {"session": "codex-bench4", "character": "CodexSigFull4", "seed": "17908030050512890810"},
+    {"session": "codex-bench5", "character": "CodexSigFull5", "seed": "103583508244309201"}
+  ]
+}
