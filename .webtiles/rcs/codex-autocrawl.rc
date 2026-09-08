@@ -32,6 +32,7 @@ AUTOCrawl_TACTICS = {
   encounter_control = true, encounter_memory = 8, retreat_hp = 65,
   retreat_moves = 6,
   early_commit = false, early_commit_xl = 4, early_commit_hp = 20,
+  hidden_memory = 20, blind_probe_limit = 3,
 }
 
 -- Editable progression plan. A stage covers every floor in [from, to].
@@ -442,6 +443,31 @@ local function observe_encounter(scan)
   end
   local unseen=BOT.disturbance_warning and
       turn-(BOT.disturbance_last_seen or -10000)<=AUTOCrawl_TACTICS.encounter_memory
+  local visible_caster=false
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    local name=m and m.name and m:name() or ""
+    local invisible=false
+    for _,spell in ipairs(m and m.spells and m:spells() or {}) do
+      if tostring(spell):lower():find("invisibility",1,true) then invisible=true end
+    end
+    if invisible then
+      if not e.hidden_caster or e.hidden_caster.name~=name then
+        say("threat memory: "..name.." can turn invisible")
+      end
+      e.hidden_caster={name=name,seen=turn,threat=enemy.threat or scan.worst}
+      visible_caster=true
+    end
+  end
+  if e.hidden_caster then
+    if unseen then e.hidden_caster.seen=turn end
+    if turn-e.hidden_caster.seen>AUTOCrawl_TACTICS.hidden_memory then
+      say("threat memory expired: "..e.hidden_caster.name)
+      e.hidden_caster=nil
+    end
+  end
+  e.hidden_missing=e.hidden_caster~=nil and not visible_caster
+  unseen=unseen or e.hidden_missing
   local damaged=hp<e.hp
   e.hp=hp
   if scan.any or unseen or (damaged and e.phase~="idle") then e.last_seen=turn end
@@ -457,7 +483,8 @@ local function observe_encounter(scan)
   local phase="idle"
   if active then
     if not you.berserk() and (hp<AUTOCrawl_TACTICS.retreat_hp or
-        (cooldown and scan.any) or (unseen and damaged)) then
+        (cooldown and scan.any) or (unseen and (damaged or
+          (you.poisoned and you.poisoned()) or you.confused()))) then
       phase="disengage"
     elseif not scan.any then phase="recover"
     elseif scan.reachable_adjacent or you.berserk() then phase="fight"
@@ -484,10 +511,14 @@ local function survival_action(scan)
   local encounter=BOT.encounter
   if not scan.any and not (encounter and encounter.active) then return false end
   local count=#scan.monsters
+  -- Protect against confusion before berserk removes access to abilities/items.
+  -- The remembered caster remains relevant even when other monsters are visible.
   if hp<policy.escape_hp or (encounter and encounter.phase=="disengage") then
     if not you.status("about to teleport") and use_known_consumable("scroll","teleportation") then return true end
     if count>=policy.fear_enemy_count and use_known_consumable("scroll","fear") then return true end
   end
+  if encounter and encounter.hidden_caster and not you.status("regenerating")
+      and survival_ability("Trog's Hand",policy.hand_cooldown) then return true end
   if hp<policy.allies_hp and (count>=policy.allies_enemy_count or scan.worst>=3)
       and survival_ability("Brothers in Arms",policy.allies_cooldown) then return true end
   if hp<policy.hand_hp and (scan.reachable_adjacent or (encounter and encounter.unseen))
@@ -561,6 +592,7 @@ end
 
 local function should_berserk(scan)
   local policy=AUTOCrawl_TACTICS
+  if BOT.encounter and BOT.encounter.hidden_missing then return false end
   -- If emergency items failed and retreat cannot separate adjacent enemies,
   -- don't let the abstract disengage intent veto the only usable power spike.
   if policy.early_commit and you.xl and you.xl()<=policy.early_commit_xl
@@ -1608,6 +1640,11 @@ function c_message(text, channel)
   crawl.more_autoclear(true)
   if previous_c_message then previous_c_message(text, channel) end
   local s = string.lower(tostring(text or "")):gsub("<[^>]*>", "")
+  local e=BOT.encounter
+  if e and e.hidden_caster and s:find("you kill "..e.hidden_caster.name:lower().."!",1,true) then
+    e.hidden_caster=nil; e.hidden_missing=false
+    BOT.disturbance_warning=false
+  end
   if s:find("are you sure you want to cancel this blink",1,true) then
     return
   end
@@ -1799,7 +1836,7 @@ function ready()
   -- Invisible or otherwise unclassified activity cannot be resolved by the
   -- visible-monster scanner.  Probe adjacent squares instead of resting into
   -- a safe-wait no-op or walking blindly into the disturbance.
-  if BOT.disturbance_warning and not scan.any then
+  if (BOT.disturbance_warning or (BOT.encounter and BOT.encounter.hidden_missing)) and not scan.any then
     if not BOT.disturbance_announced then
       say("unseen disturbance -- probing adjacent squares.")
       BOT.disturbance_announced = true
@@ -1813,7 +1850,34 @@ function ready()
         break
       end
     end
-    if not cmd and you.turns() - (BOT.disturbance_last_seen or you.turns()) >= 8 then
+    if not cmd and BOT.disturbance_turns>=AUTOCrawl_TACTICS.blind_probe_limit
+        and ((BOT.encounter and BOT.encounter.hidden_missing)
+          or you.turns()-(BOT.disturbance_last_seen or -10000)<8) then
+      -- Stop blind direction cycling. Try a known upstairs route, never an
+      -- unexplored tile, and keep a finite movement budget for this encounter.
+      local e=BOT.encounter
+      if e and not you.berserk() and not you.confused() and not movement_locked()
+          and not (you.mesmerised and you.mesmerised())
+          and e.retreats<AUTOCrawl_TACTICS.retreat_moves then
+        if regular_up() then crawl.sendkeys("<"); return end
+        local best,dist=nil,10000
+        for key,c in pairs(scan.cells) do
+          if regular_up(c.feature) and scan.first_step[key] then
+            local d=math.abs(c.x)+math.abs(c.y)
+            if d<dist then best,dist=scan.first_step[key],d end
+          end
+        end
+        if best then
+          e.retreats=e.retreats+1
+          say("unseen threat: withdrawing toward known upstairs")
+          crawl.sendkeys(best); return
+        end
+      end
+      -- No justified attack direction or usable retreat: consume one turn and
+      -- recheck emergency resources. Never invent a target from stale coordinates.
+      crawl.do_commands({"CMD_WAIT"}); return
+    elseif not cmd and not (BOT.encounter and BOT.encounter.hidden_missing)
+        and you.turns() - (BOT.disturbance_last_seen or you.turns()) >= 8 then
       BOT.disturbance_warning = false
       BOT.disturbance_announced = false
       BOT.disturbance_turns = 0
@@ -1830,7 +1894,7 @@ function ready()
     end
   end
   if scan.any then
-    BOT.disturbance_warning = false
+    if not (BOT.encounter and BOT.encounter.hidden_missing) then BOT.disturbance_warning = false end
     BOT.disturbance_announced = false
     BOT.disturbance_turns = 0
   end

@@ -68,4 +68,22 @@ BOT.disturbance_warning=false; depth=3; hp=100; observe(scan)
 assert(BOT.encounter.phase=="idle" and BOT.encounter.peak==0,"reset on level change")
 AUTOCrawl_TACTICS.encounter_control=false; observe(scan)
 assert(BOT.encounter==nil,"legacy policy remains selectable")
+AUTOCrawl_TACTICS.encounter_control=true
+BOT.disturbance_warning=false; hp=100; turn=100
+scan.any=true; scan.worst=2; scan.reachable_adjacent=true
+scan.monsters={{x=1,y=0,reachable=true,threat=2,monster={
+  name=function() return "Sigmund" end,spells=function() return {"Invisibility","Confuse"} end}}}
+observe(scan); assert(BOT.encounter.hidden_caster.name=="Sigmund")
+local used
+you.ability_info=function() return {{"Trog's Hand",true,"b"}} end
+you.activate_ability=function(name) used=name; return true end
+items.inventory=function() return {} end
+assert(survival(scan) and used=="Trog's Hand","prebuff at full HP before caster disappears")
+scan.monsters={{x=1,y=0,reachable=true,threat=1}}; scan.worst=1; turn=101
+observe(scan)
+assert(BOT.encounter.hidden_missing and BOT.encounter.unseen,
+  "other visible hostiles do not erase remembered invisible caster")
+assert(not rage(scan),"unresolved invisible caster vetoes berserk")
+c_message("You kill Sigmund!","plain")
+assert(not BOT.encounter.hidden_caster,"confirmed death clears threat memory")
 print("encounter regression cases passed")
