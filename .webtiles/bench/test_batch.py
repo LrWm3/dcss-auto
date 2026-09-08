@@ -58,6 +58,18 @@ class BatchTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 batch.configured_rc(self.rc, overrides)
 
+    def test_postmortem_reuse_requires_identity_and_no_save(self):
+        self.launch()
+        dump = self.game / 'morgue/morgue-Test1-20260907.txt'
+        dump.write_text(f"Game seed: {batch.runner.SEEDS[0]} (custom seed)\n"
+                        'Test1 the Fighter Turns: 532\nXL: 3\n 532 | D:2 | You die...\n')
+        batch.collect('test-v1')
+        with patch.object(batch, 'command', side_effect=lambda *a: '123' if 'display-message' in a else 'Gear: 3/52 gear slots'), \
+                patch.object(Path, 'read_bytes', return_value=b'crawl\0-name\0Test1\0'):
+            self.assertTrue(batch.reusable('test1', ['%1']))
+            (self.game / 'saves/Test1.cs').write_bytes(b'saved')
+            self.assertFalse(batch.reusable('test1', ['%1']))
+
     def test_death_collection_idempotent(self):
         self.launch()
         dump = self.game / 'morgue/morgue-Test1-20260907.txt'

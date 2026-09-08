@@ -1,0 +1,297 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 1760771545328102746 (custom seed)
+
+252 CodexSupport3 the Chopper (level 5, -9/47 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Follower of Trog.
+             Succumbed to Sigmund's poison
+             ... on level 3 of the Dungeon.
+             The game lasted 00:00:14 (2788 turns).
+
+CodexSupport3 the Chopper (Minotaur Berserker)      Turns: 2788, Time: 00:00:14
+
+Health: -9/47      AC:  8    Str: 24    XL:     5   Next: 89%
+Magic:  4/4        EV: 10    Int:  4    God:    Trog [*.....]
+Gold:   134        SH:  0    Dex:  9    Spells: 4/4 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   d - +0 scale mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    .....           (no amulet)
+Stlth                   (no ring)
+HPRegen 0.27/turn       (no ring)
+MPRegen 0.09/turn
+
+%: no passive effects
+@: lethally poisoned (-9 -> -40), on berserk cooldown, slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (6%)
+
+
+You were on level 3 of the Dungeon.
+You worshipped Trog.
+Trog was aware of your devotion.
+You visited 1 branch of the dungeon, and saw 5 of its levels.
+
+You collected 134 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ b - a +0 cloak (worn)
+ d - a +0 scale mail (worn)
+Scrolls
+ c - a scroll of enchant weapon {unknown}
+ d - a scroll of amnesia {unknown}
+ h - a scroll of silence {unknown}
+ f - a scroll of fear
+ k - a scroll of blinking {unknown}
+ l - 3 scrolls of identify {unknown}
+ m - a scroll of fog {unknown}
+ I - a scroll of immolation
+ o - a scroll of revelation {unknown}
+Potions
+ j - a potion of ambrosia {unknown}
+ f - a potion of enlightenment {unknown}
+ n - 3 potions of berserk rage {unknown}
+ p - a potion of heal wounds {unknown}
+
+
+   Skills:
+ + Level 4.8 Fighting
+ * Level 5.7 Axes
+ + Level 3.9 Armour
+ + Level 3.6 Dodging
+
+
+You had 4 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (5/15)            
+Temple: D:4-7       
+
+Altars:
+Dithmenos
+Gozag
+Sif Muna
+Vehumet
+
+Shops:
+D:4 (
+
+Annotations:
+D:3 Sigmund
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You slice the rat!!
+You kill the rat!
+Trog accepts your kill.
+The quokka barely misses you. You furiously retaliate! You headbutt the quokka.
+You kill the quokka!
+Trog accepts your kill.
+Sigmund gestures wildly while chanting.
+Sigmund flickers and vanishes!
+Deactivating autopickup; reactivate with Ctrl-A.
+You feel a strong urge to attack something.
+The frilled lizard barely misses you.
+You see here a rat corpse.
+You slash the frilled lizard!
+You kill the frilled lizard!
+Trog accepts your kill.
+You see here a rat corpse.
+You feel a strong urge to attack something.
+You are no longer berserk.
+You are exhausted. You feel yourself slow down.
+Something hits you.
+You are poisoned.
+[MiBe bot] unseen disturbance -- probing adjacent squares.
+You swing at nothing.
+You feel very sick.
+You hear some strange, mumbled words.
+A puff of flame appears from out of thin air!
+The puff of flame hits you. Something hits you.
+You are more poisoned.
+You swing at nothing.
+You feel very sick.
+Something hits you!
+You are more poisoned.
+You swing at nothing.
+* * * LOW HITPOINT WARNING * * *
+You feel very sick.
+Something hits you!
+* * * LOW HITPOINT WARNING * * *
+You are more poisoned.
+You swing at nothing.
+You die...
+
+ ########  .#
+  .. ...###.
+   ........
+    . ....##
+    #.#....#
+    #.#....###
+    #........#
+ ...#..>.†...#
+........@....#
+..#..#.†>...##
+#..#..{.....#
+.#..#...#.#=#
+ .#..#..#.#.#
+  !#......# #
+ . ..###..#
+  ###    .#
+
+
+There were no monsters in sight!
+
+Vanquished Creatures
+  A howler monkey (D:5)
+  A hound (D:5)
+  An iguana (D:5)
+  An orc wizard (D:3)
+  4 gnolls (D:2)
+  6 adders
+  A dart slug (D:1)
+  3 orcs
+  5 endoplasms
+  6 hobgoblins
+  4 jackals (D:2)
+  A quokka (D:3)
+  2 ball pythons
+  2 bats (D:2)
+  6 frilled lizards
+  3 goblins
+  A kobold (D:1)
+  4 rats
+52 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexSupport3 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   208 | D:1      | Found a faded altar of an unknown god.
+   550 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   587 | D:1      | Reached skill level 4 in Axes
+  1163 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1278 | D:2      | Reached XP level 4. HP: 33/40 MP: 3/3
+  1829 | D:2      | Reached skill level 5 in Axes
+  2250 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2300 | D:3      | You fall into a shaft and drop 2 floors!
+  2300 | D:5      | Entered Level 5 of the Dungeon
+  2505 | D:5      | Found an opulent altar of Gozag.
+  2508 | D:5      | Found a shadowy altar of Dithmenos.
+  2513 | D:5      | Found a radiant altar of Vehumet.
+  2516 | D:5      | Found a shimmering blue altar of Sif Muna.
+  2627 | D:4      | Encountered an ogre
+  2770 | D:4      | Found Num Usuu's Weapon Shoppe.
+  2775 | D:3      | Encountered Sigmund
+  2787 | D:3      | HP: 1/47 [something (12)]
+  2788 | D:3      | Succumbed to Sigmund's poison
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      ncdulo_halloftheorcs, layout_basic, serial_curves, eino_curves_04,
+          eino_curves_02, eino_curves_03, eino_curves_02,
+          dilly_ecumenical_altar_fadedgnrine
+D:2:      layout_basic, serial_curves, eino_curves_04, eino_curves_01
+D:3:      layout_loops_ring, minmay_misc_feat_diagonals, uniq_natasha,
+          uniq_jessica, uniq_sigmund
+D:4:      layout_basic, serial_shops, nicolae_shop_statue_plus, shop,
+          nicolae_shop_peninsula, uniq_crazy_yiuf_cottage, uniq_eustachio
+D:5:      minmay_clustersquares, layout_basic,
+          nicolae_overflow_macrodata_refinement
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Axes           |     4     5 |  5.7
+Fighting       |     4       |  4.8
+Armour         |        3    |  3.9
+Dodging        |           3 |  3.6
+
+Action                     |  1- 3 |  4- 6 || total
+---------------------------+-------+-------++-------
+ Attack: Normal            |    41 |    51 ||    92
+  Melee: Hand axe          |    46 |    57 ||   103
+         Headbutt          |    16 |    16 ||    32
+ Invoke: Berserk           |     4 |     6 ||    10
+   Read: Teleportation     |     1 |     3 ||     4
+         Fear              |       |     1 ||     1
+         Immolation        |       |     1 ||     1
+ Armour: Animal skin       |     6 |       ||     6
+         Ring mail         |    14 |    27 ||    41
+         Scale mail        |       |    11 ||    11
+  Dodge: Dodged            |    27 |    32 ||    59
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   2885 |   2729 |    156 |      0 |   1896 |   5 |  577.0 |
+       Dungeon |   2885 |   2729 |    156 |      0 |   1896 |   5 |  577.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:2: 1277 daAuts
+     D:1: 956 daAuts
+     D:5: 362 daAuts
+     D:4: 156 daAuts
+     D:3: 132 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    17 |    18 ||    35
+         Kill Wizard  |     0 |     1 ||     1
+----------------------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    25 |    27 ||    52
+         Kill Wizard  |     0 |     1 ||     1
+----------------------+-------+-------++-------
+

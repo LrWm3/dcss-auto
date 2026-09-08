@@ -76,3 +76,34 @@ Added batch.py and a five-seed JSON config to snapshot RC revisions, launch
 parallel tmux games, monitor without gameplay input, and import verified deaths
 idempotently. Suspected stalls and reported completions stay distinct from
 verified terminal results. This tooling change does not alter the bot policy.
+
+## Tactical variants: threat-position, early-support, emergency-rage
+
+Tested three five-seed batches with immutable, hashed RC snapshots. All 15
+characters died autonomously; no observed stalls and no gameplay intervention.
+The runner collected each death, and reused the five support sessions for the
+emergency-rage batch. A runner safeguard initially refused the postmortem
+inventory screen; fixed it to validate the process identity, matching death dump,
+and absence of a save before reuse. No live game was interrupted.
+
+| Variant | Reached ranks in fixed seed order | Minimum | Deltas vs positioning-v1 |
+| --- | --- | --- | --- |
+| positioning-v1 reference | 5, 2, 5, 6, 5 | 2 | — |
+| threat-position-v1 | 2, 13, 7, 8, 8 | 2 | -3, +11, +2, +2, +3 |
+| early-support-v1 | 5, 2, 5, 6, 5 | 2 | 0, 0, 0, 0, 0 |
+| emergency-rage-v1 | 5, 2, 5, 6, 5 | 2 | 0, 0, 0, 0, 0 |
+
+Threat-position disables crowd-triggered berserk and removes its HP floor while
+keeping positioning. Rank13 is Lair:2. Earlier support raises healing, escape,
+haste, might, and ally thresholds; emergency-rage changes only berserk_hp to zero.
+Exact overrides are tracked in the named JSON configs. These reached milestones
+do not establish floor clears. Every minimum still trails historical-original's 4.
+
+The Robin seed dies at exactly turn532 under positioning, early support, and
+emergency rage, but reaches Lair:2 under threat-position. This suggests the crowd
+trigger/timing is more consequential here than the HP cutoff or resource
+thresholds. Conversely threat-position's first seed dies to D:2 gnolls while
+berserk. These are single-replay observations, not proof of a causal mechanism.
+Next useful target is encounter-specific crowd timing/positioning, not simply
+raising more consumable thresholds. Main RC remains unchanged; retain all three
+variants for further iteration without claiming a measured improvement.
