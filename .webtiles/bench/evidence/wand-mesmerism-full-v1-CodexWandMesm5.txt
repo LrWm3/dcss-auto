@@ -1,0 +1,428 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 103583508244309201 (custom seed)
+
+8212 CodexWandMesm5 the Cleaver (level 11, 0/97 HPs)
+             Began as a Minotaur Berserker on Sept 8, 2026.
+             Was a Believer of Trog.
+             Killed from afar by an electric eel (4 damage)
+             ... with a bolt of electricity
+             ... on level 10 of the Dungeon.
+             The game lasted 00:00:54 (9152 turns).
+
+CodexWandMesm5 the Cleaver (Minotaur Berserker)     Turns: 9152, Time: 00:00:54
+
+Health: 0/97       AC: 18    Str: 25    XL:     11   Next: 6%
+Magic:  10/10      EV:  9    Int:  4    God:    Trog [**....]
+Gold:   473        SH:  0    Dex: 11    Spells: 10/10 levels left
+
+rFire   . . .  (100%)   h - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   a - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   c - +0 cloak
+rCorr   +      (50%)    e - +0 pair of gloves
+SInv    .               b - +0 pair of boots {Fly}
+Will    .....           g - amulet of chemistry
+Stlth                   f - ring of resist corrosion
+HPRegen 0.36/turn       (no ring)
+MPRegen 0.12/turn
+
+%: no passive effects
+@: flying
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (3%), Trog's Hand (5%)
+
+
+You were on level 10 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 10 of its levels.
+
+You collected 473 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ h - a +0 war axe (weapon)
+ j - a +1 hand axe of freezing
+Armour
+ a - a +0 plate armour (worn)
+ b - a +0 pair of boots of flying (worn)
+ c - a +0 cloak (worn)
+ d - the +6 chain mail of Heasu {rPois rC++ Int-4 Dex+3}
+   (You found it on level 2 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   rC++:      It greatly protects you from cold.
+   Int-4:     It affects your intelligence (-4).
+   Dex+3:     It affects your dexterity (+3).
+   
+   It cannot be enchanted further.
+ e - a +0 pair of gloves (worn)
+Jewellery
+ f - a ring of resist corrosion (worn)
+ g - an amulet of chemistry (worn)
+ i - an amulet of magic regeneration
+Wands
+ b - a wand of light (10)
+ f - a wand of mindburst (19)
+Scrolls
+ h - a scroll of fog {unknown}
+ V - 4 scrolls of vulnerability
+ e - a scroll of enchant weapon {unknown}
+ k - a scroll of poison {unknown}
+Potions
+ M - 2 potions of mutation
+ L - 3 potions of lignification
+ C - 2 potions of cancellation
+ f - a potion of moonshine
+ A - 2 potions of attraction
+ j - a potion of might {unknown}
+
+
+   Skills:
+ + Level 9.5 Fighting
+ * Level 12.7 Axes
+ + Level 9.1 Armour
+ + Level 8.1 Dodging
+ + Level 5.0 Evocations
+
+
+You had 10 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (10/15)            Temple (0/1) D:4         
+  Lair: D:8-11         Orc: D:9-12      
+
+The Realm of Zot is guarded by orbs of winter.
+
+Altars:
+Ashenzari
+Elyvilon
+Fedhas
+Gozag
+Makhleb
+Qazlal
+Ru
+Uskayaw
+Wu Jian
+Xom
+Zin
+Ignis
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you.
+You slash the troll!
+You kill the troll!
+Trog accepts your kill.
+The troll leather armour is intact enough to wear.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits the orc. The bolt of electricity hits you!
+* * * LOW HITPOINT WARNING * * *
+You slash the orc!
+You kill the orc!
+Trog accepts your kill.
+Your skin stops crawling. You feel less strong-willed.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity misses you.
+You encounter a marrowcuda.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity misses you.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you.
+* * * LOW HITPOINT WARNING * * *
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you.
+* * * LOW HITPOINT WARNING * * *
+You hit the electric eel.
+The electric eel is lightly wounded.
+You slash the electric eel!
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you!
+* * * LOW HITPOINT WARNING * * *
+You encounter a marrowcuda.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you!
+* * * LOW HITPOINT WARNING * * *
+You miss the electric eel.
+The electric eel is severely wounded.
+You hit the electric eel.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you.
+You die...
+
+#........###############
+#........#.#.#.#.#.#.#.#
+#.......!+#.#.#.#.#.#.#.
+#........#.#.#.#.#.#.#+.
+#.....[.....#.#.......#.
+...........#.#.#.....#..
+........)..+#.#.......#.
+.####......#.#.#.....#.#
+   ##..@.)..#.#.#.#.#.#.
+   #~~SS##.#.#.#.#.#.#.#
+~~~~~~)oF.#.#.#.#.#.#.#.
+~~~~~~~~~~.#.#.#.#.#.#.
+~~~~~~~~~~~.#.#.#.#.#.
+~~~~~~~~~<~#.#.#.#.#.
+F~~~~~~~~~~. ...#.#.
+~~~~~~~~~~~#. ...#.
+~~~~~~~~~~#.#>
+
+
+You could see 2 marrowcudas, 2 electric eels and an orc wizard.
+
+Vanquished Creatures
+  3 two-headed ogres
+  Sonja (D:10)
+  Pikel (D:6)
+  A kobold demonologist (D:9)
+  2 trolls
+  A hornet (D:7)
+  A wraith (D:9)
+  2 wyverns (D:7)
+  5 yaks (D:8)
+  A steam dragon (D:8)
+  Menkaure (D:6)
+  Duvessa (D:5)
+  A kobold geomancer (D:9)
+  An orc warrior (D:9)
+  A sky beast (D:5)
+  A black bear (D:5)
+  A centaur (D:7)
+  3 lemures (D:6)
+  3 phantoms
+  4 kobold brigands
+  A gnoll sergeant (D:8)
+  5 scorpions
+  4 rock fish (D:8)
+  A marrowcuda (D:6)
+  Dowan (D:5)
+  A bes kemwar (D:5)
+  12 killer bees (D:9)
+  A howler monkey (D:8)
+  2 bombardier beetles
+  3 hounds
+  2 jellies
+  4 orc priests
+  A gnoll bouda (D:5)
+  A drude (D:7)
+  2 iguanas
+  8 orc wizards
+  8 gnolls
+  8 adders
+  2 ufetubi (D:7)
+  4 ribbon worms
+  3 dart slugs
+  25 orcs
+  9 endoplasms
+  12 hobgoblins
+  5 jackals (D:4)
+  9 quokkas
+  4 ball pythons
+  8 bats
+  3 frilled lizards
+  3 goblins
+  19 kobolds
+  5 rats
+211 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexWandMesm5 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    61 | D:1      | Reached skill level 4 in Axes
+    61 | D:1      | Reached XP level 2. HP: 20/27 MP: 1/1
+   869 | D:2      | Found a faded altar of an unknown god.
+   896 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1032 | D:2      | Identified the +6 chain mail of Heasu {rPois rC++ Int-4
+                  | Dex+3}
+  1156 | D:2      | Reached ** piety under Trog
+  1376 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1463 | D:3      | Found a glowing silver altar of Zin.
+  1463 | D:3      | Found an opulent altar of Gozag.
+  1940 | D:3      | Reached skill level 5 in Axes
+  2026 | D:3      | Found a white marble altar of Elyvilon.
+  2052 | D:3      | Found a hide-covered altar of Uskayaw.
+  2276 | D:4      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2640 | D:4      | Found a statue of an orb of winter.
+  2640 | D:4      | Found a staircase to the Ecumenical Temple.
+  2640 | D:4      | Found a statue of an orb of winter.
+  2665 | D:4      | Reached skill level 6 in Axes
+  2665 | D:4      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2667 | D:4      | Reached skill level 5 in Fighting
+  3550 | D:5      | Entered Level 5 of the Dungeon
+  3668 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3998 | D:5      | Reached skill level 7 in Axes
+  4162 | D:5      | Encountered Dowan
+  4163 | D:5      | Encountered Duvessa
+  4165 | D:5      | Found a stormy altar of Qazlal.
+  4169 | D:5      | Reached skill level 5 in Armour
+  4171 | D:5      | Killed Dowan
+  4178 | D:5      | Killed Duvessa
+  4324 | D:5      | Reached skill level 5 in Dodging
+  4324 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4327 | D:5      | Reached skill level 8 in Axes
+  5176 | D:6      | Reached skill level 1 in Evocations
+  5225 | D:6      | Encountered Pikel
+  5239 | D:6      | Killed Pikel
+  5240 | D:6      | Reached skill level 9 in Axes
+  5417 | D:6      | Encountered Menkaure
+  5426 | D:6      | Killed Menkaure
+  5468 | D:6      | Reached XP level 9. HP: 79/79 MP: 8/8
+  6083 | D:7      | Found a candlelit altar of Ignis.
+  6085 | D:7      | Found a burning altar of Makhleb.
+  6156 | D:7      | You are sucked into a shaft and drop 2 floors!
+  6166 | D:9      | Found a blossoming altar of Fedhas.
+  6169 | D:9      | Found a broken altar of Ashenzari.
+  6172 | D:9      | Found an ornate altar of the Wu Jian Council.
+  6175 | D:9      | Found a sacrificial altar of Ru.
+  6285 | D:9      | Reached skill level 10 in Axes
+  6531 | D:8      | Encountered a two-headed ogre
+  6537 | D:8      | Killed a two-headed ogre
+  6687 | D:8      | Reached skill level 11 in Axes
+  6690 | D:8      | Reached XP level 10. HP: 88/88 MP: 9/9
+  6856 | D:7      | Paralysed by a hornet for 2.5 turns
+  7299 | D:7      | Found a shimmering altar of Xom.
+  8166 | D:9      | Identified the medusa talisman of Protective Custody {Harm
+                  | rElec Str+3}
+  8175 | D:9      | Encountered a two-headed ogre
+  8181 | D:9      | Killed a two-headed ogre
+  8300 | D:9      | Reached skill level 12 in Axes
+  8474 | D:9      | Encountered a two-headed ogre
+  8486 | D:9      | Killed a two-headed ogre
+  8931 | D:10     | Entered Level 10 of the Dungeon
+  8976 | D:10     | Encountered Sonja
+  8982 | D:10     | Killed Sonja
+  8983 | D:10     | Reached skill level 5 in Evocations
+  8983 | D:10     | Reached XP level 11. HP: 81/97 MP: 10/10
+  9151 | D:10     | HP: 4/97 [electric eel/bolt of electricity (10)]
+  9152 | D:10     | Killed from afar by an electric eel
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      evilmike_arrival_rings, layout_basic
+D:2:      layout_rooms, shapermc_ecumenical_altar_mp_ritualfount,
+          minmay_increasing_density
+D:3:      layout_loops_ring, grunt_temple_overflow_gold_and_silver,
+          mainiacjoe_overflow_big_doors, grunt_ministairs_7
+D:4:      layout_layer_cave, minmay_temple_entry_tees, hangedman_decor_riveting
+D:5:      layout_layer_cave, nicolae_qazlal_beasts_of_the_sky,
+          corexii_item_surrounded_by_moat, kennysheep_small_spiral, uniq_duvessa
+D:6:      layout_cave_pools, uniq_menkaure, uniq_pikel
+D:7:      layout_loops_ring, xom_redecorated,
+          dolorous_makhleb_big_flames_little_flames
+D:8:      layout_cave_pods, eino_curves_04
+D:9:      layout_roguey, grunt_temple_overflow_cloverleaf, serial_bayou_pond_d,
+          grunt_pizzeria
+D:10:     layout_basic, mainiacjoe_overflow_alcove_1, minmay_lair_entry_grove,
+          kennysheep_orc_monster_closet_entryway, uniq_sonja
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 |
+---------------+-------------------------------+-----
+Axes           |  4        5  6     7  9 11 12 | 12.7
+Fighting       |        4        5  6  7  8  9 |  9.5
+Armour         |        3     4     5  6  7  9 |  9.1
+Dodging        |           3     4  5     7  8 |  8.1
+Evocations     |                       2  3  5 |  5.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+---------------------------+-------+-------+-------+-------++-------
+ Attack: Normal            |    77 |   132 |   179 |   106 ||   494
+  Melee: Hand axe          |    84 |   170 |   253 |    98 ||   605
+         Headbutt          |    14 |    31 |    51 |    41 ||   137
+         War axe           |       |       |       |    32 ||    32
+ Invoke: Berserk           |     1 |     7 |    20 |     9 ||    37
+         Trog's Hand       |     1 |     5 |     3 |     7 ||    16
+  Drink: Curing            |       |       |     2 |       ||     2
+         Heal wounds       |       |       |       |     3 ||     3
+         Haste             |       |       |       |     1 ||     1
+   Read: Identify          |     1 |     5 |     1 |     1 ||     8
+         Fear              |       |       |     2 |       ||     2
+         Teleportation     |       |       |       |     2 ||     2
+         Vulnerability     |       |       |       |     1 ||     1
+ Armour: Animal skin       |     2 |       |       |       ||     2
+         Leather armour    |    11 |       |       |       ||    11
+         Ring mail         |     1 |       |       |       ||     1
+         Scale mail        |    25 |    89 |       |       ||   114
+         Chain mail        |       |    12 |   132 |    50 ||   194
+         Plate armour      |       |       |       |    58 ||    58
+  Dodge: Dodged            |    43 |    71 |    88 |    55 ||   257
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   9453 |   9182 |    271 |      0 |   5163 |  10 |  945.3 |
+       Dungeon |   9453 |   9182 |    271 |      0 |   5163 |  10 |  945.3 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1626 daAuts
+     D:4: 1462 daAuts
+     D:9: 1274 daAuts
+     D:7: 1129 daAuts
+     D:8: 949 daAuts
+     D:1: 782 daAuts
+     D:3: 743 daAuts
+     D:6: 637 daAuts
+     D:2: 637 daAuts
+    D:10: 210 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    26 |    38 |    36 |    28 ||   129
+         Kill Undead  |     0 |     1 |     4 |     1 ||     5
+          Kill Demon  |     0 |     0 |     0 |     2 ||     2
+         Kill Wizard  |     0 |     2 |     2 |     4 ||     7
+----------------------+-------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    38 |    59 |    56 |    45 ||   198
+         Kill Undead  |     0 |     1 |     5 |     1 ||     7
+          Kill Demon  |     0 |     0 |     0 |     3 ||     3
+         Kill Wizard  |     0 |     3 |     3 |     7 ||    13
+----------------------+-------+-------+-------+-------++-------
+

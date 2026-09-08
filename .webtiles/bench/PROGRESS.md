@@ -413,3 +413,38 @@ surviving ranged Shoals packs is not solved or claimed by this narrow fix.
 Separate interventions/mesmerism-v1.json and immutable endpoint evidence preserve
 this mixed-version result; original paused seed row remains unchanged. Bench2's
 Lodul diagnostic character was untouched.
+
+## Full five-seed rebenchmark: wand-mesmerism-full-v1
+
+Fresh parallel games, no tactical overrides, tested commit
+cb56138ac4a2986182d13f547b169f9144bb0186 and RC
+f17f73a940e6847394827d922ad910b0aaa10c6ec7dbdd117fbb36e4b87d977d.
+Engine54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38.
+Reused verified finished runner sessions support1/support2/bench5/bench4/support5;
+preserved diagnostic characters. All five naturally died without gameplay
+intervention; no RC edits during the batch. Exact config, rows and morgues saved.
+
+Comparison with the last complete five-seed batch, sigmund-full-v1:
+
+| Seed index | Previous reached | New reached | Death location / cause | Turns | XL |
+| --- | --- | --- | --- | --- | --- |
+| 1 | D:10 | D:10 | D:10, boulder beetle | 9168 | 10 |
+| 2 | D:14 | D:12 (after Lair) | D:12, Frances's summoned sun demon | 17934 | 14 |
+| 3 | D:7 | D:7 | D:7, wyvern | 6631 | 9 |
+| 4 | D:6 | D:7 | D:6, orc priest's divine providence | 5913 | 8 |
+| 5 | D:9 | D:10 | D:10, electric eel | 9152 | 11 |
+
+Reached ranks change [10,21,7,6,9] -> [10,17,7,7,10], paired deltas
+[0,-4,0,+1,+1]. Recorded minimum rises6->7, but seed4's apparent gain is
+a D:4-to-D:7 shaft at3374, not a confirmed D:6 clear; it still dies on D:6.
+Do not treat this as established improvement in weakest-seed survival.
+Likewise previous seed2 D:14 was shaft-inflated; numeric reached regression
+does not fully describe its longer new run with Lair progression. This replay
+also falls short of the isolated wand-gate-seed2-v1 run reaching Shoals:2.
+No new D:15 clear demonstrated. One replay per seed is a screening result,
+not causal isolation of mesmerisation versus wand changes or random divergence.
+
+Seed2 retained charm12/mindburst16/warping10 charges and used heal wounds during
+the fatal Frances pack, while slowed on berserk cooldown. Resource exhaustion
+is therefore not sufficient to explain that death. No automatic policy changes
+made during this benchmarking request; all original baseline rows remain intact.
