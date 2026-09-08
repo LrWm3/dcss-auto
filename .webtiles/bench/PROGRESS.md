@@ -1354,3 +1354,19 @@ Canonical23Lua suites,14tactical Python tests,10hook tests,3direct-transport cas
 and10batch tests pass. Next useful work: train/evaluate on the verified centaur
 and mixed ogre cases, and resolve prefix/save fidelity before using quarantined
 Orc/Amaemon/berserk cases as deployment evidence.
+
+## 2026-09-08 — automatic encounter miner, first 30 verified captures
+
+Added tactical/mine_encounters.py: config-driven private discovery, visible
+first-contact boundaries, seed-balanced severity ranking, checkpoint capture,
+two-reset comparison against original discovery (including full replay prefix),
+and automatic verified-only dataset indexing. Source/engine/trace hashes pinned;
+stalls/budgets/errors are not death labels. All examples from one seed share a
+split group. No production RC or trained model changes.
+
+mining-v1 discovered60 candidates from five new seeds83017001..83017005,
+selected/saved/verified30, quarantined0, exported435 decisions. These are mostly
+D:1 comparison successes and oneD:2 fight: proof of collection, not thirty hard
+problems or policy improvement. Heavy saves/traces in tactical/artifacts/mining-v1;
+tracked evidence tactical/evidence/mining-v1.json. Longer discovery is separate.
+14tactical Python tests,8mining tests,3direct-transport tests and23RC suites pass.

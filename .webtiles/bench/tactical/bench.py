@@ -216,6 +216,16 @@ class Environment:
             observation = self.step('baseline')
             if observation.get('terminal'):
                 raise RuntimeError('Died before requested checkpoint')
+        return self.save_checkpoint(destination, warmup)
+
+    def save_checkpoint(self, destination, warmup=0):
+        """Save the current decision boundary without replaying or advancing it."""
+        destination = Path(destination).resolve()
+        if destination.exists():
+            raise FileExistsError(destination)
+        observation = self.state
+        if observation.get('terminal'):
+            raise RuntimeError('Cannot checkpoint a terminal state')
         if self.direct_transport and 'TB_DIRECT_SAVE=true' in (self.work/'trial.rc').read_text():
             self.child.send('z')
         else:

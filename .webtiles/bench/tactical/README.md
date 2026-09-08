@@ -325,3 +325,59 @@ not been established. Do not attribute unrelated progression gains to the model.
 Before further training, compare action/observation traces through a disabled
 adapter, then through the deployed adapter, and eliminate these discrepancies.
 Paused runs are recorded as paused, not deaths or successes.
+
+## Automatic encounter mining
+
+`mine_encounters.py` runs private baseline games from a JSON configuration,
+discovers encounter boundaries, ranks candidates, recreates their starting
+states, and builds a fidelity-gated dataset. It does not control live sessions,
+change the production RC, train a model, or count losing actions as good advice.
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/mine_encounters.py \
+  .webtiles/bench/tactical/mining-v1.json \
+  .webtiles/bench/tactical/artifacts/my-mining-run
+```
+
+Use a **new output directory** for each run. `mining-v1.json` is a short
+30-capture infrastructure demonstration; `mining-deeper-v1.json` allows 2,500
+decisions per seed to search farther for difficult fights. Seeds are arbitrary
+uint64 strings, not restricted to the five main regressions. Configure `rc`,
+`seeds`, `target`, `max_decisions`, `encounters_per_seed`, and `jobs`.
+Optional `rc_sha256` rejects unexpected source changes. The engine is the
+observation-RNG lab binary selected by `bench.py` / `DCSS_TACTICAL_ENGINE`.
+
+An encounter starts when hostiles are visible and ends at full-health observable
+safety, death, a floor change, or a labelled budget/stall. LOS breaks and
+unfinished recovery remain part of the encounter. Floor changes are not wins;
+timeouts and no-turn stalls are not deaths. Selection balances seeds and ranks
+deaths, lost HP fraction, threat, and duration within each seed. Easy successful
+fights remain comparison cases; there is no guarantee every selection is hard.
+HP fraction is used because berserk changes maximum HP. This first version
+does not separately detect resource spending or controller retreat decisions.
+
+The collector verifies every visible observation in the discovery prefix while
+replaying to a selected boundary, saves through the direct input transport, and
+compares **two independent resets against the original discovery continuation**.
+It checks the complete encounter, not only its outcome. Divergent cases stay
+quarantined. Messages and transport sequence IDs are ignored; gameplay fields
+are not. These checks establish visible baseline fidelity for this instrumented
+environment, not equivalence to uninstrumented full-game play or determinism
+for every possible alternative action.
+
+Artifacts include:
+
+- `manifest.json`, frozen `source.rc`, and `config.json`: version/hash provenance.
+- `discoveries.json` and private worker `transitions.jsonl`: original evidence.
+- `candidates.json`: priorities, enemy names, floor, HP loss, and trace offsets.
+- `collection/encounter-NNN/case/`: immutable save/RC bytes and metadata.
+- `collection/encounter-NNN/result.json`: checks and any rejection reason.
+- `dataset/index.json`, `dataset/transitions.jsonl`: verified cases only, one
+  baseline trajectory per case (verification repeats excluded).
+- `summary.json`: discovered, selected, saved, verified, and quarantined counts.
+
+The target counts saved encounters, **not guaranteed training-ready encounters**;
+inspect the summary before training. All cases and repeats from the same seed
+must remain in the same train/validation/test split. Related captures across
+mining runs are not independent examples. Death trajectories are simulator
+starting points for alternative-action search/RL, not imitation targets.

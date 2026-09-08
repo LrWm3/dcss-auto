@@ -1,0 +1,8 @@
+{
+  "rc": ".webtiles/rcs/codex-autocrawl.rc",
+  "seeds": ["83017001", "83017002", "83017003", "83017004", "83017005"],
+  "target": 30,
+  "encounters_per_seed": 200,
+  "max_decisions": 2500,
+  "jobs": 5
+}

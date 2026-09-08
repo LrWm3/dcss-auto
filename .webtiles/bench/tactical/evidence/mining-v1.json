@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-08",
+  "run": ".webtiles/bench/tactical/artifacts/mining-v1",
+  "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "source_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "seeds": ["83017001", "83017002", "83017003", "83017004", "83017005"],
+  "discovered": 60,
+  "selected": 30,
+  "captured": 30,
+  "training_ready": 30,
+  "quarantined": 0,
+  "transitions": 435,
+  "transitions_sha256": "688c48b7dcb6c0670f7998a3cc567d6aefebd9f62909afea9045d7936ab1e21d",
+  "index_sha256": "1a0dcee503277da85fa17205a3724ab36eed59cd7397888d52ca52733170235e",
+  "summary_sha256": "084fb6d3bb96b6f4700540d115a1dc0c0eecbae539cb8e02516930bcc7be1486",
+  "verification": "Every discovery prefix boundary checked; both resets match complete original encounter trajectories.",
+  "scope": "Infrastructure demonstration: mostly easy D:1 fights and one D:2 fight, all safe recoveries. Not evidence of learned improvements. New seeds kept separate from the five main regression seeds."
+}

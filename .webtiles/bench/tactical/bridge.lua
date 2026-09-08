@@ -77,7 +77,7 @@ function ready()
         and you.turns()>=(TB_CAPTURE.min_turn or 0) then
       local scan=scan_hostiles()
       for _,e in ipairs(scan.monsters) do
-        if e.monster:name():lower()==TB_CAPTURE.monster:lower() then
+        if TB_CAPTURE.monster=="*" or e.monster:name():lower()==TB_CAPTURE.monster:lower() then
           TB.active=true; TB.seq=0; TB.reported=0; publish(); return
         end
       end
