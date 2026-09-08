@@ -35,6 +35,7 @@ AUTOCrawl_TACTICS = {
   hidden_memory = 20, blind_probe_limit = 3,
   hidden_hand_cooldown = 8,
   debug_encounters = false,
+  combat_wands = true, charm_min_chance = 60, mindburst_min_chance = 65,
 }
 
 -- Diagnostic breakpoints are opt-in and never benchmark wins or stalls.
@@ -584,6 +585,117 @@ local function survival_action(scan)
       and use_known_consumable("potion","might") then return true end
   return false
 end
+
+-- Deliberately conservative firing corridor: reject ambiguous terrain or any
+-- intervening creature in the bounding rectangle. False negatives are safer
+-- than assuming the engine's alternate beam rays cannot hit an ally.
+local function wand_clear_shot(scan,x,y)
+  for cx=math.min(0,x),math.max(0,x) do
+    for cy=math.min(0,y),math.max(0,y) do
+      if not (cx==0 and cy==0) and not (cx==x and cy==y) then
+        local c=scan.cells[map_key(cx,cy)]
+        if not c or not c.visible or not c.traversable or c.monster
+            or c.invisible_monster then return false end
+      end
+    end
+  end
+  return true
+end
+
+local function wand_options(scan)
+  local options={}
+  if not items or not items.inventory or not items.fire
+      or not AUTOCrawl_TACTICS.combat_wands or not scan.any
+      or you.berserk() or you.confused() then return options end
+  local turn=you.turns()
+  local state=BOT.wand_state or {uses=0,last=-10000,charm_last=-10000}
+  if turn-state.last>20 then state.uses=0 end
+  BOT.wand_state=state
+  if state.last==turn or state.uses>=6 then return options end
+  local ally=false
+  for _,c in pairs(scan.cells) do
+    if c.visible and c.monster and c.monster:attitude()~=0 then ally=true end
+  end
+  for _,it in ipairs(items.inventory()) do
+    if item_class(it)=="wand" and it.is_identified and (it.plus or 0)>0 then
+      local name=item_name(it)
+      local kind=name:find("charming",1,true) and "charming"
+          or name:find("mindburst",1,true) and "mindburst"
+          or name:find("warping",1,true) and "warping"
+      if kind then
+        for _,enemy in ipairs(scan.monsters) do
+          local x,y,m=enemy.x,enemy.y,enemy.monster
+          local distance=math.max(math.abs(x),math.abs(y))
+          if distance<=(kind=="warping" and 5 or 7) and wand_clear_shot(scan,x,y) then
+            local chance,score,reason=nil,nil,nil
+            if kind=="charming" then
+              chance=m:defeat_wl("Charm",true)
+              if not ally and #scan.monsters>=2 and scan.worst>=2 and enemy.threat>=1
+                  and type(chance)=="number" and chance>=AUTOCrawl_TACTICS.charm_min_chance
+                  and turn-state.charm_last>=3 then
+                score=100+chance/10+enemy.threat*3-distance
+                reason="reduce pack pressure"
+              end
+            elseif kind=="mindburst" then
+              chance=m:defeat_wl("Mindburst",true)
+              -- Injury is the visible description bucket, never hidden HP.
+              local injury=m:damage_level()
+              if type(chance)=="number" and chance>=AUTOCrawl_TACTICS.mindburst_min_chance
+                  and enemy.threat>=1 and injury>=3
+                  and (scan.worst>=2 or berserk_recovering() or hp_percent()<60) then
+                score=65+injury*4+chance/10+enemy.threat
+                reason="remove wounded attacker"
+              end
+            else
+              local count,safe=0,distance>1
+              for _,c in pairs(scan.cells) do
+                if c.visible and math.max(math.abs(c.x-x),math.abs(c.y-y))<=1 then
+                  if c.invisible_monster then safe=false end
+                  if c.monster then
+                    if c.monster:attitude()~=0 then safe=false
+                    else count=count+1 end
+                  end
+                end
+              end
+              if safe and count>=2 and scan.worst>=2 then
+                score=60+count*8; reason="safe blast on "..count.." hostiles"
+              end
+            end
+            if score then options[#options+1]={slot=it.slot,kind=kind,x=x,y=y,
+              target=m:name(),chance=chance,score=score,reason=reason} end
+          end
+        end
+      end
+    end
+  end
+  table.sort(options,function(a,b)
+    if a.score~=b.score then return a.score>b.score end
+    if a.x~=b.x then return a.x<b.x end
+    if a.y~=b.y then return a.y<b.y end
+    return a.slot<b.slot
+  end)
+  return options
+end
+
+function autocrawl_wand_options() return wand_options(scan_hostiles()) end
+
+local function combat_wand_action(scan)
+  local option=wand_options(scan)[1]
+  if not option then return false end
+  local turn=you.turns()
+  local state=BOT.wand_state
+  -- Budget attempts too: rejected shots must not create a turnless loop.
+  state.last=turn; state.uses=state.uses+1
+  if option.kind=="charming" then state.charm_last=turn end
+  say("wand: "..option.kind.." -> "..option.target.." ("..option.x..","..option.y
+      ..") "..(option.chance and option.chance.."%; " or "")..option.reason)
+  items.fire(option.slot,option.x,option.y,true)
+  local spent=turn_spent(turn)
+  say("wand result: "..(spent and "action spent; reassess" or "rejected; use ordinary policy"))
+  return spent
+end
+
+function autocrawl_wand_step() return combat_wand_action(scan_hostiles()) end
 
 local function rejected_autofight_action(scan)
   -- Tab can reject targets it filters internally. Fall back to one ordinary
@@ -1938,6 +2050,11 @@ function ready()
   -- The game resets this flag whenever control returns to the player.
   crawl.more_autoclear(true)
   BOT.allow_exclusion_step=nil
+  if AUTOCrawl_DEBUG_STATE.stop_turn and you.turns()>=AUTOCrawl_DEBUG_STATE.stop_turn then
+    AUTOCrawl_DEBUG_STATE.stop_turn=nil
+    AUTOCrawl_DEBUG_STATE.paused=true
+    say("DEBUG PAUSE: bounded encounter test complete")
+  end
   if BOT.paused or AUTOCrawl_DEBUG_STATE.paused then return end
   check_committed_return()
   if BOT.hazard_wait then
@@ -1967,6 +2084,7 @@ function ready()
   end
   observe_encounter(scan)
   if survival_action(scan) then return end
+  if combat_wand_action(scan) then return end
   -- Central gate covers combat pursuit, confusion, exploration, shops and
   -- stair travel. Adjacent melee remains available when not confused.
   if movement_locked() then
