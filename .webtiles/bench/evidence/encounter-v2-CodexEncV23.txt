@@ -1,0 +1,433 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 1760771545328102746 (custom seed)
+
+8251 CodexEncV23 the Cleaver (level 11, 0/145 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Succumbed to orange demon's concentrated venom
+             ... on level 8 of the Dungeon.
+             The game lasted 00:00:44 (9366 turns).
+
+CodexEncV23 the Cleaver (Minotaur Berserker)        Turns: 9366, Time: 00:00:45
+
+Health: 0/145      AC: 19    Str: 26    XL:     11   Next: 7%
+Magic:  10/10      EV:  9    Int: 13    God:    Trog [**....]
+Gold:   656        SH:  0    Dex: 10    Spells: 10/10 levels left
+
+rFire   . . .  (100%)   f - +1 war axe
+rCold   + . .  (50%)    (no offhand)
+rNeg    . . .  (100%)   h - +2 plate armour {rC+}
+rPois   .      (100%)   a - +1 hat {Int+3}
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   g - +0 pair of gloves
+SInv    +               (no boots)
+Will    .....           c - amulet of chemistry
+Stlth                   d - ring of see invisible
+HPRegen 0.44/turn       i - +6 ring of intelligence
+MPRegen 0.12/turn
+
+%: no passive effects
+@: berserking (expiring), lethally poisoned (0 -> -67), slowed
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You were on level 8 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 10 of its levels.
+
+You collected 656 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ f - a +1 war axe (weapon)
+Armour
+ a - a +1 hat of intelligence (worn)
+ b - a +0 cloak (worn)
+ e - a scarf of invisibility
+ g - a +0 pair of gloves (worn)
+ h - a +2 plate armour of cold resistance (worn)
+Jewellery
+ c - an amulet of chemistry (worn)
+ d - a ring of see invisible (worn)
+ i - a +6 ring of intelligence (worn)
+Wands
+ p - a wand of polymorph (11)
+ c - a wand of roots (7)
+Scrolls
+ w - 4 scrolls of enchant weapon
+ d - a scroll of amnesia {unknown}
+ I - a scroll of immolation
+ S - a scroll of silence
+ b - a scroll of blinking
+ V - a scroll of vulnerability
+ m - a scroll of fog {unknown}
+ r - a scroll of revelation
+ e - a scroll of torment {unknown}
+ N - a scroll of noise
+ f - a scroll of fear
+Potions
+ M - a potion of mutation
+ e - 2 potions of enlightenment
+ B - 3 potions of berserk rage
+ c - a potion of curing
+ w - 2 potions of heal wounds
+ a - a potion of ambrosia
+ f - a potion of moonshine {unknown}
+ p - a potion of resistance {unknown}
+ n - a potion of magic {unknown}
+ l - a potion of brilliance {unknown}
+
+
+   Skills:
+ + Level 9.5 Fighting
+ * Level 12.7 Axes
+ + Level 9.1 Armour
+ + Level 8.1 Dodging
+ + Level 5.1 Evocations
+
+
+You had 10 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (10/15)            Temple (0/1) D:7            Lair (0/5) D:8         
+   Orc: D:9-12      
+
+The Realm of Zot is guarded by orbs of entropy.
+
+Altars:
+Cheibriados
+Dithmenos
+Gozag
+Sif Muna
+Trog
+Uskayaw
+Vehumet
+Xom
+
+Shops:
+D:4 ([[
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Amaemon tail-slaps you but does no damage.
+The orange demon stings you from afar!
+You are more poisoned.
+You have difficulty breathing.
+You feel as though you will be slow longer.
+The scorpion stings you but does no damage.
+You slash Amaemon! Your headbutt misses Amaemon.
+Amaemon is almost dead.
+You barely miss the scorpion. x2
+You feel extremely sick.
+The scorpion completely misses you. The scorpion stings you.
+Amaemon gestures at the scorpion while chanting.
+The scorpion's venom grows more potent. The orange demon barely misses you.
+You slash Amaemon!
+You kill Amaemon!
+Trog accepts your kill.
+Trog appreciates your killing of a magic user.
+The scorpion disappears in a puff of smoke! x2
+You feel extremely sick.
+The orange demon stings you but does no damage.
+You feel extremely sick.
+The orange demon stings you but does no damage.
+The orange demon hits you but does no damage.
+You slash the orange demon!
+The orange demon is moderately wounded.
+You feel very sick.
+You slash the orange demon! Your headbutt misses the orange demon.
+The orange demon is heavily wounded.
+You feel very sick.
+The orange demon stings you!
+* * * LOW HITPOINT WARNING * * *
+You are lethally poisoned!
+You have difficulty breathing.
+* * * LOW HITPOINT WARNING * * *
+You feel as though you will be slow longer.
+The orange demon hits you.
+* * * LOW HITPOINT WARNING * * *
+You hit the orange demon.
+The orange demon is severely wounded.
+You die...
+
+....#
+....#   #.
+....#   #.#
+....#   #.#
+....#   #.#
+....#   #.#
+#'#######.##############
+#.#.)........?..........
+#.#............)@......#
+#.#######........4.....#
+#......................#
+........<..###########.#
+...#...........        #
+...+...........#
+...#......###..#
+...######.# #..#
+####  ##..# #..#
+
+
+You could see an orange demon (curare).
+
+Vanquished Creatures
+  Amaemon (D:8)
+  5 slime creatures (D:10)
+  Maggie (D:7)
+  A komodo dragon (D:10)
+  Prince Ribbit (D:9)
+  Sigmund (D:3)
+  Blorkula the orcula (D:7)
+  A shadowghast (D:10)
+  4 vampires (D:9)
+  2 wyverns
+  Eustachio (D:4)
+  A steam dragon (D:7)
+  An acid dragon (D:10)
+  3 water moccasins
+  A kobold geomancer (D:9)
+  4 orc warriors
+  2 black bears (D:6)
+  An ice beast (D:6)
+  A sky beast (D:6)
+  An ogre (D:4)
+  2 centaurs
+  2 phantoms
+  2 kobold brigands
+  2 bullfrogs
+  3 scorpions
+  2 rock fish (D:8)
+  5 vampire bats (D:7)
+  18 killer bees
+  3 howler monkeys
+  2 bombardier beetles
+  3 jellies
+  5 hounds
+  6 orc priests
+  A gnoll bouda (D:6)
+  7 iguanas
+  Jessica (D:3)
+  A clockroach (D:3)
+  2 drudes (D:7)
+  8 orc wizards
+  Natasha (D:3)
+  7 gnolls
+  12 adders
+  A white imp (D:6)
+  An ufetubus (D:5)
+  A ribbon worm (D:4)
+  2 dart slugs
+  29 orcs
+  6 endoplasms
+  10 hobgoblins
+  4 jackals (D:2)
+  3 quokkas
+  4 ball pythons
+  2 bats (D:2)
+  6 frilled lizards
+  6 goblins
+  9 kobolds
+  4 rats
+217 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexEncV23 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   221 | D:1      | Found a faded altar of an unknown god.
+   546 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   591 | D:1      | Reached skill level 4 in Axes
+  1242 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1435 | D:2      | Reached XP level 4. HP: 38/40 MP: 3/3
+  1436 | D:2      | Reached ** piety under Trog
+  1550 | D:2      | Reached skill level 5 in Axes
+  2308 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2381 | D:3      | Encountered Sigmund
+  2386 | D:3      | Killed Sigmund
+  2387 | D:3      | Reached skill level 5 in Fighting
+  2387 | D:3      | Reached XP level 6. HP: 56/56 MP: 5/5
+  2486 | D:3      | Encountered Jessica
+  2493 | D:3      | Killed Jessica
+  2494 | D:3      | Reached skill level 6 in Axes
+  2918 | D:3      | Encountered Natasha
+  2927 | D:3      | Killed Natasha
+  3247 | D:4      | Encountered Eustachio
+  3254 | D:4      | Killed Eustachio
+  3255 | D:4      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3337 | D:4      | Reached skill level 7 in Axes
+  3455 | D:4      | Reached skill level 5 in Armour
+  3492 | D:4      | Found Fibbysoi's Armour Emporium.
+  3509 | D:4      | Found Bytussi's Armour Shop.
+  3570 | D:4      | Found Num Usuu's Weapon Shoppe.
+  4248 | D:5      | Entered Level 5 of the Dungeon
+  4370 | D:5      | Found an opulent altar of Gozag.
+  4371 | D:5      | Found a shimmering blue altar of Sif Muna.
+  4425 | D:5      | Found a shadowy altar of Dithmenos.
+  4428 | D:5      | Found a radiant altar of Vehumet.
+  4811 | D:5      | Reached skill level 5 in Dodging
+  4811 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  5133 | D:5      | Reached skill level 8 in Axes
+  5167 | D:5      | Reached skill level 1 in Evocations
+  5493 | D:6      | Reached skill level 9 in Axes
+  5676 | D:6      | Reached XP level 9. HP: 79/79 MP: 8/8
+  6409 | D:7      | Reached skill level 10 in Axes
+  6682 | D:7      | Encountered Maggie
+  6694 | D:7      | Killed Maggie
+  7202 | D:7      | Reached skill level 11 in Axes
+  7203 | D:7      | Reached XP level 10. HP: 88/88 MP: 9/9
+  7207 | D:7      | Encountered Blorkula the orcula
+  7232 | D:7      | Killed Blorkula the orcula
+  7472 | D:7      | Found a staircase to the Ecumenical Temple.
+  7526 | D:7      | Found a snail-covered altar of Cheibriados.
+  7534 | D:7      | You fall into a shaft and drop 3 floors!
+  7534 | D:10     | Entered Level 10 of the Dungeon
+  7535 | D:10     | Found a hide-covered altar of Uskayaw.
+  8020 | D:9      | Encountered Prince Ribbit
+  8026 | D:9      | Killed Prince Ribbit
+  8035 | D:9      | Reached skill level 12 in Axes
+  8254 | D:9      | Found a shimmering altar of Xom.
+  8395 | D:9      | Found a bloodstained altar of Trog.
+  8621 | D:8      | Reached skill level 5 in Evocations
+  9074 | D:8      | Found a staircase to the Lair.
+  9339 | D:8      | Reached XP level 11. HP: 93/97 MP: 10/10
+  9351 | D:8      | Encountered Amaemon
+  9362 | D:8      | Killed Amaemon
+  9366 | D:8      | Succumbed to orange demon's concentrated venom
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      ncdulo_halloftheorcs, layout_basic, serial_curves, eino_curves_04,
+          eino_curves_02, eino_curves_03, eino_curves_02,
+          dilly_ecumenical_altar_fadedgnrine
+D:2:      layout_basic, serial_curves, eino_curves_04, eino_curves_01
+D:3:      layout_loops_ring, minmay_misc_feat_diagonals, uniq_natasha,
+          uniq_jessica, uniq_sigmund
+D:4:      layout_basic, serial_shops, nicolae_shop_statue_plus, shop,
+          nicolae_shop_peninsula, uniq_crazy_yiuf_cottage, uniq_eustachio
+D:5:      minmay_clustersquares, layout_basic,
+          nicolae_overflow_macrodata_refinement
+D:6:      layout_loops_ring, minmay_fractal_squares_gapless_5
+D:7:      layout_basic, mainiacjoe_overflow_surrounded_room,
+          minmay_temple_entry_from_below_a, uniq_blorkula_the_orcula,
+          uniq_maggie
+D:8:      layout_basic, lair_entry_dummy, uniq_amaemon
+D:9:      layout_gridville, mainiacjoe_overflow_brackets,
+          mainiacjoe_overflow_alcove_2, orc_0_dummy, nzn_life_drinkers,
+          uniq_prince_ribbit1
+D:10:     layout_stronghold, mainiacjoe_overflow_cross_hatched, minivault_5
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 |
+---------------+-------------------------------+-----
+Axes           |     4     5     6  7  9 11 12 | 12.7
+Fighting       |        4     5     6  7  8  9 |  9.5
+Armour         |        3     4     5  6  7  9 |  9.1
+Dodging        |           3     4  5     6  8 |  8.1
+Evocations     |                       2  3  5 |  5.1
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+---------------------------+-------+-------+-------+-------++-------
+ Attack: Normal            |    65 |    91 |   244 |   142 ||   542
+  Melee: Hand axe          |    66 |    97 |   308 |    40 ||   511
+         Headbutt          |    16 |    17 |    85 |    65 ||   183
+         War axe           |       |       |       |   184 ||   184
+ Invoke: Berserk           |     2 |     7 |    26 |    12 ||    47
+         Trog's Hand       |       |     1 |     5 |     3 ||     9
+  Drink: Curing            |       |       |     2 |     1 ||     3
+         Heal wounds       |       |       |     2 |       ||     2
+   Read: Teleportation     |     4 |       |     2 |       ||     6
+         Fear              |       |     1 |     1 |     1 ||     3
+         Immolation        |       |     1 |       |       ||     1
+         Identify          |       |     2 |     3 |     1 ||     6
+         Silence           |       |       |     1 |       ||     1
+         Noise             |       |       |     1 |       ||     1
+         Revelation        |       |       |     1 |       ||     1
+         Enchant weapon    |       |       |       |     1 ||     1
+         Blinking          |       |       |       |     1 ||     1
+         Vulnerability     |       |       |       |     1 ||     1
+   Stab: Sleeping          |     1 |       |       |       ||     1
+ Armour: Animal skin       |     6 |       |       |       ||     6
+         Ring mail         |    40 |    51 |     5 |       ||    96
+         Scale mail        |       |       |   134 |       ||   134
+         Chain mail        |       |       |    41 |    82 ||   123
+         Plate armour      |       |       |       |   100 ||   100
+  Dodge: Dodged            |    27 |    44 |   122 |   113 ||   306
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   9783 |   9481 |    302 |      0 |   5647 |  10 |  978.3 |
+       Dungeon |   9783 |   9481 |    302 |      0 |   5647 |  10 |  978.3 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:2: 1337 daAuts
+     D:7: 1316 daAuts
+     D:6: 1201 daAuts
+     D:4: 1094 daAuts
+     D:5: 1087 daAuts
+     D:1: 983 daAuts
+     D:3: 970 daAuts
+     D:8: 690 daAuts
+     D:9: 590 daAuts
+    D:10: 512 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    18 |    25 |    59 |    27 ||   129
+         Kill Undead  |     0 |     1 |     1 |     4 ||     6
+          Kill Demon  |     0 |     0 |     3 |     1 ||     4
+         Kill Wizard  |     0 |     3 |     4 |     5 ||    11
+----------------------+-------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    26 |    39 |    91 |    43 ||   199
+         Kill Undead  |     0 |     1 |     1 |     6 ||     8
+          Kill Demon  |     0 |     0 |     4 |     1 ||     5
+         Kill Wizard  |     0 |     5 |     7 |     8 ||    20
+----------------------+-------+-------+-------+-------++-------
+

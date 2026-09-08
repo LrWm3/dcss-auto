@@ -1,0 +1,549 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 6144198052690956201 (custom seed)
+
+57058 CodexRecovery1 the Severer (level 14, -7/129 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Priest of Trog.
+             Mangled by a catoblepas (13 damage)
+             ... on level 5 of the Lair of Beasts.
+             The game lasted 00:02:33 (17691 turns).
+
+CodexRecovery1 the Severer (Minotaur Berserker)    Turns: 17691, Time: 00:02:34
+
+Health: -7/129     AC: 18    Str: 35    XL:     14   Next: 44%
+Magic:  13/13      EV: 13    Int:  4    God:    Trog [***...]
+Gold:   1094       SH:  0    Dex: 11    Spells: 13/13 levels left
+
+rFire   . . .  (100%)   h - +0 battleaxe
+rCold   . . .  (100%)     [offhand occupied]
+rNeg    . . .  (100%)   a - +2 chain mail of Wasted Space {rPois Str+3}
+rPois   +      (33%)    (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   f - +2 pair of gloves
+SInv    .               (no boots)
+Will    ++...           g - amulet of regeneration
+Stlth                   b - ring of willpower
+HPRegen 1.21/turn       c - +6 ring of strength
+MPRegen 0.13/turn
+
+%: no passive effects
+@: spiked, on berserk cooldown, slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (0%), Trog's Hand (0%)
+
+
+You were on level 5 of the Lair of Beasts.
+You worshipped Trog.
+Trog was most pleased with you.
+You visited 2 branches of the dungeon, and saw 16 of its levels.
+
+You collected 1094 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +1 heavy hand axe
+ h - a +0 battleaxe (weapon)
+ k - the +7 war axe of Cytones {protect, Will+ Str+4}
+   (You found it on level 3 of the Lair of Beasts)   
+   
+   Will+:     It increases your willpower.
+   Str+4:     It affects your strength (+4).
+   
+   It cannot be enchanted further.
+Missiles
+ j - 4 throwing nets (quivered)
+Armour
+ a - the +2 chain mail of Wasted Space (worn) {rPois Str+3}
+   (You found it on level 4 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   Str+3:     It affects your strength (+3).
+   
+   It cannot be enchanted further.
+ e - a +2 scale mail of willpower
+ f - a +2 pair of gloves (worn)
+Jewellery
+ b - a ring of willpower (worn)
+ c - a +6 ring of strength (worn)
+ g - an amulet of regeneration (worn)
+ i - a ring of willpower
+Wands
+ p - a wand of polymorph (20)
+ c - a wand of iceblast (19)
+ a - a wand of flame (73)
+ e - a wand of charming (11)
+Scrolls
+ I - 2 scrolls of immolation
+ g - 2 scrolls of fog
+ e - 2 scrolls of revelation {unknown}
+ d - a scroll of amnesia {unknown}
+ w - 4 scrolls of enchant weapon
+ n - a scroll of torment {unknown}
+ V - a scroll of vulnerability
+ a - 5 scrolls of enchant armour
+ b - a scroll of blinking
+ c - a scroll of poison {unknown}
+ i - a scroll of identify
+Potions
+ i - 2 potions of invisibility
+ e - 2 potions of enlightenment
+ a - a potion of ambrosia
+ r - a potion of resistance
+ C - a potion of cancellation
+ c - 2 potions of curing
+ M - 3 potions of mutation
+ k - 2 potions of moonshine {unknown}
+ q - 2 potions of attraction {unknown}
+ L - 2 potions of lignification
+ o - a potion of magic {unknown}
+
+
+   Skills:
+ + Level 13.6 Fighting
+ * Level 18.4 Axes
+ + Level 13.3 Armour
+ - Level 12.0 Dodging
+ - Level 8.0 Evocations
+
+
+You had 13 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (11/15)            Temple (0/1) D:6            Lair (5/5) D:9         
+  Swamp (0/4) Lair:2        Snake (0/4) Lair:3        Slime (0/5) Lair:5      
+    Orc (0/2) D:9         
+
+The Realm of Zot is guarded by orbs of entropy.
+
+Altars:
+Ashenzari
+Dithmenos
+Gozag
+Kikubaaqudgha
+Nemelex Xobeh
+Okawaru
+Ru
+Trog
+Uskayaw
+Yredelemnul
+Zin
+Jiyva
+
+Shops:
+D:1 (*(:   D:7 (
+
+Annotations:
+Lair:5 exclusion: oklob plant
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+* * * LOW HITPOINT WARNING * * *
+The catoblepas gores you!
+* * * LOW HITPOINT WARNING * * *
+You are engulfed in calcifying dust. You are unaffected.
+The manticore bites you.
+* * * LOW HITPOINT WARNING * * *
+The manticore claws you.
+* * * LOW HITPOINT WARNING * * *
+The manticore claws you.
+* * * LOW HITPOINT WARNING * * *
+The catoblepas gores you!
+* * * LOW HITPOINT WARNING * * *
+You are engulfed in calcifying dust. The manticore bites you.
+* * * LOW HITPOINT WARNING * * *
+The manticore claws you.
+* * * LOW HITPOINT WARNING * * *
+The manticore claws you but does no damage.
+The catoblepas gores you.
+* * * LOW HITPOINT WARNING * * *
+You turn to flesh and can act again.
+You slash the catoblepas!
+The catoblepas is almost dead.
+You slice the manticore!! You hit the petrified flower.
+You are engulfed in calcifying dust. The manticore bites you!
+* * * LOW HITPOINT WARNING * * *
+The manticore claws you but does no damage.
+The manticore barely misses you. You furiously retaliate!
+You headbutt the manticore! The catoblepas closely misses you.
+You furiously retaliate!
+You headbutt the catoblepas, but do no damage.
+You hit the catoblepas but do no damage.
+You headbutt the catoblepas, but do no damage.
+The catoblepas is almost dead.
+You slice the manticore!!
+You kill the manticore!
+Trog accepts your kill.
+You slash the petrified flower!
+Your skin stops crawling. You feel less strong-willed.
+The catoblepas gores you!
+You die...
+
+ß................##
+.......ß..........#
+..ß.............###
+.....ß÷...#######
+.ß......###
+......###        #####
+#......#     ####...P###
+...###PP#    #PP..ß..P..
+..#######     #Y@.°ß....
+.###.###      ##†ß....ß.
+##.....##      ....ß.ß.P
+....#...###   ..##.....#
+...##.....###..#  #....#
+..####.†.†.°†.#    #..##
+###  #†###.†.##     .##
+#   #†.# ##...#      .
+   #..##  ...##
+
+
+You could see a catoblepas.
+
+Vanquished Creatures
+  Rupert (Lair:5)
+  A mountainshell (Lair:4)
+  Harold (D:10)
+  3 catoblepae
+  3 hydras
+  2 alligators (Lair:2)
+  A centaur warrior (D:11)
+  A boulder beetle (D:10)
+  16 death yaks
+  2 skysharks
+  3 manticores (Lair:5)
+  14 elephants
+  3 black mambas
+  A torpor snail (Lair:2)
+  10 cane toads
+  Maggie (D:8)
+  2 rime drakes (Lair:3)
+  15 komodo dragons
+  2 trolls
+  3 polar bears
+  21 blink frogs
+  13 dream sheep
+  Sigmund (D:5)
+  4 wyverns
+  Eustachio (D:4)
+  51 yaks
+  6 basilisks
+  3 steam dragons
+  3 vampire mosquitoes (D:8)
+  Menkaure (D:5)
+  2 swamp worms (Lair:2)
+  2 nagas (Lair:3)
+  An acid dragon (D:11)
+  15 water moccasins
+  Duvessa (D:5)
+  A kobold geomancer (D:8)
+  An orc warrior (D:7)
+  2 sky beasts
+  5 black bears
+  4 wolves (Lair:3)
+  20 centaurs
+  A phantom (D:7)
+  10 bullfrogs
+  A gnoll sergeant (D:11)
+  2 scorpions (D:5)
+  4 wights (D:10)
+  Dowan (D:5)
+  A vampire bat (D:5)
+  12 howler monkeys
+  4 electric eels (Lair:2)
+  A bombardier beetle (D:5)
+  3 hounds
+  An orc priest (D:11)
+  2 drudes (D:5)
+  An iguana (D:6)
+  3 orc wizards
+  10 gnolls
+  10 adders
+  2 white imps
+  4 dart slugs
+  6 ribbon worms
+  22 orcs
+  7 endoplasms
+  5 hobgoblins (D:1)
+  3 jackals (D:3)
+  3 quokkas
+  13 ball pythons
+  6 bats
+  4 bat zombies (D:5)
+  5 frilled lizards
+  6 goblins
+  13 kobolds
+  2 rats (D:2)
+411 creatures vanquished.
+
+Vanquished Creatures (others)
+  A hell rat (Lair:2)
+1 creature vanquished.
+
+Grand Total: 412 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexRecovery1 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+     7 | D:1      | Found Keclu's Weapon Shop.
+    39 | D:1      | Found Zelu's General Store.
+   273 | D:1      | Found Ryshroff's Antique Weapon Emporium.
+   312 | D:1      | Reached XP level 2. HP: 26/27 MP: 1/1
+   385 | D:1      | Reached skill level 4 in Axes
+   454 | D:1      | Found a faded altar of an unknown god.
+   755 | D:1      | Found Akaosiqoes's Book Shoppe.
+   942 | D:1      | Reached XP level 3. HP: 25/33 MP: 2/2
+  1238 | D:2      | Reached ** piety under Trog
+  1241 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1526 | D:2      | Reached skill level 5 in Axes
+  1595 | D:2      | Found a glowing silver altar of Zin.
+  1816 | D:2      | Identified the quill talisman "Fiatir" {+Inv Will+}
+  1925 | D:3      | Found a broken altar of Ashenzari.
+  2314 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2560 | D:4      | Identified the +2 chain mail of Wasted Space {rPois Str+3}
+  2663 | D:4      | Found an iron altar of Okawaru.
+  2755 | D:4      | Encountered Eustachio
+  2803 | D:4      | Killed Eustachio
+  2804 | D:4      | Reached skill level 5 in Fighting
+  2804 | D:4      | Reached skill level 6 in Axes
+  2804 | D:4      | Reached XP level 6. HP: 11/56 MP: 5/5
+  3623 | D:5      | Entered Level 5 of the Dungeon
+  3766 | D:5      | Encountered Sigmund
+  3772 | D:5      | Killed Sigmund
+  3773 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3856 | D:5      | Encountered Menkaure
+  3861 | D:5      | Reached skill level 7 in Axes
+  3863 | D:5      | Killed Menkaure
+  3864 | D:5      | Reached skill level 5 in Armour
+  4072 | D:5      | Encountered Dowan
+  4074 | D:5      | Encountered Duvessa
+  4081 | D:5      | Killed Dowan
+  4081 | D:5      | Killed Duvessa
+  4082 | D:5      | Reached skill level 8 in Axes
+  4082 | D:5      | Reached skill level 5 in Dodging
+  4082 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4215 | D:5      | Found a hide-covered altar of Uskayaw.
+  4351 | D:5      | Found an ancient bone altar of Kikubaaqudgha.
+  4792 | D:6      | Found a staircase to the Ecumenical Temple.
+  4792 | D:6      | Found a statue of an orb of entropy.
+  4792 | D:6      | Found a statue of an orb of entropy.
+  5102 | D:6      | Reached skill level 1 in Evocations
+  6333 | D:7      | Found Takkyil's Antique Weapon Boutique.
+  6343 | D:7      | Reached skill level 9 in Axes
+  6774 | D:7      | Found a sparkling altar of Nemelex Xobeh.
+  6774 | D:7      | Found a bloodstained altar of Trog.
+  6775 | D:7      | Found an opulent altar of Gozag.
+  6783 | D:7      | Reached XP level 9. HP: 79/79 MP: 8/8
+  7081 | D:8      | Encountered Maggie
+  7089 | D:8      | Killed Maggie
+  7579 | D:8      | Reached skill level 10 in Axes
+  8478 | D:9      | Found a staircase to the Lair.
+  8602 | D:9      | Reached skill level 11 in Axes
+  8604 | D:9      | Reached XP level 10. HP: 88/88 MP: 9/9
+  8647 | D:9      | Found a staircase to the Orcish Mines.
+  8673 | D:9      | Found a flagged portal.
+  9072 | D:9      | Found a shadowy altar of Dithmenos.
+  9163 | D:10     | Entered Level 10 of the Dungeon
+  9293 | D:10     | Encountered a boulder beetle
+  9409 | D:10     | Reached skill level 12 in Axes
+  9489 | D:10     | Killed a boulder beetle
+  9536 | D:10     | Found a glowing silver altar of Zin.
+  9635 | D:10     | Found a basalt altar of Yredelemnul.
+  9658 | D:10     | Encountered Harold
+  9668 | D:10     | Killed Harold
+  9965 | D:11     | Reached skill level 5 in Evocations
+  9967 | D:11     | Reached XP level 11. HP: 97/97 MP: 10/10
+ 10098 | D:11     | Encountered a centaur warrior
+ 10105 | D:11     | Killed a centaur warrior
+ 10228 | D:11     | Reached skill level 13 in Axes
+ 10728 | Lair:1   | Entered Level 1 of the Lair of Beasts
+ 10814 | Lair:1   | Reached *** piety under Trog
+ 10990 | Lair:1   | Reached skill level 10 in Fighting
+ 11405 | Lair:1   | Reached skill level 10 in Armour
+ 11550 | Lair:1   | Reached skill level 14 in Axes
+ 12002 | Lair:2   | Reached XP level 12. HP: 108/108 MP: 11/11
+ 12259 | Lair:2   | Encountered a catoblepas
+ 12266 | Lair:2   | Killed a catoblepas
+ 12749 | Lair:2   | Encountered an alligator
+ 12759 | Lair:2   | Killed an alligator
+ 12760 | Lair:2   | Reached skill level 15 in Axes
+ 12773 | Lair:2   | You fall into a shaft and drop 2 floors!
+ 12871 | Lair:4   | Reached skill level 10 in Dodging
+ 13349 | Lair:2   | Found a staircase to the Swamp.
+ 13637 | Lair:2   | Encountered an alligator
+ 13647 | Lair:2   | Killed an alligator
+ 13790 | Lair:3   | Encountered a death yak
+ 13791 | Lair:3   | Encountered a death yak
+ 13793 | Lair:3   | Encountered a death yak
+ 13793 | Lair:3   | Encountered a death yak
+ 13794 | Lair:3   | Encountered a death yak
+ 13797 | Lair:3   | Encountered a death yak
+ 13799 | Lair:3   | Killed a death yak
+ 13800 | Lair:3   | Reached XP level 13. HP: 117/117 MP: 12/12
+ 13805 | Lair:3   | Reached skill level 16 in Axes
+ 14450 | Lair:3   | Identified the +7 war axe of Cytones {protect, Will+ Str+4}
+ 14618 | Lair:3   | Identified the +11 mace "Tumide" {drain, rN+ Str-4 Stlth+}
+ 14745 | Lair:3   | Found a staircase to the Snake Pit.
+ 14984 | Lair:3   | Found a sacrificial altar of Ru.
+ 15442 | Lair:4   | Reached skill level 17 in Axes
+ 16516 | Lair:5   | Entered Level 5 of the Lair of Beasts
+ 16673 | Lair:5   | Reached XP level 14. HP: 129/129 MP: 13/13
+ 16707 | Lair:5   | Found a staircase to the Slime Pits.
+ 16707 | Lair:5   | Found a viscous altar of Jiyva.
+ 16920 | Lair:5   | Encountered Rupert
+ 16930 | Lair:5   | Killed Rupert
+ 17562 | Lair:5   | Reached skill level 18 in Axes
+ 17690 | Lair:5   | HP: 3/129 [manticore (11)]
+ 17691 | Lair:5   | Mangled by a catoblepas
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      scummos_arrival_forest, layout_loops_corners, serial_shops,
+          nicolae_shop_pleasant_corner_grove, shop, nicolae_shop_rolling_square,
+          nicolae_shop_temple_entry_statues_fountains, serial_rivers,
+          chequers_serial_rivers_micro_c, chequers_serial_rivers_micro_c,
+          chequers_serial_rivers_large_b, chequers_serial_rivers_micro_b,
+          chequers_serial_rivers_marsh, dilly_ecumenical_altar_fadedgnrine,
+          st_stairs_9
+D:2:      layout_rooms, basic_altar, minmay_cupped
+D:3:      layout_basic, nicolae_overflow_crystal_walls
+D:4:      layout_rooms, okawaru_metal_pillars_1_2, serial_co_window_serial,
+          co_window_paths_a, co_window_corner_a, co_window_paths_a,
+          co_window_paths_a, co_window_paths_a, co_window_2corner,
+          co_window_2corner, co_window_unsneaky_path_a, uniq_eustachio
+D:5:      layout_loops_cross, kennysheep_vampire_church, old_standard_altar,
+          lightli_ossuary_entry_decrepit_ruins, minmay_bent, uniq_menkaure,
+          uniq_sigmund, uniq_duvessa
+D:6:      layout_layer_cave, temple_entry_dummy, kennysheep_boxes
+D:7:      layout_layer_cave, grunt_temple_overflow_open, serial_shops,
+          shop_statue, dk_noncrumbling_4
+D:8:      layout_loops_corners, uniq_maggie
+D:9:      layout_basic, nicolae_dithmenos_through_a_glass_darkly,
+          lair_entry_dummy, orc_0_dummy, enter_bailey_6
+D:10:     layout_rooms, nicolae_zin_agzebo, nicolae_overflow_lobbying_the_gods,
+          uniq_harold
+D:11:     layout_long_grid, serial_bayou_pond_d
+Lair:1:   layout_cave_pods
+Lair:2:   layout_chaotic_city, nicolae_swamp_entry_splash_gauntlet,
+          nicolae_lair_lil_pond, nicolae_lair_lakeside_cave
+Lair:3:   beargit_carnivore_pack, layout_cave_pods, guppyfry_snake_entry_island,
+          lemuel_centaur_altar, nicolae_lair_crumbling_lobby
+Lair:4:   layout_cave_pods, grunt_megastairs_2, nicolae_lair_unfinished_basement
+Lair:5:   evilmike_catoblepas_cave, layout_cave_pods, slime_entry_1,
+          minivault_19, nicolae_quartered_pool_impasse, uniq_rupert
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 11 12 13 14 |
+---------------+-------------------------------------------+-----
+Axes           |     4     5  6     8  9 11 12 14 15 17 18 | 18.4
+Fighting       |     4        5     6  7  8  9 10 11 13    | 13.6
+Armour         |        3     4     5  6  7  9 10 11 12 13 | 13.3
+Dodging        |           3     4  5     7  8  9 10 11 12 | 12.0
+Evocations     |                       2  3  5  6  7  8    |  8.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+---------------------------+-------+-------+-------+-------+-------++-------
+ Attack: Normal            |    44 |   140 |   133 |   318 |   474 ||  1109
+  Melee: Hand axe          |    49 |   178 |   163 |    28 |       ||   418
+         Headbutt          |    18 |    45 |    35 |   124 |   219 ||   441
+         Battleaxe         |       |       |       |   425 |   659 ||  1084
+ Invoke: Berserk           |     3 |     8 |    20 |    37 |    26 ||    94
+         Trog's Hand       |       |     4 |     5 |     8 |     4 ||    21
+  Drink: Haste             |       |       |     3 |       |       ||     3
+         Heal wounds       |       |       |       |       |     3 ||     3
+   Read: Identify          |       |     2 |     1 |     7 |       ||    10
+         Enchant armour    |       |     1 |       |       |       ||     1
+         Teleportation     |       |     2 |     3 |     1 |     1 ||     7
+         Fear              |       |       |     1 |     1 |       ||     2
+         Enchant weapon    |       |       |     1 |       |       ||     1
+         Immolation        |       |       |     1 |       |       ||     1
+         Blinking          |       |       |     1 |       |       ||     1
+         Vulnerability     |       |       |     1 |       |       ||     1
+         Fog               |       |       |     1 |       |       ||     1
+   Stab: Petrifying        |       |       |       |       |     1 ||     1
+ Armour: Ring mail         |    35 |    81 |       |       |       ||   116
+         Animal skin       |     2 |       |       |       |       ||     2
+         Chain mail        |       |    71 |   159 |   377 |   353 ||   960
+  Dodge: Dodged            |    26 |    87 |    85 |   248 |   207 ||   653
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  18582 |  18001 |    581 |      0 |   8760 |  16 | 1161.4 |
+       Dungeon |  11200 |  10823 |    377 |      0 |   6358 |  11 | 1018.2 |
+          Lair |   7381 |   7177 |    204 |      0 |   2402 |   5 | 1476.2 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+  Lair:3: 1681 daAuts
+  Lair:2: 1630 daAuts
+  Lair:4: 1532 daAuts
+  Lair:1: 1343 daAuts
+     D:8: 1339 daAuts
+     D:6: 1317 daAuts
+     D:1: 1284 daAuts
+     D:5: 1238 daAuts
+  Lair:5: 1193 daAuts
+     D:4: 1138 daAuts
+     D:7: 1051 daAuts
+     D:9: 855 daAuts
+    D:10: 848 daAuts
+    D:11: 771 daAuts
+     D:2: 710 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+----------------------+-------+-------+-------+-------+-------++-------
+         Kill Living  |    22 |    37 |    34 |    94 |    77 ||   264
+         Kill Undead  |     0 |     0 |     7 |     3 |     0 ||    10
+          Kill Demon  |     0 |     1 |     2 |     0 |     0 ||     3
+         Kill Wizard  |     0 |     1 |     4 |     1 |     0 ||     6
+----------------------+-------+-------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+----------------------+-------+-------+-------+-------+-------++-------
+         Kill Living  |    33 |    56 |    53 |   140 |   111 ||   393
+         Kill Undead  |     0 |     0 |    10 |     4 |     0 ||    14
+          Kill Demon  |     0 |     1 |     3 |     0 |     0 ||     4
+         Kill Wizard  |     0 |     2 |     7 |     1 |     0 ||    10
+----------------------+-------+-------+-------+-------+-------++-------
+

@@ -25,6 +25,12 @@ tests and benchmark tooling live beside it, not inside the game's Lua runtime.
   or unseen-threat situation need not bypass non-movement emergency resources.
 
 Encounter control is selectable with `encounter_control=false` for comparison.
+Recovery uses `berserk_recovering()` including the actual `on berserk cooldown`
+status: Crawl tracks this separately from exhaustion and slow. Native exploration
+stops on smart pickups so safe gear/ID hooks can run before the next encounter.
+`early_commit` remains an optional low-XL override, disabled after its first
+five-seed trial regressed. Known fear scroll use confirms the area preview before
+Escape guards; the preview is not an ordinary directional attack target.
 The first version uses a short threat memory and logs phase transitions. Retreat
 only increases distance on known safe terrain with no adjacent melee attackers;
 it is not a full cover/path planner or stair-escape strategy. Crowd berserk needs

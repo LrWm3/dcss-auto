@@ -1,0 +1,301 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 6144198052690956201 (custom seed)
+
+221 CodexCommit1 the Chopper (level 5, -4/47 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by a river rat (8 damage)
+             ... summoned by Eustachio
+             ... on level 4 of the Dungeon.
+             The game lasted 00:00:14 (3048 turns).
+
+CodexCommit1 the Chopper (Minotaur Berserker)       Turns: 3048, Time: 00:00:15
+
+Health: -4/47      AC: 11    Str: 23    XL:     5   Next: 65%
+Magic:  4/4        EV:  6    Int:  4    God:    Trog [**....]
+Gold:   172        SH:  0    Dex: 10    Spells: 4/4 levels left
+
+rFire   . . .  (100%)   d - +0 hand axe (heavy)
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   a - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    +....           (no amulet)
+Stlth                   b - ring of willpower
+HPRegen 0.27/turn       (no ring)
+MPRegen 0.09/turn
+
+%: no passive effects
+@: no status effects
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You were on level 4 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 4 of its levels.
+
+You collected 172 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +0 heavy hand axe (weapon)
+Armour
+ a - a +0 plate armour (worn)
+Jewellery
+ b - a ring of willpower (worn)
+Wands
+ p - a wand of polymorph (12)
+Scrolls
+ e - a scroll of immolation {unknown}
+ h - 2 scrolls of teleportation {unknown}
+ k - a scroll of fear {unknown}
+ m - a scroll of enchant weapon {unknown}
+ n - a scroll of torment {unknown}
+ o - a scroll of vulnerability {unknown}
+ a - a scroll of enchant armour
+Potions
+ i - a potion of invisibility
+ d - a potion of enlightenment {unknown}
+ a - a potion of ambrosia
+ j - a potion of resistance {unknown}
+ l - a potion of heal wounds {unknown}
+ p - a potion of haste {unknown}
+
+
+   Skills:
+ + Level 4.7 Fighting
+ * Level 5.6 Axes
+ + Level 3.8 Armour
+ + Level 3.4 Dodging
+
+
+You had 4 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (4/15)            
+Temple: D:4-7       
+
+Altars:
+Ashenzari
+Okawaru
+Zin
+
+Shops:
+D:1 (*(:
+
+Annotations:
+D:4 Eustachio
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Eustachio blinks! The drude hits you but does no damage.
+The drude barely misses you.
+The white imp gestures at you.
+The puff of frost hits you but does no damage.
+You barely miss the white imp.
+The white imp is almost dead.
+You barely miss the drude. You closely miss the iron imp.
+The white imp disappears in a puff of smoke!
+The drude misses you. The drude hits you but does no damage.
+The drude hits you.
+* * * LOW HITPOINT WARNING * * *
+Your doom draws closer. The drude hits you but does no damage.
+The iron imp hits you but does no damage.
+You slash the drude!
+You kill the drude!
+The drude disappears in a puff of smoke!
+You hit the iron imp.
+Eustachio mumbles some strange words.
+Eustachio blinks!
+The iron imp hits you but does no damage.
+You barely miss the iron imp. Your headbutt misses the iron imp.
+The iron imp is lightly wounded.
+The iron imp hits you but does no damage.
+You hit the iron imp but do no damage. Your headbutt misses the iron imp.
+The iron imp is lightly wounded.
+You recover from your berserk rage.
+You hit the iron imp. Your headbutt misses the iron imp.
+The iron imp is moderately wounded.
+You closely miss the river rat.
+Eustachio mumbles some strange words.
+Eustachio blinks! The iron imp closely misses you.
+The river rat bites you but does no damage.
+The iron imp barely misses you.
+You slash the iron imp! Your headbutt misses the iron imp.
+The iron imp is severely wounded.
+You hit the river rat.
+The iron imp disappears in a puff of smoke!
+The river rat bites you but does no damage.
+The river rat bites you!
+You die...
+
+...#.#     #......#
+##...##    #......#
+ ###..#   ##†....####
+   #..#####.......:.#
+   #.............##.##
+   #.#######.######..######
+####.#####...#######...)..#####
+....:........§.r§########.....#
+####..####.#.###@@.....#......#
+   ##..# #.#.# #######.##.....#
+    ##.###.#.. ......#.###....#
+    #...#..#####@.$..#.###....#
+   #..#...##   #.....#........#
+   #.####.###  #.....#####....#
+  #..   #...#  #....##   #....#
+  #.#   ###.#  ####.#    #....#
+  #.      #.#     #.     ######
+
+
+You could see Eustachio and a river rat (summoned).
+
+Vanquished Creatures
+  A howler monkey (D:3)
+  A hound (D:4)
+  5 gnolls
+  3 adders
+  3 dart slugs
+  5 ribbon worms
+  3 orcs (D:3)
+  7 endoplasms
+  5 hobgoblins (D:1)
+  3 jackals (D:3)
+  2 quokkas (D:1)
+  13 ball pythons
+  6 bats
+  5 frilled lizards
+  6 goblins
+  12 kobolds
+  2 rats (D:2)
+82 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexCommit1 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+     7 | D:1      | Found Keclu's Weapon Shop.
+    59 | D:1      | Found Zelu's General Store.
+   302 | D:1      | Found Ryshroff's Antique Weapon Emporium.
+   331 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   415 | D:1      | Reached skill level 4 in Axes
+   507 | D:1      | Found a faded altar of an unknown god.
+   832 | D:1      | Found Akaosiqoes's Book Shoppe.
+  1018 | D:1      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1308 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1456 | D:2      | Reached ** piety under Trog
+  1596 | D:2      | Reached skill level 5 in Axes
+  1660 | D:2      | Found a glowing silver altar of Zin.
+  1927 | D:2      | Identified the quill talisman "Fiatir" {+Inv Will+}
+  2015 | D:3      | Found a broken altar of Ashenzari.
+  2289 | D:3      | Reached XP level 5. HP: 36/47 MP: 4/4
+  2825 | D:4      | Found an iron altar of Okawaru.
+  2995 | D:4      | Encountered Eustachio
+  3043 | D:4      | HP: 2/47 [drude[Eustachio] (5)]
+  3048 | D:4      | Slain by a river rat
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      scummos_arrival_forest, layout_loops_corners, serial_shops,
+          nicolae_shop_pleasant_corner_grove, shop, nicolae_shop_rolling_square,
+          nicolae_shop_temple_entry_statues_fountains, serial_rivers,
+          chequers_serial_rivers_micro_c, chequers_serial_rivers_micro_c,
+          chequers_serial_rivers_large_b, chequers_serial_rivers_micro_b,
+          chequers_serial_rivers_marsh, dilly_ecumenical_altar_fadedgnrine,
+          st_stairs_9
+D:2:      layout_rooms, basic_altar, minmay_cupped
+D:3:      layout_basic, nicolae_overflow_crystal_walls
+D:4:      layout_rooms, okawaru_metal_pillars_1_2, serial_co_window_serial,
+          co_window_paths_a, co_window_corner_a, co_window_paths_a,
+          co_window_paths_a, co_window_paths_a, co_window_2corner,
+          co_window_2corner, co_window_unsneaky_path_a, uniq_eustachio
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Axes           |     4     5 |  5.6
+Fighting       |     4       |  4.7
+Armour         |        3    |  3.8
+Dodging        |           3 |  3.4
+
+Action                     |  1- 3 |  4- 6 || total
+---------------------------+-------+-------++-------
+ Attack: Normal            |    49 |   111 ||   160
+  Melee: Hand axe          |    63 |   130 ||   193
+         Headbutt          |    11 |    27 ||    38
+ Invoke: Berserk           |     6 |     9 ||    15
+         Trog's Hand       |       |     2 ||     2
+   Read: Identify          |       |     2 ||     2
+         Enchant armour    |       |     1 ||     1
+ Armour: Ring mail         |    35 |    41 ||    76
+         Animal skin       |     2 |       ||     2
+         Plate armour      |       |    77 ||    77
+  Dodge: Dodged            |    29 |    54 ||    83
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   3259 |   3203 |     56 |      0 |   1726 |   4 |  814.8 |
+       Dungeon |   3259 |   3203 |     56 |      0 |   1726 |   4 |  814.8 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:1: 1385 daAuts
+     D:2: 743 daAuts
+     D:3: 643 daAuts
+     D:4: 486 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    22 |    32 ||    54
+----------------------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    33 |    49 ||    82
+----------------------+-------+-------++-------
+

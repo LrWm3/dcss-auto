@@ -1,0 +1,384 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 13772526223844354029 (custom seed)
+
+2636 CodexPickup2 the Cleaver (level 9, 0/79 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was an Elder of Trog.
+             Slain by an orc wizard
+             ... wielding a +1 dagger of electrocution
+              (15 damage)
+             ... on level 7 of the Dungeon.
+             The game lasted 00:00:38 (5607 turns).
+
+CodexPickup2 the Cleaver (Minotaur Berserker)       Turns: 5607, Time: 00:00:39
+
+Health: 0/79       AC: 14    Str: 26    XL:     9   Next: 35%
+Magic:  8/8        EV: 13    Int:  4    God:    Trog [****..]
+Gold:   600        SH:  8    Dex: 10    Spells: 8/8 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   f - +0 pair of gloves {Parrying}
+SInv    .               (no boots)
+Will    .....           g - amulet of magic regeneration
+Stlth                   b - +5 ring of evasion
+HPRegen 0.33/turn       e - +4 ring of slaying
+MPRegen 0.51/turn
+
+%: no passive effects
+@: on berserk cooldown, parry, hasted, very quick
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (0%), Trog's Hand (0%), Brothers in Arms
+(69%)
+
+
+You were on level 7 of the Dungeon.
+You worshipped Trog.
+Trog was greatly pleased with you.
+You visited 1 branch of the dungeon, and saw 7 of its levels.
+
+You collected 600 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ c - a +0 plate armour (worn)
+ d - a +1 ring mail of willpower
+ f - a +0 pair of gloves of parrying (worn)
+Jewellery
+ b - a +5 ring of evasion (worn)
+ e - a +4 ring of slaying (worn)
+ g - an amulet of magic regeneration (worn)
+Wands
+ a - a wand of flame (6)
+ e - a wand of charming (13)
+ d - a wand of digging (5)
+ c - a wand of warping (10)
+Scrolls
+ c - a scroll of enchant weapon {unknown}
+ x - a scroll of amnesia
+ V - a scroll of vulnerability
+ m - a scroll of revelation {unknown}
+ o - a scroll of noise {unknown}
+ g - a scroll of fog
+ u - a scroll of enchant armour {unknown}
+ i - a scroll of identify
+Potions
+ b - a potion of brilliance
+ L - 3 potions of lignification
+ k - 2 potions of moonshine
+ g - a potion of magic
+ p - a potion of resistance {unknown}
+ s - a potion of mutation {unknown}
+ f - 2 potions of curing {unknown}
+
+
+   Skills:
+ + Level 7.5 Fighting
+ * Level 10.0 Axes
+ + Level 6.9 Armour
+ + Level 6.3 Dodging
+ + Level 3.0 Evocations
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)            
+Temple: D:4-7       
+
+Altars:
+Cheibriados
+Elyvilon
+Sif Muna
+Uskayaw
+Zin
+The Shining One
+
+Portals:
+Bailey: D:7
+
+Annotations:
+D:5 1 runed translucent door, exclusion: door, Crazy Yiuf
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+A puff of flame appears from out of thin air!
+The puff of flame hits you!
+You encounter an orc. It is wielding a +0 hand axe.
+Something hits you but does no damage.
+The orc wizard points at you and mumbles some strange words.
+The magic dart hits you but does no damage.
+Something hits you but does no damage.
+You miss something. Something hits you but does no damage.
+You miss something.
+You feel the effects of Trog's Hand fading.
+Something hits you but does no damage. You are electrocuted!
+Something hits you but does no damage.
+The orc wizard hits you but does no damage.
+You closely miss the orc wizard. You headbutt the orc wizard!
+The orc wizard is severely wounded.
+You hit the orc. You hit something. The orc hits you but does no damage.
+You hit the orc wizard but do no damage.
+You headbutt the orc wizard.
+You kill the orc wizard!
+Trog accepts your kill.
+Trog appreciates your killing of a magic user.
+You hit the orc. You completely miss something.
+Something hits you but does no damage. You block the orc's attack.
+Your Evocations skill increases to level 3!
+You hit the orc.
+You kill the orc!
+Trog accepts your kill.
+You miss something. Something hits you but does no damage.
+You are electrocuted!
+* * * LOW HITPOINT WARNING * * *
+[MiBe bot] unseen disturbance -- probing adjacent squares.
+You miss something.
+Something hits you but does no damage.
+You miss something.
+You feel yourself speed up. Your skin stops crawling.
+You feel less strong-willed.
+Something hits you.
+* * * LOW HITPOINT WARNING * * *
+You are electrocuted!
+You die...
+
+   .≈...≈...
+   .≈.∩.≈:..
+.  .≈.>.≈..
+..  ≈≈~≈≈.+#######
+... ......... ...######
+....   #...####.......##
+.....###.).))...........
+......)){..#####.####.##
+#####.)@.#$####.......##
+    ######.##...........
+         #.##......)...#
+         ..##..........#
+         ..##..........#
+         #.##..........#
+         ######'###.####
+#... ... ..#....##..# #.
+ ...##.# #.#.#####.## #.
+
+
+There were no monsters in sight!
+
+Vanquished Creatures
+  Menkaure (D:5)
+  A water moccasin (D:7)
+  A kobold geomancer (D:7)
+  An orc warrior (D:7)
+  An ice beast (D:5)
+  A black bear (D:6)
+  An ogre (D:7)
+  A centaur (D:7)
+  2 phantoms
+  2 kobold brigands
+  A scorpion (D:7)
+  A rock fish (D:7)
+  A marrowcuda (D:6)
+  A bes kemwar (D:6)
+  6 killer bees (D:6)
+  A howler monkey (D:5)
+  A bombardier beetle (D:4)
+  7 hounds
+  2 jellies (D:5)
+  4 orc priests (D:7)
+  A sleepcap (D:6)
+  A drude (D:6)
+  4 iguanas
+  Ijyb (D:5)
+  Natasha (thrice) (D:2)
+  3 orc wizards
+  Robin (D:2)
+  13 gnolls (D:4)
+  7 adders
+  A shadow imp (D:5)
+  A white imp (D:6)
+  4 dart slugs
+  6 ribbon worms
+  19 orcs
+  13 hobgoblins
+  4 jackals
+  5 ball pythons
+  A bat (D:3)
+  8 endoplasms
+  3 frilled lizards
+  12 goblins
+  45 kobolds
+  4 rats
+197 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexPickup2 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   377 | D:1      | Reached XP level 2. HP: 26/27 MP: 1/1
+   509 | D:2      | Reached skill level 4 in Axes
+   558 | D:2      | Encountered Natasha
+   561 | D:2      | Killed Natasha
+   562 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+   624 | D:2      | Encountered Natasha
+   628 | D:2      | Encountered Robin
+   636 | D:2      | Killed Natasha
+   637 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+   640 | D:2      | Killed Robin
+   640 | D:2      | Reached ** piety under Trog
+   712 | D:2      | Reached skill level 5 in Axes
+   891 | D:2      | Identified the +6 rapier "Yllom" {devious, rC- rCorr Str+5}
+   928 | D:2      | Encountered Natasha
+   935 | D:2      | Killed Natasha
+   936 | D:2      | Reached XP level 5. HP: 47/47 MP: 4/4
+  1462 | D:3      | Found a shimmering blue altar of Sif Muna.
+  1842 | D:3      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2013 | D:3      | Reached skill level 6 in Axes
+  2489 | D:4      | Reached skill level 5 in Fighting
+  3298 | D:4      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3366 | D:4      | Reached *** piety under Trog
+  3560 | D:4      | Reached skill level 7 in Axes
+  3872 | D:5      | Entered Level 5 of the Dungeon
+  3872 | D:5      | Encountered Ijyb
+  3878 | D:5      | Killed Ijyb
+  3971 | D:5      | Reached skill level 5 in Armour
+  3990 | D:5      | Encountered Menkaure
+  3994 | D:5      | Killed Menkaure
+  4062 | D:5      | Reached skill level 5 in Dodging
+  4062 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4103 | D:5      | Identified the alchemy staff "Kaewasox" {*Slow +Blink rPois
+                  | Str-2 Ice Alch}
+  4173 | D:5      | Found a snail-covered altar of Cheibriados.
+  4271 | D:5      | Reached skill level 8 in Axes
+  4325 | D:5      | Found a white marble altar of Elyvilon.
+  4484 | D:5      | Encountered Crazy Yiuf
+  4674 | D:6      | Reached skill level 1 in Evocations
+  4848 | D:6      | Found a glowing golden altar of the Shining One.
+  4891 | D:6      | Reached skill level 9 in Axes
+  4981 | D:6      | Found a hide-covered altar of Uskayaw.
+  4983 | D:6      | Encountered a merfolk
+  5044 | D:6      | Found a glowing silver altar of Zin.
+  5304 | D:7      | Reached XP level 9. HP: 79/79 MP: 8/8
+  5316 | D:7      | Reached **** piety under Trog
+  5570 | D:7      | Found a flagged portal.
+  5580 | D:7      | Reached skill level 10 in Axes
+  5607 | D:7      | Slain by an orc wizard
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      heliophobic_arrival_ceremonial_halls, layout_rooms
+D:2:      layout_rooms, uniq_natasha, uniq_robin
+D:3:      cheibrodos_thug_alley, layout_basic, nicolae_sif_muna_condensation,
+          minmay_strange_pillars, dreamdust_princess_bridge
+D:4:      minmay_goblin_kobold_castle, layout_basic, grunt_ministairs_15
+D:5:      layout_gridville, mainiacjoe_overflow_big_doors,
+          uniq_crazy_yiuf_cottage, uniq_ijyb, uniq_menkaure
+D:6:      layout_rooms, mainiacjoe_overflow_small_starburst,
+          nicolae_uskayaw_OPEN_UP_THE_PIT, kennysheep_mini_moat
+D:7:      layout_basic, minmay_temple_entry_antechambers, enter_bailey_5
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Axes           |     4     5     6  7  9 10 | 10.0
+Fighting       |     4           5  6  7    |  7.5
+Armour         |     3        4     5  6    |  6.9
+Dodging        |           3     4  5  6    |  6.3
+Evocations     |                       2  3 |  3.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    38 |   229 |   171 ||   438
+  Melee: Hand axe          |    45 |   286 |   230 ||   561
+         Headbutt          |     9 |    65 |    65 ||   139
+ Invoke: Berserk           |     2 |    12 |    12 ||    26
+         Trog's Hand       |       |     1 |     2 ||     3
+  Drink: Haste             |       |       |     4 ||     4
+         Might             |       |       |     1 ||     1
+   Read: Identify          |       |       |     6 ||     6
+         Fear              |       |       |     2 ||     2
+         Fog               |       |       |     1 ||     1
+         Vulnerability     |       |       |     1 ||     1
+         Amnesia           |       |       |     1 ||     1
+   Stab: Sleeping          |     1 |       |       ||     1
+ Armour: Plate armour      |    18 |    78 |   106 ||   202
+         Animal skin       |     1 |       |       ||     1
+  Dodge: Dodged            |    12 |    74 |    89 ||   175
+  Block: Other             |       |    12 |    35 ||    47
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   5837 |   5752 |     85 |      0 |   2890 |   7 |  833.9 |
+       Dungeon |   5837 |   5752 |     85 |      0 |   2890 |   7 |  833.9 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:4: 1452 daAuts
+     D:3: 1408 daAuts
+     D:5: 750 daAuts
+     D:2: 666 daAuts
+     D:6: 580 daAuts
+     D:1: 502 daAuts
+     D:7: 475 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    16 |    53 |    54 ||   122
+         Kill Undead  |     0 |     1 |     3 ||     4
+          Kill Demon  |     0 |     0 |     2 ||     2
+         Kill Wizard  |     1 |     1 |     2 ||     4
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    23 |    82 |    84 ||   189
+         Kill Undead  |     0 |     1 |     4 ||     5
+          Kill Demon  |     0 |     0 |     3 ||     3
+         Kill Wizard  |     2 |     2 |     4 ||     8
+----------------------+-------+-------+-------++-------
+

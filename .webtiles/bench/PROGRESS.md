@@ -137,3 +137,47 @@ fear`, a targeting prompt, and `Unknown command` before ordinary melee. The
 generic guarded consumable helper cancels this targeting interaction; strategic
 escape intent is therefore not reliably executed. Also still missing: full
 ranged-cover planning and an effective resource-less escape from adjacent foes.
+
+## Fear fix and D:2-focused experiments
+
+Fixed known fear's area-preview confirmation (`r<slot>f` before Escape guards),
+verified against local item-use.cc and a regression test. Reran the five fresh
+seeds as encounter-v2: `[11,2,10,8,10]`, all deaths, minimum2, no observed stalls.
+The prior mesmerism seed now reaches D:10 autonomously. This batch's terminal
+message windows do not retain a fear activation, so source/unit coverage should
+not be described as an isolated live fear-confirmation test.
+
+Tested early_commit (XL<=4): permit berserk against adjacent dangerous/multiple
+foes despite disengage intent, and suppress preparatory repositioning for known
+casters. Result `[4,2,2,6,5]`, all deaths, minimum2. The Robin seed killed Natasha
+and Robin but died to adder poison at turn710; another seed regressed to D:2.
+Retained the configurable code but disabled it in the working default.
+
+Next tested `explore_stop=shop,greedy_pickup_smart` to return control after new
+useful pickups for equipment preparation, on the encounter-v2 tactics. Result
+`[5,7,3,6,5]`, all deaths, minimum3. Deltas versus encounter-v2 are
+`[-6,+5,-7,-2,-5]`: improved worst-seed metric, substantial individual regressions.
+The former D:2 seed wore its evasion ring and reached D:7. This does not isolate
+equipment from timing/trajectory changes, but it supports continuing preparation
+work instead of simply increasing berserk frequency.
+
+Inspection of remaining cooldown messages found a real API mismatch:
+`you.exhausted()` checks DUR_EXHAUSTED, while berserk eligibility also checks
+DUR_BERSERK_COOLDOWN. Added shared recovery check for `on berserk cooldown` to
+encounter transitions, activation gates, and pre-exploration recovery. Tested as
+pickup-recovery-v1 with the same five seeds, exact revision 8491831.
+
+Final pickup-recovery-v1 result: `[Lair:5,D:11,D:3,D:6,D:8]`, ranks
+`[16,11,3,6,8]`, all deaths, no observed stalls, minimum3. Versus encounter-v2:
+rank deltas `[+5,+9,-7,-2,-2]`; versus pickup-prep: `[+11,+4,0,0,+3]`.
+The old D:2 bottleneck reaches D:11; new bottleneck is seed1760771545328102746,
+dying to invisible Sigmund's +4 venom scythe on D:3 while poisoned and recovering
+from berserk. Seed1 dies to a Lair:5 catoblepas. This remains below historical
+original's minimum4 and is one screening replay per seed, not a robust promotion.
+
+Twenty fresh games across four batches completed autonomously this turn. All
+snapshots, commits, hashes and death evidence recorded. Seven Lua suites and nine
+runner tests pass. Current working RC retains pickup stops and true berserk
+cooldown recovery; early_commit is disabled but available for further iteration.
+Remaining tactical limitations include ranged-cover planning, resource-less
+disengagement from melee, and commitment under unseen poison/confusion pressure.

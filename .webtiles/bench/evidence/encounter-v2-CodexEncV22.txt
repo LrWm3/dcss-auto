@@ -1,0 +1,243 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 13772526223844354029 (custom seed)
+
+13 CodexEncV22 the Chopper (level 2, -8/27 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Follower of Trog.
+             Killed from afar by Natasha (12 damage)
+             ... with a magic dart
+             ... on level 2 of the Dungeon.
+             The game lasted 00:00:01 (567 turns).
+
+CodexEncV22 the Chopper (Minotaur Berserker)         Turns: 567, Time: 00:00:01
+
+Health: -8/27      AC: 11    Str: 21    XL:     2   Next: 24%
+Magic:  1/1        EV:  5    Int:  4    God:    Trog [*.....]
+Gold:   72         SH:  0    Dex:  9    Spells: 1/1 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    .....           (no amulet)
+Stlth                   (no ring)
+HPRegen 0.24/turn       (no ring)
+MPRegen 0.07/turn
+
+%: no passive effects
+@: no status effects
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (6%)
+
+
+You were on level 2 of the Dungeon.
+You worshipped Trog.
+Trog was aware of your devotion.
+You visited 1 branch of the dungeon, and saw 2 of its levels.
+
+You collected 72 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ c - a +0 plate armour (worn)
+Jewellery
+ b - a +5 ring of evasion
+Scrolls
+ c - a scroll of fear {unknown}
+ e - a scroll of amnesia {unknown}
+ h - a scroll of vulnerability {unknown}
+Potions
+ d - 2 potions of haste {unknown}
+ f - a potion of brilliance {unknown}
+ j - a potion of lignification {unknown}
+
+
+   Skills:
+ + Level 3.8 Fighting
+ * Level 4.0 Axes
+ + Level 2.7 Armour
+ + Level 2.4 Dodging
+
+
+You had one spell level left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+
+Annotations:
+D:2 Natasha
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The frilled lizard bites you but does no damage.
+You hit the frilled lizard.
+You kill the frilled lizard!
+Trog accepts your kill.
+[MiBe bot] encounter: fight -> prepare (HP 100%, peak 2)
+You encounter Natasha, Servant of Life and Death.
+Natasha hisses angrily. You hear an angry hiss.
+The endoplasm freezes you.
+You are frozen.
+Natasha wildly gestures.
+Natasha shimmers violently.
+You encounter an adder.
+[MiBe bot] encounter: prepare -> fight (HP 85%, peak 3)
+You hit the endoplasm.
+You kill the endoplasm!
+Trog accepts your kill.
+Natasha wildly gestures.
+Natasha glows brightly for a moment.
+Natasha mumbles some strange words.
+[MiBe bot] encounter: fight -> prepare (HP 88%, peak 3)
+The cerulean imp shouts!
+[MiBe bot] positioning: stepping toward a narrower approach
+Natasha casts a spell at you.
+The magic dart hits you.
+Natasha claws you.
+The cerulean imp hits you but does no damage.
+[MiBe bot] encounter: prepare -> disengage (HP 44%, peak 3)
+You hit the adder but do no damage. Your headbutt misses the adder.
+You hit Natasha. The adder bites you but does no damage. Natasha claws you!
+* * * LOW HITPOINT WARNING * * *
+The cerulean imp hits you from afar with a +2 spear.
+* * * LOW HITPOINT WARNING * * *
+The adder bites you but does no damage.
+You hit Natasha.
+Natasha is heavily wounded.
+You barely miss the adder. The adder bites you but does no damage.
+Natasha stares at you and mumbles some strange words.
+The magic dart hits you!
+You die...
+Natasha begins licking her fur clean.
+
+   ..
+    ..
+   ##.#
+   #...      ###
+  ##.#.      ..#
+#.#....#####....
+..[......S..#...
+........@h5...#
+ ..####.#####.####   ..
+      #!...##....####...
+      ####.<.##.........
+         ###..##.......#
+           ##....[.....
+        .######........
+        .........#.####
+        $####..#....##
+
+
+You could see Natasha, a cerulean imp (summoned) and an adder.
+
+Vanquished Creatures
+  A ribbon worm (D:2)
+  2 hobgoblins (D:1)
+  A ball python (D:1)
+  4 endoplasms
+  2 frilled lizards
+  A goblin (D:1)
+  A kobold (D:1)
+  A rat (D:1)
+13 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexEncV22 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   383 | D:1      | Reached XP level 2. HP: 23/27 MP: 1/1
+   526 | D:2      | Reached skill level 4 in Axes
+   561 | D:2      | Encountered Natasha
+   567 | D:2      | Killed from afar by Natasha
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      heliophobic_arrival_ceremonial_halls, layout_rooms
+D:2:      layout_rooms, uniq_natasha, uniq_robin
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Axes           |     4 |  4.0
+Fighting       |       |  3.8
+Armour         |       |  2.7
+Dodging        |       |  2.4
+
+Action                     || total
+---------------------------++-------
+ Attack: Normal            ||    34
+  Melee: Hand axe          ||    36
+         Headbutt          ||     5
+   Stab: Sleeping          ||     1
+ Armour: Plate armour      ||    37
+         Animal skin       ||     2
+  Dodge: Dodged            ||     4
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |    570 |    546 |     24 |      0 |    336 |   2 |  285.0 |
+       Dungeon |    570 |    546 |     24 |      0 |    336 |   2 |  285.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:1: 514 daAuts
+     D:2: 56 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct || total
+----------------------++-------
+         Kill Living  ||     9
+----------------------++-------
+Conduct count
+              Conduct || total
+----------------------++-------
+         Kill Living  ||    13
+----------------------++-------
+

@@ -1,0 +1,380 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 103583508244309201 (custom seed)
+
+3071 CodexRecovery5 the Cleaver (level 9, -3/81 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by a rock fish (6 damage)
+             ... on level 8 of the Dungeon.
+             The game lasted 00:00:32 (7222 turns).
+
+CodexRecovery5 the Cleaver (Minotaur Berserker)     Turns: 7222, Time: 00:00:33
+
+Health: -3/81      AC: 14    Str: 25    XL:     9   Next: 58%
+Magic:  8/8        EV: 10    Int:  4    God:    Trog [**....]
+Gold:   343        SH:  0    Dex: 11    Spells: 8/8 levels left
+
+rFire   . . .  (100%)   j - +1 hand axe (freeze)
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   h - +0 chain mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   c - +0 cloak
+rCorr   +      (50%)    e - +0 pair of gloves
+SInv    .               b - +0 pair of boots {Fly}
+Will    ++...           g - amulet of chemistry
+Stlth                   f - ring of resist corrosion
+HPRegen 1.33/turn       (no ring)
+MPRegen 0.11/turn
+
+%: no passive effects
+@: strong-willed, on berserk cooldown, flying, regenerating, slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (2%), Trog's Hand (3%)
+
+
+You were on level 8 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 8 of its levels.
+
+You collected 343 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ j - a +1 hand axe of freezing (weapon)
+Armour
+ b - a +0 pair of boots of flying (worn)
+ c - a +0 cloak (worn)
+ d - the +6 chain mail of Heasu {rPois rC++ Int-4 Dex+3}
+   (You found it on level 2 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   rC++:      It greatly protects you from cold.
+   Int-4:     It affects your intelligence (-4).
+   Dex+3:     It affects your dexterity (+3).
+   
+   It cannot be enchanted further.
+ e - a +0 pair of gloves (worn)
+ h - a +0 chain mail (worn)
+Jewellery
+ f - a ring of resist corrosion (worn)
+ g - an amulet of chemistry (worn)
+ i - an amulet of magic regeneration
+Wands
+ b - a wand of light (10)
+ f - a wand of mindburst (19)
+Scrolls
+ e - a scroll of fog {unknown}
+ c - a scroll of teleportation {unknown}
+ d - a scroll of vulnerability {unknown}
+Potions
+ M - 2 potions of mutation
+ L - 3 potions of lignification
+ C - 2 potions of cancellation
+ c - 2 potions of curing
+ A - a potion of attraction
+ j - a potion of might {unknown}
+
+
+   Skills:
+ + Level 7.9 Fighting
+ * Level 10.4 Axes
+ + Level 7.3 Armour
+ + Level 6.5 Dodging
+ + Level 3.2 Evocations
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (8/15)             Temple (0/1) D:4         
+  Lair: D:8-11      
+
+The Realm of Zot is guarded by orbs of winter.
+
+Altars:
+Elyvilon
+Gozag
+Makhleb
+Qazlal
+Uskayaw
+Xom
+Zin
+Ignis
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You hit the two-headed ogre. You freeze the two-headed ogre.
+The two-headed ogre is lightly wounded.
+You hit the rock fish. You freeze the rock fish.
+The two-headed ogre hits you with a +0 giant club!!
+The two-headed ogre hits you with a +0 giant club.
+The rock fish bites you but does no damage.
+The rock fish barely misses you.
+You hit the rock fish but do no damage.
+The rock fish is moderately wounded.
+You hit the rock fish but do no damage. You slash the two-headed ogre!
+You freeze the two-headed ogre.
+The rock fish bites you but does no damage.
+The two-headed ogre closely misses you. You furiously retaliate!
+You headbutt the two-headed ogre!
+The two-headed ogre hits you with a +0 giant club!
+* * * LOW HITPOINT WARNING * * *
+The rock fish bites you but does no damage.
+You barely miss the two-headed ogre.
+The two-headed ogre is moderately wounded.
+You hit the rock fish but do no damage. x2
+The rock fish bites you but does no damage.
+The rock fish bites you.
+* * * LOW HITPOINT WARNING * * *
+The two-headed ogre hits you with a +0 giant club!
+* * * LOW HITPOINT WARNING * * *
+The two-headed ogre barely misses you.
+You slash the steam dragon! You freeze the steam dragon.
+The steam dragon is almost dead.
+You hit the rock fish. You freeze the rock fish. You barely miss the rock fish.
+You hit the two-headed ogre but do no damage.
+The rock fish misses you. You furiously retaliate! You headbutt the rock fish.
+The steam dragon barely misses you. The steam dragon completely misses you.
+You furiously retaliate! You headbutt the steam dragon.
+You kill the steam dragon!
+Trog accepts your kill.
+The steam dragon scales are intact enough to wear.
+The rock fish bites you.
+* * * LOW HITPOINT WARNING * * *
+The rock fish bites you.
+You die...
+
+  ...............#
+   ..............#
+   .......<......#
+   ##...........##
+    #...........#
+######.........##
+............####
+............##
+ #####F@[....##
+ #####.OF.###.##
+ ..............##
+ ........†......#
+.................#
+.........$.......)
+..................
+..................
+ ...............D.
+
+
+You could see a two-headed ogre and 2 rock fish.
+
+Vanquished Creatures
+  Pikel (D:6)
+  A hornet (D:7)
+  2 wyverns (D:7)
+  A steam dragon (D:8)
+  Menkaure (D:6)
+  Duvessa (D:5)
+  2 sky beasts
+  A black bear (D:5)
+  A centaur (D:7)
+  2 lemures (D:6)
+  3 phantoms
+  A kobold brigand (D:7)
+  5 scorpions
+  2 rock fish (D:8)
+  A marrowcuda (D:6)
+  Dowan (D:5)
+  A bes kemwar (D:5)
+  A howler monkey (D:8)
+  2 bombardier beetles
+  3 hounds
+  A jelly (D:5)
+  An orc priest (D:4)
+  A gnoll bouda (D:5)
+  A drude (D:7)
+  2 iguanas
+  5 orc wizards
+  6 gnolls
+  8 adders
+  2 ufetubi (D:7)
+  4 ribbon worms
+  3 dart slugs
+  16 orcs
+  9 endoplasms
+  12 hobgoblins
+  5 jackals (D:4)
+  9 quokkas
+  4 ball pythons
+  8 bats
+  3 frilled lizards
+  3 goblins
+  13 kobolds
+  5 rats
+154 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexRecovery5 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    61 | D:1      | Reached skill level 4 in Axes
+    61 | D:1      | Reached XP level 2. HP: 20/27 MP: 1/1
+   869 | D:2      | Found a faded altar of an unknown god.
+   896 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1032 | D:2      | Identified the +6 chain mail of Heasu {rPois rC++ Int-4
+                  | Dex+3}
+  1156 | D:2      | Reached ** piety under Trog
+  1376 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1463 | D:3      | Found a glowing silver altar of Zin.
+  1463 | D:3      | Found an opulent altar of Gozag.
+  1940 | D:3      | Reached skill level 5 in Axes
+  2026 | D:3      | Found a white marble altar of Elyvilon.
+  2052 | D:3      | Found a hide-covered altar of Uskayaw.
+  2276 | D:4      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2692 | D:4      | Found a statue of an orb of winter.
+  2692 | D:4      | Found a staircase to the Ecumenical Temple.
+  2692 | D:4      | Found a statue of an orb of winter.
+  2712 | D:4      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2714 | D:4      | Reached skill level 6 in Axes
+  2718 | D:4      | Reached skill level 5 in Fighting
+  2821 | D:4      | Reached *** piety under Trog
+  3588 | D:5      | Entered Level 5 of the Dungeon
+  3604 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3695 | D:5      | Encountered Duvessa
+  3696 | D:5      | Encountered Dowan
+  3710 | D:5      | Killed Duvessa
+  3711 | D:5      | Reached skill level 7 in Axes
+  3738 | D:5      | Killed Dowan
+  3739 | D:5      | Reached skill level 5 in Armour
+  4144 | D:5      | Found a stormy altar of Qazlal.
+  4177 | D:5      | Reached skill level 5 in Dodging
+  4177 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4287 | D:5      | Reached skill level 8 in Axes
+  5236 | D:6      | Reached skill level 1 in Evocations
+  5303 | D:6      | Encountered Pikel
+  5317 | D:6      | Killed Pikel
+  5318 | D:6      | Reached skill level 9 in Axes
+  5388 | D:6      | Encountered Menkaure
+  5399 | D:6      | Killed Menkaure
+  5411 | D:6      | Reached XP level 9. HP: 35/79 MP: 8/8
+  6555 | D:7      | Reached skill level 10 in Axes
+  6765 | D:7      | Found a candlelit altar of Ignis.
+  6767 | D:7      | Found a burning altar of Makhleb.
+  6957 | D:7      | Found a shimmering altar of Xom.
+  7202 | D:8      | Encountered a two-headed ogre
+  7222 | D:8      | HP: 3/81 [rock fish (6)]
+  7222 | D:8      | Slain by a rock fish
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      evilmike_arrival_rings, layout_basic
+D:2:      layout_rooms, shapermc_ecumenical_altar_mp_ritualfount,
+          minmay_increasing_density
+D:3:      layout_loops_ring, grunt_temple_overflow_gold_and_silver,
+          mainiacjoe_overflow_big_doors, grunt_ministairs_7
+D:4:      layout_layer_cave, minmay_temple_entry_tees, hangedman_decor_riveting
+D:5:      layout_layer_cave, nicolae_qazlal_beasts_of_the_sky,
+          corexii_item_surrounded_by_moat, kennysheep_small_spiral, uniq_duvessa
+D:6:      layout_cave_pools, uniq_menkaure, uniq_pikel
+D:7:      layout_loops_ring, xom_redecorated,
+          dolorous_makhleb_big_flames_little_flames
+D:8:      layout_cave_pods, eino_curves_04
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Axes           |  4        5     6  7  9 10 | 10.4
+Fighting       |        4        5  6  7    |  7.9
+Armour         |        3     4     5  6  7 |  7.3
+Dodging        |           3     4  5     6 |  6.5
+Evocations     |                       2  3 |  3.2
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    77 |   132 |   165 ||   374
+  Melee: Hand axe          |    84 |   144 |   204 ||   432
+         Headbutt          |    14 |    30 |    45 ||    89
+ Invoke: Berserk           |     1 |     7 |    17 ||    25
+         Trog's Hand       |     1 |     2 |     6 ||     9
+  Drink: Haste             |       |       |     1 ||     1
+         Heal wounds       |       |       |     3 ||     3
+   Read: Identify          |     1 |     5 |     1 ||     7
+         Fear              |       |       |     2 ||     2
+ Armour: Animal skin       |     2 |       |       ||     2
+         Leather armour    |    11 |       |       ||    11
+         Ring mail         |     1 |       |       ||     1
+         Scale mail        |    25 |    78 |       ||   103
+         Chain mail        |       |     9 |   133 ||   142
+  Dodge: Dodged            |    43 |    60 |    73 ||   176
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   7429 |   7235 |    194 |      0 |   4336 |   8 |  928.6 |
+       Dungeon |   7429 |   7235 |    194 |      0 |   4336 |   8 |  928.6 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1690 daAuts
+     D:4: 1496 daAuts
+     D:7: 1400 daAuts
+     D:1: 782 daAuts
+     D:3: 743 daAuts
+     D:6: 643 daAuts
+     D:2: 637 daAuts
+     D:8: 36 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    26 |    38 |    30 ||    94
+         Kill Undead  |     0 |     1 |     4 ||     4
+          Kill Demon  |     0 |     0 |     2 ||     2
+         Kill Wizard  |     0 |     2 |     2 ||     4
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    38 |    59 |    46 ||   143
+         Kill Undead  |     0 |     1 |     5 ||     6
+          Kill Demon  |     0 |     0 |     3 ||     3
+         Kill Wizard  |     0 |     3 |     4 ||     7
+----------------------+-------+-------+-------++-------
+

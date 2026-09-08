@@ -1,0 +1,281 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 1760771545328102746 (custom seed)
+
+282 CodexPickup3 the Chopper (level 6, -11/55 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Mangled by Sigmund
+             ... wielding a +4 scythe of venom
+              (13 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:00:07 (2517 turns).
+
+CodexPickup3 the Chopper (Minotaur Berserker)       Turns: 2517, Time: 00:00:08
+
+Health: -11/55     AC:  7    Str: 23    XL:     6   Next: 6%
+Magic:  5/5        EV: 11    Int:  4    God:    Trog [**....]
+Gold:   149        SH:  0    Dex: 10    Spells: 5/5 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +0 ring mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    ++...           (no amulet)
+Stlth                   (no ring)
+HPRegen 1.29/turn       (no ring)
+MPRegen 0.09/turn
+
+%: no passive effects
+@: lethally poisoned (-11 -> -15), strong-willed, on berserk cooldown,
+regenerating, slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (2%), Trog's Hand (3%)
+
+
+You were on level 3 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 149 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ b - a +0 cloak (worn)
+ c - a +0 ring mail (worn)
+ d - a scarf of invisibility
+Scrolls
+ c - a scroll of enchant weapon {unknown}
+ d - a scroll of amnesia {unknown}
+ e - 2 scrolls of immolation {unknown}
+ h - a scroll of silence {unknown}
+ j - 2 scrolls of fear {unknown}
+ k - a scroll of blinking {unknown}
+ l - 2 scrolls of identify {unknown}
+ m - a scroll of fog {unknown}
+ o - a scroll of revelation {unknown}
+Potions
+ f - a potion of enlightenment {unknown}
+ n - a potion of berserk rage {unknown}
+
+
+   Skills:
+ + Level 4.9 Fighting
+ * Level 5.9 Axes
+ + Level 4.0 Armour
+ + Level 3.6 Dodging
+
+
+You had 5 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+
+Annotations:
+D:3 Sigmund
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You kill the rat!
+Trog accepts your kill.
+You hit something. You feel sick. Something hits you.
+You are more poisoned.
+You hit Natasha.
+You kill Natasha!
+Trog accepts your kill.
+Trog appreciates your killing of a magic user.
+Natasha screams in fury as she dies!
+You barely miss something.
+You feel very sick.
+You have reached level 6!
+[MiBe bot] encounter: fight -> recover (HP 65%, peak 4)
+You feel very sick.
+You hear some strange, mumbled words.
+You are confused.
+[MiBe bot] confused -- using direct autofight turns.
+You feel a strong urge to attack something.
+You feel sick.
+You feel sick. Something hits you.
+You are more poisoned.
+You feel your anger nearly subside. You are no longer berserk.
+You are exhausted. You feel yourself slow down. You feel very sick.
+[MiBe bot] encounter: recover -> disengage (HP 47%, peak 4)
+You feel very sick.
+Something hits you.
+* * * LOW HITPOINT WARNING * * *
+You are lethally poisoned!
+You feel less confused.
+* * * LOW HITPOINT WARNING * * *
+You feel extremely sick.
+Something hits you.
+* * * LOW HITPOINT WARNING * * *
+[MiBe bot] survival: Trog's Hand
+Your skin crawls.
+You feel strong-willed.
+* * * LOW HITPOINT WARNING * * *
+You feel very sick.
+Something hits you!
+You die...
+
+                    #.#
+..........          #.#
+#..#..>...#         #.#
+ #........#         #.#
+  #...#.#=#         #.#
+   #..#.#.#         #.#
+    ....#.#         #.#
+     #..#.#         #.#
+     #@{#.###########.#
+     #................#
+     #.##.#############
+     #.##.#
+     ..##.#
+    ...?..#
+    #######
+
+
+There were no monsters in sight!
+
+Vanquished Creatures
+  A phantom (D:3)
+  An orc wizard (D:3)
+  Natasha (twice) (D:3)
+  4 gnolls (D:2)
+  6 adders
+  2 dart slugs
+  3 orcs
+  4 endoplasms
+  6 hobgoblins
+  4 jackals (D:2)
+  2 quokkas (D:3)
+  2 ball pythons
+  2 bats (D:2)
+  6 frilled lizards
+  2 goblins (D:2)
+  A kobold (D:1)
+  4 rats
+52 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexPickup3 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   221 | D:1      | Found a faded altar of an unknown god.
+   488 | D:1      | Reached XP level 2. HP: 23/27 MP: 1/1
+   539 | D:1      | Reached skill level 4 in Axes
+  1229 | D:2      | Reached XP level 3. HP: 31/33 MP: 2/2
+  1237 | D:2      | Reached XP level 4. HP: 11/40 MP: 3/3
+  1820 | D:2      | Reached skill level 5 in Axes
+  2019 | D:2      | Reached ** piety under Trog
+  2206 | D:3      | Encountered Natasha
+  2215 | D:3      | Killed Natasha
+  2216 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2501 | D:3      | Encountered Sigmund
+  2502 | D:3      | Encountered Natasha
+  2510 | D:3      | Killed Natasha
+  2511 | D:3      | Reached XP level 6. HP: 54/55 MP: 5/5
+  2517 | D:3      | HP: 2/55 [poisoned by Sigmund]
+  2517 | D:3      | Mangled by Sigmund
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      ncdulo_halloftheorcs, layout_basic, serial_curves, eino_curves_04,
+          eino_curves_02, eino_curves_03, eino_curves_02,
+          dilly_ecumenical_altar_fadedgnrine
+D:2:      layout_basic, serial_curves, eino_curves_04, eino_curves_01
+D:3:      layout_loops_ring, minmay_misc_feat_diagonals, uniq_natasha,
+          uniq_jessica, uniq_sigmund
+
+Skill      XL: |  1  2  3  4  5 |
+---------------+----------------+-----
+Axes           |     4     5    |  5.9
+Fighting       |     4          |  4.9
+Armour         |        3     4 |  4.0
+Dodging        |           3    |  3.6
+
+Action                     |  1- 3 |  4- 6 || total
+---------------------------+-------+-------++-------
+ Attack: Normal            |    43 |    71 ||   114
+  Melee: Hand axe          |    59 |    78 ||   137
+         Headbutt          |     5 |    16 ||    21
+ Invoke: Berserk           |     2 |     3 ||     5
+         Trog's Hand       |       |     2 ||     2
+   Read: Teleportation     |     1 |     3 ||     4
+ Armour: Animal skin       |     6 |       ||     6
+         Ring mail         |    32 |    46 ||    78
+  Dodge: Dodged            |    25 |    32 ||    57
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   2549 |   2474 |     75 |      0 |   1777 |   3 |  849.7 |
+       Dungeon |   2549 |   2474 |     75 |      0 |   1777 |   3 |  849.7 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:2: 1244 daAuts
+     D:1: 979 daAuts
+     D:3: 325 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    15 |    19 ||    34
+         Kill Undead  |     0 |     1 ||     1
+         Kill Wizard  |     0 |     2 ||     2
+----------------------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    22 |    29 ||    51
+         Kill Undead  |     0 |     1 ||     1
+         Kill Wizard  |     0 |     3 ||     3
+----------------------+-------+-------++-------
+
