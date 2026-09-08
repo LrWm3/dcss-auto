@@ -45,6 +45,11 @@ scan.monsters={{},{}}
 assert(survival(scan) and commands[1]=="raf\027\027\027",
   "confirm known fear area preview before escape guards")
 scan.monsters={{}}
+local use=assert(upvalue(ready,"use_known_consumable"))
+turn=turn+1; commands={}
+inventory={consumable("potion","potion of invisibility",true)}
+assert(use("potion","invisibility") and commands[1]=="qaf\027\027\027",
+  "confirm invisibility preview before cancellation guards")
 local safe=assert(upvalue(ready,"safe_stats"))
 assert(not safe({artprops={Int=-4}}),"reject stat-zero armour")
 assert(safe({artprops={Int=-2}}),"allow safe negative modifier")
