@@ -488,3 +488,29 @@ Saved full notes, timeline and separate diagnostic metadata in evidence and
 interventions; no autonomous result row added. Fixed diagnostic-only optional
 coordinate API error at entry with live placeholder functions and a canonical
 guard. See evidence/d6-entry-debug-v1-analysis.md for provenance and limitations.
+
+## Isolated-enemy recovery anchors
+
+Added a recovery gate before route recovery/combat exploration. Injured players
+with no reachable enemy latch recovery until full HP and berserk recovery is
+complete. Reaching the six-step combat retreat cap no longer permits frontier
+exploration in this case. Priority: current visit's arrival upstairs, last
+recorded recovery-wait position, entry position. Replan one ordinary step per
+ready through known safe cells; if a usable anchor is visible, wait instead.
+Unusable anchors fall back down the list; absent anchors allow waiting against
+isolated melee only. Newly reachable enemies return control to combat.
+
+Bot reserves travel waypoint9 as a stable visit origin (engine delta is player
+minus origin). Coordinates survive native travel/teleport but anchors reset on
+floor transitions, including revisits; no cross-visit rest history yet. Ordinary
+arrival upstairs identifies the arrival-stair anchor; shafts use entry fallback.
+Engine monster range includes weapons/spells/wands. Ranged threats seek an
+anchor path but pause if none exists rather than blindly healing. Unseen threats
+retain dedicated handling and cannot fall through into custom exploration.
+No stair traversal or general Tab/luring change was added.
+
+11 Lua suites pass, including new isolated-recovery tests for priority, delta
+sign, visible anchors, HP latch, LOS loss, retreat exhaustion, ranged/unseen
+threats and floor reset. This is local implementation/unit validation only:
+CodexD6Entry1 is still paused on its original RC at5973; no live rerun or
+autonomous benchmark result claimed.

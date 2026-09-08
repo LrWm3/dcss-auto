@@ -785,7 +785,90 @@ local function rejected_autofight_action(scan)
   return false
 end
 
+-- Bot-owned waypoint 9 provides a stable origin despite native travel, blink
+-- and rejected movement. waypoint_delta is PLAYER minus waypoint (not vice versa).
+-- Anchors describe this visit; never reuse coordinates from a different floor.
+local function observe_recovery_anchor(scan)
+  if not travel or not travel.set_waypoint or not travel.waypoint_delta then return end
+  local a=BOT.recovery_anchor
+  if not a or a.level~=level_key() then
+    travel.set_waypoint(9,0,0)
+    a={level=level_key(),entry={x=0,y=0}}
+    BOT.isolated_recovering=nil
+    if regular_up() then a.stairs={x=0,y=0} end
+    BOT.recovery_anchor=a
+  end
+end
+
+local function recovery_wait()
+  local a=BOT.recovery_anchor
+  if a and a.level==level_key() and travel and travel.waypoint_delta then
+    local x,y=travel.waypoint_delta(9)
+    if x and y then a.rest={x=x,y=y} end
+  end
+  crawl.do_commands({"CMD_WAIT"})
+  return true
+end
+
+local function isolated_recovery_action(scan)
+  local e=BOT.encounter
+  local hp,maxhp=you.hp()
+  if scan.reachable_any then BOT.isolated_recovering=nil; return false end
+  if not BOT.isolated_recovering and not (scan.any and
+      (hp<maxhp or berserk_recovering() or (e and e.phase=="disengage"))) then
+    return false
+  end
+  if hp>=maxhp and not berserk_recovering() and not you.berserk() then
+    BOT.isolated_recovering=nil; return false
+  end
+  BOT.isolated_recovering=true
+  -- Never mistake lack of a melee path for immunity to ranged/unseen damage.
+  if (e and e.unseen) or BOT.disturbance_warning then return false end
+  local hazardous=false
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    -- Engine range includes weapons, spells and wands; self-buffs such as a
+    -- bear's berserk are not automatically treated as ranged attacks.
+    if not m or not m.range or m:range()>1 then hazardous=true end
+  end
+  local a=BOT.recovery_anchor
+  local x,y
+  if a and a.level==level_key() and travel and travel.waypoint_delta then
+    x,y=travel.waypoint_delta(9)
+  end
+  if x and y then
+    local candidates={a.stairs or false,a.rest or false,a.entry or false}
+    for _,goal in ipairs(candidates) do
+      if goal then
+        local key=map_key(goal.x-x,goal.y-y)
+        local cell=scan.cells[key]
+        if cell and passable(cell) then
+          if cell.visible and not hazardous then
+            say("isolated recovery: anchor in sight; healing")
+            return recovery_wait()
+          end
+          local step=scan.first_step[key]
+          if step then
+            say("isolated recovery: returning toward anchor")
+            crawl.sendkeys(step); return true
+          end
+        end
+      end
+    end
+  end
+  if not hazardous then return recovery_wait() end
+  say("isolated recovery: ranged threat without safe anchor path; paused")
+  BOT.paused=true
+  return true
+end
+
 local function isolated_enemy_action(scan)
+  if isolated_recovery_action(scan) then return true end
+  if BOT.isolated_recovering then
+    -- Unseen-threat handling must not fall through into frontier exploration.
+    say("isolated recovery: unresolved unseen threat; paused")
+    BOT.paused=true; return true
+  end
   -- A visible monster with no known route to an adjacent square is not an
   -- autofight target.  Take one ordinary movement step toward exploration,
   -- rechecking danger after that step.
@@ -987,7 +1070,7 @@ local function manage_encounter(scan)
   -- Keep the encounter open through recovery. An unseen attacker must still
   -- reach disturbance handling, rather than being rested against indefinitely.
   if e.phase=="recover" and not scan.any and not e.unseen then
-    crawl.do_commands({"CMD_WAIT"}); return true
+    return recovery_wait()
   end
   return false
 end
@@ -1523,6 +1606,7 @@ local function goto_down_index(n)
   local target = count_down_cycle_targets()[n]
   if not target then return false end
   local scan = scan_hostiles()
+  observe_recovery_anchor(scan)
   local _, _, step = bfs(scan.cells, scan.blocked, function(cell)
     return cell.x == target.x and cell.y == target.y
   end)
@@ -2239,6 +2323,7 @@ function ready()
   end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
+  if isolated_recovery_action(scan) then return end
   if route_recovery_action(scan) then return end
   if manage_encounter(scan) then return end
 
