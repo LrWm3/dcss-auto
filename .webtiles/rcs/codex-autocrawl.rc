@@ -1764,7 +1764,13 @@ local function shopping_action(scan)
     for _,offer in ipairs(s.shops[best.slot].offers) do
       if shop_priority(offer) and (not d or shop_priority(offer)>shop_priority(d)) then d=offer end
     end
-    if not d or d.index>26 or #items.inventory()>=50 then a.failed[best.slot]=true; return true end
+    if not d or d.index>26 or #items.inventory()>=50 then
+      a.failed[best.slot]=true
+      -- Unlike a menu action this path queues no input at all. Returning
+      -- here left Orc:2 shopping asleep with failed[slot]=true until a key
+      -- or reload supplied another decision. Yield once, then skip the shop.
+      crawl.do_commands({"CMD_WAIT"}); return true
+    end
     local gold=you.gold()
     guarded_keys("</"..string.char(96+d.index).."\rY")
     if gold-you.gold()==d.price then
@@ -2355,6 +2361,25 @@ local function route_block(reason)
   return true
 end
 
+local function route_exit_action(scan)
+  if not ROUTE_STATE.return_exit then return false end
+  if you.branch()~=ROUTE_STATE.return_exit then
+    ROUTE_STATE.return_exit=nil; ROUTE_STATE.travel_attempts=0; return false
+  end
+  if scan.any or you.confused() or movement_locked()
+      or (you.mesmerised and you.mesmerised()) then return false end
+  local function upstairs(f)
+    return regular_up(f) or f=="exit_"..you.branch():lower()
+  end
+  if upstairs(feat_here()) then
+    BOT.allow_route_exit=true
+    crawl.sendkeys("<"); return true
+  end
+  local _,_,step=bfs(scan.cells,scan.blocked,function(c) return upstairs(c.feature) end)
+  if step then crawl.sendkeys(step); return true end
+  return false
+end
+
 local function escape_exclusion(scan)
   -- Exclusions are travel policy, not impassable terrain. When surrounded by
   -- them, find a short path back outside rather than asking G/o to escape.
@@ -2620,6 +2645,7 @@ local function route_action(scan)
       ROUTE_STATE.travel_attempts=0
     else
       ROUTE_STATE.target={branch=branch,depth=depth}
+      if route_exit_action(scan) then return true end
       if you.branch()==branch and you.depth()==depth then
         ROUTE_STATE.travel_attempts=0
         -- Branch floors are explored normally, including greedy rune pickup.
@@ -2639,6 +2665,16 @@ local function route_action(scan)
           and (ROUTE_STATE.travel_attempts or 0)+1 or 0
       ROUTE_STATE.last_travel_turn=turn
       if ROUTE_STATE.travel_attempts>=3 then
+        -- Interlevel travel can fail to connect a completed branch to an
+        -- unexplored Dungeon target. Follow known upstairs to the parent
+        -- branch first; retain the actual progression target throughout.
+        if branch=="D" and you.branch()~="D" and not scan.any then
+          if not ROUTE_STATE.return_exit and crawl.take_note then
+            crawl.take_note("Route return: local upstairs toward Dungeon")
+          end
+          ROUTE_STATE.return_exit=you.branch()
+          if route_exit_action(scan) then return true end
+        end
         if branch==you.branch() and depth==you.depth()+1 and you.depth()>1
             and ROUTE_STATE.done[level_key()]=="clear"
             and (ROUTE_STATE.done[branch..":"..(you.depth()-1)]=="clear"
@@ -2700,6 +2736,11 @@ end
 
 local previous_c_answer_prompt = c_answer_prompt
 function c_answer_prompt(prompt)
+  if tostring(prompt):lower():find("enter next level anyway",1,true)
+      and BOT.allow_route_exit and BOT.route_exit_excluded then
+    BOT.allow_route_exit=nil; BOT.route_exit_excluded=nil
+    return true
+  end
   if tostring(prompt):lower():find("are you sure you want to cancel this blink",1,true) then
     return true
   end
@@ -2717,6 +2758,10 @@ end
 
 local previous_c_message = c_message
 function c_message(text, channel)
+  if BOT.allow_route_exit and tostring(text):lower():find(
+      "this staircase leads to a travel-excluded area!",1,true) then
+    BOT.route_exit_excluded=true
+  end
   crawl.more_autoclear(true)
   if previous_c_message then previous_c_message(text, channel) end
   local s = string.lower(tostring(text or "")):gsub("<[^>]*>", "")
@@ -2980,6 +3025,7 @@ function ready()
   -- The game resets this flag whenever control returns to the player.
   crawl.more_autoclear(true)
   BOT.allow_exclusion_step=nil
+  BOT.allow_route_exit=nil; BOT.route_exit_excluded=nil
   if AUTOCrawl_DEBUG_STATE.stop_turn and you.turns()>=AUTOCrawl_DEBUG_STATE.stop_turn then
     AUTOCrawl_DEBUG_STATE.stop_turn=nil
     AUTOCrawl_DEBUG_STATE.paused=true

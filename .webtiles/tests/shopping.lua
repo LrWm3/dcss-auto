@@ -44,4 +44,17 @@ ROUTE_STATE.shopping.checked={}; ROUTE_STATE.shopping.shops[0].offers={d}
 travel.waypoint_delta=function() return 3,0 end
 action(scan); turn=401
 assert(not action(scan) and not ROUTE_STATE.shopping.active,"total travel budget bounds moving loops")
+-- Purchase menus have queued cancellation input; abort rejected purchases.
+turn=500; last=nil; ROUTE_STATE.shopping.checked={}
+ROUTE_STATE.shopping.shops[0].offers={d}
+travel.waypoint_delta=function() return 0,0 end
+view={feature_at=function() return "enter_shop" end}
+items.shop_inventory=function() return {{scroll("scroll of teleportation"),33}} end
+crawl.do_commands=function(cs) last=cs[1] end
+assert(action(scan) and not ROUTE_STATE.shopping.active,
+ "purchase rejection must abandon shopping")
+ROUTE_STATE.shopping.checked={};ROUTE_STATE.shopping.shops[0].offers={d};last=nil
+items.shop_inventory=function() return {} end
+assert(action(scan) and last=="CMD_WAIT" and ROUTE_STATE.shopping.active.failed[0],
+ "stale offer must yield instead of silently returning to blocking input")
 print("shopping regression cases passed")

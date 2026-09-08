@@ -8,6 +8,7 @@ from bench import Environment, make_rc, RC
 from experiment import recovered, retreat, options, key
 from verify_resume import normalized
 from export_model import lua_key
+from collect_cases import compare
 
 
 class TacticalTests(unittest.TestCase):
@@ -91,6 +92,22 @@ class TacticalTests(unittest.TestCase):
             env=Environment(Path(temp)/'workers')
             with self.assertRaisesRegex(ValueError,'engine mismatch'):env.reset(case)
             self.assertIsNone(env.child)
+
+    def test_capture_configuration_is_explicit_and_validated(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp)/'trial.rc'
+            make_rc(p,capture_config={'monster':'Sonja','floor':'D:10','min_turn':9000})
+            self.assertIn('TB_CAPTURE={monster="Sonja",floor="D:10",min_turn=9000}',p.read_text())
+            for cfg in ({'monster':'Sonja'}, {'monster':'Sonja','floor':'D:10','min_turn':-1}):
+                with self.assertRaises(ValueError):make_rc(p,capture_config=cfg)
+            with self.assertRaises(ValueError):Environment(temp,seed=123)
+
+    def test_dataset_fidelity_checks_full_length_and_game_state(self):
+        s=self.state()
+        self.assertTrue(compare([s],[{**s,'seq':100}])['passed'])
+        self.assertFalse(compare([s,s],[s])['passed'])
+        result=compare([s],[{**s,'hp':1}])
+        self.assertFalse(result['passed']);self.assertEqual(result['first_difference'],0)
 
 
 if __name__=='__main__':unittest.main()

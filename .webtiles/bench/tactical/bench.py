@@ -31,11 +31,21 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def make_rc(path, source_rc=None):
+def make_rc(path, source_rc=None, capture_config=None):
     source = (source_rc or RC).read_text()
     at = source.rfind('>')
     assert at > 0 and not source[at + 1:].strip()
-    path.write_text(source[:at] + '\n' + (HERE / 'bridge.lua').read_text()
+    trigger = ''
+    if capture_config is not None:
+        if (set(capture_config) - {'monster','floor','min_turn'}
+                or not isinstance(capture_config.get('monster'),str)
+                or not capture_config['monster'].strip()
+                or not re.fullmatch(r'[A-Za-z]+:[1-9][0-9]*',capture_config.get('floor',''))
+                or type(capture_config.get('min_turn',0)) is not int
+                or capture_config.get('min_turn',0)<0):
+            raise ValueError('Capture needs monster, floor, and optional nonnegative min_turn')
+        trigger='\nTB_CAPTURE={'+','.join(k+'='+json.dumps(v) for k,v in capture_config.items())+'}\n'
+    path.write_text(source[:at] + trigger + '\n' + (HERE / 'bridge.lua').read_text()
                     + '\n' + (HERE / 'direct_transport.lua').read_text()
                     + '\n>\ndump_order += tactical_dump\n')
 
@@ -46,11 +56,15 @@ class Environment:
     step is one controller decision, not necessarily one game turn: baseline
     and Tab are macro-actions. Invalid/no-turn actions remain in the dataset.
     """
-    def __init__(self, workspace, source_rc=None):
+    def __init__(self, workspace, source_rc=None, seed=SEED, capture_config=None):
         self.workspace = Path(workspace).resolve()
         self.workspace.mkdir(parents=True, exist_ok=True)
         self.child = None
         self.source_rc = source_rc
+        if not isinstance(seed,str) or not seed.isdigit() or not 0<=int(seed)<2**64:
+            raise ValueError('Seed must be a uint64 string')
+        self.seed = seed
+        self.capture_config = capture_config
 
     def launch(self, checkpoint=None):
         self.close()
@@ -69,9 +83,10 @@ class Environment:
                 raise ValueError('Checkpoint RC checksum mismatch')
             shutil.copy2(case / 'checkpoint.cs', self.work / 'saves' / (NAME+'.cs'))
             shutil.copy2(case / 'trial.rc', rc)
+            self.seed = metadata['seed']
         else:
-            make_rc(rc,self.source_rc)
-        args = ['-name', NAME, '-rc', str(rc), '-seed', SEED,
+            make_rc(rc,self.source_rc,self.capture_config)
+        args = ['-name', NAME, '-rc', str(rc), '-seed', self.seed,
                 '-no-player-bones', '-extra-opt-last', 'species=Minotaur',
                 '-extra-opt-last', 'background=Berserker',
                 '-extra-opt-last', 'weapon=hand axe']
@@ -83,7 +98,8 @@ class Environment:
         (self.work/'run.json').write_text(json.dumps({
             'schema_version':1,'case':str(checkpoint) if checkpoint else None,
             'engine_sha256':sha(ENGINE),'rc_sha256':sha(rc),
-            'adapter_sha256':sha(Path(__file__)),'seed':SEED,'character':NAME,
+            'adapter_sha256':sha(Path(__file__)),'seed':self.seed,'character':NAME,
+            'capture_config':self.capture_config,
             'transport':'ready_getch' if self.direct_transport else 'legacy_console',
             'checkpoint_sha256':sha(Path(checkpoint)/'checkpoint.cs') if checkpoint else None,
             'started_unix':time.time()},indent=2)+'\n')
@@ -95,7 +111,7 @@ class Environment:
         return self.state
 
     def await_state(self, startup=False, expected_seq=None):
-        deadline = time.monotonic() + (180 if startup else 20)
+        deadline = time.monotonic() + (600 if startup else 20)
         probed = False
         while time.monotonic() < deadline:
             if getattr(self,'direct_transport',False):
@@ -200,7 +216,10 @@ class Environment:
             observation = self.step('baseline')
             if observation.get('terminal'):
                 raise RuntimeError('Died before requested checkpoint')
-        self.console('tb_request("CMD_SAVE_GAME_NOW")')
+        if self.direct_transport and 'TB_DIRECT_SAVE=true' in (self.work/'trial.rc').read_text():
+            self.child.send('z')
+        else:
+            self.console('tb_request("CMD_SAVE_GAME_NOW")')
         self.child.expect([pexpect.EOF, 'view rc file information and log'], timeout=20)
         self.close()
         save = self.work / 'saves' / (NAME+'.cs')
@@ -209,8 +228,9 @@ class Environment:
         destination.mkdir(parents=True)
         shutil.copy2(save, destination / 'checkpoint.cs')
         shutil.copy2(self.work / 'trial.rc', destination / 'trial.rc')
-        metadata = {'id':destination.name,'seed':SEED,'character':NAME,
-                    'engine_sha256':sha(ENGINE),'source_rc_sha256':sha(RC),
+        metadata = {'id':destination.name,'seed':self.seed,'character':NAME,
+                    'engine_sha256':sha(ENGINE),'source_rc_sha256':sha(self.source_rc or RC),
+                    'capture_config':self.capture_config,
                     'rc_sha256':sha(destination/'trial.rc'),
                     'save_sha256':sha(destination/'checkpoint.cs'),
                     'observation':observation,'capture_worker':str(self.work),

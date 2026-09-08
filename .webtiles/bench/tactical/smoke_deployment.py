@@ -4,11 +4,12 @@ import concurrent.futures
 import json
 import os
 import time
+import shutil
 from pathlib import Path
 import pexpect
 from bench import ENGINE,sha
 
-def trial(root,rc,seed,label):
+def trial(root,rc,seed,label,full=False,checkpoint=None,character='TacticalSmoke',stop_floor=None):
     work=root/label;work.mkdir()
     for d in ('saves','morgue','macros'):(work/d).mkdir()
     source=rc.read_text();at=source.rfind('>')
@@ -22,8 +23,26 @@ def trial(root,rc,seed,label):
       smoke_ready()
     end
     '''
-    tested=work/'trial.rc';tested.write_text(source[:at]+tail+'\n>\n')
-    argv=['-name','TacticalSmoke','-rc',str(tested),'-seed',seed,'-no-player-bones']
+    if stop_floor:
+        tail=tail.replace('you.branch()=="D" and you.depth()>=5',
+                          'you.branch()=="D" and you.depth()>='+str(stop_floor))
+        tail=tail.replace('D:5','D:'+str(stop_floor))
+    if checkpoint:
+        tail+='''
+        local inspect_ready=ready
+        local inspected=false
+        function ready()
+          if not inspected then
+            inspected=true
+            crawl.take_note("STALL initial shopping: "..route_serialize(
+              ROUTE_STATE.shopping and ROUTE_STATE.shopping.active))
+          end
+          inspect_ready()
+        end
+        '''
+    tested=work/'trial.rc';tested.write_text(source if full and not stop_floor else source[:at]+tail+'\n>\n')
+    if checkpoint:shutil.copy2(checkpoint,work/'saves'/(character+'.cs'))
+    argv=['-name',character,'-rc',str(tested),'-seed',seed,'-no-player-bones']
     for option in ('species=Minotaur','background=Berserker','weapon=hand axe'):
         argv+=['-extra-opt-last',option]
     for opt,d in [('save_dir','saves'),('morgue_dir','morgue'),('macro_dir','macros')]:
@@ -33,14 +52,15 @@ def trial(root,rc,seed,label):
                         encoding='utf-8',codec_errors='replace',dimensions=(50,160),timeout=30)
     child.logfile_read=log
     result=dict(label=label,seed=seed,engine_sha256=sha(ENGINE),rc_sha256=sha(tested),worker=str(work))
-    deadline=time.monotonic()+180
+    if checkpoint:result['checkpoint_sha256']=sha(checkpoint)
+    deadline=time.monotonic()+(600 if full else 180)
     last_tail=None
     try:
         while time.monotonic()<deadline:
             i=child.expect(['SMOKE DONE',r'You die\.\.\.',r'Hit .* to (?:continue|start)',
                             r'Press .* to (?:continue|start)',pexpect.TIMEOUT,pexpect.EOF],timeout=20)
             if i in (2,3):child.send(' ');continue
-            if i==0:result['outcome']='reached_D5';break
+            if i==0:result['outcome']='reached_D'+str(stop_floor or 5);break
             if i==1:result['outcome']='death';time.sleep(.2);break
             if i==5:result['outcome']='unexpected_exit';break
             if i==4:
@@ -62,9 +82,16 @@ def trial(root,rc,seed,label):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('rc',type=Path);p.add_argument('output',type=Path)
+    p.add_argument('--full',action='store_true')
+    p.add_argument('--seeds',default='1,3',help='Comma-separated main seed indices')
     a=p.parse_args();a.output=a.output.resolve();a.output.mkdir(parents=True,exist_ok=False)
-    seeds=[(1,'6144198052690956201'),(3,'1760771545328102746')]
+    all_seeds=['6144198052690956201','13772526223844354029','1760771545328102746',
+               '17908030050512890810','103583508244309201']
+    indices=[int(n) for n in a.seeds.split(',')]
+    if not indices or len(set(indices))!=len(indices) or any(n<1 or n>5 for n in indices):
+        p.error('seeds must be unique indices 1..5')
+    seeds=[(n,all_seeds[n-1]) for n in indices]
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
-        results=list(pool.map(lambda v:trial(a.output,a.rc,v[1],'seed'+str(v[0])),seeds))
+        results=list(pool.map(lambda v:trial(a.output,a.rc,v[1],'seed'+str(v[0]),a.full),seeds))
     (a.output/'results.json').write_text(json.dumps(results,indent=2)+'\n')
     print(json.dumps(results),flush=True)

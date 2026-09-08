@@ -1,0 +1,9 @@
+{
+  "rc": ".webtiles/bench/batches/tactical-imitation-v2/tested.rc",
+  "rc_sha256": "104a2c28dddab8ca883d0331b4af255c834bed2bd39d975b578936455b4cb113",
+  "cases": [
+    {"id":"seed1-d11-centaurs-critical","seed_index":1,"trigger":{"monster":"centaur","floor":"D:11"},"warmup":100,"steps":60,"reason":"Later decision boundary in verified six-centaur failure; same encounter family, not independent validation data."},
+    {"id":"seed5-d8-twoheaded-ogre","seed_index":5,"trigger":{"monster":"two-headed ogre","floor":"D:8"},"steps":180,"reason":"Private replay dies here before reaching Sonja; capture actual reproducible failure instead of fabricating historical state."},
+    {"id":"seed3-orc2-sorcerer","seed_index":3,"trigger":{"monster":"orc sorcerer","floor":"Orc:2"},"steps":180,"reason":"Retry with adequate full-seed startup budget; mixed Orc:2 crowd and negative-energy burst."}
+  ]
+}

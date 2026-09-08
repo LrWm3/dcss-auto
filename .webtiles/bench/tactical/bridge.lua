@@ -3,7 +3,7 @@ local tb_original_ready = ready
 local tb_original_save = c_save
 TB = TB or {active=false, seq=0}
 AUTOCrawl_TACTICS.debug_encounters=true
-AUTOCrawl_DEBUG_NAMES={eustachio=true}
+AUTOCrawl_DEBUG_NAMES=TB_CAPTURE and {} or {eustachio=true}
 
 local function json(v)
   if type(v)=="string" then
@@ -71,6 +71,17 @@ end
 
 function ready()
   if not TB.active then
+    -- Configurable visible first-contact boundary, before the controller acts.
+    -- Floor/turn gates avoid collecting unrelated earlier members of a species.
+    if TB_CAPTURE and level_key()==TB_CAPTURE.floor
+        and you.turns()>=(TB_CAPTURE.min_turn or 0) then
+      local scan=scan_hostiles()
+      for _,e in ipairs(scan.monsters) do
+        if e.monster:name():lower()==TB_CAPTURE.monster:lower() then
+          TB.active=true; TB.seq=0; TB.reported=0; publish(); return
+        end
+      end
+    end
     tb_original_ready()
     if AUTOCrawl_DEBUG_STATE.paused then
       TB.active=true; TB.seq=0; TB.reported=0; publish()
