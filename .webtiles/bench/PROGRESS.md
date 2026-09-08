@@ -609,3 +609,46 @@ full seed batch.13 Lua suites and9 runner tests pass; regression tests cover
 bounded waits, damage/ranged bailouts, melee latch, anchor lure and frontier
 restriction. Existing diagnostic sessions were not replaced; frontier used
 verified finished codex-support1 while lure remained in codex-bench4.
+
+## Ally-protection fix and full five-seed rerun
+
+Source inspection found blind disturbance cycling had no visible-ally guard;
+custom BFS movement also allowed non-hostile occupied destinations. Added
+safe_probe_command (skip friendly/neutral/unknown-attitude occupants, wait if
+all directions protected), protected-occupant exclusion in can_step, and a
+fail-closed `Really attack ...` handler that sends n and schedules CMD_WAIT
+on next ready. Marked disturbances also reject protected occupants. Never
+approve friendly fire. Exact command behind the prior prompt was not captured;
+these are demonstrated unsafe paths, not a claim of a recovered stack trace.
+
+14 Lua suites and9 runner tests pass, including all-protected surroundings,
+preferred/default probe rejection, hostile allowance, movement protection and
+prompt cancellation. Archived exact CodexLure2 save in its prior batch directory
+and reused the same session; other diagnostic characters untouched.
+
+Fresh parallel batch lure-ally-full-v1 tested clean commit366caa7, RC SHA
+735a90db2b562b171bc17caf906709c5112748a078e8111df8c9cdfddda62d08,
+engine54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38.
+No mid-run RC edits or tactical input. Four natural deaths, one route pause.
+For paused seed4, opened and VISUALLY VERIFIED Lua console before sending only
+crawl.dump_char(), then Escape; no gameplay mutation or input contamination.
+
+| Seed | Last full batch endpoint | New endpoint | Turns / XL |
+| --- | --- | --- | --- |
+| 1 | D10 boulder beetle death | D11 centaur warrior arrow death | 10287 / 11 |
+| 2 | D12 Frances sun demon death after Lair | D15 yaktaur death | 24524 / 15 |
+| 3 | D7 wyvern death | D3 Sigmund poison death | 2973 / 6 |
+| 4 | D6 priest death (shaft maxD7) | D11 explored, route to Lair1 made no progress, paused99/99HP | 13448 / 11 |
+| 5 | D10 eel death | D6 Pikel lemure death after D3 shaft | 2336 / 5 |
+
+No ally-attack lock recurred; seed4 passed the old prompt point and survived
+additional fights to finish exploring D11. This supports the targeted fix, not
+a guarantee against all prompts. It now has a distinct routing blocker, left
+intact for diagnosis. Seed2 entered D15 at24497 and died24524; NOT a D15 clear.
+All evidence and five outcome rows saved. Reached ranks [10,17,7,7,10] ->
+[11,22,3,11,6], minimum7->3. Seed5's D6 is shaft-inflated. Thus the overall
+experimental stack regresses weakest-seed resilience despite deeper survivors;
+do not advertise this as benchmark improvement or an all-terminal success.
+This comparison includes approach/steam/anchor changes since the prior full
+batch, not an isolated estimate of the ally guard's effect. Kept the experiment
+for iteration; next weaknesses are seed3 early Sigmund and seed4 Lair routing.
