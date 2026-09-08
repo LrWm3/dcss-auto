@@ -6,6 +6,8 @@ local function setup(form, status, confused, threat, adjacent)
   BOT.paused = false
   BOT.encounter = nil
   BOT.move_rejected_at = nil
+  BOT.move_rejected_reason = nil
+  BOT.directional_rejected_at = nil
   BOT.move_rejected_announced = false
   BOT.immobile_announced = false
   BOT.red_announced = false
@@ -19,6 +21,7 @@ local function setup(form, status, confused, threat, adjacent)
     status = function(s) return s == state.status end,
     turns = function() return state.turn end,
     confused = function() return state.confused end,
+    mesmerised = function() return state.mesmerised end,
     berserk = function() return false end,
     exhausted = function() return false end,
     slowed = function() return false end,
@@ -75,3 +78,62 @@ state.form = "tree"
 ready()
 assert(commands[1] == "CMD_WAIT" and BOT.move_rejected_at == nil)
 print("movement-lock regression cases passed")
+
+-- Mesmerisation limits directions, not all movement or melee.
+setup("", nil, false, 1, false)
+state.mesmerised = true
+local original_map = view.get_map
+view.get_map = function()
+  local cells = original_map()
+  for _, p in ipairs({{1,0},{0,1},{1,1},{2,1}}) do
+    cells[#cells+1] = {x=p[1],y=p[2],visible=true,traversable=true,feature="floor"}
+  end
+  return cells
+end
+view.withheld = function(x,y) return x==1 and y==0 end
+ready()
+assert(commands[1] and commands[1]~="l" and commands[1]~="\t"
+    and commands[1]~="CMD_WAIT", "must find a legal alternative first step")
+commands = {}
+view.withheld = function() return true end
+ready()
+assert(commands[1]=="CMD_WAIT", "conflicting beholders must not strand ready")
+commands = {}
+BOT.move_rejected_at = state.turn -- pre-fix hotload latch, no reason recorded
+ready()
+assert(commands[1]=="CMD_WAIT" and not BOT.move_rejected_at,
+    "old mesmerisation latch must recover without manual gameplay")
+commands = {}
+state.turn = state.turn+1
+view.withheld = function() return false end
+ready()
+assert(commands[1] and commands[1]~="CMD_WAIT", "retry only after time advances")
+commands = {}
+c_message("You cannot move away from the merfolk siren!", "plain")
+ready()
+assert(commands[1]=="CMD_WAIT" and not BOT.move_rejected_at)
+commands = {}
+state.turn = state.turn+1
+c_message("You cannot move.", "plain")
+ready()
+assert(#commands==0, "unknown rejection must still pause even when mesmerised")
+
+setup("", nil, false, 1, true)
+state.mesmerised = true
+view.withheld = function() return true end
+ready()
+assert(commands[1]=="CMD_ATTACK_RIGHT", "adjacent attack must not pursue")
+setup("", nil, true, 1, true)
+state.mesmerised = true
+view.withheld = function() return true end
+ready()
+assert(commands[1]=="CMD_MOVE_RIGHT", "confusion retains engine stumble handling")
+setup("tree", nil, true, 1, true)
+state.mesmerised = true
+ready()
+assert(#commands==0, "mesmerisation must not bypass genuine immobility")
+setup("", nil, false, 1, true)
+state.mesmerised = false
+ready()
+assert(commands[1]=="\t", "ordinary combat resumes after mesmerisation")
+print("mesmerisation regression cases passed")

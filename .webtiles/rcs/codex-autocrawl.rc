@@ -205,6 +205,10 @@ local function can_step(cells, x, y, dx, dy, blocked)
   local nx, ny = x + dx, y + dy
   local next_cell = cells[map_key(nx, ny)]
   if not passable(next_cell) or blocked[map_key(nx, ny)] then return false end
+  -- Withheld is relative to the real player, not a hypothetical BFS node.
+  -- Check only the step we will actually execute, then replan next turn.
+  if x == 0 and y == 0 and view.withheld and view.withheld(nx, ny)
+      and not you.confused() then return false end
   if not next_cell.bot_escape_exclusion and view.is_safe_square
       and not view.is_safe_square(nx, ny) then
     return false
@@ -1026,6 +1030,45 @@ end
 local function encounter_action(scan)
   if scan.worst >= 3 then return red_combat_action(scan) end
   return combat_action(scan)
+end
+
+local function mesmerised_action(scan)
+  if not (you.mesmerised and you.mesmerised()) then return false end
+  -- A stale map or changing beholder must not produce a turnless retry loop.
+  if BOT.directional_rejected_at == you.turns() then
+    crawl.do_commands({"CMD_WAIT"})
+    return true
+  end
+  local adjacent
+  for _, enemy in ipairs(scan.monsters) do
+    if math.max(math.abs(enemy.x), math.abs(enemy.y)) == 1
+        and view.can_reach(enemy.x, enemy.y)
+        and (not adjacent or enemy.threat > adjacent.threat) then
+      adjacent = enemy
+    end
+  end
+  if adjacent then
+    if should_berserk(scan) and you.activate_ability("Berserk", 0, 0) then return true end
+    -- Attack without allowing autofight to choose a forbidden pursuit step.
+    local cmd = CONFUSED_MOVE_COMMANDS[map_key(adjacent.x, adjacent.y)]
+    crawl.do_commands({(cmd:gsub("CMD_MOVE_", "CMD_ATTACK_"))})
+    return true
+  end
+  local blocked = {}
+  for key, cell in pairs(scan.cells) do
+    if cell.monster or cell.invisible_monster then blocked[key] = true end
+  end
+  local _, _, step = bfs(scan.cells, blocked, function(cell)
+    for _, enemy in ipairs(scan.monsters) do
+      if math.max(math.abs(cell.x-enemy.x), math.abs(cell.y-enemy.y)) == 1 then
+        return true
+      end
+    end
+    return false
+  end)
+  if step then crawl.sendkeys(step)
+  else crawl.do_commands({"CMD_WAIT"}) end
+  return true
 end
 
 local function confused_combat_action(scan)
@@ -2020,10 +2063,14 @@ function c_message(text, channel)
   -- A rejected move consumes no turn. Remember when it failed, and leave
   -- unknown movement restrictions under manual control until time advances.
   -- Never enqueue another command from this message callback.
-  if s:find("you cannot move", 1, true)
+  if s:find("you cannot move away from", 1, true)
+      or s:find("you cannot move closer to", 1, true) then
+    BOT.directional_rejected_at = you.turns()
+  elseif s:find("you cannot move", 1, true)
       or s:find("you can't move", 1, true)
       or s:find("because you cannot move", 1, true) then
     BOT.move_rejected_at = you.turns()
+    BOT.move_rejected_reason = "unknown"
   end
 
   -- Handle the level-up prompt without requiring a human keypress.
@@ -2126,7 +2173,16 @@ function ready()
 
   if BOT.move_rejected_at and BOT.move_rejected_at ~= you.turns() then
     BOT.move_rejected_at = nil
+    BOT.move_rejected_reason = nil
     BOT.move_rejected_announced = false
+  end
+  -- Migrate the old unclassified latch when hotloading into an enthralled
+  -- character. Newly observed unknown restrictions still retain the safe pause.
+  if BOT.move_rejected_at and not BOT.move_rejected_reason
+      and you.mesmerised and you.mesmerised() then
+    BOT.move_rejected_at = nil
+    BOT.move_rejected_announced = false
+    BOT.directional_rejected_at = you.turns()
   end
   if BOT.move_rejected_at and not movement_locked() then
     if not BOT.move_rejected_announced then
@@ -2175,6 +2231,10 @@ function ready()
 
   if you.confused() and confused_combat_action(scan) then return end
   if not you.confused() then BOT.confused_announced = false end
+  if mesmerised_action(scan) then return end
+  if BOT.directional_rejected_at == you.turns() then
+    crawl.do_commands({"CMD_WAIT"}); return
+  end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
   if route_recovery_action(scan) then return end
