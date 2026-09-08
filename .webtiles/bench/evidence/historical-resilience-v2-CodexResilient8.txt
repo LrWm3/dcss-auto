@@ -1,0 +1,381 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 1760771545328102746 (custom seed)
+
+3292 CodexResilient8 the Cleaver (level 9, -4/81 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by a wyvern (8 damage)
+             ... on level 7 of the Dungeon.
+             The game lasted 00:00:35 (6804 turns).
+
+CodexResilient8 the Cleaver (Minotaur Berserker)    Turns: 6804, Time: 00:00:36
+
+Health: -4/81      AC: 10    Str: 26    XL:     9   Next: 69%
+Magic:  8/8        EV: 11    Int:  7    God:    Trog [**....]
+Gold:   421        SH:  0    Dex: 10    Spells: 8/8 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   f - +0 scale mail
+rPois   .      (100%)   g - +1 hat {Int+3}
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   (no gloves)
+SInv    +               (no boots)
+Will    ++...           c - amulet of chemistry
+Stlth                   d - ring of see invisible
+HPRegen 1.33/turn       (no ring)
+MPRegen 0.11/turn
+
+%: no passive effects
+@: strong-willed, regenerating
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (2%), Trog's Hand (4%)
+
+
+You were on level 7 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 7 of its levels.
+
+You collected 421 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ b - a +0 cloak (worn)
+ e - a scarf of invisibility
+ f - a +0 scale mail (worn)
+ g - a +1 hat of intelligence (worn)
+ h - a +0 pair of gloves
+Jewellery
+ c - an amulet of chemistry (worn)
+ d - a ring of see invisible (worn)
+Wands
+ p - a wand of polymorph (11)
+Scrolls
+ c - a scroll of enchant weapon {unknown}
+ d - a scroll of amnesia {unknown}
+ S - a scroll of silence
+ f - a scroll of fear
+ k - a scroll of blinking {unknown}
+ N - a scroll of noise
+ m - a scroll of fog {unknown}
+ I - a scroll of immolation
+ r - a scroll of revelation
+ e - a scroll of torment {unknown}
+ h - a scroll of vulnerability {unknown}
+Potions
+ e - a potion of enlightenment
+ B - 3 potions of berserk rage
+ a - a potion of ambrosia
+ j - a potion of mutation {unknown}
+ p - a potion of resistance {unknown}
+ f - a potion of moonshine {unknown}
+
+
+   Skills:
+ + Level 8.0 Fighting
+ * Level 10.7 Axes
+ + Level 7.4 Armour
+ + Level 6.6 Dodging
+ + Level 3.4 Evocations
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)             Temple (0/1) D:7         
+
+The Realm of Zot is guarded by orbs of entropy.
+
+Altars:
+Dithmenos
+Gozag
+Sif Muna
+Vehumet
+
+Shops:
+D:4 ([[
+
+Annotations:
+D:7 Blorkula the orcula
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The wyvern bites you but does no damage.
+Unknown command.
+Unknown command.
+[MiBe bot] survival: fear
+Press: ? - help, Dir - look around, f - activate
+Look: a wyvern (lightly wounded, chance to affect: 97%)
+Unknown command.
+Unknown command.
+You hit the killer bee but do no damage.
+The killer bee is almost dead.
+You hit the wyvern. The killer bee stings you.
+* * * LOW HITPOINT WARNING * * *
+The wyvern bites you.
+* * * LOW HITPOINT WARNING * * *
+[MiBe bot] survival: fear
+Press: ? - help, Dir - look around, f - activate
+Look: a wyvern (moderately wounded, chance to affect: 97%)
+Unknown command.
+Unknown command.
+You hit the killer bee but do no damage.
+Your headbutt misses the killer bee.
+The killer bee is almost dead.
+You hit the wyvern but do no damage. The killer bee closely misses you.
+The killer bee stings you but does no damage.
+The wyvern bites you.
+* * * LOW HITPOINT WARNING * * *
+[MiBe bot] survival: fear
+Press: ? - help, Dir - look around, f - activate
+Look: a wyvern (moderately wounded, chance to affect: 97%)
+Unknown command.
+Unknown command.
+You slash the killer bee!
+You kill the killer bee!
+Trog accepts your kill.
+You barely miss the wyvern. The wyvern barely misses you.
+Your Fighting skill increases to level 8!
+You hit the wyvern but do no damage.
+The wyvern is moderately wounded.
+The wyvern bites you!
+You die...
+
+#  *,..,*#.*#.##..#.#....#*,,*
+#  *,*,,*#**#............#*,,#
+#  *,**,*   #.###.#.#...##*,.#
+#  *,**,****#.# #.#.#...###..#
+#  *,**,,,,*#.# #.#.#........#
+#  *,**,**,##.###...........##
+   *,**,,,,.........#?#.###.#****
+####.#,,,,,..####.[..........,,,,
+.....#,,,.,,,*  #...#.#####.#****
+####.#,,,....####.....##***,*
+****,**,,......k@........,,,*
+,,,,,**,*......†##.######**,*
+,,,,,**,*..###.>*#...,,,,**,*
+,,,,,,*,*,,,....,......,,,,,*
+,,,,,,*,*,*####.########***,*
+,,,,,,*,,,,,,,..,,,,,,,,,,,,*
+,,,,,,*,*,****#.***,****,****
+,,,,,<,,,,,,,,..,**,****,*
+,**,,,*,*,****,,,**,,,,*,*
+,,,,,,,,,,,* *,,,,,,,,,*,*
+,**,,,*,**,* *,,,****,,,,*****
+
+
+You could see a wyvern.
+
+Vanquished Creatures
+  Sigmund (D:3)
+  Eustachio (D:4)
+  A steam dragon (D:7)
+  2 water moccasins
+  2 black bears (D:6)
+  An ice beast (D:6)
+  A sky beast (D:6)
+  An ogre (D:4)
+  2 centaurs
+  2 phantoms
+  A kobold brigand (D:7)
+  A bullfrog (D:6)
+  3 scorpions
+  11 killer bees (D:7)
+  A howler monkey (D:5)
+  2 bombardier beetles
+  2 jellies
+  5 hounds
+  4 orc priests (D:6)
+  A gnoll bouda (D:6)
+  7 iguanas
+  Jessica (D:3)
+  A clockroach (D:3)
+  A drude (D:7)
+  5 orc wizards
+  Natasha (D:3)
+  5 gnolls
+  12 adders
+  A white imp (D:6)
+  An ufetubus (D:5)
+  A ribbon worm (D:4)
+  2 dart slugs
+  22 orcs
+  6 endoplasms
+  10 hobgoblins
+  4 jackals (D:2)
+  3 quokkas
+  4 ball pythons
+  2 bats (D:2)
+  6 frilled lizards
+  6 goblins
+  9 kobolds
+  4 rats
+159 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexResilient8 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   208 | D:1      | Found a faded altar of an unknown god.
+   550 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   587 | D:1      | Reached skill level 4 in Axes
+  1163 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1241 | D:2      | Reached XP level 4. HP: 29/40 MP: 3/3
+  1680 | D:2      | Reached skill level 5 in Axes
+  1878 | D:2      | Reached ** piety under Trog
+  2245 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2325 | D:3      | Encountered Sigmund
+  2334 | D:3      | Killed Sigmund
+  2335 | D:3      | Reached skill level 6 in Axes
+  2335 | D:3      | Reached XP level 6. HP: 47/55 MP: 5/5
+  2514 | D:3      | Encountered Jessica
+  2519 | D:3      | Killed Jessica
+  2520 | D:3      | Reached skill level 5 in Fighting
+  2874 | D:3      | Encountered Natasha
+  2882 | D:3      | Killed Natasha
+  3177 | D:4      | Encountered Eustachio
+  3201 | D:4      | Killed Eustachio
+  3202 | D:4      | Reached skill level 7 in Axes
+  3202 | D:4      | Reached XP level 7. HP: 39/61 MP: 6/6
+  3346 | D:4      | Found Fibbysoi's Armour Emporium.
+  3379 | D:4      | Found Bytussi's Armour Shop.
+  3462 | D:4      | Reached skill level 5 in Armour
+  3505 | D:4      | Found Num Usuu's Weapon Shoppe.
+  3995 | D:5      | Entered Level 5 of the Dungeon
+  4120 | D:5      | Found an opulent altar of Gozag.
+  4121 | D:5      | Found a shimmering blue altar of Sif Muna.
+  4127 | D:5      | Found a shadowy altar of Dithmenos.
+  4130 | D:5      | Found a radiant altar of Vehumet.
+  4510 | D:5      | Reached skill level 8 in Axes
+  4510 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4557 | D:5      | Reached skill level 5 in Dodging
+  5009 | D:5      | Reached skill level 1 in Evocations
+  5332 | D:6      | Reached skill level 9 in Axes
+  5539 | D:6      | Reached XP level 9. HP: 79/79 MP: 8/8
+  6301 | D:7      | Reached skill level 10 in Axes
+  6469 | D:7      | Encountered Blorkula the orcula
+  6802 | D:7      | HP: 2/81 [wyvern (6)]
+  6804 | D:7      | Slain by a wyvern
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      ncdulo_halloftheorcs, layout_basic, serial_curves, eino_curves_04,
+          eino_curves_02, eino_curves_03, eino_curves_02,
+          dilly_ecumenical_altar_fadedgnrine
+D:2:      layout_basic, serial_curves, eino_curves_04, eino_curves_01
+D:3:      layout_loops_ring, minmay_misc_feat_diagonals, uniq_natasha,
+          uniq_jessica, uniq_sigmund
+D:4:      layout_basic, serial_shops, nicolae_shop_statue_plus, shop,
+          nicolae_shop_peninsula, uniq_crazy_yiuf_cottage, uniq_eustachio
+D:5:      minmay_clustersquares, layout_basic,
+          nicolae_overflow_macrodata_refinement
+D:6:      layout_loops_ring, minmay_fractal_squares_gapless_5
+D:7:      layout_basic, mainiacjoe_overflow_surrounded_room,
+          minmay_temple_entry_from_below_a, uniq_blorkula_the_orcula,
+          uniq_maggie
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Axes           |     4     5  6  7  8  9 10 | 10.7
+Fighting       |        4        5  6  7  8 |  8.0
+Armour         |        3     4     5  6  7 |  7.4
+Dodging        |           3     4     5  6 |  6.6
+Evocations     |                       2  3 |  3.4
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    46 |    98 |   277 ||   421
+  Melee: Hand axe          |    53 |   126 |   339 ||   518
+         Headbutt          |    11 |    27 |    74 ||   112
+ Invoke: Berserk           |     4 |     7 |    23 ||    34
+         Trog's Hand       |       |     1 |     8 ||     9
+  Drink: Curing            |       |       |     4 ||     4
+         Heal wounds       |       |       |     4 ||     4
+   Read: Teleportation     |     1 |       |     5 ||     6
+         Fear              |       |     1 |       ||     1
+         Immolation        |       |     1 |       ||     1
+         Identify          |       |     2 |     3 ||     5
+         Silence           |       |       |     1 ||     1
+         Noise             |       |       |     1 ||     1
+         Revelation        |       |       |     1 ||     1
+ Armour: Animal skin       |     6 |       |       ||     6
+         Ring mail         |    28 |    75 |    11 ||   114
+         Scale mail        |       |       |   254 ||   254
+  Dodge: Dodged            |    17 |    51 |   187 ||   255
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   7065 |   6873 |    192 |      0 |   4140 |   7 | 1009.3 |
+       Dungeon |   7065 |   6873 |    192 |      0 |   4140 |   7 | 1009.3 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:2: 1309 daAuts
+     D:6: 1171 daAuts
+     D:5: 1163 daAuts
+     D:3: 967 daAuts
+     D:1: 956 daAuts
+     D:4: 876 daAuts
+     D:7: 622 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    17 |    26 |    57 ||   100
+         Kill Undead  |     0 |     1 |     1 ||     2
+          Kill Demon  |     0 |     0 |     2 ||     2
+         Kill Wizard  |     0 |     3 |     2 ||     5
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    25 |    40 |    89 ||   154
+         Kill Undead  |     0 |     1 |     1 ||     2
+          Kill Demon  |     0 |     0 |     3 ||     3
+         Kill Wizard  |     0 |     5 |     4 ||     9
+----------------------+-------+-------+-------++-------
+

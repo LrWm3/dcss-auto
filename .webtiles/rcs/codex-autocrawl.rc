@@ -473,8 +473,9 @@ local function combat_action(scan)
     return explore_frontier(scan)
   end
 
-  if (scan.yellow_adjacent or (scan.reachable_adjacent and #scan.monsters>=3))
-      and hp_percent()>=55 and not you.berserk()
+  -- Keep the original threat-triggered offensive policy. Crowd-only berserk
+  -- can spend rage on grey summons before the dangerous enemy arrives.
+  if scan.yellow_adjacent and not you.berserk()
       and not you.exhausted() and not you.slowed() then
     if you.activate_ability("Berserk", 0, 0) then
       return true

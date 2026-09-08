@@ -1,0 +1,440 @@
+ Dungeon Crawl Stone Soup version 0.35-a0 (console) character file.
+
+Game seed: 103583508244309201
+
+9076 CodexRoute14 the Cleaver (level 11, -4/145 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Priest of Trog.
+             Slain by a sun demon (13 damage)
+             ... summoned by a kobold demonologist
+             ... on level 11 of the Dungeon.
+             The game lasted 00:00:34 (8884 turns).
+
+CodexRoute14 the Cleaver (Minotaur Berserker)       Turns: 8884, Time: 00:00:34
+
+Health: -4/145     AC: 21    Str: 27    XL:     11   Next: 18%
+Magic:  10/10      EV: 11    Int:  0    God:    Trog [***...]
+Gold:   527        SH:  0    Dex: 12    Spells: 10/10 levels left
+
+rFire   . . .  (100%)   a - +0 war axe
+rCold   + + .  (33%)    (no offhand)
+rNeg    . . .  (100%)   d - +6 chain mail of Heasu {rPois rC++ Int-4 Dex+3}
+rPois   +      (33%)    (no helmet)
+rElec   .      (100%)   g - +0 cloak
+rCorr   +      (50%)    c - +0 pair of gloves
+SInv    .               b - +0 pair of boots {Fly}
+Will    .....           e - amulet of chemistry
+Stlth                   f - ring of resist corrosion
+HPRegen 0.44/turn       (no ring)
+MPRegen 0.12/turn
+
+%: no passive effects
+@: berserking (expiring), on fire, flying, slowed, glowing, lost intelligence
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (0%), Trog's Hand (0%)
+
+
+You were on level 11 of the Dungeon.
+You worshipped Trog.
+Trog was most pleased with you.
+You visited 1 branch of the dungeon, and saw 11 of its levels.
+
+You collected 527 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 war axe (weapon)
+ i - a +1 hand axe of freezing
+Armour
+ b - a +0 pair of boots of flying (worn)
+ c - a +0 pair of gloves (worn)
+ d - the +6 chain mail of Heasu (worn) {rPois rC++ Int-4 Dex+3}
+   (You found it on level 2 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   rC++:      It greatly protects you from cold.
+   Int-4:     It affects your intelligence (-4).
+   Dex+3:     It affects your dexterity (+3).
+   
+   It cannot be enchanted further.
+ g - a +0 cloak (worn)
+Jewellery
+ e - an amulet of chemistry (worn)
+ f - a ring of resist corrosion (worn)
+ h - an amulet of magic regeneration
+Wands
+ b - a wand of light (10)
+ f - a wand of mindburst (19)
+Scrolls
+ d - a scroll of fog {unknown}
+ t - a scroll of teleportation
+ V - 5 scrolls of vulnerability
+ f - a scroll of fear
+ h - a scroll of enchant weapon {unknown}
+ k - a scroll of poison {unknown}
+Potions
+ M - 2 potions of mutation
+ L - 3 potions of lignification
+ C - 2 potions of cancellation
+ c - 2 potions of curing
+ h - a potion of haste
+ A - 2 potions of attraction
+ w - 3 potions of heal wounds
+ m - a potion of might
+ f - a potion of ambrosia {unknown}
+ j - a potion of moonshine {unknown}
+
+
+   Skills:
+ + Level 9.6 Fighting
+ * Level 12.9 Axes
+ + Level 9.2 Armour
+ + Level 8.3 Dodging
+ + Level 5.2 Evocations
+
+
+You had 10 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (10/15)            Temple (0/1) D:4         
+  Lair: D:8-11         Orc: D:9-12      
+
+The Realm of Zot is guarded by orbs of winter.
+
+Altars:
+Ashenzari
+Elyvilon
+Fedhas
+Gozag
+Makhleb
+Qazlal
+Ru
+Uskayaw
+Wu Jian
+Xom
+Zin
+Ignis
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The crimson imp disappears in a puff of smoke!
+You hit the smoke demon. You barely miss the sun demon. You closely miss the
+chaos spawn.
+The sun demon hits you but does no damage.
+The smoke demon gestures at you.
+The pyre arrow hits you but does no damage.
+You are covered in intense liquid fire! Move or burn!
+The chaos spawn headbutts you. The chaos spawn sears you!
+You slice the smoke demon!!
+You kill the smoke demon!
+The smoke demon disappears in a puff of smoke!
+You barely miss the sun demon. You slash the chaos spawn!
+You hit the kobold demonologist but do no damage.
+The liquid fire burns you!
+The sun demon hits you! You are engulfed in flames!
+The kobold demonologist hits you but does no damage.
+The chaos spawn kicks you but does no damage.
+You closely miss the chaos spawn.
+The chaos spawn is severely wounded.
+You completely miss the sun demon.
+You barely miss the kobold demonologist.
+The liquid fire burns you!
+The sun demon hits you. You are engulfed in flames!!
+* * * LOW HITPOINT WARNING * * *
+The kobold demonologist hits you but does no damage.
+You closely miss the chaos spawn. You headbutt the chaos spawn!
+You kill the chaos spawn!
+The chaos spawn degenerates into a cloud of primal chaos!
+You hit the kobold demonologist. You hit the sun demon but do no damage.
+The liquid fire burns you!
+* * * LOW HITPOINT WARNING * * *
+The sun demon misses you. You furiously retaliate!
+You headbutt the sun demon, but do no damage.
+The kobold demonologist looks satisfied for a moment.
+You slice the sun demon!! Your headbutt misses the sun demon.
+The sun demon is almost dead.
+You miss the kobold demonologist.
+The liquid fire burns you!
+* * * LOW HITPOINT WARNING * * *
+The sun demon hits you!
+You die...
+
+   #....#   #....#...#'#.
+   #....#   #....#.....'.
+####....+   #....#.#####.
+........#   #....###.....
+........#   #............
+........#   #............
+........#   #............
+........#####............
+.........................
+########'#######......###
+ ......K@......#......#
+ .......3§.....#......#
+ ........#####.#......
+ ........#        ...
+ #####/..#
+     #...#
+     #...#
+     #...#
+                      ###
+                      ...
+                      ...
+
+
+You could see a sun demon (summoned) and a kobold demonologist.
+
+Vanquished Creatures
+  4 two-headed ogres
+  Sonja (D:10)
+  Pikel (D:6)
+  A kobold demonologist (D:9)
+  A troll (D:9)
+  A hornet (D:7)
+  A wraith (D:9)
+  2 wyverns (D:7)
+  5 yaks (D:8)
+  A basilisk (D:11)
+  A steam dragon (D:8)
+  Menkaure (D:6)
+  An acid dragon (D:11)
+  Duvessa (D:5)
+  A kobold geomancer (D:9)
+  2 orc warriors
+  2 sky beasts
+  A black bear (D:5)
+  A centaur (D:7)
+  4 lemures (D:6)
+  3 phantoms
+  4 kobold brigands
+  A gnoll sergeant (D:8)
+  5 scorpions
+  4 rock fish (D:8)
+  A marrowcuda (D:6)
+  Dowan (D:5)
+  A bes kemwar (D:5)
+  12 killer bees (D:9)
+  A howler monkey (D:8)
+  2 bombardier beetles
+  3 hounds
+  2 jellies
+  4 orc priests
+  A gnoll bouda (D:5)
+  A drude (D:7)
+  2 iguanas
+  10 orc wizards
+  9 gnolls
+  8 adders
+  2 ufetubi (D:7)
+  4 ribbon worms
+  3 dart slugs
+  24 orcs
+  9 endoplasms
+  12 hobgoblins
+  5 jackals (D:4)
+  9 quokkas
+  4 ball pythons
+  8 bats
+  3 frilled lizards
+  3 goblins
+  19 kobolds
+  5 rats
+218 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexRoute14 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    61 | D:1      | Reached skill level 4 in Axes
+    61 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   826 | D:2      | Found a faded altar of an unknown god.
+   853 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+   949 | D:2      | Reached ** piety under Trog
+  1269 | D:2      | Identified the +6 chain mail of Heasu {rPois rC++ Int-4
+                  | Dex+3}
+  1340 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1787 | D:3      | Reached skill level 5 in Axes
+  1843 | D:3      | Found a white marble altar of Elyvilon.
+  1862 | D:3      | Found a hide-covered altar of Uskayaw.
+  1940 | D:3      | Found a glowing silver altar of Zin.
+  1940 | D:3      | Found an opulent altar of Gozag.
+  1998 | D:4      | Found a statue of an orb of winter.
+  1998 | D:4      | Found a staircase to the Ecumenical Temple.
+  1998 | D:4      | Found a statue of an orb of winter.
+  2137 | D:4      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2227 | D:4      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2238 | D:4      | Reached skill level 5 in Fighting
+  2238 | D:4      | Reached skill level 6 in Axes
+  3102 | D:5      | Entered Level 5 of the Dungeon
+  3151 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3258 | D:5      | Reached skill level 7 in Axes
+  3370 | D:5      | Encountered Duvessa
+  3371 | D:5      | Encountered Dowan
+  3375 | D:5      | Killed Duvessa
+  3376 | D:5      | Reached skill level 5 in Armour
+  3379 | D:5      | Killed Dowan
+  3445 | D:5      | Found a stormy altar of Qazlal.
+  3546 | D:5      | Reached skill level 5 in Dodging
+  3552 | D:5      | Reached XP level 8. HP: 46/70 MP: 7/7
+  4155 | D:5      | Reached skill level 8 in Axes
+  4694 | D:6      | Reached skill level 1 in Evocations
+  4813 | D:6      | Encountered Pikel
+  4827 | D:6      | Killed Pikel
+  4828 | D:6      | Reached skill level 9 in Axes
+  4888 | D:6      | Encountered Menkaure
+  4897 | D:6      | Killed Menkaure
+  4914 | D:6      | Reached XP level 9. HP: 40/79 MP: 8/8
+  5832 | D:7      | Found a candlelit altar of Ignis.
+  5834 | D:7      | Found a burning altar of Makhleb.
+  5955 | D:7      | Reached skill level 10 in Axes
+  6298 | D:7      | Found a shimmering altar of Xom.
+  6909 | D:8      | Reached skill level 11 in Axes
+  6909 | D:8      | Encountered a two-headed ogre
+  6913 | D:8      | Reached XP level 10. HP: 88/88 MP: 9/9
+  6918 | D:8      | Killed a two-headed ogre
+  7393 | D:9      | Identified the medusa talisman of Protective Custody {Harm
+                  | rElec Str+3}
+  7402 | D:9      | Encountered a two-headed ogre
+  7409 | D:9      | Killed a two-headed ogre
+  7544 | D:9      | Found an ornate altar of the Wu Jian Council.
+  7547 | D:9      | Found a sacrificial altar of Ru.
+  7605 | D:9      | Found a blossoming altar of Fedhas.
+  7608 | D:9      | Found a broken altar of Ashenzari.
+  7638 | D:9      | Reached skill level 12 in Axes
+  7639 | D:9      | Reached *** piety under Trog
+  7949 | D:9      | Encountered a two-headed ogre
+  7958 | D:9      | Killed a two-headed ogre
+  8155 | D:9      | Reached skill level 5 in Evocations
+  8531 | D:10     | Entered Level 10 of the Dungeon
+  8563 | D:10     | Encountered Sonja
+  8571 | D:10     | Killed Sonja
+  8572 | D:10     | Reached XP level 11. HP: 97/97 MP: 10/10
+  8659 | D:10     | You are sucked into a shaft and drop 1 floor!
+  8868 | D:11     | Encountered a two-headed ogre
+  8872 | D:11     | Encountered a sun demon
+  8874 | D:11     | Killed a two-headed ogre
+  8884 | D:11     | Slain by a sun demon
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      evilmike_arrival_rings, layout_basic
+D:2:      layout_rooms, shapermc_ecumenical_altar_mp_ritualfount,
+          minmay_increasing_density
+D:3:      layout_loops_ring, grunt_temple_overflow_gold_and_silver,
+          mainiacjoe_overflow_big_doors, grunt_ministairs_7
+D:4:      layout_layer_cave, minmay_temple_entry_tees, hangedman_decor_riveting
+D:5:      layout_layer_cave, nicolae_qazlal_beasts_of_the_sky,
+          corexii_item_surrounded_by_moat, kennysheep_small_spiral, uniq_duvessa
+D:6:      layout_cave_pools, uniq_menkaure, uniq_pikel
+D:7:      layout_loops_ring, xom_redecorated,
+          dolorous_makhleb_big_flames_little_flames
+D:8:      layout_cave_pods, eino_curves_04
+D:9:      layout_roguey, grunt_temple_overflow_cloverleaf, serial_bayou_pond_d,
+          grunt_pizzeria
+D:10:     layout_basic, mainiacjoe_overflow_alcove_1, minmay_lair_entry_grove,
+          kennysheep_orc_monster_closet_entryway, uniq_sonja
+D:11:     layout_irregular_city
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 |
+---------------+-------------------------------+-----
+Axes           |  4        5     6  7  9 11 12 | 12.9
+Fighting       |        4        5  6  7  8  9 |  9.6
+Armour         |        3     4     5  6  7  9 |  9.2
+Dodging        |           3     4  5     7  8 |  8.3
+Evocations     |                       2  3  5 |  5.2
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+---------------------------+-------+-------+-------+-------++-------
+ Attack: Normal            |    83 |    96 |   169 |   131 ||   479
+  Melee: Hand axe          |    91 |   135 |   222 |    72 ||   520
+         Headbutt          |    20 |    28 |    60 |    58 ||   166
+         War axe           |       |       |       |   115 ||   115
+ Invoke: Berserk           |     1 |     6 |    20 |    11 ||    38
+   Read: Identify          |     1 |     5 |     1 |     1 ||     8
+         Fear              |       |       |     1 |       ||     1
+         Teleportation     |       |       |       |     1 ||     1
+         Vulnerability     |       |       |       |     1 ||     1
+   Stab: Sleeping          |     1 |       |       |       ||     1
+ Armour: Animal skin       |     1 |       |       |       ||     1
+         Leather armour    |     9 |       |       |       ||     9
+         Ring mail         |     1 |       |       |       ||     1
+         Scale mail        |    42 |       |       |       ||    42
+         Chain mail        |       |   111 |   196 |   161 ||   468
+  Dodge: Dodged            |    40 |    55 |   109 |   100 ||   304
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  12441 |  12005 |    436 |      0 |   8537 |  11 | 1131.0 |
+       Dungeon |  12441 |  12005 |    436 |      0 |   8537 |  11 | 1131.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 2342 daAuts
+     D:9: 1740 daAuts
+     D:7: 1675 daAuts
+     D:4: 1674 daAuts
+     D:8: 1307 daAuts
+     D:6: 936 daAuts
+     D:3: 907 daAuts
+     D:1: 747 daAuts
+     D:2: 638 daAuts
+    D:11: 313 daAuts
+    D:10: 156 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    26 |    38 |    36 |    33 ||   133
+         Kill Undead  |     0 |     1 |     4 |     1 ||     5
+          Kill Demon  |     0 |     0 |     2 |     0 ||     2
+         Kill Wizard  |     0 |     2 |     2 |     5 ||     8
+----------------------+-------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    38 |    59 |    55 |    52 ||   204
+         Kill Undead  |     0 |     1 |     5 |     1 ||     7
+          Kill Demon  |     0 |     0 |     3 |     0 ||     3
+         Kill Wizard  |     0 |     3 |     4 |     8 ||    15
+----------------------+-------+-------+-------+-------++-------
+

@@ -1,0 +1,387 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 17908030050512890810 (custom seed)
+
+CodexResilient9 the Cleaver (Minotaur Berserker)   Turns: 11740, Time: 00:01:32
+
+Health: 99/99      AC: 22    Str: 26    XL:     11   Next: 31%
+Magic:  10/10      EV:  9    Int:  4    God:    Trog [***...]
+Gold:   647        SH:  0    Dex: 10    Spells: 10/10 levels left
+
+rFire   + . .  (50%)    d - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +1 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   a - +0 pair of gloves {Infuse}
+SInv    .               (no boots)
+Will    .....           i - amulet of magic regeneration
+Stlth                   f - +4 ring of protection
+HPRegen 0.36/turn       g - ring of protection from fire
+MPRegen 0.52/turn
+
+%: infuse magic (1 MP)
+@: no status effects
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (0%)
+
+
+You are on level 11 of the Dungeon.
+You worship Trog.
+Trog is most pleased with you.
+You have visited 1 branch of the dungeon, and seen 11 of its levels.
+
+You have collected 647 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +0 war axe (weapon)
+Missiles
+ e - a throwing net (quivered)
+Armour
+ a - a +0 pair of gloves of infusion (worn)
+ b - a +0 cloak (worn)
+ c - a +1 plate armour (worn)
+Jewellery
+ f - a +4 ring of protection (worn)
+ g - a ring of protection from fire (worn)
+ h - a +5 ring of evasion
+ i - an amulet of magic regeneration (worn)
+ j - a ring of magical power
+Wands
+ b - a wand of acid (17)
+ e - a wand of paralysis (9)
+ a - a wand of flame (27)
+ c - a wand of roots (4)
+Scrolls
+ N - 2 scrolls of noise
+ s - a scroll of summoning
+ V - 2 scrolls of vulnerability
+ I - 2 scrolls of immolation
+ x - 4 scrolls of amnesia
+ g - 5 scrolls of fog
+ p - a scroll of poison
+ r - a scroll of revelation
+ a - a scroll of enchant armour
+ k - a scroll labelled VOL FEASMOTAJ
+ m - a scroll labelled YNITURO YTABB
+ b - a scroll of blinking
+ t - a scroll of teleportation
+ i - 2 scrolls of identify
+Potions
+ d - 2 puce potions
+ i - 2 potions of invisibility
+ e - 4 potions of enlightenment
+ n - a fizzy purple potion
+ f - a black potion
+ o - 2 smoky brown potions
+ c - 4 potions of curing
+ l - 2 coppery potions
+ b - 3 potions of brilliance
+ t - 3 amethyst potions
+ u - a dark potion
+ j - a murky grey potion
+ p - a lumpy yellow potion
+ s - a fizzy sapphire potion
+
+
+   Skills:
+ + Level 9.7 Fighting
+ * Level 13.2 Axes
+ + Level 9.4 Armour
+ + Level 8.4 Dodging
+ + Level 5.4 Evocations
+
+
+You have 10 spell levels left.
+You don't know any spells.
+Your spell library is empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (11/15)            Temple (0/1) D:7            Lair (0/5) D:11        
+    Orc (0/2) D:9         
+
+The Realm of Zot is guarded by orbs of fire.
+
+Altars:
+Cheibriados
+Dithmenos
+Elyvilon
+Fedhas
+Gozag
+Hepliaklqana
+Sif Muna
+Wu Jian
+Xom
+Yredelemnul
+The Shining One
+
+Shops:
+D:4 ?
+
+Annotations:
+D:11 exclusion: 2 oklob plants
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Unknown command.
+Done exploring.
+Unknown command.
+Unknown command.
+[MiBe bot] route stage complete: D:11; [MiBe bot] route stage 2: Lair:1-5
+(D) Dungeon        (T) Temple         (L) Lair           (O) Orcish Mines   
+Where to? (Tab/Enter - D:11, ? - help) 
+What level of the Lair of Beasts? (default 1, ? - help) 
+Unknown command.
+Sorry, I don't know how to get there.
+Unknown command.
+Unknown command.
+(D) Dungeon        (T) Temple         (L) Lair           (O) Orcish Mines   
+Where to? (Tab/Enter - Lair:1, ? - help) 
+What level of the Lair of Beasts? (default 1, ? - help) 
+Unknown command.
+Sorry, I don't know how to get there.
+Unknown command.
+Unknown command.
+(D) Dungeon        (T) Temple         (L) Lair           (O) Orcish Mines   
+Where to? (Tab/Enter - Lair:1, ? - help) 
+What level of the Lair of Beasts? (default 1, ? - help) 
+Unknown command.
+Sorry, I don't know how to get there.
+Unknown command.
+Unknown command.
+Unknown command.
+Done exploring.
+Unknown command.
+Unknown command.
+Unknown command.
+Done exploring.
+Unknown command.
+Unknown command.
+Unknown command.
+Done exploring.
+Unknown command.
+Unknown command.
+[MiBe bot] route blocked: travel to Lair:1 made no progress
+Saving game... please wait.
+
+##.##......######.#  #..####.....
+##.##.............#  #...).......
+##.##...##........#  #...........
+##.##...##........#  #...###..†..
+...##...##.#####..####...# #.....
+#..##...##.#   #.........# #.....
+#..##..[##.#   #.........# #.....
+#.......##.#   #..####...# #.....
+#.......##.#   #...###...# #.....
+#.......##.#   #.....#######.....
+#.......##.#   #@...#...≈...#....
+#..........#####......#...#......
+#....................##.PP##.....
+#..................#..PPPPP..#...
+#..................#≈.PP>P..≈#...
+.....).............#...PPP...#...
+.....................##.P.##....<
+......................#...#......
+#...................#...≈...#....
+#(...................#######.....
+#.................####...##...#..
+
+
+There are no monsters in sight!
+
+Vanquished Creatures
+  3 boulder beetles (D:11)
+  A two-headed ogre (D:11)
+  2 cyclopes (D:11)
+  A manticore (D:11)
+  A hornet (D:9)
+  2 vampires (D:11)
+  9 yaks
+  3 wyverns
+  2 steam dragons
+  An acid dragon (D:9)
+  A water moccasin (D:7)
+  4 orc warriors
+  2 kobold geomancers
+  3 ogres
+  6 centaurs
+  3 kobold brigands
+  2 bullfrogs
+  A gnoll sergeant (D:8)
+  3 scorpions
+  6 rock fish
+  3 marrowcudas
+  An electric eel (D:6)
+  A hound (D:6)
+  9 orc priests
+  4 jellies
+  2 gnoll boudas
+  3 drudes
+  2 iguanas
+  Terence (D:3)
+  2 clockroaches
+  18 orc wizards
+  18 gnolls
+  8 adders
+  2 shadow imps
+  3 white imps
+  4 ufetubi (D:4)
+  6 ribbon worms
+  3 dart slugs
+  46 orcs
+  4 hobgoblins
+  5 jackals
+  5 quokkas
+  4 ball pythons
+  7 bats
+  6 endoplasms
+  6 frilled lizards
+  9 goblins
+  23 kobolds
+  6 rats
+267 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexResilient9 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   110 | D:1      | Reached XP level 2. HP: 24/27 MP: 1/1
+   173 | D:1      | Reached skill level 4 in Axes
+   572 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+   865 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+   868 | D:2      | Reached ** piety under Trog
+  1704 | D:3      | Encountered Terence
+  1708 | D:3      | Killed Terence
+  1709 | D:3      | Reached skill level 5 in Axes
+  2484 | D:4      | Reached XP level 5. HP: 46/47 MP: 1/4
+  2792 | D:4      | Found Ritoq's Magic Scroll Emporium.
+  2862 | D:4      | Reached XP level 6. HP: 43/53 MP: 1/5
+  2864 | D:4      | Reached skill level 6 in Axes
+  2983 | D:4      | Reached skill level 5 in Fighting
+  3481 | D:5      | Entered Level 5 of the Dungeon
+  3573 | D:5      | Reached XP level 7. HP: 61/61 MP: 3/6
+  3578 | D:5      | Reached skill level 7 in Axes
+  3926 | D:5      | Reached skill level 5 in Armour
+  4481 | D:5      | Reached skill level 8 in Axes
+  4481 | D:5      | Reached XP level 8. HP: 70/70 MP: 5/7
+  4746 | D:5      | Reached *** piety under Trog
+  4775 | D:5      | Reached skill level 5 in Dodging
+  4829 | D:5      | Found a glowing golden altar of the Shining One.
+  5371 | D:6      | Found an ornate altar of the Wu Jian Council.
+  5383 | D:6      | Reached skill level 1 in Evocations
+  5629 | D:6      | Found an opulent altar of Gozag.
+  5897 | D:6      | Reached skill level 9 in Axes
+  6407 | D:7      | Found a blossoming altar of Fedhas.
+  6441 | D:7      | Found a staircase to the Ecumenical Temple.
+  6441 | D:7      | Found a statue of an orb of fire.
+  6441 | D:7      | Found a statue of an orb of fire.
+  6529 | D:7      | Reached XP level 9. HP: 79/79 MP: 0/8
+  7730 | D:8      | Reached skill level 10 in Axes
+  7883 | D:8      | Reached skill level 11 in Axes
+  8014 | D:8      | Found a white marble altar of Elyvilon.
+  8298 | D:8      | Found a shadowy altar of Dithmenos.
+  8328 | D:8      | Found a basalt altar of Yredelemnul.
+  8681 | D:9      | Found a shimmering altar of Xom.
+  8698 | D:9      | Found a staircase to the Orcish Mines.
+  8705 | D:9      | Reached XP level 10. HP: 88/88 MP: 1/9
+  9123 | D:9      | Found a shimmering blue altar of Sif Muna.
+  9394 | D:9      | Found a snail-covered altar of Cheibriados.
+  9938 | D:9      | Reached skill level 12 in Axes
+ 10072 | D:10     | Entered Level 10 of the Dungeon
+ 10123 | D:10     | Identified the maw talisman of Niodwuy {rPois}
+ 10145 | D:10     | Found a hazy altar of Hepliaklqana.
+ 10704 | D:11     | Found a staircase to the Lair.
+ 10704 | D:11     | Encountered an oklob plant
+ 10838 | D:11     | Encountered a boulder beetle
+ 10874 | D:11     | Killed a boulder beetle
+ 10934 | D:11     | Encountered a two-headed ogre
+ 10941 | D:11     | Killed a two-headed ogre
+ 10942 | D:11     | Reached skill level 5 in Evocations
+ 11010 | D:11     | Encountered a manticore
+ 11021 | D:11     | Killed a manticore
+ 11022 | D:11     | Reached XP level 11. HP: 97/97 MP: 6/10
+ 11105 | D:11     | Encountered a boulder beetle
+ 11116 | D:11     | Killed a boulder beetle
+ 11200 | D:11     | Reached skill level 13 in Axes
+ 11267 | D:11     | Encountered a boulder beetle
+ 11287 | D:11     | Killed a boulder beetle
+
+Illustrated notes
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 11 |
+---------------+----------------------------------+-----
+Axes           |     4     5     6  8  9 11 12 13 | 13.2
+Fighting       |     4           5  6  7  8  9    |  9.7
+Armour         |        3     4     5  6  7  9    |  9.4
+Dodging        |           3     4     5  6  8    |  8.4
+Evocations     |                       2  3  5    |  5.4
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+---------------------------+-------+-------+-------+-------++-------
+ Attack: Normal            |    60 |   110 |   185 |   173 ||   528
+  Melee: Hand axe          |    33 |       |       |       ||    33
+         Headbutt          |    16 |    30 |    50 |    48 ||   144
+         War axe           |    37 |   124 |   253 |   203 ||   617
+ Invoke: Berserk           |     3 |     8 |    28 |    22 ||    61
+         Trog's Hand       |       |     1 |     5 |     2 ||     8
+   Read: Teleportation     |     1 |     1 |     1 |       ||     3
+         Noise             |       |     1 |       |       ||     1
+         Vulnerability     |       |     1 |       |       ||     1
+         Amnesia           |       |     1 |       |       ||     1
+         Identify          |       |     4 |       |       ||     4
+         Immolation        |       |     1 |       |       ||     1
+         Fog               |       |     1 |       |       ||     1
+         Enchant armour    |       |       |     1 |       ||     1
+         Summoning         |       |       |       |     1 ||     1
+         Blinking          |       |       |       |     1 ||     1
+         Revelation        |       |       |       |     1 ||     1
+         Poison            |       |       |       |     1 ||     1
+ Armour: Animal skin       |    12 |       |       |       ||    12
+         Leather armour    |     3 |       |       |       ||     3
+         Ring mail         |    14 |    10 |       |       ||    24
+         Scale mail        |       |    68 |       |       ||    68
+         Plate armour      |       |    16 |   225 |   180 ||   421
+         Chain mail        |       |     2 |       |       ||     2
+  Dodge: Dodged            |    39 |    49 |    75 |    60 ||   223
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  12324 |  11853 |    471 |      0 |   7427 |  11 | 1120.4 |
+       Dungeon |  12324 |  11853 |    471 |      0 |   7427 |  11 | 1120.4 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1914 daAuts
+     D:9: 1511 daAuts
+     D:7: 1303 daAuts
+     D:6: 1201 daAuts
+    D:11: 1119 daAuts
+     D:4: 1063 daAuts
+     D:2: 1062 daAuts
+     D:8: 1034 daAuts
+     D:3: 914 daAuts
+    D:10: 658 daAuts
+     D:1: 540 daAuts
+
+DLua errors:
+

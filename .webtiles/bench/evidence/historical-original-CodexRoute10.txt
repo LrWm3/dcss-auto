@@ -1,0 +1,274 @@
+ Dungeon Crawl Stone Soup version 0.35-a0 (console) character file.
+
+Game seed: 6144198052690956201
+
+98 CodexRoute10 the Chopper (level 4, 0/40 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by a crimson imp (3 damage)
+             ... summoned by Eustachio
+             ... on level 4 of the Dungeon.
+             The game lasted 00:00:04 (1216 turns).
+
+CodexRoute10 the Chopper (Minotaur Berserker)       Turns: 1216, Time: 00:00:04
+
+Health: 0/40       AC:  5    Str: 24    XL:     4   Next: 44%
+Magic:  3/3        EV: 10    Int:  4    God:    Trog [**....]
+Gold:   61         SH:  0    Dex:  9    Spells: 3/3 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +0 ring mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    +....           (no amulet)
+Stlth                   b - ring of willpower
+HPRegen 0.26/turn       (no ring)
+MPRegen 0.08/turn
+
+%: no passive effects
+@: on berserk cooldown, slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (2%)
+
+
+You were on level 4 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 61 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ c - a +0 ring mail (worn)
+Jewellery
+ b - a ring of willpower (worn)
+Scrolls
+ c - 2 scrolls of identify {unknown}
+ e - a scroll of immolation {unknown}
+ h - a scroll of teleportation {unknown}
+ k - a scroll of fear {unknown}
+Potions
+ d - a potion of invisibility {unknown}
+ f - a potion of ambrosia {unknown}
+ j - a potion of resistance {unknown}
+
+
+   Skills:
+ + Level 4.3 Fighting
+ * Level 4.9 Axes
+ + Level 3.3 Armour
+ + Level 3.0 Dodging
+
+
+You had 3 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+
+Shops:
+D:1 (*(:
+
+Annotations:
+D:4 Eustachio
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Eustachio is lightly wounded.
+Eustachio hits you with a +2 rapier of holy wrath.
+You closely miss Eustachio. You headbutt Eustachio!
+Eustachio is moderately wounded.
+Eustachio hits you with a +2 rapier of holy wrath. x2
+You closely miss Eustachio.
+Eustachio is moderately wounded.
+Eustachio mumbles some strange words.
+Eustachio blinks!
+Eustachio completely misses you.
+Eustachio gestures wildly while chanting.
+Eustachio blinks!
+Eustachio hits you with a +2 rapier of holy wrath.
+* * * LOW HITPOINT WARNING * * *
+You barely miss Eustachio.
+Eustachio is moderately wounded.
+Eustachio brags, "I can call spirits from the vasty deep."
+Eustachio hits you with a +2 rapier of holy wrath.
+* * * LOW HITPOINT WARNING * * *
+You hit Eustachio but do no damage. Your headbutt misses Eustachio.
+Eustachio is moderately wounded.
+Eustachio gestures wildly while chanting.
+Eustachio hits you with a +2 rapier of holy wrath.
+* * * LOW HITPOINT WARNING * * *
+You hit Eustachio but do no damage. Your headbutt misses Eustachio.
+Eustachio is moderately wounded.
+You slash the drude! You miss the crimson imp. The drude hits you but does no
+damage. The drude misses you.
+Eustachio mumbles some strange words.
+Eustachio blinks! The crimson imp barely misses you.
+The iron imp grinds its teeth.
+The drude hits you but does no damage. The drude closely misses you.
+You closely miss the drude.
+The drude is moderately wounded.
+You hit the crimson imp. You hit the iron imp but do no damage. The crimson imp
+hits you.
+* * * LOW HITPOINT WARNING * * *
+The drude barely misses you. The drude closely misses you.
+The iron imp hits you but does no damage.
+Eustachio gestures wildly while chanting.
+Eustachio blinks! The crimson imp hits you.
+You die...
+
+        .....#
+    ########.
+     ......#.
+     #..$..#
+     #.....#
+     #.....
+     #....#
+        #.#
+        #.#
+  #######5#
+  #..@..5@#
+  #......5#
+  #######.#
+        #.#
+#.#######.#
+#.........#
+###########
+
+
+You could see Eustachio, a drude (summoned), an iron imp (summoned) and a
+crimson imp (summoned).
+
+Vanquished Creatures
+  5 gnolls
+  2 adders (D:2)
+  A dart slug (D:1)
+  3 endoplasms
+  5 hobgoblins (D:1)
+  2 quokkas (D:1)
+  7 ball pythons
+  4 bats (D:1)
+  3 frilled lizards (D:1)
+  2 goblins
+  4 kobolds (D:1)
+  2 rats (D:2)
+40 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexRoute10 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+     7 | D:1      | Found Keclu's Weapon Shop.
+    29 | D:1      | Found Zelu's General Store.
+   236 | D:1      | Found Ryshroff's Antique Weapon Emporium.
+   274 | D:1      | Reached XP level 2. HP: 24/27 MP: 1/1
+   401 | D:1      | Found a faded altar of an unknown god.
+   625 | D:1      | Found Akaosiqoes's Book Shoppe.
+   738 | D:1      | Reached ** piety under Trog
+   769 | D:1      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1058 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1191 | D:2      | You fall into a shaft and drop 2 floors!
+  1197 | D:4      | Encountered Eustachio
+  1216 | D:4      | Slain by a crimson imp
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      scummos_arrival_forest, layout_loops_corners, serial_shops,
+          nicolae_shop_pleasant_corner_grove, shop, nicolae_shop_rolling_square,
+          nicolae_shop_temple_entry_statues_fountains, serial_rivers,
+          chequers_serial_rivers_micro_c, chequers_serial_rivers_micro_c,
+          chequers_serial_rivers_large_b, chequers_serial_rivers_micro_b,
+          chequers_serial_rivers_marsh, dilly_ecumenical_altar_fadedgnrine,
+          st_stairs_9
+D:2:      layout_rooms, basic_altar, minmay_cupped
+D:4:      layout_rooms, okawaru_metal_pillars_1_2, serial_co_window_serial,
+          co_window_paths_a, co_window_corner_a, co_window_paths_a,
+          co_window_paths_a, co_window_paths_a, co_window_2corner,
+          co_window_2corner, co_window_unsneaky_path_a, uniq_eustachio
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Axes           |     4       |  4.9
+Fighting       |     4       |  4.3
+Armour         |        3    |  3.3
+Dodging        |           3 |  3.0
+
+Action                     |  1- 3 |  4- 6 || total
+---------------------------+-------+-------++-------
+ Attack: Normal            |    57 |    22 ||    79
+  Melee: Hand axe          |    66 |    26 ||    92
+         Headbutt          |    17 |     5 ||    22
+ Invoke: Berserk           |     2 |     1 ||     3
+ Armour: Ring mail         |    24 |    18 ||    42
+         Animal skin       |     3 |       ||     3
+  Dodge: Dodged            |    36 |    13 ||    49
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   1274 |   1248 |     26 |      0 |    894 |   3 |  424.7 |
+       Dungeon |   1274 |   1248 |     26 |      0 |    894 |   3 |  424.7 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:1: 1089 daAuts
+     D:2: 155 daAuts
+     D:4: 29 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    22 |     5 ||    27
+----------------------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 || total
+----------------------+-------+-------++-------
+         Kill Living  |    33 |     7 ||    40
+----------------------+-------+-------++-------
+
