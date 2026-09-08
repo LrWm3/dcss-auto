@@ -490,7 +490,8 @@ local function use_known_consumable(kind, name)
       say("survival: "..name)
       -- Known fear opens a non-directional area preview in this Crawl build.
       -- Confirm it before the guards; Escape alone cancels without using it.
-      local confirm=(kind=="scroll" and name=="fear") and "f" or ""
+      local confirm=((kind=="scroll" and name=="fear")
+          or (kind=="potion" and name=="invisibility")) and "f" or ""
       guarded_keys((kind=="potion" and "q" or "r")..inv_letter(it)..confirm)
       return turn_spent(turn)
     end
