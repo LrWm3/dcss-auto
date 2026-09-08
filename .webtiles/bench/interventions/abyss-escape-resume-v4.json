@@ -1,0 +1,23 @@
+{
+  "version": "abyss-escape-resume-v4",
+  "character": "CodexShopPrice1",
+  "session": "codex-support1",
+  "seed": "6144198052690956201",
+  "kind": "saved-position-fix-verification",
+  "checkpoint": ".webtiles/bench/batches/centaur-lure-resume-v1/before.cs",
+  "start": {"level": "Lair:3", "turn": 18039, "hp": 117},
+  "fix_commit": "666036f",
+  "test_commit": "632ed95",
+  "rc_sha256": "7635fba5c84678204601aa19e8b9363a8505a0a2e24d82c6e8d063a5cfabd4f8",
+  "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+  "intervention": "Four autonomous continuations of the same archived checkpoint, resetting the same session after each natural death. No manual combat or movement; no forced banishment. Original paused benchmark row preserved.",
+  "trials": [
+    {"version": 1, "commit": "3e02dac", "rc_sha256": "7cc4d8968086097831bb2e6dad17a4963efed64538bcae4e32310200582e9b93", "death_turn": 23193, "death_level": "Abyss:2", "killer": "purple draconian shifter", "escaped": false},
+    {"version": 2, "commit": "53a6250", "rc_sha256": "23cedd65478d2c39a46546a69ac173e706ea68b25a1dc49c7007b4371e85acee", "death_turn": 23171, "death_level": "Abyss:2", "killer": "white draconian stormcaller", "escaped": false, "emergency_blink_turn": 23168},
+    {"version": 3, "commit": "c23dd47", "rc_sha256": "3c2d046320f6c260c28019f708e0e0789493fa19c35785624829e995a96cf694", "death_turn": 23172, "death_level": "Abyss:2", "killer": "laughing skull", "escaped": false, "invalid_input_integration": "Invisibility activation preview was cancelled; pending-input Lua error. Fixed in version4."},
+    {"version": 4, "banished_turn": 23069, "arrival_level": "Abyss:2", "exit_approach_turn": 23144, "take_exit_turn": 23149, "escaped_turn": 23150, "returned_level": "Orc:2", "sonja_killed_turn": 23171, "death_turn": 23934, "death_level": "D:13", "killer": "centaur warrior", "escaped": true, "dlua_errors_in_morgue": false}
+  ],
+  "evidence_pattern": ".webtiles/bench/evidence/abyss-escape-resume-v{1,2,3,4}-CodexShopPrice1.txt",
+  "autonomous_full_seed_benchmark": false,
+  "limitations": "Single checkpoint scenario; no five-seed regression or general escape guarantee. Direct banishment to Abyss:2 is not a controller descent. Final escape does not establish that invisibility caused success."
+}

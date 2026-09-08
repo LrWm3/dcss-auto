@@ -909,3 +909,35 @@ This verifies escape from the target stall, not guaranteed survival against
 ranged threats or all lure loops. The restarted RC also contains the previously
 unit-tested shopping ownership/cost guards. Original shopping-v2 paused result
 is preserved; this continuation is not a fresh fixed-seed benchmark replacement.
+
+## Simple Abyss escape policy
+
+3e02dac introduces an Abyss-only controller before ordinary encounter/routing
+logic. Abandons shopping, prioritizes actual exit_abyss features with one-step
+pathfinding, otherwise keeps moving with a simple nearby-enemy danger penalty
+and heading/frontier preference. No normal Tab pursuit, floor completion, or
+intentional Abyss descent; attacks adjacent blockers only when boxed in.
+Uses emergency healing, teleport, fear/fog; 53a6250 adds targeted emergency
+blink, c23dd47 adds low-health invisibility. 666036f confirms the invisibility
+potion activation preview before generic input cancellation guards. On return,
+clears Abyss encounter/recovery state and resumes the ordinary route.
+
+Repeated the same archived Lair3 turn18039 checkpoint in codex-support1 four
+times, with no manual combat/movement and no forced banishment. All reached
+Sonja's direct banishment into Abyss2 at23069 (not a bot descent). Initial policy
+died23193 to purple draconian shifter; blink revision used blink23168 but died
+23171 to white draconian stormcaller. Invisibility revision died23172 to laughing
+skull and exposed a cancelled activation preview/pending-input error, so it is
+not valid evidence of successful consumable integration.
+
+Final replay: exit approach23144, take exit23149, native Escaped the Abyss note
+23150 Orc2, normal-controller return note23151. Spent81 turns in Abyss; killed
+Sonja23171 and continued autonomously to natural centaur-warrior death23934 D13.
+Final morgue's DLua errors section is empty. This verifies finding/taking an
+exit and resuming progression in this replay, not guaranteed Abyss survival or
+that invisibility caused success. Retained all four morgues and metadata under
+abyss-escape-resume-v*. Original paused benchmark row remains unchanged.
+
+19 Lua suites and9 runner tests pass, including exact exit vs deeper stair vs
+stone arch, enemy avoidance, adjacent-blocker attack, return-state cleanup, and
+invisibility preview confirmation. No fresh five-seed regression this turn.
