@@ -2149,6 +2149,37 @@ local function route_recovery_action(scan)
 end
 
 local route_started=false
+local function required_entrance_action(scan)
+  local target=ROUTE_STATE.target
+  if not ROUTE_STATE.required_entrance or not target then return false end
+  if you.branch()==target.branch then ROUTE_STATE.required_entrance=nil; return false end
+  if scan.reachable_adjacent or you.confused() or movement_locked()
+      or (you.mesmerised and you.mesmerised()) then return false end
+  local feature="enter_"..target.branch:lower()
+  local goal
+  for _,c in pairs(scan.cells) do if c.feature==feature then goal=c; break end end
+  if not goal then ROUTE_STATE.required_entrance=nil; return false end
+  if goal.x==0 and goal.y==0 then crawl.sendkeys(">"); return true end
+  -- Only the required local entrance gets an exclusion override. Keep traps,
+  -- sealed vaults, clouds and protected occupants off the path.
+  local cells={}
+  for key,c in pairs(scan.cells) do
+    cells[key]=c
+    if c.excluded and c.traversable and not c.unsafe and not c.cloud
+        and not c.feature:find("trap",1,true) and not c.feature:find("runed",1,true) then
+      local copy={}; for k,v in pairs(c) do copy[k]=v end
+      copy.excluded=nil; copy.bot_escape_exclusion=true; cells[key]=copy
+    end
+  end
+  local _,_,step=bfs(cells,scan.blocked,function(c) return c.feature==feature end)
+  if step then
+    say("required entrance: one-step approach to "..target.branch)
+    BOT.allow_exclusion_step=true
+    crawl.sendkeys(step); return true
+  end
+  return false
+end
+
 local function route_action(scan)
   if not AUTOCrawl_ROUTE.enabled then return false end
   if not route_started then
@@ -2218,6 +2249,8 @@ local function route_action(scan)
           and (ROUTE_STATE.travel_attempts or 0)+1 or 0
       ROUTE_STATE.last_travel_turn=turn
       if ROUTE_STATE.travel_attempts>=3 then
+        ROUTE_STATE.required_entrance=true
+        if required_entrance_action(scan) then return true end
         if escape_exclusion(scan) then return true end
         for _,cell in pairs(scan.cells) do
           if cell.visible and cell.cloud then
@@ -2524,6 +2557,7 @@ function ready()
     end
   end
   if steam_charge_action(scan) then return end
+  if required_entrance_action(scan) then return end
   if approach_action(scan) then return end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
