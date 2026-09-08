@@ -1,0 +1,12 @@
+{
+ "version":"shoals-pocket-resume-v3",
+ "character":"CodexNoLureFull2","session":"codex-support2",
+ "seed":"13772526223844354029","kind":"saved-position-fix-verification",
+ "start":{"level":"Shoals:2","turn":27837,"hp":158},
+ "fix_commit":"2a25327",
+ "rc_sha256":"b6c299f2593ccf8029bbc90b291741bc38b564eb61c681b5c45272444705fabd",
+ "intervention":"Verified Lua interpreter for map inspection and save. Archived checkpoint; restarted same character/session with revised RC. First version still paused because parent partial status was not accepted. Revised policy continued to natural death. Restored archived checkpoint after death and repeated with persistent recovery notes. No manual combat/movement.",
+ "result":"Alternate downstairs ii at28030 returned to the pocket; ascended28032; alternate downstairs i at28044; discovered Shoals2 downstairs28046. Natural kraken tentacle death28293 on Shoals2, matching preceding continuation. Shoals3 not reached.",
+ "autonomous_full_seed_benchmark":false,
+ "evidence":".webtiles/bench/evidence/shoals-pocket-resume-v3-CodexNoLureFull2.txt"
+}

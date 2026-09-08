@@ -769,3 +769,43 @@ and remains below older wand-mesmerism minimum7. Seed5 is now the weakest:
 unchanged D3 shaft to D6 followed by Pikel/lemure death. One run per seed is only
 a screening comparison; this batch includes both entrance and Sigmund fixes.
 All five evidence dumps and append-only result rows retained.
+
+## Shoals disconnected-pocket routing fix
+
+Read-only map inspection at paused27837 showed only upstairs/hatches in known
+Shoals2 and no downstairs. ROUTE_STATE marked this pocket clear; native GA3
+correctly selected Shoals3 but reported no known path. Branch hotkey A is valid
+in the local engine. Repeated Unknown command messages are not evidence that
+the branch key was wrong. Autoexplore completion described the reachable pocket,
+not all disconnected regions of Shoals2.
+
+Added bounded alternate-stair recovery: when same-branch next-floor travel fails
+from a cleared floor with no known downstairs, return to the accepted parent
+floor and try other normal stair sets, each at most once. On re-entry explore
+again; when downstairs appears invalidate pocket-clear state and resume normal
+exploration. Existing combat/movement-safety checks remain, and exhaustion of
+safe alternatives pauses instead of looping. Parent may be partial only when
+the configured route already permits partial progression. Recovery state saves
+with the character; phase transitions now create persistent notes.
+
+Initial commit635d12a did not activate on this save because the parent was not
+marked clear. Follow-up2a25327 accepts configured partial parents.17 Lua suites
+and9 runner tests pass, including alternate stair selection, re-entry invalidation,
+combat guard, exhausted alternatives and partial-parent integration.
+
+Same paused character saved via verified Lua interpreter, checkpoint archived,
+restarted in same session. Corrected continuation naturally died28293 to kraken
+tentacle16 on Shoals2. Repeated from original checkpoint with added notes:
+- recovery starts27837;
+- alternate downstairs ii from Shoals1 at28030;
+- back upstairs from dead-end Shoals2 at28032;
+- alternate downstairs i at28044;
+- Shoals2 downstairs discovered28046; resumes exploration;
+- kills a kraken28089, later dies to another kraken's tentacle28293.
+
+Thus the exact navigation stall is resolved twice; this does NOT verify entry
+to Shoals3 or rune collection, because combat killed the character first.
+Saved both morgues and diagnostic metadata under interventions. Original full
+batch seed2 row remains PAUSED; these checkpoint continuations are not fresh
+full-seed benchmark replacements. Final tested RC SHA
+b6c299f2593ccf8029bbc90b291741bc38b564eb61c681b5c45272444705fabd.
