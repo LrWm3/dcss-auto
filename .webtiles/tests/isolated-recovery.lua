@@ -9,7 +9,7 @@ end
 local observe=assert(find(ready,"observe_recovery_anchor"))
 local act=assert(find(ready,"isolated_recovery_action"))
 local hp,depth,px,py,range=32,6,0,0,1
-you={hp=function() return hp,71 end,branch=function() return "D" end,
+you={transform=function() return "" end,confused=function() return false end,hp=function() return hp,71 end,branch=function() return "D" end,
  depth=function() return depth end,berserk=function() return false end,
  status=function() return false end,slowed=function() return false end,
  exhausted=function() return false end}
@@ -45,9 +45,9 @@ assert(act(scan) and last=="y","rest anchor precedes entry fallback; delta sign 
 scan.cells["-4:0"]=nil
 assert(act(scan) and last=="CMD_WAIT","unusable rest falls back to visible entry")
 range=7; scan.first_step={}; BOT.paused=false
-assert(act(scan) and BOT.paused,"do not rest indefinitely against isolated ranged attacker")
+assert(act(scan) and not BOT.paused and last=="CMD_WAIT","blocked ranged recovery advances and rechecks")
 BOT.paused=false; BOT.encounter.unseen=true
-assert(not act(scan),"unseen threat retains dedicated handling")
+assert(act(scan) and not BOT.paused,"unseen threat cannot permanently pause")
 BOT.encounter.unseen=false; scan.reachable_any=true
 assert(not act(scan) and not BOT.isolated_recovering,"reachable enemy restores combat")
 depth=7; observe(scan)

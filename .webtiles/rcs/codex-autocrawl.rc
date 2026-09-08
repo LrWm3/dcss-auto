@@ -954,6 +954,39 @@ local function steam_charge_action(scan)
   return true
 end
 
+-- One visible, unoccupied, legal step, biased away from hostile proximity.
+local function cautious_step(scan)
+  if movement_locked() or you.confused() then return nil end
+  local best,score
+  for i,d in ipairs(MOVE_DELTAS) do
+    local c=scan.cells[map_key(d[1],d[2])]
+    if c and c.visible and not c.monster and not c.invisible_monster
+        and can_step(scan.cells,0,0,d[1],d[2],scan.blocked) then
+      local s=0
+      for _,enemy in ipairs(scan.monsters) do
+        local dist=math.max(math.abs(enemy.x-d[1]),math.abs(enemy.y-d[2]))
+        s=s-(dist<=1 and 40 or 12/math.max(1,dist))
+      end
+      if c.feature=="shallow_water" then s=s+2 end
+      if not score or s>score then best,score=MOVE_KEYS[i],s end
+    end
+  end
+  return best
+end
+
+local function liquid_fire_action(scan)
+  if not you.status("liquid fire") and not you.status("on fire") then return false end
+  if hp_percent()<25 and not you.berserk()
+      and use_known_consumable("potion","heal wounds") then return true end
+  local step=cautious_step(scan)
+  if step then
+    crawl.take_note("Liquid fire: shake-off step HP="..you.hp())
+    crawl.sendkeys(step); return true
+  end
+  -- No safe movement: allow ordinary emergency resources/combat to act.
+  return false
+end
+
 local function isolated_recovery_action(scan)
   local e=BOT.encounter
   local hp,maxhp=you.hp()
@@ -967,8 +1000,7 @@ local function isolated_recovery_action(scan)
   end
   BOT.isolated_recovering=true
   -- Never mistake lack of a melee path for immunity to ranged/unseen damage.
-  if (e and e.unseen) or BOT.disturbance_warning then return false end
-  local hazardous=false
+  local hazardous=(e and e.unseen) or BOT.disturbance_warning or false
   for _,enemy in ipairs(scan.monsters) do
     local m=enemy.monster
     -- Engine range includes weapons, spells and wands; self-buffs such as a
@@ -1001,8 +1033,15 @@ local function isolated_recovery_action(scan)
     end
   end
   if not hazardous then return recovery_wait() end
-  say("isolated recovery: ranged threat without safe anchor path; paused")
-  BOT.paused=true
+  local step=cautious_step(scan)
+  if step then
+    say("isolated recovery: cautious withdrawal")
+    crawl.sendkeys(step); return true
+  end
+  -- In particular, steam can temporarily block every safe path. Spend one
+  -- turn, then rebuild visibility/reachability instead of permanently pausing.
+  say("isolated recovery: no safe step; rechecking next turn")
+  crawl.do_commands({"CMD_WAIT"})
   return true
 end
 
@@ -1010,8 +1049,7 @@ local function isolated_enemy_action(scan)
   if isolated_recovery_action(scan) then return true end
   if BOT.isolated_recovering then
     -- Unseen-threat handling must not fall through into frontier exploration.
-    say("isolated recovery: unresolved unseen threat; paused")
-    BOT.paused=true; return true
+    crawl.do_commands({"CMD_WAIT"}); return true
   end
   -- A visible monster with no known route to an adjacent square is not an
   -- autofight target.  Take one ordinary movement step toward exploration,
@@ -2898,7 +2936,7 @@ function ready()
   end
   if BOT.paused or AUTOCrawl_DEBUG_STATE.paused then return end
   check_committed_return()
-  if BOT.hazard_wait then
+  if BOT.hazard_wait and not you.status("liquid fire") and not you.status("on fire") then
     BOT.hazard_wait = false
     crawl.do_commands({"CMD_WAIT"})
     return
@@ -2945,6 +2983,7 @@ function ready()
     BOT.ally_attack_rejected=false
     crawl.do_commands({"CMD_WAIT"}); return
   end
+  if liquid_fire_action(scan) then return end
   if survival_action(scan) then return end
   if combat_wand_action(scan) then return end
   if sigmund_action(scan) then return end
