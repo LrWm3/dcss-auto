@@ -533,3 +533,37 @@ the pause; character remains there for diagnosis. The gate conflates temporary
 cloud isolation with the recovery-anchor case and needs an autonomous fallback
 for transient barriers/ranged danger. No additional tactical changes in this
 retest turn.
+
+## Steam-dragon-specific charge experiment
+
+User requested aggressive pursuit through steam rather than generic cloud or
+unseen-enemy reasoning. Added steam_charge (default on),12-turn last-sighting
+memory and8 hidden pursuit steps. Track nearest visible dragon in waypoint9
+visit coordinates; follow known terrain toward it, allowing steam damage only.
+Other unsafe clouds, exclusions, movement locks and mesmerism remain guarded.
+Hidden pursuit requires steam still present, stops at the remembered square,
+and expires on time/step limits or floor change. Confirmed named kill clears it.
+Visible adjacent dragon receives combat priority; existing survival/wands and
+berserk decisions remain available. No general Tab/luring overhaul.
+
+Also corrected a wiring error in the preceding anchor patch: its observer had
+landed in a stair-related scanner, not normal ready. It now runs every normal
+decision before dragon observation. The prior missing-anchor pause may therefore
+also reflect missing initialization, not only the intended ranged safety gate.
+
+Archived CodexAnchor1's save to its batch directory and reused codex-bench4.
+Two fresh autonomous trials on seed4, no debug pauses or tactical intervention:
+
+| Version | Commit | Result |
+| --- | --- | --- |
+| steam-charge-seed4-v1 | 49e32f4 | Death D6 eel5963,XL8; maxD7 via shaft. |
+| steam-charge-seed4-v2 | e59dc14 | Same outcome/turn, with adjacent combat priority ahead of route recovery. |
+
+Both note visible steam-dragon charge at3478–3480,56HP, and pass the previous
+3483 pause. Neither records remembered-position charge, nor a dragon kill;
+do not claim live validation of obscured pursuit or survival improvement.
+Both autonomously reach terminal death without a new pause, not a D15 clear.
+Exact hashes and immutable morgues are in append-only result rows/evidence.
+12 Lua suites and9 runner tests pass. Steam tests cover unsafe steam traversal,
+remembered targets, shared-map immutability, other clouds/exclusions, expiry,
+step cap, destination arrival and floor mismatch. No five-seed batch yet.
