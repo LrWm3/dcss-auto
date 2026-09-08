@@ -1,0 +1,14 @@
+{
+ "version":"recovery-resume-v1",
+ "character":"CodexThrowFull4","session":"codex-verify4",
+ "seed":"17908030050512890810",
+ "kind":"saved-position-fix-verification",
+ "start":{"level":"D:6","turn":6106,"hp":63,"max_hp":106},
+ "fix_commit":"2cbd5c4",
+ "rc_sha256":"37897805d4ead08eb8c018dafc3dbd1c5855e5dbe02ac179a075bfbeabdeb84c",
+ "checkpoint":".webtiles/bench/batches/recovery-resume-v1/before.cs",
+ "intervention":"Archived saved character, verified existing session at new-game menu after save, restarted same session with revised RC. No manual combat or movement.",
+ "result":{"outcome":"death","level":"D:8","turn":8876,"cause":"gnoll sergeant poison","target_pause_resolved":true},
+ "autonomous_full_seed_benchmark":false,
+ "evidence":".webtiles/bench/evidence/recovery-resume-v1-CodexThrowFull4.txt"
+}

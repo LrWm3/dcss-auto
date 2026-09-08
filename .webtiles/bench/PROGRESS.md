@@ -1033,3 +1033,40 @@ four collected ammunition;58 total boomerang throws. Seed4/2 hold curare but
 never used it in this run. Next priorities: liquid-fire handling (both seed2
 and5 killed the source but continued burning to death) and the existing D6
 isolated-recovery pause. Keep these results separate from a future fix batch.
+
+## Liquid-fire movement and unseen-recovery continuation
+
+2cbd5c4: liquid_fire_action precedes ordinary survival/combat/rest. While on
+fire it selects a visible unoccupied legal safe step, penalizing proximity to
+hostiles, respecting existing cloud/exclusion/mesmerisation checks. Below25%
+HP tries known heal wounds first; immobile/confused/boxed-in cases retain normal
+emergency handling. Engine player.cc:shake_off_sticky_flame removes60 duration
+per actual move; stationary recovery did not do this. Hazard-wait no longer
+preempts fire movement. No forced movement into unsafe squares.
+
+Unseen isolated recovery previously returnedfalse, then isolated_enemy_action
+latched BOT.paused. Now treats unseen activity as hazardous, still prefers a
+known recovery anchor path, then a cautious legal step, else one real WAIT to
+rebuild cloud/visibility/path information next turn. Does not custom-explore or
+permanently pause on this path. A boxed-in character can still take damage;
+this change is continued reevaluation, not a guarantee of escape.
+
+Saved seed4 resumed at6106 D6 HP63/106 in the same session with archived save
+and immutable RC37897805d4ead08eb8c018dafc3dbd1c5855e5dbe02ac179a075bfbeabdeb84c.
+No manual combat/movement. Cleared target pause, reached D7 then D8 and died
+8876 to gnoll-sergeant poison. Saved continuation evidence/metadata separately;
+original throwing-full-v1 paused row preserved.
+
+Fresh affected seeds (fire-recovery-v1, same RC/source):
+- Seed5: prior D5 burning death4152 -> D10 Sonja-poison death9847. Live shake-off
+  notes6307–6311 on D7 HP78,74,71,72,68; survived that liquid-fire episode and
+  continued. Earlier D5 encounter trajectory differed, so not an exact replay
+  of the original fatal beetle actions.
+- Seed2: prior D12 pyromancer burning death16524 -> D12 Frances iron-shot38
+  death16569. No liquid-fire action notes; this rerun did not reproduce the
+  original burning episode, so it is not direct verification of that encounter.
+
+21 Lua suites and9 runner tests pass. New tests cover fire movement vs ordinary
+rest, occupied/unsafe destinations, and unseen/blocked recovery returning a real
+action without pausing. Live fire movement verified on seed5 and pause escape
+on saved seed4. No full five-seed regression or general survival claim.
