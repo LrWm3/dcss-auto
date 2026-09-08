@@ -2475,7 +2475,8 @@ if AUTOCrawl_TACTICS.steam_debug then
     local scan=scan_hostiles()
     local e=BOT.encounter or {}
     log("turn="..you.turns().." HP="..you.hp().."/"..select(2,you.hp())
-      .." level="..level_key().." pos="..you.x_pos()..","..you.y_pos()
+      .." level="..level_key().." pos="..(you.x_pos and you.x_pos() or "unavailable")
+      ..","..(you.y_pos and you.y_pos() or "unavailable")
       .." feat="..feat_here().." phase="..tostring(e.phase)
       .." retreats="..tostring(e.retreats).." hidden="..tostring(e.hidden_missing)
       .." unseen="..tostring(e.unseen).." disturbance="..tostring(BOT.disturbance_warning)

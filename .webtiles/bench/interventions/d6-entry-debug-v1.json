@@ -1,0 +1,20 @@
+{
+  "version": "d6-entry-debug-v1",
+  "kind": "diagnostic-replay",
+  "session": "codex-bench4",
+  "character": "CodexD6Entry1",
+  "seed": "17908030050512890810",
+  "status": "paused",
+  "turn": 5973,
+  "level": "D:6",
+  "hp": [46, 71],
+  "reason": "New steam dragon contact; acquisition trace complete",
+  "autonomous_benchmark": false,
+  "tactical_changes": false,
+  "diagnostic_repair": "At first D6 entry, unavailable you.x_pos/y_pos caused snapshot error. Live console supplied unavailable placeholders; canonical RC guards missing functions.",
+  "diverged_from_prior_replay": true,
+  "evidence": ".webtiles/bench/evidence/d6-entry-debug-v1-CodexD6Entry1.txt",
+  "evidence_sha256": "b9b0f1bec2d3ac92b210012e34802527da77880344da4029801016f8389b8e79",
+  "launch_commit": "1ebce4c6bd8ea217c401cbeb1688d6c3af697a12",
+  "launch_rc_sha256": "6d4bab18e2608cb2f238321c2bfa78d465b9de267fbd5cd81bc9df5afc193b95"
+}

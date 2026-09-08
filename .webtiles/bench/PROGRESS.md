@@ -472,3 +472,19 @@ Separate interventions/steam-debug-v1.json records this diagnosis, not an
 autonomous benchmark row. Batch manifest locally marked verified death to
 permit safe future reuse. Added opt-in diagnostics (default off) and helper;
 all10 Lua regression suites passed before replay. No tactical fix yet.
+
+## D:6 entry trace: encounter acquisition and premature exploration
+
+d6-entry-debug-v1 follows seed4 from first D6 arrival3550 to steam dragon
+contact5973. Paused alive46/71HP in codex-bench4. No tactical changes.
+This replay diverged from the exact5913 death; do not conflate their histories.
+Native explore stopped at a lone orc; three pursuit moves exposed warrior,
+wizard and priest. Subsequent pursuit exposed an eel. At32HP after a marrowcuda
+kill, the isolated-black-bear branch explored five steps despite disengage,
+exposing a second marrowcuda; the dragon then arrived while waiting at46HP.
+Intent does not constrain fallback movement once bounded retreat fails.
+
+Saved full notes, timeline and separate diagnostic metadata in evidence and
+interventions; no autonomous result row added. Fixed diagnostic-only optional
+coordinate API error at entry with live placeholder functions and a canonical
+guard. See evidence/d6-entry-debug-v1-analysis.md for provenance and limitations.
