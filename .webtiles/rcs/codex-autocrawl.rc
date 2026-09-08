@@ -35,7 +35,7 @@ AUTOCrawl_TACTICS = {
   hidden_memory = 20, blind_probe_limit = 3,
   hidden_hand_cooldown = 8,
   steam_charge = true, steam_charge_memory = 12, steam_charge_steps = 8,
-  approach_mode = 0, approach_waits = 4, approach_backsteps = 2,
+  approach_mode = 2, approach_waits = 4, approach_backsteps = 2,
   debug_encounters = false,
   steam_debug = false, -- diagnostic single-action replay; never a benchmark
   steam_debug_entry = false, -- start at D:6 arrival, record notes automatically

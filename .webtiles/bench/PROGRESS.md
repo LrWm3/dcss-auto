@@ -567,3 +567,45 @@ Exact hashes and immutable morgues are in append-only result rows/evidence.
 12 Lua suites and9 runner tests pass. Steam tests cover unsafe steam traversal,
 remembered targets, shared-map immutability, other clouds/exclusions, expiry,
 step cap, destination arrival and floor mismatch. No five-seed batch yet.
+
+## Simple approach experiments: hold / lure / frontier
+
+Implemented one bounded first-contact helper (numeric approach_mode):
+0 unchanged,1 wait up to4 turns,2 retreat up to2 safe nonfrontier floor steps
+toward current visit's rest/entry anchor then wait up to4,3 wait only if a
+candidate pursuit first step is frontier. Waiting stops upon damage or known
+ranged threat; melee contact ends the approach policy for that encounter.
+Steam dragon, confusion, mesmerism and movement locks retain priority.
+Logs each action, HP and visible enemy count in notes. This is not a full
+encounter-isolation guarantee: budgets eventually fall back to normal combat,
+and enemy reinforcements can still arrive. No general ranged-kiting policy.
+
+All tested from commit43d2c3e with snapshot overrides on seed4:
+
+| Policy | Character | Outcome |
+| --- | --- | --- |
+| Previous normal approach | CodexSteamCharge2 | D6 eel death5963,XL8 (maxD7 via shaft). |
+| Hold4 | CodexHold1 | D6 priest death5798,XL8. Final view12marrowcudas+priest. |
+| Frontier hold4 | CodexFrontier1 | D6 priest death6279,XL8. |
+| Lure2+hold4 | CodexLure1 | Reached D11 at91/91HP,XL10, blocked on friendly two-headed-ogre attack prompt. |
+| Clean lure repeat | CodexLure2 | Same D11 prompt/fullHP; no intervention, left intact in codex-bench4. |
+
+IMPORTANT correction: after saving CodexLure1's prompt screen, attempted
+inspection sent n/C-d then diagnostic Lua text without verifying console entry.
+The text was interpreted as gameplay, removed equipment and advanced play;
+subsequent boulder-beetle death12473 is contaminated. The automatic collector's
+death row is preserved but SUPERSEDED by an appended paused/non-autonomous
+correction with pre-intervention screenshot evidence. Never count that death
+as autonomous. Clean repeat independently reproduced the same blocked state;
+recorded paused using screenshot only, exact turn unknown (displayed12480.1 is
+game time, not turn count). No speculative cause assigned to ally attack yet.
+
+Retained mode2 as experimental canonical default; exact RC SHA matches both
+lure trial snapshots f5a2db15168247e97af568cddc08f25538ae78494c345baa1ad7feef7d000447.
+This improves observed progression of this weak seed but is NOT a completed
+autonomous run, a five-seed minimum improvement, or proof of fewer simultaneous
+enemies. Follow-up priority is the reproducible allied-attack prompt, then a
+full seed batch.13 Lua suites and9 runner tests pass; regression tests cover
+bounded waits, damage/ranged bailouts, melee latch, anchor lure and frontier
+restriction. Existing diagnostic sessions were not replaced; frontier used
+verified finished codex-support1 while lure remained in codex-bench4.

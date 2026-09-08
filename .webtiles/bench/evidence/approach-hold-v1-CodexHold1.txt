@@ -1,0 +1,477 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 17908030050512890810 (custom seed)
+
+1377 CodexHold1 the Cleaver (level 8, -9/71 HPs)
+             Began as a Minotaur Berserker on Sept 8, 2026.
+             Was a Believer of Trog.
+             Killed by divine providence
+             ... invoked by an orc priest
+              (16 damage)
+             ... on level 6 of the Dungeon.
+             The game lasted 00:00:23 (5798 turns).
+
+CodexHold1 the Cleaver (Minotaur Berserker)         Turns: 5798, Time: 00:00:23
+
+Health: -9/71      AC: 15    Str: 24    XL:     8   Next: 39%
+Magic:  0/7        EV:  7    Int:  4    God:    Trog [**....]
+Gold:   321        SH:  0    Dex: 10    Spells: 7/7 levels left
+
+rFire   . . .  (100%)   d - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   b - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   c - +0 cloak
+rCorr   .      (100%)   a - +0 pair of gloves {Infuse}
+SInv    .               (no boots)
+Will    .....           (no amulet)
+Stlth                   (no ring)
+HPRegen 0.31/turn       (no ring)
+MPRegen 0.10/turn
+
+%: no passive effects
+@: no status effects
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You were on level 6 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 6 of its levels.
+
+You collected 321 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +0 war axe (weapon)
+Armour
+ a - a +0 pair of gloves of infusion (worn)
+ b - a +0 plate armour (worn)
+ c - a +0 cloak (worn)
+Wands
+ b - a wand of acid (8)
+Scrolls
+ c - a scroll of summoning {unknown}
+ N - 2 scrolls of noise
+ x - 2 scrolls of amnesia
+ I - a scroll of immolation
+ V - a scroll of vulnerability
+ q - a scroll of poison {unknown}
+ g - a scroll of fog
+ e - a scroll of revelation {unknown}
+ h - a scroll of enchant armour {unknown}
+ k - a scroll of fear {unknown}
+Potions
+ d - a potion of attraction {unknown}
+ e - 3 potions of enlightenment
+ i - 2 potions of invisibility
+ t - a potion of heal wounds {unknown}
+ c - 3 potions of curing
+ o - 2 potions of moonshine {unknown}
+ b - 2 potions of brilliance
+ p - a potion of ambrosia {unknown}
+ s - a potion of might {unknown}
+ f - a potion of lignification {unknown}
+ j - a potion of magic {unknown}
+
+
+   Skills:
+ + Level 6.5 Fighting
+ * Level 8.6 Axes
+ + Level 5.9 Armour
+ + Level 5.3 Dodging
+ + Level 1.2 Evocations
+
+
+You had 7 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (6/15)            
+Temple: D:4-7       
+
+Altars:
+Wu Jian
+The Shining One
+
+Shops:
+D:4 ?
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You hit the marrowcuda but do no damage.
+You hit the marrowcuda. You barely miss the marrowcuda. You hit the marrowcuda.
+You slash the marrowcuda! The marrowcuda barely misses you. x5
+You furiously retaliate! You headbutt the marrowcuda!
+The marrowcuda bites you but does no damage. x2
+You barely miss the marrowcuda.
+The marrowcuda is severely damaged.
+You barely miss the marrowcuda. x2; You slash the marrowcuda!
+You hit the marrowcuda. You barely miss the marrowcuda. x2
+The marrowcuda closely misses you. You furiously retaliate!
+You headbutt the marrowcuda.
+The marrowcuda bites you but does no damage.
+The marrowcuda bites you.
+* * * LOW HITPOINT WARNING * * *
+Another marrowcuda is drawn to the feast!
+The marrowcuda bites you.
+* * * LOW HITPOINT WARNING * * *
+Another marrowcuda is drawn to the feast!
+The marrowcuda bites you but does no damage.
+The marrowcuda misses you. The marrowcuda closely misses you.
+The marrowcuda bites you but does no damage.
+The marrowcuda barely misses you.
+The marrowcuda bites you but does no damage. x2
+You slash the marrowcuda!
+You destroy the marrowcuda!
+The marrowcuda disappears in a puff of smoke!
+You hit the marrowcuda.
+You hit the marrowcuda but do no damage.
+You slash the marrowcuda! You closely miss the marrowcuda.
+You hit the marrowcuda. You slash the marrowcuda!
+You barely miss the marrowcuda.
+The marrowcuda bites you but does no damage. x5
+The marrowcuda closely misses you.
+The marrowcuda bites you but does no damage. x2
+The marrowcuda completely misses you. The marrowcuda bites you.
+* * * LOW HITPOINT WARNING * * *
+Another marrowcuda is drawn to the feast!
+The orc priest calls down the wrath of Beogh upon you.
+Beogh smites you!
+You die...
+
+..≈≈..≈  ♣..♣♣.
+...≈~..  ._.....
+...≈≈.. ♣..♣≈≈≈♣.
+....≈≈.♣♣..≈≈≈≈≈.
+....~≈≈~...≈≈≈≈≈.. ≈≈.
+ #(...FF≈≈.≈≈≈≈≈.♣♣≈≈#
+  #..FFFF≈o♣≈≈~...≈≈.###
+   #..F@F≈≈.....~~≈~...
+   #..FFF≈≈.♣.≈≈~~...#
+   #.#.F..≈≈♣♣≈≈.....#
+   # ##...)≈≈≈≈......###
+      #.....≈≈~.........
+      #.###...#)))#.##..
+     ...# ###.#.###.....
+   ...###   #......##
+   #.#      #####...##
+
+
+You could see 12 marrowcudas and an orc priest.
+
+Vanquished Creatures
+  A steam dragon (D:6)
+  An orc warrior (D:6)
+  A kobold geomancer (D:5)
+  An ogre (D:5)
+  A centaur (D:5)
+  A kobold brigand (D:5)
+  3 scorpions
+  2 orc priests
+  2 jellies
+  A drude (D:5)
+  An iguana (D:5)
+  Terence (D:3)
+  2 clockroaches
+  5 orc wizards
+  7 gnolls
+  8 adders
+  A white imp (D:6)
+  4 ufetubi (D:4)
+  6 ribbon worms
+  3 dart slugs
+  19 orcs
+  4 hobgoblins
+  5 jackals
+  5 quokkas
+  4 ball pythons
+  7 bats
+  6 endoplasms
+  6 frilled lizards
+  9 goblins
+  13 kobolds
+  6 rats
+136 creatures vanquished.
+
+Vanquished Creatures (others)
+  An orc wizard (D:6)
+  An orc (D:6)
+2 creatures vanquished.
+
+Grand Total: 138 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexHold1 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    49 | D:1      | Approach 1: hold enemies=1 HP=19
+    50 | D:1      | Approach 1: hold enemies=1 HP=19
+    71 | D:1      | Approach 1: hold enemies=1 HP=19
+    72 | D:1      | Approach 1: hold enemies=1 HP=19
+    73 | D:1      | Approach 1: hold enemies=1 HP=19
+    74 | D:1      | Approach 1: hold enemies=1 HP=19
+   106 | D:1      | Approach 1: hold enemies=1 HP=19
+   107 | D:1      | Approach 1: hold enemies=1 HP=19
+   108 | D:1      | Approach 1: hold enemies=1 HP=19
+   109 | D:1      | Approach 1: hold enemies=1 HP=19
+   125 | D:1      | Approach 1: hold enemies=1 HP=20
+   126 | D:1      | Approach 1: hold enemies=1 HP=20
+   127 | D:1      | Approach 1: hold enemies=2 HP=20
+   128 | D:1      | Approach 1: hold enemies=4 HP=20
+   140 | D:1      | Reached XP level 2. HP: 23/27 MP: 1/1
+   182 | D:1      | Approach 1: hold enemies=1 HP=27
+   183 | D:1      | Approach 1: hold enemies=1 HP=27
+   184 | D:1      | Approach 1: hold enemies=1 HP=27
+   185 | D:1      | Approach 1: hold enemies=2 HP=27
+   191 | D:1      | Reached skill level 4 in Axes
+   311 | D:1      | Approach 1: hold enemies=1 HP=27
+   312 | D:1      | Approach 1: hold enemies=1 HP=27
+   323 | D:1      | Approach 1: hold enemies=2 HP=27
+   324 | D:1      | Approach 1: hold enemies=3 HP=27
+   325 | D:1      | Approach 1: hold enemies=3 HP=27
+   411 | D:1      | Approach 1: hold enemies=1 HP=27
+   412 | D:1      | Approach 1: hold enemies=1 HP=27
+   413 | D:1      | Approach 1: hold enemies=1 HP=27
+   414 | D:1      | Approach 1: hold enemies=1 HP=27
+   458 | D:1      | Approach 1: hold enemies=2 HP=27
+   493 | D:1      | Approach 1: hold enemies=1 HP=27
+   494 | D:1      | Approach 1: hold enemies=1 HP=27
+   495 | D:1      | Approach 1: hold enemies=1 HP=27
+   496 | D:1      | Approach 1: hold enemies=1 HP=27
+   633 | D:2      | Approach 1: hold enemies=1 HP=27
+   662 | D:2      | Reached ** piety under Trog
+   686 | D:2      | Approach 1: hold enemies=2 HP=27
+   690 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+   788 | D:2      | Approach 1: hold enemies=1 HP=33
+   883 | D:2      | Approach 1: hold enemies=1 HP=33
+   884 | D:2      | Approach 1: hold enemies=1 HP=33
+   885 | D:2      | Approach 1: hold enemies=1 HP=33
+   886 | D:2      | Approach 1: hold enemies=1 HP=33
+   968 | D:2      | Approach 1: hold enemies=1 HP=33
+  1069 | D:2      | Approach 1: hold enemies=1 HP=33
+  1094 | D:2      | Approach 1: hold enemies=1 HP=33
+  1133 | D:2      | Approach 1: hold enemies=1 HP=33
+  1134 | D:2      | Approach 1: hold enemies=1 HP=33
+  1135 | D:2      | Approach 1: hold enemies=1 HP=33
+  1136 | D:2      | Approach 1: hold enemies=1 HP=33
+  1182 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1224 | D:2      | Approach 1: hold enemies=1 HP=40
+  1225 | D:2      | Approach 1: hold enemies=1 HP=40
+  1226 | D:2      | Approach 1: hold enemies=1 HP=40
+  1292 | D:2      | Approach 1: hold enemies=1 HP=40
+  1293 | D:2      | Approach 1: hold enemies=1 HP=40
+  1294 | D:2      | Approach 1: hold enemies=1 HP=40
+  1295 | D:2      | Approach 1: hold enemies=1 HP=40
+  1679 | D:2      | Approach 1: hold enemies=1 HP=40
+  1680 | D:2      | Approach 1: hold enemies=1 HP=40
+  1681 | D:2      | Approach 1: hold enemies=1 HP=40
+  1682 | D:2      | Approach 1: hold enemies=1 HP=40
+  1742 | D:2      | Approach 1: hold enemies=1 HP=40
+  1743 | D:2      | Approach 1: hold enemies=1 HP=40
+  1744 | D:2      | Approach 1: hold enemies=1 HP=40
+  1745 | D:2      | Approach 1: hold enemies=1 HP=40
+  2007 | D:3      | Approach 1: hold enemies=1 HP=41
+  2008 | D:3      | Approach 1: hold enemies=1 HP=41
+  2009 | D:3      | Approach 1: hold enemies=1 HP=41
+  2010 | D:3      | Approach 1: hold enemies=1 HP=41
+  2035 | D:3      | Approach 1: hold enemies=1 HP=41
+  2036 | D:3      | Approach 1: hold enemies=1 HP=41
+  2037 | D:3      | Approach 1: hold enemies=1 HP=41
+  2038 | D:3      | Approach 1: hold enemies=1 HP=41
+  2060 | D:3      | Encountered Terence
+  2066 | D:3      | Killed Terence
+  2067 | D:3      | Reached skill level 5 in Axes
+  2177 | D:3      | Approach 1: hold enemies=1 HP=41
+  2178 | D:3      | Approach 1: hold enemies=1 HP=41
+  2214 | D:3      | Approach 1: hold enemies=1 HP=41
+  2215 | D:3      | Approach 1: hold enemies=1 HP=41
+  2216 | D:3      | Approach 1: hold enemies=1 HP=41
+  2217 | D:3      | Approach 1: hold enemies=1 HP=41
+  2251 | D:3      | Approach 1: hold enemies=1 HP=41
+  2252 | D:3      | Approach 1: hold enemies=1 HP=41
+  2253 | D:3      | Approach 1: hold enemies=1 HP=41
+  2254 | D:3      | Approach 1: hold enemies=1 HP=41
+  2419 | D:3      | Approach 1: hold enemies=1 HP=41
+  2442 | D:3      | Approach 1: hold enemies=1 HP=41
+  2443 | D:3      | Approach 1: hold enemies=1 HP=41
+  2444 | D:3      | Approach 1: hold enemies=1 HP=41
+  2588 | D:3      | Approach 1: hold enemies=1 HP=41
+  2616 | D:3      | Approach 1: hold enemies=1 HP=41
+  2917 | D:4      | Approach 1: hold enemies=2 HP=41
+  2925 | D:4      | Reached XP level 5. HP: 46/47 MP: 2/4
+  2925 | D:4      | Reached *** piety under Trog
+  2971 | D:4      | Approach 1: hold enemies=1 HP=47
+  2972 | D:4      | Approach 1: hold enemies=2 HP=47
+  2973 | D:4      | Approach 1: hold enemies=3 HP=47
+  2974 | D:4      | Approach 1: hold enemies=3 HP=47
+  3120 | D:4      | Approach 1: hold enemies=1 HP=47
+  3121 | D:4      | Approach 1: hold enemies=1 HP=47
+  3122 | D:4      | Approach 1: hold enemies=1 HP=47
+  3129 | D:4      | Reached XP level 6. HP: 55/55 MP: 2/5
+  3145 | D:4      | Reached skill level 5 in Fighting
+  3145 | D:4      | Reached skill level 6 in Axes
+  3200 | D:4      | Approach 1: hold enemies=2 HP=56
+  3201 | D:4      | Approach 1: hold enemies=2 HP=56
+  3202 | D:4      | Approach 1: hold enemies=2 HP=56
+  3518 | D:4      | Found Ritoq's Magic Scroll Emporium.
+  3604 | D:4      | Approach 1: hold enemies=1 HP=56
+  3605 | D:4      | Approach 1: hold enemies=1 HP=56
+  3606 | D:4      | Approach 1: hold enemies=1 HP=56
+  3607 | D:4      | Approach 1: hold enemies=1 HP=56
+  3629 | D:4      | Approach 1: hold enemies=1 HP=56
+  3630 | D:4      | Approach 1: hold enemies=1 HP=56
+  3631 | D:4      | Approach 1: hold enemies=2 HP=56
+  3632 | D:4      | Approach 1: hold enemies=2 HP=56
+  3961 | D:5      | Entered Level 5 of the Dungeon
+  3962 | D:5      | Approach 1: hold enemies=1 HP=56
+  3963 | D:5      | Approach 1: hold enemies=1 HP=56
+  3964 | D:5      | Approach 1: hold enemies=1 HP=56
+  3965 | D:5      | Approach 1: hold enemies=1 HP=56
+  4067 | D:5      | Approach 1: hold enemies=1 HP=56
+  4068 | D:5      | Approach 1: hold enemies=1 HP=56
+  4069 | D:5      | Approach 1: hold enemies=1 HP=56
+  4070 | D:5      | Approach 1: hold enemies=1 HP=56
+  4082 | D:5      | Reached XP level 7. HP: 61/61 MP: 1/6
+  4160 | D:5      | Approach 1: hold enemies=1 HP=61
+  4161 | D:5      | Approach 1: hold enemies=1 HP=61
+  4162 | D:5      | Approach 1: hold enemies=1 HP=61
+  4215 | D:5      | Reached skill level 7 in Axes
+  4292 | D:5      | Found a glowing golden altar of the Shining One.
+  4398 | D:5      | Approach 1: hold enemies=1 HP=61
+  4399 | D:5      | Approach 1: hold enemies=1 HP=61
+  4400 | D:5      | Approach 1: hold enemies=1 HP=61
+  4401 | D:5      | Approach 1: hold enemies=1 HP=61
+  4774 | D:5      | Approach 1: hold enemies=1 HP=62
+  4775 | D:5      | Approach 1: hold enemies=1 HP=62
+  4776 | D:5      | Approach 1: hold enemies=1 HP=62
+  4809 | D:5      | Reached skill level 5 in Armour
+  4848 | D:5      | Approach 1: hold enemies=1 HP=62
+  4849 | D:5      | Approach 1: hold enemies=1 HP=62
+  5078 | D:5      | Approach 1: hold enemies=1 HP=62
+  5079 | D:5      | Approach 1: hold enemies=1 HP=62
+  5080 | D:5      | Approach 1: hold enemies=1 HP=62
+  5081 | D:5      | Approach 1: hold enemies=1 HP=62
+  5092 | D:5      | Reached skill level 8 in Axes
+  5092 | D:5      | Reached XP level 8. HP: 70/70 MP: 1/7
+  5175 | D:5      | Approach 1: hold enemies=1 HP=70
+  5176 | D:5      | Approach 1: hold enemies=1 HP=70
+  5344 | D:5      | Reached skill level 5 in Dodging
+  5780 | D:6      | Steam charge: visible HP 71
+  5781 | D:6      | Steam charge: visible HP 71
+  5783 | D:6      | Steam charge: remembered HP 61
+  5783 | D:6      | Found an ornate altar of the Wu Jian Council.
+  5784 | D:6      | Steam charge: visible HP 54
+  5788 | D:6      | Reached skill level 1 in Evocations
+  5798 | D:6      | Killed from afar by an orc priest
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      wander_arrival_estate, layout_rooms, minmay_tromino_v4_a
+D:2:      layout_basic
+D:3:      layout_basic, uniq_terence
+D:4:      layout_loops_ring, serial_shops, nicolae_stop_n_shop_2
+D:5:      minmay_inner_zag, layout_basic, nicolae_tso_swordbearing_angel
+D:6:      layout_loops_ring, nicolae_wu_jian_rivers_and_lakes,
+          nicolae_gozag_cash_rules_everything_around_me
+
+Skill      XL: |  1  2  3  4  5  6  7  8 |
+---------------+-------------------------+-----
+Axes           |     4     5     6  8    |  8.6
+Fighting       |     4           5  6    |  6.5
+Armour         |        3     4     5    |  5.9
+Dodging        |           3     4     5 |  5.3
+Evocations     |                       1 |  1.2
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    72 |   111 |    92 ||   275
+  Melee: Hand axe          |    53 |       |       ||    53
+         Headbutt          |    14 |    34 |    21 ||    69
+         War axe           |    38 |   129 |   141 ||   308
+ Invoke: Berserk           |     3 |     8 |     9 ||    20
+         Trog's Hand       |       |     4 |     4 ||     8
+   Read: Teleportation     |     1 |     2 |       ||     3
+         Noise             |       |     1 |       ||     1
+         Vulnerability     |       |     1 |       ||     1
+         Amnesia           |       |     1 |       ||     1
+         Identify          |       |     4 |       ||     4
+         Immolation        |       |     1 |       ||     1
+         Fog               |       |     1 |       ||     1
+ Armour: Animal skin       |    13 |       |       ||    13
+         Ring mail         |    21 |    22 |       ||    43
+         Scale mail        |       |    53 |       ||    53
+         Plate armour      |       |    22 |   128 ||   150
+         None              |       |     6 |       ||     6
+         Chain mail        |       |     2 |       ||     2
+  Dodge: Dodged            |    43 |    64 |    52 ||   159
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   6036 |   5859 |    177 |      0 |   3444 |   6 | 1006.0 |
+       Dungeon |   6036 |   5859 |    177 |      0 |   3444 |   6 | 1006.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1799 daAuts
+     D:2: 1311 daAuts
+     D:4: 1109 daAuts
+     D:3: 996 daAuts
+     D:1: 659 daAuts
+     D:6: 160 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    30 |    37 |    19 ||    86
+          Kill Demon  |     0 |     4 |     1 ||     5
+         Kill Wizard  |     0 |     2 |     2 ||     3
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    44 |    56 |    30 ||   130
+          Kill Demon  |     0 |     5 |     1 ||     6
+         Kill Wizard  |     0 |     3 |     3 ||     6
+----------------------+-------+-------+-------++-------
+

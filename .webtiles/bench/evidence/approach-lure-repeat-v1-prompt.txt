@@ -1,0 +1,23 @@
+    #......#                         CodexLure2 the Cleaver
+    #......#..##.......#             Minotaur of Trog *.....
+ ####......#..##........             Health: 91/91     ========================
+ ≈...#.....#..##........             Magic:  9/9       ========================
+ . #.......#...........#             AC: 21            Str: 26
+ PP #......#...........#             EV:  8            Int: 4
+ PPP  #....#...........#             SH:  0            Dex: 10
+ >P.. #....#.....O.....#             XL: 10 Next: 68%  Place: Dungeon:11
+ PP...#.........@W.....#             Noise: ---------  Time: 12480.1 (1.0)
+   ##....<......Tc.....#             d) +0 war axe
+   #.......##........^.#             Throw: throwing net
+ ≈...#.....##.....##...#             Regen Will++
+ ####......##.....#  ..#
+   #...#...##.....#   .#             O   two-headed ogre (summoned)
+   #..##...##.....#    #             T   troll (summoned)
+   #.. #...##.....#                  W   wraith (summoned)
+   #.  #(..##.....#                  c   centaur (launcher, summoned)
+_You feel the effects of Trog's Hand fading.
+ [MiBe bot] survival: Trog's Hand
+ Your skin crawls.
+ You feel strong-willed.
+_You can no longer call upon Trog for regeneration and willpower.
+ Really attack your two-headed ogre?
