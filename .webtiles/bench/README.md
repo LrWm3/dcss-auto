@@ -35,7 +35,8 @@ with `runner.py record`. Missing sessions are reported, never recreated blindly.
 Watch timeout or Ctrl-C leaves games running; call `watch` again to resume.
 No gameplay input, forced save, or kill is sent during monitoring. A session is
 reused only when the prior manifest records a verified death, the pane matches,
-and its captured terminal still shows that character and death message. Otherwise
+and its process still belongs to that character, with no remaining save and a
+death or postmortem inventory screen. The matching death dump is revalidated. Otherwise
 start refuses it. Start failures may leave a partial batch: inspect its manifest
 and sessions; do not delete the manifest and retry blindly.
 

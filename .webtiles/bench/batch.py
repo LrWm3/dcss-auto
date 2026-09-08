@@ -99,7 +99,13 @@ def reusable(session, ids):
                     continue
                 same_game = any(argv[i:i+2] == ['-name', row['character']]
                                 for i in range(len(argv)))
-                if same_game and row['character'] in screen and 'You die...' in screen:
+                game = ROOT / 'crawl-0.35/crawl-ref/source'
+                dump = Path(row.get('dump', ''))
+                verified = dump.is_file() and terminal_dump(dump, row)
+                no_save = not list((game / 'saves').glob(row['character'] + '.*'))
+                death_screen = (row['character'] in screen and 'You die...' in screen)
+                inventory_screen = 'Gear:' in screen and 'gear slots' in screen
+                if same_game and verified and no_save and (death_screen or inventory_screen):
                     return True
     return False
 
