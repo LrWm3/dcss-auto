@@ -1,0 +1,16 @@
+{
+  "dataset": ".webtiles/bench/tactical/artifacts/mining-v2/dataset/index.json",
+  "dataset_sha256": "f3b23d4a96ac5a8d652790a1f6435f8774fb53710a2747a526534649a1d54e89",
+  "train_cases": ["collection/encounter-001", "collection/encounter-002"],
+  "eval_cases": ["collection/encounter-003"],
+  "evaluation_mode": "held_out",
+  "episodes": 2,
+  "steps": 80,
+  "turns": 300,
+  "handoff_steps": 20,
+  "eval_repeats": 1,
+  "alpha": 0.15,
+  "gamma": 0.995,
+  "epsilon": 0.3,
+  "random_seed": 7
+}

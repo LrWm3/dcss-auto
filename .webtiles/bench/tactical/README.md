@@ -391,3 +391,59 @@ inspect the summary before training. All cases and repeats from the same seed
 must remain in the same train/validation/test split. Related captures across
 mining runs are not independent examples. Death trajectories are simulator
 starting points for alternative-action search/RL, not imitation targets.
+
+## Training on mined checkpoints
+
+`train_encounters.py` is a separate, small **linear Q-learning** harness. It
+leaves the legacy tabular trainer, exported models and production RC untouched.
+It supports multiple verified cases, explicit seed-disjoint held-out evaluation,
+and an explicitly labelled in-sample mode for debugging one encounter.
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/train_encounters.py \
+  .webtiles/bench/tactical/rl-d7-smoke-v1.json \
+  .webtiles/bench/tactical/artifacts/my-d7-training
+```
+
+The D:7 config is a bounded pilot: six training episodes with two repeats of
+the RC baseline, an adjacent-melee comparator, and the final frozen policy.
+`rl-multicase-smoke-v1.json` exercises two training seeds and a separate
+evaluation seed. These tiny runs test infrastructure, not generalisation.
+To train longer, increase `episodes`; every invocation currently starts a fresh
+model. Output paths must be new. `model.json` is retained after each episode;
+it is **not compatible with the legacy Lua exporter**, and is not deployed.
+
+Configuration selects a hash-pinned dataset index plus `train_cases` and
+`eval_cases` using its case IDs. Only eligible cases with verified metadata and
+matching save/RC/engine hashes are accepted. `held_out` mode rejects any seed
+overlap, including different encounters from the same seed. `in_sample` is an
+explicit exception and is marked throughout the reports.
+
+The learner uses player-visible HP, nearby terrain/enemy geometry, threat counts,
+statuses, recent HP loss, encounter age and peak threat. It does not use monster
+hidden HP, true invisible positions, seed IDs or enemy names as policy features.
+Actions are eight ordinary movements, adjacent melee without approaching,
+berserk, wait, and one decision delegated to the RC (`baseline`). Delegation
+can use the RC's consumable/routing logic; the learner itself cannot choose
+inventory items yet. The conservative mask avoids known clouds/occupied or
+unknown cells, confused movement and some immobilising statuses. It is not a
+complete engine legality oracle; errors and no-turn stalls remain observable.
+
+Reward is +100 for the miner's observable recovery condition, -100 for death,
+and a small elapsed-turn cost. There is no HP-gain, damage or kill reward to farm.
+Variable-duration macro-actions use elapsed-turn discounting. Decision/turn
+budgets bootstrap rather than pretending to be victories; floor exits and
+no-turn stalls end the tactical task without a positive terminal reward.
+Harness errors never count as deaths and stop the batch.
+
+Recovery is a **proxy**, not proof that enemies died or that retreat will remain
+safe. `handoff_steps` optionally continues the RC after an evaluation recovery,
+reporting later death/floor change/bounded survival separately. These actions do
+not update the model or earn learner reward. Their transitions follow the main
+episode in the trace; only the tactical prefix has entries in `rewards.jsonl`.
+
+Each output contains frozen config/manifest, full transition and reward logs,
+per-episode outcomes/action counts/timings, a model snapshot, and a summary.
+Inventory changes can be inspected in transition observations; automatic
+resource-use aggregation is not implemented yet. Evaluation weights are checked
+unchanged. Repeated resets are reproducibility checks, not independent samples.

@@ -1401,3 +1401,32 @@ Final tests:14tactical,13mining,10batch,3direct-transport cases,23RC suites pass
 Also hardened corruption reporting before engine launch (no missing-worker
 exception when rejecting a changed reference). All private mining workers closed.
 Evidence tactical/evidence/mining-deeper-v1.json; dataset in matching artifacts run.
+
+## 2026-09-08 — checkpoint RL harness adaptation
+
+Added tactical/train_encounters.py, a separate linear Q-learning harness using
+visible tactical geometry/status/history features, conservative movement and
+adjacent-melee masks, berserk/wait and one-decision RC delegation. Legacy
+experiment.py/model exports and canonical RC are unchanged. Explicit verified
+case selection checks dataset/save/RC/engine hashes and prevents held-out seed
+leakage. Episode budgets, floor changes, stalls and errors are not victories.
+Elapsed-turn discounting and time-limit bootstrap are tested; evaluation weights
+remain frozen. Optional post-recovery RC handoff is audited without learning
+from it. Config/model/episode/transition/reward/evidence files are retained.
+
+Final D7 rl-d7-smoke-v3: two RC deaths103decisions; two adjacent-melee comparator
+deaths11; six training deaths24,20,29,78,21,34; final frozen policy dies18 twice.
+No harness errors, but NO learned improvement. Earlier v1/v2 exploratory recovery
+is retained as historical evidence, not substituted for final corrected-update
+results. The six-episode pilot is deliberately small and in-sample.
+
+Final multi-case rl-multicase-smoke-v2 trains on83017001/02 and evaluates on03.
+Both training episodes recover; RC/melee recover43decisions; final policy reaches
+observable safety after two retreat moves. All three evaluation handoffs stay
+alive for20additional RC decisions. One easy held-out case is not evidence of
+generalisation or sustained tactical superiority. No production model promotion.
+
+Tests pass:12training,14tactical,13mining,3direct-transport cases,23RC suites.
+Tracked evidence tactical/evidence/rl-harness-v1.json. All private workers closed.
+Next work is improving/training the policy and recovery objective, not claiming
+that a functioning RL loop has already solved the D7 encounter.

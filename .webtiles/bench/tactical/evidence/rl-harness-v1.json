@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-08",
+  "trainer_sha256": "98ed9a980124affeb9219527e2474d6fd82dbbf93eb996b5fa8bc2c52a55e77a",
+  "d7": {
+    "run": ".webtiles/bench/tactical/artifacts/rl-d7-smoke-v3",
+    "summary_sha256": "09f021d92b445ddf85fa60c48abd60022b869b4aa83b769c69d7615cfe5b9d35",
+    "evaluation_mode": "in_sample",
+    "episodes_completed": 12,
+    "harness_errors": 0,
+    "baseline_death_decisions": [103, 103],
+    "adjacent_melee_comparator_death_decisions": [11, 11],
+    "training_death_decisions": [24, 20, 29, 78, 21, 34],
+    "final_policy_death_decisions": [18, 18],
+    "model_sha256": "6d6c1edd16478294a4351174ecbea80bac3b34300209d2ccfa66687d0448e54e",
+    "conclusion": "No learned survival improvement; final policy dies earlier than RC. Infrastructure pilot only."
+  },
+  "multicase": {
+    "run": ".webtiles/bench/tactical/artifacts/rl-multicase-smoke-v2",
+    "summary_sha256": "ac8469ca291158ba454cb273c7be8605f3824ba13793ed3ff1be018bfa4c1b8f",
+    "evaluation_mode": "held_out",
+    "train_seeds": ["83017001", "83017002"],
+    "eval_seeds": ["83017003"],
+    "episodes_completed": 5,
+    "harness_errors": 0,
+    "baseline_recovery_decisions": 43,
+    "melee_comparator_recovery_decisions": 43,
+    "final_policy_recovery_decisions": 2,
+    "handoff": "All three evaluations remain alive for 20 additional baseline decisions.",
+    "model_sha256": "e399bde4b64efe0e2892aa95d7e4a846f803710106789d125afdc317d72f3b41",
+    "conclusion": "Small seed-separated smoke test, not statistical generalisation evidence. Learned two-move retreat reaches observable safety, not proof enemies were defeated."
+  },
+  "earlier_runs": "rl-d7-smoke-v1/v2 and rl-multicase-smoke-v1 retained. Earlier D7 exploration once reached recovery; final corrected-update run does not. Do not substitute the earlier success for the final result.",
+  "tests": {"training": 12, "tactical": 14, "mining": 13, "direct_transport": 3, "rc_suites": 23},
+  "production_changed": false,
+  "limitations": [
+    "Fresh model each invocation; saved weights are not production Lua exports.",
+    "Resource decisions are delegated to baseline RC, not learned as individual inventory actions.",
+    "Recovery is observable safety; bounded handoff survival is separately reported.",
+    "Fidelity certification covers original baseline trajectories, not every alternate-action trajectory."
+  ]
+}
