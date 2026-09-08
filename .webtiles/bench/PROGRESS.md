@@ -301,3 +301,23 @@ added a regression test. Live snapshot remains immutable; corrected chances were
 queried directly without gameplay action. Nine Lua suites and nine runner tests
 pass. Character is still alive and paused in codex-bench2 for the next experiment;
 do not reset it. No survival improvement claimed from this diagnostic run.
+
+## Generic combat wands: live Lodul intervention
+
+Implemented generic charm/finisher/safe-blast scoring, with conservative targeting,
+minimum success thresholds, friendly-fire vetoes, and attempt budgets. Ten Lua
+suites and nine runner tests pass. No unique-specific combat exception.
+
+Tested on the already-paused CodexLodulDebug1. Initial item-slot API mismatch and
+same-filename reload caching were resolved without spending game turns. Corrected
+snapshot 780ebd2 used two charm and two mindburst charges successfully, no warping.
+Lodul died at turn8143. After 51 total turns from the breakpoint, the character
+was alive at turn8179, HP91/97, XL11, no visible hostiles, deliberately paused.
+This is a successful local encounter test, not proof of improvement over the old
+policy on exactly the same state and not a from-start autonomous benchmark.
+
+Preserved separate machine-readable episode metadata in interventions/lodul-wands-v1.json,
+end dump and observed action history in evidence/lodul-wands-intervention-v1-*.
+Do not reset codex-bench2: it remains paused with the new wand policy installed.
+The original diagnostic pause row is unchanged. Broader regression/replay remains
+to be tested; warping was evaluated but not fired in this encounter.
