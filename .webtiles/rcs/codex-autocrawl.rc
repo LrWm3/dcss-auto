@@ -2405,6 +2405,15 @@ function ready()
   if BOT.directional_rejected_at == you.turns() then
     crawl.do_commands({"CMD_WAIT"}); return
   end
+  if AUTOCrawl_TACTICS.steam_charge then
+    for _,enemy in ipairs(scan.monsters) do
+      if enemy.monster and enemy.monster.name and enemy.monster:name()=="steam dragon"
+          and math.max(math.abs(enemy.x),math.abs(enemy.y))==1 and enemy.reachable then
+        BOT.autofight_rejected=false
+        encounter_action(scan); return
+      end
+    end
+  end
   if steam_charge_action(scan) then return end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end

@@ -1,0 +1,347 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 17908030050512890810 (custom seed)
+
+1435 CodexSteamCharge1 the Cleaver (level 8, -5/71 HPs)
+             Began as a Minotaur Berserker on Sept 8, 2026.
+             Was a Believer of Trog.
+             Killed from afar by an electric eel (7 damage)
+             ... with a bolt of electricity
+             ... on level 6 of the Dungeon.
+             The game lasted 00:00:22 (5963 turns).
+
+CodexSteamCharge1 the Cleaver (Minotaur Berserker)  Turns: 5963, Time: 00:00:22
+
+Health: -5/71      AC: 15    Str: 24    XL:     8   Next: 45%
+Magic:  4/7        EV:  7    Int:  4    God:    Trog [**....]
+Gold:   321        SH:  0    Dex: 10    Spells: 7/7 levels left
+
+rFire   . . .  (100%)   d - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   b - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   c - +0 cloak
+rCorr   .      (100%)   a - +0 pair of gloves {Infuse}
+SInv    .               (no boots)
+Will    .....           (no amulet)
+Stlth                   (no ring)
+HPRegen 0.31/turn       (no ring)
+MPRegen 0.10/turn
+
+%: infuse magic (1 MP)
+@: on berserk cooldown
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You were on level 6 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 7 of its levels.
+
+You collected 321 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +0 war axe (weapon)
+Armour
+ a - a +0 pair of gloves of infusion (worn)
+ b - a +0 plate armour (worn)
+ c - a +0 cloak (worn)
+Wands
+ b - a wand of acid (8)
+Scrolls
+ N - 2 scrolls of noise
+ e - a scroll of summoning {unknown}
+ x - 2 scrolls of amnesia
+ I - a scroll of immolation
+ V - a scroll of vulnerability
+ h - a scroll of enchant armour {unknown}
+ j - a scroll of fear {unknown}
+ g - a scroll of fog
+ u - a scroll of poison {unknown}
+ c - a scroll of revelation {unknown}
+ k - a scroll of brand weapon {unknown}
+Potions
+ d - 2 potions of attraction {unknown}
+ e - 3 potions of enlightenment
+ i - 2 potions of invisibility
+ n - 2 potions of moonshine
+ c - 3 potions of curing
+ l - a potion of ambrosia {unknown}
+ p - 2 potions of brilliance {unknown}
+ t - a potion of heal wounds {unknown}
+ s - a potion of might {unknown}
+ v - a potion of lignification {unknown}
+ x - a potion of magic {unknown}
+ f - a potion of mutation {unknown}
+
+
+   Skills:
+ + Level 6.5 Fighting
+ * Level 8.7 Axes
+ + Level 5.9 Armour
+ + Level 5.4 Dodging
+ + Level 1.3 Evocations
+
+
+You had 7 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)            
+Temple: D:4-7       
+
+Altars:
+The Shining One
+
+Shops:
+D:4 ?
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You headbutt the marrowcuda.
+You destroy the marrowcuda!
+The marrowcuda disappears in a puff of smoke!
+You closely miss the marrowcuda. Your headbutt misses the marrowcuda.
+The marrowcuda is lightly damaged.
+You hit the marrowcuda but do no damage.
+The marrowcuda bites you but does no damage.
+The marrowcuda closely misses you. The marrowcuda barely misses you.
+You furiously retaliate! You headbutt the marrowcuda!
+The marrowcuda bites you but does no damage.
+You slice the marrowcuda!!
+You destroy the marrowcuda!
+Trog accepts your kill.
+The marrowcuda disappears in a puff of smoke!
+You feel the effects of Trog's Hand fading.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity misses you.
+You feel the doom around you dissipate.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you but does no damage.
+The bolt of electricity hits you.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you! x2
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you! The bolt of electricity hits you.
+Your skin stops crawling. You feel less strong-willed.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you!
+* * * LOW HITPOINT WARNING * * *
+You feel yourself speed up.
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you.
+* * * LOW HITPOINT WARNING * * *
+The bolt of electricity hits you!
+* * * LOW HITPOINT WARNING * * *
+The electric eel shoots out a bolt of lightning at you!
+The bolt of electricity hits you!
+You die...
+
+   ........# #.#
+       ###.###.#
+       #.....#.##
+     ###.###.#:.#########
+     #...# #.............
+     #.#.###.............
+ #< ##.#..........))#####
+  #.#...####.##.###.#
+   #....@.##.##.# #.#
+  #.#...#.##.##.# #.#
+≈≈≈....##....##.# #.#
+≈≈≈≈S.. ##### #.# #.#####
+≈♣♣≈≈..           #......
+  ♣.≈≈.           #.#####
+ ...≈≈.           #.#####
+≈≈~♣.≈~           #......
+≈≈≈~.≈≈           #.#####
+
+
+You could see an electric eel.
+
+Vanquished Creatures
+  A kobold geomancer (D:5)
+  A black bear (D:6)
+  An ogre (D:5)
+  A centaur (D:5)
+  A kobold brigand (D:5)
+  3 scorpions
+  2 marrowcudas (D:6)
+  A hound (D:6)
+  3 orc priests
+  2 jellies
+  A drude (D:5)
+  2 iguanas
+  Terence (D:3)
+  2 clockroaches
+  5 orc wizards
+  7 gnolls
+  8 adders
+  A shadow imp (D:7)
+  A white imp (D:6)
+  4 ufetubi (D:4)
+  6 ribbon worms
+  3 dart slugs
+  21 orcs
+  4 hobgoblins
+  5 jackals
+  5 quokkas
+  4 ball pythons
+  7 bats
+  6 endoplasms
+  5 frilled lizards
+  9 goblins
+  13 kobolds
+  6 rats
+142 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexSteamCharge1 the Minotaur Berserker began the quest
+                  | for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   114 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   123 | D:1      | Reached skill level 4 in Axes
+   676 | D:2      | Reached XP level 3. HP: 33/33 MP: 0/2
+   754 | D:2      | Reached ** piety under Trog
+  1072 | D:2      | Reached XP level 4. HP: 33/40 MP: 0/3
+  2002 | D:3      | Encountered Terence
+  2007 | D:3      | Killed Terence
+  2008 | D:3      | Reached skill level 5 in Axes
+  2815 | D:4      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2840 | D:4      | Reached XP level 6. HP: 55/55 MP: 0/5
+  3122 | D:4      | Found Ritoq's Magic Scroll Emporium.
+  3241 | D:4      | Reached skill level 6 in Axes
+  3245 | D:4      | Reached skill level 5 in Fighting
+  3374 | D:4      | You fall into a shaft and drop 3 floors!
+  3477 | D:7      | Encountered a steam dragon
+  3478 | D:7      | Steam charge: visible HP 56
+  3479 | D:7      | Steam charge: visible HP 56
+  3480 | D:7      | Steam charge: visible HP 56
+  3630 | D:5      | Entered Level 5 of the Dungeon
+  3893 | D:4      | Reached XP level 7. HP: 61/61 MP: 4/6
+  4273 | D:5      | Reached skill level 7 in Axes
+  4422 | D:5      | Found a glowing golden altar of the Shining One.
+  4737 | D:5      | Reached skill level 5 in Armour
+  5236 | D:5      | Reached XP level 8. HP: 58/70 MP: 4/7
+  5240 | D:5      | Reached skill level 8 in Axes
+  5506 | D:5      | Reached skill level 5 in Dodging
+  5927 | D:6      | Reached skill level 1 in Evocations
+  5962 | D:6      | HP: 1/71 [electric eel/bolt of electricity (9)]
+  5963 | D:6      | Killed from afar by an electric eel
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      wander_arrival_estate, layout_rooms, minmay_tromino_v4_a
+D:2:      layout_basic
+D:3:      layout_basic, uniq_terence
+D:4:      layout_loops_ring, serial_shops, nicolae_stop_n_shop_2
+D:5:      minmay_inner_zag, layout_basic, nicolae_tso_swordbearing_angel
+D:6:      layout_loops_ring, nicolae_wu_jian_rivers_and_lakes,
+          nicolae_gozag_cash_rules_everything_around_me
+D:7:      layout_basic, fedhas_altar_3, temple_green
+
+Skill      XL: |  1  2  3  4  5  6  7  8 |
+---------------+-------------------------+-----
+Axes           |     4     5     6  7  8 |  8.7
+Fighting       |        4        5  6    |  6.5
+Armour         |        3     4     5    |  5.9
+Dodging        |           3     4     5 |  5.4
+Evocations     |                       1 |  1.3
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    77 |    88 |    80 ||   245
+  Melee: Hand axe          |    41 |       |       ||    41
+         Headbutt          |    22 |    24 |    25 ||    71
+         War axe           |    41 |   100 |    96 ||   237
+ Invoke: Trog's Hand       |     2 |     3 |     4 ||     9
+         Berserk           |       |     4 |    11 ||    15
+   Read: Teleportation     |     1 |     2 |       ||     3
+         Noise             |       |     1 |       ||     1
+         Vulnerability     |       |     1 |       ||     1
+         Amnesia           |       |     1 |       ||     1
+         Identify          |       |       |     4 ||     4
+         Immolation        |       |       |     1 ||     1
+         Fog               |       |       |     1 ||     1
+ Armour: Animal skin       |     4 |       |       ||     4
+         Ring mail         |    40 |     8 |       ||    48
+         Scale mail        |       |    19 |       ||    19
+         None              |       |     2 |       ||     2
+         Plate armour      |       |    44 |   109 ||   153
+         Chain mail        |       |     6 |       ||     6
+  Dodge: Dodged            |    40 |    45 |    38 ||   123
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   6159 |   5966 |    193 |      0 |   3563 |   7 |  879.9 |
+       Dungeon |   6159 |   5966 |    193 |      0 |   3563 |   7 |  879.9 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1754 daAuts
+     D:2: 1240 daAuts
+     D:3: 1026 daAuts
+     D:4: 936 daAuts
+     D:1: 575 daAuts
+     D:6: 390 daAuts
+     D:7: 235 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    30 |    34 |    23 ||    87
+         Kill Undead  |     0 |     0 |     1 ||     1
+          Kill Demon  |     0 |     3 |     2 ||     5
+         Kill Wizard  |     0 |     1 |     2 ||     3
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    45 |    52 |    36 ||   133
+         Kill Undead  |     0 |     0 |     2 ||     2
+          Kill Demon  |     0 |     4 |     3 ||     7
+         Kill Wizard  |     0 |     2 |     4 ||     6
+----------------------+-------+-------+-------++-------
+
