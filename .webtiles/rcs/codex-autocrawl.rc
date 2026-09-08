@@ -637,7 +637,8 @@ end
 
 local function manage_encounter(scan)
   local e=BOT.encounter
-  if not e or you.confused() or movement_locked() then return false end
+  if not e or you.confused() or movement_locked()
+      or (you.mesmerised and you.mesmerised()) then return false end
   if e.phase=="prepare" then return positioning_action(scan) end
   if e.phase=="disengage" and scan.any and not scan.reachable_adjacent
       and not you.berserk() and e.retreats<AUTOCrawl_TACTICS.retreat_moves then

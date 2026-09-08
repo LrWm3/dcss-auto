@@ -176,6 +176,10 @@ def collect(version):
     game = ROOT / 'crawl-0.35/crawl-ref/source'
     rows = [json.loads(line) for line in (BENCH / 'runs.jsonl').read_text().splitlines()]
     for row in cfg['sessions']:
+        recorded = next((r for r in rows if r['version']==version and r['seed']==row['seed']), None)
+        if recorded and recorded['outcome'] in ('paused', 'complete'):
+            row['status']=recorded['outcome']
+            continue
         if row['status'] == 'death':
             continue
         dumps = sorted((game / 'morgue').glob(f"morgue-{row['character']}-*.txt"))

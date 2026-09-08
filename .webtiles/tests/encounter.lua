@@ -41,6 +41,11 @@ items.inventory=function() return {{slot=0,is_identified=true,
 assert(survival(scan) and commands[#commands]=="ra\027\027\027",
   "unseen attacker must not bypass known emergency teleport")
 assert(not manage(scan),"unseen combat must reach disturbance handling, not blind resting")
+you.mesmerised=function() return true end
+scan.any=true; scan.monsters={{x=3,y=0,reachable=true}}
+assert(not manage(scan),"mesmerism must delegate to combat, not retreat")
+you.mesmerised=function() return false end
+scan.any=false; scan.monsters={}
 BOT.disturbance_warning=false; depth=3; hp=100; observe(scan)
 assert(BOT.encounter.phase=="idle" and BOT.encounter.peak==0,"reset on level change")
 AUTOCrawl_TACTICS.encounter_control=false; observe(scan)
