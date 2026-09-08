@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -43,6 +44,8 @@ def record(args):
         raise ValueError('No recognized reached milestone')
     best = max(known, key=RANK.get)
     row = dict(version=args.version, character=args.character, seed=seed,
+               recorded_at=datetime.now(timezone.utc).isoformat(),
+               engine_sha256=args.engine_sha,
                commit=args.commit, rc_sha256=args.rc_sha, outcome=args.outcome,
                reached=best, reached_rank=RANK[best], cleared_prefix=None,
                turns=int(re.search(r'Turns:\s*(\d+)', text).group(1)),
@@ -81,6 +84,7 @@ if __name__ == '__main__':
         p.add_argument('--' + key, required=True)
     p.add_argument('--commit')
     p.add_argument('--rc-sha')
+    p.add_argument('--engine-sha')
     p.add_argument('dump')
     args = parser.parse_args()
     if args.command == 'summary':

@@ -1,0 +1,588 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 1760771545328102746 (custom seed)
+
+42340 CodexBench3 the Severer (level 13, 0/178 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was an Elder of Trog.
+             Slain by a small abomination (3 damage)
+             ... while petrified by a basilisk
+             ... on level 5 of the Lair of Beasts.
+             The game lasted 00:01:29 (15974 turns).
+
+CodexBench3 the Severer (Minotaur Berserker)       Turns: 15974, Time: 00:01:30
+
+Health: 0/178      AC: 14    Str: 31    XL:     13   Next: 84%
+Magic:  10/12      EV:  2    Int:  7    God:    Trog [****..]
+Gold:   1139       SH:  0    Dex: 12    Spells: 12/12 levels left
+
+rFire   . . .  (100%)   l - +3 battleaxe
+rCold   + . .  (50%)      [offhand occupied]
+rNeg    + + +  (0%)     a - +2 plate armour {rC+}
+rPois   ∞      (0%)     f - +1 hat {Int+3}
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   p - +1 pair of gloves {Parrying}
+SInv    +               (no boots)
+Will    .....           c - amulet of chemistry
+Stlth                   e - ring of see invisible
+HPRegen 0.49/turn       n - +6 ring of strength
+MPRegen 0.13/turn
+
+%: no passive effects
+@: berserking (expiring), petrified, corroded (-8)
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (0%), Trog's Hand (0%), Brothers in Arms
+(65%)
+
+
+You were on level 5 of the Lair of Beasts.
+You worshipped Trog.
+Trog was greatly pleased with you.
+You visited 2 branches of the dungeon, and saw 19 of its levels.
+
+You collected 1139 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ j - a +1 battleaxe of venom
+ l - a +3 battleaxe (weapon)
+Armour
+ a - a +2 plate armour of cold resistance (worn)
+ b - a +0 cloak (worn)
+ d - a scarf of invisibility
+ f - a +1 hat of intelligence (worn)
+ k - the +2 leather armour of the Verdant Hippogriff {*Corrode rElec SInv}
+   (You found it on level 11 of the Dungeon)   
+   
+   *Corrode:  It may corrode you when you take damage.
+   rElec:     It insulates you from electricity.
+   SInv:      It lets you see invisible.
+   
+   It cannot be enchanted further.
+ o - the +1 robe of Temperance {rN+ Str+3 Stlth+ Archmagi}
+   (You found it on level 3 of the Lair of Beasts)   
+   
+   rN+:       It protects you from negative energy.
+   Str+3:     It affects your strength (+3).
+   Stlth+:    It makes you more stealthy.
+   Archmagi:  It increases the power of your magical spells.
+   
+   It cannot be enchanted further.
+ p - a +1 pair of gloves of parrying (worn)
+Jewellery
+ c - an amulet of chemistry (worn)
+ e - a ring of see invisible (worn)
+ g - a ring of magical power
+ h - a +6 ring of intelligence
+ i - a ring of flight
+ m - a +6 ring of dexterity
+ n - a +6 ring of strength (worn)
+Wands
+ c - a wand of roots (16)
+ p - a wand of polymorph (11)
+ a - a wand of flame (11)
+ f - a wand of mindburst (16)
+ b - a wand of quicksilver (3)
+Scrolls
+ w - 4 scrolls of enchant weapon
+ x - a scroll of amnesia
+ r - 2 scrolls of revelation
+ S - 2 scrolls of silence
+ f - 3 scrolls of fear
+ b - a scroll of blinking
+ s - a scroll of summoning
+ g - 3 scrolls of fog
+ I - 2 scrolls of immolation
+ e - a scroll of torment {unknown}
+ N - a scroll of noise
+ V - 2 scrolls of vulnerability
+ t - 7 scrolls of teleportation
+ p - 3 scrolls of poison
+ i - a scroll of identify
+Potions
+ e - 2 potions of enlightenment
+ B - 4 potions of berserk rage
+ w - 4 potions of heal wounds
+ a - 2 potions of ambrosia
+ r - 3 potions of resistance
+ M - 3 potions of mutation
+ j - a potion of moonshine
+ f - a potion of attraction {unknown}
+ n - a potion of magic {unknown}
+ m - 2 potions of might
+ p - a potion of brilliance {unknown}
+ h - 2 potions of haste
+ l - 2 potions of lignification {unknown}
+
+
+   Skills:
+ + Level 12.8 Fighting
+ * Level 17.3 Axes
+ + Level 12.5 Armour
+ + Level 11.3 Dodging
+ - Level 8.0 Evocations
+
+
+You had 12 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (14/15)            Temple (0/1) D:7            Lair (5/5) D:8         
+ Shoals (0/4) Lair:3        Slime (0/5) Lair:4          Orc (0/2) D:9         
+ Snake: Lair:2-3    Spider: Lair:2-3    Vaults: D:13-14     
+
+The Realm of Zot is guarded by orbs of entropy.
+
+Altars:
+Cheibriados
+Dithmenos
+Gozag
+Sif Muna
+Trog
+Uskayaw
+Vehumet
+Xom
+The Shining One
+Jiyva
+
+Shops:
+D:4 ([[
+
+Annotations:
+D:11 exclusions: ice statue and obsidian statue
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The basilisk gazes at you.
+You are unaffected. The brown ugly thing bites you.
+* * * LOW HITPOINT WARNING * * *
+You are splashed with acid.
+* * * LOW HITPOINT WARNING * * *
+Your limbs are stiffening.
+You barely miss the smoke demon. You headbutt the smoke demon.
+You kill the smoke demon!
+Trog accepts your kill.
+You feel the power of Trog in you as your rage grows.
+You slice the basilisk!!
+You kill the basilisk!
+Trog accepts your kill.
+You slash the brain worm!
+You kill the brain worm!
+Trog accepts your kill.
+You slice the brown ugly thing!! You slash the basilisk!
+The basilisk gazes at you.
+You are unaffected.
+You barely miss the brown ugly thing.
+The brown ugly thing is almost dead.
+You slash the basilisk!
+You hit the small abomination but do no damage.
+The small abomination hits you but does no damage.
+The brown ugly thing bites you. You are splashed with acid!
+* * * LOW HITPOINT WARNING * * *
+The small abomination closely misses you.
+You have turned to stone.
+The basilisk bites you but does no damage.
+The brown ugly thing bites you!
+* * * LOW HITPOINT WARNING * * *
+You are splashed with acid!
+* * * LOW HITPOINT WARNING * * *
+The acid corrodes you!
+The small abomination hits you but does no damage.
+The basilisk gazes at you.
+You resist with some effort.
+The brown ugly thing bites you but does no damage.
+The small abomination hits you.
+You die...
+
+     ♣♣♣♣  ♣♣♣  ♣♣
+     ♣..♣♣♣♣.♣♣♣.♣
+   ♣♣♣.♣♣........♣
+  ♣♣...†...÷...♣
+ ♣♣...♣♣...♣...♣♣      .
+ ♣...♣♣♣♣♣♣♣♣.).♣♣♣  ...
+ ♣..♣♣♣♣♣   ♣♣♣...♣♣....
+♣♣......♣     ♣♣†l....♣
+♣..♣.)...♣     ♣@x...♣♣
+♣..♣♣♣.....   ♣.u.♣♣♣♣
+♣.♣♣  ♣♣...  ♣...♣♣
+..♣♣     .. ♣...♣♣
+♣..♣      ......
+♣..♣♣     ......
+♣♣..♣♣♣  ♣♣♣♣♣♣♣
+ ♣....♣
+ ♣♣...♣♣
+  ♣....♣
+  ♣♣...♣♣
+
+
+You could see a brown ugly thing, a basilisk and a small abomination
+(regenerating).
+
+Vanquished Creatures
+  4 hydras
+  2 catoblepae
+  A centaur warrior (D:14)
+  5 two-headed ogres
+  2 tengu warriors (D:14)
+  Amaemon (D:8)
+  2 skysharks
+  Nergalle (Lair:2)
+  3 skeletal warriors (D:14)
+  3 cyclopes
+  5 elephants (Lair:3)
+  4 black mambas
+  A black mamba (shapeshifter) (Lair:5)
+  2 smoke demons (Lair:5)
+  An orange demon (D:8)
+  9 cane toads
+  Maggie (D:7)
+  2 rime drakes
+  6 komodo dragons
+  A kobold demonologist (D:14)
+  A troll (D:11)
+  3 polar bears (Lair:4)
+  Prince Ribbit (D:9)
+  10 blink frogs
+  10 dream sheep
+  6 slime creatures (D:10)
+  Sigmund (D:3)
+  Blorkula the orcula (D:7)
+  2 shadowghasts
+  5 vampires (D:9)
+  3 wraiths (D:11)
+  4 wyverns
+  12 yaks
+  Eustachio (D:4)
+  7 basilisks
+  A steam dragon (D:7)
+  4 vampire mosquitoes (D:13)
+  A small abomination (Lair:5)
+  An acid dragon (D:10)
+  12 water moccasins
+  A kobold geomancer (D:9)
+  8 orc warriors
+  A manticore draugr (D:14)
+  2 black bears (D:6)
+  An ice beast (D:6)
+  A sky beast (D:6)
+  An ogre (D:4)
+  9 wolves
+  8 centaurs
+  2 phantoms
+  2 kobold brigands
+  A brain worm (Lair:5)
+  12 bullfrogs
+  3 scorpions
+  2 rock fish (D:8)
+  4 vampire bats (D:7)
+  18 killer bees
+  5 howler monkeys
+  2 bombardier beetles
+  15 jellies
+  5 hounds
+  10 orc priests
+  A gnoll bouda (D:6)
+  2 drudes (D:7)
+  7 iguanas
+  Jessica (D:3)
+  A clockroach (D:3)
+  15 orc wizards
+  Natasha (D:3)
+  8 gnolls
+  12 adders
+  A white imp (D:6)
+  An ufetubus (D:5)
+  A ribbon worm (D:4)
+  2 dart slugs
+  45 orcs
+  6 endoplasms
+  10 hobgoblins
+  4 jackals (D:2)
+  3 quokkas
+  4 ball pythons
+  2 bats (D:2)
+  6 frilled lizards
+  6 goblins
+  9 kobolds
+  4 rats
+407 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexBench3 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   208 | D:1      | Found a faded altar of an unknown god.
+   550 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   587 | D:1      | Reached skill level 4 in Axes
+  1138 | D:2      | Reached XP level 3. HP: 30/33 MP: 2/2
+  1326 | D:2      | Reached XP level 4. HP: 36/40 MP: 3/3
+  1490 | D:2      | Reached skill level 5 in Axes
+  2246 | D:3      | Reached ** piety under Trog
+  2256 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2413 | D:3      | Encountered Jessica
+  2423 | D:3      | Killed Jessica
+  2484 | D:3      | Encountered Sigmund
+  2492 | D:3      | Killed Sigmund
+  2493 | D:3      | Reached skill level 5 in Fighting
+  2493 | D:3      | Reached skill level 6 in Axes
+  2493 | D:3      | Reached XP level 6. HP: 56/56 MP: 5/5
+  2739 | D:3      | Encountered Natasha
+  2747 | D:3      | Killed Natasha
+  2987 | D:4      | Encountered Eustachio
+  2993 | D:4      | Killed Eustachio
+  2994 | D:4      | Reached skill level 7 in Axes
+  2994 | D:4      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3201 | D:4      | Found Fibbysoi's Armour Emporium.
+  3230 | D:4      | Found Bytussi's Armour Shop.
+  3314 | D:4      | Found Num Usuu's Weapon Shoppe.
+  3320 | D:4      | Reached skill level 5 in Armour
+  3849 | D:5      | Entered Level 5 of the Dungeon
+  4316 | D:5      | Reached skill level 5 in Dodging
+  4316 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4319 | D:5      | Reached skill level 8 in Axes
+  4517 | D:5      | Found an opulent altar of Gozag.
+  4518 | D:5      | Found a shimmering blue altar of Sif Muna.
+  4522 | D:5      | Found a radiant altar of Vehumet.
+  4527 | D:5      | Found a shadowy altar of Dithmenos.
+  5000 | D:6      | Reached skill level 1 in Evocations
+  5080 | D:6      | Reached skill level 9 in Axes
+  5401 | D:6      | Reached XP level 9. HP: 73/79 MP: 8/8
+  5905 | D:6      | Reached skill level 10 in Axes
+  6368 | D:7      | Encountered Maggie
+  6380 | D:7      | Killed Maggie
+  6485 | D:7      | Found a snail-covered altar of Cheibriados.
+  6515 | D:7      | Encountered Blorkula the orcula
+  6528 | D:7      | Killed Blorkula the orcula
+  6532 | D:7      | Reached skill level 11 in Axes
+  6571 | D:7      | Reached XP level 10. HP: 53/88 MP: 9/9
+  6800 | D:7      | Reached *** piety under Trog
+  6808 | D:7      | Found a staircase to the Ecumenical Temple.
+  6809 | D:7      | Found a statue of an orb of entropy.
+  6809 | D:7      | Found a statue of an orb of entropy.
+  7288 | D:8      | Found a staircase to the Lair.
+  7502 | D:8      | Encountered Amaemon
+  7512 | D:8      | Killed Amaemon
+  8113 | D:8      | Reached skill level 12 in Axes
+  8569 | D:9      | Encountered a two-headed ogre
+  8579 | D:9      | Killed a two-headed ogre
+  8778 | D:9      | Found a bloodstained altar of Trog.
+  8867 | D:9      | Found a staircase to the Orcish Mines.
+  8938 | D:9      | Found a shimmering altar of Xom.
+  9077 | D:9      | Encountered Prince Ribbit
+  9097 | D:9      | Killed Prince Ribbit
+  9098 | D:9      | Reached XP level 11. HP: 75/97 MP: 10/10
+  9350 | D:10     | Entered Level 10 of the Dungeon
+  9886 | D:10     | Found a hide-covered altar of Uskayaw.
+ 10058 | D:10     | Reached skill level 5 in Evocations
+ 10111 | D:10     | Reached skill level 13 in Axes
+ 10503 | D:11     | Encountered a two-headed ogre
+ 10512 | D:11     | Killed a two-headed ogre
+ 10519 | D:11     | Encountered a two-headed ogre
+ 10528 | D:11     | Killed a two-headed ogre
+ 10529 | D:11     | Reached skill level 10 in Fighting
+ 10592 | D:11     | Identified the +2 leather armour of the Verdant Hippogriff
+                  | {*Corrode rElec SInv}
+ 10720 | D:11     | Encountered an obsidian statue
+ 10908 | D:11     | You fall into a shaft and drop 3 floors!
+ 10921 | D:14     | Encountered a skeletal warrior
+ 10923 | D:14     | Encountered a skeletal warrior
+ 10924 | D:14     | Encountered a sixfirhy
+ 10926 | D:14     | Encountered a skeletal warrior
+ 10933 | D:14     | Killed a skeletal warrior
+ 10934 | D:14     | Reached skill level 10 in Armour
+ 10938 | D:14     | Killed a skeletal warrior
+ 10939 | D:14     | Reached skill level 14 in Axes
+ 10946 | D:14     | Killed a skeletal warrior
+ 10993 | D:14     | Encountered a tengu warrior
+ 10995 | D:14     | Encountered a tengu warrior
+ 11006 | D:14     | Killed a tengu warrior
+ 11007 | D:14     | Reached XP level 12. HP: 83/108 MP: 11/11
+ 11012 | D:14     | Killed a tengu warrior
+ 11177 | D:14     | Encountered a centaur warrior
+ 11187 | D:14     | Killed a centaur warrior
+ 11378 | D:12     | Encountered a two-headed ogre
+ 11385 | D:12     | Killed a two-headed ogre
+ 11538 | D:11     | Found a glowing golden altar of the Shining One.
+ 11625 | D:11     | Encountered a two-headed ogre
+ 11633 | D:11     | Killed a two-headed ogre
+ 11770 | Lair:1   | Entered Level 1 of the Lair of Beasts
+ 11843 | Lair:1   | Reached skill level 15 in Axes
+ 12860 | Lair:2   | Reached skill level 10 in Dodging
+ 13265 | Lair:2   | You fall into a shaft and drop 1 floor!
+ 13427 | Lair:3   | Encountered a seven-headed hydra
+ 13435 | Lair:3   | Killed an 11-headed hydra
+ 13529 | Lair:3   | Identified the +1 robe of Temperance {rN+ Str+3 Stlth+
+                  | Archmagi}
+ 13546 | Lair:3   | Reached XP level 13. HP: 117/117 MP: 12/12
+ 13644 | Lair:3   | Found a staircase to the Shoals.
+ 13723 | Lair:3   | Reached skill level 16 in Axes
+ 13870 | Lair:2   | Encountered Nergalle
+ 13876 | Lair:2   | Killed Nergalle
+ 15104 | Lair:4   | Found a viscous altar of Jiyva.
+ 15105 | Lair:4   | Found a staircase to the Slime Pits.
+ 15185 | Lair:4   | Reached **** piety under Trog
+ 15553 | Lair:5   | Entered Level 5 of the Lair of Beasts
+ 15690 | Lair:5   | Reached skill level 17 in Axes
+ 15973 | Lair:5   | HP: 6/178 [brown ugly thing (4)]
+ 15974 | Lair:5   | Slain by a small abomination
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      ncdulo_halloftheorcs, layout_basic, serial_curves, eino_curves_04,
+          eino_curves_02, eino_curves_03, eino_curves_02,
+          dilly_ecumenical_altar_fadedgnrine
+D:2:      layout_basic, serial_curves, eino_curves_04, eino_curves_01
+D:3:      layout_loops_ring, minmay_misc_feat_diagonals, uniq_natasha,
+          uniq_jessica, uniq_sigmund
+D:4:      layout_basic, serial_shops, nicolae_shop_statue_plus, shop,
+          nicolae_shop_peninsula, uniq_crazy_yiuf_cottage, uniq_eustachio
+D:5:      minmay_clustersquares, layout_basic,
+          nicolae_overflow_macrodata_refinement
+D:6:      layout_loops_ring, minmay_fractal_squares_gapless_5
+D:7:      layout_basic, mainiacjoe_overflow_surrounded_room,
+          minmay_temple_entry_from_below_a, uniq_blorkula_the_orcula,
+          uniq_maggie
+D:8:      layout_basic, lair_entry_dummy, uniq_amaemon
+D:9:      layout_gridville, mainiacjoe_overflow_brackets,
+          mainiacjoe_overflow_alcove_2, orc_0_dummy, nzn_life_drinkers,
+          uniq_prince_ribbit1
+D:10:     layout_stronghold, mainiacjoe_overflow_cross_hatched, minivault_5
+D:11:     minmay_separated_statues, layout_rooms, nicolae_tso_holy_fire
+D:12:     layout_roguey
+D:13:     layout_small_grid, hellmonk_vaults_order_and_chaos
+D:14:     layout_irregular_city, minmay_door_square, serial_undead,
+          serial_undead_c, serial_undead_f, serial_undead_b,
+          grunt_decor_junction, nicolae_twisty_statue_hallways,
+          nicolae_tricolors, uniq_cassandra
+Lair:1:   layout_chaotic_city, grunt_megastairs_1, lemuel_fruit_fields,
+          serial_bayou_shore_b
+Lair:2:   layout_gridlike, serial_bayou_lagoon_b, uniq_nergalle
+Lair:3:   layout_hall_layers, shoals_dummy_entry,
+          hellmonk_spider_entry_life_and_decay, minivault_11,
+          chequers_serial_rivers_small_b, lookout_lair_type,
+          infiniplex_staircase_pool_2
+Lair:4:   layout_long_grid, minmay_slime_entry_jelly_boxes,
+          eino_small_chamber_without_monster
+Lair:5:   hellmonk_lair_end_abyssal_woods, layout_big_grid
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 11 12 13 |
+---------------+----------------------------------------+-----
+Axes           |     4     5  6  7     9 11 12 14 15 17 | 17.3
+Fighting       |     4        5     6  7  8  9 10 11 12 | 12.8
+Armour         |        3     4     5  6  7  9 10 11 12 | 12.5
+Dodging        |           3     4  5  6  7  8  9 10 11 | 11.3
+Evocations     |                       1  3  4  6  7  8 |  8.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+---------------------------+-------+-------+-------+-------+-------++-------
+ Attack: Normal            |    59 |    79 |   253 |   406 |   167 ||   964
+  Melee: Hand axe          |    70 |    90 |   315 |    17 |       ||   492
+         Headbutt          |    12 |    26 |   101 |   141 |    58 ||   338
+         War axe           |       |       |       |    98 |       ||    98
+         Battleaxe         |       |       |       |   414 |   236 ||   650
+ Invoke: Berserk           |     1 |     7 |    19 |    40 |    21 ||    88
+         Trog's Hand       |       |       |     7 |     7 |     1 ||    15
+  Drink: Curing            |       |       |     3 |     2 |     1 ||     6
+         Heal wounds       |       |       |       |     2 |       ||     2
+   Read: Teleportation     |     2 |     2 |     1 |     1 |       ||     6
+         Fear              |       |     1 |       |       |       ||     1
+         Immolation        |       |     1 |       |       |       ||     1
+         Identify          |       |     2 |     3 |     3 |     2 ||    10
+         Silence           |       |       |     1 |       |       ||     1
+         Noise             |       |       |     1 |       |       ||     1
+         Revelation        |       |       |     1 |       |       ||     1
+         Enchant weapon    |       |       |       |     1 |       ||     1
+         Fog               |       |       |       |     1 |       ||     1
+         Blinking          |       |       |       |     1 |       ||     1
+         Vulnerability     |       |       |       |     1 |       ||     1
+         Summoning         |       |       |       |     1 |       ||     1
+         Amnesia           |       |       |       |       |     1 ||     1
+         Poison            |       |       |       |       |     1 ||     1
+ Armour: Animal skin       |     6 |       |       |       |       ||     6
+         Ring mail         |    39 |    50 |    12 |       |       ||   101
+         Scale mail        |       |       |   216 |     2 |       ||   218
+         Plate armour      |       |       |       |   459 |   200 ||   659
+         Chain mail        |       |       |       |    41 |       ||    41
+  Dodge: Dodged            |    31 |    37 |   181 |   238 |    82 ||   569
+  Block: Other             |       |       |       |       |    32 ||    32
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  16772 |  16265 |    507 |      0 |   9231 |  19 |  882.7 |
+       Dungeon |  12254 |  11878 |    376 |      0 |   6987 |  14 |  875.3 |
+          Lair |   4517 |   4386 |    131 |      0 |   2244 |   5 |  903.4 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+  Lair:4: 1405 daAuts
+     D:8: 1308 daAuts
+     D:2: 1254 daAuts
+    D:10: 1162 daAuts
+     D:5: 1135 daAuts
+     D:6: 1131 daAuts
+     D:7: 1117 daAuts
+  Lair:1: 1105 daAuts
+     D:9: 1042 daAuts
+     D:1: 956 daAuts
+     D:4: 929 daAuts
+  Lair:2: 920 daAuts
+     D:3: 814 daAuts
+    D:11: 783 daAuts
+  Lair:3: 628 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+----------------------+-------+-------+-------+-------+-------++-------
+         Kill Living  |    17 |    26 |    57 |    92 |    52 ||   244
+         Kill Undead  |     0 |     1 |     1 |    13 |     1 ||    16
+          Kill Demon  |     0 |     0 |     2 |     3 |     2 ||     6
+         Kill Wizard  |     0 |     3 |     4 |     9 |     1 ||    17
+----------------------+-------+-------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+----------------------+-------+-------+-------+-------+-------++-------
+         Kill Living  |    25 |    40 |    88 |   143 |    77 ||   373
+         Kill Undead  |     0 |     1 |     2 |    18 |     1 ||    22
+          Kill Demon  |     0 |     0 |     2 |     4 |     2 ||     8
+         Kill Wizard  |     0 |     5 |     8 |    16 |     1 ||    30
+----------------------+-------+-------+-------+-------+-------++-------
+

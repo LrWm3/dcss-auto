@@ -1,0 +1,254 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 6144198052690956201 (custom seed)
+
+66 CodexBench1 the Chopper (level 3, -1/49 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by a gnoll
+             ... wielding a +0 spear
+              (5 damage)
+             ... on level 2 of the Dungeon.
+             The game lasted 00:00:04 (1145 turns).
+
+CodexBench1 the Chopper (Minotaur Berserker)        Turns: 1145, Time: 00:00:04
+
+Health: -1/49      AC:  5    Str: 23    XL:     3   Next: 96%
+Magic:  2/2        EV: 10    Int:  4    God:    Trog [**....]
+Gold:   46         SH:  0    Dex:  9    Spells: 2/2 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +0 ring mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    +....           (no amulet)
+Stlth                   b - ring of willpower
+HPRegen 0.28/turn       (no ring)
+MPRegen 0.08/turn
+
+%: no passive effects
+@: berserking (expiring), very quick
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (3%), Trog's Hand (4%)
+
+
+You were on level 2 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 2 of its levels.
+
+You collected 46 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ c - a +0 ring mail (worn)
+Jewellery
+ b - a ring of willpower (worn)
+Scrolls
+ c - 2 scrolls of identify {unknown}
+ e - a scroll of immolation {unknown}
+Potions
+ d - a potion of invisibility {unknown}
+ f - a potion of ambrosia {unknown}
+
+
+   Skills:
+ + Level 4.1 Fighting
+ * Level 4.7 Axes
+ + Level 3.1 Armour
+ + Level 2.8 Dodging
+
+
+You had 2 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+
+Shops:
+D:1 (*(:
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You barely miss the gnoll.
+You encounter a ball python.
+The gnoll misses you. The gnoll hits you with a +0 whip.
+You completely miss the gnoll. You headbutt the gnoll.
+You kill the gnoll!
+Trog accepts your kill.
+You hit the gnoll.
+The ball python hisses angrily.
+The gnoll hits you from afar with a +0 spear.
+You barely miss the gnoll. Your headbutt misses the gnoll.
+The gnoll is moderately wounded.
+The gnoll hits you with a +0 flail.
+The gnoll hits you from afar with a +0 spear!
+* * * LOW HITPOINT WARNING * * *
+You encounter an adder.
+You hit the gnoll.
+The gnoll is heavily wounded.
+The adder hisses angrily.
+The gnoll closely misses you. The gnoll barely misses you.
+You closely miss the gnoll.
+The gnoll is heavily wounded.
+The gnoll hits you with a +0 flail.
+* * * LOW HITPOINT WARNING * * *
+The gnoll hits you but does no damage.
+You completely miss the gnoll.
+The gnoll is heavily wounded.
+The gnoll hits you with a +0 flail!
+* * * LOW HITPOINT WARNING * * *
+You closely miss the gnoll.
+The gnoll is heavily wounded.
+The gnoll hits you but does no damage.
+You slash the gnoll!
+You kill the gnoll!
+Trog accepts your kill.
+The gnoll hits you but does no damage.
+You slash the ball python!
+You kill the ball python!
+Trog accepts your kill.
+The adder bites you but does no damage. The gnoll hits you with a +0 spear.
+You die...
+
+    #.
+    #.
+.   #.
+#.###.# ##### ###
+#......##...#....
+#......#<........
+ #....S).........
+ #....j@.!.......
+.....:.)..†..)...
+##:..............
+ #.....#....##.?.
+ #######....<# ##
+       #####.#
+            ...
+            ...
+
+
+You could see a gnoll and an adder.
+
+Vanquished Creatures
+  4 gnolls
+  A dart slug (D:1)
+  An endoplasm (D:1)
+  5 hobgoblins (D:1)
+  2 quokkas (D:1)
+  7 ball pythons
+  4 bats (D:1)
+  3 frilled lizards (D:1)
+  2 goblins
+  4 kobolds (D:1)
+33 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexBench1 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+     7 | D:1      | Found Keclu's Weapon Shop.
+    39 | D:1      | Found Zelu's General Store.
+   250 | D:1      | Found Ryshroff's Antique Weapon Emporium.
+   279 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   403 | D:1      | Found a faded altar of an unknown god.
+   659 | D:1      | Reached ** piety under Trog
+   679 | D:1      | Found Akaosiqoes's Book Shoppe.
+   837 | D:1      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1145 | D:2      | Slain by a gnoll
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      scummos_arrival_forest, layout_loops_corners, serial_shops,
+          nicolae_shop_pleasant_corner_grove, shop, nicolae_shop_rolling_square,
+          nicolae_shop_temple_entry_statues_fountains, serial_rivers,
+          chequers_serial_rivers_micro_c, chequers_serial_rivers_micro_c,
+          chequers_serial_rivers_large_b, chequers_serial_rivers_micro_b,
+          chequers_serial_rivers_marsh, dilly_ecumenical_altar_fadedgnrine,
+          st_stairs_9
+D:2:      layout_rooms, basic_altar, minmay_cupped
+
+Skill      XL: |  1  2  3 |
+---------------+----------+-----
+Axes           |     4    |  4.7
+Fighting       |     4    |  4.1
+Armour         |        3 |  3.1
+Dodging        |          |  2.8
+
+Action                     || total
+---------------------------++-------
+ Attack: Normal            ||    62
+  Melee: Hand axe          ||    68
+         Headbutt          ||    17
+ Invoke: Berserk           ||     2
+ Armour: Ring mail         ||    51
+         Animal skin       ||     2
+  Dodge: Dodged            ||    32
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   1190 |   1164 |     26 |      0 |    853 |   2 |  595.0 |
+       Dungeon |   1190 |   1164 |     26 |      0 |    853 |   2 |  595.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:1: 1175 daAuts
+     D:2: 15 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct || total
+----------------------++-------
+         Kill Living  ||    22
+----------------------++-------
+Conduct count
+              Conduct || total
+----------------------++-------
+         Kill Living  ||    33
+----------------------++-------
+

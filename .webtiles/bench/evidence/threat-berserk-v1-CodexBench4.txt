@@ -1,0 +1,296 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 17908030050512890810 (custom seed)
+
+CodexBench4 the Cleaver (Minotaur Berserker)       Turns: 11052, Time: 00:01:53
+
+Health: 70/73      AC: 15    Str: 25    XL:     8   Next: 97%
+Magic:  7/7        EV:  7    Int:  4    God:    Trog [*.....]
+Gold:   334        SH:  0    Dex:  9    Spells: 7/7 levels left
+
+rFire   . . .  (100%)   b - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   f - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   a - +0 cloak
+rCorr   .      (100%)   d - +0 pair of gloves {Infuse}
+SInv    .               (no boots)
+Will    .....           (no amulet)
+Stlth                   (no ring)
+HPRegen 0.32/turn       (no ring)
+MPRegen 0.10/turn
+
+%: infuse magic (1 MP)
+@: very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (6%)
+
+
+You are on level 6 of the Dungeon.
+You worship Trog.
+Trog is aware of your devotion.
+You have visited 1 branch of the dungeon, and seen 6 of its levels.
+
+You have collected 334 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ b - a +0 war axe (weapon)
+Armour
+ a - a +0 cloak (worn)
+ d - a +0 pair of gloves of infusion (worn)
+ f - a +0 plate armour (worn)
+Wands
+ b - a wand of acid (8)
+Scrolls
+ N - 2 scrolls of noise
+ e - a scroll labelled BAZONA YHAHAB
+ V - a scroll of vulnerability
+ t - 2 scrolls of teleportation
+ I - a scroll of immolation
+ x - 2 scrolls of amnesia
+ g - a scroll of fog
+ u - a scroll labelled BOEMUQ KUDGHOMN
+ c - a scroll labelled NIYSOX ID OKK
+ h - a scroll labelled QOHY CUYSA
+Potions
+ d - 2 puce potions
+ i - 2 potions of invisibility
+ e - 3 potions of enlightenment
+ f - a black potion
+ p - 2 smoky brown potions
+ c - 2 potions of curing
+ j - a coppery potion
+ b - 2 potions of brilliance
+ t - an amethyst potion
+ v - a dark potion
+ k - a murky grey potion
+ l - a fizzy purple potion
+
+
+   Skills:
+ + Level 7.0 Fighting
+ * Level 9.4 Axes
+ + Level 6.5 Armour
+ + Level 5.8 Dodging
+ + Level 2.1 Evocations
+
+
+You have 7 spell levels left.
+You don't know any spells.
+Your spell library is empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (6/15)            
+Temple: D:4-7       
+
+Altars:
+Wu Jian
+The Shining One
+
+Shops:
+D:4 ?
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+Things that are here:
+a +0 dagger; a +0 robe; an orc skeleton
+No reachable target in view!
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+Things that are here:
+a +0 dagger; a +0 robe; an orc skeleton
+No reachable target in view!
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+Things that are here:
+a +0 dagger; a +0 robe; an orc skeleton
+No reachable target in view!
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+Things that are here:
+a +0 dagger; a +0 robe; an orc skeleton
+No reachable target in view!
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+Things that are here:
+a +0 dagger; a +0 robe; an orc skeleton
+No reachable target in view!
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+Things that are here:
+a +0 dagger; a +0 robe; an orc skeleton
+No reachable target in view!
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+The orc priest mumbles some strange prayers to Beogh against you.
+Pain shoots through your body!
+Things that are here:
+a +0 dagger; a +0 robe; an orc skeleton
+No reachable target in view!
+You enter the shallow water.
+Moving in this stuff is going to be slow.
+Saving game... please wait.
+
+#...≈~... ._.....≈≈...#  #.#...#
+#...≈≈..♣♣..♣≈≈≈♣.≈≈..# ##..#.#.
+#....≈≈.♣♣..≈≈≈≈≈.≈≈≈≈###...#.##
+#....~≈≈~...≈≈≈≈≈..♣≈≈..........
+  #(...≈≈≈≈.≈≈≈≈≈.♣♣≈≈# #...#.#.
+   #..)..~≈.♣≈≈~...≈≈.####..#.#.
+    #.....≈≈.....~~≈~)))).......
+    #...).≈≈o♣.≈≈~~...###.#####.
+    #.#....≈≈♣♣≈≈.....# #†#   #.
+    #.##...~≈≈≈≈......###.### #.
+    #  #.....≈≈@............# #.
+       #.###..)#...#.##.....###.
+      ...# ###.#.###......>.....
+    ...###   #......###.........
+    #.#      #####...###.......#
+    #.         #......###.####.#
+    #          #.#....# ###  #.#
+              ##.##.#.########.#
+       ########...#.#...........
+       .........#....>########.#
+       ########...#>..#      #.#
+
+
+There are no monsters in sight!
+
+Vanquished Creatures
+  A steam dragon (D:6)
+  An orc warrior (D:6)
+  A kobold geomancer (D:5)
+  A black bear (D:6)
+  2 ogres
+  A centaur (D:5)
+  A kobold brigand (D:5)
+  A bullfrog (D:6)
+  3 scorpions
+  2 marrowcudas (D:6)
+  An electric eel (D:6)
+  A hound (D:6)
+  4 orc priests
+  3 jellies
+  A drude (D:5)
+  2 iguanas
+  Terence (D:3)
+  2 clockroaches
+  6 orc wizards
+  7 gnolls
+  8 adders
+  2 white imps (D:6)
+  4 ufetubi (D:4)
+  6 ribbon worms
+  3 dart slugs
+  24 orcs
+  4 hobgoblins
+  5 jackals
+  5 quokkas
+  3 ball pythons
+  7 bats
+  6 endoplasms
+  6 frilled lizards
+  8 goblins
+  13 kobolds
+  6 rats
+152 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexBench4 the Minotaur Berserker began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   103 | D:1      | Reached XP level 2. HP: 25/27 MP: 1/1
+   112 | D:1      | Reached skill level 4 in Axes
+   186 | D:1      | Reached ** piety under Trog
+   475 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+   813 | D:2      | Reached XP level 4. HP: 37/40 MP: 3/3
+  1556 | D:3      | Encountered Terence
+  1562 | D:3      | Killed Terence
+  1563 | D:3      | Reached skill level 5 in Axes
+  2331 | D:4      | Reached XP level 5. HP: 45/47 MP: 0/4
+  2494 | D:4      | Found Ritoq's Magic Scroll Emporium.
+  2498 | D:4      | Reached XP level 6. HP: 53/53 MP: 3/5
+  2646 | D:4      | Reached skill level 6 in Axes
+  3114 | D:4      | Reached skill level 5 in Fighting
+  3252 | D:5      | Entered Level 5 of the Dungeon
+  3336 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3581 | D:5      | Reached skill level 7 in Axes
+  3762 | D:5      | Reached skill level 5 in Armour
+  4733 | D:5      | Reached skill level 8 in Axes
+  4733 | D:5      | Reached skill level 5 in Dodging
+  4733 | D:5      | Reached XP level 8. HP: 69/70 MP: 3/7
+  4853 | D:5      | Found a glowing golden altar of the Shining One.
+  5131 | D:6      | Reached skill level 1 in Evocations
+  5211 | D:6      | Found an ornate altar of the Wu Jian Council.
+  5313 | D:6      | Reached skill level 9 in Axes
+
+Illustrated notes
+
+Skill      XL: |  1  2  3  4  5  6  7  8 |
+---------------+-------------------------+-----
+Axes           |     4     5     6  8  9 |  9.4
+Fighting       |     4           5  6  7 |  7.0
+Armour         |        3     4     5  6 |  6.5
+Dodging        |           3     4  5    |  5.8
+Evocations     |                       2 |  2.1
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    79 |   107 |   110 ||   296
+  Melee: Hand axe          |    39 |       |       ||    39
+         Headbutt          |    19 |    35 |    25 ||    79
+         War axe           |    56 |   126 |   124 ||   306
+ Invoke: Trog's Hand       |     3 |     3 |     5 ||    11
+         Berserk           |     1 |     7 |    16 ||    24
+  Drink: Curing            |       |       |     1 ||     1
+   Read: Teleportation     |       |     1 |       ||     1
+         Noise             |       |     1 |       ||     1
+         Vulnerability     |       |     1 |       ||     1
+         Identify          |       |     4 |       ||     4
+         Immolation        |       |     1 |       ||     1
+         Fog               |       |     1 |       ||     1
+         Amnesia           |       |     1 |       ||     1
+ Armour: Animal skin       |    18 |       |       ||    18
+         Ring mail         |    43 |    27 |       ||    70
+         Scale mail        |       |    33 |       ||    33
+         Plate armour      |       |    55 |   128 ||   183
+  Dodge: Dodged            |    45 |    56 |    34 ||   135
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  11964 |  11859 |    105 |      0 |   3722 |   6 | 1994.0 |
+       Dungeon |  11964 |  11859 |    105 |      0 |   3722 |   6 | 1994.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:6: 6852 daAuts
+     D:5: 1778 daAuts
+     D:2: 1022 daAuts
+     D:4: 978 daAuts
+     D:3: 899 daAuts
+     D:1: 433 daAuts
+
+DLua errors:
+

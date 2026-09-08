@@ -22,8 +22,8 @@ be invented. `runner.py summary` prints per-version minimum and per-seed ranks.
 Usage from repository root:
 
 ```
-python .webtiles/bench/runner.py record --version NAME --character PLAYER --outcome death --commit HASH --rc-sha HASH path/to/morgue.txt
-python .webtiles/bench/runner.py summary
+/usr/bin/python3 .webtiles/bench/runner.py record --version NAME --character PLAYER --outcome death --commit HASH --rc-sha HASH path/to/morgue.txt
+/usr/bin/python3 .webtiles/bench/runner.py summary
 ```
 
 Commit the RC/tests before launching a batch; record that exact commit/hash for
@@ -31,3 +31,9 @@ every run. Commit results afterward. Never modify the tested RC during a batch.
 Historical baseline is the five original CodexRoute10–14 runs. Existing reports
 are retained as context; historical snapshots unavailable in Git cannot be
 reconstructed exactly from a claimed hash.
+
+New rows also carry UTC recording time and an optional engine binary hash.
+Older rows may lack these fields. The engine hash is unavailable for historical
+imports; do not substitute the current binary's hash retroactively. A reached
+maximum can include shafts or detours and is an optimistic exploration metric;
+use confirmed-clear telemetry for future stronger completion comparisons.
