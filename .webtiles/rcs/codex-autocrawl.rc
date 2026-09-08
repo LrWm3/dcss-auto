@@ -2225,6 +2225,55 @@ local function required_entrance_action(scan)
   return false
 end
 
+-- A disconnected arrival pocket can be "done exploring" without containing
+-- any downstairs. Re-enter through another stair on the already-cleared parent.
+local function route_pocket_action(scan)
+  local p=ROUTE_STATE.pocket
+  if not p then return false end
+  if scan.any or you.confused() or movement_locked()
+      or (you.mesmerised and you.mesmerised()) then return false end
+  if you.branch()~=p.branch then return route_block("pocket recovery left branch") end
+  local here=scan.cells["0:0"]
+  if you.depth()==p.depth then
+    for _,c in pairs(scan.cells) do
+      if regular_down(c.feature) then
+        ROUTE_STATE.pocket=nil; ROUTE_STATE.travel_attempts=0
+        ROUTE_STATE.done[level_key()]=nil; BOT.floor_done[level_key()]=nil
+        say("route pocket: downstairs discovered; resume exploration")
+        return explore_frontier(scan,true)
+      end
+    end
+    if p.reentered then
+      p.reentered=nil
+      ROUTE_STATE.done[level_key()]=nil; BOT.floor_done[level_key()]=nil
+      return explore_frontier(scan,true)
+    end
+    if not ROUTE_STATE.done[level_key()] then return explore_frontier(scan,true) end
+    if here and regular_up(here.feature) then crawl.sendkeys("<"); return true end
+    local _,_,step=bfs(scan.cells,scan.blocked,function(c) return regular_up(c.feature) end)
+    if step then crawl.sendkeys(step); return true end
+    return route_block("pocket has no safe upstairs")
+  elseif you.depth()==p.depth-1 then
+    -- The arrival downstairs leads to the known dead-end pocket. Stair types
+    -- identify the three normal stair sets; conservatively try each at most once.
+    if not p.on_parent then
+      p.on_parent=true
+      if here and regular_down(here.feature) then p.tried[here.feature]=true end
+    end
+    if here and regular_down(here.feature) and not p.tried[here.feature] then
+      p.tried[here.feature]=true; p.on_parent=nil; p.reentered=true
+      say("route pocket: trying alternate downstairs")
+      crawl.sendkeys(">"); return true
+    end
+    local _,_,step=bfs(scan.cells,scan.blocked,function(c)
+      return regular_down(c.feature) and not p.tried[c.feature]
+    end)
+    if step then crawl.sendkeys(step); return true end
+    return route_block("pocket recovery exhausted safe alternate stairs")
+  end
+  return route_block("pocket recovery unexpected depth")
+end
+
 local function route_action(scan)
   if not AUTOCrawl_ROUTE.enabled then return false end
   if not route_started then
@@ -2234,6 +2283,7 @@ local function route_action(scan)
   end
   route_observe(scan)
   if ROUTE_STATE.recovery then return route_recovery_action(scan) end
+  if ROUTE_STATE.pocket then return route_pocket_action(scan) end
   -- The route owns progression; the legacy stair-dipping state machine must
   -- never descend beyond a stage boundary or compete with interbranch travel.
   BOT.dive={phase="normal"}
@@ -2294,6 +2344,17 @@ local function route_action(scan)
           and (ROUTE_STATE.travel_attempts or 0)+1 or 0
       ROUTE_STATE.last_travel_turn=turn
       if ROUTE_STATE.travel_attempts>=3 then
+        if branch==you.branch() and depth==you.depth()+1 and you.depth()>1
+            and ROUTE_STATE.done[level_key()]=="clear"
+            and ROUTE_STATE.done[branch..":"..(you.depth()-1)]=="clear" then
+          local has_down=false
+          for _,c in pairs(scan.cells) do if regular_down(c.feature) then has_down=true end end
+          if not has_down then
+            ROUTE_STATE.pocket={branch=branch,depth=you.depth(),tried={}}
+            say("route pocket: return upstairs to find another entrance")
+            return route_pocket_action(scan)
+          end
+        end
         ROUTE_STATE.required_entrance=true
         if required_entrance_action(scan) then return true end
         if escape_exclusion(scan) then return true end
