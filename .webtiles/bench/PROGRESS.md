@@ -698,3 +698,40 @@ unique, and marked-disturbance closing overriding the need to disengage while
 already badly poisoned. Last action hastened poison ticking but2HP with lethal
 poison was already critical; evidence does not establish a guaranteed escape.
 This is message/notes/source reconstruction, not a new single-turn replay.
+
+## Sigmund encounter experiments on seed3
+
+Implemented sigmund_mode:0 existing,1 skip generic lure while remembered caster
+is Sigmund,2 also force visible closing and allow berserk from two tiles at
+>=55%HP,3 instead prioritize upstairs withdrawal while Sigmund is unseen.
+The withdrawal experiment is capped at12 steps and does not chase disturbances
+after that; other visible combat can act. Known consumables and Trog's Hand
+still run first. All new behavior is Sigmund-only.16 Lua suites/9 runner tests
+pass (no-lure gate, early-rage floor, unseen withdrawal/cap and name scoping).
+
+Three fresh parallel runs on seed1760771545328102746 from commitdfd5e4a,
+using separate immutable tactic snapshots in verified finished sessions:
+
+| Policy | Sigmund outcome | Subsequent outcome |
+| --- | --- | --- |
+| Previous lure baseline | poison death2973, Natasha joined2966 | D3 death |
+| No lure, CodexSigNoLure1 | killed2966; Natasha only arrived2974 | D11 orc wizard flame death12720,XL11 |
+| Charge/rage, CodexSigCharge1 | closed2960–2962, berserk2963, killed2965 | D7 orc warrior halberd death7738,XL9 |
+| Withdraw unseen, CodexSigWithdraw1 | killed2966; special withdrawal NEVER fired | Same D11 death12720 as no-lure |
+
+The no-lure intervention is smallest and separates Sigmund/Natasha in these
+replays. Withdrawal variant provides no live evidence for its unseen policy,
+since the shared no-lure change already resolves the encounter. Do not claim
+that this solves arbitrary invisible enemies or proves a particular RNG cause.
+Independent fresh no-lure repeat launched as CodexSigNoLure2, same exact snapshot.
+Canonical default selected mode1; SHA0768a5506e95c5f048ec6f88ccb6705103e08a00ae31b25950dee3a06a1752aa
+matches both no-lure snapshots. No mid-run changes to snapshots or manual
+tactical input. Full five-seed regression remains untested for this selection.
+
+Repeat completed naturally: Sigmund killed2966 again; Natasha arrived2974 and
+was killed3033. Continued through Lair and died in Orc2 to a smoke demon's
+incineration at20885 turns,XL13. All four fresh trials reached terminal deaths
+without intervention. The two identical no-lure snapshots reproduce the target
+encounter success but diverge later (D11 versus Orc2); later progression is not
+deterministic evidence of a policy improvement. Keep mode1 as the smallest
+successful scoped change. Evidence morgues and all four result rows retained.

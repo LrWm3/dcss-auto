@@ -36,7 +36,7 @@ AUTOCrawl_TACTICS = {
   hidden_hand_cooldown = 8,
   steam_charge = true, steam_charge_memory = 12, steam_charge_steps = 8,
   approach_mode = 2, approach_waits = 4, approach_backsteps = 2,
-  sigmund_mode = 0, -- 1 no lure; 2 early charge/rage; 3 unseen withdrawal
+  sigmund_mode = 1, -- 1 no lure; 2 early charge/rage; 3 unseen withdrawal
   debug_encounters = false,
   steam_debug = false, -- diagnostic single-action replay; never a benchmark
   steam_debug_entry = false, -- start at D:6 arrival, record notes automatically
