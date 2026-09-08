@@ -1192,3 +1192,39 @@ guard, and hands back after sustained safe recovery. Does not claim unseen-uniqu
 generalization. Ten Python tactical tests,7 Lua hook cases,22 canonical suites
 pass. Next paired full-five batches tactical-baseline-v1/tactical-imitation-v1 use
 the same patched engine, fresh characters, frozen snapshots, and tracked model.
+
+## 2026-09-08: full-five imitation deployment is not promotion-ready
+
+Ran both configured batches at commit a4190df, engine58edc03b. All ten runs now
+have natural-death or observed-pause evidence in runs.jsonl; no tactical rescue
+input was supplied. Stalled characters remain alive in their diagnostic Lua
+consoles; only dump/report commands were used after observing their stalls.
+
+| Seed | Canonical RC | Experimental imitation export |
+| --- | --- | --- |
+| 1 | D:11 death, centaur | D:4 paused, unreachable Eustachio Tab |
+| 2 | Orc:2 paused near shop | Orc:1 death, two-headed ogre |
+| 3 | D:4 death, Eustachio | D:4 paused after killing Eustachio |
+| 4 | Lair:5 reached; paused returning from Lair:1 toward D:12 | Lair:1 death, komodo dragon |
+| 5 | D:8 death, two-headed ogre | Lair:3 death, cane toad |
+
+These are reached milestones, not cleared floors. Minimum remains D:4 and the
+candidate adds a seed1 early pause: no benchmark improvement claim. Both batches
+contain pauses and neither establishes autonomous completion.
+
+Seed3 export notes: activate3506, berserk3508, unseen-state handoff3519,
+Eustachio killed3523. Later canonical play stops at turn3749 (HUD time3809.0)
+with repeated 'You are too berserk!' / unknown commands / infinite Lua loop.
+This does not reproduce the Python-controlled56-decision safe recovery. Seed1
+stops immediately on 'No reachable target in view!'; ready-only no-op guards do
+not handle native actions that yield for user input. Baseline seed2's shop-side
+pause is observed but not yet causally diagnosed. Baseline seed4 reproduces the
+known return-travel blocker after reaching Lair:5.
+
+Seeds4/5 diverge without any recorded model activation. An extra pre-activation
+scan is present in the adapter, but causality is unproven. Do not credit their
+changed outcomes to learned tactics. Next: establish disabled-adapter action and
+observation equivalence, trace deployment versus stepped evaluation, and add
+real-engine action rejection tests before spending more on RL. Production RC
+unchanged. Archived faithful training/fidelity evidence and reproduction docs;
+10 tactical Python tests and9 batch tests pass again.

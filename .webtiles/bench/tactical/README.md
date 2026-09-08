@@ -107,7 +107,7 @@ predate `run.json`; their case metadata and frozen trial RC remain available.
 Large artifacts are local and git-ignored. Small evidence summaries are tracked.
 Identical reset evaluations test repeatability, **not generalization**.
 
-Next: extend save/load equivalence checks beyond the first-contact case; capture earlier losing decisions
+Next: capture earlier losing decisions
 with an uninterrupted replay fallback; expose consumables and safe action masks;
 expand to multiple encounters with held-out cases before scaling training.
 
@@ -150,8 +150,8 @@ Running sessions were not restarted.
 Old cases and pilot results remain untouched and pinned to the old engine. For
 the patched engine, the verified first-contact case is
 `artifacts/resume-rng-verification-v1/case`. Its save bytes and RC are unchanged;
-its metadata explicitly records the engine migration. Other old cases have not
-yet been migrated/revalidated. Engine-hash enforcement remains enabled.
+its metadata explicitly records the engine migration. Return and critical cases
+are now also verified (see below). Engine-hash enforcement remains enabled.
 
 ```sh
 /usr/bin/python3 .webtiles/bench/tactical/bench.py rollout \
@@ -166,3 +166,60 @@ case, compares player-visible observations excluding UI messages/sequence IDs,
 and fails on any gameplay-state difference. The patch was built with
 `make -C crawl-0.35/crawl-ref/source WEBTILES=y GAME=crawl-resume-rng -j4 crawl-resume-rng`
 and installed by renaming the tested binary over the normal launch path.
+
+## Faithful imitation experiment (2026-09-08)
+
+[Evidence](evidence/faithful-imitation-v1.json) includes return/critical fidelity
+checks, the faithful tactic sweep, and all imitation/RL evaluations. Return
+(`artifacts/return-fidelity-v2/case`) matches 19 remaining decisions, critical
+(`artifacts/critical-fidelity-v2/case`) matches 6; each passes two loaded runs and
+one uninterrupted replay, all reproducing death.
+
+On faithful first contact, RC dies after 41 decisions. Tab plus waiting recovers
+in 180; charging with adjacent berserk recovers in 56. `learn.py` fits a small
+tabular imitation policy from that successful trajectory. Both loaded evaluations
+and an uninterrupted encounter evaluation recover in 56 decisions. Six online RL
+refinement episodes yield five recoveries and one death; final greedy evaluations
+also take 56 decisions. We selected imitation: refinement demonstrated no gain.
+This is an in-sample result on one encounter, not a general tactical model.
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/learn.py \
+  --case .webtiles/bench/tactical/artifacts/resume-rng-verification-v1/case \
+  --teacher .webtiles/bench/tactical/artifacts/faithful-first-contact-v1/worker-zwl_sc86 \
+  --output .webtiles/bench/tactical/artifacts/imitation-rl-repeat --episodes 6
+/usr/bin/python3 .webtiles/bench/tactical/export_model.py \
+  .webtiles/bench/tactical/models/eustachio-imitation-v1.json \
+  .webtiles/bench/tactical/artifacts/eustachio-imitation-repeat.rc
+```
+
+Output directories/files must be new. The Lua export activates only at Eustachio,
+uses player-visible features, and hands back to the canonical controller after
+safe recovery or on an unfamiliar state, floor change, or action/no-progress
+budget. It respects pauses and logs activation, action changes, and handoff in
+character notes. Production RC is not modified.
+
+Paired full-game configurations are `../tactical-baseline-v1.json` and
+`../tactical-imitation-v1.json`. They use the same five seeds and patched engine,
+with separate frozen RC snapshots. Check their status through `../batch.py`;
+the encounter stopping at safe recovery is not itself a full-seed result.
+
+### Integration caveats found in the first full batch
+
+Do **not** promote this export to production yet. Seed 1 selected Tab against an
+unreachable Eustachio and stopped at the native `No reachable target in view!`
+message. A repeated-ready no-op counter cannot protect an action that returns to
+user input without invoking ready again. The adapter needs a pre-action legality
+gate and rejection handling, with real-engine tests.
+
+Seed 3 activated at turn 3506, selected berserk at 3508, and handed back on an
+unseen model state at 3519. Eustachio died at 3523, but the canonical controller
+later looped while berserk. This is not the 56-decision recovery seen in the
+stepped evaluation, and the mismatch remains to be traced.
+
+Other seeds diverged even without a recorded model activation. The current
+wrapper performs an extra full scan before activation; its non-interference has
+not been established. Do not attribute unrelated progression gains to the model.
+Before further training, compare action/observation traces through a disabled
+adapter, then through the deployed adapter, and eliminate these discrepancies.
+Paused runs are recorded as paused, not deaths or successes.
