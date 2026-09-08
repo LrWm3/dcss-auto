@@ -1,0 +1,1717 @@
+# MiBe automation prototype -- current DCSS Lua API (2026-09)
+# Autonomous trial: red encounters currently use the yellow combat policy.
+default_manual_training = true
+autofight_stop = 0
+autofight_caught = true
+rest_wait_both = true
+explore_delay = -1
+travel_delay = -1
+rest_delay = -1
+show_more = false
+force_more_message =
+explore_stop = shop
+bindkey = [^D] CMD_LUA_CONSOLE
+
+<
+-- MiBe conservative automation core for current DCSS Lua API.
+-- Paste the body between < ... > in .crawlrc.
+
+crawl.more_autoclear(true)
+
+-- Editable progression plan. A stage covers every floor in [from, to].
+-- Alternative groups resolve to the branch actually generated in this game.
+-- Set enabled=false to restore the old Dungeon-only stair-survey trial.
+AUTOCrawl_ROUTE = {
+  enabled = true,
+  allow_partial = true, -- inaccessible areas remain explicitly labelled partial
+  skip_runed_vaults = true,
+  stages = {
+    {branch="D", from=1, to=11},
+    {branch="Lair", from=1, to=5},
+    {branch="D", from=12, to=12},
+    {branch="Orc", from=1, to=2},
+    {branch="D", from=13, to=15},
+    {branch="wet", from=1, to=3},
+    {branch="dry", from=1, to=3},
+    {branch="wet", from=4, to=4, rune=true},
+    {branch="dry", from=4, to=4, rune=true},
+    {branch="Elf", from=1, to=2},
+    {branch="Vaults", from=1, to=4, min_runes=2},
+    {branch="Depths", from=1, to=4},
+    {branch="Vaults", from=5, to=5, rune=true},
+    {branch="Zot", from=1, to=5, min_runes=3},
+  }
+}
+ROUTE_STATE = ROUTE_STATE or {index=1, done={}, entrances={}, choices={}}
+-- Optional user callbacks: autocrawl_route_stage_enter(stage, branch),
+-- autocrawl_route_stage_complete(stage, branch), autocrawl_route_blocked(reason),
+-- autocrawl_route_complete(). The default endpoint is Zot:5 explored, NOT a win.
+
+BOT = BOT or {
+  floor_done = {},
+  floor_partial = {},
+  failed_entries = {},
+  partial_reason = {},
+  red_announced = false,
+  blind_pending = false,
+  blind_target = nil,
+  escape_after_blind = false,
+  noop_warning = false,
+  disturbance_warning = false,
+  disturbance_announced = false,
+  disturbance_turns = 0,
+  paused = false,
+  pending_equip_slot = nil,
+  dive = { phase = "normal" }
+}
+
+local function say(s)
+  crawl.mpr("[MiBe bot] " .. s)
+end
+
+local function level_key()
+  return tostring(you.branch()) .. ":" .. tostring(you.depth())
+end
+
+local function feat_here()
+  return tostring(view.feature_at(0, 0) or "")
+end
+
+local function regular_up(f)
+  f = f or feat_here()
+  return f:find("stone_stairs_up", 1, true) ~= nil
+end
+
+local function regular_down(f)
+  f = f or feat_here()
+  return f:find("stone_stairs_down", 1, true) ~= nil
+end
+
+local function item_class(it)
+  if not it then return "" end
+  return string.lower(tostring(it.class(true) or ""))
+end
+
+local function item_name(it)
+  if not it then return "" end
+  return string.lower(tostring(it.name() or ""))
+end
+
+local function inv_letter(it)
+  if not it or it.slot == nil then return nil end
+  return items.index_to_letter(it.slot)
+end
+
+local function hp_percent()
+  local hp, mhp = you.hp()
+  if not mhp or mhp <= 0 then return 100 end
+  return math.floor(100 * hp / mhp)
+end
+
+local function movement_locked()
+  return you.transform() == "tree" or you.status("immotile")
+      or you.status("fortress blast charging")
+end
+
+local MOVE_KEYS = { "h", "j", "k", "l", "y", "u", "b", "n" }
+local MOVE_DELTAS = {
+  {-1, 0}, {0, 1}, {0, -1}, {1, 0},
+  {-1, -1}, {1, -1}, {-1, 1}, {1, 1},
+}
+
+-- CMD_AUTOFIGHT itself rejects confused players before taking a turn.  Use
+-- ordinary movement commands instead: Crawl's confused-movement handler then
+-- stumbles/attacks as appropriate and still advances the game.
+local CONFUSED_MOVE_COMMANDS = {
+  ["-1:1"] = "CMD_MOVE_DOWN_LEFT",
+  ["0:1"] = "CMD_MOVE_DOWN",
+  ["1:-1"] = "CMD_MOVE_UP_RIGHT",
+  ["0:-1"] = "CMD_MOVE_UP",
+  ["-1:-1"] = "CMD_MOVE_UP_LEFT",
+  ["-1:0"] = "CMD_MOVE_LEFT",
+  ["1:1"] = "CMD_MOVE_DOWN_RIGHT",
+  ["1:0"] = "CMD_MOVE_RIGHT",
+}
+
+local DISTURBANCE_ATTACK_COMMANDS = {
+  "CMD_ATTACK_UP_LEFT", "CMD_ATTACK_UP", "CMD_ATTACK_UP_RIGHT",
+  "CMD_ATTACK_LEFT", "CMD_ATTACK_RIGHT",
+  "CMD_ATTACK_DOWN_LEFT", "CMD_ATTACK_DOWN", "CMD_ATTACK_DOWN_RIGHT",
+}
+
+local function map_key(x, y)
+  return tostring(x) .. ":" .. tostring(y)
+end
+
+local function known_map()
+  local cells = {}
+  for _, cell in pairs(view.get_map()) do
+    if cell and cell.x ~= nil and cell.y ~= nil then
+      cells[map_key(cell.x, cell.y)] = cell
+    end
+  end
+  return cells
+end
+
+local function passable(cell)
+  return cell and (cell.traversable or (cell.x == 0 and cell.y == 0))
+      and cell.feature ~= "enter_shop"
+      and not cell.unsafe and not cell.excluded
+end
+
+local function can_step(cells, x, y, dx, dy, blocked)
+  local nx, ny = x + dx, y + dy
+  local next_cell = cells[map_key(nx, ny)]
+  if not passable(next_cell) or blocked[map_key(nx, ny)] then return false end
+  if not next_cell.bot_escape_exclusion and view.is_safe_square
+      and not view.is_safe_square(nx, ny) then
+    return false
+  end
+
+  -- Crawl permits diagonal movement between walls. Only the destination
+  -- needs to be passable; checking the two side cells strands diagonal halls.
+  return true
+end
+
+local function bfs(cells, blocked, goal_fn)
+  local start = map_key(0, 0)
+  local queue_x, queue_y, queue_key = {0}, {0}, {start}
+  local seen, first_step = {[start] = true}, {}
+  local head = 1
+
+  while head <= #queue_key do
+    local x, y, here = queue_x[head], queue_y[head], queue_key[head]
+    head = head + 1
+
+    if goal_fn and here ~= start and goal_fn(cells[here]) then
+      return seen, first_step, first_step[here]
+    end
+
+    for i, delta in ipairs(MOVE_DELTAS) do
+      local dx, dy = delta[1], delta[2]
+      local nx, ny = x + dx, y + dy
+      local next_key = map_key(nx, ny)
+      if not seen[next_key] and can_step(cells, x, y, dx, dy, blocked) then
+        seen[next_key] = true
+        first_step[next_key] = (here == start) and MOVE_KEYS[i]
+            or first_step[here]
+        queue_x[#queue_x + 1] = nx
+        queue_y[#queue_y + 1] = ny
+        queue_key[#queue_key + 1] = next_key
+      end
+    end
+  end
+  return seen, first_step, nil
+end
+
+local function explore_frontier(scan, allow_native_explore)
+  local custom = BOT.custom_exploring_level == level_key()
+  -- Native exploration visits loot as well as unexplored territory. Keep
+  -- custom movement only for interruptions that native exploration cannot handle.
+  if allow_native_explore and not scan.any and not custom then
+    -- Match Crawl's bundled qw bot: process the command with trailing Escape
+    -- guards so modal menus reached by native exploration cannot strand it.
+    crawl.process_keys("o\027\027\027")
+    return true
+  end
+
+  -- If we are already on a frontier, enter one adjacent unknown square.
+  -- Do this before choosing another frontier: otherwise two adjacent frontier
+  -- cells can keep selecting each other without ever revealing new territory.
+  if scan.cells[map_key(0, 0)]
+      and scan.cells[map_key(0, 0)].frontier then
+    for i, delta in ipairs(MOVE_DELTAS) do
+      local dx, dy = delta[1], delta[2]
+      if not scan.cells[map_key(dx, dy)] and view.can_reach(dx, dy) then
+        crawl.sendkeys(MOVE_KEYS[i])
+        return true
+      end
+    end
+  end
+
+  local _, _, step = bfs(scan.cells, scan.blocked,
+      function(cell) return cell.frontier end)
+
+  -- No frontier is not proof of completion: loot or blocked areas may remain.
+  -- Only the floor-completion/stair-survey path may initiate a descent.
+  if step then
+    crawl.sendkeys(step)
+    return true
+  end
+
+  if custom and not scan.any then
+    BOT.custom_exploring_level = nil
+    crawl.process_keys("o\027\027\027")
+    return true
+  end
+
+  -- A sealed arrival pocket may contain only an isolated monster. Returning
+  -- upstairs is safe recovery, not permission to descend an unfinished floor.
+  if regular_up() then
+    crawl.sendkeys("<")
+    return true
+  end
+  local _, _, retreat = bfs(scan.cells, scan.blocked,
+      function(cell) return regular_up(cell.feature) end)
+  if retreat then
+    crawl.sendkeys(retreat)
+    return true
+  end
+
+  if not BOT.paused then
+    say("no safe known frontier -- automation paused.")
+    BOT.paused = true
+  end
+  return true
+end
+
+local function visit_shop_action(scan)
+  -- Native explore stops when it discovers shops (explore_stop = shop).
+  -- Visit known unvisited shops under our control before restarting it, so
+  -- native greedy travel cannot open an unattended menu mid-run.
+  local cells = {}
+  for key, cell in pairs(scan.cells) do
+    cells[key] = cell
+    if cell.feature == "enter_shop" and cell.unvisited then
+      local copy = {}
+      for k,v in pairs(cell) do copy[k] = v end
+      copy.feature = "floor"
+      copy.bot_shop = true
+      cells[key] = copy
+    end
+  end
+  local _, _, step = bfs(cells, scan.blocked,
+      function(cell) return cell.bot_shop end)
+  if step then crawl.sendkeys(step); return true end
+  return false
+end
+
+local function unsafe_square_action(scan)
+  if not view.is_safe_square or view.is_safe_square(0, 0) then return false end
+  for i, delta in ipairs(MOVE_DELTAS) do
+    if can_step(scan.cells, 0, 0, delta[1], delta[2], scan.blocked) then
+      crawl.sendkeys(MOVE_KEYS[i])
+      return true
+    end
+  end
+  -- A cloud can cover the entire corridor. Waiting advances its expiration;
+  -- auto-explore would refuse without spending any time.
+  crawl.do_commands({"CMD_WAIT"})
+  return true
+end
+
+-- -------------------------------------------------------------------------
+-- Threat scan / combat
+-- threat(): 0 dark grey, 1 light grey, 2 yellow, 3 red.
+-- -------------------------------------------------------------------------
+
+local function scan_hostiles()
+  local out = {
+    any = false,
+    worst = -1,
+    reachable_any = false,
+    reachable_worst = -1,
+    reachable_adjacent = false,
+    yellow_adjacent = false,
+    monsters = {},
+    cells = known_map(),
+    blocked = {},
+  }
+
+  for _, cell in pairs(out.cells) do
+    if cell.visible and cell.monster then
+      local m = cell.monster
+      local name = m.name and m:name() or ""
+      if m:attitude() == 0 and not m:is_firewood()
+          and name ~= "butterfly" and name ~= "orb of destruction" then
+        local item = { x = cell.x, y = cell.y, monster = m, threat = m:threat() }
+        out.monsters[#out.monsters + 1] = item
+        out.blocked[map_key(cell.x, cell.y)] = true
+        out.any = true
+        if item.threat > out.worst then out.worst = item.threat end
+      end
+    end
+  end
+
+  out.seen, out.first_step = bfs(out.cells, out.blocked, false)
+
+  for _, item in ipairs(out.monsters) do
+    local adjacent = math.max(math.abs(item.x), math.abs(item.y)) == 1
+    local reachable = adjacent and view.can_reach(item.x, item.y)
+    if not reachable then
+      for _, delta in ipairs(MOVE_DELTAS) do
+        local goal = map_key(item.x + delta[1], item.y + delta[2])
+        if out.seen[goal] then
+          reachable = true
+          break
+        end
+      end
+    end
+    item.reachable = reachable
+    if reachable then
+      out.reachable_any = true
+      if item.threat > out.reachable_worst then
+        out.reachable_worst = item.threat
+      end
+      if adjacent then
+        out.reachable_adjacent = true
+        if item.threat == 2 then out.yellow_adjacent = true end
+      end
+    end
+  end
+  return out
+end
+
+local function use_known_consumable(kind, name)
+  if you.berserk() or (kind=="scroll" and (you.confused() or you.silenced())) then return false end
+  BOT.item_attempts=BOT.item_attempts or {}
+  local turn=you.turns()
+  if BOT.item_attempts[name]==turn then return false end
+  for _,it in ipairs(items.inventory()) do
+    if item_class(it)==kind and it.is_identified and item_name(it):find(name,1,true) then
+      BOT.item_attempts[name]=turn
+      say("survival: "..name)
+      crawl.process_keys((kind=="potion" and "q" or "r")..inv_letter(it).."\027\027\027")
+      return (you.turn_is_over and you.turn_is_over()) or you.turns()~=turn
+    end
+  end
+  return false
+end
+
+local function survival_ability(name, cooldown)
+  if not you.ability_info then return false end
+  BOT.ability_attempts=BOT.ability_attempts or {}
+  local turn=you.turns()
+  if turn-(BOT.ability_attempts[name] or -10000)<cooldown then return false end
+  for _,info in ipairs(you.ability_info(name) or {}) do
+    if info[2] then
+      BOT.ability_attempts[name]=turn
+      say("survival: "..name)
+      return you.activate_ability(name,0,0) and true or false
+    end
+  end
+  return false
+end
+
+local function survival_action(scan)
+  if you.berserk() then return false end
+  local hp=hp_percent()
+  local poison=you.poisoned and you.poisoned()
+  if poison and ((you.poison_survival and you.poison_survival()<hp*0.01*select(2,you.hp())*0.6) or hp<70) then
+    if use_known_consumable("potion","curing") then return true end
+  end
+  if hp<45 and use_known_consumable("potion","heal wounds") then return true end
+  if not scan.any then return false end
+  local count=#scan.monsters
+  if hp<55 then
+    if not you.status("about to teleport") and use_known_consumable("scroll","teleportation") then return true end
+    if count>=2 and use_known_consumable("scroll","fear") then return true end
+  end
+  if hp<70 and (count>=3 or scan.worst>=3)
+      and survival_ability("Brothers in Arms",20) then return true end
+  if hp<80 and scan.reachable_adjacent
+      and not you.status("regenerating") and survival_ability("Trog's Hand",40) then return true end
+  if hp<65 and not you.status("hasted") and use_known_consumable("potion","haste") then return true end
+  if hp<75 and scan.reachable_adjacent and not you.status("mighty")
+      and use_known_consumable("potion","might") then return true end
+  return false
+end
+
+local function combat_action(scan)
+  if not scan.any then return false end
+
+  -- Tab can reject targets it filters internally. Fall back to one ordinary
+  -- melee/pursuit step instead of reissuing a turnless failed Tab forever.
+  if BOT.autofight_rejected then
+    BOT.autofight_rejected = false
+    for _, enemy in ipairs(scan.monsters) do
+      if enemy.reachable then
+        local cmd = CONFUSED_MOVE_COMMANDS[map_key(enemy.x, enemy.y)]
+        if cmd then crawl.do_commands({cmd}); return true end
+        for _, delta in ipairs(MOVE_DELTAS) do
+          local step = scan.first_step[map_key(enemy.x+delta[1], enemy.y+delta[2])]
+          if step then crawl.sendkeys(step); return true end
+        end
+      end
+    end
+    crawl.do_commands({"CMD_WAIT"})
+    return true
+  end
+
+  -- A visible monster with no known route to an adjacent square is not an
+  -- autofight target.  Take one ordinary movement step toward exploration,
+  -- rechecking danger after that step.
+  if not scan.reachable_any then
+    -- Wait only if removing a cloud barrier actually connects us to an
+    -- enemy. Clouds inside sealed vaults must never stall the whole floor.
+    local without_clouds, has_cloud = {}, false
+    for key,cell in pairs(scan.cells) do
+      without_clouds[key]=cell
+      if cell.cloud and cell.unsafe and not cell.excluded then
+        local copy={}
+        for k,v in pairs(cell) do copy[k]=v end
+        copy.unsafe=nil
+        copy.bot_escape_exclusion=true -- hypothetical BFS only; never move here
+        without_clouds[key]=copy
+        has_cloud=true
+      end
+    end
+    if has_cloud then
+      local seen=bfs(without_clouds,scan.blocked or {},false)
+      for _,enemy in ipairs(scan.monsters) do
+        for _,delta in ipairs(MOVE_DELTAS) do
+          if seen[map_key(enemy.x+delta[1],enemy.y+delta[2])] then
+            crawl.do_commands({"CMD_WAIT"})
+            return true
+          end
+        end
+      end
+    end
+    -- Do not hand control back to greedy native exploration the moment an
+    -- isolated enemy leaves LOS: that can lead straight back to the same loot.
+    BOT.custom_exploring_level = level_key()
+    return explore_frontier(scan)
+  end
+
+  if (scan.yellow_adjacent or (scan.reachable_adjacent and #scan.monsters>=3))
+      and hp_percent()>=55 and not you.berserk()
+      and not you.exhausted() and not you.slowed() then
+    if you.activate_ability("Berserk", 0, 0) then
+      return true
+    end
+  end
+
+  crawl.sendkeys("\t") -- standard autofight for a reachable target
+  return true
+end
+
+-- Separate policy boundary so red encounters can gain their own tactics later.
+local function red_combat_action(scan)
+  local red_scan = {}
+  for k, v in pairs(scan) do red_scan[k] = v end
+  for _, enemy in ipairs(scan.monsters) do
+    if enemy.threat >= 3 and enemy.reachable
+        and math.max(math.abs(enemy.x), math.abs(enemy.y)) == 1 then
+      red_scan.yellow_adjacent = true
+    end
+  end
+  return combat_action(red_scan)
+end
+
+local function encounter_action(scan)
+  if scan.worst >= 3 then return red_combat_action(scan) end
+  return combat_action(scan)
+end
+
+local function confused_combat_action(scan)
+  if not BOT.confused_announced then
+    say("confused -- using direct autofight turns.")
+    BOT.confused_announced = true
+  end
+
+  -- Aim a normal movement command at the highest-threat reachable adjacent
+  -- hostile.  While confused, Crawl may stumble in another direction, but it
+  -- can still attack or move and the command consumes a turn.
+  local target = nil
+  for _, item in ipairs(scan.monsters) do
+    if item.reachable and math.max(math.abs(item.x), math.abs(item.y)) == 1
+        and (not target or item.threat > target.threat) then
+      target = item
+    end
+  end
+  if target then
+    local cmd = CONFUSED_MOVE_COMMANDS[map_key(target.x, target.y)]
+    if cmd then
+      crawl.do_commands({cmd})
+      return true
+    end
+  end
+
+  -- CMD_WAIT consumes a turn even while confused.  Unlike the old `5`
+  -- recovery command, it cannot emit "You are too confused!" and re-enter
+  -- ready() without advancing the game.
+  crawl.do_commands({"CMD_WAIT"})
+  return true
+end
+
+-- -------------------------------------------------------------------------
+-- Manual skilling. Axes focus until calculated mindelay target, then Fighting.
+-- For normal melee weapons: each 2 skill removes 0.1 AUT down to min delay;
+-- normal heavy weapons bottom out at 0.7 AUT.
+-- -------------------------------------------------------------------------
+
+local ALL_SKILLS = {
+  "Fighting", "Short Blades", "Long Blades", "Axes", "Maces & Flails",
+  "Polearms", "Staves", "Ranged Weapons", "Throwing", "Armour", "Dodging",
+  "Stealth", "Shields", "Unarmed Combat", "Spellcasting", "Conjurations",
+  "Hexes", "Summonings", "Necromancy", "Translocations", "Fire Magic",
+  "Ice Magic", "Air Magic", "Earth Magic", "Alchemy", "Invocations",
+  "Evocations", "Shapeshifting"
+}
+
+local function train(name, mode, target)
+  if you.can_train_skill(name) then
+    if target then you.set_training_target(name, target) end
+    you.train_skill(name, mode)
+  end
+end
+
+local function axe_mindelay_target()
+  local w = items.equipped_at("Weapon")
+  if not w or w.weap_skill ~= "Axes" or not w.delay then
+    return 14
+  end
+  local base = tonumber(w.delay) or 13
+  local min_delay = math.min(7, math.floor(base / 2))
+  return math.max(0, math.min(27, 2 * (base - min_delay)))
+end
+
+local function update_skills()
+  -- First shut off everything; then enable only our explicit plan.
+  for _, sk in ipairs(ALL_SKILLS) do
+    if you.can_train_skill(sk) then you.train_skill(sk, 0) end
+  end
+
+  local axe_target = axe_mindelay_target()
+  local axe_done = you.skill("Axes") + 0.001 >= axe_target
+
+  train("Axes", axe_done and 0 or 2, axe_target)
+  train("Fighting", axe_done and 2 or 1, 22)
+  train("Armour", 1, 18)
+
+  if you.skill("Dodging") < 12 then train("Dodging", 1, 12) end
+  if items.equipped_at("Shield") and you.skill("Shields") < 12 then
+    train("Shields", 1, 12)
+  end
+  if you.xl() >= 8 and you.skill("Evocations") < 8 then
+    train("Evocations", 1, 8)
+  end
+end
+
+-- -------------------------------------------------------------------------
+-- Gear pickup and equip.
+-- Weapon: highest damage_rating among axes.
+-- Armour: highest (base AC + enchantment), slot by slot.
+-- Jewellery: simple MiBe utility score; unknown jewellery gets a small score
+-- so empty slots get wear-ID'd.
+-- -------------------------------------------------------------------------
+
+local function jewellery_type(it)
+  if not it then return nil end
+  local et = string.lower(tostring(it.equip_type or ""))
+  if et == "ring" or et == "amulet" then return et end
+  if item_class(it) ~= "jewellery" then return nil end
+  local n = item_name(it)
+  if n:find("amulet", 1, true) then return "amulet" end
+  return "ring"
+end
+
+local function is_jewellery(it)
+  return jewellery_type(it) ~= nil
+end
+
+local function safe_stats(it)
+  if not it then return true end
+  for prop,fn in pairs({Str="strength",Int="intelligence",Dex="dexterity"}) do
+    local delta=(it.artprops or {})[prop] or 0
+    if delta<0 and you[fn] then
+      local projected=you[fn]()+(it.equipped and 0 or delta)
+      if projected<=1 then return false end
+    end
+  end
+  return true
+end
+
+local function weapon_score(it)
+  if not it or not it.is_weapon or it.weap_skill ~= "Axes" then return -1e9 end
+  if not safe_stats(it) then return -1e9 end
+  local dr = it.damage_rating()
+  dr = tonumber(dr) or 0
+  if it.artefact then dr = dr + 0.25 end
+  if it.branded then dr = dr + 0.10 end
+  return dr
+end
+
+local function armour_score(it)
+  if not it or item_class(it) ~= "armour" then return -1e9 end
+  if not safe_stats(it) then return -1e9 end
+  local st = string.lower(tostring(it.subtype() or ""))
+  if st == "shield" then return -1e9 end -- weapon damage takes priority here
+  local score = (tonumber(it.ac) or 0) + (tonumber(it.plus) or 0)
+  if it.artefact then score = score + 0.20 end
+  if it.ego(false) then score = score + 0.10 end
+  return score
+end
+
+local ARMOUR_SLOTS = {
+  body = "Armour", cloak = "Cloak", helmet = "Helmet",
+  gloves = "Gloves", boots = "Boots"
+}
+
+local function pickup_for_bot(it, name)
+  if not it or it.is_useless then return nil end
+  if it.dropped then return false end
+  if it.is_weapon and it.weap_skill == "Axes" then
+    local cur = items.equipped_at("Weapon")
+    return not cur or weapon_score(it) > weapon_score(cur)
+        or (not it.is_identified and (it.artefact or it.branded))
+  end
+  if item_class(it) == "armour" then
+    local slot = ARMOUR_SLOTS[it.subtype()]
+    if not slot then return false end
+    local cur = items.equipped_at(slot)
+    return (not it.is_identified and (it.artefact or it.branded))
+        or armour_score(it) > (cur and armour_score(cur) or 0)
+  end
+  if is_jewellery(it) then return true end
+  return nil
+end
+add_autopickup_func(pickup_for_bot)
+
+local function drop_redundant_gear()
+  for _, it in ipairs(items.inventory()) do
+    if not it.equipped and not it.artefact and not it.branded then
+      local cur
+      if it.is_weapon and it.weap_skill == "Axes" then
+        cur = items.equipped_at("Weapon")
+        if cur and weapon_score(it) <= weapon_score(cur) then
+          if it.drop() then return true end
+        end
+      elseif item_class(it) == "armour" then
+        local slot = ARMOUR_SLOTS[it.subtype()]
+        cur = slot and items.equipped_at(slot)
+        if cur and armour_score(it) <= armour_score(cur) then
+          if it.drop() then return true end
+        end
+      end
+    end
+  end
+  return false
+end
+
+local function jewellery_score(it)
+  if not it or not is_jewellery(it) then return -1e9 end
+  if not safe_stats(it) then return -1e9 end
+  if it.is_useless then return -1e9 end
+  if not it.is_identified then return 5 end
+
+  local n = item_name(it)
+  local p = tonumber(it.plus) or 0
+  local s = 1
+
+  if n:find("regeneration", 1, true) then s = s + 40 end
+  if n:find("faith", 1, true) then s = s + 30 end
+  if n:find("reflection", 1, true) then s = s + 28 end
+  if n:find("slaying", 1, true) then s = s + 26 + 4*p end
+  if n:find("protection", 1, true) then s = s + 24 + 4*p end
+  if n:find("evasion", 1, true) then s = s + 22 + 3*p end
+  if n:find("strength", 1, true) then s = s + 18 + 2*p end
+  if n:find("resist corrosion", 1, true) then s = s + 19 end
+  if n:find("fire", 1, true) then s = s + 18 end
+  if n:find("ice", 1, true) or n:find("cold", 1, true) then s = s + 18 end
+  if n:find("poison", 1, true) then s = s + 20 end
+  if n:find("electric", 1, true) then s = s + 24 end
+  if n:find("willpower", 1, true) then s = s + 18 end
+  if n:find("see invisible", 1, true) then s = s + 12 end
+  if n:find("guardian spirit", 1, true) then s = s + 12 end
+  if n:find("acrobat", 1, true) then s = s + 10 end
+  if n:find("magic regeneration", 1, true) then s = -100 end
+  if it.artefact then s = s + 15 end
+  return s
+end
+
+local function auto_equip_action()
+  -- Steam can hide a monster from our scan while Crawl still considers
+  -- changing equipment unsafe. Use the game's check before starting a delay.
+  if you.feel_safe and not you.feel_safe() then return false end
+  for _,it in ipairs(items.inventory()) do
+    if it.equipped and not safe_stats(it) and it.remove and it.remove() then return true end
+  end
+  -- Complete a jewellery replacement after removing the old piece.
+  if BOT.pending_equip_slot ~= nil then
+    local it = items.inslot(BOT.pending_equip_slot)
+    BOT.pending_equip_slot = nil
+    if it and is_jewellery(it) and safe_stats(it) then
+      return it.equip() and true or false
+    end
+  end
+
+  -- Weapon.
+  local bestw, bestws = nil, -1e9
+  for _, it in ipairs(items.inventory()) do
+    local s = weapon_score(it)
+    if s > bestws then bestw, bestws = it, s end
+  end
+  local curw = items.equipped_at("Weapon")
+  if bestw and (not curw or bestws > weapon_score(curw) + 0.01) then
+    if bestw.equip() then return true end
+  end
+
+  -- Lear's hauberk occupies body, head, hands and feet together. Choose its
+  -- body plan first so auxiliary-slot upgrades cannot immediately remove it.
+  local planned_body, body_score = nil, -1e9
+  for _, it in ipairs(items.inventory()) do
+    if item_class(it) == "armour" and it.subtype() == "body" then
+      local score = armour_score(it)
+      if score > body_score then planned_body, body_score = it, score end
+    end
+  end
+  local hauberk = planned_body
+      and item_name(planned_body):find("lear's hauberk", 1, true)
+
+  -- Armour by slot, excluding shields and occupied hauberk auxiliaries.
+  for subtype, slotname in pairs(ARMOUR_SLOTS) do
+    if not (hauberk and (subtype == "helmet" or subtype == "gloves" or subtype == "boots")) then
+    local best, bs = nil, -1e9
+    for _, it in ipairs(items.inventory()) do
+      if item_class(it) == "armour"
+          and string.lower(tostring(it.subtype() or "")) == subtype then
+        local s = armour_score(it)
+        if s > bs then best, bs = it, s end
+      end
+    end
+    local cur = items.equipped_at(slotname)
+    if best and ((not cur and bs > 0) or (cur and bs > armour_score(cur) + 0.01)) then
+      if best.equip() then return true end
+    end
+    end
+  end
+
+  -- Amulet.
+  local besta, bas = nil, -1e9
+  for _, it in ipairs(items.inventory()) do
+    if jewellery_type(it) == "amulet" then
+      local s = jewellery_score(it)
+      if s > bas then besta, bas = it, s end
+    end
+  end
+  local cura = items.equipped_at("Amulet")
+  if besta and (not cura or bas > jewellery_score(cura) + 1) then
+    if not cura then
+      if besta.equip() then return true end
+    elseif cura.remove() then
+      BOT.pending_equip_slot = besta.slot
+      return true
+    end
+  end
+
+  -- Rings: fill free slots first, otherwise replace the weaker ring.
+  local ring_candidates = {}
+  for _, it in ipairs(items.inventory()) do
+    if jewellery_type(it) == "ring" and not it.equipped then
+      table.insert(ring_candidates, it)
+    end
+  end
+  table.sort(ring_candidates, function(a,b)
+    return jewellery_score(a) > jewellery_score(b)
+  end)
+  local br = ring_candidates[1]
+  if br and not safe_stats(br) then br=nil end
+  if br then
+    local r1 = items.equipped_at("Ring", 1)
+    local r2 = items.equipped_at("Ring", 2)
+    if not r1 or not r2 then
+      if br.equip() then return true end
+    else
+      local weak = jewellery_score(r1) <= jewellery_score(r2) and r1 or r2
+      if jewellery_score(br) > jewellery_score(weak) + 1 then
+        if weak.remove() then
+          BOT.pending_equip_slot = br.slot
+          return true
+        end
+      end
+    end
+  end
+
+  return false
+end
+
+-- -------------------------------------------------------------------------
+-- Stair ID system.
+-- Only normal stone upstairs are used as blind-ID safety points.
+-- -------------------------------------------------------------------------
+
+local function best_unid_potion()
+  local best = nil
+  for _, it in ipairs(items.inventory()) do
+    if item_class(it) == "potion" and not it.is_identified then
+      if not best or (it.quantity or 1) > (best.quantity or 1) then best = it end
+    end
+  end
+  return best
+end
+
+local function best_unid_scroll(exclude_slot, duplicates_only)
+  local best = nil
+  for _, it in ipairs(items.inventory()) do
+    if item_class(it) == "scroll" and not it.is_identified
+        and it.slot ~= exclude_slot
+        and (not duplicates_only or (it.quantity or 1) >= 2) then
+      if not best or (it.quantity or 1) > (best.quantity or 1) then best = it end
+    end
+  end
+  return best
+end
+
+local function known_identify_scroll()
+  for _, it in ipairs(items.inventory()) do
+    if item_class(it) == "scroll" and it.is_identified
+        and item_name(it):find("identify", 1, true) then
+      return it
+    end
+  end
+  return nil
+end
+
+-- Let the item-use hook choose once, instead of queuing a letter that can
+-- leak into the next command when identification resolves without a menu.
+function c_choose_identify()
+  BOT.blind_pending = false
+  BOT.blind_target = nil
+  local target = best_unid_potion() or best_unid_scroll(nil, false)
+  return target and inv_letter(target) or ""
+end
+
+local function auto_id_action()
+  if not regular_up() or you.confused() or you.silenced() then return false end
+
+  -- 1) Blind-read a duplicated unknown scroll.
+  local blind = best_unid_scroll(nil, true)
+  if blind then
+    local potion = best_unid_potion()
+    local fallback_scroll = best_unid_scroll(blind.slot, false)
+    local target = potion or fallback_scroll
+
+    BOT.blind_pending = true
+    BOT.blind_target = target and inv_letter(target) or nil
+    crawl.process_keys("r" .. inv_letter(blind) .. "\027\027\027")
+    return true
+  end
+
+  -- 2) Spend known identify scrolls on unidentified potions.
+  local ids = known_identify_scroll()
+  local potion = best_unid_potion()
+  if ids and potion then
+    crawl.process_keys("r" .. inv_letter(ids) .. "\027\027\027")
+    return true
+  end
+
+  return false
+end
+
+local function enchant_choice(weapon)
+  local best, score = nil, -1e9
+  for _, it in ipairs(items.inventory()) do
+    if it.is_enchantable and ((weapon and it.is_weapon)
+        or (not weapon and item_class(it) == "armour")) then
+      local s = weapon and weapon_score(it) or armour_score(it)
+      if it.equipped then s = s + 10000 end
+      if s > score then best, score = it, s end
+    end
+  end
+  return best and inv_letter(best) or ""
+end
+
+function c_choose_enchant_weapon() return enchant_choice(true) end
+function c_choose_enchant_armour() return enchant_choice(false) end
+function c_choose_brand_weapon()
+  local weapon = items.equipped_at("Weapon")
+  if weapon and not weapon.artefact then return inv_letter(weapon) end
+  return enchant_choice(true)
+end
+function c_choose_acquirement()
+  -- Deterministic non-interactive baseline; tactical scoring can follow later.
+  return 1
+end
+
+-- -------------------------------------------------------------------------
+-- Stair-dipping safety system. Sort regular downstairs by map coordinates;
+-- their order is unchanged by translating player-relative coordinates.
+-- Route one step at a time, excluding hatches and branch entrances.
+-- -------------------------------------------------------------------------
+
+local function count_down_cycle_targets()
+  local targets = {}
+  for _, cell in pairs(view.get_map()) do
+    if regular_down(cell.feature) then
+      targets[#targets+1] = {x=cell.x, y=cell.y}
+    end
+  end
+  table.sort(targets, function(a,b)
+    return a.x < b.x or (a.x == b.x and a.y < b.y)
+  end)
+  return targets
+end
+
+local function at_down_index(n)
+  local target = count_down_cycle_targets()[n]
+  return target and target.x == 0 and target.y == 0 and regular_down()
+end
+
+local function goto_down_index(n)
+  if at_down_index(n) then return true end
+  local target = count_down_cycle_targets()[n]
+  if not target then return false end
+  local scan = scan_hostiles()
+  local _, _, step = bfs(scan.cells, scan.blocked, function(cell)
+    return cell.x == target.x and cell.y == target.y
+  end)
+  if step then crawl.sendkeys(step); return true end
+  return false
+end
+
+local function start_dive_survey()
+  local targets = count_down_cycle_targets()
+  BOT.dive = {
+    phase = "survey_parent",
+    parent = level_key(),
+    index = 1,
+    total = #targets,
+    targets = targets,
+    reachable = {},
+    active_index = nil,
+    child_up_tries = 0,
+    commit_pos = 1,
+  }
+  say("floor clear: stair-dipping before committing deeper.")
+end
+
+local function dive_action()
+  local d = BOT.dive
+  if not d or d.phase == "normal" then return false end
+
+  -- State-only transitions can chain; actual commands return immediately.
+  for _ = 1, 20 do
+    local here = level_key()
+
+    if d.phase == "survey_parent" then
+      if here ~= d.parent then
+        d.phase = "survey_child"
+      elseif d.index > d.total then
+        if #d.reachable == 0 then
+          local scan = scan_hostiles()
+          local _, _, retreat = bfs(scan.cells, scan.blocked,
+              function(cell) return regular_up(cell.feature) end)
+          if regular_up() or retreat then
+            d.phase = "normal"
+            BOT.floor_done[here] = false
+            BOT.floor_partial[here] = true
+            BOT.partial_reason[here] = "no safe downstairs from this component"
+            crawl.sendkeys(regular_up() and "<" or retreat)
+            return true
+          end
+          say("no reachable regular downstair found -- paused.")
+          d.phase = "paused"
+          return true
+        end
+        d.phase = "commit_parent"
+      else
+        if (BOT.failed_entries[d.parent] or {})[d.index] then
+          d.index = d.index + 1
+        elseif at_down_index(d.index) then
+          d.phase = "parent_travel"
+        elseif goto_down_index(d.index) then
+          return true
+        else
+          d.index = d.index + 1
+        end
+      end
+
+    elseif d.phase == "parent_travel" then
+      if here ~= d.parent then
+        -- Unexpected level change: treat as unsafe and pause.
+        say("unexpected level change during stair survey -- paused.")
+        d.phase = "paused"
+        return true
+      elseif regular_down() then
+        d.active_index = d.index
+        crawl.sendkeys(">")
+        d.phase = "survey_descending"
+        return true
+      else
+        -- X> landed on a hatch/branch/other target, or travel failed.
+        d.index = d.index + 1
+        d.phase = "survey_parent"
+      end
+
+    elseif d.phase == "survey_descending" then
+      if here ~= d.parent then
+        -- Do not commit to sealed stair pockets with no route onward.
+        local cells = known_map()
+        local seen = bfs(cells, {}, false)
+        local onward = false
+        for key, cell in pairs(cells) do
+          if seen[key] and (cell.frontier or regular_down(cell.feature)) then
+            onward = true
+            break
+          end
+        end
+        if onward then table.insert(d.reachable, d.active_index) end
+        d.phase = "survey_child"
+      else
+        d.index = d.index + 1
+        d.phase = "survey_parent"
+      end
+
+    elseif d.phase == "survey_child" then
+      -- Combat and recovery have already run before this function.
+      if here == d.parent then
+        d.index = d.index + 1
+        d.phase = "survey_parent"
+      elseif regular_up() then
+        crawl.sendkeys("<")
+        d.phase = "survey_returning"
+        return true
+      else
+        local scan = scan_hostiles()
+        local _, _, step = bfs(scan.cells, scan.blocked,
+            function(cell) return regular_up(cell.feature) end)
+        if step then
+          d.return_waits = 0
+          crawl.sendkeys(step)
+          return true
+        end
+        -- Clouds and moving creatures can temporarily block every safe route.
+        -- Teleportation can also strand us in a different connected component.
+        -- After a bounded retry, abandon the survey and explore this floor.
+        d.return_waits = (d.return_waits or 0) + 1
+        if d.return_waits > 20 then
+          d.phase = "normal"
+          BOT.floor_done[here] = false
+          BOT.floor_partial[here] = nil
+          say("survey return unavailable; exploring current floor.")
+          return false
+        end
+        crawl.do_commands({"CMD_WAIT"})
+        return true
+      end
+
+    elseif d.phase == "child_up_travel" then
+      if here == d.parent then
+        d.index = d.index + 1
+        d.phase = "survey_parent"
+      elseif regular_up() then
+        crawl.sendkeys("<")
+        d.phase = "survey_returning"
+        return true
+      elseif d.child_up_tries < 2 then
+        d.child_up_tries = d.child_up_tries + 1
+        crawl.sendkeys("X<\r")
+        return true
+      else
+        say("could not return to an upstairs after dipping -- paused.")
+        d.phase = "paused"
+        return true
+      end
+
+    elseif d.phase == "survey_returning" then
+      if here == d.parent then
+        d.index = d.index + 1
+        d.phase = "survey_parent"
+      else
+        d.phase = "survey_child"
+      end
+
+    elseif d.phase == "commit_parent" then
+      if d.commit_pos > #d.reachable then
+        say("surveyed stairs became unreachable -- paused.")
+        d.phase = "paused"
+        return true
+      end
+      if at_down_index(d.reachable[d.commit_pos]) then
+        d.phase = "commit_travel"
+      elseif goto_down_index(d.reachable[d.commit_pos]) then
+        return true
+      else
+        d.commit_pos = d.commit_pos + 1
+      end
+
+    elseif d.phase == "commit_travel" then
+      if here ~= d.parent then
+        BOT.committed_entry = {parent=d.parent, child=here,
+          index=d.reachable[d.commit_pos]}
+        d.phase = "normal"
+        BOT.floor_done[here] = false
+        BOT.floor_partial[here] = nil
+        say("committed to " .. here .. "; beginning full exploration.")
+        return false
+      elseif regular_down() then
+        crawl.sendkeys(">")
+        d.phase = "commit_descending"
+        return true
+      else
+        d.commit_pos = d.commit_pos + 1
+        d.phase = "commit_parent"
+      end
+
+    elseif d.phase == "commit_descending" then
+      if here ~= d.parent then
+        BOT.committed_entry = {parent=d.parent, child=here,
+          index=d.reachable[d.commit_pos]}
+        d.phase = "normal"
+        BOT.floor_done[here] = false
+        BOT.floor_partial[here] = nil
+        say("committed to " .. here .. "; beginning full exploration.")
+        return false
+      else
+        d.commit_pos = d.commit_pos + 1
+        d.phase = "commit_parent"
+      end
+
+    elseif d.phase == "paused" then
+      return true
+    else
+      d.phase = "normal"
+      return false
+    end
+  end
+
+  say("state-machine guard tripped -- paused.")
+  d.phase = "paused"
+  return true
+end
+
+-- -------------------------------------------------------------------------
+-- Message hook: floor-clear detection + blind-scroll resolution.
+-- -------------------------------------------------------------------------
+
+local ROUTE_BRANCHES = {
+  D={key="D"}, Lair={key="L"}, Orc={key="O"}, Elf={key="E"},
+  Swamp={key="S",rune="decaying"}, Shoals={key="A",rune="barnacled"},
+  Snake={key="P",rune="serpentine"}, Spider={key="N",rune="gossamer"},
+  Vaults={key="V",rune="silver"}, Depths={key="U"}, Zot={key="Z"},
+}
+
+local function route_observe(scan)
+  for _,cell in pairs(scan.cells) do
+    -- Optional sealed vaults are not progression requirements. Keep native
+    -- exploration outside their door/LOS fringe instead of oscillating there.
+    if AUTOCrawl_ROUTE.skip_runed_vaults and cell.feature:find("runed",1,true)
+        and not cell.excluded then
+      travel.set_exclude(cell.x,cell.y,1)
+    end
+    for branch,_ in pairs(ROUTE_BRANCHES) do
+      if cell.feature == "enter_" .. string.lower(branch) then
+        ROUTE_STATE.entrances[branch] = level_key()
+      end
+    end
+  end
+end
+
+local function route_resolve(branch)
+  if ROUTE_BRANCHES[branch] then return branch end
+  if ROUTE_STATE.choices[branch] then return ROUTE_STATE.choices[branch] end
+  local alternatives = branch=="wet" and {"Swamp","Shoals"}
+      or branch=="dry" and {"Snake","Spider"} or {}
+  for _,name in ipairs(alternatives) do
+    if ROUTE_STATE.entrances[name] or travel.find_deepest_explored(name)>0 then
+      ROUTE_STATE.choices[branch]=name
+      return name
+    end
+  end
+end
+
+local function route_block(reason)
+  BOT.paused=true
+  say("route blocked: " .. reason)
+  if autocrawl_route_blocked then autocrawl_route_blocked(reason) end
+  return true
+end
+
+local function escape_exclusion(scan)
+  -- Exclusions are travel policy, not impassable terrain. When surrounded by
+  -- them, find a short path back outside rather than asking G/o to escape.
+  local ordinary_exit=false
+  for _,delta in ipairs(MOVE_DELTAS) do
+    ordinary_exit=ordinary_exit or can_step(scan.cells,0,0,delta[1],delta[2],scan.blocked)
+  end
+  if ordinary_exit then return false end
+  local cells={}
+  for key,cell in pairs(scan.cells) do
+    cells[key]=cell
+    if cell.excluded and cell.traversable and not cell.unsafe
+        and not cell.feature:find("trap",1,true)
+        and not cell.feature:find("runed",1,true)
+        and cell.feature~="enter_shop" then
+      local copy={}
+      for k,v in pairs(cell) do copy[k]=v end
+      copy.excluded=nil
+      copy.bot_escape_exclusion=true
+      cells[key]=copy
+    end
+  end
+  local _,_,step=bfs(cells,scan.blocked,function(cell)
+    return not cell.bot_escape_exclusion
+  end)
+  if step then
+    say("leaving exclusion-surrounded square via safe terrain.")
+    BOT.allow_exclusion_step=true
+    crawl.sendkeys(step)
+    return true
+  end
+  return false
+end
+
+local route_started=false
+local function route_action(scan)
+  if not AUTOCrawl_ROUTE.enabled then return false end
+  if not route_started then
+    ROUTE_STATE.travel_attempts=0
+    ROUTE_STATE.last_travel_turn=nil
+    route_started=true
+  end
+  route_observe(scan)
+  -- The route owns progression; the legacy stair-dipping state machine must
+  -- never descend beyond a stage boundary or compete with interbranch travel.
+  BOT.dive={phase="normal"}
+  for _=1,#AUTOCrawl_ROUTE.stages+1 do
+    local stage=AUTOCrawl_ROUTE.stages[ROUTE_STATE.index]
+    if not stage then
+      BOT.paused=true
+      ROUTE_STATE.complete=true
+      say("ROUTE COMPLETE: Zot route explored; Orb run is not automated.")
+      if autocrawl_route_complete then autocrawl_route_complete() end
+      return true
+    end
+    local branch=route_resolve(stage.branch)
+    if not branch then return route_block("undiscovered branch group "..stage.branch) end
+    if ROUTE_STATE.announced~=ROUTE_STATE.index then
+      ROUTE_STATE.announced=ROUTE_STATE.index
+      say("route stage "..ROUTE_STATE.index..": "..branch..":"..stage.from.."-"..stage.to)
+      if autocrawl_route_stage_enter then autocrawl_route_stage_enter(stage,branch) end
+    end
+    if stage.min_runes and you.num_runes()<stage.min_runes then
+      return route_block(branch.." requires "..stage.min_runes.." runes")
+    end
+    local depth=nil
+    for n=stage.from,stage.to do
+      local status=ROUTE_STATE.done[branch..":"..n]
+      if status~="clear" and not (AUTOCrawl_ROUTE.allow_partial and status=="partial") then
+        depth=n
+        break
+      end
+    end
+    local rune=stage.rune and (type(stage.rune)=="string" and stage.rune or ROUTE_BRANCHES[branch].rune)
+    if stage.rune and not rune then return route_block("no rune configured for "..branch) end
+    if not depth and rune and not you.have_rune(rune) then
+      return route_block(branch.." explored but "..rune.." rune not collected")
+    end
+    if not depth then
+      say("route stage complete: "..branch..":"..stage.to)
+      if autocrawl_route_stage_complete then autocrawl_route_stage_complete(stage,branch) end
+      ROUTE_STATE.index=ROUTE_STATE.index+1
+      ROUTE_STATE.travel_attempts=0
+    else
+      if you.branch()==branch and you.depth()==depth then
+        ROUTE_STATE.travel_attempts=0
+        -- Branch floors are explored normally, including greedy rune pickup.
+        if BOT.floor_partial[level_key()] then
+          return explore_frontier(scan,false)
+        end
+        if visit_shop_action(scan) then return true end
+        return explore_frontier(scan,true)
+      end
+      if branch~="D" and not ROUTE_STATE.entrances[branch]
+          and travel.find_deepest_explored(branch)==0 then
+        return route_block("entrance to "..branch.." has not been discovered")
+      end
+      local turn=you.turns()
+      ROUTE_STATE.travel_attempts = ROUTE_STATE.last_travel_turn==turn
+          and (ROUTE_STATE.travel_attempts or 0)+1 or 0
+      ROUTE_STATE.last_travel_turn=turn
+      if ROUTE_STATE.travel_attempts>=3 then
+        if escape_exclusion(scan) then return true end
+        for _,cell in pairs(scan.cells) do
+          if cell.visible and cell.cloud then
+            -- Harmless fog can hide every exit from an arrival pocket too.
+            crawl.do_commands({"CMD_WAIT"})
+            return true
+          end
+        end
+        -- Teleports and newly reached arrival pockets can lack a cached
+        -- interlevel path even though this floor was explored elsewhere.
+        if ROUTE_STATE.travel_attempts>=6 then
+          return route_block("travel to "..branch..":"..depth.." made no progress")
+        end
+        return explore_frontier(scan,true)
+      end
+      crawl.process_keys("G"..ROUTE_BRANCHES[branch].key..depth.."\r\027\027\027")
+      return true
+    end
+  end
+  return route_block("stage transition guard")
+end
+
+-- Character-local save hook, not rc-wide persistence shared between trials.
+local function route_serialize(value)
+  if type(value)=="table" then
+    local out={"{"}
+    for key,item in pairs(value) do
+      out[#out+1]="["..route_serialize(key).."]="..route_serialize(item)..","
+    end
+    return table.concat(out).."}"
+  elseif type(value)=="string" then return string.format("%q",value)
+  elseif type(value)=="number" or type(value)=="boolean" then return tostring(value)
+  end
+  return "nil"
+end
+local previous_c_save=c_save
+function c_save()
+  local old=previous_c_save and previous_c_save() or ""
+  return old.."\nROUTE_STATE="..route_serialize(ROUTE_STATE).."\n"
+end
+
+local previous_c_answer_prompt = c_answer_prompt
+function c_answer_prompt(prompt)
+  if tostring(prompt):lower():find("are you sure you want to cancel this blink",1,true) then
+    return true
+  end
+  if tostring(prompt):lower():find("really walk into a travel-excluded area",1,true)
+      and BOT.allow_exclusion_step then
+    BOT.allow_exclusion_step=nil
+    return true
+  end
+  if tostring(prompt):lower():find("really explore while zot is near",1,true) then
+    return true
+  end
+  if previous_c_answer_prompt then return previous_c_answer_prompt(prompt) end
+  return nil
+end
+
+local previous_c_message = c_message
+function c_message(text, channel)
+  crawl.more_autoclear(true)
+  if previous_c_message then previous_c_message(text, channel) end
+  local s = string.lower(tostring(text or "")):gsub("<[^>]*>", "")
+  if s:find("are you sure you want to cancel this blink",1,true) then
+    return
+  end
+  if s:find("the barbs in your skin will harm you if you move",1,true) then
+    crawl.sendkeys("Y")
+    return
+  end
+
+  -- The gear scorer has already selected this item. A warning inscription
+  -- (including artefact drawbacks) must not leave its equip prompt unattended.
+  if s:find("really equip ", 1, true) or s:find("really unwield ",1,true) then
+    crawl.sendkeys("Y")
+    return
+  end
+
+  if s:find("really walk into", 1, true) or s:find("really fly into", 1, true) then
+    BOT.hazard_wait = true
+    crawl.sendkeys("N")
+    return
+  end
+
+  if s:find("keep equipping", 1, true) or s:find("keep disrobing", 1, true)
+      or s:find("spend multiple turns changing equipment", 1, true) then
+    crawl.sendkeys("N")
+    return
+  end
+
+  if s == "blink to where?" then
+    -- Blind-reading already queued Escape guards. Never append target keys:
+    -- after cancellation those keys would become ordinary game commands.
+    if not BOT.blind_pending then crawl.sendkeys("\027") end
+    return
+  end
+
+  -- A rejected move consumes no turn. Remember when it failed, and leave
+  -- unknown movement restrictions under manual control until time advances.
+  -- Never enqueue another command from this message callback.
+  if s:find("you cannot move", 1, true)
+      or s:find("you can't move", 1, true)
+      or s:find("because you cannot move", 1, true) then
+    BOT.move_rejected_at = you.turns()
+  end
+
+  -- Handle the level-up prompt without requiring a human keypress.
+  if s:find("increase (s)trength", 1, true) then
+    crawl.sendkeys("S")
+    return
+  end
+
+  -- Autoexplore/autofight can report a nearby or unreachable monster without
+  -- consuming a turn.  Defer a one-step BFS decision to ready() so the
+  -- controller cannot spin on the same no-op command.
+  if s:find("is nearby!", 1, true)
+      or s:find("there are monsters nearby", 1, true)
+      or s:find("no reachable target in view", 1, true) then
+    BOT.noop_warning = true
+  end
+  if s:find("no target in view", 1, true)
+      or s:find("no target in range", 1, true)
+      or s:find("failed to move towards target", 1, true)
+      or s:find("no reachable target in view", 1, true) then
+    BOT.autofight_rejected = true
+  end
+
+  if s:find("strange disturbance", 1, true)
+      or s:find("something hits you", 1, true)
+      or s:find("something tries to affect you", 1, true)
+      or s:find("strange, mumbled words", 1, true) then
+    if not BOT.disturbance_warning then BOT.disturbance_turns = 0 end
+    BOT.disturbance_warning = true
+    BOT.disturbance_last_seen = you.turns()
+  end
+
+  if s == "done exploring." then
+    BOT.floor_done[level_key()] = true
+    BOT.floor_partial[level_key()] = nil
+    if AUTOCrawl_ROUTE.enabled then ROUTE_STATE.done[level_key()]="clear" end
+  elseif s:find("partly explored", 1, true) then
+    BOT.floor_done[level_key()] = false
+    BOT.floor_partial[level_key()] = true
+    BOT.partial_reason[level_key()] = s
+    if AUTOCrawl_ROUTE.enabled and (s:find("can't reach some",1,true)
+        or s:find("unopened runed door",1,true)
+        or s=="partly explored, unvisited transporter.") then
+      ROUTE_STATE.done[level_key()]="partial"
+    end
+  end
+
+  if BOT.blind_pending then
+    if s:find("scroll of identify", 1, true) then
+      BOT.blind_pending = false
+      BOT.blind_target = nil
+    elseif s:find("scroll of teleportation", 1, true)
+        or s:find("scroll of torment", 1, true) then
+      BOT.blind_pending = false
+      BOT.blind_target = nil
+      BOT.escape_after_blind = true
+    elseif s:find("it is a scroll of", 1, true)
+        or s:find("it was a scroll of", 1, true) then
+      BOT.blind_pending = false
+      BOT.blind_target = nil
+    end
+  end
+end
+
+-- -------------------------------------------------------------------------
+-- Main turn hook.
+-- -------------------------------------------------------------------------
+
+local function check_committed_return()
+  -- Returning from a committed child without completing it must not select
+  -- that same failed arrival repeatedly. Stair order is translation-invariant.
+  local entry = BOT.committed_entry
+  if entry and level_key() == entry.parent and BOT.dive.phase == "normal" then
+    BOT.failed_entries[entry.parent] = BOT.failed_entries[entry.parent] or {}
+    BOT.failed_entries[entry.parent][entry.index] = true
+    BOT.committed_entry = nil
+    say("returned from blocked entry; trying another staircase.")
+  end
+end
+
+function ready()
+  -- This rc is intentionally a MiBe-only controller.
+  if you.species() ~= "Minotaur" or you.class() ~= "Berserker" then return end
+
+  -- The game resets this flag whenever control returns to the player.
+  crawl.more_autoclear(true)
+  BOT.allow_exclusion_step=nil
+  if BOT.paused then return end
+  check_committed_return()
+  if BOT.hazard_wait then
+    BOT.hazard_wait = false
+    crawl.do_commands({"CMD_WAIT"})
+    return
+  end
+
+  if BOT.move_rejected_at and BOT.move_rejected_at ~= you.turns() then
+    BOT.move_rejected_at = nil
+    BOT.move_rejected_announced = false
+  end
+  if BOT.move_rejected_at and not movement_locked() then
+    if not BOT.move_rejected_announced then
+      say("movement rejected -- paused until a manual turn advances.")
+      BOT.move_rejected_announced = true
+    end
+    return
+  end
+
+  local scan = scan_hostiles()
+  if AUTOCrawl_ROUTE.enabled then
+    route_observe(scan)
+    BOT.dive={phase="normal"}
+  end
+  -- Central gate covers combat pursuit, confusion, exploration, shops and
+  -- stair travel. Adjacent melee remains available when not confused.
+  if movement_locked() then
+    if scan.any and (you.confused() or not scan.reachable_adjacent) then
+      if not BOT.immobile_announced then
+        say("immobile with enemies outside usable melee -- automation paused.")
+        BOT.immobile_announced = true
+      end
+      return
+    end
+    BOT.immobile_announced = false
+    if scan.any then encounter_action(scan)
+    else crawl.do_commands({"CMD_WAIT"}) end
+    return
+  end
+  BOT.immobile_announced = false
+
+  if feat_here() == "enter_shop" then
+    if scan.cells[map_key(0,0)] and scan.cells[map_key(0,0)].unvisited then
+      -- '<' ENTERS a shop. Visit once to register its stock, then close the
+      -- menu with Escape. Never reopen it on every ready() at the same tile.
+      crawl.process_keys("<\027\027\027")
+      return
+    end
+  end
+
+  if survival_action(scan) then return end
+  if you.confused() and confused_combat_action(scan) then return end
+  if not you.confused() then BOT.confused_announced = false end
+  if not scan.reachable_adjacent and escape_exclusion(scan) then return end
+  if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
+
+  -- Invisible or otherwise unclassified activity cannot be resolved by the
+  -- visible-monster scanner.  Probe adjacent squares instead of resting into
+  -- a safe-wait no-op or walking blindly into the disturbance.
+  if BOT.disturbance_warning and not scan.any then
+    if not BOT.disturbance_announced then
+      say("unseen disturbance -- probing adjacent squares.")
+      BOT.disturbance_announced = true
+    end
+
+    local cmd
+    for _, cell in pairs(scan.cells) do
+      if cell.invisible_monster and math.max(math.abs(cell.x), math.abs(cell.y)) == 1 then
+        local move = CONFUSED_MOVE_COMMANDS[map_key(cell.x, cell.y)]
+        cmd = move and move:gsub("CMD_MOVE_", "CMD_ATTACK_")
+        break
+      end
+    end
+    if not cmd and you.turns() - (BOT.disturbance_last_seen or you.turns()) >= 8 then
+      BOT.disturbance_warning = false
+      BOT.disturbance_announced = false
+      BOT.disturbance_turns = 0
+    else
+      local turn = you.turns()
+      cmd = cmd or DISTURBANCE_ATTACK_COMMANDS[(BOT.disturbance_turns % 8)+1]
+      BOT.disturbance_turns = BOT.disturbance_turns + 1
+      crawl.do_commands({cmd})
+      -- Only wait if the attack was rejected and did not spend a turn.
+      if not (you.turn_is_over and you.turn_is_over()) and you.turns() == turn then
+        crawl.do_commands({"CMD_WAIT"})
+      end
+      return
+    end
+  end
+  if scan.any then
+    BOT.disturbance_warning = false
+    BOT.disturbance_announced = false
+    BOT.disturbance_turns = 0
+  end
+
+  if BOT.noop_warning then
+    BOT.noop_warning = false
+    if not scan.any and not (AUTOCrawl_ROUTE.enabled
+        and ROUTE_STATE.done[level_key()]) then
+      explore_frontier(scan, false)
+      return
+    end
+  end
+
+  -- An isolated monster must not strand a stair survey in the child pocket.
+  -- The survey already knows how to return via the arrival stair.
+  if BOT.dive.phase ~= "normal" and not scan.reachable_any then
+    if dive_action() then return end
+  end
+  local completion=ROUTE_STATE.done[level_key()]
+  if AUTOCrawl_ROUTE.enabled and scan.any and not scan.reachable_any
+      and (completion=="clear" or
+          (completion=="partial" and AUTOCrawl_ROUTE.allow_partial)) then
+    if route_action(scan) then return end
+  end
+  if encounter_action(scan) then return end
+  if unsafe_square_action(scan) then return end
+
+  if not AUTOCrawl_ROUTE.enabled and BOT.floor_partial[level_key()] then
+    local frontier, onward = false, false
+    for key, cell in pairs(scan.cells) do
+      if scan.seen[key] then
+        frontier = frontier or cell.frontier
+        onward = onward or regular_down(cell.feature)
+      end
+    end
+    if frontier then
+      explore_frontier(scan, false)
+      return
+    end
+    -- Native exploration exhausted this connected area. Do not confuse
+    -- inaccessible terrain with reachable unfinished exploration. Keep the
+    -- partial flag, and never count this as a full D:15 clear.
+    if BOT.partial_reason[level_key()] == "partly explored, can't reach some places."
+        and not frontier and onward and you.depth() < 15 then
+      say("accessible area explored; inaccessible places remain -- surveying onward.")
+      start_dive_survey()
+      dive_action()
+      return
+    end
+    -- Leave an inaccessible arrival pocket via upstairs, then try another
+    -- surveyed entry. Never call this floor complete or descend from it.
+    if regular_up() then crawl.sendkeys("<"); return end
+    local _, _, retreat = bfs(scan.cells, scan.blocked,
+        function(cell) return regular_up(cell.feature) end)
+    if retreat then crawl.sendkeys(retreat); return end
+    BOT.paused = true
+    say("exploration incomplete with no upstairs route -- paused.")
+    return
+  end
+
+  -- If blind-reading produced torment/teleportation, leave immediately.
+  if BOT.escape_after_blind and regular_up() then
+    BOT.escape_after_blind = false
+    crawl.sendkeys("<")
+    return
+  end
+
+  -- No visible enemies: wait out berserk/slow/exhaustion and heal fully.
+  local hp, mhp = you.hp()
+  if you.berserk() or you.slowed() or you.exhausted() or hp < mhp then
+    -- CMD_SAFE_WAIT (`5`) refuses to advance when Crawl reports an unseen
+    -- disturbance, which can re-enter ready() forever.  CMD_WAIT is a real
+    -- one-turn wait; visible threats were already handled above.
+    crawl.do_commands({"CMD_WAIT"})
+    return
+  end
+
+  update_skills()
+
+  -- During a stair-dip, returning safely takes precedence over shopping/ID.
+  if BOT.dive.phase ~= "normal" then
+    if dive_action() then return end
+  end
+
+  -- Re-equip only while healthy and with no visible enemies.
+  if auto_equip_action() then return end
+  if drop_redundant_gear() then return end
+
+  -- Stair-based ID routine.
+  if auto_id_action() then return end
+  if route_action(scan) then return end
+
+  -- Start the survey only after autoexplore reports this floor exhausted.
+  if BOT.floor_done[level_key()] then
+    if you.branch() == "D" and you.depth() == 15 then
+      BOT.paused = true
+      BOT.success = true
+      say("SUCCESS: D:15 exploration complete -- trial finished.")
+      return
+    end
+    BOT.floor_done[level_key()] = false
+    start_dive_survey()
+    if dive_action() then return end
+  end
+
+  -- Native exploration handles ordinary travel and floor loot; custom BFS
+  -- remains the fallback for monster/no-op interruptions.
+  if visit_shop_action(scan) then return end
+  explore_frontier(scan, true)
+end
+
+>
