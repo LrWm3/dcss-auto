@@ -1070,3 +1070,36 @@ Fresh affected seeds (fire-recovery-v1, same RC/source):
 rest, occupied/unsafe destinations, and unseen/blocked recovery returning a real
 action without pausing. Live fire movement verified on seed5 and pause escape
 on saved seed4. No full five-seed regression or general survival claim.
+
+## Full replay after fire/recovery fixes (fire-recovery-full-v1)
+
+Fresh five seeds, unchanged current RC37897805d4ead08eb8c018dafc3dbd1c5855e5dbe02ac179a075bfbeabdeb84c,
+sourcecbea9a7. Reused same five sessions; seed4 prior checkpoint continuation
+death was separately verified against morgue/process/no-save/postmortem screen
+before resetting its session. No gameplay intervention in the new runs except
+dump/save after seed4's native route pause.21 Lua suites/9 runner tests pass.
+
+Seed | Prior throwing-full-v1 | Current | Outcome
+--- | --- | --- | ---
+1 | D11 death7830 | D11 death7830 | Centaur arrow; unchanged
+2 | D12 death16524 | D12 death16769 | Frances iron shot24, after Lair5
+3 | D4 death3546 | D4 death3546 | Eustachio iron imp; unchanged
+4 | D6 pause6106 | D11 pause11558 | Lair entrance not discovered
+5 | D5 burning death4152 | D8 death7719 | Two-headed ogre plus rock fish
+
+Four natural deaths, one native pause; no verified route completion. Weakest
+reached milestone remainsD4. Seed4 and5 advance farther, seed1/2/3 milestones
+unchanged, but the batch is still not fully autonomous because of seed4.
+All five DLua error sections empty. Seed5 has shake-off notes on D5 at4128–4136
+and D7 at6484–6493, survived both; no lingering-fire death. Seed2 died to Frances
+rather than burning, with no fire-action notes. No return of the D6 recovery
+pause in fresh seed4; instead D11 reported partly explored/cannot reach places,
+then stage complete and route blocked: entrance to Lair not discovered. Do not
+interpret this stage-complete message as verified full D11 exploration.
+
+Saved seed4 at11558 D11 HP90/90 after verified console entry/read-only dump,
+Escape and Ctrl-S, without manual movement/combat. Save CodexRecoveryFull4.cs
+available for route diagnosis. Immutable evidence and append-only rows retained.
+Next priorities: diagnose missing-Lair route pause from this save, then weakest
+seed3's unchanged Eustachio summon-pack death. This run does not establish an
+improved minimum or statistical reliability of the individual gains.

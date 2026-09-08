@@ -1,0 +1,610 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 17908030050512890810 (custom seed)
+
+CodexRecoveryFull4 the Cleaver (MiBe)              Turns: 11558, Time: 00:02:03
+
+Health: 90/90      AC: 20    Str: 27    XL:     10   Next: 63%
+Magic:  9/9        EV:  8    Int:  4    God:    Trog [*.....]
+Gold:   502        SH:  0    Dex:  9    Spells: 9/9 levels left
+
+rFire   + . .  (50%)    f - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   k - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   d - +0 cloak
+rCorr   .      (100%)   a - +0 pair of gloves {Infuse}
+SInv    .               (no boots)
+Will    .....           m - amulet of magic regeneration
+Stlth                   j - +4 ring of protection
+HPRegen 0.35/turn       i - ring of protection from fire
+MPRegen 0.51/turn
+
+%: infuse magic (1 MP)
+@: no status effects
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (7%)
+
+
+You are on level 11 of the Dungeon.
+You worship Trog.
+Trog is aware of your devotion.
+You have visited 1 branch of the dungeon, and seen 11 of its levels.
+
+You have collected 579 gold pieces.
+You have spent 77 gold pieces at shops.
+
+Inventory:
+
+Hand Weapons
+ f - a +0 war axe (weapon)
+ n - a +2 hand axe of flaming
+Missiles
+ b - 27 poisoned darts
+ c - 6 atropa-tipped darts (quivered)
+ e - 5 curare-tipped darts
+ g - 10 javelins
+ h - 4 boomerangs
+Armour
+ a - a +0 pair of gloves of infusion (worn)
+ d - a +0 cloak (worn)
+ k - a +0 plate armour (worn)
+Jewellery
+ i - a ring of protection from fire (worn)
+ j - a +4 ring of protection (worn)
+ l - a +5 ring of evasion
+ m - an amulet of magic regeneration (worn)
+Wands
+ c - a wand of roots (4)
+ b - a wand of acid (17)
+ e - a wand of paralysis (9)
+ a - a wand of flame (27)
+Scrolls
+ s - a scroll of summoning
+ N - 2 scrolls of noise
+ x - 2 scrolls of amnesia
+ V - 2 scrolls of vulnerability
+ I - 2 scrolls of immolation
+ g - 4 scrolls of fog
+ p - a scroll of poison
+ a - a scroll of enchant armour
+ h - a scroll labelled NIYSOX ID OKK
+ k - a scroll labelled VOL FEASMOTAJ
+ l - a scroll labelled YNITURO YTABB
+ b - a scroll of blinking
+ t - a scroll of teleportation
+Potions
+ A - 2 potions of attraction
+ e - 2 potions of enlightenment
+ i - a potion of invisibility
+ n - 2 smoky brown potions
+ d - a black potion
+ b - 3 potions of brilliance
+ p - 2 coppery potions
+ j - a fizzy purple potion
+ s - 2 amethyst potions
+ f - a murky grey potion
+ q - a lumpy yellow potion
+ t - a fizzy sapphire potion
+ c - a potion of curing
+
+
+   Skills:
+ + Level 8.8 Fighting
+ * Level 11.7 Axes
+ - Level 4.0 Throwing
+ + Level 8.2 Armour
+ + Level 7.5 Dodging
+ + Level 4.5 Evocations
+
+
+You have 9 spell levels left.
+You don't know any spells.
+Your spell library is empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (11/15)            Temple (0/1) D:7             Orc (0/2) D:9         
+  Lair: D:8-11      
+
+The Realm of Zot is guarded by orbs of fire.
+
+Altars:
+Cheibriados
+Dithmenos
+Elyvilon
+Fedhas
+Gozag
+Hepliaklqana
+Sif Muna
+Wu Jian
+Xom
+Yredelemnul
+The Shining One
+
+Shops:
+D:4 ?
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+You swap places with your vampire mosquito.
+Your troll is engulfed in poison gas.
+Your troll is poisoned.
+Unknown command.
+Unknown command.
+Unknown command.
+Your troll is engulfed in poison gas.
+Your troll looks even sicker.
+Unknown command.
+Unknown command.
+Unknown command.
+Your troll is engulfed in poison gas.
+Your troll looks even sicker.
+Unknown command.
+Unknown command.
+Unknown command.
+You swap places with your vampire mosquito.
+Your troll is engulfed in poison gas.
+Your troll looks as sick as possible!
+Unknown command.
+Unknown command.
+Unknown command.
+You swap places with your howler monkey.
+Your troll is engulfed in poison gas.
+Your troll looks as sick as possible!
+Unknown command.
+Unknown command.
+Unknown command.
+Your troll is engulfed in poison gas.
+Your troll looks as sick as possible!
+Unknown command.
+Unknown command.
+Unknown command.
+Partly explored, can't reach some places.
+Unknown command.
+Unknown command.
+[MiBe bot] route stage complete: D:11; [MiBe bot] route stage 2: Lair:1-5
+[MiBe bot] route blocked: entrance to Lair has not been discovered
+[Hit ESC to exit interpreter.]
+> crawl.dump_char()
+
+.......#
+ ......#
+  .....#
+   §§§§#
+   #h§§#
+   #☼§☼#
+   #^○§#
+   #§h@#
+   #☼hT#
+   #.yy#
+   #○.§#
+   #§§☼#
+  .§○§§☼.
+ #########
+
+
+You can see a friendly troll (summoned, extremely poisoned), 2 friendly vampire
+mosquitoes and 3 friendly howler monkeys.
+
+Vanquished Creatures
+  A hornet (D:9)
+  3 wyverns
+  9 yaks
+  2 steam dragons
+  An acid dragon (D:9)
+  A water moccasin (D:7)
+  4 orc warriors
+  A kobold geomancer (D:8)
+  A black bear (D:6)
+  3 ogres
+  6 centaurs
+  3 kobold brigands
+  2 bullfrogs
+  A gnoll sergeant (D:8)
+  3 scorpions
+  6 rock fish
+  3 marrowcudas
+  An electric eel (D:6)
+  A hound (D:6)
+  9 orc priests
+  4 jellies
+  2 gnoll boudas
+  3 drudes
+  2 iguanas
+  Terence (D:3)
+  2 clockroaches
+  16 orc wizards
+  18 gnolls
+  8 adders
+  2 shadow imps
+  3 white imps
+  4 ufetubi (D:4)
+  6 ribbon worms
+  3 dart slugs
+  45 orcs
+  4 hobgoblins
+  5 jackals
+  5 quokkas
+  4 ball pythons
+  7 bats
+  6 endoplasms
+  6 frilled lizards
+  9 goblins
+  23 kobolds
+  6 rats
+255 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexRecoveryFull4 the Minotaur Berserker began the quest
+                  | for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    49 | D:1      | Approach 2: hold enemies=1 HP=19
+    50 | D:1      | Approach 2: hold enemies=1 HP=19
+    71 | D:1      | Approach 2: lure enemies=1 HP=19
+    81 | D:1      | Approach 2: lure enemies=1 HP=19
+    91 | D:1      | Approach 2: lure enemies=1 HP=19
+    92 | D:1      | Approach 2: hold enemies=1 HP=19
+    93 | D:1      | Approach 2: hold enemies=1 HP=19
+    94 | D:1      | Approach 2: hold enemies=1 HP=19
+    95 | D:1      | Approach 2: hold enemies=1 HP=19
+   126 | D:1      | Approach 2: hold enemies=1 HP=19
+   127 | D:1      | Approach 2: hold enemies=1 HP=19
+   128 | D:1      | Approach 2: hold enemies=1 HP=19
+   129 | D:1      | Approach 2: hold enemies=1 HP=19
+   157 | D:1      | Approach 2: lure enemies=1 HP=20
+   171 | D:1      | Approach 2: lure enemies=1 HP=20
+   173 | D:1      | Approach 2: hold enemies=1 HP=20
+   174 | D:1      | Approach 2: hold enemies=1 HP=20
+   223 | D:1      | Approach 2: lure enemies=1 HP=20
+   224 | D:1      | Approach 2: lure enemies=1 HP=20
+   225 | D:1      | Approach 2: hold enemies=1 HP=20
+   226 | D:1      | Approach 2: hold enemies=2 HP=20
+   231 | D:1      | Reached XP level 2. HP: 15/27 MP: 1/1
+   233 | D:1      | Reached skill level 4 in Axes
+   285 | D:1      | Throwing training unlocked: 4 atropa-tipped darts
+   375 | D:1      | Approach 2: lure enemies=1 HP=27
+   376 | D:1      | Approach 2: lure enemies=1 HP=27
+   377 | D:1      | Approach 2: hold enemies=1 HP=27
+   378 | D:1      | Approach 2: hold enemies=1 HP=27
+   379 | D:1      | Approach 2: hold enemies=2 HP=27
+   380 | D:1      | Approach 2: hold enemies=2 HP=27
+   404 | D:1      | Reached ** piety under Trog
+   502 | D:1      | Approach 2: lure enemies=2 HP=27
+   537 | D:1      | Approach 2: lure enemies=1 HP=27
+   538 | D:1      | Approach 2: lure enemies=1 HP=27
+   539 | D:1      | Approach 2: hold enemies=1 HP=27
+   540 | D:1      | Approach 2: hold enemies=1 HP=27
+   671 | D:2      | Approach 2: hold enemies=1 HP=27
+   672 | D:2      | Approach 2: hold enemies=1 HP=27
+   673 | D:2      | Approach 2: hold enemies=1 HP=27
+   692 | D:2      | Approach 2: lure enemies=1 HP=27
+   724 | D:2      | Approach 2: lure enemies=1 HP=27
+   725 | D:2      | Approach 2: lure enemies=1 HP=27
+   726 | D:2      | Approach 2: hold enemies=1 HP=27
+   727 | D:2      | Approach 2: hold enemies=1 HP=27
+   728 | D:2      | Approach 2: hold enemies=1 HP=27
+   777 | D:2      | Reached XP level 3. HP: 33/33 MP: 0/2
+   881 | D:2      | Approach 2: lure enemies=1 HP=33
+   882 | D:2      | Approach 2: lure enemies=1 HP=33
+   883 | D:2      | Approach 2: hold enemies=1 HP=33
+   884 | D:2      | Approach 2: hold enemies=1 HP=33
+   885 | D:2      | Approach 2: hold enemies=1 HP=33
+   886 | D:2      | Approach 2: hold enemies=1 HP=33
+   916 | D:2      | Approach 2: lure enemies=2 HP=33
+   969 | D:2      | Approach 2: lure enemies=1 HP=33
+  1042 | D:2      | Approach 2: lure enemies=1 HP=33
+  1043 | D:2      | Approach 2: lure enemies=1 HP=33
+  1044 | D:2      | Approach 2: hold enemies=1 HP=33
+  1045 | D:2      | Approach 2: hold enemies=1 HP=33
+  1046 | D:2      | Approach 2: hold enemies=1 HP=33
+  1047 | D:2      | Approach 2: hold enemies=1 HP=33
+  1272 | D:2      | Reached XP level 4. HP: 39/40 MP: 0/3
+  1276 | D:2      | Reached skill level 1 in Throwing
+  1323 | D:2      | Approach 2: hold enemies=1 HP=40
+  1324 | D:2      | Approach 2: hold enemies=1 HP=40
+  1325 | D:2      | Approach 2: hold enemies=1 HP=40
+  1326 | D:2      | Approach 2: hold enemies=1 HP=40
+  1386 | D:2      | Approach 2: lure enemies=1 HP=40
+  1387 | D:2      | Approach 2: lure enemies=1 HP=40
+  1390 | D:2      | Approach 2: hold enemies=1 HP=40
+  1437 | D:2      | Approach 2: lure enemies=1 HP=40
+  1438 | D:2      | Approach 2: lure enemies=1 HP=40
+  1441 | D:2      | Approach 2: hold enemies=1 HP=40
+  1442 | D:2      | Approach 2: hold enemies=1 HP=40
+  1495 | D:2      | Approach 2: lure enemies=1 HP=40
+  1635 | D:2      | Approach 2: lure enemies=1 HP=40
+  1636 | D:2      | Approach 2: lure enemies=1 HP=40
+  1637 | D:2      | Approach 2: hold enemies=1 HP=40
+  1638 | D:2      | Approach 2: hold enemies=1 HP=40
+  1661 | D:2      | Approach 2: hold enemies=1 HP=40
+  1662 | D:2      | Approach 2: hold enemies=1 HP=40
+  1964 | D:3      | Approach 2: lure enemies=1 HP=40
+  1965 | D:3      | Approach 2: lure enemies=1 HP=40
+  1966 | D:3      | Approach 2: hold enemies=1 HP=40
+  1967 | D:3      | Approach 2: hold enemies=1 HP=40
+  1968 | D:3      | Approach 2: hold enemies=1 HP=40
+  1982 | D:3      | Encountered Terence
+  1989 | D:3      | Killed Terence
+  2058 | D:3      | Approach 2: lure enemies=1 HP=40
+  2059 | D:3      | Approach 2: lure enemies=2 HP=40
+  2063 | D:3      | Approach 2: hold enemies=1 HP=40
+  2068 | D:3      | Reached skill level 5 in Axes
+  2112 | D:3      | Approach 2: hold enemies=1 HP=40
+  2113 | D:3      | Approach 2: hold enemies=1 HP=40
+  2114 | D:3      | Approach 2: hold enemies=1 HP=40
+  2115 | D:3      | Approach 2: hold enemies=1 HP=40
+  2135 | D:3      | Approach 2: lure enemies=1 HP=40
+  2319 | D:3      | Approach 2: lure enemies=1 HP=40
+  2320 | D:3      | Approach 2: lure enemies=1 HP=40
+  2321 | D:3      | Approach 2: hold enemies=1 HP=40
+  2322 | D:3      | Approach 2: hold enemies=1 HP=40
+  2323 | D:3      | Approach 2: hold enemies=1 HP=40
+  2364 | D:3      | Approach 2: lure enemies=1 HP=40
+  2365 | D:3      | Approach 2: lure enemies=1 HP=40
+  2366 | D:3      | Approach 2: hold enemies=1 HP=40
+  2367 | D:3      | Approach 2: hold enemies=1 HP=40
+  2368 | D:3      | Approach 2: hold enemies=1 HP=40
+  2369 | D:3      | Approach 2: hold enemies=1 HP=40
+  2442 | D:3      | Approach 2: hold enemies=1 HP=40
+  2443 | D:3      | Approach 2: hold enemies=1 HP=40
+  2444 | D:3      | Approach 2: hold enemies=1 HP=40
+  2445 | D:3      | Approach 2: hold enemies=1 HP=40
+  2610 | D:3      | Approach 2: lure enemies=1 HP=40
+  2611 | D:3      | Approach 2: lure enemies=1 HP=40
+  2654 | D:3      | Approach 2: lure enemies=1 HP=40
+  2656 | D:3      | Approach 2: hold enemies=1 HP=40
+  2657 | D:3      | Approach 2: hold enemies=1 HP=40
+  2946 | D:4      | Approach 2: hold enemies=2 HP=40
+  2955 | D:4      | Reached XP level 5. HP: 47/47 MP: 0/4
+  2975 | D:4      | Found Ritoq's Magic Scroll Emporium.
+  3113 | D:4      | Reached XP level 6. HP: 53/53 MP: 0/5
+  3217 | D:4      | Approach 2: lure enemies=1 HP=53
+  3218 | D:4      | Approach 2: lure enemies=1 HP=53
+  3219 | D:4      | Approach 2: hold enemies=1 HP=53
+  3220 | D:4      | Approach 2: hold enemies=1 HP=53
+  3221 | D:4      | Approach 2: hold enemies=1 HP=53
+  3222 | D:4      | Approach 2: hold enemies=1 HP=53
+  3243 | D:4      | Approach 2: lure enemies=1 HP=53
+  3244 | D:4      | Approach 2: lure enemies=1 HP=53
+  3245 | D:4      | Approach 2: hold enemies=1 HP=53
+  3246 | D:4      | Approach 2: hold enemies=1 HP=53
+  3282 | D:4      | Approach 2: lure enemies=1 HP=53
+  3283 | D:4      | Approach 2: lure enemies=1 HP=53
+  3284 | D:4      | Approach 2: hold enemies=1 HP=53
+  3301 | D:4      | Approach 2: hold enemies=1 HP=53
+  3317 | D:4      | Approach 2: lure enemies=1 HP=53
+  3319 | D:4      | Approach 2: hold enemies=1 HP=53
+  3320 | D:4      | Approach 2: hold enemies=1 HP=53
+  3507 | D:4      | Reached *** piety under Trog
+  3808 | D:4      | Approach 2: hold enemies=1 HP=55
+  3809 | D:4      | Approach 2: hold enemies=1 HP=55
+  3814 | D:4      | Reached skill level 6 in Axes
+  3883 | D:4      | Bought a scroll of teleportation for 33 gold pieces
+  3883 | D:4      | Bought 2 scrolls of identify for 44 gold pieces
+  3886 | D:5      | Entered Level 5 of the Dungeon
+  3910 | D:5      | Approach 2: lure enemies=1 HP=55
+  3911 | D:5      | Approach 2: lure enemies=1 HP=55
+  3912 | D:5      | Approach 2: hold enemies=1 HP=55
+  3913 | D:5      | Approach 2: hold enemies=1 HP=55
+  3917 | D:5      | Reached skill level 5 in Fighting
+  3967 | D:5      | Reached XP level 7. HP: 61/61 MP: 4/6
+  4015 | D:5      | Approach 2: lure enemies=1 HP=61
+  4016 | D:5      | Approach 2: lure enemies=1 HP=61
+  4017 | D:5      | Approach 2: hold enemies=1 HP=61
+  4018 | D:5      | Approach 2: hold enemies=1 HP=61
+  4019 | D:5      | Approach 2: hold enemies=1 HP=61
+  4020 | D:5      | Approach 2: hold enemies=1 HP=61
+  4086 | D:5      | Approach 2: hold enemies=1 HP=61
+  4087 | D:5      | Approach 2: hold enemies=1 HP=61
+  4259 | D:5      | Approach 2: lure enemies=1 HP=61
+  4260 | D:5      | Approach 2: hold enemies=1 HP=61
+  4261 | D:5      | Approach 2: hold enemies=1 HP=61
+  4262 | D:5      | Approach 2: hold enemies=1 HP=61
+  4457 | D:5      | Approach 2: lure enemies=1 HP=61
+  4460 | D:5      | Approach 2: hold enemies=1 HP=61
+  4461 | D:5      | Approach 2: hold enemies=1 HP=61
+  4462 | D:5      | Approach 2: hold enemies=1 HP=61
+  4467 | D:5      | Reached skill level 7 in Axes
+  4548 | D:5      | Approach 2: lure enemies=1 HP=61
+  4549 | D:5      | Approach 2: lure enemies=1 HP=61
+  5234 | D:5      | Approach 2: hold enemies=1 HP=61
+  5235 | D:5      | Approach 2: hold enemies=1 HP=61
+  5236 | D:5      | Approach 2: hold enemies=1 HP=61
+  5237 | D:5      | Approach 2: hold enemies=1 HP=61
+  5524 | D:5      | Approach 2: hold enemies=1 HP=62
+  5525 | D:5      | Approach 2: hold enemies=1 HP=62
+  5526 | D:5      | Approach 2: hold enemies=1 HP=62
+  5527 | D:5      | Approach 2: hold enemies=1 HP=62
+  5632 | D:5      | Found a glowing golden altar of the Shining One.
+  5682 | D:6      | Reached skill level 5 in Armour
+  5682 | D:6      | Reached XP level 8. HP: 70/70 MP: 0/7
+  5759 | D:6      | Approach 2: lure enemies=1 HP=70
+  5760 | D:6      | Approach 2: lure enemies=1 HP=70
+  5761 | D:6      | Approach 2: hold enemies=1 HP=70
+  5797 | D:6      | Approach 2: lure enemies=1 HP=70
+  5802 | D:6      | Approach 2: hold enemies=1 HP=70
+  5873 | D:6      | Approach 2: lure enemies=1 HP=70
+  5876 | D:6      | Approach 2: hold enemies=1 HP=70
+  5927 | D:6      | Throw 1/3: boomerang -> black bear
+  5928 | D:6      | Throw 2/3: boomerang -> black bear
+  5929 | D:6      | Throw 3/3: boomerang -> black bear
+  5939 | D:6      | Reached skill level 8 in Axes
+  5939 | D:6      | Reached skill level 1 in Evocations
+  5979 | D:6      | Approach 2: lure enemies=1 HP=70
+  5980 | D:6      | Approach 2: lure enemies=1 HP=70
+  5981 | D:6      | Approach 2: hold enemies=1 HP=70
+  5982 | D:6      | Approach 2: hold enemies=1 HP=70
+  5983 | D:6      | Approach 2: hold enemies=1 HP=70
+  5986 | D:6      | Reached skill level 5 in Dodging
+  6103 | D:6      | Steam charge: visible HP 60
+  6184 | D:6      | Found an ornate altar of the Wu Jian Council.
+  6503 | D:6      | Approach 2: hold enemies=1 HP=71
+  6504 | D:6      | Approach 2: hold enemies=1 HP=71
+  6505 | D:6      | Approach 2: hold enemies=1 HP=71
+  6506 | D:6      | Approach 2: hold enemies=1 HP=71
+  6507 | D:6      | Throw 1/3: 4 boomerangs -> ogre
+  6591 | D:6      | Found an opulent altar of Gozag.
+  6880 | D:7      | Found a blossoming altar of Fedhas.
+  6914 | D:7      | Found a staircase to the Ecumenical Temple.
+  6914 | D:7      | Found a statue of an orb of fire.
+  6914 | D:7      | Found a statue of an orb of fire.
+  6926 | D:7      | Approach 2: lure enemies=1 HP=71
+  6927 | D:7      | Approach 2: hold enemies=1 HP=71
+  6928 | D:7      | Approach 2: hold enemies=1 HP=71
+  6929 | D:7      | Approach 2: hold enemies=1 HP=71
+  6930 | D:7      | Approach 2: hold enemies=1 HP=71
+  6933 | D:7      | Reached XP level 9. HP: 75/78 MP: 6/8
+  7013 | D:7      | Approach 2: lure enemies=1 HP=78
+  7015 | D:7      | Approach 2: hold enemies=1 HP=78
+  7016 | D:7      | Approach 2: hold enemies=1 HP=78
+  7248 | D:7      | Reached skill level 9 in Axes
+  7329 | D:7      | Steam charge: visible HP 78
+  7330 | D:7      | Steam charge: visible HP 78
+  7391 | D:7      | Approach 2: lure enemies=1 HP=79
+  7394 | D:7      | Approach 2: hold enemies=1 HP=79
+  7600 | D:7      | Approach 2: hold enemies=1 HP=79
+  8247 | D:8      | Approach 2: hold enemies=1 HP=79
+  8248 | D:8      | Approach 2: hold enemies=1 HP=79
+  8249 | D:8      | Approach 2: hold enemies=1 HP=79
+  8317 | D:8      | Approach 2: lure enemies=1 HP=79
+  8318 | D:8      | Approach 2: lure enemies=1 HP=79
+  8319 | D:8      | Approach 2: hold enemies=1 HP=79
+  8350 | D:8      | Found a white marble altar of Elyvilon.
+  8425 | D:8      | Approach 2: hold enemies=4 HP=79
+  8439 | D:8      | Reached skill level 10 in Axes
+  8546 | D:8      | You fall into a shaft and drop 1 floor!
+  8583 | D:8      | Approach 2: hold enemies=1 HP=80
+  8584 | D:8      | Approach 2: hold enemies=1 HP=80
+  8585 | D:8      | Approach 2: hold enemies=1 HP=80
+  8736 | D:8      | Throw 1/3: 4 boomerangs -> gnoll sergeant
+  8737 | D:8      | Throw 2/3: 4 boomerangs -> gnoll sergeant
+  8738 | D:8      | Throw 3/3: 4 boomerangs -> gnoll sergeant
+  8933 | D:8      | Found a shadowy altar of Dithmenos.
+  8985 | D:8      | Approach 2: hold enemies=1 HP=81
+  8986 | D:8      | Approach 2: hold enemies=1 HP=81
+  8987 | D:8      | Approach 2: hold enemies=1 HP=81
+  9083 | D:8      | Found a basalt altar of Yredelemnul.
+  9205 | D:8      | Throw 1/3: 4 boomerangs -> kobold geomancer
+  9206 | D:8      | Throw 2/3: 4 boomerangs -> kobold geomancer
+  9207 | D:8      | Throw 3/3: 4 boomerangs -> kobold geomancer
+  9324 | D:9      | Found a snail-covered altar of Cheibriados.
+  9421 | D:9      | Approach 2: lure enemies=1 HP=81
+  9422 | D:9      | Approach 2: lure enemies=1 HP=81
+  9423 | D:9      | Approach 2: hold enemies=1 HP=81
+  9424 | D:9      | Approach 2: hold enemies=1 HP=81
+  9463 | D:9      | Throw 1/3: 4 boomerangs -> centaur
+  9464 | D:9      | Throw 2/3: 4 boomerangs -> centaur
+  9483 | D:9      | Reached XP level 10. HP: 84/88 MP: 6/9
+  9538 | D:9      | Approach 2: lure enemies=1 HP=88
+  9541 | D:9      | Approach 2: hold enemies=1 HP=88
+  9542 | D:9      | Approach 2: hold enemies=1 HP=88
+  9648 | D:9      | Found a shimmering altar of Xom.
+  9742 | D:9      | Found a staircase to the Orcish Mines.
+ 10133 | D:9      | Reached skill level 11 in Axes
+ 10252 | D:9      | Approach 2: lure enemies=1 HP=90
+ 10253 | D:9      | Approach 2: lure enemies=1 HP=90
+ 10254 | D:9      | Approach 2: hold enemies=1 HP=90
+ 10255 | D:9      | Approach 2: hold enemies=1 HP=90
+ 10256 | D:9      | Approach 2: hold enemies=1 HP=90
+ 10281 | D:9      | Found a shimmering blue altar of Sif Muna.
+ 10342 | D:9      | Throw 1/3: 4 boomerangs -> centaur
+ 10539 | D:9      | Approach 2: hold enemies=1 HP=90
+ 10540 | D:9      | Approach 2: hold enemies=1 HP=90
+ 10541 | D:9      | Approach 2: hold enemies=2 HP=90
+ 10542 | D:9      | Approach 2: hold enemies=3 HP=90
+ 10543 | D:9      | Throw 1/3: 4 boomerangs -> yak
+ 10612 | D:9      | Approach 2: lure enemies=1 HP=90
+ 10613 | D:9      | Approach 2: lure enemies=1 HP=90
+ 10614 | D:9      | Approach 2: hold enemies=1 HP=90
+ 10615 | D:9      | Approach 2: hold enemies=1 HP=90
+ 10678 | D:9      | Approach 2: lure enemies=1 HP=90
+ 10679 | D:9      | Approach 2: lure enemies=1 HP=90
+ 10704 | D:9      | Approach 2: lure enemies=1 HP=90
+ 10900 | D:10     | Entered Level 10 of the Dungeon
+ 11171 | D:10     | Throw 1/3: 4 boomerangs -> centaur
+ 11172 | D:10     | Throw 2/3: 4 boomerangs -> centaur
+ 11173 | D:10     | Throw 3/3: 4 boomerangs -> centaur
+ 11267 | D:10     | Approach 2: lure enemies=1 HP=90
+ 11268 | D:10     | Approach 2: lure enemies=1 HP=90
+ 11269 | D:10     | Approach 2: hold enemies=1 HP=90
+ 11335 | D:10     | Found a hazy altar of Hepliaklqana.
+ 11424 | D:10     | Identified the maw talisman of Niodwuy {rPois}
+
+Illustrated notes
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 |
+---------------+-------------------------------+-----
+Axes           |     4     5     6  7  8 10 11 | 11.7
+Fighting       |        4        5     6  8    |  8.8
+Armour         |        3        4  5  6  7  8 |  8.2
+Throwing       |           1  2     3  4       |  4.0
+Dodging        |           3        4  5  6  7 |  7.5
+Evocations     |                       2  3  4 |  4.5
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+---------------------------+-------+-------+-------+-------++-------
+ Attack: Normal            |    82 |   130 |   217 |    93 ||   522
+  Melee: Hand axe          |    44 |       |       |       ||    44
+         Headbutt          |    25 |    33 |    56 |    36 ||   150
+         War axe           |    56 |   145 |   244 |   132 ||   577
+  Throw: Boomerang         |       |       |    12 |     5 ||    17
+ Invoke: Trog's Hand       |     3 |     4 |     9 |     4 ||    20
+         Berserk           |       |     6 |    30 |    11 ||    47
+  Drink: Curing            |       |       |     3 |       ||     3
+   Read: Teleportation     |     2 |     1 |     1 |       ||     4
+         Noise             |       |     1 |       |       ||     1
+         Vulnerability     |       |     1 |       |       ||     1
+         Amnesia           |       |     1 |       |       ||     1
+         Identify          |       |     5 |       |       ||     5
+         Immolation        |       |     1 |       |       ||     1
+         Enchant armour    |       |       |     1 |       ||     1
+         Fog               |       |       |     1 |       ||     1
+         Summoning         |       |       |       |     1 ||     1
+         Blinking          |       |       |       |     1 ||     1
+         Poison            |       |       |       |     1 ||     1
+ Armour: Animal skin       |    13 |       |       |       ||    13
+         Ring mail         |    66 |    21 |       |       ||    87
+         Scale mail        |       |    86 |     9 |       ||    95
+         Chain mail        |       |       |   197 |    37 ||   234
+         Plate armour      |       |       |       |   111 ||   111
+  Dodge: Dodged            |    46 |    82 |   101 |    68 ||   297
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  12073 |  11773 |    300 |      0 |   6780 |  11 | 1097.5 |
+       Dungeon |  12073 |  11773 |    300 |      0 |   6780 |  11 | 1097.5 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1917 daAuts
+     D:9: 1691 daAuts
+     D:7: 1281 daAuts
+     D:6: 1274 daAuts
+     D:2: 1246 daAuts
+     D:8: 1237 daAuts
+     D:3: 1065 daAuts
+     D:4: 991 daAuts
+    D:10: 687 daAuts
+     D:1: 670 daAuts
+    D:11: 10 daAuts
+
+DLua errors:
+
