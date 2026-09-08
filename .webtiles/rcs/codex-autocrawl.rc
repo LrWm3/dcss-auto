@@ -2753,7 +2753,8 @@ local function abyss_action(scan)
   if scan.any and (hp<70 or #scan.monsters>=3) and not you.status("about to teleport")
       and use_known_consumable("scroll","teleportation") then return true end
   if scan.any and you.turns()-a.last_resource>=10 then
-    if (scan.reachable_adjacent and use_known_consumable("scroll","fear"))
+    if (hp<70 and not you.status("invisible") and use_known_consumable("potion","invisibility"))
+        or (scan.reachable_adjacent and use_known_consumable("scroll","fear"))
         or (hp<80 and use_known_consumable("scroll","fog")) then
       a.last_resource=you.turns(); return true
     end
