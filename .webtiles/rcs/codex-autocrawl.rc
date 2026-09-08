@@ -34,6 +34,7 @@ AUTOCrawl_TACTICS = {
   early_commit = false, early_commit_xl = 4, early_commit_hp = 20,
   hidden_memory = 20, blind_probe_limit = 3,
   hidden_hand_cooldown = 8,
+  steam_charge = true, steam_charge_memory = 12, steam_charge_steps = 8,
   debug_encounters = false,
   steam_debug = false, -- diagnostic single-action replay; never a benchmark
   steam_debug_entry = false, -- start at D:6 arrival, record notes automatically
@@ -810,6 +811,79 @@ local function recovery_wait()
   return true
 end
 
+local function observe_steam_dragon(scan)
+  if not AUTOCrawl_TACTICS.steam_charge then BOT.steam_target=nil; return end
+  local a=BOT.recovery_anchor
+  if not a or a.level~=level_key() or not travel or not travel.waypoint_delta then return end
+  local px,py=travel.waypoint_delta(9)
+  if not px or not py then return end
+  local best,dist
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    if m and m.name and m:name()=="steam dragon" then
+      local d=math.max(math.abs(enemy.x),math.abs(enemy.y))
+      if not dist or d<dist then best,dist=enemy,d end
+    end
+  end
+  if best then
+    BOT.steam_target={level=level_key(),x=px+best.x,y=py+best.y,
+      seen=you.turns(),steps=0}
+  elseif BOT.steam_target and (BOT.steam_target.level~=level_key()
+      or you.turns()-BOT.steam_target.seen>AUTOCrawl_TACTICS.steam_charge_memory) then
+    BOT.steam_target=nil
+  end
+end
+
+local function steam_charge_action(scan)
+  local t=BOT.steam_target
+  if not AUTOCrawl_TACTICS.steam_charge or not t or t.level~=level_key()
+      or you.confused() or movement_locked()
+      or (you.mesmerised and you.mesmerised()) then return false end
+  local px,py=travel.waypoint_delta(9)
+  if not px or not py then return false end
+  local tx,ty=t.x-px,t.y-py
+  local target=scan.cells[map_key(tx,ty)]
+  local visible=target and target.visible and target.monster
+      and target.monster.name and target.monster:name()=="steam dragon"
+  if not visible and (you.turns()-t.seen>AUTOCrawl_TACTICS.steam_charge_memory
+      or t.steps>=AUTOCrawl_TACTICS.steam_charge_steps or (tx==0 and ty==0)) then
+    BOT.steam_target=nil; return false
+  end
+  local cells,steam={},false
+  for key,c in pairs(scan.cells) do
+    cells[key]=c
+    if c.cloud and tostring(c.cloud):lower():find("steam",1,true) then
+      steam=true
+      if not c.excluded then
+        local copy={}
+        for k,v in pairs(c) do copy[k]=v end
+        copy.unsafe=nil
+        copy.bot_escape_exclusion=true -- deliberate steam-only damage acceptance
+        cells[key]=copy
+      end
+    end
+  end
+  -- A vanished dragon without steam is not an invisible-enemy search target.
+  if not visible and not steam then BOT.steam_target=nil; return false end
+  if visible and math.max(math.abs(tx),math.abs(ty))==1 then
+    -- Ordinary combat retains berserk and its other adjacent-fight decisions.
+    return false
+  end
+  local _,_,step=bfs(cells,scan.blocked,function(c)
+    if not c then return false end
+    if visible then return math.max(math.abs(c.x-tx),math.abs(c.y-ty))==1 end
+    return c.x==tx and c.y==ty
+  end)
+  if not step then return false end
+  t.steps=t.steps+1
+  BOT.autofight_rejected=false
+  BOT.isolated_recovering=nil
+  say("steam charge: "..(visible and "closing on visible dragon" or "last-seen dragon position"))
+  if crawl.take_note then crawl.take_note("Steam charge: "..(visible and "visible" or "remembered").." HP "..you.hp()) end
+  crawl.sendkeys(step)
+  return true
+end
+
 local function isolated_recovery_action(scan)
   local e=BOT.encounter
   local hp,maxhp=you.hp()
@@ -1086,6 +1160,14 @@ local function combat_action(scan)
     end
   end
 
+  if AUTOCrawl_TACTICS.steam_charge then
+    for _,enemy in ipairs(scan.monsters) do
+      if enemy.monster and enemy.monster.name and enemy.monster:name()=="steam dragon" then
+        local cmd=CONFUSED_MOVE_COMMANDS[map_key(enemy.x,enemy.y)]
+        if cmd then crawl.do_commands({(cmd:gsub("CMD_MOVE_","CMD_ATTACK_"))}); return true end
+      end
+    end
+  end
   local memory=BOT.encounter and BOT.encounter.hidden_caster
   if memory then
     for _,enemy in ipairs(scan.monsters) do
@@ -1606,7 +1688,6 @@ local function goto_down_index(n)
   local target = count_down_cycle_targets()[n]
   if not target then return false end
   local scan = scan_hostiles()
-  observe_recovery_anchor(scan)
   local _, _, step = bfs(scan.cells, scan.blocked, function(cell)
     return cell.x == target.x and cell.y == target.y
   end)
@@ -2112,6 +2193,7 @@ function c_message(text, channel)
     e.hidden_caster=nil; e.hidden_missing=false
     BOT.disturbance_warning=false
   end
+  if s:find("you kill the steam dragon!",1,true) then BOT.steam_target=nil end
   if s:find("are you sure you want to cancel this blink",1,true) then
     return
   end
@@ -2280,6 +2362,8 @@ function ready()
 
   local scan = scan_hostiles()
   if debug_encounter_pause(scan) then return end
+  observe_recovery_anchor(scan)
+  observe_steam_dragon(scan)
   if AUTOCrawl_ROUTE.enabled then
     -- Route observation is bookkeeping; encounter decisions remain above travel.
     route_observe(scan)
@@ -2321,6 +2405,7 @@ function ready()
   if BOT.directional_rejected_at == you.turns() then
     crawl.do_commands({"CMD_WAIT"}); return
   end
+  if steam_charge_action(scan) then return end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
   if isolated_recovery_action(scan) then return end
