@@ -107,3 +107,33 @@ berserk. These are single-replay observations, not proof of a causal mechanism.
 Next useful target is encounter-specific crowd timing/positioning, not simply
 raising more consumable thresholds. Main RC remains unchanged; retain all three
 variants for further iteration without claiming a measured improvement.
+
+## Encounter controller v1
+
+Added a persistent encounter layer (prepare/fight/disengage/recover/idle) above
+single-action helpers. Tracks recent unseen danger, HP loss, group peak and
+bounded retreat budget. Emergency resources now precede movement restrictions
+and remain eligible during recent unseen attacks. Recovery holds exploration;
+crowd berserk requires multiple adjacent foes in a bounded visible group.
+This is a first-stage controller, not a full cover or escape-path planner.
+
+Fresh five-seed batch at 229d77f: reached `[D:10,D:2,D:7,D:8,D:9]`, minimum2,
+four deaths and one paused game. Deltas versus positioning-v1: `[+5,0,+2,+2,+4]`.
+No overall minimum improvement; seed2 died at XL2 to Natasha before Robin.
+Seed1 killed Sigmund and later died to Harold. The trace does not isolate which
+policy change caused that improvement. No reached floor is claimed cleared.
+
+CodexEncounter3 paused at turn6483 on D:7 after retreating while mesmerised by
+Maggie. Captured dump, saved character, and backed up save under the batch folder.
+Added mesmerism guard at 3fd66be and resumed the saved game in the same tmux
+session. It advanced to turn6500 and died to an orc warrior without another
+movement pause. Recorded separately as encounter-v1-mesmerism-resume: this is
+a **mixed-policy saved-state diagnostic**, not a fresh seed replay or replacement
+for the paused benchmark row. The current fixed RC has not had a full fresh batch.
+
+Seven Lua suites and nine runner tests pass. Keep encounter controller enabled
+for iteration. Known next issue: the resumed morgue repeatedly shows `survival:
+fear`, a targeting prompt, and `Unknown command` before ordinary melee. The
+generic guarded consumable helper cancels this targeting interaction; strategic
+escape intent is therefore not reliably executed. Also still missing: full
+ranged-cover planning and an effective resource-less escape from adjacent foes.

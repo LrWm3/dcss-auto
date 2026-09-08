@@ -1,0 +1,444 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 6144198052690956201 (custom seed)
+
+6180 CodexEncounter1 the Cleaver (level 10, -1/91 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by Harold
+             ... wielding a +0 war axe
+              (9 damage)
+             ... on level 10 of the Dungeon.
+             The game lasted 00:00:38 (9174 turns).
+
+CodexEncounter1 the Cleaver (Minotaur Berserker)    Turns: 9174, Time: 00:00:38
+
+Health: -1/91      AC: 16    Str: 36    XL:     10   Next: 60%
+Magic:  9/9        EV: 11    Int:  4    God:    Trog [**....]
+Gold:   581        SH:  0    Dex:  9    Spells: 9/9 levels left
+
+rFire   . . .  (100%)   g - +0 battleaxe
+rCold   . . .  (100%)     [offhand occupied]
+rNeg    . . .  (100%)   a - +2 chain mail of Wasted Space {rPois Str+3}
+rPois   +      (33%)    (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   f - +2 pair of gloves
+SInv    .               (no boots)
+Will    +++..           i - amulet of regeneration
+Stlth                   b - ring of willpower
+HPRegen 2.15/turn       c - +6 ring of strength
+MPRegen 0.11/turn
+
+%: no passive effects
+@: marked, strong-willed, on berserk cooldown, regenerating, hasted and slowed
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (3%), Trog's Hand (7%)
+
+
+You were on level 10 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 10 of its levels.
+
+You collected 581 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +1 heavy hand axe
+ g - a +0 battleaxe (weapon)
+Armour
+ a - the +2 chain mail of Wasted Space (worn) {rPois Str+3}
+   (You found it on level 4 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   Str+3:     It affects your strength (+3).
+   
+   It cannot be enchanted further.
+ e - a +2 scale mail of willpower
+ f - a +2 pair of gloves (worn)
+Jewellery
+ b - a ring of willpower (worn)
+ c - a +6 ring of strength (worn)
+ h - a ring of willpower
+ i - an amulet of regeneration (worn)
+Wands
+ p - a wand of polymorph (20)
+ c - a wand of iceblast (13)
+ a - a wand of flame (41)
+Scrolls
+ I - 2 scrolls of immolation
+ f - a scroll of fear
+ w - a scroll of enchant weapon
+ n - a scroll of torment {unknown}
+ V - a scroll of vulnerability
+ a - 4 scrolls of enchant armour
+ g - a scroll of fog
+ b - a scroll of blinking
+ c - a scroll of poison {unknown}
+Potions
+ i - 2 potions of invisibility
+ e - 2 potions of enlightenment
+ a - a potion of ambrosia
+ j - a potion of resistance {unknown}
+ l - 2 potions of heal wounds {unknown}
+ f - a potion of curing {unknown}
+ k - a potion of moonshine {unknown}
+ o - 2 potions of lignification {unknown}
+ M - 3 potions of mutation
+ q - a potion of attraction {unknown}
+
+
+   Skills:
+ + Level 9.0 Fighting
+ * Level 12.1 Axes
+ + Level 8.5 Armour
+ + Level 7.7 Dodging
+ + Level 4.5 Evocations
+
+
+You had 9 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (10/15)            Temple (0/1) D:6            Lair (0/5) D:9         
+    Orc (0/2) D:9         
+
+The Realm of Zot is guarded by orbs of entropy.
+
+Altars:
+Ashenzari
+Dithmenos
+Gozag
+Kikubaaqudgha
+Nemelex Xobeh
+Okawaru
+Trog
+Uskayaw
+Yredelemnul
+Zin
+
+Shops:
+D:1 (*(:   D:7 (
+
+Annotations:
+D:10 Harold
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Unknown command.
+You rip the net and break free! Harold hits you with a +0 war axe!!
+* * * LOW HITPOINT WARNING * * *
+The boulder beetle curls into a ball and begins rolling!
+[MiBe bot] survival: fear
+Press: ? - help, Dir - look around, f - activate
+Look: Harold, wielding a +0 war axe, wearing a +0 scale mail and quivering 3
+throwing nets (chance to affect: 79%)
+Unknown command.
+Unknown command.
+You slice Harold!! Your headbutt misses Harold.
+Harold is moderately wounded.
+Harold barely misses you.
+[MiBe bot] survival: fear
+Press: ? - help, Dir - look around, f - activate
+Look: Harold, wielding a +0 war axe, wearing a +0 scale mail and quivering 3
+throwing nets (moderately wounded, chance to affect: 79%)
+Unknown command.
+Unknown command.
+You slice Harold!!
+Harold is heavily wounded.
+Harold hits you with a +0 war axe.
+* * * LOW HITPOINT WARNING * * *
+[MiBe bot] survival: fear
+Press: ? - help, Dir - look around, f - activate
+Look: Harold, wielding a +0 war axe, wearing a +0 scale mail and quivering 3
+throwing nets (heavily wounded, chance to affect: 79%)
+Unknown command.
+Unknown command.
+You hit Harold but do no damage.
+Harold is heavily wounded.
+Harold hits you with a +0 war axe.
+* * * LOW HITPOINT WARNING * * *
+[MiBe bot] survival: fear
+Press: ? - help, Dir - look around, f - activate
+Look: Harold, wielding a +0 war axe, wearing a +0 scale mail and quivering 3
+throwing nets (heavily wounded, chance to affect: 79%)
+Unknown command.
+Unknown command.
+You slash the boulder beetle!
+The boulder beetle is almost dead.
+You barely miss Harold. Harold hits you with a +0 war axe!
+You die...
+Harold says, "Time to retire."
+
+ ##.....##....
+##............
+#.............
+#.............
+#...(....°....
+#.......°.....
+#......B......
+#...>.@.......
+##....@.......
+ ##.>.........
+  #####..#.###    ##
+       .##..##   ...
+       .#  ..###..#
+       !#  #B....#
+       .#  #..#
+       .# ##..#
+
+
+You could see a boulder beetle (rolling) and Harold.
+
+Vanquished Creatures
+  Maggie (D:8)
+  2 trolls
+  Sigmund (D:5)
+  Eustachio (D:4)
+  14 yaks
+  A steam dragon (D:9)
+  3 vampire mosquitoes (D:8)
+  Menkaure (D:5)
+  3 water moccasins
+  Duvessa (D:5)
+  A kobold geomancer (D:8)
+  An orc warrior (D:7)
+  2 sky beasts
+  A black bear (D:6)
+  3 centaurs
+  A phantom (D:7)
+  3 bullfrogs
+  2 scorpions (D:5)
+  3 wights (D:10)
+  Dowan (D:5)
+  A vampire bat (D:5)
+  7 howler monkeys
+  A bombardier beetle (D:5)
+  3 hounds
+  2 drudes (D:5)
+  An iguana (D:6)
+  3 orc wizards
+  5 gnolls
+  10 adders
+  2 white imps
+  4 dart slugs
+  6 ribbon worms
+  20 orcs
+  7 endoplasms
+  5 hobgoblins (D:1)
+  3 jackals (D:3)
+  3 quokkas
+  13 ball pythons
+  6 bats
+  4 bat zombies (D:5)
+  5 frilled lizards
+  6 goblins
+  13 kobolds
+  2 rats (D:2)
+178 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexEncounter1 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+     7 | D:1      | Found Keclu's Weapon Shop.
+    39 | D:1      | Found Zelu's General Store.
+   270 | D:1      | Found Ryshroff's Antique Weapon Emporium.
+   299 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   389 | D:1      | Reached skill level 4 in Axes
+   450 | D:1      | Found a faded altar of an unknown god.
+   731 | D:1      | Found Akaosiqoes's Book Shoppe.
+   919 | D:1      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1220 | D:2      | Reached XP level 4. HP: 40/40 MP: 3/3
+  1441 | D:2      | Found a glowing silver altar of Zin.
+  1477 | D:2      | Reached ** piety under Trog
+  1478 | D:2      | Reached skill level 5 in Axes
+  1764 | D:2      | Identified the quill talisman "Fiatir" {+Inv Will+}
+  1897 | D:3      | Found a broken altar of Ashenzari.
+  2188 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2506 | D:4      | Identified the +2 chain mail of Wasted Space {rPois Str+3}
+  2565 | D:4      | Encountered Eustachio
+  2572 | D:4      | Killed Eustachio
+  2573 | D:4      | Reached skill level 6 in Axes
+  2573 | D:4      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2854 | D:4      | Reached skill level 5 in Fighting
+  2992 | D:4      | Found an iron altar of Okawaru.
+  3282 | D:5      | Entered Level 5 of the Dungeon
+  3301 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3423 | D:5      | Reached skill level 7 in Axes
+  3513 | D:5      | Found a hide-covered altar of Uskayaw.
+  3567 | D:5      | Found a sand-covered staircase.
+  3823 | D:5      | Encountered Menkaure
+  3829 | D:5      | Killed Menkaure
+  3830 | D:5      | Reached skill level 5 in Armour
+  3922 | D:5      | Encountered Sigmund
+  3928 | D:5      | Killed Sigmund
+  4115 | D:5      | Encountered Duvessa
+  4115 | D:5      | Encountered Dowan
+  4119 | D:5      | Killed Duvessa
+  4120 | D:5      | Reached skill level 8 in Axes
+  4120 | D:5      | Reached skill level 5 in Dodging
+  4120 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4122 | D:5      | Killed Dowan
+  4275 | D:5      | Found an ancient bone altar of Kikubaaqudgha.
+  4555 | D:6      | Found a statue of an orb of entropy.
+  4556 | D:6      | Found a staircase to the Ecumenical Temple.
+  4557 | D:6      | Found a statue of an orb of entropy.
+  5101 | D:6      | Reached skill level 1 in Evocations
+  5602 | D:7      | Found Takkyil's Antique Weapon Boutique.
+  5660 | D:7      | Reached skill level 9 in Axes
+  6025 | D:7      | Found a sparkling altar of Nemelex Xobeh.
+  6025 | D:7      | Found a bloodstained altar of Trog.
+  6026 | D:7      | Found an opulent altar of Gozag.
+  6230 | D:7      | Reached XP level 9. HP: 79/79 MP: 8/8
+  6601 | D:8      | Encountered Maggie
+  6613 | D:8      | Killed Maggie
+  7018 | D:8      | Reached skill level 10 in Axes
+  7077 | D:8      | You fall into a shaft and drop 2 floors!
+  7077 | D:10     | Entered Level 10 of the Dungeon
+  7078 | D:10     | Found a glowing silver altar of Zin.
+  7081 | D:10     | Encountered a boulder beetle
+  7132 | D:10     | Reached skill level 11 in Axes
+  7158 | D:10     | Reached XP level 10. HP: 44/88 MP: 9/9
+  7602 | D:10     | Found a basalt altar of Yredelemnul.
+  7764 | D:9      | Found a staircase to the Orcish Mines.
+  7889 | D:9      | Found a flagged portal.
+  8622 | D:9      | Reached skill level 12 in Axes
+  8864 | D:9      | Found a staircase to the Lair.
+  8945 | D:9      | Found a shadowy altar of Dithmenos.
+  9162 | D:10     | Encountered Harold
+  9170 | D:10     | HP: 4/91 [Harold/+0 war axe (19)]
+  9174 | D:10     | Slain by Harold
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      scummos_arrival_forest, layout_loops_corners, serial_shops,
+          nicolae_shop_pleasant_corner_grove, shop, nicolae_shop_rolling_square,
+          nicolae_shop_temple_entry_statues_fountains, serial_rivers,
+          chequers_serial_rivers_micro_c, chequers_serial_rivers_micro_c,
+          chequers_serial_rivers_large_b, chequers_serial_rivers_micro_b,
+          chequers_serial_rivers_marsh, dilly_ecumenical_altar_fadedgnrine,
+          st_stairs_9
+D:2:      layout_rooms, basic_altar, minmay_cupped
+D:3:      layout_basic, nicolae_overflow_crystal_walls
+D:4:      layout_rooms, okawaru_metal_pillars_1_2, serial_co_window_serial,
+          co_window_paths_a, co_window_corner_a, co_window_paths_a,
+          co_window_paths_a, co_window_paths_a, co_window_2corner,
+          co_window_2corner, co_window_unsneaky_path_a, uniq_eustachio
+D:5:      layout_loops_cross, kennysheep_vampire_church, old_standard_altar,
+          lightli_ossuary_entry_decrepit_ruins, minmay_bent, uniq_menkaure,
+          uniq_sigmund, uniq_duvessa
+D:6:      layout_layer_cave, temple_entry_dummy, kennysheep_boxes
+D:7:      layout_layer_cave, grunt_temple_overflow_open, serial_shops,
+          shop_statue, dk_noncrumbling_4
+D:8:      layout_loops_corners, uniq_maggie
+D:9:      layout_basic, nicolae_dithmenos_through_a_glass_darkly,
+          lair_entry_dummy, orc_0_dummy, enter_bailey_6
+D:10:     layout_rooms, nicolae_zin_agzebo, nicolae_overflow_lobbying_the_gods,
+          uniq_harold
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 |
+---------------+-------------------------------+-----
+Axes           |     4     5  6     8  9 11 12 | 12.1
+Fighting       |     4           5  6  7  8  9 |  9.0
+Armour         |        3     4     5  6  7  8 |  8.5
+Dodging        |           3     4  5     7    |  7.7
+Evocations     |                       2  3  4 |  4.5
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+---------------------------+-------+-------+-------+-------++-------
+ Attack: Normal            |    70 |   106 |   134 |    54 ||   364
+  Melee: Hand axe          |    78 |   118 |   172 |    16 ||   384
+         Headbutt          |    18 |    35 |    51 |    14 ||   118
+         Battleaxe         |       |       |       |    53 ||    53
+ Invoke: Berserk           |     3 |     6 |    19 |    10 ||    38
+         Trog's Hand       |       |       |     2 |     1 ||     3
+  Drink: Haste             |       |       |     2 |     1 ||     3
+   Read: Identify          |       |     2 |     1 |     2 ||     5
+         Enchant armour    |       |     1 |       |       ||     1
+         Teleportation     |       |     1 |     4 |     1 ||     6
+         Fear              |       |       |     1 |       ||     1
+         Enchant weapon    |       |       |     1 |       ||     1
+         Immolation        |       |       |     1 |       ||     1
+         Blinking          |       |       |     1 |       ||     1
+         Vulnerability     |       |       |     1 |       ||     1
+         Fog               |       |       |       |     1 ||     1
+ Armour: Ring mail         |    46 |    44 |       |       ||    90
+         Animal skin       |     2 |       |       |       ||     2
+         Chain mail        |       |    23 |   127 |    76 ||   226
+  Dodge: Dodged            |    49 |    57 |    73 |    27 ||   206
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   9581 |   9257 |    324 |      0 |   5862 |  10 |  958.1 |
+       Dungeon |   9581 |   9257 |    324 |      0 |   5862 |  10 |  958.1 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:1: 1254 daAuts
+     D:8: 1225 daAuts
+     D:6: 1219 daAuts
+     D:5: 1168 daAuts
+     D:7: 1102 daAuts
+     D:9: 860 daAuts
+     D:4: 822 daAuts
+     D:2: 705 daAuts
+     D:3: 628 daAuts
+    D:10: 594 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    22 |    36 |    36 |    12 ||   106
+         Kill Undead  |     0 |     0 |     9 |     0 ||     9
+          Kill Demon  |     0 |     1 |     2 |     0 ||     3
+         Kill Wizard  |     0 |     1 |     4 |     1 ||     5
+----------------------+-------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+----------------------+-------+-------+-------+-------++-------
+         Kill Living  |    33 |    55 |    55 |    18 ||   161
+         Kill Undead  |     0 |     0 |    13 |     0 ||    13
+          Kill Demon  |     0 |     1 |     3 |     0 ||     4
+         Kill Wizard  |     0 |     1 |     7 |     1 ||     9
+----------------------+-------+-------+-------+-------++-------
+

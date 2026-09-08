@@ -1,0 +1,316 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 1760771545328102746 (custom seed)
+
+CodexEncounter3 the Cleaver (Minotaur Berserker)    Turns: 6483, Time: 00:00:52
+
+Health: 70/80      AC:  9    Str: 26    XL:     9   Next: 40%
+Magic:  8/8        EV: 11    Int:  4    God:    Trog [**....]
+Gold:   379        SH:  0    Dex: 10    Spells: 8/8 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   f - +0 scale mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   (no gloves)
+SInv    +               (no boots)
+Will    .....           c - amulet of chemistry
+Stlth                   d - ring of see invisible
+HPRegen 0.33/turn       (no ring)
+MPRegen 0.11/turn
+
+%: no passive effects
+@: on berserk cooldown, mesmerised, slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You are on level 7 of the Dungeon.
+You worship Trog.
+Trog is pleased with you.
+You have visited 1 branch of the dungeon, and seen 7 of its levels.
+
+You have collected 379 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ b - a +0 cloak (worn)
+ e - a scarf of invisibility
+ f - a +0 scale mail (worn)
+Jewellery
+ c - an amulet of chemistry (worn)
+ d - a ring of see invisible (worn)
+Wands
+ p - a wand of polymorph (11)
+Scrolls
+ c - a scroll labelled ITSYECELAQ
+ d - a scroll labelled MYSYMUS AGEST
+ I - a scroll of immolation
+ S - a scroll of silence
+ f - a scroll of fear
+ k - a scroll labelled ELAIBL YLIGG
+ h - a scroll labelled MIHOENNIVEI
+ m - a scroll labelled RAM JADUSTO
+ o - 2 scrolls labelled XYRUOG VOALUD
+ e - a scroll labelled FELEULEMON
+ N - a scroll of noise
+ i - a scroll of identify
+Potions
+ e - a potion of enlightenment
+ B - 3 potions of berserk rage
+ c - 3 potions of curing
+ w - 3 potions of heal wounds
+ l - an inky potion
+ p - a viscous grey potion
+ f - a yellow potion
+
+
+   Skills:
+ + Level 7.6 Fighting
+ * Level 10.1 Axes
+ + Level 7.1 Armour
+ + Level 6.3 Dodging
+ + Level 3.0 Evocations
+
+
+You have 8 spell levels left.
+You don't know any spells.
+Your spell library is empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)            
+Temple: D:4-7       
+
+Altars:
+Dithmenos
+Gozag
+Sif Muna
+Vehumet
+
+Shops:
+D:4 ([[
+
+Annotations:
+D:7 Maggie
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Trog accepts your kill.
+You closely miss the killer bee. You miss the killer bee. You feel sick.
+The killer bee closely misses you. The killer bee misses you.
+You completely miss the killer bee. Your headbutt misses the killer bee.
+The killer bee is heavily wounded.
+You closely miss the killer bee. The killer bee misses you.
+You furiously retaliate! You headbutt the killer bee!
+You kill the killer bee!
+Trog accepts your kill.
+The killer bee barely misses you.
+Your Evocations skill increases to level 3!
+You barely miss the killer bee. Your headbutt misses the killer bee.
+The killer bee is heavily wounded.
+You feel sick. The killer bee barely misses you.
+You hit the killer bee. Your headbutt misses the killer bee.
+The killer bee is severely wounded.
+The killer bee stings you but does no damage.
+You slash the killer bee!
+You kill the killer bee!
+Trog accepts your kill.
+You feel sick.
+There is a stone staircase leading up, spattered with blood here.
+[MiBe bot] encounter: fight -> recover (HP 89%, peak 6)
+You feel sick.
+You feel a strong urge to attack something.
+You encounter Maggie the Vainglorious. She is wielding a +3 heavy morningstar.
+[MiBe bot] encounter: recover -> fight (HP 89%, peak 6)
+You feel sick.
+Maggie shouts! You hear a shout! x2
+You feel your anger nearly subside. You are no longer berserk.
+You are exhausted. You feel yourself slow down.
+You feel sick.
+You are no longer poisoned.
+[MiBe bot] encounter: fight -> disengage (HP 87%, peak 6)
+Maggie attempts to bespell you!
+You are mesmerised by Maggie!
+You cannot move away from Maggie!
+[MiBe bot] movement rejected -- paused until a manual turn advances.
+Char dumped to 'morgue/CodexEncounter3.txt'.
+Saving game... please wait.
+
+######.
+.......      .
+.......##   .##
+........#  ...
+........# #.###
+........#.....
+......†.#.#.###
+......†<.......
+...##..@#.#.###
+.............#
+...##...#.##.#
+..  #..@#.#  #
+.   #...# #
+    #....
+    #.#..
+    #.###
+    #.
+
+
+You can see Maggie (mesmerising).
+
+Vanquished Creatures
+  Sigmund (D:3)
+  Eustachio (D:4)
+  2 water moccasins
+  2 black bears (D:6)
+  An ice beast (D:6)
+  A sky beast (D:6)
+  An ogre (D:4)
+  A centaur (D:6)
+  2 phantoms
+  A kobold brigand (D:5)
+  A bullfrog (D:6)
+  2 scorpions
+  6 killer bees (D:7)
+  A howler monkey (D:5)
+  A bombardier beetle (D:5)
+  2 jellies
+  5 hounds
+  4 orc priests (D:6)
+  A gnoll bouda (D:6)
+  7 iguanas
+  Jessica (D:3)
+  A clockroach (D:3)
+  5 orc wizards
+  Natasha (D:3)
+  4 gnolls (D:2)
+  12 adders
+  A white imp (D:6)
+  An ufetubus (D:5)
+  A ribbon worm (D:4)
+  2 dart slugs
+  22 orcs
+  6 endoplasms
+  10 hobgoblins
+  4 jackals (D:2)
+  3 quokkas
+  4 ball pythons
+  2 bats (D:2)
+  6 frilled lizards
+  6 goblins
+  3 kobolds
+  4 rats
+142 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexEncounter3 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   221 | D:1      | Found a faded altar of an unknown god.
+   546 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   591 | D:1      | Reached skill level 4 in Axes
+  1242 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1435 | D:2      | Reached XP level 4. HP: 38/40 MP: 3/3
+  1436 | D:2      | Reached ** piety under Trog
+  1550 | D:2      | Reached skill level 5 in Axes
+  2308 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2381 | D:3      | Encountered Sigmund
+  2386 | D:3      | Killed Sigmund
+  2387 | D:3      | Reached skill level 5 in Fighting
+  2387 | D:3      | Reached XP level 6. HP: 56/56 MP: 5/5
+  2486 | D:3      | Encountered Jessica
+  2493 | D:3      | Killed Jessica
+  2494 | D:3      | Reached skill level 6 in Axes
+  2918 | D:3      | Encountered Natasha
+  2927 | D:3      | Killed Natasha
+  3247 | D:4      | Encountered Eustachio
+  3254 | D:4      | Killed Eustachio
+  3255 | D:4      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3337 | D:4      | Reached skill level 7 in Axes
+  3455 | D:4      | Reached skill level 5 in Armour
+  3492 | D:4      | Found Fibbysoi's Armour Emporium.
+  3509 | D:4      | Found Bytussi's Armour Shop.
+  3570 | D:4      | Found Num Usuu's Weapon Shoppe.
+  4248 | D:5      | Entered Level 5 of the Dungeon
+  4370 | D:5      | Found an opulent altar of Gozag.
+  4371 | D:5      | Found a shimmering blue altar of Sif Muna.
+  4425 | D:5      | Found a shadowy altar of Dithmenos.
+  4428 | D:5      | Found a radiant altar of Vehumet.
+  4811 | D:5      | Reached skill level 5 in Dodging
+  4811 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  5133 | D:5      | Reached skill level 8 in Axes
+  5167 | D:5      | Reached skill level 1 in Evocations
+  5493 | D:6      | Reached skill level 9 in Axes
+  5676 | D:6      | Reached XP level 9. HP: 79/79 MP: 8/8
+  6472 | D:7      | Reached skill level 10 in Axes
+  6479 | D:7      | Encountered Maggie
+
+Illustrated notes
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Axes           |     4     5     6  7  9 10 | 10.1
+Fighting       |        4     5     6  7    |  7.6
+Armour         |        3     4     5  6  7 |  7.1
+Dodging        |           3     4  5     6 |  6.3
+Evocations     |                       2  3 |  3.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    65 |    91 |   186 ||   342
+  Melee: Hand axe          |    66 |    97 |   219 ||   382
+         Headbutt          |    16 |    17 |    66 ||    99
+ Invoke: Berserk           |     2 |     7 |    19 ||    28
+         Trog's Hand       |       |     1 |     4 ||     5
+  Drink: Curing            |       |       |     1 ||     1
+         Heal wounds       |       |       |     1 ||     1
+   Read: Teleportation     |     4 |       |     2 ||     6
+         Fear              |       |     1 |       ||     1
+         Immolation        |       |     1 |       ||     1
+         Identify          |       |     2 |     2 ||     4
+         Silence           |       |       |     1 ||     1
+         Noise             |       |       |     1 ||     1
+   Stab: Sleeping          |     1 |       |       ||     1
+ Armour: Animal skin       |     6 |       |       ||     6
+         Ring mail         |    40 |    51 |     5 ||    96
+         Scale mail        |       |       |   113 ||   113
+  Dodge: Dodged            |    27 |    44 |    91 ||   162
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   6748 |   6508 |    240 |      0 |   4027 |   7 |  964.0 |
+       Dungeon |   6748 |   6508 |    240 |      0 |   4027 |   7 |  964.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:2: 1337 daAuts
+     D:6: 1264 daAuts
+     D:4: 1094 daAuts
+     D:5: 1087 daAuts
+     D:1: 983 daAuts
+     D:3: 970 daAuts
+     D:7: 10 daAuts
+
+DLua errors:
+

@@ -1,0 +1,368 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 17908030050512890810 (custom seed)
+
+3385 CodexEncounter4 the Cleaver (level 9, -4/81 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Succumbed to a gnoll sergeant's poison
+             ... on level 8 of the Dungeon.
+             The game lasted 00:00:39 (8638 turns).
+
+CodexEncounter4 the Cleaver (Minotaur Berserker)    Turns: 8638, Time: 00:00:39
+
+Health: -4/81      AC: 20    Str: 26    XL:     9   Next: 74%
+Magic:  6/8        EV:  8    Int:  4    God:    Trog [**....]
+Gold:   381        SH:  0    Dex: 10    Spells: 8/8 levels left
+
+rFire   . . .  (100%)   d - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   b - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   c - +0 cloak
+rCorr   .      (100%)   a - +0 pair of gloves {Infuse}
+SInv    .               (no boots)
+Will    ++...           (no amulet)
+Stlth                   f - +4 ring of protection
+HPRegen 1.33/turn       (no ring)
+MPRegen 0.11/turn
+
+%: infuse magic (1 MP)
+@: lethally poisoned (-4 -> -23), strong-willed, regenerating
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You were on level 8 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 8 of its levels.
+
+You collected 381 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +0 war axe (weapon)
+Missiles
+ e - a throwing net (quivered)
+Armour
+ a - a +0 pair of gloves of infusion (worn)
+ b - a +0 plate armour (worn)
+ c - a +0 cloak (worn)
+Jewellery
+ f - a +4 ring of protection (worn)
+Wands
+ e - a wand of paralysis (9)
+ a - a wand of flame (27)
+Scrolls
+ N - 2 scrolls of noise
+ e - a scroll of summoning {unknown}
+ x - 2 scrolls of amnesia
+ I - 2 scrolls of immolation
+ V - a scroll of vulnerability
+ j - a scroll of fear {unknown}
+ l - a scroll of brand weapon {unknown}
+ u - a scroll of poison {unknown}
+ g - 2 scrolls of fog
+ c - a scroll of revelation {unknown}
+ h - a scroll of enchant armour {unknown}
+ m - a scroll of blinking {unknown}
+Potions
+ A - 2 potions of attraction
+ e - 3 potions of enlightenment
+ k - 2 potions of invisibility {unknown}
+ n - a potion of moonshine {unknown}
+ f - a potion of mutation {unknown}
+ b - 2 potions of brilliance
+ p - a potion of ambrosia {unknown}
+ s - a potion of might {unknown}
+ d - a potion of heal wounds {unknown}
+ o - a potion of berserk rage {unknown}
+
+
+   Skills:
+ + Level 8.0 Fighting
+ * Level 10.7 Axes
+ + Level 7.5 Armour
+ + Level 6.8 Dodging
+ + Level 3.4 Evocations
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (8/15)             Temple (0/1) D:7         
+  Lair: D:8-11      
+
+The Realm of Zot is guarded by orbs of fire.
+
+Altars:
+Dithmenos
+Elyvilon
+Fedhas
+Gozag
+Wu Jian
+The Shining One
+
+Shops:
+D:4 ?
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Your headbutt misses the gnoll sergeant.
+You feel extremely sick.
+The gnoll barely misses you.
+The gnoll sergeant hits you but does no damage.
+You are more poisoned.
+You slash the gnoll sergeant!
+The gnoll sergeant is moderately wounded.
+You feel extremely sick.
+The gnoll hits you from afar with a +0 halberd!
+The gnoll sergeant hits you with a +5 spear of venom.
+You are more poisoned.
+You slash the gnoll sergeant!
+The gnoll sergeant is severely wounded.
+* * * LOW HITPOINT WARNING * * *
+You feel extremely sick.
+The gnoll barely misses you.
+The gnoll sergeant hits you but does no damage.
+You are lethally poisoned!
+You barely miss the gnoll sergeant.
+The gnoll sergeant is severely wounded.
+* * * LOW HITPOINT WARNING * * *
+You feel extremely sick.
+The gnoll hits you but does no damage.
+The gnoll sergeant hits you but does no damage.
+You are more poisoned.
+You closely miss the gnoll sergeant. You headbutt the gnoll sergeant.
+The gnoll sergeant is severely wounded.
+* * * LOW HITPOINT WARNING * * *
+You feel extremely sick.
+The gnoll closely misses you.
+The gnoll sergeant hits you but does no damage.
+You are more poisoned.
+You closely miss the gnoll sergeant.
+The gnoll sergeant is severely wounded.
+* * * LOW HITPOINT WARNING * * *
+You feel extremely sick.
+The gnoll hits you but does no damage. The gnoll sergeant barely misses you.
+You barely miss the gnoll sergeant. You headbutt the gnoll sergeant.
+The gnoll sergeant is severely wounded.
+You die...
+
+      #.#
+      #.#
+#######.#
+#.......#
+#.#######
+#.#
+#.#
+#.####.#
+#.@jjj.#
+########
+
+
+You could see a gnoll sergeant and 2 gnolls.
+
+Vanquished Creatures
+  A wyvern (D:8)
+  4 yaks (D:8)
+  2 steam dragons
+  A water moccasin (D:7)
+  An orc warrior (D:6)
+  A kobold geomancer (D:5)
+  A black bear (D:6)
+  3 ogres
+  A centaur (D:5)
+  A kobold brigand (D:5)
+  A bullfrog (D:6)
+  3 scorpions
+  2 rock fish (D:8)
+  2 marrowcudas (D:6)
+  An electric eel (D:6)
+  A hound (D:6)
+  6 orc priests
+  4 jellies
+  2 gnoll boudas
+  2 drudes
+  2 iguanas
+  Terence (D:3)
+  2 clockroaches
+  7 orc wizards
+  16 gnolls
+  8 adders
+  2 shadow imps
+  3 white imps
+  4 ufetubi (D:4)
+  6 ribbon worms
+  3 dart slugs
+  30 orcs
+  4 hobgoblins
+  5 jackals
+  5 quokkas
+  4 ball pythons
+  7 bats
+  6 endoplasms
+  5 frilled lizards
+  9 goblins
+  13 kobolds
+  6 rats
+188 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexEncounter4 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   114 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   123 | D:1      | Reached skill level 4 in Axes
+   601 | D:2      | Reached ** piety under Trog
+   670 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+  1097 | D:2      | Reached XP level 4. HP: 35/40 MP: 0/3
+  2049 | D:3      | Encountered Terence
+  2057 | D:3      | Killed Terence
+  2058 | D:3      | Reached skill level 5 in Axes
+  2877 | D:4      | Reached XP level 5. HP: 47/47 MP: 1/4
+  3003 | D:4      | Reached *** piety under Trog
+  3165 | D:4      | Reached XP level 6. HP: 51/55 MP: 2/5
+  3169 | D:4      | Reached skill level 6 in Axes
+  3247 | D:4      | Reached skill level 5 in Fighting
+  3371 | D:4      | Found Ritoq's Magic Scroll Emporium.
+  3838 | D:5      | Entered Level 5 of the Dungeon
+  3986 | D:5      | Reached XP level 7. HP: 61/61 MP: 4/6
+  4131 | D:5      | Reached skill level 7 in Axes
+  4178 | D:5      | Reached skill level 5 in Armour
+  5119 | D:5      | Reached skill level 5 in Dodging
+  5160 | D:5      | Found a glowing golden altar of the Shining One.
+  5201 | D:5      | Reached skill level 8 in Axes
+  5201 | D:5      | Reached XP level 8. HP: 70/70 MP: 4/7
+  5942 | D:6      | Reached skill level 1 in Evocations
+  6007 | D:6      | Found an ornate altar of the Wu Jian Council.
+  6284 | D:6      | Reached skill level 9 in Axes
+  6446 | D:6      | Found an opulent altar of Gozag.
+  6605 | D:6      | Reached XP level 9. HP: 79/79 MP: 6/8
+  7515 | D:7      | Found a blossoming altar of Fedhas.
+  7767 | D:7      | Found a statue of an orb of fire.
+  7768 | D:7      | Found a staircase to the Ecumenical Temple.
+  7772 | D:7      | Found a statue of an orb of fire.
+  8128 | D:8      | Reached skill level 10 in Axes
+  8253 | D:8      | Found a white marble altar of Elyvilon.
+  8335 | D:8      | Found a shadowy altar of Dithmenos.
+  8637 | D:8      | HP: 1/81 [poisoned by a gnoll sergeant]
+  8638 | D:8      | Succumbed to a gnoll sergeant's poison
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      wander_arrival_estate, layout_rooms, minmay_tromino_v4_a
+D:2:      layout_basic
+D:3:      layout_basic, uniq_terence
+D:4:      layout_loops_ring, serial_shops, nicolae_stop_n_shop_2
+D:5:      minmay_inner_zag, layout_basic, nicolae_tso_swordbearing_angel
+D:6:      layout_loops_ring, nicolae_wu_jian_rivers_and_lakes,
+          nicolae_gozag_cash_rules_everything_around_me
+D:7:      layout_basic, fedhas_altar_3, temple_green
+D:8:      layout_basic, kennysheep_ying_yang, grunt_dithmenos_shadows
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Axes           |     4     5     6  8  9 10 | 10.7
+Armour         |        3     4     5  6  7 |  7.5
+Fighting       |        4        5  6  7  8 |  8.0
+Dodging        |           3     4  5     6 |  6.8
+Evocations     |                       2  3 |  3.4
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    89 |    94 |   190 ||   373
+  Melee: Hand axe          |    40 |       |       ||    40
+         Headbutt          |    22 |    33 |    48 ||   103
+         War axe           |    56 |   114 |   233 ||   403
+ Invoke: Berserk           |     2 |     9 |    25 ||    36
+         Trog's Hand       |     1 |     3 |     6 ||    10
+  Drink: Curing            |       |       |     3 ||     3
+   Read: Teleportation     |       |     3 |       ||     3
+         Noise             |       |     1 |       ||     1
+         Vulnerability     |       |     1 |       ||     1
+         Amnesia           |       |     1 |       ||     1
+         Identify          |       |     4 |       ||     4
+         Immolation        |       |     1 |       ||     1
+         Fog               |       |     1 |       ||     1
+ Armour: Animal skin       |     5 |       |       ||     5
+         Ring mail         |    47 |    18 |       ||    65
+         Scale mail        |       |    16 |       ||    16
+         Chain mail        |       |    31 |       ||    31
+         Plate armour      |       |    24 |   229 ||   253
+  Dodge: Dodged            |    53 |    60 |    68 ||   181
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   9056 |   8660 |    396 |      0 |   5156 |   8 | 1132.0 |
+       Dungeon |   9056 |   8660 |    396 |      0 |   5156 |   8 | 1132.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:5: 1992 daAuts
+     D:2: 1391 daAuts
+     D:6: 1331 daAuts
+     D:7: 1224 daAuts
+     D:4: 1020 daAuts
+     D:3: 986 daAuts
+     D:8: 557 daAuts
+     D:1: 551 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    30 |    38 |    47 ||   115
+         Kill Undead  |     0 |     0 |     1 ||     1
+          Kill Demon  |     0 |     3 |     5 ||     8
+         Kill Wizard  |     0 |     2 |     2 ||     4
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    44 |    58 |    73 ||   175
+         Kill Undead  |     0 |     0 |     2 ||     2
+          Kill Demon  |     0 |     4 |     7 ||    11
+         Kill Wizard  |     0 |     4 |     4 ||     8
+----------------------+-------+-------+-------++-------
+
