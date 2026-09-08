@@ -29,6 +29,17 @@ observe(scan); assert(BOT.encounter.phase=="prepare")
 scan.reachable_adjacent=true; observe(scan); assert(BOT.encounter.phase=="fight")
 slow=true; observe(scan); assert(BOT.encounter.phase=="disengage")
 assert(not rage(scan),"do not commit berserk during disengagement")
+you.xl=function() return 2 end
+scan.worst=2; hp=40; slow=false
+assert(rage(scan),"early adjacent threat may require commitment when escape fails")
+slow=true
+assert(not rage(scan),"emergency commitment cannot bypass cooldown")
+slow=false; hp=19
+assert(not rage(scan),"emergency commitment has its own HP floor")
+you.xl=function() return 5 end
+hp=40
+assert(not rage(scan),"early-game override must not leak to higher levels")
+you.xl=nil; hp=100; slow=true; scan.worst=1
 scan.any=false; scan.monsters={}; scan.reachable_adjacent=false
 observe(scan); assert(BOT.encounter.phase=="recover")
 assert(manage(scan) and commands[#commands]=="CMD_WAIT","recover without exploring")
