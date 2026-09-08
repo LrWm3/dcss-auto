@@ -1609,8 +1609,15 @@ local function shop_catalogue()
   if not slot then slot=s.next_slot; s.next_slot=(slot+1)%8; travel.set_waypoint(slot,0,0) end
   local offers={}
   for i,row in ipairs(stock) do
-    local d=shop_offer(row[1],row[2],i)
-    if d then offers[#offers+1]=d end
+    -- ShopMenu resets to type order on entry; '/' selects price order.
+    -- Only unique prices have an unambiguous rank (C++ ties are unstable).
+    local rank,ties=1,0
+    for _,other in ipairs(stock) do
+      if other[2]<row[2] then rank=rank+1 end
+      if other[2]==row[2] then ties=ties+1 end
+    end
+    local d=shop_offer(row[1],row[2],rank)
+    if d and ties==1 then offers[#offers+1]=d end
   end
   s.shops[slot]={offers=offers,level=level_key()}
   return slot
@@ -1658,7 +1665,7 @@ local function shopping_action(scan)
     end
     if not d or d.index>26 or #items.inventory()>=50 then a.failed[best.slot]=true; return true end
     local gold=you.gold()
-    guarded_keys("<"..string.char(96+d.index).."\rY")
+    guarded_keys("</"..string.char(96+d.index).."\rY")
     if you.gold()<gold then
       a.buys=a.buys+1
       say("shopping bought: "..d.name.." for "..(gold-you.gold()))

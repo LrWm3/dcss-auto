@@ -28,4 +28,14 @@ assert(not action(scan) and not ROUTE_STATE.shopping.active)
 BOT.encounter=nil; ROUTE_STATE.shopping.checked={}; action(scan)
 c_message("Sorry, I don't know how to get there.")
 assert(not ROUTE_STATE.shopping.active,"no-route message aborts immediately")
+local catalogue=assert(find(ready,"shop_catalogue"))
+local function scroll(name)
+ return {is_identified=true,quantity=1,class=function() return "scroll" end,name=function() return name end}
+end
+items.shop_inventory=function() return {{scroll("scroll of teleportation"),33},{scroll("scroll of noise"),11},{scroll("scroll of identify"),22}} end
+travel.waypoint_delta=function() return 0,0 end
+catalogue()
+assert(ROUTE_STATE.shopping.shops[0].offers[1].index==3,"price-order rank, not raw API index")
+items.shop_inventory=function() return {{scroll("scroll of teleportation"),33},{scroll("scroll of fear"),33}} end
+catalogue(); assert(#ROUTE_STATE.shopping.shops[0].offers==0,"ambiguous equal-price entries skipped")
 print("shopping regression cases passed")
