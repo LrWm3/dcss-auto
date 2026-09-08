@@ -181,3 +181,39 @@ runner tests pass. Current working RC retains pickup stops and true berserk
 cooldown recovery; early_commit is disabled but available for further iteration.
 Remaining tactical limitations include ranged-cover planning, resource-less
 disengagement from melee, and commitment under unseen poison/confusion pressure.
+
+## Targeted Sigmund scenario (seed 1760771545328102746)
+
+Only this seed replayed. Baseline pickup-recovery-v1 dies on D:3, turn2517, to
+Sigmund's +4 venom scythe. Added bounded caster memory, proactive protection,
+bounded blind probes, and marked-disturbance pursuit. Iteration results:
+
+| Version | Terminal result | Turns | Finding |
+| --- | --- | --- | --- |
+| sigmund-memory-v1 | D:3 death | 2472 | Retreat while slowed remains inside scythe reach |
+| sigmund-memory-v2 | D:3 death | 2492 | Committed against Natasha before Sigmund appeared; spent four Hands |
+| sigmund-memory-v3 | D:3 death | 2398 | Avoided early caster berserk; ordinary melee/retreat still loses |
+| sigmund-memory-v4 | D:3 paused | 2396 | Lua gsub returned replacement count as second command; saved game |
+| sigmund-memory-v5 | D:3 death | 2399 | Fixed command format; conservative commitment still too late |
+| sigmund-memory-v6 | D:7 death | 6631 | Killed Sigmund at turn2389, continued, died to centaur |
+
+V4 metadata entry corrected before committing: replaced an erroneous placeholder
+hash with the immutable tested.rc digest and filled exact commit/engine hashes.
+The game remains saved as CodexSigmund4; no pause is relabelled as a death.
+Most replays reused codex-bench3; after saving the paused character, subsequent
+trials reused the already-existing codex-bench4, leaving the saved game untouched.
+
+Successful v6 closes the gap to the visible priority caster before ordinary
+retreat, prioritizes its adjacent attack, and permits direct berserk at HP>=40%
+with at most four visible enemies. Missing caster still vetoes commitment.
+Preemptive Hand budget is capped at two per floor; generic emergency Hand remains.
+These are tactical heuristics, not evidence that all invisible casters are solved.
+No full five-seed comparison was run; results cannot raise the benchmark minimum.
+
+Unchanged-RC repeat sigmund-memory-v6-repeat also killed Sigmund at turn2389 and
+died on D:7 at turn6631. Both snapshots hash to
+0d8f8d8dbcde5f528494798ca9b10f0250b2ea4068ba079598b07a8e6414b8b0.
+Thus 2/2 final-policy replays pass this encounter; deterministic agreement on
+one seed is not broad statistical validation. Seven Lua suites and nine runner
+tests pass. Current RC retains v6; six completed deaths and one saved pause are
+recorded across this targeted iteration series, with no games left running.

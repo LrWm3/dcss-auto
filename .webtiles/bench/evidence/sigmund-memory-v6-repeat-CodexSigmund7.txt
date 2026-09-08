@@ -1,0 +1,376 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 1760771545328102746 (custom seed)
+
+2702 CodexSigmund7 the Cleaver (level 9, 0/79 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Believer of Trog.
+             Slain by a centaur (1 damage)
+             ... on level 7 of the Dungeon.
+             The game lasted 00:00:24 (6631 turns).
+
+CodexSigmund7 the Cleaver (Minotaur Berserker)      Turns: 6631, Time: 00:00:24
+
+Health: 0/79       AC:  9    Str: 25    XL:     9   Next: 38%
+Magic:  8/8        EV: 11    Int:  4    God:    Trog [**....]
+Gold:   379        SH:  0    Dex: 11    Spells: 8/8 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   f - +0 scale mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   b - +0 cloak
+rCorr   .      (100%)   (no gloves)
+SInv    +               (no boots)
+Will    ++...           c - amulet of chemistry
+Stlth                   d - ring of see invisible
+HPRegen 1.33/turn       (no ring)
+MPRegen 0.11/turn
+
+%: no passive effects
+@: marked, strong-willed, on berserk cooldown, mesmerised, regenerating, slowed,
+very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (2%), Trog's Hand (3%)
+
+
+You were on level 7 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 7 of its levels.
+
+You collected 379 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ b - a +0 cloak (worn)
+ e - a scarf of invisibility
+ f - a +0 scale mail (worn)
+Jewellery
+ c - an amulet of chemistry (worn)
+ d - a ring of see invisible (worn)
+Wands
+ a - a wand of flame (14)
+ p - a wand of polymorph (11)
+Scrolls
+ c - a scroll of enchant weapon {unknown}
+ d - a scroll of amnesia {unknown}
+ I - a scroll of immolation
+ S - a scroll of silence
+ i - a scroll of identify
+ k - a scroll of blinking {unknown}
+ m - a scroll of fog {unknown}
+ o - 2 scrolls of revelation {unknown}
+ q - a scroll of torment {unknown}
+ N - a scroll of noise
+ e - a scroll of vulnerability {unknown}
+Potions
+ e - a potion of enlightenment
+ f - a potion of moonshine {unknown}
+ B - 3 potions of berserk rage
+ c - 3 potions of curing
+ j - a potion of ambrosia {unknown}
+ l - a potion of resistance {unknown}
+
+
+   Skills:
+ + Level 7.6 Fighting
+ * Level 10.1 Axes
+ + Level 7.0 Armour
+ + Level 6.3 Dodging
+ + Level 3.0 Evocations
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)            
+Temple: D:4-7       
+
+Altars:
+Dithmenos
+Gozag
+Sif Muna
+Vehumet
+
+Shops:
+D:4 ([[
+
+Annotations:
+D:4 Eustachio
+D:7 Maggie
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The centaur unwields a +1 shortbow of freezing.
+The centaur hits you.
+* * * LOW HITPOINT WARNING * * *
+The centaur closely misses you. The wyvern bites you!
+* * * LOW HITPOINT WARNING * * *
+Your Evocations skill increases to level 3!
+You hit the orc wizard but do no damage.
+You headbutt the orc wizard!
+You kill the orc wizard!
+Trog accepts your kill.
+Trog appreciates your killing of a magic user.
+You barely miss the centaur. You hit Maggie. You closely miss the wyvern.
+The wyvern closely misses you. The centaur closely misses you.
+The centaur kicks you but does no damage.
+The orc warrior throws a boomerang. The boomerang hits you!
+* * * LOW HITPOINT WARNING * * *
+Maggie closely misses you.
+You encounter a steam dragon.
+You barely miss Maggie.
+Maggie is almost dead.
+You closely miss the wyvern. You barely miss the orc priest.
+You hit the centaur.
+You encounter a killer bee.
+The wyvern closely misses you. You furiously retaliate!
+You headbutt the wyvern! The centaur closely misses you. The centaur kicks you.
+* * * LOW HITPOINT WARNING * * *
+You encounter a killer bee.
+The wyvern bites you but does no damage.
+The orc priest closely misses you. The orc warrior throws a boomerang.
+The boomerang barely misses you. The centaur closely misses you.
+The centaur completely misses you.
+Maggie draws you further into her thrall.
+You hit Maggie but do no damage.
+Maggie is almost dead.
+You hit the centaur. You completely miss the wyvern. You hit the orc priest.
+The wyvern bites you.
+* * * LOW HITPOINT WARNING * * *
+The centaur hits you but does no damage.
+The centaur kicks you.
+You die...
+
+.......      .
+.......##.# .##
+.......D#.#...
+......y.#.#.###
+......y.#.....
+.......†#.#.###
+......†<.......
+...##..k#c#.###
+.......o@@...#
+...##..)#)##.#
+..  #...#o#  #
+.   #...#o#
+    #......
+    #.#....
+    #.###.##
+    #.   ..
+
+
+You could see Maggie (mesmerising), a steam dragon, an orc warrior, a wyvern, a
+centaur, 2 killer bees, an orc priest and an orc.
+
+Vanquished Creatures
+  Sigmund (D:3)
+  2 water moccasins
+  An ice beast (D:6)
+  A sky beast (D:6)
+  2 black bears (D:6)
+  An ogre (D:4)
+  A centaur (D:6)
+  2 phantoms
+  A kobold brigand (D:5)
+  A bullfrog (D:6)
+  2 scorpions
+  6 killer bees (D:7)
+  A howler monkey (D:5)
+  A bombardier beetle (D:5)
+  2 jellies
+  5 hounds
+  4 orc priests (D:6)
+  A gnoll bouda (D:6)
+  7 iguanas
+  Jessica (D:3)
+  A clockroach (D:3)
+  7 orc wizards
+  Natasha (thrice) (D:3)
+  4 gnolls (D:2)
+  12 adders
+  A white imp (D:6)
+  An ufetubus (D:5)
+  A ribbon worm (D:4)
+  2 dart slugs
+  22 orcs
+  6 endoplasms
+  10 hobgoblins
+  4 jackals (D:2)
+  3 quokkas
+  4 ball pythons
+  2 bats (D:2)
+  6 frilled lizards
+  6 goblins
+  3 kobolds
+  4 rats
+145 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexSigmund7 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   221 | D:1      | Found a faded altar of an unknown god.
+   488 | D:1      | Reached XP level 2. HP: 23/27 MP: 1/1
+   539 | D:1      | Reached skill level 4 in Axes
+  1229 | D:2      | Reached XP level 3. HP: 31/33 MP: 2/2
+  1237 | D:2      | Reached XP level 4. HP: 11/40 MP: 3/3
+  1820 | D:2      | Reached skill level 5 in Axes
+  2019 | D:2      | Reached ** piety under Trog
+  2206 | D:3      | Encountered Natasha
+  2213 | D:3      | Killed Natasha
+  2214 | D:3      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2355 | D:3      | Encountered Natasha
+  2364 | D:3      | Killed Natasha
+  2381 | D:3      | Encountered Sigmund
+  2389 | D:3      | Killed Sigmund
+  2390 | D:3      | Reached skill level 5 in Fighting
+  2390 | D:3      | Reached skill level 6 in Axes
+  2390 | D:3      | Reached XP level 6. HP: 56/56 MP: 5/5
+  2582 | D:3      | Encountered Natasha
+  2592 | D:3      | Killed Natasha
+  2780 | D:3      | Reached XP level 7. HP: 61/61 MP: 6/6
+  2804 | D:3      | Encountered Jessica
+  2810 | D:3      | Killed Jessica
+  3070 | D:4      | Found Num Usuu's Weapon Shoppe.
+  3288 | D:4      | Found Bytussi's Armour Shop.
+  3293 | D:4      | Found Fibbysoi's Armour Emporium.
+  3299 | D:4      | Reached skill level 7 in Axes
+  3506 | D:4      | Encountered Eustachio
+  3666 | D:4      | Reached skill level 5 in Armour
+  4211 | D:5      | Entered Level 5 of the Dungeon
+  4286 | D:5      | Found an opulent altar of Gozag.
+  4341 | D:5      | Found a shimmering blue altar of Sif Muna.
+  4347 | D:5      | Found a shadowy altar of Dithmenos.
+  4350 | D:5      | Found a radiant altar of Vehumet.
+  5048 | D:5      | Reached skill level 8 in Axes
+  5048 | D:5      | Reached skill level 5 in Dodging
+  5048 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  5259 | D:5      | Reached skill level 1 in Evocations
+  5681 | D:6      | Reached skill level 9 in Axes
+  6050 | D:6      | Reached XP level 9. HP: 74/79 MP: 8/8
+  6611 | D:7      | Reached skill level 10 in Axes
+  6614 | D:7      | Encountered Maggie
+  6631 | D:7      | HP: 1/79 [wyvern (5)]
+  6631 | D:7      | Slain by a centaur
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      ncdulo_halloftheorcs, layout_basic, serial_curves, eino_curves_04,
+          eino_curves_02, eino_curves_03, eino_curves_02,
+          dilly_ecumenical_altar_fadedgnrine
+D:2:      layout_basic, serial_curves, eino_curves_04, eino_curves_01
+D:3:      layout_loops_ring, minmay_misc_feat_diagonals, uniq_natasha,
+          uniq_jessica, uniq_sigmund
+D:4:      layout_basic, serial_shops, nicolae_shop_statue_plus, shop,
+          nicolae_shop_peninsula, uniq_crazy_yiuf_cottage, uniq_eustachio
+D:5:      minmay_clustersquares, layout_basic,
+          nicolae_overflow_macrodata_refinement
+D:6:      layout_loops_ring, minmay_fractal_squares_gapless_5
+D:7:      layout_basic, mainiacjoe_overflow_surrounded_room,
+          minmay_temple_entry_from_below_a, uniq_blorkula_the_orcula,
+          uniq_maggie
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Axes           |     4     5  6     8  9 10 | 10.1
+Fighting       |     4        5     6  7    |  7.6
+Armour         |        3     4     5  6  7 |  7.0
+Dodging        |           3     4  5     6 |  6.3
+Evocations     |                       2  3 |  3.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    43 |    84 |   222 ||   349
+  Melee: Hand axe          |    59 |    86 |   261 ||   406
+         Headbutt          |     5 |    24 |    73 ||   102
+ Invoke: Berserk           |     2 |     3 |    23 ||    28
+         Trog's Hand       |       |     3 |     5 ||     8
+  Drink: Heal wounds       |       |       |     4 ||     4
+         Curing            |       |       |     1 ||     1
+   Read: Teleportation     |     1 |     3 |     2 ||     6
+         Identify          |       |       |     4 ||     4
+         Fear              |       |       |     2 ||     2
+         Immolation        |       |       |     1 ||     1
+         Silence           |       |       |     1 ||     1
+         Noise             |       |       |     1 ||     1
+ Armour: Animal skin       |     6 |       |       ||     6
+         Ring mail         |    32 |    49 |    23 ||   104
+         Scale mail        |       |       |   178 ||   178
+  Dodge: Dodged            |    25 |    37 |   122 ||   184
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   6875 |   6672 |    203 |      0 |   3947 |   7 |  982.1 |
+       Dungeon |   6875 |   6672 |    203 |      0 |   3947 |   7 |  982.1 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:6: 1337 daAuts
+     D:2: 1244 daAuts
+     D:5: 1198 daAuts
+     D:4: 1185 daAuts
+     D:1: 979 daAuts
+     D:3: 906 daAuts
+     D:7: 24 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    15 |    26 |    51 ||    92
+         Kill Undead  |     0 |     1 |     1 ||     2
+          Kill Demon  |     0 |     0 |     2 ||     2
+         Kill Wizard  |     0 |     3 |     4 ||     6
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    22 |    40 |    79 ||   141
+         Kill Undead  |     0 |     1 |     1 ||     2
+          Kill Demon  |     0 |     0 |     2 ||     2
+         Kill Wizard  |     0 |     5 |     7 ||    12
+----------------------+-------+-------+-------++-------
+

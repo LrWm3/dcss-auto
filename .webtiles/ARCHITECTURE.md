@@ -31,6 +31,28 @@ stops on smart pickups so safe gear/ID hooks can run before the next encounter.
 `early_commit` remains an optional low-XL override, disabled after its first
 five-seed trial regressed. Known fear scroll use confirms the area preview before
 Escape guards; the preview is not an ordinary directional attack target.
+
+## Remembered invisibility-capable caster
+
+The encounter retains one priority caster's name/threat after LOS loss, based on
+the visible spellbook's Invisibility spell. It expires after quiet turns, resets
+on floor change, and clears on a confirmed kill message. Other visible monsters
+do not erase the missing caster. This is bounded single-threat memory, not a
+complete monster tracker; loss of LOS is conservatively treated as possible
+invisibility, not proof of it. Relative coordinates are not retained as targets.
+
+Proactive Trog's Hand has a two-use-per-floor budget; emergency uses retain their
+normal checks. Low-level visible casters suppress generic berserk. A remembered
+caster can instead trigger a direct commitment only while visible and adjacent,
+HP>=40%, at most four visible foes, and no berserk/cooldown. Adjacent priority
+caster attacks precede generic Tab targeting. Safe closure of a two-tile gap
+avoids retreating repeatedly inside potential polearm range.
+
+Unmarked blind probes have a three-attempt budget. Marked adjacent disturbances
+can be attacked; marked disturbances two tiles away may be approached. With no
+target, bounded known-upstairs withdrawal is attempted only when movement is
+available and not slowed/exhausted/on berserk cooldown. Otherwise the bot waits
+and rechecks resources; this remains weak when trapped without usable resources.
 The first version uses a short threat memory and logs phase transitions. Retreat
 only increases distance on known safe terrain with no adjacent melee attackers;
 it is not a full cover/path planner or stair-escape strategy. Crowd berserk needs
