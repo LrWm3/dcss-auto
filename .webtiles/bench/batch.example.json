@@ -1,0 +1,13 @@
+{
+  "version": "next-experiment-v1",
+  "rc": ".webtiles/rcs/codex-autocrawl.rc",
+  "poll_seconds": 10,
+  "stale_seconds": 120,
+  "sessions": [
+    {"session": "codex-bench1", "character": "CodexNext1", "seed": "6144198052690956201"},
+    {"session": "codex-bench2", "character": "CodexNext2", "seed": "13772526223844354029"},
+    {"session": "codex-bench3", "character": "CodexNext3", "seed": "1760771545328102746"},
+    {"session": "codex-bench4", "character": "CodexNext4", "seed": "17908030050512890810"},
+    {"session": "codex-bench5", "character": "CodexNext5", "seed": "103583508244309201"}
+  ]
+}

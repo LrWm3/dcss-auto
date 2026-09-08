@@ -1,0 +1,263 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 13772526223844354029 (custom seed)
+
+53 CodexPosition2 the Chopper (level 3, -3/33 HPs)
+             Began as a Minotaur Berserker on Sept 7, 2026.
+             Was a Follower of Trog.
+             Slain by a goblin
+             ... wielding a +0 club
+             ... led by Robin
+              (5 damage)
+             ... on level 2 of the Dungeon.
+             The game lasted 00:00:01 (532 turns).
+
+CodexPosition2 the Chopper (Minotaur Berserker)      Turns: 532, Time: 00:00:02
+
+Health: -3/33      AC: 11    Str: 23    XL:     3   Next: 64%
+Magic:  2/2        EV:  6    Int:  4    God:    Trog [*.....]
+Gold:   72         SH:  0    Dex:  9    Spells: 2/2 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   c - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   (no cloak)
+rCorr   .      (100%)   (no gloves)
+SInv    .               (no boots)
+Will    .....           (no amulet)
+Stlth                   (no ring)
+HPRegen 0.25/turn       (no ring)
+MPRegen 0.08/turn
+
+%: no passive effects
+@: on berserk cooldown, slowed, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (4%)
+
+
+You were on level 2 of the Dungeon.
+You worshipped Trog.
+Trog was aware of your devotion.
+You visited 1 branch of the dungeon, and saw 2 of its levels.
+
+You collected 72 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ c - a +0 plate armour (worn)
+Jewellery
+ b - a +5 ring of evasion
+Scrolls
+ c - a scroll of fear {unknown}
+ e - a scroll of amnesia {unknown}
+ h - a scroll of vulnerability {unknown}
+Potions
+ d - 2 potions of haste {unknown}
+ f - a potion of brilliance {unknown}
+ j - a potion of lignification {unknown}
+
+
+   Skills:
+ + Level 4.1 Fighting
+ * Level 4.5 Axes
+ + Level 3.0 Armour
+ + Level 2.8 Dodging
+
+
+You had 2 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+
+Annotations:
+D:2 Robin
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Trog accepts your kill.
+You hit the goblin. You hit the ribbon worm. You barely miss the goblin. You
+hit the hobgoblin.
+You kill the hobgoblin!
+Trog accepts your kill.
+You hear a shout! x2
+The goblin hits you but does no damage. x2
+You encounter a goblin. It is wielding a +0 club. x2
+The ribbon worm barely misses you.
+Robin roars a battlecry!
+The goblins go into a battle-frenzy!
+The goblin hits you but does no damage. x2; The goblin hits you with a +0
+dagger.
+You barely miss the goblin.
+The goblin is moderately wounded.
+You hit the goblin.
+You kill the goblin!
+Trog accepts your kill.
+You hit the ribbon worm. You barely miss the goblin. The goblin hits you with a
++0 dagger.
+The goblin hits you but does no damage. Robin throws the goblin at you! The
+goblin hits you but does no damage.
+The ribbon worm expels a string of sticky webbing.
+The stream of webbing hits you but does no damage.
+You are caught in a web!
+You disentangle yourself. The goblin hits you with a +0 club.
+You encounter a goblin. It is wielding a +0 club.
+The goblin hits you but does no damage. The goblin barely misses you. The
+hobgoblin hits you.
+The ribbon worm bites you but does no damage.
+The hobgoblin hits you but does no damage.
+The goblin hits you with a +0 club. The goblin hits you but does no damage. The
+goblin hits you with a +0 dagger.
+* * * LOW HITPOINT WARNING * * *
+The ribbon worm bites you.
+* * * LOW HITPOINT WARNING * * *
+You barely miss the goblin.
+The goblin is moderately wounded.
+You hit the goblin. x2; You hit the hobgoblin but do no damage. You hit the
+ribbon worm.
+The goblin hits you but does no damage. The goblin barely misses you. You
+furiously retaliate! You headbutt the goblin.
+You kill the goblin!
+Trog accepts your kill.
+The goblin hits you but does no damage. The ribbon worm barely misses you. The
+goblin hits you but does no damage.
+The hobgoblin hits you but does no damage.
+Robin throws the goblin at you! The goblin hits you with a +0 club.
+You die...
+
+    ..# #.
+     .. .
+    ##.#.
+    #....     ###
+   ##.#.#     ..#
+##.#....#####...
+...[..g)gg...#..
+....g..w@g.....#
+....####g#####.####   ..
+#      #!...##....####...
+       ####.<.##.........
+          ###..##.......#
+            ##....[.....
+         .######........
+         .........#.####
+         $####..#....##
+          ............###
+         .......###......
+
+
+You could see a ribbon worm, Robin, a hobgoblin (strong) and 4 goblins.
+
+Vanquished Creatures
+  Natasha (D:2)
+  An adder (D:2)
+  2 ribbon worms (D:2)
+  5 hobgoblins
+  A ball python (D:1)
+  4 endoplasms
+  2 frilled lizards
+  4 goblins
+  A kobold (D:1)
+  A rat (D:1)
+22 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexPosition2 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   364 | D:1      | Reached XP level 2. HP: 27/27 MP: 1/1
+   515 | D:2      | Encountered Natasha
+   523 | D:2      | Killed Natasha
+   524 | D:2      | Reached XP level 3. HP: 33/33 MP: 2/2
+   525 | D:2      | Encountered Robin
+   532 | D:2      | Slain by a goblin
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      heliophobic_arrival_ceremonial_halls, layout_rooms
+D:2:      layout_rooms, uniq_natasha, uniq_robin
+
+Skill      XL: |  1  2  3 |
+---------------+----------+-----
+Axes           |     4    |  4.5
+Fighting       |     4    |  4.1
+Armour         |        3 |  3.0
+Dodging        |          |  2.8
+
+Action                     || total
+---------------------------++-------
+ Attack: Normal            ||    34
+  Melee: Hand axe          ||    53
+         Headbutt          ||    10
+ Invoke: Berserk           ||     1
+   Stab: Sleeping          ||     1
+ Armour: Animal skin       ||     6
+         Plate armour      ||    39
+  Dodge: Dodged            ||    17
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |    536 |    511 |     25 |      0 |    337 |   2 |  268.0 |
+       Dungeon |    536 |    511 |     25 |      0 |    337 |   2 |  268.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:1: 474 daAuts
+     D:2: 62 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct || total
+----------------------++-------
+         Kill Living  ||    15
+         Kill Wizard  ||     1
+----------------------++-------
+Conduct count
+              Conduct || total
+----------------------++-------
+         Kill Living  ||    22
+         Kill Wizard  ||     1
+----------------------++-------
+

@@ -64,3 +64,15 @@ stopping on damage. Limit repositioning to six moves per continuous encounter.
 Unknown terrain cannot count as a wall. This is a positioning heuristic, not
 complete ranged-threat or opportunity-attack reasoning. Six regression suites
 pass before the fixed five-seed trial. Keep the policy configurable.
+
+Result: reached ranks `[5, 2, 5, 6, 5]`, minimum **2**. All five died naturally;
+no observed stalls or intervention. The third character died on D:3 after
+previously reaching D:5. The early Robin seed remains the bottleneck. This is not
+a measured improvement; retain the configurable candidate for further iteration.
+
+## Config-driven runner
+
+Added batch.py and a five-seed JSON config to snapshot RC revisions, launch
+parallel tmux games, monitor without gameplay input, and import verified deaths
+idempotently. Suspected stalls and reported completions stay distinct from
+verified terminal results. This tooling change does not alter the bot policy.
