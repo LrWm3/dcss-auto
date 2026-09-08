@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-08",
+  "seed_assignment_commit": "a3ca78b",
+  "fresh_training_seeds": ["83018001", "83018002", "83018003", "83018004", "83018005"],
+  "split_sha256": "4e66348300bf2ed8b90f8a21f5734301f637b424d02d3e796e8a70f0788c20d9",
+  "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "canonical_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "discovery": {
+    "artifact": "artifacts/mining-fresh-training-v1",
+    "candidates": 461,
+    "decisions_per_seed_cap": 2500,
+    "outcomes": {"83018001": "decision_budget", "83018002": "death", "83018003": "decision_budget", "83018004": "decision_budget", "83018005": "decision_budget"},
+    "initial_selected": 30,
+    "initial_verified": 28,
+    "initial_command_exit": 1
+  },
+  "quarantine": [
+    {"case": "mining-fresh-training-v1/collection/encounter-006", "seed": "83018001", "reason": "Discovery prefix divergence at decision 1788; no checkpoint accepted"},
+    {"case": "mining-fresh-training-v1/collection/encounter-016", "seed": "83018001", "reason": "Two resets agree with each other but diverge from discovery at encounter boundary 9; excluded"}
+  ],
+  "backfill": {
+    "artifact": "artifacts/mining-fresh-training-backfill-v1",
+    "selection": "Next two unused candidates from the same seed in the original ranking",
+    "verified": ["encounter-031", "encounter-036"]
+  },
+  "fresh_dataset": {
+    "index": "artifacts/fresh-training-dataset-v1/index.json",
+    "index_sha256": "1c8f4d56885ec731615468027ac99e9646527fa2c2896333460d87a0cafe58c8",
+    "eligible": 30,
+    "quarantined": 2,
+    "eligible_per_seed": 6,
+    "transitions": 1619,
+    "floors": {"D:1": 8, "D:2": 7, "D:3": 5, "D:4": 3, "D:5": 3, "D:6": 2, "D:7": 2},
+    "outcomes": {"safe_recovery": 28, "death": 1, "floor_change": 1},
+    "overlapping_difficulty_tags": {"large_hp_loss": 9, "red_threat": 8, "long_encounter": 3}
+  },
+  "combined_dataset": {
+    "index": "artifacts/development-dataset-v2/index.json",
+    "index_sha256": "7d6dd7ac88a23ffa3303c28445b158aba228732401c42de971e9516a2e7bcf27",
+    "eligible": 60,
+    "quarantined": 2,
+    "transitions": 4855,
+    "train": 48,
+    "validation": 6,
+    "reserved_test": 6
+  },
+  "fatal_case": "83018002 D:5 begins at HP55/55, reaches lethally poisoned status amid multiple gnolls including venom halberd; dies after 10 decisions before pending teleport completes",
+  "verification": "Each eligible checkpoint matches the normalized original discovery trajectory on two independent resets; prefix boundaries also checked. Messages and sequence IDs are excluded from normalization.",
+  "scope": "Baseline-generated encounter data, not successful teacher actions or a trained model. Five new independent seed groups, not thirty independent games. No new validation/test games, model training, or production RC changes."
+}

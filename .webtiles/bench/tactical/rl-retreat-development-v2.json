@@ -1,0 +1,15 @@
+{
+  "dataset": ".webtiles/bench/tactical/artifacts/development-dataset-v2/index.json",
+  "dataset_sha256": "7d6dd7ac88a23ffa3303c28445b158aba228732401c42de971e9516a2e7bcf27",
+  "evaluation_mode": "held_out",
+  "episodes": 48,
+  "steps": 600,
+  "turns": 1500,
+  "handoff_steps": 600,
+  "eval_repeats": 1,
+  "alpha": 0.03,
+  "gamma": 1.0,
+  "epsilon": 0.05,
+  "random_seed": 42,
+  "jobs": 4
+}

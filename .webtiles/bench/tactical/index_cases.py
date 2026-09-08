@@ -5,16 +5,19 @@ from pathlib import Path
 from bench import sha
 
 
-def build(roots,output):
+def build(roots,output,namespace=False):
+    labels=[(root.parent.name+'/'+root.name if namespace else root.name) for root in roots]
+    if len(labels)!=len(set(labels)):
+        raise ValueError('Duplicate collection names; use unique parent names and --namespace')
     output.mkdir(parents=True,exist_ok=False)
     index={'schema_version':1,'cases':[],'transitions':0,
            'split_policy':'Group by seed; related checkpoints and repeats must never cross splits.',
            'scope':'Verified against uninterrupted instrumented replay, not proof of historical full-game equivalence.'}
     with (output/'transitions.jsonl').open('x') as data:
-        for root in roots:
+        for root,label in zip(roots,labels):
             for path in sorted(root.glob('*/result.json')):
                 result=json.loads(path.read_text())
-                entry=dict(id=root.name+'/'+result['id'],seed=result['seed'],split_group=result['seed'],
+                entry=dict(id=label+'/'+result['id'],seed=result['seed'],split_group=result['seed'],
                     result=str(path.resolve()),result_sha256=sha(path),
                     eligible=result.get('training_ready',False),
                     fidelity=result.get('uninterrupted_fidelity'),
@@ -48,6 +51,7 @@ def build(roots,output):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('output',type=Path);p.add_argument('roots',nargs='+',type=Path)
-    a=p.parse_args();result=build(a.roots,a.output)
+    p.add_argument('--namespace',action='store_true',help='Prefix case IDs with dataset directory names')
+    a=p.parse_args();result=build(a.roots,a.output,namespace=a.namespace)
     print(json.dumps({'eligible':sum(c['eligible'] for c in result['cases']),
                       'total':len(result['cases']),'transitions':result['transitions']}))

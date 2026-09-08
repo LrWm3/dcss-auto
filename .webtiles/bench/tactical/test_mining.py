@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 from unittest.mock import Mock, patch
 
-from mine_encounters import Segmenter, select, validate, capture, encounter_recovered, endpoint, resegment
+from mine_encounters import Segmenter, select, validate, capture, encounter_recovered, endpoint, resegment, main
 from bench import sha, HERE
 
 
@@ -83,6 +83,16 @@ class MiningTests(unittest.TestCase):
         for changes in ({'target':0},{'jobs':True},{'seeds':['1','1']},
                         {'seeds':['18446744073709551616']},{'seeds':[1]}):
             with self.assertRaises(ValueError):validate({**cfg,**changes})
+
+    def test_discovery_rejects_wrong_partition_before_launch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);config=root/'config.json';output=root/'out'
+            config.write_text(json.dumps(dict(target=1,max_decisions=10,
+                encounters_per_seed=1,jobs=1,seeds=['83017004'],partition='train')))
+            with patch('sys.argv',['mine',str(config),str(output)]), patch('mine_encounters.Environment') as env:
+                with self.assertRaisesRegex(ValueError,'partition mismatch'):main()
+                env.assert_not_called()
+            self.assertFalse(output.exists())
 
     def test_prefix_mismatch_is_rejected_before_checkpointing(self):
         with tempfile.TemporaryDirectory() as tmp:

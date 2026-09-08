@@ -1501,3 +1501,29 @@ untouched final test. Need newly assigned test seeds and a separate frozen-model
 test runner. No training or test rollouts executed for this change.
 Tests pass:7split,13training,3teacher,5tactics; live loader rejects test-as-training;
 diff check passes.
+
+## 2026-09-08 — five fresh training seeds and30verified encounters
+
+Preassigned83018001..05 to training in a3ca78b before launching games. Validation
+83017003 and reserved test83017004 unchanged. Mining config pins canonical RC;
+optional partition checked before launch and split provenance snapshotted.
+
+461candidates from five private discovery games (2500decision cap): seed02 dies
+onD5, four budget endpoints. First30selected yield28verified,2quarantined, original
+command exit1. Seed01 encounter006 diverges in prefix1788; encounter016 resets
+agree mutually but not discovery at boundary9. Neither enters training.
+Next two unused ranked seed01 candidates031/036 both pass; total30verified,
+six per fresh seed,1619transitions. Floors D1..D7;28recovery,1death,1floor change;
+9large-HP-loss,8red-threat,3long-encounter tags overlap. Gnoll death starts55/55HP,
+venom halberd/poison leads to death before pending teleport completes in10decisions.
+
+Added namespaced multi-collection index mode, rejects ambiguous IDs before writing.
+Fresh-only index artifacts/fresh-training-dataset-v1; combined original+fresh
+artifacts/development-dataset-v2 has60eligible/2quarantined and4855transitions:
+48train across8seeds,6validation,6reserved test. Config rl-retreat-development-v2
+prepared, no training launched. Original datasets/artifacts unchanged; no RC edits.
+All eligible saves pass two resets against normalized discovery plus prefix checks.
+Evidence tactical/evidence/mining-fresh-training-v1.json records hashes and limits.
+Tests pass:1index-merge,14mining,7split,13training. Read-only combined loader checks
+48train/6validation save/RC/engine hashes, eligibility and62unique indexed IDs.
+Diff check passes; all private collection workers closed.

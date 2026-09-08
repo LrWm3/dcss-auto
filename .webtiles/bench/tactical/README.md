@@ -510,7 +510,7 @@ does not inherit the teacher's heading memory and can enter unfamiliar states.
 
 `dataset-split-v1.json` assigns **seeds**, not randomly selected encounters:
 
-| Partition | Seeds | Cases in mining-deeper-v1 |
+| Partition | Original seeds | Cases in mining-deeper-v1 |
 |---|---|---:|
 | Training | 83017001, 83017002, 83017005 | 18 |
 | Validation | 83017003 | 6 |
@@ -541,3 +541,27 @@ independent seed groups, not30 independent games. For a credible final test,
 collect newly chosen seeds assigned to test before inspecting their results.
 Never merge historical weights/trajectories into a clean run without checking
 their training provenance. The new config is prepared, not a new training result.
+
+Fresh-training collection `mining-fresh-training-v1.json` preassigns seeds
+83018001..83018005 to **training**, before discovery. It runs five private games
+with the pinned canonical RC and selects30 candidates from up to2500 decisions
+per seed. A configured `partition` is checked before launch and its manifest/hash
+is recorded. Validation03 and reserved test04 retain their original assignments.
+
+To combine independently mined collections, use `index_cases.py --namespace`
+with both collection directories. Dataset-directory prefixes keep encounter IDs
+distinct; ambiguous collection names now fail instead of silently colliding.
+The combined index points to original verified saves without modifying them.
+
+Completed fresh collection:30verified cases (six per seed),1619transitions,
+D1..D7;28observable recoveries,1death,1floor change. Two unfaithful candidates
+are retained as quarantined metadata and replaced by the next two unused
+candidates from the same seed. Saves are verified against discovery twice;
+these baseline actions are not automatically good imitation targets.
+
+`artifacts/fresh-training-dataset-v1/index.json` contains the fresh data only.
+`artifacts/development-dataset-v2/index.json` combines old and new:48train,
+6validation,6reserved test, plus2excluded entries. Use the hash-pinned
+`rl-retreat-development-v2.json` for the combined corpus. It is prepared and
+read-only checked, not trained; the previously identified hazard/recovery-reward
+issues remain outstanding. Evidence: `evidence/mining-fresh-training-v1.json`.
