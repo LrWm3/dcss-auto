@@ -735,3 +735,37 @@ without intervention. The two identical no-lure snapshots reproduce the target
 encounter success but diverge later (D11 versus Orc2); later progression is not
 deterministic evidence of a policy improvement. Keep mode1 as the smallest
 successful scoped change. Evidence morgues and all four result rows retained.
+
+## Sigmund no-lure full five-seed regression
+
+Batch sigmund-nolure-full-v1, source1622f09, clean canonical RC
+0768a5506e95c5f048ec6f88ccb6705103e08a00ae31b25950dee3a06a1752aa,
+same engine54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38.
+Five fresh characters in reused verified-dead sessions. Seed4 used support4:
+bench4's intervened continuation does not qualify for automatic runner reuse.
+No gameplay intervention or mid-run policy changes. At seed2's explicit route
+pause, entered and visually verified Lua interpreter, ran crawl.dump_char(),
+then exited interpreter; no game turn advanced. Character remains paused.
+
+| Seed | Previous lure-ally-full-v1 | Current | Turns / XL | Cause |
+| --- | --- | --- | --- | --- |
+| 1 | D11 death | D11 death | 10287 / 11 | centaur warrior arrow11 |
+| 2 | D15 death | Shoals2 PAUSED | 27837 / 16 | travel to Shoals3 made no progress |
+| 3 | D3 death | D11 death | 12720 / 11 | orc wizard puff of flame8 |
+| 4 | D11 PAUSED | Lair1 death | 13741 / 11 | cane toad18 |
+| 5 | D6 death | D6 death | 2336 / 5 | Pikel's lemure5 |
+
+Seed3 again killed Sigmund2966. Seed4 entered Lair1 at13469, confirming the
+required-entrance fix in a fresh autonomous run (not just the prior continuation).
+Seed2 visited Lair1–5 and Orc1–2 before D15/Shoals. At full158HP on Shoals2,
+repeated Unknown command / Done exploring messages preceded the explicit route
+block. This is an unresolved navigation failure, NOT a successful terminal run.
+Four deaths, one pause; no completion/clear claim. Exact clear prefix unmeasured.
+Screen Time28983.4 is elapsed game time; dump's actual turn count is27837.
+
+Reached ranks [11,24,11,12,6], paired changes [0,+2,+8,+1,0]. Observed minimum
+rose3→6 versus preceding lure batch, but batch still fails autonomous completion
+and remains below older wand-mesmerism minimum7. Seed5 is now the weakest:
+unchanged D3 shaft to D6 followed by Pikel/lemure death. One run per seed is only
+a screening comparison; this batch includes both entrance and Sigmund fixes.
+All five evidence dumps and append-only result rows retained.
