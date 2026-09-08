@@ -518,8 +518,14 @@ local function survival_action(scan)
     if not you.status("about to teleport") and use_known_consumable("scroll","teleportation") then return true end
     if count>=policy.fear_enemy_count and use_known_consumable("scroll","fear") then return true end
   end
-  if encounter and encounter.hidden_caster and not you.status("regenerating")
-      and survival_ability("Trog's Hand",policy.hidden_hand_cooldown) then return true end
+  BOT.hidden_hand_uses=BOT.hidden_hand_uses or {}
+  local uses=encounter and BOT.hidden_hand_uses[encounter.level] or 0
+  uses=uses or 0
+  if encounter and encounter.hidden_caster and uses<2 and not you.status("regenerating")
+      and survival_ability("Trog's Hand",policy.hidden_hand_cooldown) then
+    BOT.hidden_hand_uses[encounter.level]=uses+1
+    return true
+  end
   if hp<policy.allies_hp and (count>=policy.allies_enemy_count or scan.worst>=3)
       and survival_ability("Brothers in Arms",policy.allies_cooldown) then return true end
   if hp<policy.hand_hp and (scan.reachable_adjacent or (encounter and encounter.unseen))
@@ -594,6 +600,12 @@ end
 local function should_berserk(scan)
   local policy=AUTOCrawl_TACTICS
   if BOT.encounter and BOT.encounter.hidden_caster then return false end
+  if you.xl and you.xl()<=6 then
+    for _,enemy in ipairs(scan.monsters) do
+      local m=enemy.monster
+      if m and m.spells and #m:spells()>0 then return false end
+    end
+  end
   -- If emergency items failed and retreat cannot separate adjacent enemies,
   -- don't let the abstract disengage intent veto the only usable power spike.
   if policy.early_commit and you.xl and you.xl()<=policy.early_commit_xl
