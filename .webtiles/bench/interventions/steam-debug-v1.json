@@ -1,0 +1,23 @@
+{
+  "kind": "single_decision_diagnostic_replay",
+  "version": "steam-debug-v1",
+  "character": "CodexSteamDebug1",
+  "session": "codex-bench4",
+  "seed": "17908030050512890810",
+  "start_turn": 5877,
+  "end_turn": 5913,
+  "start_hp": [58,71],
+  "end_hp": [-9,71],
+  "decisions": 44,
+  "zero_turn_tab_rejections": 7,
+  "outcome": "death",
+  "killer": "orc priest, divine providence (13 damage)",
+  "commit": "6427dfd62cefdfbb155090bf6ebf39c931d72b56",
+  "rc_sha256": "eae873eb0f8e17fdc0e2c3667a62da938148bade2125e712eca394318f942a5e",
+  "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+  "end_evidence": "evidence/steam-debug-v1-CodexSteamDebug1.txt",
+  "end_evidence_sha256": "ad3e696b0b87f737c9f2ec3736d539c0d842abca02cc1e331e4e564ae13f8b73",
+  "analysis": "evidence/steam-debug-v1-analysis.md",
+  "benchmark_eligible": false,
+  "notes": "Fresh-seed replay with D:6 steam dragon breakpoint. One ready decision authorized and inspected at a time, no manual tactical actions. Console-installed output/note logging hooks documented in analysis. Exact original terminal turn, score, HP and killer reproduced. Buffered final-decision trace unavailable because death precedes next report; fatal gameplay events preserved."
+}

@@ -448,3 +448,27 @@ Seed2 retained charm12/mindburst16/warping10 charges and used heal wounds during
 the fatal Frances pack, while slowed on berserk cooldown. Resource exhaustion
 is therefore not sufficient to explain that death. No automatic policy changes
 made during this benchmarking request; all original baseline rows remain intact.
+
+## Steam dragon / priest death: single-decision diagnostic replay
+
+steam-debug-v1 / CodexSteamDebug1 replayed seed4 with a D:6 dragon breakpoint
+at5877,58/71HP. Inspected44 ready decisions individually through the exact
+original death at5913,-9/71HP, priest smite13, score1498. Seven rejected Tabs
+spent no turn; fatal action explains the apparent extra difference in counters.
+No manual tactical actions, policy changes or actual Confusion status.
+
+Key discovery: after killing dragon/marrowcuda the character successfully
+retreated out of priest LOS at5894. Stale unseen-wizard memory then caused
+blind probes and an upstairs path, re-exposing the priest and consuming all
+six retreat steps. Rejected-Tab fallback pursued through water despite the
+encounter remaining in disengage. Wizard memory finally expired5909, after
+the eel was exposed. Unseen attacks really occurred before steam; collateral
+wizard death at5881 is strongly suggested by autopickup/experience messages
+and two wizard kills attributed to others. Exact identity remains inference.
+
+Full44-decision table, evidence limits, logging setup and findings are in
+evidence/steam-debug-v1-analysis.md; full notes in the immutable morgue.
+Separate interventions/steam-debug-v1.json records this diagnosis, not an
+autonomous benchmark row. Batch manifest locally marked verified death to
+permit safe future reuse. Added opt-in diagnostics (default off) and helper;
+all10 Lua regression suites passed before replay. No tactical fix yet.
