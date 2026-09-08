@@ -349,3 +349,38 @@ This is a single-seed screening result, not an improved five-seed minimum or
 a replicated survival claim. Kept the RC unchanged and imported death row /
 immutable morgue evidence via the runner. New run finished; original diagnostic
 character remains alive and paused in codex-bench2.
+
+## HP/threat gating plus four-cast encounter cap
+
+Implemented user rule exactly: HP score floor(10*HP/maxHP), clamped0..10;
+visible hostile threat3=6, threat2=1, others0; strict HPscore<threatscore permits
+consideration by the existing wand selection policy. Four spent casts maximum
+per encounter, with no emergency override. Count persists across LOS gaps,
+floor changes and save/load; reset after encounter memory ends and full recovery.
+Fourth cast writes a permanent cap note with the observed enemy roster; later
+roster additions update the note without repeated same-roster spam.
+
+Ten Lua suites and nine runner tests pass, including HP boundaries, strict
+inequality, red weighting, successful-versus-rejected casts, hard cap beyond20
+turns, note contents, persistence and encounter reset. Policy documented in
+WAND-POLICY.md.
+
+wand-gate-seed2-v1 / CodexWandGate1 reused finished codex-bench1 with fixed seed
+13772526223844354029. No gameplay intervention. Killed Lodul8056 and the D11
+ogre mage10202, progressed through Lair/Orc/deeper Dungeon, and reached Shoals:2.
+Paused turn24759, XL15, HP137/137, on the existing mesmerisation/movement-rejection
+guard. Preserved the character there; did not fix or manually advance this trial.
+Read-only post-pause console confirmed ROUTE_STATE.done["D:15"]=="clear", stage6.
+Original CodexLodulDebug1 remains separately preserved in bench2.
+
+Used10 offensive casts (charm3/mindburst5/warping2), versus38 in wands-seed2-v1
+which died D11. Remaining16/17/20 respectively, including additional pickups.
+One D15 encounter hit the cap: note22341 and an updated roster note22421, both
+encounter22304. Roster includes centaur warrior, cyclops, ugly things, yaktaurs,
+slime creatures and other enemies; full counts in evidence. It survived a6HP
+low point without bypassing the cap. See accompanying observations for details.
+
+Recorded as paused/reached rank24, not a death or full route win. This is a
+promising one-seed result, not a five-seed minimum or replicated causal claim.
+Retained RC6638c14ee184c4a078de1e6363ee56fbe92ec418009b195d0ec0d3a5291bc158
+(tested commit96bdfd6). Immutable dump, pause row and observation notes committed.
