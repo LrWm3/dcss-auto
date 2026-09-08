@@ -29,4 +29,13 @@ depth=1; scan.cells={["0:0"]=cell(0,"stone_stairs_down_i")}
 scan.any=true; assert(not act(scan),"combat wins")
 scan.any=false; BOT.paused=false
 assert(act(scan) and BOT.paused,"exhausted stairs pause instead of looping")
+local route=assert(find(ready,"route_action"))
+you.turns=function() return 100 end; you.num_runes=function() return 0 end
+travel={find_deepest_explored=function() return 2 end}
+depth=2; BOT.paused=false; ROUTE_STATE.pocket=nil
+ROUTE_STATE.index=6; ROUTE_STATE.choices.wet="Shoals"
+ROUTE_STATE.done["Shoals:1"]="partial"; ROUTE_STATE.done["Shoals:2"]="clear"
+scan.cells={["0:0"]=cell(0,"stone_stairs_up_i")}
+for i=1,4 do route(scan) end
+assert(ROUTE_STATE.pocket and last=="<","allowed partial parent supports recovery")
 print("route pocket regression cases passed")

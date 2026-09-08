@@ -2240,6 +2240,7 @@ local function route_pocket_action(scan)
         ROUTE_STATE.pocket=nil; ROUTE_STATE.travel_attempts=0
         ROUTE_STATE.done[level_key()]=nil; BOT.floor_done[level_key()]=nil
         say("route pocket: downstairs discovered; resume exploration")
+        if crawl.take_note then crawl.take_note("Route pocket: downstairs discovered") end
         return explore_frontier(scan,true)
       end
     end
@@ -2249,7 +2250,10 @@ local function route_pocket_action(scan)
       return explore_frontier(scan,true)
     end
     if not ROUTE_STATE.done[level_key()] then return explore_frontier(scan,true) end
-    if here and regular_up(here.feature) then crawl.sendkeys("<"); return true end
+    if here and regular_up(here.feature) then
+      if crawl.take_note then crawl.take_note("Route pocket: ascend "..here.feature) end
+      crawl.sendkeys("<"); return true
+    end
     local _,_,step=bfs(scan.cells,scan.blocked,function(c) return regular_up(c.feature) end)
     if step then crawl.sendkeys(step); return true end
     return route_block("pocket has no safe upstairs")
@@ -2263,6 +2267,7 @@ local function route_pocket_action(scan)
     if here and regular_down(here.feature) and not p.tried[here.feature] then
       p.tried[here.feature]=true; p.on_parent=nil; p.reentered=true
       say("route pocket: trying alternate downstairs")
+      if crawl.take_note then crawl.take_note("Route pocket: alternate "..here.feature) end
       crawl.sendkeys(">"); return true
     end
     local _,_,step=bfs(scan.cells,scan.blocked,function(c)
@@ -2346,12 +2351,15 @@ local function route_action(scan)
       if ROUTE_STATE.travel_attempts>=3 then
         if branch==you.branch() and depth==you.depth()+1 and you.depth()>1
             and ROUTE_STATE.done[level_key()]=="clear"
-            and ROUTE_STATE.done[branch..":"..(you.depth()-1)]=="clear" then
+            and (ROUTE_STATE.done[branch..":"..(you.depth()-1)]=="clear"
+              or (AUTOCrawl_ROUTE.allow_partial
+                and ROUTE_STATE.done[branch..":"..(you.depth()-1)]=="partial")) then
           local has_down=false
           for _,c in pairs(scan.cells) do if regular_down(c.feature) then has_down=true end end
           if not has_down then
             ROUTE_STATE.pocket={branch=branch,depth=you.depth(),tried={}}
             say("route pocket: return upstairs to find another entrance")
+            if crawl.take_note then crawl.take_note("Route pocket: recovery started") end
             return route_pocket_action(scan)
           end
         end
