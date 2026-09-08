@@ -599,7 +599,16 @@ end
 
 local function should_berserk(scan)
   local policy=AUTOCrawl_TACTICS
-  if BOT.encounter and BOT.encounter.hidden_caster then return false end
+  if BOT.encounter and BOT.encounter.hidden_caster then
+    if BOT.encounter.hidden_missing or #scan.monsters>2 or hp_percent()<75
+        or you.berserk() or berserk_recovering() then return false end
+    for _,enemy in ipairs(scan.monsters) do
+      if enemy.monster and enemy.monster.name
+          and enemy.monster:name()==BOT.encounter.hidden_caster.name
+          and math.max(math.abs(enemy.x),math.abs(enemy.y))==1 then return true end
+    end
+    return false
+  end
   if you.xl and you.xl()<=6 then
     for _,enemy in ipairs(scan.monsters) do
       local m=enemy.monster
@@ -751,6 +760,15 @@ local function combat_action(scan)
     end
   end
 
+  local memory=BOT.encounter and BOT.encounter.hidden_caster
+  if memory then
+    for _,enemy in ipairs(scan.monsters) do
+      if enemy.monster and enemy.monster.name and enemy.monster:name()==memory.name then
+        local cmd=CONFUSED_MOVE_COMMANDS[map_key(enemy.x,enemy.y)]
+        if cmd then crawl.do_commands({cmd:gsub("CMD_MOVE_","CMD_ATTACK_")}); return true end
+      end
+    end
+  end
   crawl.sendkeys("\t") -- standard autofight for a reachable target
   return true
 end
