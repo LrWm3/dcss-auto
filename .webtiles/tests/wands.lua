@@ -33,7 +33,11 @@ for slot,name in ipairs({"charming","mindburst","warping"}) do
     class=function() return "wand" end,name=function() return "wand of "..name end}
 end
 local fired=0
-items={inventory=function() return inventory end,fire=function() fired=fired+1 end}
+items={inventory=function() return inventory end,index_to_letter=function() return "f" end}
+crawl.process_keys=function(keys)
+  assert(keys=="Vfrlllf\027\027\027","explicit wand menu and player-relative target")
+  fired=fired+1
+end
 local result=options(scan)
 assert(result[1].kind=="charming" and result[1].x==3)
 assert(result[2].kind=="warping","safe front blast considered")

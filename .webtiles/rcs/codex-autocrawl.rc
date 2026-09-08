@@ -604,7 +604,7 @@ end
 
 local function wand_options(scan)
   local options={}
-  if not items or not items.inventory or not items.fire
+  if not items or not items.inventory
       or not AUTOCrawl_TACTICS.combat_wands or not scan.any
       or you.berserk() or you.confused() then return options end
   local turn=you.turns()
@@ -689,7 +689,12 @@ local function combat_wand_action(scan)
   if option.kind=="charming" then state.charm_last=turn end
   say("wand: "..option.kind.." -> "..option.target.." ("..option.x..","..option.y
       ..") "..(option.chance and option.chance.."%; " or "")..option.reason)
-  items.fire(option.slot,option.x,option.y,true)
+  -- In this checkout item.slot is a category letter, whereas items.fire takes
+  -- the backing inventory index. Use the wand-only evoke menu, reset targeting
+  -- to the player ('r'), then move to the explicitly evaluated destination.
+  local aim=string.rep(option.x<0 and "h" or "l",math.abs(option.x))
+      ..string.rep(option.y<0 and "k" or "j",math.abs(option.y))
+  guarded_keys("V"..items.index_to_letter(option.slot).."r"..aim.."f")
   local spent=turn_spent(turn)
   say("wand result: "..(spent and "action spent; reassess" or "rejected; use ordinary policy"))
   return spent
