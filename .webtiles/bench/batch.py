@@ -105,7 +105,9 @@ def reusable(session, ids):
                 no_save = not list((game / 'saves').glob(row['character'] + '.*'))
                 death_screen = (row['character'] in screen and 'You die...' in screen)
                 inventory_screen = 'Gear:' in screen and 'gear slots' in screen
-                if same_game and verified and no_save and (death_screen or inventory_screen):
+                menu_screen = ('Enter your name: '+row['character'] in screen
+                               and 'Choices:' in screen and 'Dungeon Crawl' in screen)
+                if same_game and verified and no_save and (death_screen or inventory_screen or menu_screen):
                     return True
     return False
 
