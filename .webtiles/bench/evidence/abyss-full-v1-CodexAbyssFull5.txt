@@ -1,0 +1,543 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 103583508244309201 (custom seed)
+
+1112 CodexAbyssFull5 the Cleaver (level 8, -1/70 HPs)
+             Began as a Minotaur Berserker on Sept 8, 2026.
+             Was a Believer of Trog.
+             Slain by a gnoll
+             ... wielding a +0 flail
+             ... led by a gnoll bouda
+              (9 damage)
+             ... on level 5 of the Dungeon.
+             The game lasted 00:00:26 (4898 turns).
+
+CodexAbyssFull5 the Cleaver (Minotaur Berserker)    Turns: 4898, Time: 00:00:27
+
+Health: -1/70      AC: 13    Str: 25    XL:     8   Next: 11%
+Magic:  7/7        EV:  9    Int:  4    God:    Trog [**....]
+Gold:   301        SH:  0    Dex:  9    Spells: 7/7 levels left
+
+rFire   . . .  (100%)   a - +0 hand axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   f - +0 chain mail
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   h - +0 cloak
+rCorr   +      (50%)    e - +0 pair of gloves
+SInv    .               c - +0 pair of boots {Fly}
+Will    ++...           g - amulet of chemistry
+Stlth                   d - ring of resist corrosion
+HPRegen 1.31/turn       (no ring)
+MPRegen 0.10/turn
+
+%: no passive effects
+@: strong-willed, flying, regenerating
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (1%), Trog's Hand (1%)
+
+
+You were on level 5 of the Dungeon.
+You worshipped Trog.
+Trog was pleased with you.
+You visited 1 branch of the dungeon, and saw 5 of its levels.
+
+You collected 301 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hand axe (weapon)
+Armour
+ b - the +6 chain mail of Heasu {rPois rC++ Int-4 Dex+3}
+   (You found it on level 2 of the Dungeon)   
+   
+   rPois:     It protects you from poison.
+   rC++:      It greatly protects you from cold.
+   Int-4:     It affects your intelligence (-4).
+   Dex+3:     It affects your dexterity (+3).
+   
+   It cannot be enchanted further.
+ c - a +0 pair of boots of flying (worn)
+ e - a +0 pair of gloves (worn)
+ f - a +0 chain mail (worn)
+ h - a +0 cloak (worn)
+Jewellery
+ d - a ring of resist corrosion (worn)
+ g - an amulet of chemistry (worn)
+Wands
+ b - a wand of light (10)
+Scrolls
+ e - a scroll of vulnerability {unknown}
+ h - a scroll of teleportation {unknown}
+ k - a scroll of fear {unknown}
+ i - a scroll of identify
+Potions
+ d - a potion of heal wounds {unknown}
+ M - 2 potions of mutation
+ L - 3 potions of lignification
+ C - a potion of cancellation
+ c - 2 potions of curing
+ A - a potion of attraction
+
+
+   Skills:
+ + Level 6.2 Fighting
+ * Level 8.1 Axes
+ + Level 5.6 Armour
+ + Level 5.0 Dodging
+ + Level 0.3 Evocations
+
+
+You had 7 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (5/15)             Temple (0/1) D:4         
+
+The Realm of Zot is guarded by orbs of winter.
+
+Altars:
+Elyvilon
+Gozag
+Qazlal
+Uskayaw
+Zin
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The gnoll is almost dead.
+You hit the gnoll bouda but do no damage.
+The gnoll barely misses you.
+The gnoll bouda hits you but does no damage.
+The gnoll hits you with a +0 flail.
+You hit the gnoll but do no damage.
+The gnoll is almost dead.
+You completely miss the gnoll bouda. The gnoll barely misses you.
+The gnoll bouda calls upon its god to heal the gnoll.
+The gnoll is healed somewhat. The gnoll barely misses you.
+You hit the gnoll.
+The gnoll is heavily wounded.
+You hit the gnoll bouda. The gnoll barely misses you.
+The gnoll bouda closely misses you. The gnoll hits you with a +0 flail!
+* * * LOW HITPOINT WARNING * * *
+You hit the gnoll.
+The gnoll is heavily wounded.
+You hit the gnoll bouda. The gnoll is no longer moving quickly.
+The gnoll misses you.
+The gnoll bouda hits you with a +0 whip.
+* * * LOW HITPOINT WARNING * * *
+The gnoll hits you with a +0 flail!
+* * * LOW HITPOINT WARNING * * *
+You hit the gnoll. Your headbutt misses the gnoll.
+The gnoll is almost dead.
+You hit the gnoll bouda but do no damage.
+The gnoll barely misses you.
+The gnoll bouda hits you but does no damage.
+You closely miss the gnoll.
+The gnoll is almost dead.
+You hit the gnoll bouda but do no damage.
+Your attacks no longer feel as feeble.
+The gnoll hits you but does no damage. The gnoll barely misses you.
+You barely miss the gnoll.
+The gnoll is almost dead.
+You hit the gnoll bouda.
+The gnoll bouda hits you with a +0 whip.
+* * * LOW HITPOINT WARNING * * *
+The gnoll hits you with a +0 flail!
+You die...
+
+......## #..#     ##
+...#...# ##.##   .j##
+...##..## #..# ##....
+..# ##..###..##...#
+..#  #...###.#...#
+.## ###.........#
+.####..........##      .
+..........##...)####...#
+..........##..#.@jj...#
+.........##..###)j...##
+.#.......##..# #..##...#
+.#####...#..## #..#  ##.
+.#   ##..#.#   #.##
+.#    #....    ..#
+#.     #.#.    ...
+               ###
+
+
+You could see a gnoll bouda and 2 gnolls.
+
+Vanquished Creatures
+  Duvessa (D:5)
+  A sky beast (D:5)
+  A black bear (D:5)
+  2 phantoms (D:5)
+  2 scorpions (D:4)
+  Dowan (D:5)
+  A bes kemwar (D:5)
+  A bombardier beetle (D:5)
+  2 hounds (D:4)
+  A jelly (D:5)
+  An orc priest (D:4)
+  2 iguanas
+  3 orc wizards (D:4)
+  4 gnolls
+  7 adders
+  4 ribbon worms
+  3 dart slugs
+  8 orcs
+  9 endoplasms
+  12 hobgoblins
+  5 jackals (D:4)
+  9 quokkas
+  4 ball pythons
+  8 bats
+  3 frilled lizards
+  3 goblins
+  7 kobolds
+  5 rats
+110 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexAbyssFull5 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    55 | D:1      | Approach 2: lure enemies=1 HP=19
+    99 | D:1      | Reached skill level 4 in Axes
+    99 | D:1      | Reached XP level 2. HP: 19/27 MP: 1/1
+   159 | D:1      | Approach 2: lure enemies=2 HP=27
+   160 | D:1      | Approach 2: lure enemies=2 HP=27
+   161 | D:1      | Approach 2: hold enemies=2 HP=27
+   162 | D:1      | Approach 2: hold enemies=2 HP=27
+   163 | D:1      | Approach 2: hold enemies=2 HP=27
+   164 | D:1      | Approach 2: hold enemies=2 HP=27
+   187 | D:1      | Approach 2: lure enemies=1 HP=27
+   206 | D:1      | Approach 2: lure enemies=1 HP=27
+   207 | D:1      | Approach 2: lure enemies=1 HP=27
+   208 | D:1      | Approach 2: hold enemies=1 HP=27
+   272 | D:1      | Approach 2: hold enemies=1 HP=27
+   273 | D:1      | Approach 2: hold enemies=3 HP=27
+   274 | D:1      | Approach 2: hold enemies=3 HP=27
+   275 | D:1      | Approach 2: hold enemies=3 HP=27
+   355 | D:1      | Approach 2: lure enemies=1 HP=27
+   377 | D:1      | Approach 2: lure enemies=1 HP=27
+   378 | D:1      | Approach 2: hold enemies=1 HP=27
+   379 | D:1      | Approach 2: hold enemies=1 HP=27
+   380 | D:1      | Approach 2: hold enemies=1 HP=27
+   381 | D:1      | Approach 2: hold enemies=1 HP=27
+   423 | D:1      | Approach 2: lure enemies=1 HP=27
+   424 | D:1      | Approach 2: lure enemies=1 HP=27
+   425 | D:1      | Approach 2: hold enemies=1 HP=27
+   574 | D:1      | Approach 2: hold enemies=1 HP=27
+   853 | D:2      | Reached XP level 3. HP: 23/33 MP: 2/2
+   931 | D:2      | Approach 2: lure enemies=2 HP=33
+   932 | D:2      | Approach 2: lure enemies=1 HP=33
+   933 | D:2      | Approach 2: hold enemies=1 HP=33
+   934 | D:2      | Approach 2: hold enemies=2 HP=33
+   935 | D:2      | Approach 2: hold enemies=2 HP=33
+   936 | D:2      | Approach 2: hold enemies=3 HP=33
+  1017 | D:2      | Approach 2: lure enemies=2 HP=33
+  1018 | D:2      | Approach 2: lure enemies=1 HP=33
+  1022 | D:2      | Approach 2: hold enemies=1 HP=33
+  1082 | D:2      | Approach 2: lure enemies=1 HP=33
+  1083 | D:2      | Approach 2: lure enemies=1 HP=33
+  1084 | D:2      | Approach 2: hold enemies=1 HP=33
+  1085 | D:2      | Approach 2: hold enemies=1 HP=33
+  1086 | D:2      | Approach 2: hold enemies=1 HP=33
+  1087 | D:2      | Approach 2: hold enemies=1 HP=33
+  1116 | D:2      | Approach 2: lure enemies=1 HP=33
+  1117 | D:2      | Approach 2: lure enemies=1 HP=33
+  1118 | D:2      | Approach 2: hold enemies=1 HP=33
+  1119 | D:2      | Approach 2: hold enemies=1 HP=33
+  1120 | D:2      | Approach 2: hold enemies=1 HP=33
+  1121 | D:2      | Approach 2: hold enemies=1 HP=33
+  1135 | D:2      | Reached ** piety under Trog
+  1165 | D:2      | Found a faded altar of an unknown god.
+  1229 | D:2      | Approach 2: lure enemies=1 HP=33
+  1230 | D:2      | Approach 2: lure enemies=1 HP=33
+  1231 | D:2      | Approach 2: hold enemies=1 HP=33
+  1232 | D:2      | Approach 2: hold enemies=1 HP=33
+  1233 | D:2      | Approach 2: hold enemies=1 HP=33
+  1234 | D:2      | Approach 2: hold enemies=1 HP=33
+  1250 | D:2      | Approach 2: lure enemies=1 HP=33
+  1251 | D:2      | Approach 2: lure enemies=1 HP=33
+  1252 | D:2      | Approach 2: hold enemies=1 HP=33
+  1253 | D:2      | Approach 2: hold enemies=1 HP=33
+  1254 | D:2      | Approach 2: hold enemies=1 HP=33
+  1255 | D:2      | Approach 2: hold enemies=1 HP=33
+  1334 | D:2      | Identified the +6 chain mail of Heasu {rPois rC++ Int-4
+                  | Dex+3}
+  1431 | D:2      | Approach 2: lure enemies=1 HP=33
+  1432 | D:2      | Approach 2: lure enemies=1 HP=33
+  1433 | D:2      | Approach 2: hold enemies=1 HP=33
+  1434 | D:2      | Approach 2: hold enemies=1 HP=33
+  1449 | D:2      | Approach 2: lure enemies=1 HP=33
+  1530 | D:2      | Approach 2: lure enemies=2 HP=33
+  1531 | D:2      | Approach 2: lure enemies=1 HP=33
+  1532 | D:2      | Approach 2: hold enemies=1 HP=33
+  1533 | D:2      | Approach 2: hold enemies=1 HP=33
+  1534 | D:2      | Approach 2: hold enemies=1 HP=33
+  1535 | D:2      | Approach 2: hold enemies=1 HP=33
+  1541 | D:2      | Reached XP level 4. HP: 36/40 MP: 3/3
+  1615 | D:3      | Approach 2: lure enemies=1 HP=40
+  1616 | D:3      | Approach 2: lure enemies=1 HP=40
+  1617 | D:3      | Approach 2: hold enemies=1 HP=40
+  1618 | D:3      | Approach 2: hold enemies=1 HP=40
+  1619 | D:3      | Approach 2: hold enemies=1 HP=40
+  1649 | D:3      | Found a glowing silver altar of Zin.
+  1649 | D:3      | Found an opulent altar of Gozag.
+  1662 | D:3      | Approach 2: hold enemies=1 HP=40
+  1663 | D:3      | Approach 2: hold enemies=1 HP=40
+  1664 | D:3      | Approach 2: hold enemies=1 HP=40
+  1665 | D:3      | Approach 2: hold enemies=1 HP=40
+  1686 | D:3      | Approach 2: lure enemies=1 HP=40
+  1709 | D:3      | Approach 2: lure enemies=1 HP=40
+  1710 | D:3      | Approach 2: lure enemies=1 HP=40
+  1711 | D:3      | Approach 2: hold enemies=1 HP=40
+  1712 | D:3      | Approach 2: hold enemies=1 HP=40
+  1746 | D:3      | Approach 2: lure enemies=2 HP=40
+  1767 | D:3      | Approach 2: lure enemies=1 HP=41
+  1768 | D:3      | Approach 2: lure enemies=1 HP=41
+  1769 | D:3      | Approach 2: hold enemies=1 HP=41
+  1770 | D:3      | Approach 2: hold enemies=1 HP=41
+  1771 | D:3      | Approach 2: hold enemies=1 HP=41
+  1772 | D:3      | Approach 2: hold enemies=1 HP=41
+  1881 | D:3      | Approach 2: lure enemies=1 HP=41
+  1883 | D:3      | Approach 2: hold enemies=1 HP=41
+  1897 | D:3      | Approach 2: hold enemies=1 HP=41
+  1898 | D:3      | Approach 2: hold enemies=1 HP=41
+  1899 | D:3      | Approach 2: hold enemies=1 HP=41
+  1944 | D:3      | Approach 2: lure enemies=1 HP=41
+  1945 | D:3      | Approach 2: lure enemies=1 HP=41
+  1946 | D:3      | Approach 2: hold enemies=1 HP=41
+  1989 | D:3      | Approach 2: lure enemies=1 HP=41
+  1994 | D:3      | Approach 2: hold enemies=1 HP=41
+  2010 | D:3      | Approach 2: lure enemies=1 HP=41
+  2011 | D:3      | Approach 2: lure enemies=1 HP=41
+  2012 | D:3      | Approach 2: hold enemies=1 HP=41
+  2113 | D:3      | Approach 2: lure enemies=1 HP=41
+  2114 | D:3      | Approach 2: lure enemies=1 HP=41
+  2115 | D:3      | Approach 2: hold enemies=1 HP=41
+  2191 | D:3      | Approach 2: hold enemies=1 HP=41
+  2192 | D:3      | Approach 2: hold enemies=1 HP=41
+  2193 | D:3      | Approach 2: hold enemies=1 HP=41
+  2195 | D:3      | Reached skill level 5 in Axes
+  2302 | D:3      | Found a white marble altar of Elyvilon.
+  2303 | D:3      | Approach 2: hold enemies=1 HP=41
+  2329 | D:3      | Found a hide-covered altar of Uskayaw.
+  2388 | D:4      | Reached XP level 5. HP: 47/47 MP: 4/4
+  2414 | D:4      | Approach 2: lure enemies=1 HP=47
+  2415 | D:4      | Approach 2: lure enemies=1 HP=47
+  2416 | D:4      | Approach 2: hold enemies=1 HP=47
+  2417 | D:4      | Approach 2: hold enemies=1 HP=47
+  2493 | D:4      | Approach 2: lure enemies=1 HP=47
+  2495 | D:4      | Approach 2: hold enemies=1 HP=47
+  2496 | D:4      | Approach 2: hold enemies=1 HP=47
+  2497 | D:4      | Approach 2: hold enemies=1 HP=47
+  2498 | D:4      | Approach 2: hold enemies=1 HP=47
+  2737 | D:4      | Approach 2: lure enemies=1 HP=47
+  2738 | D:4      | Approach 2: lure enemies=1 HP=47
+  2739 | D:4      | Approach 2: hold enemies=1 HP=47
+  2740 | D:4      | Approach 2: hold enemies=1 HP=47
+  2766 | D:4      | Approach 2: lure enemies=1 HP=47
+  2767 | D:4      | Approach 2: lure enemies=1 HP=47
+  2768 | D:4      | Approach 2: hold enemies=1 HP=47
+  2769 | D:4      | Approach 2: hold enemies=1 HP=47
+  2808 | D:4      | Approach 2: lure enemies=1 HP=47
+  2809 | D:4      | Approach 2: lure enemies=1 HP=47
+  2810 | D:4      | Approach 2: hold enemies=1 HP=47
+  2811 | D:4      | Approach 2: hold enemies=1 HP=47
+  2812 | D:4      | Approach 2: hold enemies=1 HP=47
+  2813 | D:4      | Approach 2: hold enemies=1 HP=47
+  2862 | D:4      | Approach 2: lure enemies=1 HP=47
+  2863 | D:4      | Approach 2: lure enemies=1 HP=47
+  2864 | D:4      | Approach 2: hold enemies=1 HP=47
+  2865 | D:4      | Approach 2: hold enemies=1 HP=47
+  2866 | D:4      | Approach 2: hold enemies=1 HP=47
+  2896 | D:4      | Found a statue of an orb of winter.
+  2896 | D:4      | Found a staircase to the Ecumenical Temple.
+  2896 | D:4      | Found a statue of an orb of winter.
+  2904 | D:4      | Approach 2: lure enemies=2 HP=47
+  2906 | D:4      | Approach 2: hold enemies=1 HP=47
+  2907 | D:4      | Approach 2: hold enemies=1 HP=47
+  2940 | D:4      | Approach 2: lure enemies=2 HP=47
+  2941 | D:4      | Approach 2: lure enemies=2 HP=47
+  2942 | D:4      | Approach 2: hold enemies=2 HP=47
+  2943 | D:4      | Approach 2: hold enemies=2 HP=47
+  2961 | D:4      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2964 | D:4      | Reached skill level 6 in Axes
+  3031 | D:4      | Approach 2: lure enemies=1 HP=55
+  3032 | D:4      | Approach 2: lure enemies=1 HP=55
+  3033 | D:4      | Approach 2: hold enemies=1 HP=55
+  3034 | D:4      | Approach 2: hold enemies=1 HP=55
+  3035 | D:4      | Approach 2: hold enemies=1 HP=55
+  3040 | D:4      | Reached skill level 5 in Fighting
+  3096 | D:4      | Approach 2: lure enemies=1 HP=56
+  3097 | D:4      | Approach 2: lure enemies=1 HP=56
+  3098 | D:4      | Approach 2: hold enemies=1 HP=56
+  3099 | D:4      | Approach 2: hold enemies=1 HP=56
+  3100 | D:4      | Approach 2: hold enemies=1 HP=56
+  3101 | D:4      | Approach 2: hold enemies=1 HP=56
+  3117 | D:4      | Approach 2: lure enemies=1 HP=56
+  3118 | D:4      | Approach 2: lure enemies=1 HP=56
+  3119 | D:4      | Approach 2: hold enemies=1 HP=56
+  3120 | D:4      | Approach 2: hold enemies=1 HP=56
+  3121 | D:4      | Approach 2: hold enemies=1 HP=56
+  3122 | D:4      | Approach 2: hold enemies=1 HP=56
+  3170 | D:4      | Approach 2: lure enemies=1 HP=56
+  3171 | D:4      | Approach 2: lure enemies=1 HP=56
+  3172 | D:4      | Approach 2: hold enemies=1 HP=56
+  3173 | D:4      | Approach 2: hold enemies=1 HP=56
+  3235 | D:4      | Approach 2: lure enemies=1 HP=56
+  3236 | D:4      | Approach 2: lure enemies=1 HP=56
+  3246 | D:4      | Approach 2: lure enemies=1 HP=56
+  3247 | D:4      | Approach 2: hold enemies=1 HP=56
+  3248 | D:4      | Approach 2: hold enemies=1 HP=56
+  3249 | D:4      | Approach 2: hold enemies=1 HP=56
+  3250 | D:4      | Approach 2: hold enemies=1 HP=56
+  3294 | D:4      | Approach 2: lure enemies=2 HP=56
+  3295 | D:4      | Approach 2: lure enemies=1 HP=56
+  3296 | D:4      | Approach 2: hold enemies=1 HP=56
+  3297 | D:4      | Approach 2: hold enemies=1 HP=56
+  3525 | D:4      | Approach 2: lure enemies=1 HP=56
+  3526 | D:4      | Approach 2: hold enemies=1 HP=56
+  3527 | D:4      | Approach 2: hold enemies=1 HP=56
+  3528 | D:4      | Approach 2: hold enemies=1 HP=56
+  3529 | D:4      | Approach 2: hold enemies=1 HP=56
+  3883 | D:5      | Entered Level 5 of the Dungeon
+  4000 | D:5      | Reached XP level 7. HP: 61/61 MP: 6/6
+  4071 | D:5      | Approach 2: lure enemies=1 HP=61
+  4072 | D:5      | Approach 2: lure enemies=1 HP=61
+  4073 | D:5      | Approach 2: hold enemies=1 HP=61
+  4074 | D:5      | Approach 2: hold enemies=1 HP=61
+  4075 | D:5      | Approach 2: hold enemies=1 HP=61
+  4315 | D:5      | Approach 2: lure enemies=1 HP=61
+  4316 | D:5      | Approach 2: lure enemies=1 HP=61
+  4317 | D:5      | Approach 2: hold enemies=1 HP=61
+  4318 | D:5      | Approach 2: hold enemies=1 HP=61
+  4319 | D:5      | Approach 2: hold enemies=1 HP=61
+  4322 | D:5      | Reached skill level 7 in Axes
+  4501 | D:5      | Encountered Dowan
+  4502 | D:5      | Encountered Duvessa
+  4503 | D:5      | Found a stormy altar of Qazlal.
+  4515 | D:5      | Reached skill level 5 in Armour
+  4516 | D:5      | Killed Duvessa
+  4523 | D:5      | Killed Dowan
+  4575 | D:5      | Approach 2: lure enemies=1 HP=63
+  4576 | D:5      | Approach 2: lure enemies=1 HP=63
+  4577 | D:5      | Approach 2: hold enemies=1 HP=63
+  4578 | D:5      | Approach 2: hold enemies=1 HP=63
+  4579 | D:5      | Approach 2: hold enemies=1 HP=63
+  4666 | D:5      | Approach 2: lure enemies=1 HP=63
+  4667 | D:5      | Approach 2: lure enemies=1 HP=63
+  4672 | D:5      | Approach 2: hold enemies=1 HP=63
+  4673 | D:5      | Approach 2: hold enemies=1 HP=63
+  4678 | D:5      | Reached skill level 5 in Dodging
+  4678 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4754 | D:5      | Reached skill level 8 in Axes
+  4812 | D:5      | Approach 2: lure enemies=1 HP=70
+  4813 | D:5      | Approach 2: lure enemies=1 HP=70
+  4814 | D:5      | Approach 2: hold enemies=1 HP=70
+  4815 | D:5      | Approach 2: hold enemies=1 HP=70
+  4816 | D:5      | Approach 2: hold enemies=1 HP=70
+  4898 | D:5      | Slain by a gnoll
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      evilmike_arrival_rings, layout_basic
+D:2:      layout_rooms, shapermc_ecumenical_altar_mp_ritualfount,
+          minmay_increasing_density
+D:3:      layout_loops_ring, grunt_temple_overflow_gold_and_silver,
+          mainiacjoe_overflow_big_doors, grunt_ministairs_7
+D:4:      layout_layer_cave, minmay_temple_entry_tees, hangedman_decor_riveting
+D:5:      layout_layer_cave, nicolae_qazlal_beasts_of_the_sky,
+          corexii_item_surrounded_by_moat, kennysheep_small_spiral, uniq_duvessa
+
+Skill      XL: |  1  2  3  4  5  6  7  8 |
+---------------+-------------------------+-----
+Axes           |  4        5     6  7  8 |  8.1
+Fighting       |        4        5  6    |  6.2
+Armour         |        3     4     5    |  5.6
+Dodging        |           3     4  5    |  5.0
+Evocations     |                         |  0.3
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |    90 |   137 |    49 ||   276
+  Melee: Hand axe          |    97 |   158 |    72 ||   327
+         Headbutt          |    22 |    42 |    14 ||    78
+ Invoke: Berserk           |     1 |     6 |     7 ||    14
+         Trog's Hand       |       |     2 |     2 ||     4
+  Drink: Haste             |       |       |     1 ||     1
+   Read: Identify          |       |     6 |       ||     6
+ Armour: Leather armour    |    22 |       |       ||    22
+         Ring mail         |    18 |       |       ||    18
+         Scale mail        |    23 |    85 |       ||   108
+         Chain mail        |       |       |    55 ||    55
+  Dodge: Dodged            |    39 |    64 |    27 ||   130
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |   5023 |   4959 |     64 |      0 |   2880 |   5 | 1004.6 |
+       Dungeon |   5023 |   4959 |     64 |      0 |   2880 |   5 | 1004.6 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:4: 1557 daAuts
+     D:5: 1075 daAuts
+     D:1: 847 daAuts
+     D:3: 798 daAuts
+     D:2: 744 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    26 |    38 |     7 ||    71
+         Kill Undead  |     0 |     1 |     1 ||     2
+         Kill Wizard  |     0 |     2 |     1 ||     2
+----------------------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 || total
+----------------------+-------+-------+-------++-------
+         Kill Living  |    38 |    58 |    11 ||   107
+         Kill Undead  |     0 |     1 |     2 ||     3
+         Kill Wizard  |     0 |     3 |     1 ||     4
+----------------------+-------+-------+-------++-------
+

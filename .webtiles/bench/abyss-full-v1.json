@@ -1,0 +1,10 @@
+{
+ "version":"abyss-full-v1", "stale_seconds":90,
+ "sessions":[
+  {"session":"codex-verify1","character":"CodexAbyssFull1","seed":"6144198052690956201"},
+  {"session":"codex-verify2","character":"CodexAbyssFull2","seed":"13772526223844354029"},
+  {"session":"codex-verify3","character":"CodexAbyssFull3","seed":"1760771545328102746"},
+  {"session":"codex-verify4","character":"CodexAbyssFull4","seed":"17908030050512890810"},
+  {"session":"codex-bench5","character":"CodexAbyssFull5","seed":"103583508244309201"}
+ ]
+}

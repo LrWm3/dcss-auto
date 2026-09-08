@@ -941,3 +941,50 @@ abyss-escape-resume-v*. Original paused benchmark row remains unchanged.
 19 Lua suites and9 runner tests pass, including exact exit vs deeper stair vs
 stone arch, enemy avoidance, adjacent-blocker attack, return-state cleanup, and
 invisibility preview confirmation. No fresh five-seed regression this turn.
+
+## Current-RC full batch and throwing assessment (abyss-full-v1)
+
+Fresh five-seed run of source938805c, unchanged RC
+7635fba5c84678204601aa19e8b9363a8505a0a2e24d82c6e8d063a5cfabd4f8.
+All five ended naturally, no manual gameplay intervention or pauses. Reused
+verified-dead codex-bench5; runner rejected unverifiable old bench1–4 sessions,
+so preserved those and used new codex-verify1–4. Immutable snapshots/manifests,
+five morgues and append-only rows retained. No RC implementation changes here.
+
+Seed | Prior shoals-pocket-full-v1 | Current | Turns | Final encounter
+--- | --- | --- | --- | ---
+1 | D11 | Lair2 | 11835 | Skyshark and blink frog; skyshark final blow
+2 | Lair2 | D9 | 7529 | Many yaks plus killer bees/poison; yak final blow
+3 | Lair5 | D4 | 3546 | Eustachio and summons; iron imp final blow
+4 | Lair1 | D5 | 4319 | Repeated curare darts from kobold brigand; curing exhausted
+5 | D6 | D5 | 4898 | Gnoll bouda healing gnoll while bot trades weak attacks
+
+Minimum reached rank regresses6->4. Paired route-rank deltas +2,-4,-12,-7,-1.
+Seed5 is XL8 at death vs XL5 previously, despite the lower reached floor;
+reached-depth metric is not experience or confirmed clearing. No Abyss visit in
+this batch, so these deaths do not isolate a regression in the Abyss controller.
+Changes since the comparison include shopping and the ranged-lure fix; action
+trajectories diverged. Do not assign causal blame without paired diagnostics.
+
+Throwing availability: seed1 carried5 throwing nets; seeds2–5 have no Missiles
+inventory section. None records a Throw action. This is carried inventory at
+death, NOT a census of floor items or shop stock: uncollected darts/boomerangs/
+javelins cannot be quantified from these morgues. No explicit missile selection
+in pickup_for_bot, and update_skills disables Throwing. Current evidence does
+not justify assuming abundant ammunition or investing heavily in Throwing.
+
+Small proposed experiment (not implemented): collect bounded nets/curare and log
+seen ammunition; use one targeted control throw before melee/berserk against a
+visible eligible dangerous enemy, then reassess. Require clear friendly-safe
+trajectory, vulnerability check, and no redundant throw at an already-controlled
+target. Never replace emergency healing/escape with a speculative low-HP throw.
+Curare's monster effect in this engine (beam.cc:_curare_hits_monster) checks
+poison resistance and supplies poison, 2d6 damage and slow unless stasis; it
+still requires a hit. Atropa/datura success depends on Throwing+Stealth versus
+HD (throw.cc:_get_dart_chance), making them a poor initial zero-training policy.
+General boomerang/javelin damage should be a separate ammo/training experiment.
+
+Resource handling remains at least as important: seed1 died with blink, fog,
+invisibility, charged wands and enchantment scrolls; seed4 had4 identify scrolls
+with heal wounds/might/invisibility still unknown at death. These inventories
+suggest opportunities but do not prove legality/usefulness on the final turn.
