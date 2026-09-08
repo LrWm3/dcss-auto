@@ -44,6 +44,18 @@ class BatchTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             batch.start(self.cfg, False)
 
+    def test_explicit_engine_launch_and_hash(self):
+        engine = self.game / 'crawl-observation-rng'
+        engine.write_bytes(b'corrected-engine')
+        self.cfg['engine'] = str(engine)
+        with patch.object(batch, 'panes', return_value=[]), patch.object(batch, 'command', return_value='%1') as cmd:
+            batch.start(self.cfg, False)
+        launch = cmd.call_args.args
+        self.assertIn(str(engine), launch[-1])
+        self.assertNotIn('play-webtiles.sh', launch[-1])
+        self.assertIn('-webtiles-socket', launch[-1])
+        self.assertEqual(self.cfg['engine_sha256'], batch.sha(engine))
+
     def test_foreign_session_refused(self):
         with patch.object(batch, 'panes', return_value=['%99']):
             with self.assertRaises(ValueError):

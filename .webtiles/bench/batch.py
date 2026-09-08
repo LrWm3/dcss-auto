@@ -121,7 +121,7 @@ def start(cfg, dry_run):
                             for line in log.read_text().splitlines()):
         raise ValueError('Version already has benchmark results; choose a new version')
     source = ROOT / cfg.get('rc', '.webtiles/rcs/codex-autocrawl.rc')
-    engine = ROOT / 'crawl-0.35/crawl-ref/source/crawl-webtiles'
+    engine = (ROOT / cfg.get('engine', 'crawl-0.35/crawl-ref/source/crawl-webtiles')).resolve()
     game = engine.parent
     old = {}
     # Preflight the entire batch before starting anything.
@@ -153,13 +153,18 @@ def start(cfg, dry_run):
         argv = [str(ROOT / 'play-webtiles.sh'), row['character'], '-rc', str(snapshot),
                 '-seed', row['seed'], '-extra-opt-last', 'species=Minotaur',
                 '-extra-opt-last', 'background=Berserker', '-extra-opt-last', 'weapon=hand axe']
+        if 'engine' in cfg:
+            sockets = ROOT / '.webtiles/sockets'
+            sockets.mkdir(parents=True, exist_ok=True)
+            argv = [str(engine), '-name', row['character'], '-webtiles-socket',
+                    str(sockets / (row['character'] + ':terminal.sock'))] + argv[2:]
         ids = old[row['session']]
         if ids:
-            command('tmux', 'respawn-pane', '-k', '-t', ids[0], shlex.join(argv))
+            command('tmux', 'respawn-pane', '-k', '-c', str(game), '-t', ids[0], shlex.join(argv))
             row['pane'] = ids[0]
         else:
             row['pane'] = command('tmux', 'new-session', '-d', '-P', '-F', '#{pane_id}',
-                                  '-s', row['session'], shlex.join(argv))
+                                  '-c', str(game), '-s', row['session'], shlex.join(argv))
         row.update(status='running', last_change=time.time())
         save(directory / 'manifest.json', cfg)
     print(f"Started {len(cfg['sessions'])} games; snapshot: {snapshot}")
@@ -175,7 +180,7 @@ def terminal_dump(path, row):
 def collect(version):
     directory = STATE / version
     cfg = json.loads((directory / 'manifest.json').read_text())
-    game = ROOT / 'crawl-0.35/crawl-ref/source'
+    game = (ROOT / cfg.get('engine', 'crawl-0.35/crawl-ref/source/crawl-webtiles')).resolve().parent
     rows = [json.loads(line) for line in (BENCH / 'runs.jsonl').read_text().splitlines()]
     for row in cfg['sessions']:
         recorded = next((r for r in rows if r['version']==version and r['seed']==row['seed']), None)

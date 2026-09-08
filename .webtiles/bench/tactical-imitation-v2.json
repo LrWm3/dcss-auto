@@ -1,0 +1,14 @@
+{
+  "version": "tactical-imitation-v2",
+  "stale_seconds": 90,
+  "engine": "crawl-0.35/crawl-ref/source/crawl-observation-rng",
+  "rc": ".webtiles/bench/tactical/artifacts/eustachio-imitation-v2.rc",
+  "model": ".webtiles/bench/tactical/models/eustachio-imitation-v2.json",
+  "sessions": [
+    {"session":"codex-tactical-base1","character":"CodexTactV2A","seed":"6144198052690956201"},
+    {"session":"codex-tactical2","character":"CodexTactV2B","seed":"13772526223844354029"},
+    {"session":"codex-tactical-base3","character":"CodexTactV2C","seed":"1760771545328102746"},
+    {"session":"codex-tactical4","character":"CodexTactV2D","seed":"17908030050512890810"},
+    {"session":"codex-tactical5","character":"CodexTactV2E","seed":"103583508244309201"}
+  ]
+}
