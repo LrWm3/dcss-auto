@@ -1,0 +1,8 @@
+{
+  "version": "lodul-debug-v1",
+  "stale_seconds": 90,
+  "tactics": {"debug_encounters": true},
+  "sessions": [
+    {"session": "codex-bench2", "character": "CodexLodulDebug1", "seed": "13772526223844354029"}
+  ]
+}

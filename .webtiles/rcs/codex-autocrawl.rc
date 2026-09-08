@@ -34,7 +34,12 @@ AUTOCrawl_TACTICS = {
   early_commit = false, early_commit_xl = 4, early_commit_hp = 20,
   hidden_memory = 20, blind_probe_limit = 3,
   hidden_hand_cooldown = 8,
+  debug_encounters = false,
 }
+
+-- Diagnostic breakpoints are opt-in and never benchmark wins or stalls.
+AUTOCrawl_DEBUG_NAMES = {lodul=true}
+AUTOCrawl_DEBUG_STATE = AUTOCrawl_DEBUG_STATE or {seen={},paused=false}
 
 -- Editable progression plan. A stage covers every floor in [from, to].
 -- Alternative groups resolve to the branch actually generated in this game.
@@ -395,6 +400,50 @@ local function scan_hostiles()
     end
   end
   return out
+end
+
+function autocrawl_debug_report()
+  local scan=scan_hostiles()
+  local report={"turn="..you.turns().." floor="..level_key().." HP="..you.hp().."/"..select(2,you.hp()),
+    "berserk="..tostring(you.berserk()).." recovering="..tostring(berserk_recovering())}
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    report[#report+1]=m:name().." ("..enemy.x..","..enemy.y..") threat="..enemy.threat
+        .." charm="..tostring(m:defeat_wl("Charming",true))
+        .." mindburst="..tostring(m:defeat_wl("Mindburst",true))
+  end
+  for _,it in ipairs(items.inventory()) do
+    local kind=item_class(it)
+    if kind=="wand" or kind=="potion" or kind=="scroll" then
+      report[#report+1]=inv_letter(it)..") "..item_name(it)
+          ..(kind=="wand" and " damage="..tostring(it.evoke_damage) or "")
+    end
+  end
+  AUTOCrawl_DEBUG_STATE.report=report
+  for _,line in ipairs(report) do say("DEBUG "..line) end
+  return report
+end
+
+function autocrawl_debug_resume()
+  AUTOCrawl_DEBUG_STATE.paused=false
+  BOT.paused=false
+  say("debug breakpoint resumed; already-seen uniques will not retrigger")
+end
+
+local function debug_encounter_pause(scan)
+  if not AUTOCrawl_TACTICS.debug_encounters then return false end
+  for _,enemy in ipairs(scan.monsters) do
+    local name=enemy.monster:name():lower()
+    if AUTOCrawl_DEBUG_NAMES[name] and not AUTOCrawl_DEBUG_STATE.seen[name] then
+      AUTOCrawl_DEBUG_STATE.seen[name]=true
+      AUTOCrawl_DEBUG_STATE.paused=true
+      BOT.paused=true
+      say("DEBUG PAUSE: encountered "..name.."; inspect before combat")
+      autocrawl_debug_report()
+      return true
+    end
+  end
+  return false
 end
 
 local function use_known_consumable(kind, name)
@@ -1727,7 +1776,8 @@ end
 local previous_c_save=c_save
 function c_save()
   local old=previous_c_save and previous_c_save() or ""
-  return old.."\nROUTE_STATE="..route_serialize(ROUTE_STATE).."\n"
+  return old.."\nROUTE_STATE="..route_serialize(ROUTE_STATE)
+      .."\nAUTOCrawl_DEBUG_STATE="..route_serialize(AUTOCrawl_DEBUG_STATE).."\n"
 end
 
 local previous_c_answer_prompt = c_answer_prompt
@@ -1888,7 +1938,7 @@ function ready()
   -- The game resets this flag whenever control returns to the player.
   crawl.more_autoclear(true)
   BOT.allow_exclusion_step=nil
-  if BOT.paused then return end
+  if BOT.paused or AUTOCrawl_DEBUG_STATE.paused then return end
   check_committed_return()
   if BOT.hazard_wait then
     BOT.hazard_wait = false
@@ -1909,6 +1959,7 @@ function ready()
   end
 
   local scan = scan_hostiles()
+  if debug_encounter_pause(scan) then return end
   if AUTOCrawl_ROUTE.enabled then
     -- Route observation is bookkeeping; encounter decisions remain above travel.
     route_observe(scan)
