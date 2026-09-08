@@ -1264,3 +1264,35 @@ results and not added to progression runs.jsonl. Smoke-v1/v2 had a harness timeo
 classification bug; preserved as invalid diagnostics, superseded byv3. Twelve
 Python tactical tests,10 Lua hook cases,9 batch tests,22 canonical suites pass.
 Evidence: tactical/evidence/observation-deployment-v2.json plus two character dumps.
+
+## 2026-09-08: full five-seed imitation-v2 rerun
+
+Batch tactical-imitation-v2 launched five fresh games in verified-dead owned
+sessions; older paused games preserved. Runner now accepts an explicit engine
+path and launches/hashes that same binary (10 runner tests pass). Launch commit
+5f9bed4, engine393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206,
+export RC104a2c28dddab8ca883d0331b4af255c834bed2bd39d975b578936455b4cb113.
+This export includes imitation-v2 and the canonical berserk shop-entry guard.
+No RC changes or tactical intervention during the batch.
+
+| Seed | Furthest reached | Result | Turns |
+| --- | --- | --- | --- |
+| 1 | D:11 | Death: centaur arrow | 7830 |
+| 2 | Orc:2 | Stalled at shop entrance | 20493 |
+| 3 | Orc:2 | Death: orc sorcerer bolt of negative energy | 20775 |
+| 4 | Lair:5 | Stalled back on Lair:1: travel to D:12 made no progress | 20347 |
+| 5 | D:10 | Death: Sonja's poison | 9847 |
+
+Three natural deaths, two genuine stalls; no D:15 clear or route completion.
+Stalls verified by unchanged screens for at least90seconds, then dumped through
+the interpreter without advancing gameplay. Both alive games remain there for
+debugging. All five evidence dumps and append-only benchmark rows preserved.
+
+Seed1's unreachable Eustachio handed off at2978 and was killed at3259. Seed3
+activated3506, berserk3508, killed Eustachio3523, safe recovery handoff3576;
+continued through Lair to Orc:2. Neither previous early adapter/shop-berserk
+lock recurred. Seeds1/2/4 match the prior canonical baseline endpoint and turn
+count. Seed5 differs without model activation; do not attribute that to learned
+tactics. Minimum reached milestone rises fromD:4 toD:10, but reached is not
+cleared (seed1 shafted D:8 toD:11), and two pauses prevent autonomous-success
+claims. Next priorities are the Orc:2 shop stall and Lair return-routing blocker.
