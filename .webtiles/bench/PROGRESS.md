@@ -1527,3 +1527,14 @@ Evidence tactical/evidence/mining-fresh-training-v1.json records hashes and limi
 Tests pass:1index-merge,14mining,7split,13training. Read-only combined loader checks
 48train/6validation save/RC/engine hashes, eligibility and62unique indexed IDs.
 Diff check passes; all private collection workers closed.
+
+## 2026-09-08 — combined-corpus model training launched
+
+Launched train_teacher.py with rl-retreat-development-v2.json, output
+tactical/artifacts/rl-retreat-development-v2. Expanded config confirms48training
+cases and6validation cases; reserved test seed83017004 excluded. Schedule:
+48teacher rollouts,162initial comparison trials,48online Q episodes,54final
+frozen evaluations (312total). Teacher/training stages sequential; evaluations
+use4workers. First teacher rollout completed recovery and reached D3 on RC
+handoff; next teacher running. This records launch, NOT completion or improvement.
+Known hazard/recovery-credit limitations unchanged; no automatic deployment.
