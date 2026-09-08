@@ -409,7 +409,7 @@ function autocrawl_debug_report()
   for _,enemy in ipairs(scan.monsters) do
     local m=enemy.monster
     report[#report+1]=m:name().." ("..enemy.x..","..enemy.y..") threat="..enemy.threat
-        .." charm="..tostring(m:defeat_wl("Charming",true))
+        .." charm="..tostring(m:defeat_wl("Charm",true))
         .." mindburst="..tostring(m:defeat_wl("Mindburst",true))
   end
   for _,it in ipairs(items.inventory()) do

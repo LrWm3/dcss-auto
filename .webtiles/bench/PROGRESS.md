@@ -277,3 +277,27 @@ Do not claim a benchmark improvement or successful D14 ascent from these runs.
 Final RC SHA256:
 b414e3f917b571cc88f71a9649b80c3c11e0076f1febe9337841f1048995f364.
 All three death rows and immutable evidence retained. No test games left running.
+
+## Lodul diagnostic breakpoint and wand evaluation
+
+Added opt-in `AUTOCrawl_TACTICS.debug_encounters` (default false), configurable
+`AUTOCrawl_DEBUG_NAMES`, a first-sighting breakpoint before combat, and persisted
+debug pause/seen state. `autocrawl_debug_report()` reports visible-monster wand
+success probabilities and available consumables; `autocrawl_debug_resume()`
+explicitly resumes without immediately breaking on the same unique again.
+
+lodul-debug-v1 reuses codex-bench2 with CodexLodulDebug1 and seed
+13772526223844354029. Successfully paused at Lodul, D10 turn8128, HP91/91.
+Recorded as an intentional diagnostic pause, not a stall or completed trial.
+The inventory and corrected read-only inspection are in evidence/lodul-debug-v1-*.
+Charm succeeds 62% against the three visible ogres, 44% against Lodul; mindburst
+81% / 67%, damage3d13. Warping damage3d10, preview blink chance67%; nearer ogres
+intercept the attempted shot toward the pack centre. Cancelled preview spent no
+turn or charge. A front-ogre charm is the recommended experimental opening,
+followed by reassessment; automatic wand execution is not enabled yet.
+
+Fixed diagnostic spell-name lookup from "Charming" to the engine's "Charm" and
+added a regression test. Live snapshot remains immutable; corrected chances were
+queried directly without gameplay action. Nine Lua suites and nine runner tests
+pass. Character is still alive and paused in codex-bench2 for the next experiment;
+do not reset it. No survival improvement claimed from this diagnostic run.
