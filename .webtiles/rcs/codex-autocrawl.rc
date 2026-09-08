@@ -209,6 +209,9 @@ local function can_step(cells, x, y, dx, dy, blocked)
   local nx, ny = x + dx, y + dy
   local next_cell = cells[map_key(nx, ny)]
   if not passable(next_cell) or blocked[map_key(nx, ny)] then return false end
+  -- Custom movement must not bump-attack allies or neutral creatures.
+  local occupant=next_cell.monster
+  if occupant and (not occupant.attitude or occupant:attitude()~=0) then return false end
   -- Withheld is relative to the real player, not a hypothetical BFS node.
   -- Check only the step we will actually execute, then replan next turn.
   if x == 0 and y == 0 and view.withheld and view.withheld(nx, ny)
@@ -252,6 +255,25 @@ local function bfs(cells, blocked, goal_fn)
     end
   end
   return seen, first_step, nil
+end
+
+local function safe_probe_command(scan, preferred)
+  local function allowed(cmd)
+    for key,move in pairs(CONFUSED_MOVE_COMMANDS) do
+      if cmd==(move:gsub("CMD_MOVE_","CMD_ATTACK_")) then
+        local cell=scan.cells[key]
+        local m=cell and cell.monster
+        return not m or (m.attitude and m:attitude()==0)
+      end
+    end
+    return false
+  end
+  if preferred and allowed(preferred) then return preferred end
+  for offset=0,7 do
+    local cmd=DISTURBANCE_ATTACK_COMMANDS[((BOT.disturbance_turns or 0)+offset)%8+1]
+    if allowed(cmd) then return cmd end
+  end
+  return "CMD_WAIT"
 end
 
 local function explore_frontier(scan, allow_native_explore)
@@ -2261,6 +2283,13 @@ function c_message(text, channel)
   crawl.more_autoclear(true)
   if previous_c_message then previous_c_message(text, channel) end
   local s = string.lower(tostring(text or "")):gsub("<[^>]*>", "")
+  if s:find("really attack ",1,true) then
+    -- Fail closed if a stale target or another command still reaches Crawl's
+    -- protected-target confirmation. Never approve friendly fire.
+    BOT.ally_attack_rejected=true
+    crawl.sendkeys("n")
+    return
+  end
   if s:find("into a shaft and drop",1,true) then
     BOT.route_shaft=true
   end
@@ -2447,6 +2476,10 @@ function ready()
   end
   observe_encounter(scan)
   observe_wand_encounter(scan)
+  if BOT.ally_attack_rejected then
+    BOT.ally_attack_rejected=false
+    crawl.do_commands({"CMD_WAIT"}); return
+  end
   if survival_action(scan) then return end
   if combat_wand_action(scan) then return end
   -- Central gate covers combat pursuit, confusion, exploration, shops and
@@ -2511,11 +2544,13 @@ function ready()
     local approach
     for _, cell in pairs(scan.cells) do
       local distance=math.max(math.abs(cell.x), math.abs(cell.y))
-      if cell.invisible_monster and distance == 1 then
+      local m=cell.monster
+      local unprotected=not m or (m.attitude and m:attitude()==0)
+      if unprotected and cell.invisible_monster and distance == 1 then
         local move = CONFUSED_MOVE_COMMANDS[map_key(cell.x, cell.y)]
         cmd = move and move:gsub("CMD_MOVE_", "CMD_ATTACK_")
         break
-      elseif cell.invisible_monster and distance==2 and not movement_locked()
+      elseif unprotected and cell.invisible_monster and distance==2 and not movement_locked()
           and not (you.mesmerised and you.mesmerised()) then
         approach=scan.first_step[map_key(cell.x,cell.y)]
       end
@@ -2558,7 +2593,7 @@ function ready()
       BOT.disturbance_turns = 0
     else
       local turn = you.turns()
-      cmd = cmd or DISTURBANCE_ATTACK_COMMANDS[(BOT.disturbance_turns % 8)+1]
+      cmd = safe_probe_command(scan,cmd)
       BOT.disturbance_turns = BOT.disturbance_turns + 1
       crawl.do_commands({cmd})
       -- Only wait if the attack was rejected and did not spend a turn.
