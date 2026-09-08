@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-08",
+  "artifact": "artifacts/rl-retreat-teacher-v1",
+  "summary_sha256": "d4673e2d11ad72cfb5a9e4c8b014e83c6fff8b89e1186430ad2e29f595f47433",
+  "initial_model_sha256": "47853660113251a0b154e988ab501cb8b9fa56aca4e7ca5279a5ffffbb7aeae2",
+  "final_model_sha256": "3c7f4e64ee6cd2aede5cf9a9b1a8df0c9659d6e67484378a5c11a6ac84de69a2",
+  "demonstrations_sha256": "3fb40c17f18b7e5e0fb4c40c6f709f3549872ef5f19ee55490e536203f4dfc82",
+  "train_seed": "83017005",
+  "evaluation_seeds": ["83017001", "83017002", "83017003", "83017004"],
+  "episodes_completed": 27,
+  "harness_errors": 0,
+  "demonstration_actions": 126,
+  "training_action_agreement": 1.0,
+  "training_recovery_decisions": [19, 4, 5, 5, 5, 5],
+  "d7_training_case_evaluation": {
+    "baseline": {"outcome": "death", "decisions": 103},
+    "retreat": {"outcome": "safe_recovery", "decisions": 126, "handoff": "D:8 alive after 470 decisions"},
+    "initial_model": {"outcome": "safe_recovery", "decisions": 126, "handoff": "D:8 alive after 470 decisions"},
+    "final_model": {"outcome": "safe_recovery", "decisions": 5, "handoff": "death after 55 decisions; manticore adjacent"}
+  },
+  "other_seed_recovery_decisions_in_seed_order": {
+    "baseline": [66, 49, 85, 87],
+    "retreat": [35, 4, 12, 1],
+    "initial_model": [55, 225, 3, 24],
+    "final_model": [55, 225, 3, 1]
+  },
+  "other_seed_handoffs": "All four policies reach next floor alive on all four cases, within 600 RC decisions; not next-floor clearance.",
+  "diagnostics": {
+    "d7": "Final model loses sight of white imp, receives +100, and hands back to RC; imp reappears by second RC decision. Subsequent fight ends with adjacent manticore, following vampire mosquito involvement.",
+    "d5": "Initial and final models each wait 33 decisions while on fire, reach minimum HP7/61, then recover. Teacher's hazard delegation was not inherited from one D7 demonstration."
+  },
+  "tests_passed": {"teacher": 3, "training": 13, "tactics": 5, "legacy_tactical": 14, "mining": 13, "direct_transport": 3},
+  "production_deployment": false,
+  "limitations": [
+    "One teaching checkpoint, four other-seed cases, one evaluation repeat each; previously studied seeds, not a pristine holdout.",
+    "Six training recoveries are proxy outcomes without training-time handoff audit, not six durable successes.",
+    "Initial imitation preserves the D7 success but RL fine-tuning regresses it; no general improvement established.",
+    "Need hazard safety overrides and delayed recovery credit tied to continuation before promoting a model."
+  ]
+}

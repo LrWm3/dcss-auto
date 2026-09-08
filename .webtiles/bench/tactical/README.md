@@ -472,3 +472,31 @@ budget is bounded survival, not a cleared encounter. Floor-change continuation
 stops at the boundary and is not proof of clearing the new floor. Repeats of the
 same checkpoint are in-sample reproducibility checks. Positive discovery alone
 does not certify save/load fidelity for every alternative-action trajectory.
+
+### Retreat-teacher initialisation pilot
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/train_teacher.py \
+  .webtiles/bench/tactical/rl-retreat-teacher-v1.json \
+  .webtiles/bench/tactical/artifacts/my-retreat-teacher
+```
+
+Collects visible feature/action demonstrations from the retreat teacher on the
+training checkpoint only. Requires observable recovery and rejects teacher
+handoffs ending in death or no-turn stall. A deterministic multiclass margin
+fit initialises the existing linear action values; these scores are action
+preferences, not calibrated expected returns. Six low-exploration Q-learning
+episodes then fine-tune that model. No production export/deployment occurs.
+
+The supplied split trains on seed83017005 and evaluates four other seeds.
+Frozen evaluations compare RC, fixed retreat and the initial model, then the
+final model; training-case checks are explicitly labelled separately. All
+evaluation continuations use the same600-decision RC handoff budget. Evaluation
+does not update weights or supply demonstrations. These seeds have appeared in
+prior experiments, so this is a seed-separated regression pilot, not a pristine
+benchmark. One repeat per case, and only one teaching encounter, limit inference.
+
+Artifacts include the demonstrations, initial and final model, training-action
+agreement, hashes and per-case tactical/handoff outcomes. High agreement on
+teacher states does not guarantee a successful rollout: this linear student
+does not inherit the teacher's heading memory and can enter unfamiliar states.

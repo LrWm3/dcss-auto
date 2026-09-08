@@ -83,11 +83,16 @@ class TrainingTests(unittest.TestCase):
                 def reset(self,case):return state()
                 def step(self,action):return {'terminal':'death'}
                 def close(self):pass
-            model={};before=copy.deepcopy(model)
+            model={};before=copy.deepcopy(model);samples=[]
             with patch('train_encounters.Environment',return_value=Fake()):
-                r=run_episode(dict(id='x',seed='1',case='unused'),root,'q',model,random.Random(1),CFG)
+                r=run_episode(dict(id='x',seed='1',case='unused'),root,'q',model,random.Random(1),CFG,
+                              samples=samples)
             self.assertEqual(r['outcome'],'death');self.assertEqual(r['decisions'],1)
             self.assertEqual(model,before)
+            self.assertEqual(len(samples),1)
+            self.assertEqual(samples[0]['action'],'baseline')
+            self.assertIn('baseline',samples[0]['allowed'])
+            self.assertNotIn('seed',samples[0]['features'])
             reward=json.loads((root/'rewards.jsonl').read_text())
             self.assertTrue(reward['terminated']);self.assertFalse(reward['truncated'])
             self.assertEqual(reward['bootstrap'],0)

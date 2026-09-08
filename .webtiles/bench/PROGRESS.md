@@ -1453,3 +1453,31 @@ this checkpoint, not a learned policy or general improvement. Canonical RC and
 production model remain unchanged. Tests pass:13training,5tactics,14legacy
 tactical,13mining,23RC suites,3direct-transport cases; compile and diff checks pass.
 Evidence tactical/evidence/d7-tactic-sweep-v1.json; heavy traces in artifacts.
+
+## 2026-09-08 — retreat imitation initialisation and RL regression pilot
+
+Added train_teacher.py/config: collect successful retreat demonstrations from
+training cases only, fit linear action preferences, then online Q fine-tune.
+Frozen initial/final models evaluated on separate seeds; private parallel eval
+workers, hashed artifacts and explicit training-case checks. Canonical RC unchanged.
+
+rl-retreat-teacher-v1 completed27episodes without harness errors. D7 seed83017005
+teacher contributes126actions; imitation agreement100%. Initial student recovers
+126decisions and RC reaches D8 alive after470, matching teacher; RC control dies103.
+Six RL training episodes reach proxy recovery19,4,5,5,5,5 decisions, but final
+D7 student recovers5 then RC dies55decisions later beside a manticore. The white
+imp disappears briefly and reappears by second RC decision: reward is not durable.
+
+Other seeds83017001..04, one checkpoint each, initial floors D2/D5/D2/D1:
+RC recovery66/49/85/87; fixed retreat35/4/12/1; initial student55/225/3/24;
+final student55/225/3/1. All16 other-seed eval handoffs reach next floor alive.
+These are seed-separated regression checks on previously studied seeds, not
+pristine holdout or a generalisation claim. New floors are not cleared.
+
+Trace reveals initial AND final D5 student waits33decisions while burning,
+drops to7/61HP, eventually recovers. One D7 demonstration did not teach hazard
+delegation. No policy deployed. Keep initial model as evidence, not a safe policy.
+Next: enforce RC hazard overrides, delay recovery credit until continuation
+confirms safety, and retain teacher examples during fine-tuning to limit forgetting.
+Tests pass:3teacher,13training,5tactics,14legacy tactical,13mining,3direct transport;
+compile/diff checks pass. Evidence tactical/evidence/rl-retreat-teacher-v1.json.

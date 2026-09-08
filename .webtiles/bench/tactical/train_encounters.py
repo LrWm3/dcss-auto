@@ -102,7 +102,7 @@ def reward_for(label, turns):
     return 100 if label=='safe_recovery' else -100 if label=='death' else 0
 
 
-def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0, controller=None):
+def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0, controller=None, samples=None):
     env=Environment(root);start=time.monotonic()
     result=dict(case_id=entry['id'],seed=entry['seed'],policy=policy,training=training,
                 outcome='harness_error',decisions=0,total_reward=0.,actions={})
@@ -123,6 +123,8 @@ def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0,
             elif policy=='baseline': action='baseline'
             elif policy=='melee': action='melee' if 'melee' in actions(state) else 'baseline'
             else: action=choose(model,state,memory,rng,epsilon if training else 0)
+            if samples is not None:
+                samples.append(dict(features=dict(f),allowed=actions(state),action=action))
             after=env.step(action);counts[action]+=1
             delta=max(0,after.get('turn',state['turn'])-state['turn'])
             nxt=dict(last_hp=state['hp']/state['max_hp'],
