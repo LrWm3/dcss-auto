@@ -384,3 +384,32 @@ Recorded as paused/reached rank24, not a death or full route win. This is a
 promising one-seed result, not a five-seed minimum or replicated causal claim.
 Retained RC6638c14ee184c4a078de1e6363ee56fbe92ec418009b195d0ec0d3a5291bc158
 (tested commit96bdfd6). Immutable dump, pause row and observation notes committed.
+
+## Mesmerisation movement fix — isolated live intervention
+
+User priority: fix movement before further tactical changes. Commit34e11d3;
+RC f17f73a940e6847394827d922ad910b0aaa10c6ec7dbdd117fbb36e4b87d977d.
+The generic "cannot move" latch also caught "cannot move away from" and
+prevented all subsequent combat. Classify directional rejections separately;
+unknown restrictions retain their safe pause. Recover pre-fix unclassified
+latches on mesmerised hotloads. Use engine view.withheld on actual first steps
+(not hypothetical BFS nodes), direct adjacent attacks, and one-step pursuit to
+melee range. Wait a real turn if no legal path exists or a direction was rejected.
+This prevents native autofight/explore from repeatedly choosing illegal pursuit.
+Survival, wand gate/cap, confusion and true immobility policies remain intact.
+
+Ten Lua suites (including new mesmerisation cases) and nine runner tests pass.
+Cases cover forbidden first steps with legal alternatives, all directions
+withheld, old-latch recovery, directional retry backoff, unknown rejection
+while mesmerised, adjacent attacks, confusion, tree form, and effect ending.
+
+Hotloaded into existing codex-bench1 / CodexWandGate1 at24759, HP137/137,
+without a manual gameplay action or latch reset. Diagnostic stop set for24789.
+The character advanced, moved off the stairs and killed the Shoals:2 avatar;
+vanquished avatar count increased from1 to2. Died naturally at24779, -11/137,
+to a17-damage satyr arrow, with four sirens and a satyr visible and mesmerisation
+still active. No DLua errors. Movement deadlock resolved in this live encounter;
+surviving ranged Shoals packs is not solved or claimed by this narrow fix.
+Separate interventions/mesmerism-v1.json and immutable endpoint evidence preserve
+this mixed-version result; original paused seed row remains unchanged. Bench2's
+Lodul diagnostic character was untouched.

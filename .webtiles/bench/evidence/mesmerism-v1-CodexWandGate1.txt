@@ -1,0 +1,697 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 13772526223844354029 (custom seed)
+
+102794 CodexWandGate1 the Severer (level 15, -11/137 HPs)
+             Began as a Minotaur Berserker on Sept 8, 2026.
+             Was an Elder of Trog.
+             Shot with an arrow by a satyr (17 damage)
+             ... on level 2 of the Shoals.
+             The game lasted 00:04:39 (24779 turns).
+
+CodexWandGate1 the Severer (Minotaur Berserker)    Turns: 24779, Time: 00:04:40
+
+Health: -11/137    AC: 24    Str: 28    XL:     15   Next: 87%
+Magic:  14/14      EV: 12    Int:  2    God:    Trog [****..]
+Gold:   2580       SH:  0    Dex:  9    Spells: 14/14 levels left
+
+rFire   x . .  (150%)   p - +2 battleaxe (freeze)
+rCold   + + .  (33%)      [offhand occupied]
+rNeg    + + +  (0%)     q - +3 chain mail of the Iron City of Dis {rElec rF- rC+ rN+++}
+rPois   .      (100%)     [helmet occupied]
+rElec   +      (33%)    m - +3 fungal fisticloak {Shroompunch Gloves+ HP-10 Str-2 Int-2}
+rCorr   .      (100%)   e - +0 pair of gloves {Parrying}
+SInv    .               (no gloves)
+Will    +++..           l - +0 pair of boots
+Stlth                   g - amulet of magic regeneration
+HPRegen 1.42/turn       f - +4 ring of slaying
+MPRegen 0.54/turn       k - ring of protection from cold
+
+%: no passive effects
+@: strong-willed, mesmerised, regenerating, very slow
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (0%), Trog's Hand (0%), Brothers in Arms
+(71%)
+
+
+You were on level 2 of the Shoals.
+You worshipped Trog.
+Trog was greatly pleased with you.
+You visited 4 branches of the dungeon, and saw 24 of its levels.
+
+You collected 2580 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ i - a +2 war axe of draining
+ p - a +2 battleaxe of freezing (weapon)
+Missiles
+ s - 2 throwing nets (quivered)
+Armour
+ c - a +0 cloak of stealth
+ d - a +1 ring mail of willpower
+ e - a +0 pair of gloves of parrying (worn)
+ l - a +0 pair of boots (worn)
+ m - the +3 fungal fisticloak (worn) {Shroompunch Gloves+ HP-10 Str-2 Int-2}
+   (You found it on level 3 of the Lair of Beasts)   
+   
+   Shroompunch: The cloak sometimes lashes out at its wearer's enemies,
+   inflicting
+                confusion with its spores.
+   Gloves+:   Your cloak can equip an additional pair of gloves.
+   HP-10:     It affects your health (-10).
+   Str-2:     It affects your strength (-2).
+   Int-2:     It affects your intelligence (-2).
+   
+   It cannot be enchanted further.
+ q - the +3 chain mail of the Iron City of Dis (worn) {rElec rF- rC+ rN+++}
+   (You found it on level 2 of the Orcish Mines)   
+   
+   rElec:     It insulates you from electricity.
+   rF-:       It makes you vulnerable to fire.
+   rC+:       It protects you from cold.
+   rN+++:     It renders you almost immune to negative energy.
+   
+   It cannot be enchanted further.
+Jewellery
+ a - a ring of see invisible
+ b - a +5 ring of evasion
+ f - a +4 ring of slaying (worn)
+ g - an amulet of magic regeneration (worn)
+ h - a +6 ring of strength
+ j - a ring of poison resistance
+ k - a ring of protection from cold (worn)
+ n - a ring of protection from cold
+ o - a ring of resist corrosion
+ r - a +6 ring of dexterity
+ t - the ring "Mumi" {+Blink rC+++}
+   (You found it on level 1 of the Shoals)   
+   
+   [ring of protection from cold]
+   
+   +Blink:    It lets you blink.
+   rC+++:     It renders you almost immune to cold.
+Wands
+ e - a wand of charming (16)
+ d - a wand of digging (5)
+ c - a wand of warping (19)
+ f - a wand of mindburst (17)
+ a - a wand of flame (16)
+Scrolls
+ w - 4 scrolls of enchant weapon
+ x - a scroll of amnesia
+ V - a scroll of vulnerability
+ N - 2 scrolls of noise
+ r - 4 scrolls of revelation
+ g - 3 scrolls of fog
+ l - 3 scrolls of enchant armour {unknown}
+ b - 6 scrolls of blinking
+ h - a scroll of teleportation {unknown}
+ i - 5 scrolls of identify
+ d - a scroll of silence {unknown}
+ k - a scroll of summoning {unknown}
+ p - 2 scrolls of poison
+ c - 2 scrolls of torment {unknown}
+ e - a scroll of immolation {unknown}
+Potions
+ B - 2 potions of berserk rage
+ b - 3 potions of brilliance
+ L - 6 potions of lignification
+ k - 2 potions of moonshine
+ r - 2 potions of resistance
+ A - 5 potions of attraction
+ g - 3 potions of magic
+ M - 5 potions of mutation
+ e - a potion of enlightenment
+ a - 3 potions of ambrosia
+Miscellaneous
+ g - a +0 phial of floods
+ h - a +0 tin of tremorstones (2/2)
+
+
+   Skills:
+ * Level 17.1 Fighting
+ - Level 20.0 Axes
+ + Level 15.8 Armour
+ - Level 12.0 Dodging
+ - Level 8.0 Evocations
+
+
+You had 14 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (15/15)            Temple (0/1) D:7            Lair (5/5) D:8         
+ Shoals (2/4) Lair:3       Spider (0/4) Lair:3        Slime (0/5) Lair:4      
+    Orc (2/2) D:11            Elf (0/3) Orc:2        Vaults (0/5) D:13        
+ Depths (0/4) D:15        
+
+The Realm of Zot is guarded by orbs of fire.
+
+Altars:
+Cheibriados
+Elyvilon
+Qazlal
+Sif Muna
+Trog
+Uskayaw
+Zin
+The Shining One
+Beogh
+Jiyva
+
+Shops:
+D:10 [   D:11 ?   D:14 (   Orc:1 :   Orc:2 !!([
+
+Portals:
+Trove: Shoals:1 (suffer the Bane of Paradox)
+
+Annotations:
+D:5 1 runed translucent door, exclusion: door, Crazy Yiuf
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+The merfolk siren chants its luring song.
+The merfolk siren completely misses you.
+The merfolk siren barely misses you.
+The merfolk siren hits you from afar with a +0 trident!
+The merfolk siren chants its luring song.
+The merfolk siren hits you but does no damage.
+The merfolk siren closely misses you.
+The merfolk siren hits you from afar with a +0 trident.
+The merfolk siren hits you from afar with a +0 spear.
+The merfolk siren hits you but does no damage.
+The merfolk siren hits you from afar with a +0 trident.
+The merfolk siren misses you.
+The merfolk siren chants its luring song. x2
+The merfolk siren barely misses you. The satyr shoots an arrow.
+The arrow hits you!
+* * * LOW HITPOINT WARNING * * *
+The merfolk siren barely misses you.
+The merfolk siren hits you but does no damage.
+The merfolk siren barely misses you.
+The merfolk siren hits you but does no damage.
+The satyr shoots an arrow. The arrow hits you!
+* * * LOW HITPOINT WARNING * * *
+The merfolk siren hits you but does no damage.
+The merfolk siren chants its luring song.
+The merfolk siren completely misses you.
+The merfolk siren barely misses you. The satyr shoots an arrow.
+The arrow hits you!
+* * * LOW HITPOINT WARNING * * *
+The merfolk siren closely misses you.
+The merfolk siren chants its luring song. x2
+The merfolk siren hits you from afar with a +0 trident.
+* * * LOW HITPOINT WARNING * * *
+The satyr plays a frightful melody on its pipes!
+The satyr radiates an aura of fear! You resist with almost no effort.
+The merfolk siren closely misses you.
+The merfolk siren hits you but does no damage. x2
+The merfolk siren hits you from afar with a +0 trident.
+* * * LOW HITPOINT WARNING * * *
+The satyr shoots an arrow. The arrow hits you!
+You die...
+
+    #~~~~~
+   ##.~~.##
+####~~≈≈~~#####
+..~~~≈≈≈≈c~...#
+.~~~≈≈≈≈≈~~~...
+.~~~≈≈≈m≈m~~~..
+..~)~≈≈≈~~~~..#
+ #...m≈@~~#
+ ####~~~~##
+   #~m~~~#
+   ##⌠~.⌠#
+    #†<<.#
+    #~<<##
+    ##~##
+     ###
+
+
+You could see a satyr and 4 merfolk sirens.
+
+Vanquished Creatures
+  Frances (D:12)
+  2 orc warlords (Orc:2)
+  A merfolk impaler (Shoals:1)
+  An ettin (D:15)
+  2 mountainshells (Lair:4)
+  5 hydras
+  Erolcha (D:13)
+  An ogre mage (Orc:1)
+  8 centaur warriors
+  5 boulder beetles
+  A merfolk aquamancer (Shoals:1)
+  2 merfolk avatars
+  4 orc high priests (Orc:2)
+  12 two-headed ogres
+  3 tengu warriors (D:15)
+  3 skysharks
+  Lodul (D:10)
+  3 obsidian bats (Orc:2)
+  A deep troll (D:15)
+  2 sea snakes (Shoals:1)
+  10 harpies (Shoals:1)
+  A harpy (shapeshifter) (D:15)
+  4 orc knights (Orc:2)
+  3 deep elf pyromancers
+  A deep elf zephyrmancer (D:13)
+  4 orc sorcerers (Orc:2)
+  9 ugly things
+  3 cyclopes
+  A faun (Shoals:1)
+  3 manticores
+  2 merfolk sirens (Shoals:1)
+  7 kobold blastminers
+  2 black mambas (shapeshifter)
+  4 black mambas
+  2 water nymphs (Shoals:1)
+  2 torpor snails
+  3 gargoyles
+  4 cane toads
+  Maggie (D:8)
+  2 rime drakes
+  4 yaktaurs (D:15)
+  3 kobold demonologists
+  5 komodo dragons
+  An efreet (D:14)
+  2 tengu conjurers (D:15)
+  11 trolls
+  2 polar bears
+  5 merfolk (Shoals:1)
+  4 wind drakes
+  A hornet (shapeshifter) (D:11)
+  9 blink frogs
+  4 dream sheep (Lair:4)
+  A snapping turtle (Lair:3)
+  17 slime creatures
+  Blorkula the orcula (D:8)
+  A culicivora (shapeshifter) (D:15)
+  2 vampires
+  2 shadowghasts
+  A raven (Lair:2)
+  5 wyverns
+  6 water elementals
+  38 yaks
+  3 wraiths
+  3 wargs
+  4 basilisks
+  2 steam dragons
+  22 vampire mosquitoes
+  Menkaure (D:5)
+  An acid dragon (D:12)
+  4 water moccasins
+  2 kobold geomancers
+  44 orc warriors
+  An ice beast (D:5)
+  2 black bears
+  15 ogres
+  6 wolves (Lair:3)
+  17 centaurs
+  2 phantoms
+  4 kobold brigands
+  12 bullfrogs
+  2 gnoll sergeants (D:12)
+  6 scorpions
+  2 rock fish (D:7)
+  A marrowcuda (D:6)
+  A bes kemwar (D:6)
+  4 vampire bats (D:8)
+  28 killer bees
+  2 electric eels (D:10)
+  3 howler monkeys
+  A bombardier beetle (D:4)
+  7 hounds
+  26 orc priests
+  5 jellies
+  A sleepcap (D:6)
+  A clockroach (Lair:3)
+  A drude (D:6)
+  4 iguanas
+  Ijyb (D:5)
+  Natasha (twice) (D:2)
+  20 orc wizards
+  A boggart simulacrum (D:14)
+  Robin (D:2)
+  25 gnolls
+  7 adders
+  A shadow imp (D:5)
+  2 white imps
+  4 dart slugs
+  7 ribbon worms
+  82 orcs
+  13 hobgoblins
+  4 jackals
+  5 ball pythons
+  A bat (D:3)
+  13 endoplasms
+  3 frilled lizards
+  14 goblins
+  49 kobolds
+  4 rats
+  A butterfly (Lair:4)
+752 creatures vanquished.
+
+Vanquished Creatures (collateral kills)
+  A two-headed ogre (D:13)
+  An arcanist (D:11)
+  An orc knight (D:13)
+  A deep elf pyromancer (D:13)
+  2 ogres (D:10)
+6 creatures vanquished.
+
+Vanquished Creatures (others)
+  An ogre mage (D:11)
+1 creature vanquished.
+
+Grand Total: 759 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexWandGate1 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+   377 | D:1      | Reached XP level 2. HP: 26/27 MP: 1/1
+   509 | D:2      | Reached skill level 4 in Axes
+   558 | D:2      | Encountered Natasha
+   568 | D:2      | Killed Natasha
+   569 | D:2      | Reached XP level 3. HP: 8/33 MP: 2/2
+   674 | D:2      | Encountered Robin
+   690 | D:2      | Reached ** piety under Trog
+   692 | D:2      | Killed Robin
+   693 | D:2      | Reached XP level 4. HP: 35/40 MP: 3/3
+   866 | D:2      | Encountered Natasha
+   881 | D:2      | Killed Natasha
+   885 | D:2      | Reached skill level 5 in Axes
+   903 | D:2      | Identified the +6 rapier "Yllom" {devious, rC- rCorr Str+5}
+  1314 | D:3      | Reached XP level 5. HP: 31/47 MP: 4/4
+  1526 | D:3      | Found a shimmering blue altar of Sif Muna.
+  1979 | D:3      | Reached XP level 6. HP: 55/55 MP: 5/5
+  2654 | D:4      | Reached skill level 6 in Axes
+  2942 | D:4      | Reached skill level 5 in Fighting
+  3160 | D:4      | Reached *** piety under Trog
+  3264 | D:4      | Reached XP level 7. HP: 61/61 MP: 6/6
+  3568 | D:4      | Reached skill level 7 in Axes
+  3802 | D:5      | Entered Level 5 of the Dungeon
+  3802 | D:5      | Encountered Ijyb
+  3826 | D:5      | Killed Ijyb
+  3884 | D:5      | Reached skill level 5 in Armour
+  3990 | D:5      | Found a snail-covered altar of Cheibriados.
+  4153 | D:5      | Found a white marble altar of Elyvilon.
+  4396 | D:5      | Encountered Menkaure
+  4403 | D:5      | Killed Menkaure
+  4404 | D:5      | Reached skill level 8 in Axes
+  4404 | D:5      | Reached skill level 5 in Dodging
+  4404 | D:5      | Reached XP level 8. HP: 70/70 MP: 7/7
+  4457 | D:5      | Identified the alchemy staff "Kaewasox" {*Slow +Blink rPois
+                  | Str-2 Ice Alch}
+  4609 | D:5      | Encountered Crazy Yiuf
+  4758 | D:6      | Reached skill level 1 in Evocations
+  4873 | D:6      | Reached skill level 9 in Axes
+  4923 | D:6      | Found a glowing golden altar of the Shining One.
+  5033 | D:6      | Found a hide-covered altar of Uskayaw.
+  5035 | D:6      | Encountered a merfolk
+  5098 | D:6      | Found a glowing silver altar of Zin.
+  5424 | D:7      | Reached XP level 9. HP: 59/79 MP: 8/8
+  5544 | D:7      | Reached skill level 10 in Axes
+  5712 | D:7      | Found a flagged portal.
+  5851 | D:7      | Found a staircase to the Ecumenical Temple.
+  5853 | D:7      | Found a statue of an orb of fire.
+  5855 | D:7      | Found a statue of an orb of fire.
+  6250 | D:8      | Encountered Maggie
+  6268 | D:8      | Killed Maggie
+  6576 | D:8      | Reached skill level 11 in Axes
+  6660 | D:8      | Reached XP level 10. HP: 88/88 MP: 9/9
+  6835 | D:8      | Encountered Blorkula the orcula
+  6855 | D:8      | Killed Blorkula the orcula
+  7084 | D:8      | Found a bloodstained altar of Trog.
+  7234 | D:8      | Found a staircase to the Lair.
+  7283 | D:8      | Found a stormy altar of Qazlal.
+  7443 | D:9      | Reached skill level 12 in Axes
+  7901 | D:10     | Entered Level 10 of the Dungeon
+  7996 | D:10     | Found Alufeh's Antique Armour Boutique.
+  8048 | D:10     | Encountered Lodul
+  8056 | D:10     | Killed Lodul
+  8057 | D:10     | Reached skill level 5 in Evocations
+  8057 | D:10     | Reached XP level 11. HP: 59/97 MP: 10/10
+  8480 | D:10     | Reached skill level 13 in Axes
+  9335 | D:11     | Reached skill level 10 in Fighting
+  9363 | D:11     | Found a staircase to the Orcish Mines.
+  9424 | D:11     | Identified the +8 quarterstaff "Ranoho" {venom, rF+ rC+
+                  | rCorr Stlth+}
+  9601 | D:11     | Found a frozen archway.
+  9659 | D:11     | Reached skill level 10 in Armour
+  9868 | D:11     | Found Gextog's Magic Scroll Shop.
+ 10141 | D:11     | Reached skill level 14 in Axes
+ 10189 | D:11     | Encountered an ogre mage
+ 10198 | D:11     | Encountered an arcanist
+ 10202 | D:11     | Killed an ogre mage
+ 10209 | D:11     | Killed an arcanist
+ 10323 | D:11     | Reached XP level 12. HP: 108/108 MP: 11/11
+ 10573 | D:11     | Identified the scarab talisman of Ucsauwas {Will++}
+ 10694 | Lair:1   | Entered Level 1 of the Lair of Beasts
+ 11497 | Lair:2   | Encountered an eight-headed hydra
+ 11504 | Lair:2   | Killed a ten-headed hydra
+ 11536 | Lair:2   | Reached skill level 15 in Axes
+ 11545 | Lair:2   | Encountered a six-headed hydra
+ 11559 | Lair:2   | Killed an eight-headed hydra
+ 11987 | Lair:2   | Found a dark tunnel.
+ 12672 | Lair:3   | Reached skill level 10 in Dodging
+ 12987 | Lair:3   | Found a hole to the Spider Nest.
+ 13015 | Lair:3   | Found the +3 fungal fisticloak {Shroompunch Gloves+ HP-10
+                  | Str-2 Int-2}
+ 13033 | Lair:3   | Got the +3 fungal fisticloak {Shroompunch Gloves+ HP-10
+                  | Str-2 Int-2}
+ 13077 | Lair:3   | Found a staircase to the Shoals.
+ 13923 | Lair:4   | Encountered a five-headed hydra
+ 13935 | Lair:4   | Killed a ten-headed hydra
+ 14051 | Lair:4   | Encountered a six-headed hydra
+ 14057 | Lair:4   | Killed an eight-headed hydra
+ 14058 | Lair:4   | Reached XP level 13. HP: 117/117 MP: 12/12
+ 14156 | Lair:4   | Reached skill level 16 in Axes
+ 14404 | Lair:4   | Found a staircase to the Slime Pits.
+ 14405 | Lair:4   | Found a viscous altar of Jiyva.
+ 15280 | Lair:5   | Entered Level 5 of the Lair of Beasts
+ 15654 | D:12     | Encountered Frances
+ 15663 | D:12     | Killed Frances
+ 15689 | D:12     | Reached **** piety under Trog
+ 16334 | Orc:1    | Entered Level 1 of the Orcish Mines
+ 16688 | Orc:1    | Found a roughly hewn altar of Beogh.
+ 16693 | Orc:1    | Found Ahorip's Book Boutique.
+ 16837 | Orc:2    | Entered Level 2 of the Orcish Mines
+ 17174 | Orc:2    | Reached XP level 14. HP: 115/130 MP: 13/13
+ 17311 | Orc:2    | Identified the +3 chain mail of the Iron City of Dis {rElec
+                  | rF- rC+ rN+++}
+ 17556 | Orc:2    | Encountered an orc warlord
+ 17562 | Orc:2    | Killed an orc warlord
+ 17563 | Orc:2    | Reached skill level 17 in Axes
+ 17895 | Orc:2    | Found a staircase to the Elven Halls.
+ 18010 | Orc:2    | Encountered an orc warlord
+ 18014 | Orc:2    | Found a roughly hewn altar of Beogh.
+ 18021 | Orc:2    | Killed an orc warlord
+ 18116 | Orc:2    | Found Vaud's Antique Armour Boutique.
+ 18187 | Orc:2    | Found Xerun's Antique Weapon Emporium.
+ 18605 | Orc:2    | Found a roughly hewn altar of Beogh.
+ 18853 | Orc:2    | Found Izolloi's Distillery.
+ 18864 | Orc:2    | Reached skill level 18 in Axes
+ 18915 | Orc:2    | Found Giadicw's Distillery.
+ 19531 | D:13     | Encountered Erolcha
+ 19537 | D:13     | Killed Erolcha
+ 19861 | D:13     | Found a gate to the Vaults.
+ 19947 | D:13     | Found a white marble altar of Elyvilon.
+ 20120 | D:13     | Reached skill level 15 in Fighting
+ 20651 | D:14     | Reached XP level 15. HP: 91/141 MP: 14/14
+ 20655 | D:14     | Reached skill level 19 in Axes
+ 21096 | D:14     | Found Imucsoicym's Weapon Boutique.
+ 22303 | D:15     | Entered Level 15 of the Dungeon
+ 22341 | D:15     | WAND CAP 4/4: encounter 22304 at D:15; enemies seen (peak
+                  | simultaneous per kind): 1x basilisk [threat 1], 1x centaur
+                  | warrior [threat 2], 1x culicivora [threat 1], 1x cyclops
+                  | [threat 2], 2x red ugly thing [threat 2], 4x centaur
+                  | [threat 0], 4x white ugly thing [threat 2], 4x yaktaur
+                  | [threat 2], 5x slime creature [threat 1]
+ 22342 | D:15     | HP: 6/131 [centaur warrior (6)]
+ 22421 | D:15     | WAND CAP 4/4: encounter 22304 at D:15; enemies seen (peak
+                  | simultaneous per kind): 1x basilisk [threat 1], 1x centaur
+                  | warrior [threat 2], 1x culicivora [threat 1], 1x cyclops
+                  | [threat 2], 1x tengu conjurer [threat 2], 2x red ugly thing
+                  | [threat 2], 4x centaur [threat 0], 4x white ugly thing
+                  | [threat 2], 4x yaktaur [threat 2], 5x slime creature
+                  | [threat 1]
+ 22688 | D:15     | Reached skill level 15 in Armour
+ 22855 | D:15     | Found a staircase to the Depths.
+ 22981 | D:15     | Reached skill level 20 in Axes
+ 23614 | Shoals:1 | Entered Level 1 of the Shoals
+ 23760 | Shoals:1 | Found a portal to a secret trove of treasure.
+ 23807 | Shoals:1 | Identified the ring "Mumi" {+Blink rC+++}
+ 24779 | Shoals:2 | HP: 6/137 [merfolk siren/+0 trident (4)]
+ 24779 | Shoals:2 | Shot with an arrow by a satyr
+
+Illustrated notes
+
+Levels and vault maps discovered:
+D:1:      heliophobic_arrival_ceremonial_halls, layout_rooms
+D:2:      layout_rooms, uniq_natasha, uniq_robin
+D:3:      cheibrodos_thug_alley, layout_basic, nicolae_sif_muna_condensation,
+          minmay_strange_pillars, dreamdust_princess_bridge
+D:4:      minmay_goblin_kobold_castle, layout_basic, grunt_ministairs_15
+D:5:      layout_gridville, mainiacjoe_overflow_big_doors,
+          uniq_crazy_yiuf_cottage, uniq_ijyb, uniq_menkaure
+D:6:      layout_rooms, mainiacjoe_overflow_small_starburst,
+          nicolae_uskayaw_OPEN_UP_THE_PIT, kennysheep_mini_moat
+D:7:      layout_basic, minmay_temple_entry_antechambers, enter_bailey_5
+D:8:      layout_rooms, kennysheep_little_box, lightli_temple_of_fire,
+          nicolae_overflow_hidden_temple, lair_entry_dummy,
+          nicolae_nh_ransacked_shop, uniq_blorkula_the_orcula, uniq_maggie
+D:9:      layout_rooms
+D:10:     layout_basic, serial_shops, shop, uniq_lodul
+D:11:     layout_long_grid, david_orc_2, serial_shops, nicolae_shop_rolled_up,
+          portal_ice_cave_entry_guarded_snowflake, minmay_door_square,
+          regret_index_collectors'_demense
+D:12:     layout_basic, uniq_frances
+D:13:     layout_irregular_city, david_vaults_1, elyvilon_altar_5, uniq_erolcha
+D:14:     layout_layer_cave, serial_shops, shop, roderic_lattice_a
+D:15:     hangedman_depths_entry_civil_slaughter, layout_cave_pools,
+          kennysheep_crisscross, chequers_serial_rivers_marsh
+Lair:1:   layout_regular_city, grunt_megastairs_4
+Lair:2:   layout_chaotic_city, nicolae_volcano_entry_hallway,
+          serial_bayou_shore_b
+Lair:3:   layout_cave_pods, minmay_shoals_entry_hut,
+          nicolae_spider_entry_non_spiders
+Lair:4:   layout_misc_corridors, nicolae_slime_entry_slimehenge,
+          regret_index_lairdec_another_tattered_fort, wander_river,
+          lemuel_fruit_fields
+Lair:5:   evil_forest, layout_regular_city, serial_bayou_shore_b
+Shoals:1: layout_shoals, nicolae_trove_entry_crossroad
+Shoals:2: nicolae_shoals_lighthouse, layout_shoals, nicolae_shoals_songs
+Orc:1:    layout_diamond_mine, serial_shops, shop, parchment_shop,
+          lemuel_statue_altar
+Orc:2:    pubby_orc_utopia
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 |
+---------------+----------------------------------------------+-----
+Axes           |     4     5     6  8  9 11 12 14 15 16 18 20 | 20.0
+Fighting       |     4           5  6  7  8  9 10 11 13 15 17 | 17.1
+Armour         |     3        4     5  6  7  9 10 11 12 14 15 | 15.8
+Dodging        |           3     4  5     6  8  9 10 11 12    | 12.0
+Evocations     |                       2  3  5  6  7  8       |  8.0
+
+Action                     |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+---------------------------+-------+-------+-------+-------+-------++-------
+ Attack: Normal            |    46 |   216 |   233 |   368 |   675 ||  1538
+  Melee: Hand axe          |    86 |   313 |   295 |       |       ||   694
+         Headbutt          |    13 |    57 |    61 |   134 |   224 ||   489
+         War axe           |       |       |    15 |   480 |   161 ||   656
+         Fungal Fists      |       |       |       |     9 |   102 ||   111
+         Battleaxe         |       |       |       |       |   782 ||   782
+ Invoke: Trog's Hand       |       |     5 |    10 |    13 |    25 ||    53
+         Berserk           |       |     5 |    21 |    38 |    68 ||   132
+         Brothers in Arms  |       |       |       |       |     1 ||     1
+  Evoke: Wand of charming  |       |       |       |     3 |       ||     3
+         Wand of mindburst |       |       |       |     2 |     3 ||     5
+         Wand of warping   |       |       |       |     1 |     2 ||     3
+  Drink: Haste             |       |       |     4 |     2 |     2 ||     8
+         Might             |       |       |     1 |     2 |     2 ||     5
+         Heal wounds       |       |       |       |     2 |     3 ||     5
+         Curing            |       |       |       |     2 |     1 ||     3
+   Read: Identify          |       |     2 |     5 |     4 |     3 ||    14
+         Fear              |       |       |     2 |       |     1 ||     3
+         Fog               |       |       |     1 |       |       ||     1
+         Vulnerability     |       |       |     1 |       |       ||     1
+         Amnesia           |       |       |     1 |       |       ||     1
+         Revelation        |       |       |     1 |       |       ||     1
+         Enchant weapon    |       |       |       |     1 |       ||     1
+         Blinking          |       |       |       |     1 |       ||     1
+         Noise             |       |       |       |       |     1 ||     1
+         Poison            |       |       |       |       |     1 ||     1
+   Stab: Sleeping          |     1 |       |       |       |       ||     1
+         Confused          |       |       |       |       |     5 ||     5
+ Armour: Plate armour      |    44 |   108 |   160 |   333 |   183 ||   828
+         Animal skin       |     1 |       |       |       |       ||     1
+         Chain mail        |       |       |       |       |   473 ||   473
+  Dodge: Dodged            |    28 |    77 |   133 |   201 |   365 ||   804
+  Block: Other             |       |    12 |    59 |    68 |   106 ||   245
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  25866 |  24615 |   1251 |      0 |  11538 |  24 | 1077.8 |
+       Dungeon |  16248 |  15457 |    791 |      0 |   7476 |  15 | 1083.2 |
+          Lair |   4970 |   4643 |    327 |      0 |   2784 |   5 |  994.0 |
+        Shoals |   1318 |   1302 |     16 |      0 |    195 |   2 |  659.0 |
+  Orcish Mines |   3328 |   3212 |    116 |      0 |   1083 |   2 | 1664.0 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+   Orc:2: 2804 daAuts
+    D:14: 1826 daAuts
+  Lair:3: 1638 daAuts
+    D:11: 1495 daAuts
+  Lair:4: 1495 daAuts
+    D:10: 1474 daAuts
+     D:4: 1445 daAuts
+     D:3: 1377 daAuts
+Shoals:1: 1293 daAuts
+     D:8: 1235 daAuts
+    D:15: 1104 daAuts
+    D:13: 1094 daAuts
+    D:12: 991 daAuts
+     D:7: 988 daAuts
+  Lair:2: 955 daAuts
+
+DLua errors:
+
+Table legend:
+ A = God
+ B = Rank
+ C = Start time
+ D = Start piety
+ E = Piety gained
+ F = Piety on gifts
+ G = Piety on penance
+ H = Piety on stepdowns
+ I = Piety decays
+ J = Piety lost (inc. decay)
+         A          B      C       D     E     F     G     H     I     J   
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
++-----------------+---+---------+-----+-----+-----+-----+-----+-----+-----+
+
+Conducts for god: Trog
+Piety from conduct
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+----------------------+-------+-------+-------+-------+-------++-------
+         Kill Living  |    20 |    48 |    65 |   104 |   215 ||   452
+         Kill Undead  |     0 |     1 |     3 |    12 |    10 ||    26
+          Kill Demon  |     0 |     0 |     2 |     1 |     1 ||     4
+         Kill Wizard  |     1 |     1 |     4 |     7 |    21 ||    34
+      Kill Nonliving  |     0 |     0 |     0 |     2 |     6 ||     8
+----------------------+-------+-------+-------+-------+-------++-------
+Conduct count
+              Conduct |  1- 3 |  4- 6 |  7- 9 | 10-12 | 13-15 || total
+----------------------+-------+-------+-------+-------+-------++-------
+         Kill Living  |    29 |    75 |   101 |   159 |   336 ||   700
+         Kill Undead  |     0 |     1 |     4 |    17 |    14 ||    36
+          Kill Demon  |     0 |     0 |     3 |     1 |     1 ||     5
+         Kill Wizard  |     1 |     2 |     8 |    11 |    33 ||    55
+      Kill Nonliving  |     0 |     0 |     0 |     3 |     9 ||    12
+----------------------+-------+-------+-------+-------+-------++-------
+
