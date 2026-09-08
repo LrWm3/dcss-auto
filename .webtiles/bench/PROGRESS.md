@@ -54,3 +54,13 @@ It does not fix the known priest movement loop or claim higher progression.
 Verification: five Lua regression suites plus policy-trace comparisons against
 the previous checkpoint. No live seed run is represented by these mocked checks;
 therefore no new progression rows are added to runs.jsonl for this refactor.
+
+## positioning-v1 experiment
+
+Add bounded pre-melee positioning for visible groups: choose a safe known tile
+with fewer approaches without moving closer to enemies; do not retreat from
+adjacent attackers. At a known choke, wait at most three times for non-casters,
+stopping on damage. Limit repositioning to six moves per continuous encounter.
+Unknown terrain cannot count as a wall. This is a positioning heuristic, not
+complete ranged-threat or opportunity-attack reasoning. Six regression suites
+pass before the fixed five-seed trial. Keep the policy configurable.

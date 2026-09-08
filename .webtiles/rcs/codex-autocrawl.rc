@@ -27,6 +27,8 @@ AUTOCrawl_TACTICS = {
   hand_hp = 80, hand_cooldown = 40,
   haste_hp = 65, might_hp = 75,
   berserk_hp = 55, crowd_berserk = true, berserk_enemy_count = 3,
+  positioning = true, position_enemy_count = 3, position_moves = 6,
+  position_waits = 3,
 }
 
 -- Editable progression plan. A stage covers every floor in [from, to].
@@ -513,10 +515,77 @@ local function should_berserk(scan)
       and not you.berserk() and not you.exhausted() and not you.slowed()
 end
 
+local function positioning_action(scan)
+  local policy=AUTOCrawl_TACTICS
+  if not policy.positioning or #scan.monsters<policy.position_enemy_count
+      or scan.reachable_adjacent or you.berserk() or you.confused()
+      or movement_locked() then return false end
+  local state=BOT.positioning
+  if not state or state.level~=level_key() then
+    state={level=level_key(),moves=0,waits=0}
+    BOT.positioning=state
+  end
+  local function openness(x,y)
+    local exits=0
+    for _,delta in ipairs(MOVE_DELTAS) do
+      local cell=scan.cells[map_key(x+delta[1],y+delta[2])]
+      -- Unknown terrain must not look like a protective wall.
+      if not cell then return 9 end
+      if cell.traversable then exits=exits+1 end
+    end
+    return exits
+  end
+  local function distance(x,y)
+    local nearest=100
+    for _,enemy in ipairs(scan.monsters) do
+      nearest=math.min(nearest,math.max(math.abs(enemy.x-x),math.abs(enemy.y-y)))
+    end
+    return nearest
+  end
+  local current=openness(0,0)
+  local best,score=nil,current
+  if state.moves<policy.position_moves then
+    for i,delta in ipairs(MOVE_DELTAS) do
+      local x,y=delta[1],delta[2]
+      local cell=scan.cells[map_key(x,y)]
+      if cell and cell.visible and (cell.feature=="floor" or cell.feature=="open_door")
+          and can_step(scan.cells,0,0,x,y,scan.blocked)
+          and distance(x,y)>=math.max(3,distance(0,0)) then
+        local degree=openness(x,y)
+        if degree<score then best,score=MOVE_KEYS[i],degree end
+      end
+    end
+  end
+  if best then
+    state.moves=state.moves+1
+    say("positioning: stepping toward a narrower approach")
+    crawl.sendkeys(best)
+    return true
+  end
+  -- Briefly let melee approach; never wait indefinitely or while taking
+  -- ranged damage. Casters are not assumed harmless merely because distant.
+  local hp=you.hp()
+  local spells=false
+  for _,enemy in ipairs(scan.monsters) do
+    local m=enemy.monster
+    if not m or not m.spells or #m:spells()>0 then spells=true end
+  end
+  if current<=3 and not spells and distance(0,0)<=5
+      and state.waits<policy.position_waits and (not state.hp or hp>=state.hp) then
+    state.hp=hp
+    state.waits=state.waits+1
+    say("positioning: holding a narrow approach")
+    crawl.do_commands({"CMD_WAIT"})
+    return true
+  end
+  return false
+end
+
 local function combat_action(scan)
-  if not scan.any then return false end
+  if not scan.any then BOT.positioning=nil; return false end
   if rejected_autofight_action(scan) then return true end
   if not scan.reachable_any then return isolated_enemy_action(scan) end
+  if positioning_action(scan) then return true end
   if should_berserk(scan) then
     if you.activate_ability("Berserk", 0, 0) then
       return true
