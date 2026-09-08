@@ -1,0 +1,479 @@
+{
+  "schema_version": 1,
+  "scope": "local checkpoint variants, not full-seed benchmark results",
+  "save_load_fidelity": "diverges from uninterrupted trajectory; unresolved",
+  "uninterrupted_reproduction": {
+    "worker": "worker-tak9pdi4",
+    "outcome": "death",
+    "last_observed_turn": 3546
+  },
+  "repeatability": {
+    "first_contact_baseline_observations_equal": 100,
+    "critical_baseline_observations_equal": 3
+  },
+  "cases": [
+    {
+      "id": "eustachio-v1",
+      "seed": "1760771545328102746",
+      "character": "TacticalEustachio",
+      "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+      "source_rc_sha256": "b419967bef8588ad79737cd476b807424611e32ced9a2d53d6bdae335782db27",
+      "rc_sha256": "074ecdca7741c7f31c80a7298942a1e20837312ceb42daf4d7249d90d929707d",
+      "save_sha256": "a2c64ea23d485c7f544d75b5c8951c2eb18bfb767c5d56c23dc57cf93fef9227",
+      "capture_worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/worker-pswkcv8k",
+      "initial": {
+        "turn": 3506,
+        "floor": "D:4",
+        "hp": 56,
+        "max_hp": 56,
+        "monsters": {
+          "1": {
+            "name": "Eustachio",
+            "reachable": true,
+            "threat": 3,
+            "x": 6,
+            "y": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "eustachio-return-v1",
+      "seed": "1760771545328102746",
+      "character": "TacticalEustachio",
+      "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+      "source_rc_sha256": "b419967bef8588ad79737cd476b807424611e32ced9a2d53d6bdae335782db27",
+      "rc_sha256": "074ecdca7741c7f31c80a7298942a1e20837312ceb42daf4d7249d90d929707d",
+      "save_sha256": "3473249532c5a0a9601bddc3bf6d76b8175b22ee3369a59f410b2536491af67e",
+      "capture_worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/worker-boleobz6",
+      "warmup_decisions": 22,
+      "fidelity": "save/load may diverge from uninterrupted trajectory",
+      "initial": {
+        "turn": 3528,
+        "floor": "D:4",
+        "hp": 42,
+        "max_hp": 56,
+        "monsters": {
+          "1": {
+            "name": "Eustachio",
+            "reachable": true,
+            "threat": 3,
+            "x": -1,
+            "y": 4
+          }
+        }
+      }
+    },
+    {
+      "id": "eustachio-critical-v1",
+      "seed": "1760771545328102746",
+      "character": "TacticalEustachio",
+      "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+      "source_rc_sha256": "b419967bef8588ad79737cd476b807424611e32ced9a2d53d6bdae335782db27",
+      "rc_sha256": "074ecdca7741c7f31c80a7298942a1e20837312ceb42daf4d7249d90d929707d",
+      "save_sha256": "3ab3dda28d87e86415f4a4ed53e6e3fbefebea21e19cb8e679c134005712815c",
+      "capture_worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/worker-ijp75jdp",
+      "warmup_decisions": 35,
+      "fidelity": "save/load may diverge from uninterrupted trajectory",
+      "initial": {
+        "turn": 3541,
+        "floor": "D:4",
+        "hp": 35,
+        "max_hp": 56,
+        "monsters": {
+          "1": {
+            "name": "Eustachio",
+            "reachable": true,
+            "threat": 3,
+            "x": 0,
+            "y": -1
+          },
+          "2": {
+            "name": "rat",
+            "reachable": true,
+            "threat": 0,
+            "x": 2,
+            "y": -1
+          },
+          "3": {
+            "name": "river rat",
+            "reachable": true,
+            "threat": 1,
+            "x": -1,
+            "y": 0
+          },
+          "4": {
+            "name": "drude",
+            "reachable": true,
+            "threat": 2,
+            "x": 1,
+            "y": -1
+          },
+          "5": {
+            "name": "iron imp",
+            "reachable": true,
+            "threat": 2,
+            "x": -1,
+            "y": 1
+          },
+          "6": {
+            "name": "white imp",
+            "reachable": true,
+            "threat": 1,
+            "x": -1,
+            "y": -1
+          },
+          "7": {
+            "name": "river rat",
+            "reachable": false,
+            "threat": 1,
+            "x": -1,
+            "y": 6
+          }
+        }
+      }
+    }
+  ],
+  "experiments": {
+    "pilot-v1": [
+      {
+        "policy": "baseline",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "budget_truncated",
+        "initial_turn": 3528,
+        "reset_seconds": 5.26,
+        "decisions": 180,
+        "final_turn": 3765,
+        "final_hp": 62,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-cmpsqtsd",
+        "elapsed_seconds": 41.886
+      },
+      {
+        "policy": "baseline",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "budget_truncated",
+        "initial_turn": 3528,
+        "reset_seconds": 5.564,
+        "decisions": 180,
+        "final_turn": 3765,
+        "final_hp": 62,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-9wmesq_n",
+        "elapsed_seconds": 39.156
+      },
+      {
+        "policy": "tab",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "safe_recovery",
+        "initial_turn": 3528,
+        "reset_seconds": 4.512,
+        "decisions": 112,
+        "final_turn": 3640,
+        "final_hp": 61,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-6bdbb87y",
+        "elapsed_seconds": 24.958
+      },
+      {
+        "policy": "charge",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "safe_recovery",
+        "initial_turn": 3528,
+        "reset_seconds": 4.51,
+        "decisions": 64,
+        "final_turn": 3592,
+        "final_hp": 61,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-kq60j0z9",
+        "elapsed_seconds": 16.16
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3528,
+        "reset_seconds": 5.634,
+        "decisions": 31,
+        "final_turn": 3558,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-m3o5zgo2",
+        "elapsed_seconds": 11.524
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3528,
+        "reset_seconds": 4.99,
+        "decisions": 20,
+        "final_turn": 3547,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-n3qpwzqn",
+        "elapsed_seconds": 8.908
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3528,
+        "reset_seconds": 6.088,
+        "decisions": 29,
+        "final_turn": 3556,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-zzj2vz8r",
+        "elapsed_seconds": 12.335
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3528,
+        "reset_seconds": 6.071,
+        "decisions": 52,
+        "final_turn": 3579,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-yj5_jf_b",
+        "elapsed_seconds": 16.05
+      },
+      {
+        "policy": "q",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3528,
+        "reset_seconds": 6.663,
+        "decisions": 15,
+        "final_turn": 3542,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-feuh6kxb",
+        "elapsed_seconds": 10.264
+      },
+      {
+        "policy": "q",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-return-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3528,
+        "reset_seconds": 12.004,
+        "decisions": 15,
+        "final_turn": 3542,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/pilot-v1/worker-uub8_5ab",
+        "elapsed_seconds": 15.682
+      }
+    ],
+    "critical-pilot-v1": [
+      {
+        "policy": "baseline",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 12.245,
+        "decisions": 3,
+        "final_turn": 3543,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-05rjb9ds",
+        "elapsed_seconds": 13.193
+      },
+      {
+        "policy": "baseline",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 12.393,
+        "decisions": 3,
+        "final_turn": 3543,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-5y0spiac",
+        "elapsed_seconds": 13.343
+      },
+      {
+        "policy": "tab",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 12.454,
+        "decisions": 3,
+        "final_turn": 3543,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-mk3p1f7h",
+        "elapsed_seconds": 13.397
+      },
+      {
+        "policy": "charge",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "safe_recovery",
+        "initial_turn": 3541,
+        "reset_seconds": 11.124,
+        "decisions": 78,
+        "final_turn": 3619,
+        "final_hp": 61,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-vf0ko6n3",
+        "elapsed_seconds": 26.587
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 9.145,
+        "decisions": 11,
+        "final_turn": 3551,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-9ax2u56k",
+        "elapsed_seconds": 11.784
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 6.912,
+        "decisions": 3,
+        "final_turn": 3543,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-z_fzkd8v",
+        "elapsed_seconds": 7.747
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 7.87,
+        "decisions": 8,
+        "final_turn": 3548,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-w3y9j2a1",
+        "elapsed_seconds": 9.719
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 11.604,
+        "decisions": 13,
+        "final_turn": 3553,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-k2kbpsdt",
+        "elapsed_seconds": 14.547
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "safe_recovery",
+        "initial_turn": 3541,
+        "reset_seconds": 5.572,
+        "decisions": 79,
+        "final_turn": 3620,
+        "final_hp": 61,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-84sl1v9y",
+        "elapsed_seconds": 20.102
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 5.87,
+        "decisions": 31,
+        "final_turn": 3571,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-jg407sag",
+        "elapsed_seconds": 12.005
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 5.945,
+        "decisions": 8,
+        "final_turn": 3548,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-486a69pp",
+        "elapsed_seconds": 7.783
+      },
+      {
+        "policy": "q",
+        "training": true,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 6.309,
+        "decisions": 15,
+        "final_turn": 3555,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-zyuc8gzn",
+        "elapsed_seconds": 9.932
+      },
+      {
+        "policy": "q",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 8.852,
+        "decisions": 28,
+        "final_turn": 3568,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-pusixd7y",
+        "elapsed_seconds": 15.277
+      },
+      {
+        "policy": "q",
+        "training": false,
+        "case": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/eustachio-critical-v1",
+        "engine_sha256": "54cdf44895903fa3c7ac51278afff390d1bffe6f1abd581dc3529aa47a3d3b38",
+        "outcome": "death",
+        "initial_turn": 3541,
+        "reset_seconds": 9.364,
+        "decisions": 28,
+        "final_turn": 3568,
+        "final_hp": 0,
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/critical-pilot-v1/worker-vaoy07w9",
+        "elapsed_seconds": 15.162
+      }
+    ]
+  }
+}

@@ -1129,3 +1129,26 @@ diagnosis; do not claim full autonomous route completion. Read-only console dump
 in Lair5 followed by resume, and dump/save at final native pause; no manual
 combat/movement. Preserved original full-batch paused row; continuation evidence
 and metadata are separate. Missing-Lair blocker resolved in this replay.
+
+## 2026-09-08: separate tactical encounter lab
+
+Added `tactical/` with isolated checkpoint capture/reset/decision stepping,
+player-visible structured observations, transition logs, checksummed cases, and
+a small tabular Q-learning experiment. Production RC and live sessions unchanged.
+Captured Eustachio first-contact3506, return3528, and critical3541 checkpoints.
+
+Important fidelity finding: uninterrupted stepped seed3 reproduces the historical
+death, but loading first-contact changes the next monster action and outcome.
+BOT persistence did not eliminate this. Cases are explicitly save-loaded variants,
+not exact historical replays; save/load fidelity remains outstanding. Repeated
+loaded baselines do agree observation-for-observation (100 first-contact actions;
+3 critical actions). Never mix these results into the full-seed progression rows.
+
+Two pilots:24 episodes/1009 transitions. Critical RC dies after3 decisions twice;
+plain Tab also dies; hand-written adjacent berserk+Tab reaches safe full recovery.
+Q training found1 recovery in8 exploratory critical episodes, but both greedy
+evaluations died. Earlier return-case Q training/evaluation also died. No learned
+policy improvement or generalization claim. Evidence and hashes are tracked in
+`tactical/evidence/initial-pilots.json`; saves/models/transcripts stay local under
+git-ignored `tactical/artifacts/`. Eight new Python tests,9 batch tests,22 Lua
+suites pass. No full-seed rerun and no production deployment this turn.
