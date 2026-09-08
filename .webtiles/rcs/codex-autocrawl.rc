@@ -2782,6 +2782,35 @@ local function abyss_action(scan)
       if not score or value>score then best,score=i,value end
     end
   end
+  -- Keep walking unless it cannot create separation at low HP.
+  if (not best or (scan.reachable_adjacent and hp<65)) and not you.berserk()
+      and not you.silenced() and a.last_blink~=you.turns() then
+    local target,value
+    for _,c in pairs(scan.cells) do
+      local dist=math.max(math.abs(c.x),math.abs(c.y))
+      if c.visible and c.traversable and not c.unsafe and not c.cloud
+          and not c.monster and not c.invisible_monster and dist>=3 and dist<=7
+          and view.is_safe_square(c.x,c.y) then
+        local v=dist-danger(c.x,c.y)
+        if not value or v>value then target,value=c,v end
+      end
+    end
+    if target and danger(target.x,target.y)<danger(0,0) then
+      for _,it in ipairs(items.inventory()) do
+        if item_class(it)=="scroll" and it.is_identified and item_name(it):find("blinking",1,true) then
+          a.last_blink=you.turns()
+          local aim=string.rep(target.x<0 and "h" or "l",math.abs(target.x))
+              ..string.rep(target.y<0 and "k" or "j",math.abs(target.y))
+          guarded_keys("r"..inv_letter(it).."r"..aim.."f")
+          if turn_spent(a.last_blink) then
+            crawl.take_note("Abyss escape mode: emergency blink")
+            return true
+          end
+          break
+        end
+      end
+    end
+  end
   if best then
     local d=MOVE_DELTAS[best]; a.dx,a.dy=d[1],d[2]
     crawl.sendkeys(MOVE_KEYS[best]); return true
