@@ -1,0 +1,7 @@
+{
+  "version": "wands-seed2-v1",
+  "stale_seconds": 90,
+  "sessions": [
+    {"session": "codex-bench1", "character": "CodexWandsSeed2", "seed": "13772526223844354029"}
+  ]
+}
