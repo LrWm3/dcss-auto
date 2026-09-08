@@ -36,6 +36,7 @@ AUTOCrawl_TACTICS = {
   hidden_hand_cooldown = 8,
   steam_charge = true, steam_charge_memory = 12, steam_charge_steps = 8,
   approach_mode = 2, approach_waits = 4, approach_backsteps = 2,
+  sigmund_mode = 0, -- 1 no lure; 2 early charge/rage; 3 unseen withdrawal
   debug_encounters = false,
   steam_debug = false, -- diagnostic single-action replay; never a benchmark
   steam_debug_entry = false, -- start at D:6 arrival, record notes automatically
@@ -1175,9 +1176,53 @@ end
 
 -- Small, bounded first-contact experiments: 1 hold, 2 lure toward the
 -- entry/rest anchor then hold, 3 hold only when pursuit would touch frontier.
+local function sigmund_action(scan)
+  local mode=AUTOCrawl_TACTICS.sigmund_mode
+  local e=BOT.encounter
+  if mode==0 or not e or not e.hidden_caster or e.hidden_caster.name~="Sigmund"
+      or you.confused() or movement_locked()
+      or (you.mesmerised and you.mesmerised()) then return false end
+  local target
+  for _,enemy in ipairs(scan.monsters) do
+    if enemy.monster and enemy.monster.name and enemy.monster:name()=="Sigmund" then target=enemy end
+  end
+  local function note(s)
+    say("Sigmund policy: "..s)
+    if crawl.take_note then crawl.take_note("Sigmund "..mode..": "..s.." HP="..you.hp()) end
+  end
+  if mode==2 and target then
+    local distance=math.max(math.abs(target.x),math.abs(target.y))
+    if distance<=2 and hp_percent()>=55 and not you.berserk() and not berserk_recovering()
+        and survival_ability("Berserk",20) then note("early rage"); return true end
+    if distance>1 then
+      local _,_,step=bfs(scan.cells,scan.blocked,function(c)
+        return math.max(math.abs(c.x-target.x),math.abs(c.y-target.y))==1
+      end)
+      if step then note("close visible"); crawl.sendkeys(step); return true end
+    end
+  end
+  if mode==3 and e.hidden_missing and not you.berserk() then
+    e.sigmund_retreats=e.sigmund_retreats or 0
+    if e.sigmund_retreats<12 and not scan.reachable_adjacent then
+      local _,_,step=bfs(scan.cells,scan.blocked,function(c) return regular_up(c.feature) end)
+      if regular_up() then note("ascend unseen"); crawl.sendkeys("<"); return true end
+      if step then
+        e.sigmund_retreats=e.sigmund_retreats+1
+        note("withdraw unseen"); crawl.sendkeys(step); return true
+      end
+    end
+    -- Do not chase a disturbance with poisoning already ticking. Let normal
+    -- visible combat act, or spend a bounded-memory wait until reassessment.
+    if not scan.any then note("hold unseen"); crawl.do_commands({"CMD_WAIT"}); return true end
+  end
+  return false
+end
+
 local function approach_action(scan)
   local mode=AUTOCrawl_TACTICS.approach_mode
   local e=BOT.encounter
+  if AUTOCrawl_TACTICS.sigmund_mode~=0 and e and e.hidden_caster
+      and e.hidden_caster.name=="Sigmund" then return false end
   if mode==0 or not e or not scan.any or not scan.reachable_any
       or you.berserk() or you.confused() or movement_locked()
       or (you.mesmerised and you.mesmerised()) then return false end
@@ -2515,6 +2560,7 @@ function ready()
   end
   if survival_action(scan) then return end
   if combat_wand_action(scan) then return end
+  if sigmund_action(scan) then return end
   -- Central gate covers combat pursuit, confusion, exploration, shops and
   -- stair travel. Adjacent melee remains available when not confused.
   if movement_locked() then
