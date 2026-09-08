@@ -1,0 +1,12 @@
+{
+  "version": "early-support-v1",
+  "tactics": {"heal_hp": 65, "escape_hp": 70, "allies_hp": 90, "allies_enemy_count": 2, "haste_hp": 85, "might_hp": 90},
+  "stale_seconds": 120,
+  "sessions": [
+    {"session": "codex-support1", "character": "CodexSupport1", "seed": "6144198052690956201"},
+    {"session": "codex-support2", "character": "CodexSupport2", "seed": "13772526223844354029"},
+    {"session": "codex-support3", "character": "CodexSupport3", "seed": "1760771545328102746"},
+    {"session": "codex-support4", "character": "CodexSupport4", "seed": "17908030050512890810"},
+    {"session": "codex-support5", "character": "CodexSupport5", "seed": "103583508244309201"}
+  ]
+}

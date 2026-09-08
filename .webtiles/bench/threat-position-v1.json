@@ -1,0 +1,12 @@
+{
+  "version": "threat-position-v1",
+  "tactics": {"crowd_berserk": false, "berserk_hp": 0},
+  "stale_seconds": 120,
+  "sessions": [
+    {"session": "codex-bench1", "character": "CodexThreatPos1", "seed": "6144198052690956201"},
+    {"session": "codex-bench2", "character": "CodexThreatPos2", "seed": "13772526223844354029"},
+    {"session": "codex-bench3", "character": "CodexThreatPos3", "seed": "1760771545328102746"},
+    {"session": "codex-bench4", "character": "CodexThreatPos4", "seed": "17908030050512890810"},
+    {"session": "codex-bench5", "character": "CodexThreatPos5", "seed": "103583508244309201"}
+  ]
+}

@@ -22,7 +22,8 @@ class BatchTests(unittest.TestCase):
         (self.game / 'morgue').mkdir(parents=True)
         (self.game / 'saves').mkdir()
         (self.game / 'crawl-webtiles').write_bytes(b'engine')
-        (self.root / 'bot.rc').write_bytes(b'original rc')
+        self.rc = b'AUTOCrawl_TACTICS = {\n  berserk_hp = 55, crowd_berserk = true,\n}\n'
+        (self.root / 'bot.rc').write_bytes(self.rc)
         (self.bench / 'runs.jsonl').write_text('')
         self.cfg = dict(version='test-v1', rc='bot.rc', stale_seconds=1,
                         sessions=[dict(session='test1', character='Test1', seed=batch.runner.SEEDS[0])])
@@ -39,7 +40,7 @@ class BatchTests(unittest.TestCase):
     def test_snapshot_and_duplicate_start(self):
         self.launch()
         (self.root / 'bot.rc').write_bytes(b'changed')
-        self.assertEqual((self.state / 'test-v1/tested.rc').read_bytes(), b'original rc')
+        self.assertEqual((self.state / 'test-v1/tested.rc').read_bytes(), self.rc)
         with self.assertRaises(ValueError):
             batch.start(self.cfg, False)
 
@@ -48,6 +49,14 @@ class BatchTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 batch.start(self.cfg, False)
         self.assertFalse((self.state / 'test-v1').exists())
+
+    def test_policy_overrides(self):
+        changed = batch.configured_rc(self.rc, dict(berserk_hp=0, crowd_berserk=False))
+        self.assertIn(b'berserk_hp = 0', changed)
+        self.assertIn(b'crowd_berserk = false', changed)
+        for overrides in ({'unknown': 1}, {'crowd_berserk': 1}, {'berserk_hp': -1}):
+            with self.assertRaises(ValueError):
+                batch.configured_rc(self.rc, overrides)
 
     def test_death_collection_idempotent(self):
         self.launch()

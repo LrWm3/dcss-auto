@@ -6,6 +6,9 @@ Edit `batch.example.json`: give each experiment a unique `version` and fresh
 character names. Keep the session names to reuse runner-owned finished sessions.
 Paths in config are relative to the repository root. The example uses five
 dedicated `codex-bench` sessions; existing manual sessions are not adopted.
+An optional `tactics` object overrides existing AUTOCrawl_TACTICS values in the
+snapshot only. Its exact values are retained in the manifest; the RC hash is
+the hash after overrides, while the Git commit identifies the source revision.
 
 ```
 /usr/bin/python3 .webtiles/bench/batch.py start .webtiles/bench/batch.example.json --dry-run

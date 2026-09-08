@@ -32,6 +32,26 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def configured_rc(source, overrides):
+    """Apply explicit policy knobs to the snapshot, leaving the source RC alone."""
+    text = source.decode()
+    policy = re.search(r'AUTOCrawl_TACTICS = \{(.*?)\n\}', text, re.S)
+    if not policy:
+        raise ValueError('RC has no tactical policy table')
+    block = policy.group(1)
+    for key, value in overrides.items():
+        pattern = r'\b' + re.escape(key) + r'\s*=\s*(true|false|[0-9.]+)'
+        match = re.search(pattern, block)
+        if not match or type(value) not in (bool, int, float):
+            raise ValueError(f'Invalid tactical override: {key}')
+        is_bool = match.group(1) in ('true', 'false')
+        if is_bool != isinstance(value, bool) or (not is_bool and not 0 <= value <= 100):
+            raise ValueError(f'Invalid tactical value: {key}')
+        literal = str(value).lower()
+        block = re.sub(pattern, lambda m: key + ' = ' + literal, block)
+    return (text[:policy.start(1)] + block + text[policy.end(1):]).encode()
+
+
 def config(path):
     cfg = json.loads(Path(path).read_text())
     if not re.fullmatch(r'[A-Za-z0-9_-]+', cfg['version']):
@@ -107,7 +127,7 @@ def start(cfg, dry_run):
         if ids and not reusable(row['session'], ids):
             raise ValueError(f"{row['session']}: not a verified dead runner-owned session")
         old[row['session']] = ids
-    rc_bytes = source.read_bytes()
+    rc_bytes = configured_rc(source.read_bytes(), cfg.get('tactics', {}))
     cfg.update(rc_sha256=hashlib.sha256(rc_bytes).hexdigest(), engine_sha256=sha(engine),
                commit=command('git', '-C', str(ROOT), 'rev-parse', 'HEAD'),
                rc_dirty=bool(command('git', '-C', str(ROOT), 'status', '--porcelain', '--', str(source))),
