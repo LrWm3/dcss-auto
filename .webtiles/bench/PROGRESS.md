@@ -321,3 +321,31 @@ end dump and observed action history in evidence/lodul-wands-intervention-v1-*.
 Do not reset codex-bench2: it remains paused with the new wand policy installed.
 The original diagnostic pause row is unchanged. Broader regression/replay remains
 to be tested; warping was evaluated but not fired in this encounter.
+
+## Full seed replay with combat wands
+
+wands-seed2-v1 / CodexWandsSeed2 ran from D1 to natural death on fixed seed
+13772526223844354029, without intervention, debug breaks, or observed stalls.
+Reused finished codex-bench1; preserved the paused CodexLodulDebug1 in bench2.
+RC SHA131a44108b040c19ef34a1edbd31f0efdc0d6b0529a675dabc383f0d5d20907d,
+launch commit00436a6, unchanged wand policy from the successful local intervention.
+
+Killed Lodul at turn7590 (encountered7579), survived D10, died D11 turn10257,
+XL11, to an ogre mage's 40-damage bolt of magma. No shaft recorded. At death:
+-23/101HP, slowed/on berserk cooldown, mighty, regenerating with Trog's Hand.
+The last messages show killing an arcanist, closing to the ogre mage, taking
+a heavy magma hit, refreshing Hand, and being killed by the next magma bolt.
+
+All offensive charges were spent: charming13, mindburst15, warping10. Nine
+warping charges were already spent in the XL7–9 band. Thus all three wand
+execution paths worked in a natural run, but reserve management is an open
+problem: only digging remained for the final encounter. Available resistance,
+lignification, fog, and unidentified escapes were still unused at death.
+No claim that conserving charges alone would have prevented this death.
+
+Reached rank11 versus rank10 in the three pre-wand shaft-recovery trials. The
+older sigmund-full-v1 D14 result was shaft-inflated and is not a D14 clear.
+This is a single-seed screening result, not an improved five-seed minimum or
+a replicated survival claim. Kept the RC unchanged and imported death row /
+immutable morgue evidence via the runner. New run finished; original diagnostic
+character remains alive and paused in codex-bench2.
