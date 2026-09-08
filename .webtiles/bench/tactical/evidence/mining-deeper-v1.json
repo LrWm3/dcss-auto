@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-08",
+  "run": ".webtiles/bench/tactical/artifacts/mining-deeper-v1",
+  "collector_revision": "571f5f9",
+  "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "source_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "discovered": 346,
+  "selected": 30,
+  "captured": 30,
+  "training_ready": 30,
+  "quarantined": 0,
+  "transitions": 3236,
+  "transitions_sha256": "10bcd7c1ca75bc9d985597b625c719367ebe4ff88383145fd43fbe2677d68b23",
+  "index_sha256": "012bae63469e6c87902b8e51945dcc06f4ba1b0e53edd972f9522d42175eda91",
+  "summary_sha256": "738967387bd19eef0228c4411748cac43edabf7eae980fcfc5c030c28005acc0",
+  "outcomes": {"death": 1, "safe_recovery": 23, "floor_change": 6},
+  "fatal_case": {
+    "id": "encounter-005",
+    "seed": "83017005",
+    "floor": "D:7",
+    "start_turn": 5831,
+    "initial_hp": "79/79",
+    "decisions_to_death": 103,
+    "killer": "gargoyle",
+    "also_adjacent_at_death": "troll",
+    "verification": "Both resets match all 104 original discovery states including terminal death."
+  },
+  "discovery_outcomes": {
+    "83017001": "decision_budget",
+    "83017002": "decision_budget",
+    "83017003": "decision_budget",
+    "83017004": "harness_error",
+    "83017005": "death"
+  },
+  "diagnostic": "Seed83017004 paused on D:4 near an unreachable goblin with 'no safe known frontier'; decision-boundary timeout retained separately, not counted as death. Only completed earlier encounters selected.",
+  "limitations": [
+    "This longer run began on collector revision571f5f9, before benign-flight segmentation refinement. Its six floor-change cases are conservatively broad multi-fight trajectories, still fidelity verified.",
+    "A later offline resegmentation identifies437 candidates but does not itself certify additional saves.",
+    "Early examples overlap the short mining demonstration; do not count runs/repeats as independent data or split them across seeds.",
+    "Visible instrumented baseline fidelity only; no new training or deployment improvement claimed."
+  ]
+}

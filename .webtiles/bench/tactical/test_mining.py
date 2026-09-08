@@ -101,6 +101,19 @@ class MiningTests(unittest.TestCase):
             env.reset.assert_not_called()
             env.close.assert_called()
 
+    def test_changed_reference_is_reported_without_launching_engine(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'rc';source.write_text('source')
+            trace=root/'trace';trace.write_text('modified')
+            row=dict(id='case-1',seed='1',discovery_trace=str(trace),discovery_sha256='wrong')
+            env=Mock(spec=['close','launch'])  # work is not assigned before launch
+            with patch('mine_encounters.Environment',return_value=env):
+                result=capture(root,source,row)
+            self.assertFalse(result['training_ready'])
+            self.assertIn('trace mutated',result['error'])
+            env.launch.assert_not_called()
+            self.assertTrue((root/'case-1/result.json').exists())
+
     def test_repeatable_but_unfaithful_checkpoint_is_quarantined(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);source=root/'source.rc';source.write_text('test')

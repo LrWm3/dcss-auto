@@ -196,7 +196,7 @@ def capture(root, source, row):
                     repeatability=result['repeatability'], discovery=row)
         write(case/'case.json', meta)
     except Exception as exc:
-        result.update(error=str(exc), failed_worker=str(env.work))
+        result.update(error=str(exc), failed_worker=str(getattr(env,'work',work)))
     finally:
         env.close()
     write(work/'result.json', result)

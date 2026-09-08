@@ -1383,3 +1383,21 @@ mining-v2 re-captures/re-verifies the SAME30 early encounters:30pass,0quarantine
 435transitions, not30 additional independent examples.12mining tests pass.
 Offline resegmentation of the longer traces yields437 candidates versus346;
 this alone does not certify new saves. Evidence tactical/evidence/mining-v2.json.
+
+Longer mining-deeper-v1 completed:346 discovered,30selected/saved/verified,
+0quarantined,3236transitions. Outcomes1death,23safe recoveries,6floor changes.
+Fatal encounter-005 seed83017005 D:7 turn5831 HP79/79 reproduces103decisions
+through gargoyle death with adjacent troll; both resets match all104 states.
+Three discovery games reached their2500-decision budgets; one died; seed83017004
+hit a D:4 no-safe-known-frontier pause near an unreachable goblin. That timeout
+is separate diagnostic evidence, not a death; completed earlier cases still pass.
+
+This run began on571f5f9 before the flight segmentation refinement: the six
+floor-change cases are broad multi-fight contexts, not six clean recoveries.
+Later offline resegmentation does not retroactively create verified saves.
+Early examples overlap the short run; keep all versions/repeats of a seed in one
+split, and do not count them as independent data. No training/promotion occurred.
+Final tests:14tactical,13mining,10batch,3direct-transport cases,23RC suites pass.
+Also hardened corruption reporting before engine launch (no missing-worker
+exception when rejecting a changed reference). All private mining workers closed.
+Evidence tactical/evidence/mining-deeper-v1.json; dataset in matching artifacts run.
