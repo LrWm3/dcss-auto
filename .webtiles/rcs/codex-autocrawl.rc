@@ -600,7 +600,7 @@ end
 local function should_berserk(scan)
   local policy=AUTOCrawl_TACTICS
   if BOT.encounter and BOT.encounter.hidden_caster then
-    if BOT.encounter.hidden_missing or #scan.monsters>2 or hp_percent()<75
+    if BOT.encounter.hidden_missing or #scan.monsters>4 or hp_percent()<40
         or you.berserk() or berserk_recovering() then return false end
     for _,enemy in ipairs(scan.monsters) do
       if enemy.monster and enemy.monster.name
@@ -710,6 +710,22 @@ local function manage_encounter(scan)
   local e=BOT.encounter
   if not e or you.confused() or movement_locked()
       or (you.mesmerised and you.mesmerised()) then return false end
+  -- A visible reaching caster two tiles away can punish every retreat step.
+  -- Close the one-tile gap on safe ground, then let priority melee act.
+  if e.hidden_caster and not e.hidden_missing and not scan.reachable_adjacent then
+    for _,enemy in ipairs(scan.monsters) do
+      if enemy.monster and enemy.monster.name and enemy.monster:name()==e.hidden_caster.name
+          and math.max(math.abs(enemy.x),math.abs(enemy.y))==2 then
+        for i,d in ipairs(MOVE_DELTAS) do
+          if math.max(math.abs(enemy.x-d[1]),math.abs(enemy.y-d[2]))==1
+              and can_step(scan.cells,0,0,d[1],d[2],scan.blocked) then
+            say("caster engagement: closing the melee gap")
+            crawl.sendkeys(MOVE_KEYS[i]); return true
+          end
+        end
+      end
+    end
+  end
   if e.phase=="prepare" then
     if AUTOCrawl_TACTICS.early_commit and you.xl
         and you.xl()<=AUTOCrawl_TACTICS.early_commit_xl then

@@ -88,7 +88,7 @@ c_message("You kill Sigmund!","plain")
 assert(not BOT.encounter.hidden_caster,"confirmed death clears threat memory")
 scan.monsters={{x=1,y=0,reachable=true,threat=2,monster={
   name=function() return "Sigmund" end,spells=function() return {"Invisibility"} end}}}
-scan.reachable_any=true; scan.any=true; hp=60; turn=110
+scan.reachable_any=true; scan.any=true; hp=30; turn=110
 observe(scan)
 local combat=assert(find(ready,"combat_action"))
 crawl.do_commands=function(cs)
