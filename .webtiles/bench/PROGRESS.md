@@ -37,3 +37,20 @@ the historical original still has the best observed minimum (4 versus 2).
 Next target: early gnoll/Robin encounter positioning on the two weakest seeds,
 plus the reproducible D:6 priest movement loop. Require a full fixed-seed batch
 and a higher minimum before claiming an improvement. No runs remain active.
+
+## Policy clarification and structural cleanup
+
+Per user guidance, a worse/tied minimum does not require rejecting an idea or
+restoring code. The historical decisions above remain recorded, but subsequent
+iterations can retain promising work and address its weaknesses. Keep the
+worst-seed metric as the primary outcome, separate from development decisions.
+
+This revision is a behavior-preserving refactor, not a new survival experiment:
+tactical thresholds centralized in AUTOCrawl_TACTICS; guarded input and turn
+completion checks shared; combat decomposed into rejected-autofight recovery,
+isolated-enemy handling, and berserk selection. The previous defaults remain.
+It does not fix the known priest movement loop or claim higher progression.
+
+Verification: five Lua regression suites plus policy-trace comparisons against
+the previous checkpoint. No live seed run is represented by these mocked checks;
+therefore no new progression rows are added to runs.jsonl for this refactor.

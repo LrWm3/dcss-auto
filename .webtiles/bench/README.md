@@ -3,7 +3,10 @@
 Primary objective: maximize the **minimum route milestone reached across all
 five fixed seeds**. Do not promote a change on average/best performance alone.
 Report each paired seed delta as well: a higher minimum does not hide individual
-regressions. Incomplete batches cannot win. Ties are not improvements.
+regressions. Incomplete batches cannot win. Ties are not measured improvements.
+This is an evaluation rule, **not an automatic rollback rule**. Keep iterating
+on promising ideas even after a regression; record the result honestly and
+distinguish the current experimental revision from the best measured revision.
 
 Milestones follow the RC route, not lexical branch order. Reaching a floor is
 not clearing it. `cleared_prefix` is null when not measured; historical runs

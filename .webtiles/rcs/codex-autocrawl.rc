@@ -18,6 +18,17 @@ bindkey = [^D] CMD_LUA_CONSOLE
 
 crawl.more_autoclear(true)
 
+-- Tactical policy knobs. Keep defaults stable during structural cleanup;
+-- experiments change this block and log the exact tested revision.
+AUTOCrawl_TACTICS = {
+  curing_hp = 70, poison_remaining_fraction = 0.6,
+  heal_hp = 45, escape_hp = 55, fear_enemy_count = 2,
+  allies_hp = 70, allies_enemy_count = 3, allies_cooldown = 20,
+  hand_hp = 80, hand_cooldown = 40,
+  haste_hp = 65, might_hp = 75,
+  berserk_hp = 55, crowd_berserk = true, berserk_enemy_count = 3,
+}
+
 -- Editable progression plan. A stage covers every floor in [from, to].
 -- Alternative groups resolve to the branch actually generated in this game.
 -- Set enabled=false to restore the old Dungeon-only stair-survey trial.
@@ -106,6 +117,18 @@ local function hp_percent()
   local hp, mhp = you.hp()
   if not mhp or mhp <= 0 then return 100 end
   return math.floor(100 * hp / mhp)
+end
+
+-- Synchronous Crawl actions may spend a turn before turns() increments.
+-- All fallbacks must use this test, never the counter alone.
+local function turn_spent(start_turn)
+  return (you.turn_is_over and you.turn_is_over()) or you.turns() ~= start_turn
+end
+
+-- A command sequence owns its menu input. Message callbacks must not append
+-- target keys behind these cancellation guards (see blind-blink regression).
+local function guarded_keys(keys)
+  crawl.process_keys(keys .. "\027\027\027")
 end
 
 local function movement_locked()
@@ -211,7 +234,7 @@ local function explore_frontier(scan, allow_native_explore)
   if allow_native_explore and not scan.any and not custom then
     -- Match Crawl's bundled qw bot: process the command with trailing Escape
     -- guards so modal menus reached by native exploration cannot strand it.
-    crawl.process_keys("o\027\027\027")
+    guarded_keys("o")
     return true
   end
 
@@ -241,7 +264,7 @@ local function explore_frontier(scan, allow_native_explore)
 
   if custom and not scan.any then
     BOT.custom_exploring_level = nil
-    crawl.process_keys("o\027\027\027")
+    guarded_keys("o")
     return true
   end
 
@@ -371,8 +394,8 @@ local function use_known_consumable(kind, name)
     if item_class(it)==kind and it.is_identified and item_name(it):find(name,1,true) then
       BOT.item_attempts[name]=turn
       say("survival: "..name)
-      crawl.process_keys((kind=="potion" and "q" or "r")..inv_letter(it).."\027\027\027")
-      return (you.turn_is_over and you.turn_is_over()) or you.turns()~=turn
+      guarded_keys((kind=="potion" and "q" or "r")..inv_letter(it))
+      return turn_spent(turn)
     end
   end
   return false
@@ -395,31 +418,33 @@ end
 
 local function survival_action(scan)
   if you.berserk() then return false end
+  local policy=AUTOCrawl_TACTICS
   local hp=hp_percent()
   local poison=you.poisoned and you.poisoned()
-  if poison and ((you.poison_survival and you.poison_survival()<hp*0.01*select(2,you.hp())*0.6) or hp<70) then
+  local projected_hp=hp*0.01*select(2,you.hp())
+  if poison and ((you.poison_survival and
+      you.poison_survival()<projected_hp*policy.poison_remaining_fraction)
+      or hp<policy.curing_hp) then
     if use_known_consumable("potion","curing") then return true end
   end
-  if hp<45 and use_known_consumable("potion","heal wounds") then return true end
+  if hp<policy.heal_hp and use_known_consumable("potion","heal wounds") then return true end
   if not scan.any then return false end
   local count=#scan.monsters
-  if hp<55 then
+  if hp<policy.escape_hp then
     if not you.status("about to teleport") and use_known_consumable("scroll","teleportation") then return true end
-    if count>=2 and use_known_consumable("scroll","fear") then return true end
+    if count>=policy.fear_enemy_count and use_known_consumable("scroll","fear") then return true end
   end
-  if hp<70 and (count>=3 or scan.worst>=3)
-      and survival_ability("Brothers in Arms",20) then return true end
-  if hp<80 and scan.reachable_adjacent
-      and not you.status("regenerating") and survival_ability("Trog's Hand",40) then return true end
-  if hp<65 and not you.status("hasted") and use_known_consumable("potion","haste") then return true end
-  if hp<75 and scan.reachable_adjacent and not you.status("mighty")
+  if hp<policy.allies_hp and (count>=policy.allies_enemy_count or scan.worst>=3)
+      and survival_ability("Brothers in Arms",policy.allies_cooldown) then return true end
+  if hp<policy.hand_hp and scan.reachable_adjacent
+      and not you.status("regenerating") and survival_ability("Trog's Hand",policy.hand_cooldown) then return true end
+  if hp<policy.haste_hp and not you.status("hasted") and use_known_consumable("potion","haste") then return true end
+  if hp<policy.might_hp and scan.reachable_adjacent and not you.status("mighty")
       and use_known_consumable("potion","might") then return true end
   return false
 end
 
-local function combat_action(scan)
-  if not scan.any then return false end
-
+local function rejected_autofight_action(scan)
   -- Tab can reject targets it filters internally. Fall back to one ordinary
   -- melee/pursuit step instead of reissuing a turnless failed Tab forever.
   if BOT.autofight_rejected then
@@ -438,6 +463,10 @@ local function combat_action(scan)
     return true
   end
 
+  return false
+end
+
+local function isolated_enemy_action(scan)
   -- A visible monster with no known route to an adjacent square is not an
   -- autofight target.  Take one ordinary movement step toward exploration,
   -- rechecking danger after that step.
@@ -473,9 +502,22 @@ local function combat_action(scan)
     return explore_frontier(scan)
   end
 
-  if (scan.yellow_adjacent or (scan.reachable_adjacent and #scan.monsters>=3))
-      and hp_percent()>=55 and not you.berserk()
-      and not you.exhausted() and not you.slowed() then
+  return false
+end
+
+local function should_berserk(scan)
+  local policy=AUTOCrawl_TACTICS
+  local crowded=policy.crowd_berserk and scan.reachable_adjacent
+      and #scan.monsters>=policy.berserk_enemy_count
+  return (scan.yellow_adjacent or crowded) and hp_percent()>=policy.berserk_hp
+      and not you.berserk() and not you.exhausted() and not you.slowed()
+end
+
+local function combat_action(scan)
+  if not scan.any then return false end
+  if rejected_autofight_action(scan) then return true end
+  if not scan.reachable_any then return isolated_enemy_action(scan) end
+  if should_berserk(scan) then
     if you.activate_ability("Berserk", 0, 0) then
       return true
     end
@@ -884,7 +926,7 @@ local function auto_id_action()
 
     BOT.blind_pending = true
     BOT.blind_target = target and inv_letter(target) or nil
-    crawl.process_keys("r" .. inv_letter(blind) .. "\027\027\027")
+    guarded_keys("r" .. inv_letter(blind))
     return true
   end
 
@@ -892,7 +934,7 @@ local function auto_id_action()
   local ids = known_identify_scroll()
   local potion = best_unid_potion()
   if ids and potion then
-    crawl.process_keys("r" .. inv_letter(ids) .. "\027\027\027")
+    guarded_keys("r" .. inv_letter(ids))
     return true
   end
 
@@ -1335,7 +1377,7 @@ local function route_action(scan)
         end
         return explore_frontier(scan,true)
       end
-      crawl.process_keys("G"..ROUTE_BRANCHES[branch].key..depth.."\r\027\027\027")
+      guarded_keys("G"..ROUTE_BRANCHES[branch].key..depth.."\r")
       return true
     end
   end
@@ -1557,7 +1599,7 @@ function ready()
     if scan.cells[map_key(0,0)] and scan.cells[map_key(0,0)].unvisited then
       -- '<' ENTERS a shop. Visit once to register its stock, then close the
       -- menu with Escape. Never reopen it on every ready() at the same tile.
-      crawl.process_keys("<\027\027\027")
+      guarded_keys("<")
       return
     end
   end
@@ -1595,7 +1637,7 @@ function ready()
       BOT.disturbance_turns = BOT.disturbance_turns + 1
       crawl.do_commands({cmd})
       -- Only wait if the attack was rejected and did not spend a turn.
-      if not (you.turn_is_over and you.turn_is_over()) and you.turns() == turn then
+      if not turn_spent(turn) then
         crawl.do_commands({"CMD_WAIT"})
       end
       return

@@ -44,4 +44,24 @@ assert(not safe({artprops={Int=-4}}),"reject stat-zero armour")
 assert(safe({artprops={Int=-2}}),"allow safe negative modifier")
 you.intelligence=function() return 0 end
 assert(not safe({artprops={Int=-4},equipped=true}),"recover from already worn stat-zero gear")
+
+local rage=assert(upvalue(ready,"should_berserk"))
+you.exhausted=function() return false end
+you.slowed=function() return false end
+hp=100; berserk=false
+local crowd={yellow_adjacent=false,reachable_adjacent=true,monsters={{},{},{}}}
+assert(rage(crowd),"default policy retains crowd berserk")
+AUTOCrawl_TACTICS.crowd_berserk=false
+assert(not rage(crowd),"crowd policy is independently configurable")
+crowd.yellow_adjacent=true
+assert(rage(crowd),"yellow-adjacent rule remains independent of crowd switch")
+hp=54; assert(not rage(crowd),"default berserk HP floor is unchanged")
+hp=55; assert(rage(crowd),"berserk HP boundary is inclusive")
+you.exhausted=function() return true end
+assert(not rage(crowd),"exhaustion blocks berserk")
+local spent=assert(upvalue(ready,"turn_spent"))
+you.turn_is_over=function() return false end
+assert(not spent(turn) and spent(turn-1),"turn counter fallback")
+you.turn_is_over=function() return true end
+assert(spent(turn),"turn flag prevents second command before counter changes")
 print("survival regression cases passed")
