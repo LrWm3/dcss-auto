@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "development-seed-split-v1",
   "status": "Previously studied seeds; prospective separation, not a pristine final test.",
-  "train": ["83017001", "83017002", "83017005"],
+  "train": ["83017001", "83017002", "83017005", "83018001", "83018002", "83018003", "83018004", "83018005"],
   "validation": ["83017003"],
   "test": ["83017004"],
   "policy": "All checkpoints, recaptures and dataset versions of a seed belong to the same partition. Unassigned seeds require an explicit assignment before use. Test is excluded from training runners."

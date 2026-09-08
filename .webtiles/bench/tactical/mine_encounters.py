@@ -16,6 +16,7 @@ from collect_cases import compare
 from experiment import recovered
 from index_cases import build
 from verify_resume import normalized
+from dataset_splits import MANIFEST, partition_map
 
 TRIGGER = {'monster': '*', 'floor': 'D:1'}
 
@@ -249,6 +250,13 @@ def main():
     p.add_argument('--reuse-discovery',type=Path,
                    help='Re-segment hash-verified discovery traces from a previous run')
     a = p.parse_args(); cfg = json.loads(a.config.read_text()); validate(cfg)
+    if 'partition' in cfg:
+        split=json.loads(MANIFEST.read_text());assignments=partition_map(split)
+        if cfg['partition'] not in ('train','validation','test'):
+            raise ValueError('Invalid discovery partition')
+        if any(assignments.get(s)!=cfg['partition'] for s in cfg['seeds']):
+            raise ValueError('Discovery seed partition mismatch')
+        cfg['split_provenance']=dict(manifest=split,sha256=sha(MANIFEST))
     source = (ROOT/cfg['rc']).resolve()
     if cfg.get('rc_sha256') and cfg['rc_sha256'] != sha(source): raise ValueError('RC hash mismatch')
     root = a.output.resolve(); root.mkdir(parents=True, exist_ok=False)
