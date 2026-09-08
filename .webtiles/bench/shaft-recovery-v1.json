@@ -1,0 +1,7 @@
+{
+  "version": "shaft-recovery-v1",
+  "stale_seconds": 90,
+  "sessions": [
+    {"session": "codex-bench2", "character": "CodexShaft1", "seed": "13772526223844354029"}
+  ]
+}

@@ -76,3 +76,17 @@ The route regression suite is `tests/route.lua`. It verifies stage boundaries,
 generated-branch selection, actual rune possession, save/load serialization
 and strict versus partial completion. These are mocked API tests, not proof
 that the combat bot can survive the whole route.
+# Off-route depth recovery
+
+The controller persists its current target and last observed position. An
+unexpected descent below a same-branch target enters recovery; while traveling
+to another branch, an explicit shaft message returns to the departure depth.
+Normal interbranch stair travel is not treated as a shaft.
+
+Recovery prioritizes known reachable upstairs, then one-step frontier discovery
+until upstairs are found. It does not descend, sweep for loot, or advance the
+route stage. Emergency survival, movement restrictions, unseen threats, and
+adjacent combat retain priority. Recovery ends upon reaching the return depth;
+the original route then resumes. No reachable safe exit/frontier pauses with a
+reason rather than treating the level as cleared. Reaching D14 by shaft still
+does not establish D12–14 completion in benchmark results.

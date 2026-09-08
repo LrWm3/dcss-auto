@@ -1487,6 +1487,26 @@ local ROUTE_BRANCHES = {
 }
 
 local function route_observe(scan)
+  local branch,depth=you.branch(),you.depth()
+  local target=ROUTE_STATE.target
+  local previous=ROUTE_STATE.position
+  if not ROUTE_STATE.recovery and target then
+    local return_depth=target.branch==branch and target.depth
+        or (BOT.route_shaft and previous and previous.branch==branch and previous.depth)
+    if return_depth and depth>return_depth and previous
+        and previous.branch==branch and depth>previous.depth then
+      ROUTE_STATE.recovery={branch=branch,depth=return_depth}
+      say("route recovery: "..level_key().." -> "..branch..":"..return_depth)
+    end
+  end
+  local recovery=ROUTE_STATE.recovery
+  if recovery and branch==recovery.branch and depth<=recovery.depth then
+    ROUTE_STATE.recovery=nil
+    ROUTE_STATE.travel_attempts=0
+    say("route recovery complete: "..level_key())
+  end
+  ROUTE_STATE.position={branch=branch,depth=depth}
+  BOT.route_shaft=nil
   for _,cell in pairs(scan.cells) do
     -- Optional sealed vaults are not progression requirements. Keep native
     -- exploration outside their door/LOS fringe instead of oscillating there.
@@ -1556,6 +1576,40 @@ local function escape_exclusion(scan)
   return false
 end
 
+local function route_recovery_action(scan)
+  if not AUTOCrawl_ROUTE.enabled or not ROUTE_STATE.recovery then return false end
+  -- Adjacent enemies must be handled by the encounter controller; never chase
+  -- distant enemies on an accidentally reached floor. Survival/immobility gates
+  -- run before this helper in ready(). Keep the route target frozen throughout.
+  if you.confused() or (you.mesmerised and you.mesmerised())
+      or scan.reachable_adjacent or BOT.disturbance_warning
+      or (BOT.encounter and BOT.encounter.hidden_missing) then return false end
+  if regular_up() then crawl.sendkeys("<"); return true end
+  local cells={}
+  for key,cell in pairs(scan.cells) do
+    if not cell.invisible_monster and not cell.feature:find("trap",1,true) then
+      cells[key]=cell
+    end
+  end
+  local _,_,step=bfs(cells,scan.blocked,function(c) return regular_up(c.feature) end)
+  if step then crawl.sendkeys(step); return true end
+  -- Discover upstairs one turn at a time: no native loot sweep, branch entry,
+  -- downstairs fallback, or assumption that finding no frontier means cleared.
+  local here=cells[map_key(0,0)]
+  if here and here.frontier then
+    for i,d in ipairs(MOVE_DELTAS) do
+      if not scan.cells[map_key(d[1],d[2])] and view.can_reach(d[1],d[2])
+          and (not view.is_safe_square or view.is_safe_square(d[1],d[2])) then
+        crawl.sendkeys(MOVE_KEYS[i]); return true
+      end
+    end
+  end
+  local _,_,frontier=bfs(cells,scan.blocked,function(c) return c.frontier end)
+  if frontier then crawl.sendkeys(frontier); return true end
+  if scan.any then return false end
+  return route_block("no safe upstairs or exploration frontier during recovery")
+end
+
 local route_started=false
 local function route_action(scan)
   if not AUTOCrawl_ROUTE.enabled then return false end
@@ -1565,6 +1619,7 @@ local function route_action(scan)
     route_started=true
   end
   route_observe(scan)
+  if ROUTE_STATE.recovery then return route_recovery_action(scan) end
   -- The route owns progression; the legacy stair-dipping state machine must
   -- never descend beyond a stage boundary or compete with interbranch travel.
   BOT.dive={phase="normal"}
@@ -1606,6 +1661,7 @@ local function route_action(scan)
       ROUTE_STATE.index=ROUTE_STATE.index+1
       ROUTE_STATE.travel_attempts=0
     else
+      ROUTE_STATE.target={branch=branch,depth=depth}
       if you.branch()==branch and you.depth()==depth then
         ROUTE_STATE.travel_attempts=0
         -- Branch floors are explored normally, including greedy rune pickup.
@@ -1687,6 +1743,9 @@ function c_message(text, channel)
   crawl.more_autoclear(true)
   if previous_c_message then previous_c_message(text, channel) end
   local s = string.lower(tostring(text or "")):gsub("<[^>]*>", "")
+  if s:find("shaft",1,true) and s:find("you fall",1,true) then
+    BOT.route_shaft=true
+  end
   local e=BOT.encounter
   if e and e.hidden_caster and s:find("you kill "..e.hidden_caster.name:lower().."!",1,true) then
     e.hidden_caster=nil; e.hidden_missing=false
@@ -1878,6 +1937,7 @@ function ready()
   if not you.confused() then BOT.confused_announced = false end
   if not scan.reachable_adjacent and escape_exclusion(scan) then return end
   if not scan.reachable_adjacent and unsafe_square_action(scan) then return end
+  if route_recovery_action(scan) then return end
   if manage_encounter(scan) then return end
 
   -- Invisible or otherwise unclassified activity cannot be resolved by the
