@@ -1103,3 +1103,29 @@ available for route diagnosis. Immutable evidence and append-only rows retained.
 Next priorities: diagnose missing-Lair route pause from this save, then weakest
 seed3's unchanged Eustachio summon-pack death. This run does not establish an
 improved minimum or statistical reliability of the individual gains.
+
+## Missing Lair entrance search (saved seed4)
+
+63a1241 adds serialized entrance_search when the route requires undiscovered
+Lair. Starts on current D8–11 candidate, then visits other candidates descending
+order, at most two passes /2000 elapsed turns. Waits at most40 checks per floor
+for visible clouds to expire; invalidates completion before a fresh native
+exploration pass. Three same-turn failed native travel attempts skip a candidate.
+Discovery clears search state and normal route resumes. Combat keeps priority;
+does not force dangerous terrain or skip Lair. Other branch searches unchanged.
+
+22 Lua suites/9 runner tests pass. New suite verifies cloud wait, invalidation,
+candidate progression with actual travel input, combat interruption, discovery
+cleanup, and bounded exhaustion. No full five-seed rerun this turn.
+
+Archived save11558 D11 HP90, restarted same session with RC
+b419967bef8588ad79737cd476b807424611e32ced9a2d53d6bdae335782db27.
+Search note11558, resumed exploration11570 after12 turns, found Lair staircase
+on D11 at12800, discovery acknowledged12864, entered Lair1 at12876. This confirms
+the previously unknown entrance was on the prematurely accepted partial D11.
+Continued through Lair5 autonomously, then returned to Lair1 and hit a distinct
+native route pause20347 HP122/122: travel to D12 made no progress. Saved for next
+diagnosis; do not claim full autonomous route completion. Read-only console dump
+in Lair5 followed by resume, and dump/save at final native pause; no manual
+combat/movement. Preserved original full-batch paused row; continuation evidence
+and metadata are separate. Missing-Lair blocker resolved in this replay.

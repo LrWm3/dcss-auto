@@ -1,0 +1,14 @@
+{
+ "version":"lair-search-resume-v1","kind":"saved-position-fix-verification",
+ "character":"CodexRecoveryFull4","session":"codex-verify4",
+ "seed":"17908030050512890810",
+ "start":{"level":"D:11","turn":11558,"hp":90},
+ "fix_commit":"63a1241",
+ "rc_sha256":"b419967bef8588ad79737cd476b807424611e32ced9a2d53d6bdae335782db27",
+ "checkpoint":".webtiles/bench/batches/lair-search-resume-v1/before.cs",
+ "events":{"search_started":11558,"clouds_cleared_exploration":11570,"found_lair_D11":12800,"entered_lair":12876},
+ "result":{"outcome":"paused","turn":20347,"level":"Lair:1","max_reached":"Lair:5","reason":"travel to D:12 made no progress","target_blocker_resolved":true},
+ "intervention":"Restarted same saved character/session with immutable revised RC. Read-only console dump during Lair5 then resumed. After native travel pause, verified console entry/dumped/saved. No manual combat or movement.",
+ "autonomous_full_seed_benchmark":false,
+ "evidence":".webtiles/bench/evidence/lair-search-resume-v1-CodexRecoveryFull4.txt"
+}
