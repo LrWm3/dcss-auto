@@ -36,6 +36,7 @@ AUTOCrawl_TACTICS = {
   hidden_hand_cooldown = 8,
   debug_encounters = false,
   steam_debug = false, -- diagnostic single-action replay; never a benchmark
+  steam_debug_entry = false, -- start at D:6 arrival, record notes automatically
   combat_wands = true, charm_min_chance = 60, mindburst_min_chance = 65,
 }
 
@@ -2429,11 +2430,27 @@ end
 if AUTOCrawl_TACTICS.steam_debug then
   AUTOCrawl_STEAM_TRACE = {started=false, permit=false, lines={}, n=0}
   local t=AUTOCrawl_STEAM_TRACE
-  local function log(s) t.lines[#t.lines+1]=s end
+  local function log(s)
+    if AUTOCrawl_TACTICS.steam_debug_entry then crawl.take_note("TRACE "..s)
+    else t.lines[#t.lines+1]=s end
+  end
+  local function tracing()
+    return t.started and (not AUTOCrawl_TACTICS.steam_debug_entry or level_key()=="D:6")
+  end
+  if AUTOCrawl_TACTICS.steam_debug_entry then
+    local previous=c_message
+    function c_message(s,c)
+      previous(s,c)
+      if tracing() and c~="prompt" and not s:find("TRACE ",1,true)
+          and not s:find("<cyan>",1,true) and not s:find("exit interpreter",1,true) then
+        crawl.take_note("EVENT "..s)
+      end
+    end
+  end
   local function wrap(name,fn)
     return function(...)
       local result=fn(...)
-      if t.started and result then log("selected "..name) end
+      if tracing() and result then log("selected "..name) end
       return result
     end
   end
@@ -2447,7 +2464,7 @@ if AUTOCrawl_TACTICS.steam_debug then
   for _,name in ipairs({"sendkeys","do_commands","process_keys"}) do
     local original=crawl[name]
     crawl[name]=function(value,...)
-      if t.started then
+      if tracing() then
         local s=type(value)=="table" and table.concat(value,",") or tostring(value)
         log(name.." "..s:gsub("\027","<ESC>"):gsub("\t","<TAB>"))
       end
@@ -2458,6 +2475,7 @@ if AUTOCrawl_TACTICS.steam_debug then
     local scan=scan_hostiles()
     local e=BOT.encounter or {}
     log("turn="..you.turns().." HP="..you.hp().."/"..select(2,you.hp())
+      .." level="..level_key().." pos="..you.x_pos()..","..you.y_pos()
       .." feat="..feat_here().." phase="..tostring(e.phase)
       .." retreats="..tostring(e.retreats).." hidden="..tostring(e.hidden_missing)
       .." unseen="..tostring(e.unseen).." disturbance="..tostring(BOT.disturbance_warning)
@@ -2481,9 +2499,27 @@ if AUTOCrawl_TACTICS.steam_debug then
     t.lines={}
   end
   function autocrawl_steam_step() t.permit=true end
+  local function roster()
+    local out={}
+    for _,m in ipairs(scan_hostiles().monsters) do
+      local name=m.monster:name(); out[name]=(out[name] or 0)+1
+    end
+    return out
+  end
+  function autocrawl_steam_run(n)
+    t.budget=math.min(tonumber(n) or 1,500); t.roster=roster()
+  end
   local original_ready=ready
   function ready()
+    if AUTOCrawl_TACTICS.steam_debug_entry and level_key()~="D:6" then
+      original_ready(); return
+    end
     if not t.started and level_key()=="D:6" then
+      if AUTOCrawl_TACTICS.steam_debug_entry then
+        t.started=true; snapshot()
+        say("DEBUG PAUSE: first D:6 arrival")
+        return
+      end
       for _,m in ipairs(scan_hostiles().monsters) do
         if m.monster:name()=="steam dragon" then
           t.started=true
@@ -2493,6 +2529,15 @@ if AUTOCrawl_TACTICS.steam_debug then
       end
     end
     if t.started then
+      if t.budget and t.budget>0 then
+        local now=roster()
+        for name,count in pairs(now) do
+          if count>(t.roster[name] or 0) then
+            t.budget=0; snapshot(); say("DEBUG PAUSE: new contact "..name); return
+          end
+        end
+        t.roster=now; t.budget=t.budget-1; t.permit=true
+      end
       if not t.permit then return end
       t.permit=false; t.n=t.n+1
       log("DECISION "..t.n); snapshot()

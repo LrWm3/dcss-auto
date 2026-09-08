@@ -1,0 +1,8 @@
+{
+  "version": "d6-entry-debug-v1",
+  "stale_seconds": 90,
+  "tactics": {"steam_debug": true, "steam_debug_entry": true},
+  "sessions": [
+    {"session": "codex-bench4", "character": "CodexD6Entry1", "seed": "17908030050512890810"}
+  ]
+}
