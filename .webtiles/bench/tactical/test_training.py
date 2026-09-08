@@ -170,7 +170,9 @@ class TrainingTests(unittest.TestCase):
             e=dict(meta,id='one',eligible=True,case=str(case),split_group='123')
             index=root/'index.json';index.write_text(json.dumps({'cases':[e]}))
             cfg=dict(dataset=str(index),train_cases=['one'],eval_cases=['one'],evaluation_mode='held_out')
-            with patch('train_encounters.ENGINE',engine):
+            # This fixture tests checkpoint integrity independently of the real
+            # seed registry; production partition enforcement has its own tests.
+            with patch('train_encounters.ENGINE',engine), patch('train_encounters.enforce'):
                 with self.assertRaisesRegex(ValueError,'leakage'):load_cases(cfg)
                 cfg['evaluation_mode']='in_sample';load_cases(cfg)
                 e['eligible']=False;index.write_text(json.dumps({'cases':[e]}))

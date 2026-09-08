@@ -475,6 +475,11 @@ does not certify save/load fidelity for every alternative-action trajectory.
 
 ### Retreat-teacher initialisation pilot
 
+**Split enforcement update:** historical configs below describe prior runs and
+may now be rejected for partition leakage. Use `rl-retreat-development-v1.json`
+for future training; old artifacts remain unchanged. Do not reassign seeds just
+to make a historical config pass.
+
 ```sh
 /usr/bin/python3 .webtiles/bench/tactical/train_teacher.py \
   .webtiles/bench/tactical/rl-retreat-teacher-v1.json \
@@ -500,3 +505,39 @@ Artifacts include the demonstrations, initial and final model, training-action
 agreement, hashes and per-case tactical/handoff outcomes. High agreement on
 teacher states does not guarantee a successful rollout: this linear student
 does not inherit the teacher's heading memory and can enter unfamiliar states.
+
+### Persistent train / validation / test split
+
+`dataset-split-v1.json` assigns **seeds**, not randomly selected encounters:
+
+| Partition | Seeds | Cases in mining-deeper-v1 |
+|---|---|---:|
+| Training | 83017001, 83017002, 83017005 | 18 |
+| Validation | 83017003 | 6 |
+| Reserved test | 83017004 | 6 |
+
+Train only on training data, including demonstrations and any future replay
+buffer. Use validation to choose models, rewards and hyperparameters. Test is
+reserved for a frozen candidate after those decisions; do not use its failures
+to tune and still call the same set untouched. All recaptures, checkpoints and
+dataset versions from a seed inherit its partition. Unknown seeds fail closed
+until assigned. Current shared training/sweep loaders permit train + validation
+only; an explicit frozen-model test-only runner is still needed.
+
+The shared loader expands omitted `train_cases`/`eval_cases` to all eligible
+training/validation cases. Explicit subsets must obey the same registry.
+`in_sample` cannot bypass it. Expanded cases plus the split manifest and hash
+are saved in run config provenance. Nothing is moved/deleted in the dataset.
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/train_teacher.py \
+  .webtiles/bench/tactical/rl-retreat-development-v1.json \
+  .webtiles/bench/tactical/artifacts/my-development-run
+```
+
+This split is prospective discipline, **not retroactive decontamination**:
+all five seeds have been examined in previous experiments. There are only five
+independent seed groups, not30 independent games. For a credible final test,
+collect newly chosen seeds assigned to test before inspecting their results.
+Never merge historical weights/trajectories into a clean run without checking
+their training provenance. The new config is prepared, not a new training result.

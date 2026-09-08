@@ -1481,3 +1481,23 @@ Next: enforce RC hazard overrides, delay recovery credit until continuation
 confirms safety, and retain teacher examples during fine-tuning to limit forgetting.
 Tests pass:3teacher,13training,5tactics,14legacy tactical,13mining,3direct transport;
 compile/diff checks pass. Evidence tactical/evidence/rl-retreat-teacher-v1.json.
+
+## 2026-09-08 — persistent seed-level dataset partitions
+
+Added dataset-split-v1.json and fail-closed shared loader enforcement. Training
+seeds83017001/02/05 (18deeper cases); validation03 (6); reserved test04 (6).
+All recaptures/versions inherit seed membership. Unknown seeds rejected;
+validation/test cannot be training data, test cannot be validation, in_sample
+cannot bypass. Missing case lists expand to all eligible train/validation cases.
+Expanded config records manifest snapshot/hash. No datasets or prior artifacts
+moved, rewritten or deleted. Existing cross-partition pilot configs intentionally
+fail; replacement rl-retreat-development-v1.json prepared but NOT launched.
+
+Read-only load verified18training and6validation cases against existing hashes;
+6test cases reserved. Manifest SHA
+db75552525daa7c8e554bb5eca9d266af19f7fc686f868cf53b3add920706146.
+All seeds already studied: this is prospective development separation, not an
+untouched final test. Need newly assigned test seeds and a separate frozen-model
+test runner. No training or test rollouts executed for this change.
+Tests pass:7split,13training,3teacher,5tactics; live loader rejects test-as-training;
+diff check passes.

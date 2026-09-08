@@ -15,6 +15,7 @@ import time
 from bench import Environment, ENGINE, ROOT, HERE, sha
 from experiment import DIRECTIONS
 from mine_encounters import encounter_recovered
+from dataset_splits import enforce
 
 VERSION = 2
 
@@ -186,6 +187,7 @@ def load_cases(cfg):
     index=json.loads(index_path.read_text());all_cases={e['id']:e for e in index['cases']}
     if cfg.get('dataset_sha256') and sha(index_path)!=cfg['dataset_sha256']:
         raise ValueError('Dataset index mismatch')
+    enforce(cfg,index['cases'])
     groups=[]
     for field in ('train_cases','eval_cases'):
         ids=cfg[field]
