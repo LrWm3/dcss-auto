@@ -1,0 +1,1463 @@
+ Seeded DCSS version 0.35-a0 (console) character file.
+
+Game seed: 17908030050512890810 (custom seed)
+
+CodexShopTrial4 the Cleaver (Minotaur Berserker)   Turns: 17456, Time: 00:02:06
+
+Health: 73/73      AC: 15    Str: 23    XL:     8   Next: 80%
+Magic:  7/7        EV:  7    Int:  4    God:    Trog [*.....]
+Gold:   20         SH:  0    Dex: 11    Spells: 7/7 levels left
+
+rFire   . . .  (100%)   d - +0 war axe
+rCold   . . .  (100%)   (no offhand)
+rNeg    . . .  (100%)   g - +0 plate armour
+rPois   .      (100%)   (no helmet)
+rElec   .      (100%)   c - +0 cloak
+rCorr   .      (100%)   a - +0 pair of gloves {Infuse}
+SInv    .               (no boots)
+Will    .....           (no amulet)
+Stlth                   (no ring)
+HPRegen 0.32/turn       (no ring)
+MPRegen 0.10/turn
+
+%: infuse magic (1 MP)
+@: no status effects
+A: horns 2, retaliatory headbutt
+a: Renounce Religion (0%), Berserk (5%)
+
+
+You are on level 6 of the Dungeon.
+You worship Trog.
+Trog is aware of your devotion.
+You have visited 1 branch of the dungeon, and seen 6 of its levels.
+
+You have collected 334 gold pieces.
+You have spent 314 gold pieces at shops.
+
+Inventory:
+
+Hand Weapons
+ d - a +0 war axe (weapon)
+Armour
+ a - a +0 pair of gloves of infusion (worn)
+ c - a +0 cloak (worn)
+ g - a +0 plate armour (worn)
+Wands
+ b - a wand of acid (8)
+Scrolls
+ c - a scroll labelled BAZONA YHAHAB
+ N - 2 scrolls of noise
+ x - 2 scrolls of amnesia
+ I - a scroll of immolation
+ V - a scroll of vulnerability
+ g - a scroll of fog
+ u - a scroll labelled BOEMUQ KUDGHOMN
+ e - a scroll labelled NIYSOX ID OKK
+ h - a scroll labelled QOHY CUYSA
+Potions
+ A - 2 potions of attraction
+ e - 3 potions of enlightenment
+ i - 2 potions of invisibility
+ n - 2 potions of moonshine
+ c - 3 potions of curing
+ d - a black potion
+ w - a potion of heal wounds
+ b - 2 potions of brilliance
+ a - a potion of ambrosia
+ s - an amethyst potion
+ f - a murky grey potion
+ j - a fizzy purple potion
+
+
+   Skills:
+ + Level 7.0 Fighting
+ * Level 9.2 Axes
+ + Level 6.3 Armour
+ + Level 5.7 Dodging
+ + Level 1.9 Evocations
+
+
+You have 7 spell levels left.
+You don't know any spells.
+Your spell library contains the following spells:
+
+ Spells                   Type           Power      Damage    Failure   Level
+ Jinxbite                 Hex            0%         2d2       100%        2
+ Ignite Poison            Fire/Alch      0%         N/A       100%        4
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (6/15)            
+Temple: D:4-7       
+
+Altars:
+The Shining One
+
+Shops:
+D:4 ?
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of horns on your head.
+You reflexively headbutt those who attack you in melee.
+
+Message History
+
+Unknown command.
+Unknown command.
+[MiBe bot] encounter: idle -> prepare (HP 100%, peak 1)
+[MiBe bot] approach: lure
+[MiBe bot] encounter: prepare -> recover (HP 100%, peak 1)
+[MiBe bot] encounter: recover -> idle (HP 100%, peak 1)
+Unknown command.
+An orc priest comes into view.
+Unknown command.
+Unknown command.
+[MiBe bot] encounter: idle -> prepare (HP 100%, peak 1)
+[MiBe bot] approach: lure
+[MiBe bot] encounter: prepare -> recover (HP 100%, peak 1)
+[MiBe bot] encounter: recover -> idle (HP 100%, peak 1)
+Unknown command.
+An orc priest comes into view.
+Unknown command.
+Unknown command.
+[MiBe bot] encounter: idle -> prepare (HP 100%, peak 1)
+[MiBe bot] approach: lure
+[MiBe bot] encounter: prepare -> recover (HP 100%, peak 1)
+[MiBe bot] encounter: recover -> idle (HP 100%, peak 1)
+Unknown command.
+An orc priest comes into view.
+Unknown command.
+Unknown command.
+[MiBe bot] encounter: idle -> prepare (HP 100%, peak 1)
+[MiBe bot] approach: lure
+[MiBe bot] encounter: prepare -> recover (HP 100%, peak 1)
+[MiBe bot] encounter: recover -> idle (HP 100%, peak 1)
+Unknown command.
+An orc priest comes into view.
+Unknown command.
+Unknown command.
+[MiBe bot] encounter: idle -> prepare (HP 100%, peak 1)
+[MiBe bot] approach: lure
+[MiBe bot] encounter: prepare -> recover (HP 100%, peak 1)
+[Hit ESC to exit interpreter.]
+> BOT.paused=true; crawl.dump_char(); crawl.do_commands({"CMD_SAVE_GAME_NOW"})
+Saving game... please wait.
+
+#.#####.#    #.#..#.....#.#.
+#.......#    #.#......≈≈≈..†
+#######.#    #.#......≈≈≈≈≈.
+      #.#    #.#.....≈≈♣♣≈≈.
+      #.#    #.....~~≈≈.♣.≈≈
+      #.#   ####.≈≈~~.....≈≈
+      #.#   #....≈≈... ≈~♣.≈
+      #.#####)..≈≈♣♣. ≈≈≈~.≈
+      #....@..).≈≈♣♣.≈≈≈≈F..
+ ######.#####.).≈≈≈o.~≈
+ #......#   ####..≈≈..≈
+ #.######       ...≈~..
+ #.#            ...≈≈..
+ #.#            ....≈≈.
+ #.###########  ....~≈≈
+ #........<..#  .#(...≈
+ ###########.#  .##....
+
+
+There are no monsters in sight!
+
+Vanquished Creatures
+  A steam dragon (D:6)
+  An orc warrior (D:6)
+  A kobold geomancer (D:5)
+  A black bear (D:6)
+  An ogre (D:5)
+  A centaur (D:5)
+  A kobold brigand (D:5)
+  A bullfrog (D:6)
+  3 scorpions
+  2 marrowcudas (D:6)
+  An electric eel (D:6)
+  A hound (D:6)
+  4 orc priests
+  2 jellies
+  A drude (D:5)
+  2 iguanas
+  Terence (D:3)
+  2 clockroaches
+  6 orc wizards
+  3 gnolls (D:4)
+  7 adders
+  A white imp (D:6)
+  4 ufetubi (D:4)
+  6 ribbon worms
+  3 dart slugs
+  24 orcs
+  4 hobgoblins
+  5 jackals
+  5 quokkas
+  4 ball pythons
+  7 bats
+  6 endoplasms
+  6 frilled lizards
+  9 goblins
+  13 kobolds
+  6 rats
+146 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | CodexShopTrial4 the Minotaur Berserker began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 19/19 MP: 0/0
+    49 | D:1      | Approach 2: hold enemies=1 HP=19
+    50 | D:1      | Approach 2: hold enemies=1 HP=19
+    71 | D:1      | Approach 2: lure enemies=1 HP=19
+    81 | D:1      | Approach 2: lure enemies=1 HP=19
+    91 | D:1      | Approach 2: lure enemies=1 HP=19
+    92 | D:1      | Approach 2: hold enemies=1 HP=19
+    93 | D:1      | Approach 2: hold enemies=1 HP=19
+    94 | D:1      | Approach 2: hold enemies=1 HP=19
+    95 | D:1      | Approach 2: hold enemies=1 HP=19
+   126 | D:1      | Approach 2: hold enemies=1 HP=19
+   127 | D:1      | Approach 2: hold enemies=1 HP=19
+   128 | D:1      | Approach 2: hold enemies=1 HP=19
+   129 | D:1      | Approach 2: hold enemies=1 HP=19
+   157 | D:1      | Approach 2: lure enemies=1 HP=20
+   171 | D:1      | Approach 2: lure enemies=1 HP=20
+   173 | D:1      | Approach 2: hold enemies=1 HP=20
+   174 | D:1      | Approach 2: hold enemies=1 HP=20
+   223 | D:1      | Approach 2: lure enemies=1 HP=20
+   224 | D:1      | Approach 2: lure enemies=1 HP=20
+   225 | D:1      | Approach 2: hold enemies=1 HP=20
+   226 | D:1      | Approach 2: hold enemies=2 HP=20
+   231 | D:1      | Reached XP level 2. HP: 15/27 MP: 1/1
+   233 | D:1      | Reached skill level 4 in Axes
+   364 | D:1      | Approach 2: lure enemies=1 HP=27
+   365 | D:1      | Approach 2: lure enemies=1 HP=27
+   388 | D:1      | Approach 2: lure enemies=1 HP=27
+   389 | D:1      | Approach 2: lure enemies=1 HP=27
+   390 | D:1      | Approach 2: hold enemies=1 HP=27
+   391 | D:1      | Approach 2: hold enemies=1 HP=27
+   392 | D:1      | Approach 2: hold enemies=1 HP=27
+   393 | D:1      | Approach 2: hold enemies=1 HP=27
+   487 | D:1      | Reached ** piety under Trog
+   519 | D:1      | Approach 2: lure enemies=1 HP=27
+   520 | D:1      | Approach 2: lure enemies=1 HP=27
+   521 | D:1      | Approach 2: hold enemies=1 HP=27
+   522 | D:1      | Approach 2: hold enemies=1 HP=27
+   537 | D:1      | Approach 2: lure enemies=1 HP=27
+   538 | D:1      | Approach 2: lure enemies=1 HP=27
+   539 | D:1      | Approach 2: hold enemies=1 HP=27
+   540 | D:1      | Approach 2: hold enemies=1 HP=27
+   541 | D:1      | Approach 2: hold enemies=1 HP=27
+   542 | D:1      | Approach 2: hold enemies=1 HP=27
+   577 | D:1      | Approach 2: lure enemies=1 HP=27
+   578 | D:1      | Approach 2: lure enemies=1 HP=27
+   579 | D:1      | Approach 2: hold enemies=1 HP=27
+   580 | D:1      | Approach 2: hold enemies=1 HP=27
+   704 | D:2      | Approach 2: hold enemies=1 HP=27
+   705 | D:2      | Approach 2: hold enemies=1 HP=27
+   706 | D:2      | Approach 2: hold enemies=1 HP=27
+   723 | D:2      | Approach 2: lure enemies=1 HP=27
+   735 | D:2      | Approach 2: lure enemies=2 HP=27
+   781 | D:2      | Approach 2: lure enemies=1 HP=27
+   782 | D:2      | Approach 2: lure enemies=1 HP=27
+   828 | D:2      | Approach 2: hold enemies=1 HP=27
+   829 | D:2      | Approach 2: hold enemies=1 HP=27
+   837 | D:2      | Reached XP level 3. HP: 27/33 MP: 0/2
+   886 | D:2      | Approach 2: lure enemies=1 HP=33
+   887 | D:2      | Approach 2: lure enemies=1 HP=33
+   921 | D:2      | Approach 2: lure enemies=1 HP=33
+   922 | D:2      | Approach 2: lure enemies=1 HP=33
+   923 | D:2      | Approach 2: hold enemies=1 HP=33
+   924 | D:2      | Approach 2: hold enemies=1 HP=33
+   925 | D:2      | Approach 2: hold enemies=1 HP=33
+   926 | D:2      | Approach 2: hold enemies=1 HP=33
+   953 | D:2      | Approach 2: lure enemies=1 HP=33
+   954 | D:2      | Approach 2: lure enemies=2 HP=33
+   994 | D:2      | Approach 2: lure enemies=1 HP=33
+  1021 | D:2      | Approach 2: lure enemies=1 HP=33
+  1022 | D:2      | Approach 2: lure enemies=1 HP=33
+  1025 | D:2      | Approach 2: hold enemies=1 HP=33
+  1068 | D:2      | Approach 2: lure enemies=1 HP=33
+  1069 | D:2      | Approach 2: lure enemies=1 HP=33
+  1071 | D:2      | Approach 2: hold enemies=1 HP=33
+  1072 | D:2      | Approach 2: hold enemies=1 HP=33
+  1126 | D:2      | Approach 2: lure enemies=1 HP=33
+  1128 | D:2      | Approach 2: hold enemies=1 HP=33
+  1237 | D:2      | Approach 2: lure enemies=1 HP=33
+  1265 | D:2      | Approach 2: lure enemies=1 HP=33
+  1266 | D:2      | Approach 2: lure enemies=1 HP=33
+  1267 | D:2      | Approach 2: hold enemies=1 HP=33
+  1268 | D:2      | Approach 2: hold enemies=1 HP=33
+  1337 | D:2      | Approach 2: lure enemies=1 HP=33
+  1338 | D:2      | Approach 2: hold enemies=1 HP=33
+  1339 | D:2      | Approach 2: hold enemies=1 HP=33
+  1340 | D:2      | Approach 2: hold enemies=1 HP=33
+  1341 | D:2      | Approach 2: hold enemies=1 HP=33
+  1371 | D:2      | Approach 2: lure enemies=1 HP=33
+  1372 | D:2      | Approach 2: lure enemies=1 HP=33
+  1374 | D:2      | Approach 2: hold enemies=1 HP=33
+  1375 | D:2      | Approach 2: hold enemies=1 HP=33
+  1419 | D:2      | Approach 2: hold enemies=1 HP=33
+  1420 | D:2      | Approach 2: hold enemies=1 HP=33
+  1421 | D:2      | Approach 2: hold enemies=1 HP=33
+  1422 | D:2      | Approach 2: hold enemies=1 HP=33
+  1478 | D:2      | Approach 2: lure enemies=1 HP=33
+  1482 | D:2      | Reached XP level 4. HP: 37/40 MP: 1/3
+  1618 | D:2      | Approach 2: lure enemies=1 HP=40
+  1619 | D:2      | Approach 2: lure enemies=1 HP=40
+  1620 | D:2      | Approach 2: hold enemies=1 HP=40
+  1698 | D:2      | Approach 2: lure enemies=1 HP=40
+  1699 | D:2      | Approach 2: lure enemies=1 HP=40
+  1700 | D:2      | Approach 2: hold enemies=1 HP=40
+  1701 | D:2      | Approach 2: hold enemies=1 HP=40
+  1702 | D:2      | Approach 2: hold enemies=1 HP=40
+  1950 | D:2      | Approach 2: lure enemies=1 HP=40
+  1951 | D:2      | Approach 2: lure enemies=1 HP=40
+  1977 | D:2      | Approach 2: hold enemies=1 HP=40
+  2167 | D:3      | Approach 2: hold enemies=1 HP=40
+  2168 | D:3      | Approach 2: hold enemies=1 HP=40
+  2169 | D:3      | Approach 2: hold enemies=1 HP=40
+  2170 | D:3      | Approach 2: hold enemies=1 HP=40
+  2189 | D:3      | Approach 2: lure enemies=1 HP=40
+  2200 | D:3      | Approach 2: lure enemies=1 HP=40
+  2201 | D:3      | Approach 2: lure enemies=1 HP=40
+  2227 | D:3      | Approach 2: lure enemies=1 HP=40
+  2239 | D:3      | Approach 2: lure enemies=1 HP=40
+  2265 | D:3      | Approach 2: hold enemies=1 HP=40
+  2266 | D:3      | Approach 2: hold enemies=1 HP=40
+  2267 | D:3      | Approach 2: hold enemies=1 HP=40
+  2268 | D:3      | Approach 2: hold enemies=1 HP=40
+  2296 | D:3      | Encountered Terence
+  2297 | D:3      | Approach 2: lure enemies=2 HP=40
+  2298 | D:3      | Approach 2: lure enemies=1 HP=40
+  2299 | D:3      | Approach 2: hold enemies=1 HP=40
+  2302 | D:3      | Killed Terence
+  2303 | D:3      | Reached skill level 5 in Axes
+  2362 | D:3      | Approach 2: lure enemies=1 HP=41
+  2363 | D:3      | Approach 2: lure enemies=1 HP=41
+  2364 | D:3      | Approach 2: hold enemies=1 HP=41
+  2398 | D:3      | Approach 2: lure enemies=1 HP=41
+  2399 | D:3      | Approach 2: lure enemies=1 HP=41
+  2400 | D:3      | Approach 2: hold enemies=1 HP=41
+  2401 | D:3      | Approach 2: hold enemies=1 HP=41
+  2402 | D:3      | Approach 2: hold enemies=1 HP=41
+  2403 | D:3      | Approach 2: hold enemies=1 HP=41
+  2418 | D:3      | Approach 2: lure enemies=1 HP=41
+  2419 | D:3      | Approach 2: lure enemies=1 HP=41
+  2473 | D:3      | Approach 2: lure enemies=1 HP=41
+  2474 | D:3      | Approach 2: lure enemies=1 HP=41
+  2475 | D:3      | Approach 2: hold enemies=1 HP=41
+  2476 | D:3      | Approach 2: hold enemies=1 HP=41
+  2477 | D:3      | Approach 2: hold enemies=1 HP=41
+  2478 | D:3      | Approach 2: hold enemies=1 HP=41
+  2493 | D:3      | Approach 2: lure enemies=1 HP=41
+  2497 | D:3      | Approach 2: hold enemies=1 HP=41
+  2643 | D:3      | Approach 2: lure enemies=1 HP=41
+  2644 | D:3      | Approach 2: lure enemies=1 HP=41
+  2722 | D:3      | You fall into a shaft and drop 1 floor!
+  2725 | D:4      | Approach 2: lure enemies=1 HP=41
+  2726 | D:4      | Approach 2: lure enemies=1 HP=41
+  2839 | D:3      | Approach 2: hold enemies=1 HP=41
+  2840 | D:3      | Approach 2: hold enemies=1 HP=41
+  2841 | D:3      | Approach 2: hold enemies=1 HP=41
+  2842 | D:3      | Approach 2: hold enemies=1 HP=41
+  2917 | D:3      | Approach 2: lure enemies=1 HP=41
+  3186 | D:4      | Approach 2: hold enemies=4 HP=41
+  3193 | D:4      | Reached XP level 5. HP: 44/47 MP: 2/4
+  3300 | D:4      | Approach 2: lure enemies=2 HP=47
+  3301 | D:4      | Approach 2: lure enemies=1 HP=47
+  3302 | D:4      | Approach 2: hold enemies=1 HP=47
+  3311 | D:4      | Reached *** piety under Trog
+  3312 | D:4      | Reached XP level 6. HP: 55/55 MP: 1/5
+  3390 | D:4      | Approach 2: lure enemies=1 HP=55
+  3391 | D:4      | Approach 2: lure enemies=1 HP=55
+  3392 | D:4      | Approach 2: hold enemies=1 HP=55
+  3393 | D:4      | Approach 2: hold enemies=1 HP=55
+  3394 | D:4      | Approach 2: hold enemies=1 HP=55
+  3395 | D:4      | Approach 2: hold enemies=1 HP=55
+  3400 | D:4      | Reached skill level 5 in Fighting
+  3400 | D:4      | Reached skill level 6 in Axes
+  3445 | D:4      | Approach 2: lure enemies=1 HP=56
+  3446 | D:4      | Approach 2: lure enemies=1 HP=56
+  3447 | D:4      | Approach 2: hold enemies=1 HP=56
+  3448 | D:4      | Approach 2: hold enemies=1 HP=56
+  3449 | D:4      | Approach 2: hold enemies=1 HP=56
+  3483 | D:4      | Approach 2: lure enemies=2 HP=56
+  3484 | D:4      | Approach 2: hold enemies=2 HP=56
+  3485 | D:4      | Approach 2: hold enemies=2 HP=56
+  3486 | D:4      | Approach 2: hold enemies=2 HP=56
+  3575 | D:4      | Approach 2: lure enemies=1 HP=56
+  3576 | D:4      | Approach 2: lure enemies=2 HP=56
+  3577 | D:4      | Approach 2: hold enemies=1 HP=56
+  3578 | D:4      | Approach 2: hold enemies=1 HP=56
+  3579 | D:4      | Approach 2: hold enemies=2 HP=56
+  3580 | D:4      | Approach 2: hold enemies=3 HP=56
+  3872 | D:4      | Found Ritoq's Magic Scroll Emporium.
+  4111 | D:4      | Bought a scroll of identify for 22 gold pieces
+  4111 | D:4      | Bought a scroll of identify for 22 gold pieces
+  4111 | D:4      | Bought 2 scrolls of identify for 44 gold pieces
+  4111 | D:4      | Bought a parchment of Jinxbite for 67 gold pieces
+  4114 | D:5      | Entered Level 5 of the Dungeon
+  4142 | D:5      | Approach 2: lure enemies=1 HP=56
+  4143 | D:5      | Approach 2: lure enemies=1 HP=56
+  4144 | D:5      | Approach 2: hold enemies=1 HP=56
+  4145 | D:5      | Approach 2: hold enemies=1 HP=56
+  4203 | D:5      | Approach 2: lure enemies=1 HP=52
+  4210 | D:5      | Reached XP level 7. HP: 61/61 MP: 4/6
+  4251 | D:5      | Approach 2: lure enemies=1 HP=61
+  4252 | D:5      | Approach 2: lure enemies=1 HP=61
+  4253 | D:5      | Approach 2: hold enemies=1 HP=61
+  4254 | D:5      | Approach 2: hold enemies=1 HP=61
+  4255 | D:5      | Approach 2: hold enemies=1 HP=61
+  4256 | D:5      | Approach 2: hold enemies=1 HP=61
+  4332 | D:5      | Approach 2: hold enemies=1 HP=61
+  4333 | D:5      | Approach 2: hold enemies=1 HP=61
+  4507 | D:5      | Approach 2: lure enemies=1 HP=61
+  4508 | D:5      | Approach 2: hold enemies=1 HP=61
+  4509 | D:5      | Approach 2: hold enemies=1 HP=61
+  4510 | D:5      | Approach 2: hold enemies=1 HP=61
+  4546 | D:5      | Approach 2: lure enemies=1 HP=61
+  4547 | D:5      | Approach 2: lure enemies=1 HP=61
+  4554 | D:5      | Reached skill level 7 in Axes
+  4709 | D:5      | Approach 2: lure enemies=1 HP=62
+  4713 | D:5      | Approach 2: hold enemies=1 HP=62
+  4714 | D:5      | Approach 2: hold enemies=1 HP=62
+  4718 | D:5      | Reached skill level 5 in Armour
+  4772 | D:5      | Approach 2: lure enemies=1 HP=62
+  4841 | D:5      | Approach 2: hold enemies=1 HP=62
+  4842 | D:5      | Approach 2: hold enemies=1 HP=62
+  4943 | D:5      | Approach 2: lure enemies=1 HP=62
+  4944 | D:5      | Approach 2: lure enemies=1 HP=62
+  5560 | D:5      | Approach 2: hold enemies=1 HP=63
+  5561 | D:5      | Approach 2: hold enemies=1 HP=63
+  5562 | D:5      | Approach 2: hold enemies=1 HP=63
+  5563 | D:5      | Approach 2: hold enemies=1 HP=63
+  5587 | D:5      | Approach 2: lure enemies=1 HP=63
+  5588 | D:5      | Approach 2: lure enemies=1 HP=63
+  5681 | D:5      | Approach 2: lure enemies=1 HP=63
+  5682 | D:5      | Approach 2: lure enemies=3 HP=63
+  5689 | D:5      | Reached skill level 8 in Axes
+  5689 | D:5      | Reached skill level 5 in Dodging
+  5689 | D:5      | Reached XP level 8. HP: 70/70 MP: 3/7
+  5755 | D:5      | Approach 2: hold enemies=1 HP=70
+  5756 | D:5      | Approach 2: hold enemies=1 HP=70
+  5815 | D:5      | Found a glowing golden altar of the Shining One.
+  5856 | D:4      | Bought a parchment of Ignite Poison for 159 gold pieces
+  5939 | D:6      | Approach 2: lure enemies=1 HP=71
+  5940 | D:6      | Approach 2: lure enemies=1 HP=71
+  5941 | D:6      | Approach 2: hold enemies=1 HP=71
+  5977 | D:6      | Approach 2: lure enemies=2 HP=71
+  5982 | D:6      | Approach 2: hold enemies=1 HP=71
+  6082 | D:6      | Approach 2: lure enemies=1 HP=71
+  6083 | D:6      | Approach 2: lure enemies=1 HP=71
+  6084 | D:6      | Approach 2: hold enemies=1 HP=71
+  6085 | D:6      | Approach 2: hold enemies=1 HP=71
+  6086 | D:6      | Approach 2: hold enemies=1 HP=71
+  6087 | D:6      | Approach 2: hold enemies=1 HP=71
+  6090 | D:6      | Reached skill level 1 in Evocations
+  6136 | D:6      | Approach 2: lure enemies=2 HP=71
+  6137 | D:6      | Approach 2: lure enemies=2 HP=71
+  6293 | D:6      | Approach 2: lure enemies=2 HP=71
+  6294 | D:6      | Approach 2: hold enemies=2 HP=71
+  6295 | D:6      | Approach 2: hold enemies=2 HP=71
+  6296 | D:6      | Approach 2: hold enemies=2 HP=71
+  6297 | D:6      | Approach 2: hold enemies=2 HP=71
+  6307 | D:6      | Reached skill level 9 in Axes
+  6309 | D:6      | Steam charge: visible HP 92
+  6310 | D:6      | Steam charge: visible HP 92
+  6311 | D:6      | Steam charge: visible HP 93
+  6372 | D:6      | Approach 2: lure enemies=1 HP=73
+  6382 | D:6      | Approach 2: lure enemies=1 HP=73
+  6392 | D:6      | Approach 2: lure enemies=1 HP=73
+  6402 | D:6      | Approach 2: lure enemies=1 HP=73
+  6412 | D:6      | Approach 2: lure enemies=1 HP=73
+  6422 | D:6      | Approach 2: lure enemies=1 HP=73
+  6432 | D:6      | Approach 2: lure enemies=1 HP=66
+  6455 | D:6      | Approach 2: lure enemies=1 HP=73
+  6465 | D:6      | Approach 2: lure enemies=1 HP=73
+  6475 | D:6      | Approach 2: lure enemies=1 HP=73
+  6485 | D:6      | Approach 2: lure enemies=1 HP=73
+  6495 | D:6      | Approach 2: lure enemies=1 HP=73
+  6505 | D:6      | Approach 2: lure enemies=1 HP=73
+  6515 | D:6      | Approach 2: lure enemies=1 HP=73
+  6525 | D:6      | Approach 2: lure enemies=1 HP=73
+  6535 | D:6      | Approach 2: lure enemies=1 HP=73
+  6545 | D:6      | Approach 2: lure enemies=1 HP=73
+  6555 | D:6      | Approach 2: lure enemies=1 HP=73
+  6565 | D:6      | Approach 2: lure enemies=1 HP=73
+  6575 | D:6      | Approach 2: lure enemies=1 HP=73
+  6585 | D:6      | Approach 2: lure enemies=1 HP=73
+  6595 | D:6      | Approach 2: lure enemies=1 HP=73
+  6605 | D:6      | Approach 2: lure enemies=1 HP=73
+  6615 | D:6      | Approach 2: lure enemies=1 HP=73
+  6625 | D:6      | Approach 2: lure enemies=1 HP=60
+  6665 | D:6      | Approach 2: lure enemies=1 HP=73
+  6675 | D:6      | Approach 2: lure enemies=1 HP=73
+  6685 | D:6      | Approach 2: lure enemies=1 HP=73
+  6695 | D:6      | Approach 2: lure enemies=1 HP=73
+  6705 | D:6      | Approach 2: lure enemies=1 HP=73
+  6715 | D:6      | Approach 2: lure enemies=1 HP=64
+  6743 | D:6      | Approach 2: lure enemies=1 HP=73
+  6753 | D:6      | Approach 2: lure enemies=1 HP=73
+  6763 | D:6      | Approach 2: lure enemies=1 HP=73
+  6773 | D:6      | Approach 2: lure enemies=1 HP=73
+  6783 | D:6      | Approach 2: lure enemies=1 HP=73
+  6793 | D:6      | Approach 2: lure enemies=1 HP=73
+  6803 | D:6      | Approach 2: lure enemies=1 HP=73
+  6813 | D:6      | Approach 2: lure enemies=1 HP=73
+  6823 | D:6      | Approach 2: lure enemies=1 HP=73
+  6833 | D:6      | Approach 2: lure enemies=1 HP=73
+  6843 | D:6      | Approach 2: lure enemies=1 HP=73
+  6853 | D:6      | Approach 2: lure enemies=1 HP=73
+  6863 | D:6      | Approach 2: lure enemies=1 HP=73
+  6873 | D:6      | Approach 2: lure enemies=1 HP=73
+  6883 | D:6      | Approach 2: lure enemies=1 HP=73
+  6893 | D:6      | Approach 2: lure enemies=1 HP=73
+  6903 | D:6      | Approach 2: lure enemies=1 HP=73
+  6913 | D:6      | Approach 2: lure enemies=1 HP=73
+  6923 | D:6      | Approach 2: lure enemies=1 HP=73
+  6933 | D:6      | Approach 2: lure enemies=1 HP=73
+  6943 | D:6      | Approach 2: lure enemies=1 HP=73
+  6953 | D:6      | Approach 2: lure enemies=1 HP=73
+  6963 | D:6      | Approach 2: lure enemies=1 HP=73
+  6973 | D:6      | Approach 2: lure enemies=1 HP=73
+  6983 | D:6      | Approach 2: lure enemies=1 HP=73
+  6993 | D:6      | Approach 2: lure enemies=1 HP=73
+  7003 | D:6      | Approach 2: lure enemies=1 HP=73
+  7013 | D:6      | Approach 2: lure enemies=1 HP=73
+  7023 | D:6      | Approach 2: lure enemies=1 HP=73
+  7033 | D:6      | Approach 2: lure enemies=1 HP=73
+  7043 | D:6      | Approach 2: lure enemies=1 HP=73
+  7053 | D:6      | Approach 2: lure enemies=1 HP=73
+  7063 | D:6      | Approach 2: lure enemies=1 HP=73
+  7073 | D:6      | Approach 2: lure enemies=1 HP=73
+  7083 | D:6      | Approach 2: lure enemies=1 HP=73
+  7093 | D:6      | Approach 2: lure enemies=1 HP=73
+  7103 | D:6      | Approach 2: lure enemies=1 HP=73
+  7113 | D:6      | Approach 2: lure enemies=1 HP=62
+  7146 | D:6      | Approach 2: lure enemies=1 HP=73
+  7156 | D:6      | Approach 2: lure enemies=1 HP=73
+  7166 | D:6      | Approach 2: lure enemies=1 HP=73
+  7176 | D:6      | Approach 2: lure enemies=1 HP=73
+  7186 | D:6      | Approach 2: lure enemies=1 HP=73
+  7196 | D:6      | Approach 2: lure enemies=1 HP=73
+  7206 | D:6      | Approach 2: lure enemies=1 HP=73
+  7216 | D:6      | Approach 2: lure enemies=1 HP=73
+  7226 | D:6      | Approach 2: lure enemies=1 HP=73
+  7236 | D:6      | Approach 2: lure enemies=1 HP=59
+  7280 | D:6      | Approach 2: lure enemies=1 HP=73
+  7290 | D:6      | Approach 2: lure enemies=1 HP=73
+  7300 | D:6      | Approach 2: lure enemies=1 HP=73
+  7310 | D:6      | Approach 2: lure enemies=1 HP=73
+  7320 | D:6      | Approach 2: lure enemies=1 HP=73
+  7330 | D:6      | Approach 2: lure enemies=1 HP=73
+  7340 | D:6      | Approach 2: lure enemies=1 HP=73
+  7350 | D:6      | Approach 2: lure enemies=1 HP=73
+  7360 | D:6      | Approach 2: lure enemies=1 HP=73
+  7370 | D:6      | Approach 2: lure enemies=1 HP=73
+  7380 | D:6      | Approach 2: lure enemies=1 HP=73
+  7390 | D:6      | Approach 2: lure enemies=1 HP=73
+  7400 | D:6      | Approach 2: lure enemies=1 HP=73
+  7410 | D:6      | Approach 2: lure enemies=1 HP=73
+  7420 | D:6      | Approach 2: lure enemies=1 HP=73
+  7430 | D:6      | Approach 2: lure enemies=1 HP=73
+  7440 | D:6      | Approach 2: lure enemies=1 HP=73
+  7450 | D:6      | Approach 2: lure enemies=1 HP=73
+  7460 | D:6      | Approach 2: lure enemies=1 HP=73
+  7470 | D:6      | Approach 2: lure enemies=1 HP=73
+  7480 | D:6      | Approach 2: lure enemies=1 HP=73
+  7490 | D:6      | Approach 2: lure enemies=1 HP=73
+  7500 | D:6      | Approach 2: lure enemies=1 HP=73
+  7510 | D:6      | Approach 2: lure enemies=1 HP=73
+  7520 | D:6      | Approach 2: lure enemies=1 HP=73
+  7530 | D:6      | Approach 2: lure enemies=1 HP=73
+  7540 | D:6      | Approach 2: lure enemies=1 HP=73
+  7550 | D:6      | Approach 2: lure enemies=1 HP=60
+  7590 | D:6      | Approach 2: lure enemies=1 HP=63
+  7621 | D:6      | Approach 2: lure enemies=1 HP=73
+  7631 | D:6      | Approach 2: lure enemies=1 HP=73
+  7641 | D:6      | Approach 2: lure enemies=1 HP=73
+  7651 | D:6      | Approach 2: lure enemies=1 HP=73
+  7661 | D:6      | Approach 2: lure enemies=1 HP=73
+  7671 | D:6      | Approach 2: lure enemies=1 HP=73
+  7681 | D:6      | Approach 2: lure enemies=1 HP=73
+  7691 | D:6      | Approach 2: lure enemies=1 HP=73
+  7701 | D:6      | Approach 2: lure enemies=1 HP=73
+  7711 | D:6      | Approach 2: lure enemies=1 HP=73
+  7721 | D:6      | Approach 2: lure enemies=1 HP=73
+  7731 | D:6      | Approach 2: lure enemies=1 HP=63
+  7762 | D:6      | Approach 2: lure enemies=1 HP=73
+  7772 | D:6      | Approach 2: lure enemies=1 HP=73
+  7782 | D:6      | Approach 2: lure enemies=1 HP=73
+  7792 | D:6      | Approach 2: lure enemies=1 HP=73
+  7802 | D:6      | Approach 2: lure enemies=1 HP=73
+  7812 | D:6      | Approach 2: lure enemies=1 HP=73
+  7822 | D:6      | Approach 2: lure enemies=1 HP=73
+  7832 | D:6      | Approach 2: lure enemies=1 HP=73
+  7842 | D:6      | Approach 2: lure enemies=1 HP=73
+  7852 | D:6      | Approach 2: lure enemies=1 HP=73
+  7862 | D:6      | Approach 2: lure enemies=1 HP=73
+  7872 | D:6      | Approach 2: lure enemies=1 HP=73
+  7882 | D:6      | Approach 2: lure enemies=1 HP=73
+  7892 | D:6      | Approach 2: lure enemies=1 HP=73
+  7902 | D:6      | Approach 2: lure enemies=1 HP=73
+  7912 | D:6      | Approach 2: lure enemies=1 HP=73
+  7922 | D:6      | Approach 2: lure enemies=1 HP=73
+  7932 | D:6      | Approach 2: lure enemies=1 HP=73
+  7942 | D:6      | Approach 2: lure enemies=1 HP=73
+  7952 | D:6      | Approach 2: lure enemies=1 HP=73
+  7962 | D:6      | Approach 2: lure enemies=1 HP=73
+  7972 | D:6      | Approach 2: lure enemies=1 HP=73
+  7982 | D:6      | Approach 2: lure enemies=1 HP=73
+  7992 | D:6      | Approach 2: lure enemies=1 HP=73
+  8002 | D:6      | Approach 2: lure enemies=1 HP=73
+  8012 | D:6      | Approach 2: lure enemies=1 HP=73
+  8022 | D:6      | Approach 2: lure enemies=1 HP=73
+  8032 | D:6      | Approach 2: lure enemies=1 HP=73
+  8042 | D:6      | Approach 2: lure enemies=1 HP=73
+  8052 | D:6      | Approach 2: lure enemies=1 HP=73
+  8062 | D:6      | Approach 2: lure enemies=1 HP=73
+  8072 | D:6      | Approach 2: lure enemies=1 HP=61
+  8108 | D:6      | Approach 2: lure enemies=1 HP=73
+  8118 | D:6      | Approach 2: lure enemies=1 HP=73
+  8128 | D:6      | Approach 2: lure enemies=1 HP=73
+  8138 | D:6      | Approach 2: lure enemies=1 HP=73
+  8148 | D:6      | Approach 2: lure enemies=1 HP=73
+  8158 | D:6      | Approach 2: lure enemies=1 HP=73
+  8168 | D:6      | Approach 2: lure enemies=1 HP=73
+  8178 | D:6      | Approach 2: lure enemies=1 HP=73
+  8188 | D:6      | Approach 2: lure enemies=1 HP=73
+  8198 | D:6      | Approach 2: lure enemies=1 HP=73
+  8208 | D:6      | Approach 2: lure enemies=1 HP=73
+  8218 | D:6      | Approach 2: lure enemies=1 HP=73
+  8228 | D:6      | Approach 2: lure enemies=1 HP=73
+  8238 | D:6      | Approach 2: lure enemies=1 HP=73
+  8248 | D:6      | Approach 2: lure enemies=1 HP=73
+  8258 | D:6      | Approach 2: lure enemies=1 HP=73
+  8268 | D:6      | Approach 2: lure enemies=1 HP=73
+  8278 | D:6      | Approach 2: lure enemies=1 HP=73
+  8288 | D:6      | Approach 2: lure enemies=1 HP=73
+  8298 | D:6      | Approach 2: lure enemies=1 HP=73
+  8308 | D:6      | Approach 2: lure enemies=1 HP=73
+  8318 | D:6      | Approach 2: lure enemies=1 HP=73
+  8328 | D:6      | Approach 2: lure enemies=1 HP=73
+  8338 | D:6      | Approach 2: lure enemies=1 HP=73
+  8348 | D:6      | Approach 2: lure enemies=1 HP=73
+  8358 | D:6      | Approach 2: lure enemies=1 HP=73
+  8368 | D:6      | Approach 2: lure enemies=1 HP=73
+  8378 | D:6      | Approach 2: lure enemies=1 HP=73
+  8388 | D:6      | Approach 2: lure enemies=1 HP=73
+  8398 | D:6      | Approach 2: lure enemies=1 HP=73
+  8408 | D:6      | Approach 2: lure enemies=1 HP=73
+  8418 | D:6      | Approach 2: lure enemies=1 HP=73
+  8428 | D:6      | Approach 2: lure enemies=1 HP=73
+  8438 | D:6      | Approach 2: lure enemies=1 HP=73
+  8448 | D:6      | Approach 2: lure enemies=1 HP=73
+  8458 | D:6      | Approach 2: lure enemies=1 HP=73
+  8468 | D:6      | Approach 2: lure enemies=1 HP=73
+  8478 | D:6      | Approach 2: lure enemies=1 HP=73
+  8488 | D:6      | Approach 2: lure enemies=1 HP=73
+  8498 | D:6      | Approach 2: lure enemies=1 HP=73
+  8508 | D:6      | Approach 2: lure enemies=1 HP=73
+  8518 | D:6      | Approach 2: lure enemies=1 HP=73
+  8528 | D:6      | Approach 2: lure enemies=1 HP=73
+  8538 | D:6      | Approach 2: lure enemies=1 HP=73
+  8548 | D:6      | Approach 2: lure enemies=1 HP=73
+  8558 | D:6      | Approach 2: lure enemies=1 HP=73
+  8568 | D:6      | Approach 2: lure enemies=1 HP=73
+  8578 | D:6      | Approach 2: lure enemies=1 HP=60
+  8618 | D:6      | Approach 2: lure enemies=1 HP=73
+  8628 | D:6      | Approach 2: lure enemies=1 HP=73
+  8638 | D:6      | Approach 2: lure enemies=1 HP=73
+  8648 | D:6      | Approach 2: lure enemies=1 HP=73
+  8658 | D:6      | Approach 2: lure enemies=1 HP=73
+  8668 | D:6      | Approach 2: lure enemies=1 HP=73
+  8678 | D:6      | Approach 2: lure enemies=1 HP=61
+  8715 | D:6      | Approach 2: lure enemies=1 HP=73
+  8725 | D:6      | Approach 2: lure enemies=1 HP=61
+  8762 | D:6      | Approach 2: lure enemies=1 HP=73
+  8772 | D:6      | Approach 2: lure enemies=1 HP=73
+  8782 | D:6      | Approach 2: lure enemies=1 HP=73
+  8792 | D:6      | Approach 2: lure enemies=1 HP=73
+  8802 | D:6      | Approach 2: lure enemies=1 HP=73
+  8812 | D:6      | Approach 2: lure enemies=1 HP=73
+  8822 | D:6      | Approach 2: lure enemies=1 HP=73
+  8832 | D:6      | Approach 2: lure enemies=1 HP=73
+  8842 | D:6      | Approach 2: lure enemies=1 HP=60
+  8883 | D:6      | Approach 2: lure enemies=1 HP=73
+  8893 | D:6      | Approach 2: lure enemies=1 HP=73
+  8903 | D:6      | Approach 2: lure enemies=1 HP=73
+  8913 | D:6      | Approach 2: lure enemies=1 HP=73
+  8923 | D:6      | Approach 2: lure enemies=1 HP=73
+  8933 | D:6      | Approach 2: lure enemies=1 HP=73
+  8943 | D:6      | Approach 2: lure enemies=1 HP=73
+  8953 | D:6      | Approach 2: lure enemies=1 HP=73
+  8963 | D:6      | Approach 2: lure enemies=1 HP=73
+  8973 | D:6      | Approach 2: lure enemies=1 HP=63
+  9005 | D:6      | Approach 2: lure enemies=1 HP=73
+  9015 | D:6      | Approach 2: lure enemies=1 HP=73
+  9025 | D:6      | Approach 2: lure enemies=1 HP=64
+  9052 | D:6      | Approach 2: lure enemies=1 HP=73
+  9062 | D:6      | Approach 2: lure enemies=1 HP=73
+  9072 | D:6      | Approach 2: lure enemies=1 HP=73
+  9082 | D:6      | Approach 2: lure enemies=1 HP=73
+  9092 | D:6      | Approach 2: lure enemies=1 HP=58
+  9140 | D:6      | Approach 2: lure enemies=1 HP=73
+  9150 | D:6      | Approach 2: lure enemies=1 HP=73
+  9160 | D:6      | Approach 2: lure enemies=1 HP=73
+  9170 | D:6      | Approach 2: lure enemies=1 HP=73
+  9180 | D:6      | Approach 2: lure enemies=1 HP=73
+  9190 | D:6      | Approach 2: lure enemies=1 HP=62
+  9224 | D:6      | Approach 2: lure enemies=1 HP=73
+  9234 | D:6      | Approach 2: lure enemies=1 HP=58
+  9280 | D:6      | Approach 2: lure enemies=1 HP=73
+  9290 | D:6      | Approach 2: lure enemies=1 HP=64
+  9318 | D:6      | Approach 2: lure enemies=1 HP=73
+  9328 | D:6      | Approach 2: lure enemies=1 HP=73
+  9338 | D:6      | Approach 2: lure enemies=1 HP=73
+  9348 | D:6      | Approach 2: lure enemies=1 HP=73
+  9358 | D:6      | Approach 2: lure enemies=1 HP=61
+  9396 | D:6      | Approach 2: lure enemies=1 HP=73
+  9406 | D:6      | Approach 2: lure enemies=1 HP=73
+  9416 | D:6      | Approach 2: lure enemies=1 HP=73
+  9426 | D:6      | Approach 2: lure enemies=1 HP=73
+  9436 | D:6      | Approach 2: lure enemies=1 HP=73
+  9446 | D:6      | Approach 2: lure enemies=1 HP=73
+  9456 | D:6      | Approach 2: lure enemies=1 HP=73
+  9466 | D:6      | Approach 2: lure enemies=1 HP=73
+  9476 | D:6      | Approach 2: lure enemies=1 HP=58
+  9524 | D:6      | Approach 2: lure enemies=1 HP=73
+  9534 | D:6      | Approach 2: lure enemies=1 HP=73
+  9544 | D:6      | Approach 2: lure enemies=1 HP=73
+  9554 | D:6      | Approach 2: lure enemies=1 HP=73
+  9564 | D:6      | Approach 2: lure enemies=1 HP=73
+  9574 | D:6      | Approach 2: lure enemies=1 HP=73
+  9584 | D:6      | Approach 2: lure enemies=1 HP=73
+  9594 | D:6      | Approach 2: lure enemies=1 HP=73
+  9604 | D:6      | Approach 2: lure enemies=1 HP=73
+  9614 | D:6      | Approach 2: lure enemies=1 HP=73
+  9624 | D:6      | Approach 2: lure enemies=1 HP=73
+  9634 | D:6      | Approach 2: lure enemies=1 HP=73
+  9644 | D:6      | Approach 2: lure enemies=1 HP=73
+  9654 | D:6      | Approach 2: lure enemies=1 HP=73
+  9664 | D:6      | Approach 2: lure enemies=1 HP=73
+  9674 | D:6      | Approach 2: lure enemies=1 HP=73
+  9684 | D:6      | Approach 2: lure enemies=1 HP=73
+  9694 | D:6      | Approach 2: lure enemies=1 HP=73
+  9704 | D:6      | Approach 2: lure enemies=1 HP=73
+  9714 | D:6      | Approach 2: lure enemies=1 HP=73
+  9724 | D:6      | Approach 2: lure enemies=1 HP=73
+  9734 | D:6      | Approach 2: lure enemies=1 HP=73
+  9744 | D:6      | Approach 2: lure enemies=1 HP=73
+  9754 | D:6      | Approach 2: lure enemies=1 HP=73
+  9764 | D:6      | Approach 2: lure enemies=1 HP=73
+  9774 | D:6      | Approach 2: lure enemies=1 HP=73
+  9784 | D:6      | Approach 2: lure enemies=1 HP=73
+  9794 | D:6      | Approach 2: lure enemies=1 HP=73
+  9804 | D:6      | Approach 2: lure enemies=1 HP=73
+  9814 | D:6      | Approach 2: lure enemies=1 HP=73
+  9824 | D:6      | Approach 2: lure enemies=1 HP=73
+  9834 | D:6      | Approach 2: lure enemies=1 HP=73
+  9844 | D:6      | Approach 2: lure enemies=1 HP=73
+  9854 | D:6      | Approach 2: lure enemies=1 HP=73
+  9864 | D:6      | Approach 2: lure enemies=1 HP=73
+  9874 | D:6      | Approach 2: lure enemies=1 HP=73
+  9884 | D:6      | Approach 2: lure enemies=1 HP=73
+  9894 | D:6      | Approach 2: lure enemies=1 HP=73
+  9904 | D:6      | Approach 2: lure enemies=1 HP=73
+  9914 | D:6      | Approach 2: lure enemies=1 HP=73
+  9924 | D:6      | Approach 2: lure enemies=1 HP=73
+  9934 | D:6      | Approach 2: lure enemies=1 HP=73
+  9944 | D:6      | Approach 2: lure enemies=1 HP=73
+  9954 | D:6      | Approach 2: lure enemies=1 HP=73
+  9964 | D:6      | Approach 2: lure enemies=1 HP=73
+  9974 | D:6      | Approach 2: lure enemies=1 HP=73
+  9984 | D:6      | Approach 2: lure enemies=1 HP=73
+  9994 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10004 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10014 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10024 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10034 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10044 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10054 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10064 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10074 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10084 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10094 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10104 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10114 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10124 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10134 | D:6      | Approach 2: lure enemies=1 HP=60
+ 10174 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10184 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10194 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10204 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10214 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10224 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10234 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10244 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10254 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10264 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10274 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10284 | D:6      | Approach 2: lure enemies=1 HP=62
+ 10318 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10328 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10338 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10348 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10358 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10368 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10378 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10388 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10398 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10408 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10418 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10428 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10438 | D:6      | Approach 2: lure enemies=1 HP=61
+ 10474 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10484 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10494 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10504 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10514 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10524 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10534 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10544 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10554 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10564 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10574 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10584 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10594 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10604 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10614 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10624 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10634 | D:6      | Approach 2: lure enemies=1 HP=61
+ 10671 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10681 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10691 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10701 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10711 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10721 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10731 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10741 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10751 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10761 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10771 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10781 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10791 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10801 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10811 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10821 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10831 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10841 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10851 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10861 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10871 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10881 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10891 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10901 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10911 | D:6      | Approach 2: lure enemies=1 HP=60
+ 10952 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10962 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10972 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10982 | D:6      | Approach 2: lure enemies=1 HP=73
+ 10992 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11002 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11012 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11022 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11032 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11042 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11052 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11062 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11072 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11082 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11092 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11102 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11112 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11122 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11132 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11142 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11152 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11162 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11172 | D:6      | Approach 2: lure enemies=1 HP=63
+ 11202 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11212 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11222 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11232 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11242 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11252 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11262 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11272 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11282 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11292 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11302 | D:6      | Approach 2: lure enemies=1 HP=59
+ 11346 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11356 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11366 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11376 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11386 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11396 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11406 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11416 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11426 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11436 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11446 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11456 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11466 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11476 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11486 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11496 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11506 | D:6      | Approach 2: lure enemies=1 HP=60
+ 11546 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11556 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11566 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11576 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11586 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11596 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11606 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11616 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11626 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11636 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11646 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11656 | D:6      | Approach 2: lure enemies=1 HP=58
+ 11702 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11712 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11722 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11732 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11742 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11752 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11762 | D:6      | Approach 2: lure enemies=1 HP=61
+ 11799 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11809 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11819 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11829 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11839 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11849 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11859 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11869 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11879 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11889 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11899 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11909 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11919 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11929 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11939 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11949 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11959 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11969 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11979 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11989 | D:6      | Approach 2: lure enemies=1 HP=73
+ 11999 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12009 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12019 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12029 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12039 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12049 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12059 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12069 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12079 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12089 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12099 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12109 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12119 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12129 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12139 | D:6      | Approach 2: lure enemies=1 HP=61
+ 12177 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12187 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12197 | D:6      | Approach 2: lure enemies=1 HP=63
+ 12227 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12237 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12247 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12257 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12267 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12277 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12287 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12297 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12307 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12317 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12327 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12337 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12347 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12357 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12367 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12377 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12387 | D:6      | Approach 2: lure enemies=1 HP=63
+ 12418 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12428 | D:6      | Approach 2: lure enemies=1 HP=60
+ 12468 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12478 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12488 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12498 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12508 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12518 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12528 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12538 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12548 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12558 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12568 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12578 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12588 | D:6      | Approach 2: lure enemies=1 HP=65
+ 12612 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12622 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12632 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12642 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12652 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12662 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12672 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12682 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12692 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12702 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12712 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12722 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12732 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12742 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12752 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12762 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12772 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12782 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12792 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12802 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12812 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12822 | D:6      | Approach 2: lure enemies=1 HP=58
+ 12868 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12878 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12888 | D:6      | Approach 2: lure enemies=1 HP=60
+ 12927 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12937 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12947 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12957 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12967 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12977 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12987 | D:6      | Approach 2: lure enemies=1 HP=73
+ 12997 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13007 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13017 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13027 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13037 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13047 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13057 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13067 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13077 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13087 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13097 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13107 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13117 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13127 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13137 | D:6      | Approach 2: lure enemies=1 HP=59
+ 13180 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13190 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13200 | D:6      | Approach 2: lure enemies=1 HP=57
+ 13249 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13259 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13269 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13279 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13289 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13299 | D:6      | Approach 2: lure enemies=1 HP=61
+ 13337 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13347 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13357 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13367 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13377 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13387 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13397 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13407 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13417 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13427 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13437 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13447 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13457 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13467 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13477 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13487 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13497 | D:6      | Approach 2: lure enemies=1 HP=61
+ 13533 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13543 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13553 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13563 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13573 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13583 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13593 | D:6      | Approach 2: lure enemies=1 HP=59
+ 13637 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13647 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13657 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13667 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13677 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13687 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13697 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13707 | D:6      | Approach 2: lure enemies=1 HP=60
+ 13749 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13759 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13769 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13779 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13789 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13799 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13809 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13819 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13829 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13839 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13849 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13859 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13869 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13879 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13889 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13899 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13909 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13919 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13929 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13939 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13949 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13959 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13969 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13979 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13989 | D:6      | Approach 2: lure enemies=1 HP=73
+ 13999 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14009 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14019 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14029 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14039 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14049 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14059 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14069 | D:6      | Approach 2: lure enemies=1 HP=59
+ 14112 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14122 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14132 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14142 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14152 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14162 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14172 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14182 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14192 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14202 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14212 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14222 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14232 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14242 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14252 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14262 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14272 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14282 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14292 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14302 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14312 | D:6      | Approach 2: lure enemies=1 HP=61
+ 14349 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14359 | D:6      | Approach 2: lure enemies=1 HP=61
+ 14396 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14406 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14416 | D:6      | Approach 2: lure enemies=1 HP=59
+ 14458 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14468 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14478 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14488 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14498 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14508 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14518 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14528 | D:6      | Approach 2: lure enemies=1 HP=61
+ 14565 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14575 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14585 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14595 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14605 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14615 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14625 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14635 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14645 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14655 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14665 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14675 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14685 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14695 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14705 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14715 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14725 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14735 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14745 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14755 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14765 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14775 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14785 | D:6      | Approach 2: lure enemies=1 HP=57
+ 14833 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14843 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14853 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14863 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14873 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14883 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14893 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14903 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14913 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14923 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14933 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14943 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14953 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14963 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14973 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14983 | D:6      | Approach 2: lure enemies=1 HP=73
+ 14993 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15003 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15013 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15023 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15033 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15043 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15053 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15063 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15073 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15083 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15093 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15103 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15113 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15123 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15133 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15143 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15153 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15163 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15173 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15183 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15193 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15203 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15213 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15223 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15233 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15243 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15253 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15263 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15273 | D:6      | Approach 2: lure enemies=1 HP=64
+ 15302 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15312 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15322 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15332 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15342 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15352 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15362 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15372 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15382 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15392 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15402 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15412 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15422 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15432 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15442 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15452 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15462 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15472 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15482 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15492 | D:6      | Approach 2: lure enemies=1 HP=62
+ 15527 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15537 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15547 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15557 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15567 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15577 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15587 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15597 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15607 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15617 | D:6      | Approach 2: lure enemies=1 HP=61
+ 15655 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15665 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15675 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15685 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15695 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15705 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15715 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15725 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15735 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15745 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15755 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15765 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15775 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15785 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15795 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15805 | D:6      | Approach 2: lure enemies=1 HP=57
+ 15855 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15865 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15875 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15885 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15895 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15905 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15915 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15925 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15935 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15945 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15955 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15965 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15975 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15985 | D:6      | Approach 2: lure enemies=1 HP=73
+ 15995 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16005 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16015 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16025 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16035 | D:6      | Approach 2: lure enemies=1 HP=60
+ 16074 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16084 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16094 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16104 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16114 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16124 | D:6      | Approach 2: lure enemies=1 HP=62
+ 16158 | D:6      | Approach 2: lure enemies=1 HP=63
+ 16190 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16200 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16210 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16220 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16230 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16240 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16250 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16260 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16270 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16280 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16290 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16300 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16310 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16320 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16330 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16340 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16350 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16360 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16370 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16380 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16390 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16400 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16410 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16420 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16430 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16440 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16450 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16460 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16470 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16480 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16490 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16500 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16510 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16520 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16530 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16540 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16550 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16560 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16570 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16580 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16590 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16600 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16610 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16620 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16630 | D:6      | Approach 2: lure enemies=1 HP=62
+ 16665 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16675 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16685 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16695 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16705 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16715 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16725 | D:6      | Approach 2: lure enemies=1 HP=65
+ 16749 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16759 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16769 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16779 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16789 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16799 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16809 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16819 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16829 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16839 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16849 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16859 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16869 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16879 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16889 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16899 | D:6      | Approach 2: lure enemies=1 HP=59
+ 16943 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16953 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16963 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16973 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16983 | D:6      | Approach 2: lure enemies=1 HP=73
+ 16993 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17003 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17013 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17023 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17033 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17043 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17053 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17063 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17073 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17083 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17093 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17103 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17113 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17123 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17133 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17143 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17153 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17163 | D:6      | Approach 2: lure enemies=1 HP=66
+ 17183 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17193 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17203 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17213 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17223 | D:6      | Approach 2: lure enemies=1 HP=59
+ 17268 | D:6      | Approach 2: lure enemies=1 HP=60
+ 17308 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17318 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17328 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17338 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17348 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17358 | D:6      | Approach 2: lure enemies=1 HP=60
+ 17399 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17409 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17419 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17429 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17439 | D:6      | Approach 2: lure enemies=1 HP=73
+ 17449 | D:6      | Approach 2: lure enemies=1 HP=73
+
+Illustrated notes
+
+Skill      XL: |  1  2  3  4  5  6  7  8 |
+---------------+-------------------------+-----
+Axes           |     4     5     6  8  9 |  9.2
+Fighting       |        4        5  6  7 |  7.0
+Armour         |        3     4     5  6 |  6.3
+Dodging        |           3     4  5    |  5.7
+Evocations     |                       1 |  1.9
+
+Action                     |  1- 3 |  4- 6 |  7- 9 || total
+---------------------------+-------+-------+-------++-------
+ Attack: Normal            |   103 |    75 |   104 ||   282
+  Melee: Hand axe          |    51 |       |       ||    51
+         Headbutt          |    29 |    23 |    26 ||    78
+         War axe           |    65 |    82 |   114 ||   261
+ Invoke: Trog's Hand       |     2 |     2 |     4 ||     8
+         Berserk           |       |     8 |    15 ||    23
+   Read: Teleportation     |     2 |     1 |       ||     3
+         Noise             |       |     1 |       ||     1
+         Vulnerability     |       |     1 |       ||     1
+         Amnesia           |       |     1 |       ||     1
+         Identify          |       |     8 |       ||     8
+         Immolation        |       |     1 |       ||     1
+         Fog               |       |     1 |       ||     1
+ Armour: Animal skin       |    13 |       |       ||    13
+         Ring mail         |    70 |     1 |       ||    71
+         Scale mail        |       |    42 |       ||    42
+         Plate armour      |       |     8 |   105 ||   113
+  Dodge: Dodged            |    76 |    58 |    32 ||   166
+
+Table legend: (Time is in decaauts)
+ A = Elapsed time spent in this place.
+ B = Non-inter-level travel time spent in this place.
+ C = Inter-level travel time spent in this place.
+ D = Time resting spent in this place.
+ E = Time spent auto-exploring this place.
+ F = Levels seen in this place.
+ G = Mean time per level.
+                   A        B        C        D        E      F       G
+               +--------+--------+--------+--------+--------+-----+--------+
+         Total |  17727 |  17568 |    159 |      0 |   3756 |   6 | 2954.5 |
+       Dungeon |  17727 |  17568 |    159 |      0 |   3756 |   6 | 2954.5 |
+               +--------+--------+--------+--------+--------+-----+--------+
+
+Top non-repeatable levels by time:
+     D:6: 11643 daAuts
+     D:5: 1874 daAuts
+     D:2: 1392 daAuts
+     D:3: 1107 daAuts
+     D:4: 1006 daAuts
+     D:1: 704 daAuts
+
+DLua errors:
+

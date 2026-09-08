@@ -843,3 +843,45 @@ Minimum remains6 (seed5), below older wand-mesmerism minimum7. All5 autonomous
 terminal deaths, no pauses/observed stalls, no clear-prefix claims. Therefore
 not the same results overall and not an improvement in the weakest-seed metric.
 Saved all five immutable morgues and append-only benchmark rows.
+
+## Pre-departure shopping policy
+
+Added one shopping pass per accepted floor completion, before route progression.
+Catalogues at most8 visited shops using bot waypoints0–7 (9 remains recovery
+anchor); catalogue and departure-check state persist in ROUTE_STATE. Native
+G<waypoint> provides interlevel fast travel. Re-evaluates affordability, inventory
+need and live stock at arrival; at most4 purchases and300 elapsed turns per pass.
+Ordinary combat interrupts and may resume after healing; disengage, confusion,
+unseen-threat warning, unsafe travel, no-route message, two no-progress retries
+or budget exhaustion abort the pass without retrying that departure. Route
+progression cannot compete while shopping owns travel.
+
+Known-only reserves: curing3, heal wounds2, teleport2, blink1, fear1, identify2
+(identification only with unknown consumables). Reject stacks exceeding reserve.
+Known axe/armour upgrades use existing scorers, exceed held gear by0.5 and leave
+100gold; no shields, hard helmets for MiBe, or auxiliary gear displacing Lear's.
+No jewellery policy yet. This is deliberately conservative, not optimal shopping.
+
+Live shopping-v1 exposed a menu bug: shop_inventory returns raw stock order but
+ShopMenu::resort reassigns letters. Seed1 unintentionally bought spell parchments
+and a robe, in addition to a teleport scroll; reject this as valid purchase-policy
+evidence. Seed1 died naturally; seed4 entered a repeated D6 lure/heal cycle and
+was manually paused/saved after verified console entry. Its paused row is an
+operator-ended diagnostic, not a native routing pause or completed benchmark.
+
+Correction cc2778e: enter shop, '/' selects price order, derive rank across ALL
+stock, skip equal-price ties because C++ ordering there is not guaranteed.
+Fresh shopping-v2 seed1 bought exactly one teleport scroll for33gold on D1 at1379,
+no unintended purchases. Continued to Lair3, then repeated lure/heal against a
+centaur. Verified console inspection showed shopping.active=false, so shopping
+was not the active loop. Read-only dump followed by resumed play; later manually
+paused/dumped/saved at the same loop for future encounter debugging. No manual
+combat or movement. Preserved corrected and incorrect evidence separately.
+
+Final f81179e adds exact-cost verification and prevents isolated-enemy route
+shortcut from competing with active shopping; tested in unit suites but not yet
+another fresh live run.18 Lua suites/9 runner tests pass: price-order mapping,
+tie rejection, reserves, combat interruption, disengage/no-route abort, bounded
+no-progress/elapsed-turn retries and route ownership. Shopping purchase works in
+live play; safe abort paths are unit-verified, not all exercised in live combat.
+Full five-seed regression and autonomous completion remain unverified.
