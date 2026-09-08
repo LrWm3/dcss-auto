@@ -1,0 +1,7 @@
+{
+  "version": "sigmund-memory-v6-repeat",
+  "stale_seconds": 90,
+  "sessions": [
+    {"session": "codex-bench4", "character": "CodexSigmund7", "seed": "1760771545328102746"}
+  ]
+}
