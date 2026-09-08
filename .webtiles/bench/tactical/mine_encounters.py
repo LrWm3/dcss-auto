@@ -8,6 +8,7 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 import json
 from pathlib import Path
+import re
 import shutil
 
 from bench import Environment, ENGINE, ROOT, HERE, sha
@@ -27,6 +28,25 @@ def enemies(state):
     return list(state.get('monsters', {}).values())
 
 
+def encounter_recovered(state):
+    # Passive flight/parry can last an entire floor. They must not merge every
+    # otherwise recovered fight into one episode. Unknown statuses still block.
+    if any(state.get(k) for k in ('berserk','cooldown','confused')):
+        return False
+    state = dict(state)
+    statuses = state.get('status', '').split(',')
+    state['status'] = ','.join(s for s in statuses
+        if re.sub(r'\s*\(expiring\)$', '', s.strip()) not in ('flying','parry'))
+    return recovered(state)
+
+
+def endpoint(state, initial_floor):
+    if state.get('terminal') == 'death': return 'death'
+    if state.get('floor') != initial_floor: return 'floor_change'
+    if encounter_recovered(state): return 'safe_recovery'
+    return 'verification_budget'
+
+
 class Segmenter:
     """Keep LOS breaks, poison and recovery in the same encounter.
 
@@ -39,6 +59,9 @@ class Segmenter:
         self.cases = []
 
     def observe(self, state, decision):
+        if (self.active and not state.get('terminal')
+                and state['floor'] != self.active['floor']):
+            self.finish(decision, 'floor_change')
         if self.active is None and enemies(state):
             self.active = dict(seed=self.seed, start=decision, floor=state['floor'],
                 start_turn=state['turn'], start_hp_fraction=state['hp']/state['max_hp'],
@@ -54,9 +77,7 @@ class Segmenter:
             a['min_hp_fraction'] = min(a['min_hp_fraction'], state['hp']/state['max_hp'])
         if state.get('terminal'):
             self.finish(decision, 'death')
-        elif state['floor'] != a['floor']:
-            self.finish(decision, 'floor_change')
-        elif recovered(state):
+        elif encounter_recovered(state):
             self.finish(decision, 'safe_recovery')
 
     def finish(self, decision, outcome):
@@ -162,7 +183,7 @@ def capture(root, source, row):
                 if state.get('terminal'): break
                 state = env.step(recorded['action']); states.append(state)
             trajectories.append(states)
-            result['trials'].append(dict(mode=mode, outcome='death' if state.get('terminal') else row['outcome'],
+            result['trials'].append(dict(mode=mode, outcome=endpoint(state, reference[0]['floor']),
                 decisions=len(states)-1, worker=str(env.work),
                 transitions_sha256=sha(env.work/'transitions.jsonl'),
                 discovery_fidelity=compare(states, reference)))
@@ -195,9 +216,38 @@ def validate(cfg):
             raise ValueError('Seeds must be uint64 strings')
 
 
+def resegment(previous, root, source, seeds):
+    """Re-rank existing immutable discovery traces without rerunning games."""
+    manifest=json.loads((previous/'manifest.json').read_text())
+    if manifest['engine_sha256'] != sha(ENGINE) or manifest['source_rc_sha256'] != sha(source):
+        raise ValueError('Discovery engine/source mismatch')
+    for name in ('bench.py','bridge.lua','direct_transport.lua'):
+        if manifest['tools'][name] != sha(HERE/name):
+            raise ValueError('Discovery observation/transport mismatch: '+name)
+    originals={r['seed']:r for r in json.loads((previous/'discoveries.json').read_text())}
+    results=[]
+    for seed in seeds:
+        original=originals[seed];trace=Path(original['trace'])
+        if sha(trace) != original['trace_sha256']: raise ValueError('Discovery trace mutated')
+        segments=Segmenter(seed);decisions=0
+        with trace.open() as stream:
+            for i,line in enumerate(stream):
+                row=json.loads(line)
+                if i==0:segments.observe(row['observation'],0)
+                decisions=i+1
+                segments.observe(row['next_observation'],decisions)
+        segments.finish(decisions,original['outcome'])
+        result=dict(original,candidates=segments.cases,resegmented_from=str(previous))
+        work=root/('seed-'+seed);work.mkdir()
+        write(work/'discovery.json',result);results.append(result)
+    return results
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('config',type=Path); p.add_argument('output',type=Path)
+    p.add_argument('--reuse-discovery',type=Path,
+                   help='Re-segment hash-verified discovery traces from a previous run')
     a = p.parse_args(); cfg = json.loads(a.config.read_text()); validate(cfg)
     source = (ROOT/cfg['rc']).resolve()
     if cfg.get('rc_sha256') and cfg['rc_sha256'] != sha(source): raise ValueError('RC hash mismatch')
@@ -206,11 +256,14 @@ def main():
     write(root/'config.json', cfg)
     write(root/'manifest.json', dict(engine_sha256=sha(ENGINE), source_rc_sha256=sha(frozen),
         tools={name:sha(HERE/name) for name in ('mine_encounters.py','bench.py','bridge.lua','direct_transport.lua')},
+        reuse_discovery=str(a.reuse_discovery.resolve()) if a.reuse_discovery else None,
         scope='Instrumented baseline discovery; not proof of unchanged native full-run trajectory.'))
     discovery_root=root/'discovery'; discovery_root.mkdir()
     collection_root=root/'collection'; collection_root.mkdir()
     with ThreadPoolExecutor(max_workers=cfg['jobs']) as pool:
-        discoveries=list(pool.map(lambda seed:discover(discovery_root,frozen,seed,cfg),cfg['seeds']))
+        discoveries=(resegment(a.reuse_discovery.resolve(),discovery_root,frozen,cfg['seeds'])
+            if a.reuse_discovery else
+            list(pool.map(lambda seed:discover(discovery_root,frozen,seed,cfg),cfg['seeds'])))
         write(root/'discoveries.json', discoveries)
         candidates=select(discoveries,cfg['target']); write(root/'candidates.json',candidates)
         results=list(pool.map(lambda row:capture(collection_root,frozen,row), candidates))

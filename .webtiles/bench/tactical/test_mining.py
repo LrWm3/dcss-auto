@@ -4,8 +4,8 @@ from pathlib import Path
 import tempfile
 from unittest.mock import Mock, patch
 
-from mine_encounters import Segmenter, select, validate, capture
-from bench import sha
+from mine_encounters import Segmenter, select, validate, capture, encounter_recovered, endpoint, resegment
+from bench import sha, HERE
 
 
 def state(**changes):
@@ -42,6 +42,25 @@ class MiningTests(unittest.TestCase):
         m=Segmenter('1');m.observe(state(monsters=ENEMY),0)
         m.observe(state(floor='D:1',hp=4),1)
         self.assertEqual(m.cases[0]['outcome'],'floor_change')
+
+    def test_floor_change_keeps_new_enemies_in_new_encounter(self):
+        m=Segmenter('1');m.observe(state(monsters=ENEMY),0)
+        m.observe(state(floor='D:3',monsters={'1':dict(name='ogre',threat=3)}),1)
+        self.assertEqual(m.cases[0]['enemies'],['orc priest'])
+        self.assertEqual(m.active['enemies'],['ogre'])
+        self.assertEqual(m.active['start'],1)
+
+    def test_benign_statuses_do_not_merge_whole_floors(self):
+        for status in ('flying','parry,flying (expiring)'):
+            self.assertTrue(encounter_recovered(state(status=status)))
+        for changes in ({'status':'flying,slowed'},{'status':'unknown effect'},
+                        {'berserk':True},{'cooldown':True},{'confused':True}):
+            self.assertFalse(encounter_recovered(state(**changes)))
+
+    def test_actual_trial_endpoint_not_copied_from_reference(self):
+        self.assertEqual(endpoint(state(hp=1),'D:2'),'verification_budget')
+        self.assertEqual(endpoint({'terminal':'death'},'D:2'),'death')
+        self.assertEqual(endpoint(state(floor='D:3',hp=1),'D:2'),'floor_change')
 
     def test_only_visible_enemies_start_cases(self):
         m=Segmenter('1');m.observe(state(hp=3,poisoned=True),0)
@@ -101,6 +120,29 @@ class MiningTests(unittest.TestCase):
             self.assertFalse(result['uninterrupted_fidelity']['passed'])
             self.assertFalse(result['training_ready'])
             self.assertFalse(json.loads((root/'case-1/case/case.json').read_text())['training_ready'])
+
+    def test_resegment_reuses_pinned_trace_and_checks_hashes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);old=root/'old';old.mkdir();out=root/'new';out.mkdir()
+            engine=root/'engine';engine.write_text('engine')
+            source=root/'rc';source.write_text('source')
+            trace=old/'transitions.jsonl'
+            trace.write_text(json.dumps(dict(observation=state(monsters=ENEMY,status='flying'),
+                action='baseline',next_observation=state(turn=11,status='flying')))+'\n')
+            manifest=dict(engine_sha256=sha(engine),source_rc_sha256=sha(source),
+                tools={n:sha(HERE/n) for n in ('bench.py','bridge.lua','direct_transport.lua')})
+            (old/'manifest.json').write_text(json.dumps(manifest))
+            (old/'discoveries.json').write_text(json.dumps([dict(seed='1',trace=str(trace),
+                trace_sha256=sha(trace),outcome='decision_budget',candidates=[])]))
+            with patch('mine_encounters.ENGINE',engine):
+                results=resegment(old,out,source,['1'])
+                self.assertEqual(results[0]['candidates'][0]['outcome'],'safe_recovery')
+                trace.write_text('mutated')
+                with self.assertRaisesRegex(ValueError,'trace mutated'):
+                    resegment(old,out,source,['1'])
+                source.write_text('changed RC')
+                with self.assertRaisesRegex(ValueError,'engine/source mismatch'):
+                    resegment(old,out,source,['1'])
 
 
 if __name__=='__main__':unittest.main()

@@ -355,6 +355,16 @@ deaths, lost HP fraction, threat, and duration within each seed. Easy successful
 fights remain comparison cases; there is no guarantee every selection is hard.
 HP fraction is used because berserk changes maximum HP. This first version
 does not separately detect resource spending or controller retreat decisions.
+Passive `flying`/`parry` statuses do not prevent recovery; unknown statuses,
+berserk/cooldown, confusion, poison, fire and missing HP still do. New enemies
+on a destination floor belong to the new encounter, not the one just exited.
+
+After changing ranking or segmentation, add `--reuse-discovery OLD_RUN` to
+reuse its original traces. This verifies engine, source RC, observation/transport
+code and trace hashes before re-segmenting. It still performs new checkpoint
+captures and both reset checks. Discovery budgets in the new config do not
+extend an already-recorded trace. This avoids rerunning full discovery games
+just to experiment with candidate selection.
 
 The collector verifies every visible observation in the discovery prefix while
 replaying to a selected boundary, saves through the direct input transport, and

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-08",
+  "run": ".webtiles/bench/tactical/artifacts/mining-v2",
+  "reused_discovery": ".webtiles/bench/tactical/artifacts/mining-v1",
+  "captured": 30,
+  "training_ready": 30,
+  "quarantined": 0,
+  "transitions": 435,
+  "transitions_sha256": "ba879ad242d719e9f2a144b8998452b28ae7efd976217b2cfae2f07edad7b7f2",
+  "index_sha256": "f3b23d4a96ac5a8d652790a1f6435f8774fb53710a2747a526534649a1d54e89",
+  "summary_sha256": "4f6ea5c5f6eb217a949d6c9e647fe63a11550f54e1cc209e42d073a5aeb437e8",
+  "verification": "New prefix-checked captures and two new reset trajectories per encounter, compared to original discovery. All passed.",
+  "scope": "Reverification of the same 30 early encounters, NOT 30 additional independent encounters.",
+  "segmentation_changes": [
+    "Passive flight/parry no longer prevent recovery; harmful and unknown statuses still block.",
+    "Destination-floor enemies belong to a new encounter.",
+    "Reset trial outcomes are measured rather than copied from the reference label."
+  ],
+  "deeper_offline_resegmentation": {
+    "path": ".webtiles/bench/tactical/artifacts/mining-deeper-segmentation-v2",
+    "before": 346,
+    "after": 437,
+    "scope": "Candidate boundaries only; this resegmentation does not create or certify additional checkpoints."
+  }
+}

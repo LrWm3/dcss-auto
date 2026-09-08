@@ -1370,3 +1370,16 @@ D:1 comparison successes and oneD:2 fight: proof of collection, not thirty hard
 problems or policy improvement. Heavy saves/traces in tactical/artifacts/mining-v1;
 tracked evidence tactical/evidence/mining-v1.json. Longer discovery is separate.
 14tactical Python tests,8mining tests,3direct-transport tests and23RC suites pass.
+
+Mining follow-up: corrected recovery segmentation to ignore benign flight/parry
+while still blocking unknown/harmful statuses and explicit berserk/cooldown/
+confusion. Previously permanent flight could combine an entire floor into one
+long example. Floor-change enemy lists now separate arrival encounters. Trial
+outcomes are observed, not borrowed from the reference if a rollout diverges.
+Added --reuse-discovery with engine/RC/adapter/trace hash checks to re-segment
+and capture from existing evidence without running discovery games again.
+
+mining-v2 re-captures/re-verifies the SAME30 early encounters:30pass,0quarantine,
+435transitions, not30 additional independent examples.12mining tests pass.
+Offline resegmentation of the longer traces yields437 candidates versus346;
+this alone does not certify new saves. Evidence tactical/evidence/mining-v2.json.
