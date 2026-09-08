@@ -9,7 +9,7 @@ travel_delay = -1
 rest_delay = -1
 show_more = false
 force_more_message =
-explore_stop = shop
+explore_stop = shop,greedy_pickup_smart
 bindkey = [^D] CMD_LUA_CONSOLE
 
 <
@@ -31,7 +31,7 @@ AUTOCrawl_TACTICS = {
   position_waits = 3,
   encounter_control = true, encounter_memory = 8, retreat_hp = 65,
   retreat_moves = 6,
-  early_commit = true, early_commit_xl = 4, early_commit_hp = 20,
+  early_commit = false, early_commit_xl = 4, early_commit_hp = 20,
 }
 
 -- Editable progression plan. A stage covers every floor in [from, to].
