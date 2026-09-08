@@ -1,0 +1,12 @@
+{
+ "version":"centaur-lure-resume-v1",
+ "character":"CodexShopPrice1","session":"codex-support1",
+ "seed":"6144198052690956201","kind":"saved-position-fix-verification",
+ "start":{"level":"Lair:3","turn":18039,"hp":117},
+ "fix_commit":"582f667",
+ "rc_sha256":"6322f30438ef1467fd3a5f930a9f27a36478a7c734aca591e7fb6ab0fe6e3261",
+ "intervention":"Archived existing saved checkpoint and restarted same character/session with revised RC. No manual combat or movement.",
+ "result":"Left the centaur lure/heal loop; progressed through Lair4–5 and Orc1–2. Banishment followed by natural cognitogaunt psychic-fangs death23165 in Abyss2.",
+ "autonomous_full_seed_benchmark":false,
+ "evidence":".webtiles/bench/evidence/centaur-lure-resume-v1-CodexShopPrice1.txt"
+}

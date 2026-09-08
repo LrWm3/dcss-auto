@@ -885,3 +885,27 @@ tie rejection, reserves, combat interruption, disengage/no-route abort, bounded
 no-progress/elapsed-turn retries and route ownership. Shopping purchase works in
 live play; safe abort paths are unit-verified, not all exercised in live combat.
 Full five-seed regression and autonomous completion remain unverified.
+
+## Centaur lure/heal loop fix
+
+Cause in approach_action: ranged detection preceded the mode2 backstep block,
+but its early return came AFTER that block. Thus even a known shooter received
+a lure step. Losing LOS then healing beyond encounter_memory caused idle; the
+next sighting reset e.approach and restored the lure budget. Repeated same-area
+lure/recover/idle cycles were observed in the saved Lair3 centaur encounter.
+
+582f667 moves the ranged return ahead of all preparation backsteps. Conservative
+unknown ranges already count as ranged. Genuine encounter disengagement remains
+separate; melee-only lure budgets remain unchanged. Regression reproduces a
+valid mode2 backstep path, then checks ranged rejection through three encounter
+resets.18 Lua suites and9 runner tests pass.
+
+Archived CodexShopPrice1 saved checkpoint at18039 Lair3 HP117, restarted same
+session with exact RC SHA6322f30438ef1467fd3a5f930a9f27a36478a7c734aca591e7fb6ab0fe6e3261.
+No manual gameplay input. Character left the loop, progressed through Lair4–5
+and Orc1–2, then was banished and died naturally in Abyss2 at23165 to a
+cognitogaunt's psychic fangs8. Saved immutable morgue and intervention metadata.
+This verifies escape from the target stall, not guaranteed survival against
+ranged threats or all lure loops. The restarted RC also contains the previously
+unit-tested shopping ownership/cost guards. Original shopping-v2 paused result
+is preserved; this continuation is not a fresh fixed-seed benchmark replacement.
