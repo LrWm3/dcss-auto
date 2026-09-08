@@ -1546,6 +1546,133 @@ local function pickup_for_bot(it, name)
 end
 add_autopickup_func(pickup_for_bot)
 
+-- Serialized scalar shop catalogue. Waypoints 0..7 belong to shopping; 9
+-- remains the recovery anchor. No Item userdata survives a ready callback.
+local function shop_state()
+  ROUTE_STATE.shopping=ROUTE_STATE.shopping or {shops={},checked={},next_slot=0}
+  return ROUTE_STATE.shopping
+end
+local SHOP_RESERVES={curing=3,["heal wounds"]=2,teleportation=2,blinking=1,fear=1,identify=2}
+local function shop_offer(it,price,index)
+  if it.is_useless or not it.is_identified then return nil end
+  local class,name=item_class(it),item_name(it)
+  local d={price=price,index=index,name=name,quantity=it.quantity or 1}
+  if class=="potion" or class=="scroll" then
+    for kind,_ in pairs(SHOP_RESERVES) do
+      if name:find(kind,1,true) then d.kind=kind; return d end
+    end
+  elseif it.is_weapon and it.weap_skill=="Axes" then
+    d.slot="Weapon"; d.score=weapon_score(it); return d
+  elseif class=="armour" and ARMOUR_SLOTS[it.subtype()] then
+    if it.subtype()=="helmet" and name:find("helmet",1,true) then return nil end -- MiBe horns
+    d.slot=ARMOUR_SLOTS[it.subtype()]; d.score=armour_score(it); return d
+  end
+end
+local function shop_priority(d)
+  if d.price>you.gold() then return nil end
+  if d.kind then
+    local count,unknown=0,false
+    for _,it in ipairs(items.inventory()) do
+      local class=item_class(it)
+      if class=="potion" or class=="scroll" then
+        if not it.is_identified then unknown=true
+        elseif item_name(it):find(d.kind,1,true) then count=count+(it.quantity or 1) end
+      end
+    end
+    if d.kind=="identify" and not unknown then return nil end
+    if count+d.quantity>SHOP_RESERVES[d.kind] then return nil end
+    return d.kind=="identify" and 10 or 100-count
+  end
+  -- Spend on known, strictly better gear only, leaving emergency cash.
+  if not d.slot or d.price>you.gold()-100 then return nil end
+  local best=items.equipped_at(d.slot)
+  local score=best and (d.slot=="Weapon" and weapon_score(best) or armour_score(best)) or 0
+  for _,it in ipairs(items.inventory()) do
+    if (d.slot=="Weapon" and it.is_weapon) or
+        (item_class(it)=="armour" and ARMOUR_SLOTS[it.subtype()]==d.slot) then
+      score=math.max(score,d.slot=="Weapon" and weapon_score(it) or armour_score(it))
+    end
+  end
+  local body=items.equipped_at("Armour")
+  if body and item_name(body):find("lear's hauberk",1,true)
+      and (d.slot=="Helmet" or d.slot=="Gloves" or d.slot=="Boots") then return nil end
+  if d.score>score+0.5 then return 20+math.min(20,d.score-score) end
+end
+local function shop_catalogue()
+  if not items.shop_inventory then return end
+  local stock=items.shop_inventory(); if not stock then return end
+  local s=shop_state(); local slot
+  for n,_ in pairs(s.shops) do
+    local x,y=travel.waypoint_delta(n)
+    if x==0 and y==0 then slot=n; break end
+  end
+  if not slot then slot=s.next_slot; s.next_slot=(slot+1)%8; travel.set_waypoint(slot,0,0) end
+  local offers={}
+  for i,row in ipairs(stock) do
+    local d=shop_offer(row[1],row[2],i)
+    if d then offers[#offers+1]=d end
+  end
+  s.shops[slot]={offers=offers,level=level_key()}
+  return slot
+end
+local function shop_abort(reason)
+  local s=shop_state()
+  if s.active then
+    say("shopping abandoned: "..reason)
+    if crawl.take_note then crawl.take_note("Shopping abandoned: "..reason) end
+    s.active=nil
+  end
+end
+local function shopping_action(scan)
+  local s=shop_state(); local a=s.active
+  if not a then
+    local done=ROUTE_STATE.done[level_key()]
+    if s.checked[level_key()] or ROUTE_STATE.recovery or ROUTE_STATE.pocket
+        or not (done=="clear" or (done=="partial" and AUTOCrawl_ROUTE.allow_partial)) then return false end
+    if scan.any or (you.feel_safe and not you.feel_safe()) then return false end
+    s.checked[level_key()]=true
+    a={start=you.turns(),buys=0,failed={}}; s.active=a
+  end
+  if you.turns()-a.start>300 then shop_abort("travel budget"); return false end
+  if BOT.encounter and BOT.encounter.phase=="disengage" then shop_abort("disengage"); return false end
+  if scan.any then return false end -- combat owns this turn; resume after recovery
+  if you.feel_safe and not you.feel_safe() then shop_abort("unsafe"); return false end
+  if a.buys>=4 then s.active=nil; return false end
+  local best,priority
+  for slot,shop in pairs(s.shops) do
+    if not a.failed[slot] then for _,d in ipairs(shop.offers) do
+      local p=shop_priority(d)
+      if p and (not priority or p>priority or (p==priority and d.price<best.offer.price)) then
+        best={slot=slot,offer=d}; priority=p
+      end
+    end end
+  end
+  if not best then s.active=nil; return false end
+  local x,y=travel.waypoint_delta(best.slot)
+  if x==0 and y==0 then
+    if feat_here()~="enter_shop" then shop_abort("stale destination"); return false end
+    shop_catalogue()
+    local d
+    for _,offer in ipairs(s.shops[best.slot].offers) do
+      if shop_priority(offer) and (not d or shop_priority(offer)>shop_priority(d)) then d=offer end
+    end
+    if not d or d.index>26 or #items.inventory()>=50 then a.failed[best.slot]=true; return true end
+    local gold=you.gold()
+    guarded_keys("<"..string.char(96+d.index).."\rY")
+    if you.gold()<gold then
+      a.buys=a.buys+1
+      say("shopping bought: "..d.name.." for "..(gold-you.gold()))
+      shop_catalogue()
+    else shop_abort("purchase rejected") end
+    return true
+  end
+  if a.last==you.turns() then a.noops=(a.noops or 0)+1 else a.noops=0 end
+  if a.noops>=2 then shop_abort("no travel progress"); return false end
+  a.last=you.turns()
+  guarded_keys("G"..best.slot)
+  return true
+end
+
 local function drop_redundant_gear()
   for _, it in ipairs(items.inventory()) do
     if not it.equipped and not it.artefact and not it.branded then
@@ -2061,6 +2188,7 @@ local ROUTE_BRANCHES = {
 }
 
 local function route_observe(scan)
+  if ROUTE_STATE.shopping and ROUTE_STATE.shopping.active then return end
   local branch,depth=you.branch(),you.depth()
   local target=ROUTE_STATE.target
   local previous=ROUTE_STATE.position
@@ -2430,6 +2558,9 @@ function c_message(text, channel)
   crawl.more_autoclear(true)
   if previous_c_message then previous_c_message(text, channel) end
   local s = string.lower(tostring(text or "")):gsub("<[^>]*>", "")
+  if ROUTE_STATE.shopping and ROUTE_STATE.shopping.active
+      and (s:find("don't know how to get there",1,true)
+        or s:find("can't find a way",1,true)) then shop_abort("no route") end
   if s:find("really attack ",1,true) then
     -- Fail closed if a stale target or another command still reaches Crawl's
     -- protected-target confirmation. Never approve friendly fire.
@@ -2622,6 +2753,10 @@ function ready()
     BOT.dive={phase="normal"}
   end
   observe_encounter(scan)
+  if ROUTE_STATE.shopping and ROUTE_STATE.shopping.active then
+    if (BOT.encounter and BOT.encounter.phase=="disengage") or BOT.disturbance_warning
+        or you.confused() then shop_abort("retreat or uncertain threat") end
+  end
   observe_wand_encounter(scan)
   if BOT.ally_attack_rejected then
     BOT.ally_attack_rejected=false
@@ -2652,6 +2787,7 @@ function ready()
       -- '<' ENTERS a shop. Visit once to register its stock, then close the
       -- menu with Escape. Never reopen it on every ready() at the same tile.
       guarded_keys("<")
+      shop_catalogue()
       return
     end
   end
@@ -2844,6 +2980,7 @@ function ready()
 
   -- Stair-based ID routine.
   if auto_id_action() then return end
+  if shopping_action(scan) then return end
   if route_action(scan) then return end
 
   -- Start the survey only after autoexplore reports this floor exhausted.
