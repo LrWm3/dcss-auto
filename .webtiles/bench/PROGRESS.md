@@ -2123,3 +2123,26 @@ choices, then runs six live checks (one per mutation axis plus control).
 This evaluation is in-sample, not evidence of held-out improvement.179 Python
 and13 Lua checks pass; fitting/live completion is recorded in the artifact's
 status.json and completion.json.
+
+V2 training completed: candidate recovered205/206 eligible training variants
+(1 death), versus191/206 for fixed pursuit+berserk and182/206 without berserk.
+All six fresh replay checks passed. Candidate hash:
+8dc7304272e97929f21872d58f95161ba15e24d997a8c318e4ae4a5f366ad9d5.
+These are in-sample results; production remains unchanged.
+
+## 2026-09-09 — frozen V2 held-out evaluation
+
+Added evaluate_rich_holdout.py. Evaluating all42 eligible original held-out
+checkpoints:6 validation,6 test,30 evaluation-only across seven seeds, none in
+the model's training manifest. No character mutations or HP normalization: this
+tests the original saved situations. Model and controller sources are frozen.
+Each family checks12 original versus two rich replay steps, then runs the actual
+V2 selector and both fixed pursuit policies (126 planned live trials). Results
+include raw outcomes and matched comparisons restricted to audited terminal
+outcomes across all three choices; stalls/errors are excluded, not deaths.
+Previously evaluated seeds are held out of fitting, not a pristine new benchmark.
+
+Run artifacts/goals-character-v2-holdout-v2; status/coverage updated as families
+finish, final summary/completion written automatically. First launch v1 stopped
+before any replay due to a path-join typo; its empty output directory is retained.
+180 Python and13 Lua checks pass. No retraining or deployment in this evaluation.
