@@ -1616,3 +1616,30 @@ checkpoints, ranked by fatal outcome/HP loss/threat/length, balanced across four
 seeds;2500discovery decisions per seed. Plan to screen hard captured encounters
 for retreat failures and alternative-tactic successes. This entry records seed
 assignment and planned collection, not completed data or model training.
+
+Completed collection:22verified checkpoints across all4new seeds,954baseline
+transitions;3quarantined. Seed counts7/3/7/5, floorsD1:9,D2:1,D3:5,D4:3,D5:2,D6:2.
+216candidates from4successful discovery games; seed83019002 initially failed
+before gameplay with a map-no-exits engine error. Same-seed retry launched with
+unchanged engine/RC. Main capture20saved/19verified (exit0), retry3saved/3verified
+of5selected (exit1). Retain these distinctions: command success is not fidelity.
+Seed04 case003 resets match each other but not discovery at boundary2; seed02
+retry cases001/004 fail prefix at987. None are eligible. Accepted saves pass
+prefix checks and both independent resets against normalized discovery.
+
+New namespaced index artifacts/option-training-dataset-v1:22eligible/3quarantined.
+Combined immutable version artifacts/development-dataset-v3:82eligible/87entries,
+5809transitions,70train/6validation/6reserved test. Old indices unchanged.
+
+Added screen_training_options.py: train-only integrity checks; retreat on every
+accepted checkpoint, alternatives only after nonpositive retreat.34screen trials,
+zero harness errors; retreat succeeds18/22. Three useful contrasts in main batch:
+case002 D4 Eustachio: retreat dies, hold/rage_hold/RC succeed;
+case005 D2 Terence: retreat/hold/rage_hold die, RC succeeds;
+case016 D1 kobold contact: retreat/RC die during followup, hold/rage_hold succeed.
+Case018 D5 gnolls: all4tactics die. Success includes bounded RC continuation,
+not only visible enemy disappearance. Missing alternative trials are not labels.
+
+Evidence tactical/evidence/mining-option-training-v1.json pins datasets and screen
+results.69Python tests plus3transport/10model-hook checks pass. No model training,
+validation/test games, engine edits or production RC changes in this collection.

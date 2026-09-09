@@ -47,3 +47,15 @@ See REPLAY-PILOT.md for the reward limitations and legacy reward-file warning.
 `option-transition.json` records entry features and selected option per trial.
 `audited-result.json` records delayed outcomes and shield override counts.
 `model.json`, source/checkpoint provenance and summary preserve the experiment.
+
+## Collecting useful option contrasts
+
+`screen_training_options.py INDEX OUTPUT --jobs 4` accepts a training-only
+verified index. It checks checkpoint/engine hashes and seed assignments before
+launch, tries retreat on every eligible case, then tests hold, rage_hold and RC
+control only where retreat's bounded outcome is nonpositive. Its summary lists
+successful alternatives. No model is fit and no validation/test games are run.
+The collected option transitions can support later training; untested options
+are missing observations, not failures. This selective screen is deliberately
+biased toward retreat failures and must not be treated as a full option matrix
+or an unbiased estimate of other tactics' overall success rates.

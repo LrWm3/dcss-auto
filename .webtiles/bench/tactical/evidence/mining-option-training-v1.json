@@ -1,0 +1,142 @@
+{
+  "seed_assignment_commit": "abb24c3",
+  "fresh_training_seeds": [
+    "83019001",
+    "83019002",
+    "83019003",
+    "83019004"
+  ],
+  "new_dataset": {
+    "index": ".webtiles/bench/tactical/artifacts/option-training-dataset-v1/index.json",
+    "verified": 22,
+    "quarantined": 3,
+    "transitions": 954,
+    "per_seed": {
+      "83019001": 7,
+      "83019002": 3,
+      "83019003": 7,
+      "83019004": 5
+    },
+    "floors": {
+      "D:1": 9,
+      "D:2": 1,
+      "D:3": 5,
+      "D:4": 3,
+      "D:5": 2,
+      "D:6": 2
+    },
+    "baseline_outcomes": {
+      "safe_recovery": 21,
+      "death": 1
+    }
+  },
+  "combined_dataset": {
+    "index": ".webtiles/bench/tactical/artifacts/development-dataset-v3/index.json",
+    "eligible": 82,
+    "total_entries": 87,
+    "transitions": 5809,
+    "train": 70,
+    "validation": 6,
+    "test": 6
+  },
+  "discovery": {
+    "unique_candidates": 216,
+    "attempts": 5,
+    "unique_seeds": 4,
+    "initial_launch_failure": "83019002 exited before gameplay: regret_index_lairdec_grave_grove map has no possible exits. Retry launched successfully without code/RC change.",
+    "main_exit": 0,
+    "retry_exit": 1,
+    "note": "Main command exit0 includes one quarantined saved checkpoint. Retry exit1 reflects two failed prefixes. Use eligibility, not command status, as acceptance criterion."
+  },
+  "quarantine": [
+    {
+      "case": "mining-option-training-v1/collection/encounter-003",
+      "seed": "83019004",
+      "reason": "Both resets agree but differ from discovery at boundary2"
+    },
+    {
+      "case": "mining-option-training-retry-v1/collection/encounter-001",
+      "seed": "83019002",
+      "reason": "Prefix diverges at decision987; no accepted checkpoint"
+    },
+    {
+      "case": "mining-option-training-retry-v1/collection/encounter-004",
+      "seed": "83019002",
+      "reason": "Prefix diverges at decision987; no accepted checkpoint"
+    }
+  ],
+  "screen": {
+    "trials": 34,
+    "harness_errors": 0,
+    "retreat_positive": 18,
+    "retreat_negative": 4,
+    "solvable_contrasts": 3,
+    "main": {
+      "cases": 19,
+      "completed": true,
+      "contrasts": [
+        {
+          "case_id": "collection/encounter-002",
+          "retreat_credit": -1,
+          "successful_alternatives": [
+            "hold",
+            "rage_hold",
+            "baseline"
+          ]
+        },
+        {
+          "case_id": "collection/encounter-005",
+          "retreat_credit": -1,
+          "successful_alternatives": [
+            "baseline"
+          ]
+        },
+        {
+          "case_id": "collection/encounter-016",
+          "retreat_credit": -1,
+          "successful_alternatives": [
+            "hold",
+            "rage_hold"
+          ]
+        },
+        {
+          "case_id": "collection/encounter-018",
+          "retreat_credit": -1,
+          "successful_alternatives": []
+        }
+      ],
+      "production_export": false,
+      "retreat_positive": 15,
+      "selection_bias": "Alternatives only tested after nonpositive retreat; not a full option matrix.",
+      "trials": 31
+    },
+    "extra": {
+      "root": "artifacts/screen-option-training-retry-v1",
+      "cases": 3,
+      "trials": 3,
+      "retreat_positive": 3
+    },
+    "case_id_namespace": "Main screen collection/... IDs map to mining-option-training-v1/collection/... in the merged index; retry IDs map to mining-option-training-retry-v1/collection/....",
+    "scenario_names": {
+      "collection/encounter-002": "D4 Eustachio",
+      "collection/encounter-005": "D2 Terence",
+      "collection/encounter-016": "D1 kobold contact, retreat fails during later RC continuation",
+      "collection/encounter-018": "D5 gnolls; all tested tactics die"
+    }
+  },
+  "hashes": [
+    "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae  .webtiles/bench/tactical/dataset-split-v1.json",
+    "54e56e5eb564042e70c2eadc5724fd90da6fa734b0a8adf84820498a848ca742  .webtiles/bench/tactical/artifacts/option-training-dataset-v1/index.json",
+    "de0b169e3abd5dff5b01876da8a1786da720a61e27542e89e535a8cc9e3f84d4  .webtiles/bench/tactical/artifacts/development-dataset-v3/index.json",
+    "8620f87d3998e669a7cc08138bce69be176e6080372e88c91edea160a8a3e35f  .webtiles/bench/tactical/artifacts/screen-option-training-v1/results.json",
+    "d075b53b846e1b4df34c97b309c0fb908dd5b574a7e482fef49ab73360fa891f  .webtiles/bench/tactical/artifacts/screen-option-training-retry-v1/results.json"
+  ],
+  "tests": "69 Python tests plus 3 direct-transport and 10 model-hook checks passed.",
+  "scope": "Collection and tactical labeling only. No model fitting, production RC changes, validation or test games. All old indices remain unchanged.",
+  "limitations": [
+    "Four independent seed groups, not 22 independent games.",
+    "Only verified captures included; quarantine retains evidence.",
+    "Alternatives screened only for retreat failures; missing option labels are not failures.",
+    "Success is bounded audited recovery/progress, not guaranteed floor clearance or long-term survival."
+  ]
+}
