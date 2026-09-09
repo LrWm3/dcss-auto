@@ -15,7 +15,7 @@ export DCSS_TACTICAL_ENGINE="$PWD/crawl-0.35/crawl-ref/source/crawl-tactical-aug
 export DCSS_TACTICAL_AUGMENT=1
 python .webtiles/bench/tactical/augmentation_dataset.py \
   .webtiles/bench/tactical/augmentation-all-v1.json \
-  .webtiles/bench/tactical/artifacts/augmentation-all-v1
+  .webtiles/bench/tactical/artifacts/augmentation-all-v3
 ```
 
 Add `--resume` to reuse completed families after an interrupted run. The config,
@@ -23,6 +23,17 @@ source hashes, engine hashes, dataset indexes and split assignments must match.
 Partial family attempts are preserved and rerun in a new attempt directory.
 Completed quarantines remain quarantined; use a new versioned output after fixing
 their cause. Do not run two writers against the same output directory.
+
+For an orchestration/comparison-only repair, `--reuse OLD_OUTPUT` starts a **new**
+output and reuses fully generated families after checking their verification,
+trial and neutral-reference trace hashes. Recipes, dataset entries, split inputs,
+engines and gameplay-source hashes must all match. Incomplete families are rerun.
+The new manifest links the old manifest and each reused family links its source
+evidence. Retain the old output: reused checkpoints and traces are referenced,
+not duplicated. Ordinary `--resume` still requires every source hash to match.
+
+Independent families run in separate worker processes, each with its own game,
+so Python geometry/JSON work does not share one interpreter lock.
 
 The separate opt-in engine build is described in `AUGMENTATION-PILOT.md`.
 
@@ -103,6 +114,10 @@ probabilities or improved generalization.
 - Map memory can retain an invisible-monster marker long after it leaves LOS.
   Such a remembered marker no longer blocks recovery. Visible disturbances,
   `unseen`, unsafe state, damage and harmful statuses still block success.
+- Replay comparison ignores death-evidence file paths/checksums, which differ
+  between resets and between terminal-message versus morgue death detection.
+  The raw evidence stays in the trace and remains audited separately; actual
+  state differences are not normalized away.
 
 Targeted replay of the original ogre 60% HP/RNG-zero variant now records the
 no-berserk death at decision 37 and berserk-permitted recovery at decision 182
@@ -113,3 +128,12 @@ recorded transitions and a stall at decision 242, respectively. Evidence:
 ## Broad demonstration
 
 Results will be recorded here after the frozen all-encounter run completes.
+
+The initial run `augmentation-all-v1` was stopped after finding a false replay
+mismatch: both copies died on decision 7, but only one terminal observation
+included morgue provenance. The comparator fix passes that live regression in
+`augmentation-terminal-check-v1`. `augmentation-all-v2` aborted during reuse
+directory creation before launching games; the directory bug has a regression
+test. `augmentation-all-v3` resumes collection under the corrected implementation
+and reuses 18 verified complete families (324 trials) from v1. No raw evidence was
+deleted and no tactical controller changed during these orchestration repairs.

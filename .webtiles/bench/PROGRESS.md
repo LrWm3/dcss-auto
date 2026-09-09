@@ -1985,3 +1985,21 @@ encounter across both canonical indexes: 118 indexed parents, 112 verified and
 six already quarantined; expected 336 variants and 2016 fixed-controller trials.
 Artifacts: tactical/artifacts/augmentation-all-v1. This entry records launch,
 not completion. No model fitting or production deployment.
+
+### Augmentation comparison/reuse repair during broad collection
+
+The new negative-HP morgue evidence exposed a comparator issue: a death detected
+from the screen has no morgue path, while fallback detection includes one. Both
+replays of mining-deeper encounter-015 at 60% HP/RNG1 died on decision 7, but the
+provenance-only difference caused a false rejection. Normalization now drops only
+death evidence paths/checksums; raw evidence remains intact. Fresh paired replay
+passes in augmentation-terminal-check-v1.
+
+Stopped only the v1 augmentation batch and its child processes, preserving its
+files. Added explicit guarded --reuse for orchestration-only repairs with matching
+gameplay sources, configs, engines and inputs; trace hashes and replay prefixes
+are checked before reusing completed families. v2 hit a missing output-directory
+creation before launching any game; fixed and regression-tested. v3 uses separate
+worker processes and reuses 18 complete v1 families/324 trials. 154 Python tests
+and 13 Lua checks pass. No controller/model/production change. Full collection
+remains in progress under tactical/artifacts/augmentation-all-v3.

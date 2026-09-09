@@ -15,6 +15,11 @@ def normalized(state):
     state=dict(state)
     for key in ('seq','messages'):
         state.pop(key,None)
+    # Death may be detected through the terminal or a private morgue. Paths and
+    # dump checksums are provenance, not gameplay state, and vary across resets.
+    if state.get('terminal')=='death':
+        for key in ('evidence','evidence_sha256'):
+            state.pop(key,None)
     for key in ('monsters','inventory'):
         if key in state:
             state[key]=sorted(json.dumps(v,sort_keys=True) for v in state[key].values())

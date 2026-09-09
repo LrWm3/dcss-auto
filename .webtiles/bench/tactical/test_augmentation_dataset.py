@@ -1,8 +1,13 @@
 import copy
+import json
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
-from augmentation_dataset import classify, inventory, read, load_training
+from augmentation_dataset import classify, inventory, read, load_training, export, compatible_cache, reuse_families
+from run_goals import SOURCES
+from verify_resume import normalized
+from train_encounters import write
 from augment_encounters import POLICIES
 from bench import HERE
 
@@ -10,6 +15,45 @@ def rows():
     return [dict(option=o,outcome='recovered_quiet',evidence_verified=True) for o in POLICIES]
 
 class DatasetTests(unittest.TestCase):
+    def test_reuse_creates_nested_family_output(self):
+        with tempfile.TemporaryDirectory() as d:
+            base=Path(d);origin=base/'old';root=base/'new';root.mkdir()
+            ident='collection/encounter';(origin/ident).mkdir(parents=True)
+            (origin/ident/'family.json').touch()
+            workers=[]
+            for i in range(2):
+                w=base/str(i);w.mkdir();workers.append(str(w))
+                # A transition log has one compact JSON object per line.
+                (w/'transitions.jsonl').write_text(json.dumps(dict(observation={'hp':1},next_observation={'terminal':'death'}))+'\n')
+            e=dict(id=ident,seed='1',split='train')
+            m=dict(config={'recipes':[{}]},entries=[e],inputs={},engine_sha256='a',parent_engine_sha256='b',
+                sources={n:'h' for n in SOURCES+('augment_encounters.py',)})
+            f=dict(id=ident,seed='1',split='train',status='generated',
+                variants=[dict(replay_verified=True,recipe={},workers=workers,trace_sha256=['h','h'],rows=[{}]*6)],
+                neutral=dict(passed=True,reference='/ref',reference_sha256='h',worker='/worker',trace_sha256='h'))
+            actual_read=read
+            with patch('augmentation_dataset.read',side_effect=lambda p:m if Path(p).name=='manifest.json' else f), \
+                 patch('augmentation_dataset.sha',return_value='h'):
+                self.assertEqual(reuse_families(origin,root,m),[ident])
+            self.assertEqual(actual_read(root/ident/'family.json')['id'],ident)
+    def test_death_provenance_not_gameplay(self):
+        self.assertEqual(normalized({'terminal':'death'}),normalized(dict(
+            terminal='death',evidence='/private/morgue',evidence_sha256='different')))
+        self.assertNotEqual(normalized({'terminal':'death'}),normalized({'hp':1}))
+        self.assertNotEqual(normalized({'terminal':'death','turn':10}),
+                            normalized({'terminal':'death','turn':11}))
+
+    def test_reuse_rejects_gameplay_or_input_changes(self):
+        m=dict(config={},entries=[],inputs={},engine_sha256='a',parent_engine_sha256='b',
+               sources={n:'h' for n in SOURCES+('augment_encounters.py','verify_resume.py','augmentation_dataset.py')})
+        n=copy.deepcopy(m);n['sources']['verify_resume.py']='new';compatible_cache(m,n)
+        n['sources']['augmentation_dataset.py']='new';compatible_cache(m,n)
+        for key in ('config','entries','inputs','engine_sha256','parent_engine_sha256'):
+            n=copy.deepcopy(m);n[key]='changed'
+            with self.assertRaises(ValueError):compatible_cache(m,n)
+        for key in SOURCES+('augment_encounters.py',):
+            n=copy.deepcopy(m);n['sources'][key]='changed'
+            with self.assertRaises(ValueError):compatible_cache(m,n)
     def test_mixed_requires_real_death_and_success(self):
         r=rows();self.assertFalse(classify(r)['mixed'])
         r[0]['outcome']='death';self.assertTrue(classify(r)['mixed'])
@@ -71,5 +115,18 @@ class DatasetTests(unittest.TestCase):
     def test_training_loader_rejects_changed_trace(self):
         d=self.fixture();d['training-rows.json'][0]['trace_sha256']='changed'
         with self.assertRaises(ValueError):self.load_fixture(d)
+
+    def test_export_excludes_mixed_heldout_and_unassigned_families(self):
+        for split in ('validation','test','evaluation_only','unassigned'):
+            r=rows();r[0]['outcome']='death'
+            v=dict(id='variant',recipe={},case='/must-not-read',replay_verified=True,rows=r)
+            f=dict(id='family',seed='2',split=split,status='generated',variants=[v])
+            with tempfile.TemporaryDirectory() as d, \
+                 patch('augmentation_dataset.verify_result',side_effect=lambda r:r):
+                root=Path(d);write(root/'manifest.json',{})
+                summary=export(root,[f])
+                self.assertEqual(summary['mixed_variants'],1)
+                self.assertEqual(summary['training_cases'],0)
+                self.assertEqual(read(root/'training-rows.json'),[])
 
 if __name__=='__main__':unittest.main()

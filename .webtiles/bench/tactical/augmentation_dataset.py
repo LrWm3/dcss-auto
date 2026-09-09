@@ -5,7 +5,7 @@ engines and controller sources. Each seed and all its derivatives keep one split
 """
 import argparse
 from collections import Counter
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ProcessPoolExecutor, as_completed
 import json
 import os
 from pathlib import Path
@@ -21,6 +21,7 @@ from augment_encounters import (POLICIES, make_variant, validate_recipe, rollout
                                 verify_variant, neutral_check)
 from run_goals import SOURCES, run
 from train_encounters import write
+from verify_resume import normalized
 
 
 def read(path): return json.loads(Path(path).read_text())
@@ -91,6 +92,52 @@ def reference(case,root,steps):
         write(root/'reference.json',dict(worker=str(env.work),initial=states[0],
               startup_errors=errors,trace=str(env.work/'transitions.jsonl')))
     finally: env.close()
+
+
+def compatible_cache(old,new):
+    """Only orchestration/comparison may differ, never gameplay or input data."""
+    for key in ('config','entries','inputs','engine_sha256','parent_engine_sha256'):
+        if old[key]!=new[key]: raise ValueError('Reuse mismatch: '+key)
+    for name in SOURCES+('augment_encounters.py',):
+        if old['sources'][name]!=new['sources'][name]:
+            raise ValueError('Reuse gameplay source changed: '+name)
+
+
+def reuse_families(origin,root,manifest):
+    old=read(origin/'manifest.json');compatible_cache(old,manifest);reused=[]
+    for e in manifest['entries']:
+        path=origin/e['id']/'family.json'
+        if not path.exists(): continue
+        f=read(path)
+        if f['status']!='generated' or len(f['variants'])!=len(manifest['config']['recipes']): continue
+        if (f['id'],f['seed'],f['split'])!=(e['id'],e['seed'],e['split']):
+            raise ValueError('Cached family identity changed')
+        for v,recipe in zip(f['variants'],manifest['config']['recipes']):
+            if not v['replay_verified'] or v['recipe']!=recipe:
+                raise ValueError('Cached variant not verified')
+            traces=[]
+            for worker,digest in zip(v['workers'],v['trace_sha256']):
+                trace=Path(worker)/'transitions.jsonl'
+                if sha(trace)!=digest: raise ValueError('Verification trace changed')
+                records=[json.loads(line) for line in trace.read_text().splitlines()]
+                traces.append([normalized(records[0]['observation'])]+
+                              [normalized(t['next_observation']) for t in records])
+            if len(traces)!=2 or traces[0]!=traces[1]: raise ValueError('Cached replay mismatch')
+            for row in v['rows']:
+                if row.get('trace') and sha(Path(row['trace']))!=row['trace_sha256']:
+                    raise ValueError('Cached trial trace changed')
+            if len(v['rows'])!=len(POLICIES): raise ValueError('Incomplete cached policies')
+        n=f['neutral']
+        if (not n['passed'] or sha(Path(n['reference']))!=n['reference_sha256'] or
+            sha(Path(n['worker'])/'transitions.jsonl')!=n['trace_sha256']):
+            raise ValueError('Neutral evidence changed')
+        f['reused_from']=dict(path=str(path),sha256=sha(path),
+                             manifest_sha256=sha(origin/'manifest.json'))
+        (root/e['id']).mkdir(parents=True,exist_ok=False)
+        write(root/e['id']/'family.json',f);reused.append(e['id'])
+    write(root/'reuse.json',dict(origin=str(origin),families=reused,
+        policy='Same inputs/gameplay sources; rechecked prefix traces; terminal provenance ignored'))
+    return reused
 
 
 def family(e,cfg,root):
@@ -223,6 +270,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('config',type=Path);p.add_argument('output',type=Path)
     p.add_argument('--resume',action='store_true')
+    p.add_argument('--reuse',type=Path,help='New output; reuse completed verified families only when gameplay sources and inputs are unchanged')
     a=p.parse_args();cfg=read(a.config);root=a.output.resolve()
     if os.environ.get('DCSS_TACTICAL_AUGMENT')!='1' or ENGINE.name!='crawl-tactical-augment':
         raise ValueError('Explicit lab augmentation engine and opt-in required')
@@ -238,12 +286,21 @@ def main():
         inputs={n:sha(ROOT/n) for n in inputs},
         sources={n:sha(HERE/n) for n in SOURCES+('augmentation_dataset.py','augment_encounters.py','verify_resume.py')},
         fitting=False,production_export=False)
+    if a.resume and a.reuse: raise ValueError('Choose resume or reuse, not both')
+    if a.reuse:
+        origin=a.reuse.resolve();compatible_cache(read(origin/'manifest.json'),manifest)
+        manifest['reuse_manifest']=dict(path=str(origin/'manifest.json'),sha256=sha(origin/'manifest.json'))
     if a.resume:
+        old=read(root/'manifest.json')
+        if 'reuse_manifest' in old: manifest['reuse_manifest']=old['reuse_manifest']
         if read(root/'manifest.json')!=manifest: raise ValueError('Resume inputs or sources changed')
     else:
         root.mkdir(parents=True,exist_ok=False);write(root/'manifest.json',manifest)
+    if a.reuse: print(json.dumps(dict(reused=reuse_families(origin,root,manifest))),flush=True)
     families=[]
-    with ThreadPoolExecutor(max_workers=cfg['jobs']) as pool:
+    # Each worker owns its engine and JSON/geometry processing; avoid a shared
+    # Python GIL across independent families in this CPU-heavy offline job.
+    with ProcessPoolExecutor(max_workers=cfg['jobs']) as pool:
         fs=[pool.submit(family,e,cfg,root) for e in entries]
         for future in as_completed(fs):
             f=future.result();families.append(f);write(root/'coverage.json',families)
