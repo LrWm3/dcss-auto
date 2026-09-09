@@ -1,0 +1,631 @@
+{
+  "adjudication": {
+    "case_id": "ogre/variant-07",
+    "hp": -12,
+    "morgue": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-pilot-v1/trial-232/worker-fc7nvnsp/morgue/morgue-TacticalEustachio-20260909-145355.txt",
+    "morgue_sha256": "7799f5d9dc1cc258229b069681e9a790d83248a4aa76bf715c9e170d7d94ca68",
+    "note": "Negative-HP death header missed by zero-HP-only fallback; original trace has no final terminal transition and remains unchanged.",
+    "outcome": "death",
+    "policy": "pursue:0",
+    "raw_outcome": "harness_error",
+    "terminal_sha256": "b0f6e9818e41704edd86b11a21575c7b833213a6ae94100887f66fbe720102a9",
+    "trace_sha256": "40de3ab4725c1ce317d1fc27af582dffe13f87295b670f9ecf3f8df9597939ac",
+    "turn": 3875
+  },
+  "all_available_recovered_variants": 18,
+  "artifact_hashes": {
+    "augmentation-pilot-v1": {
+      "config.json": "6a2cd2081cbc3857c990f1523f2997447b3fb1acf1bcf9a6a678e59186bd3508",
+      "manifest.json": "ba121aa10bc5fe0d9ab91239ae753548a0e389b89a879d9a10f4483115170dfd",
+      "neutral-checks.json": "314df5c975e33f6526844633917104e5c606a6a9d5b3325cd03938d0980ededb",
+      "results.json": "89189488a611ca43c129d7f00fe7c5e83322cceed77b0e9feec47785901ecb77",
+      "variants.json": "c32fa550e11d32df558cf9fcc106d663f2ec206290de6c6cd331c26de081013f"
+    },
+    "augmentation-pilot-v1-adjudicated": {
+      "adjudication.json": "f5ed12cac8f127b481ca6deb4bdc4081d241a8598cb95d77206fe022493aad47",
+      "analysis.json": "c808943a235df30cf12d08039ebd89d834ba62939a291b1b4b9068d2b2e43737",
+      "audit.json": "759a9c57d125ffcbc30ff61b7e5e4a212e99f8711ed295afb399b5094c4b0fc8",
+      "manifest.json": "0f0ed79be6de3ed482a8529e7dbde5ca9d49fed75cb82ac9bc4a6959ba5222fe",
+      "results.json": "aae2cd7c011a97491f49d3a59dc59fee26df8df0e0b903628dda2fdb1b96d891",
+      "variants.json": "c32fa550e11d32df558cf9fcc106d663f2ec206290de6c6cd331c26de081013f"
+    }
+  },
+  "audited_recoveries": 181,
+  "by_family": {
+    "centaur": {
+      "defend:0": {
+        "death": 7,
+        "recovered_quiet": 3
+      },
+      "defend:1": {
+        "death": 7,
+        "recovered_quiet": 3
+      },
+      "pursue:0": {
+        "death": 1,
+        "recovered_quiet": 9
+      },
+      "pursue:1": {
+        "death": 1,
+        "recovered_quiet": 9
+      },
+      "withdraw:0": {
+        "death": 7,
+        "recovered_quiet": 3
+      },
+      "withdraw:1": {
+        "death": 7,
+        "recovered_quiet": 3
+      }
+    },
+    "eustachio": {
+      "defend:0": {
+        "death": 2,
+        "recovered_quiet": 8
+      },
+      "defend:1": {
+        "death": 2,
+        "recovered_quiet": 8
+      },
+      "pursue:0": {
+        "death": 2,
+        "recovered_quiet": 8
+      },
+      "pursue:1": {
+        "death": 2,
+        "recovered_quiet": 8
+      },
+      "withdraw:0": {
+        "masked": 10
+      },
+      "withdraw:1": {
+        "masked": 10
+      }
+    },
+    "gnolls": {
+      "defend:0": {
+        "death": 6,
+        "recovered_quiet": 4
+      },
+      "defend:1": {
+        "death": 9,
+        "recovered_quiet": 1
+      },
+      "pursue:0": {
+        "death": 8,
+        "recovered_quiet": 2
+      },
+      "pursue:1": {
+        "death": 8,
+        "recovered_quiet": 2
+      },
+      "withdraw:0": {
+        "death": 6,
+        "recovered_quiet": 4
+      },
+      "withdraw:1": {
+        "death": 6,
+        "recovered_quiet": 4
+      }
+    },
+    "jeremiah": {
+      "defend:0": {
+        "death": 10
+      },
+      "defend:1": {
+        "death": 4,
+        "recovered_quiet": 6
+      },
+      "pursue:0": {
+        "death": 10
+      },
+      "pursue:1": {
+        "death": 4,
+        "recovered_quiet": 6
+      },
+      "withdraw:0": {
+        "masked": 10
+      },
+      "withdraw:1": {
+        "masked": 10
+      }
+    },
+    "maggie": {
+      "defend:0": {
+        "death": 3,
+        "recovered_quiet": 7
+      },
+      "defend:1": {
+        "death": 3,
+        "recovered_quiet": 7
+      },
+      "pursue:0": {
+        "recovered_quiet": 10
+      },
+      "pursue:1": {
+        "recovered_quiet": 10
+      },
+      "withdraw:0": {
+        "death": 3,
+        "recovered_quiet": 7
+      },
+      "withdraw:1": {
+        "death": 3,
+        "recovered_quiet": 7
+      }
+    },
+    "ogre": {
+      "defend:0": {
+        "death": 4,
+        "recovered_quiet": 6
+      },
+      "defend:1": {
+        "recovered_quiet": 10
+      },
+      "pursue:0": {
+        "death": 4,
+        "recovered_quiet": 6
+      },
+      "pursue:1": {
+        "death": 5,
+        "recovered_quiet": 4,
+        "unresolved_stall": 1
+      },
+      "withdraw:0": {
+        "death": 4,
+        "recovered_quiet": 6
+      },
+      "withdraw:1": {
+        "recovered_quiet": 10
+      }
+    }
+  },
+  "by_policy": {
+    "defend:0": {
+      "death": 32,
+      "recovered_quiet": 28
+    },
+    "defend:1": {
+      "death": 25,
+      "recovered_quiet": 35
+    },
+    "pursue:0": {
+      "death": 25,
+      "recovered_quiet": 35
+    },
+    "pursue:1": {
+      "death": 20,
+      "recovered_quiet": 39,
+      "unresolved_stall": 1
+    },
+    "withdraw:0": {
+      "death": 20,
+      "masked": 20,
+      "recovered_quiet": 20
+    },
+    "withdraw:1": {
+      "death": 16,
+      "masked": 20,
+      "recovered_quiet": 24
+    }
+  },
+  "case_evidence": {
+    "centaur/variant-00": {
+      "case_metadata_sha256": "84afc8fa3cb970c3cc63e0302fab64b2a16d372244d9736e03064b9d8f9ca545",
+      "family_id": "centaur",
+      "rc_sha256": "983091c28f064dd7774d501c5622841cca75e29f0f6f3774b617f9a35f8f2590",
+      "seed": "83029004"
+    },
+    "centaur/variant-01": {
+      "case_metadata_sha256": "dfd5c01327c10e90113280c0d8804af5351e6fba059a6e934203e18c880af859",
+      "family_id": "centaur",
+      "rc_sha256": "5b0e67f6d88e4995b1f0139a0a4da10c39e8122c24ca701dc567b674080cb6e1",
+      "seed": "83029004"
+    },
+    "centaur/variant-02": {
+      "case_metadata_sha256": "11c9853afb0a86744df01de22043fb5836877c790e50357d9924b161b03635b4",
+      "family_id": "centaur",
+      "rc_sha256": "7dac66796927208c8b4b036f9b3406f0af214ec7fb3646c4ecf033f3a4fccc18",
+      "seed": "83029004"
+    },
+    "centaur/variant-03": {
+      "case_metadata_sha256": "1043ec950e29f7d4e1d860e6825a12a0019b3845250b7ecc0278c9e293f3438d",
+      "family_id": "centaur",
+      "rc_sha256": "e2e15e79596f374eda63ed5b539a10228469dd222da431295d52397966de0152",
+      "seed": "83029004"
+    },
+    "centaur/variant-04": {
+      "case_metadata_sha256": "daba79b7e2151a11801ca5ca8cad9b60c42108dc13069f3c3dc898f640ed7090",
+      "family_id": "centaur",
+      "rc_sha256": "f3c59f9c1d10ea6350fd4b390cd70a97454013bc0a57c7b72618e494975ff3f8",
+      "seed": "83029004"
+    },
+    "centaur/variant-05": {
+      "case_metadata_sha256": "4d56eebc737076a97be9ae478c7777c86e2786b649d3897105ba82dca44215f1",
+      "family_id": "centaur",
+      "rc_sha256": "6027bb5a8dfebbc53035e3a9514a102e307760993328722a0875ad63c64f63f0",
+      "seed": "83029004"
+    },
+    "centaur/variant-06": {
+      "case_metadata_sha256": "02a6106dca9e72256269f511cb5639669d08f655ffdb5840bbbbc01eb734a424",
+      "family_id": "centaur",
+      "rc_sha256": "a9849fb88ef88eea417eb4cd0fd4bc8b69b6951123a648afc0e18a1fb1a12dcd",
+      "seed": "83029004"
+    },
+    "centaur/variant-07": {
+      "case_metadata_sha256": "f86e0c91277d644992ea8d21a20f0e2c03c323afdafa216f2a0790694ced587f",
+      "family_id": "centaur",
+      "rc_sha256": "1cae1dd62fcc4fe7ed147768bae12f8deb9b755fda587a65ddce20cf0b2465fb",
+      "seed": "83029004"
+    },
+    "centaur/variant-08": {
+      "case_metadata_sha256": "be5433c6196d2da900d7062ac227dc6dd397e29e79e2c710a719bc07ee474ed9",
+      "family_id": "centaur",
+      "rc_sha256": "67f6657d8086ce912ba2e24945e762fb11379368e80fcd8a78fd46cd01df7911",
+      "seed": "83029004"
+    },
+    "centaur/variant-09": {
+      "case_metadata_sha256": "e2bea8d1ce1f0c72c1228bec81110ed9b94e21440328aee9d31be14c9207d303",
+      "family_id": "centaur",
+      "rc_sha256": "406d58da3148fd1a80f1aba5f05d41582664bfeef398082b91986fda7908eac8",
+      "seed": "83029004"
+    },
+    "eustachio/variant-00": {
+      "case_metadata_sha256": "dee441bdd2eb8d9b195e994278d2574d3ee3670a65affdd88a7598768ab8bd5d",
+      "family_id": "eustachio",
+      "rc_sha256": "983091c28f064dd7774d501c5622841cca75e29f0f6f3774b617f9a35f8f2590",
+      "seed": "83018005"
+    },
+    "eustachio/variant-01": {
+      "case_metadata_sha256": "7f01ffa0ecdf4ac4d3092b0691ede25c791d0673f89dd8198145c470e7671b90",
+      "family_id": "eustachio",
+      "rc_sha256": "5b0e67f6d88e4995b1f0139a0a4da10c39e8122c24ca701dc567b674080cb6e1",
+      "seed": "83018005"
+    },
+    "eustachio/variant-02": {
+      "case_metadata_sha256": "5864dab4ae489bfc33f9c1d84f94ea128584981c514ec12b5f486656ea5bc23b",
+      "family_id": "eustachio",
+      "rc_sha256": "7dac66796927208c8b4b036f9b3406f0af214ec7fb3646c4ecf033f3a4fccc18",
+      "seed": "83018005"
+    },
+    "eustachio/variant-03": {
+      "case_metadata_sha256": "d38fbf340e1f72764c85b695aa15fc2622329fb9697f1acb9b1858923b6073fd",
+      "family_id": "eustachio",
+      "rc_sha256": "e2e15e79596f374eda63ed5b539a10228469dd222da431295d52397966de0152",
+      "seed": "83018005"
+    },
+    "eustachio/variant-04": {
+      "case_metadata_sha256": "020d5fe2c48c18b9368be5c3aff746e4ee19ea7d55ae5e8ec32fdb2e9c30485e",
+      "family_id": "eustachio",
+      "rc_sha256": "f3c59f9c1d10ea6350fd4b390cd70a97454013bc0a57c7b72618e494975ff3f8",
+      "seed": "83018005"
+    },
+    "eustachio/variant-05": {
+      "case_metadata_sha256": "087ca5c098e17927dbaad3301dd21c9e96178e8501d9fa5ac3a024811e347f6e",
+      "family_id": "eustachio",
+      "rc_sha256": "6027bb5a8dfebbc53035e3a9514a102e307760993328722a0875ad63c64f63f0",
+      "seed": "83018005"
+    },
+    "eustachio/variant-06": {
+      "case_metadata_sha256": "a021868bce4294a5c62993f243eef175472de0880404c333ee3ebe51642cf1a8",
+      "family_id": "eustachio",
+      "rc_sha256": "a9849fb88ef88eea417eb4cd0fd4bc8b69b6951123a648afc0e18a1fb1a12dcd",
+      "seed": "83018005"
+    },
+    "eustachio/variant-07": {
+      "case_metadata_sha256": "d5de21bec519475dfd0548b22242798e87ef670d22d7efc7a34247dde451ea04",
+      "family_id": "eustachio",
+      "rc_sha256": "1cae1dd62fcc4fe7ed147768bae12f8deb9b755fda587a65ddce20cf0b2465fb",
+      "seed": "83018005"
+    },
+    "eustachio/variant-08": {
+      "case_metadata_sha256": "4e3c7f7fc6b439bcbb58721272433443b466496d93c3da88ef2a3af7e59a26c2",
+      "family_id": "eustachio",
+      "rc_sha256": "67f6657d8086ce912ba2e24945e762fb11379368e80fcd8a78fd46cd01df7911",
+      "seed": "83018005"
+    },
+    "eustachio/variant-09": {
+      "case_metadata_sha256": "6a1fc20e6398cfcf38ff8b829ad5cb12da823141248e379ec36a0a7d22da871e",
+      "family_id": "eustachio",
+      "rc_sha256": "406d58da3148fd1a80f1aba5f05d41582664bfeef398082b91986fda7908eac8",
+      "seed": "83018005"
+    },
+    "gnolls/variant-00": {
+      "case_metadata_sha256": "82592e813f68b6c1232706aa080940c5362ea0cf5fe10bcf20ffaf8d0c493d3d",
+      "family_id": "gnolls",
+      "rc_sha256": "983091c28f064dd7774d501c5622841cca75e29f0f6f3774b617f9a35f8f2590",
+      "seed": "83029005"
+    },
+    "gnolls/variant-01": {
+      "case_metadata_sha256": "4acf11d6b576b09a89880bb8e11feabd06508877285c34a061e8ba1f099dacf1",
+      "family_id": "gnolls",
+      "rc_sha256": "5b0e67f6d88e4995b1f0139a0a4da10c39e8122c24ca701dc567b674080cb6e1",
+      "seed": "83029005"
+    },
+    "gnolls/variant-02": {
+      "case_metadata_sha256": "96561b9ce4d1bbe1a5bb44eaba1e1c8fbd2372ea0b2fdb75541ad56a0b12dbed",
+      "family_id": "gnolls",
+      "rc_sha256": "7dac66796927208c8b4b036f9b3406f0af214ec7fb3646c4ecf033f3a4fccc18",
+      "seed": "83029005"
+    },
+    "gnolls/variant-03": {
+      "case_metadata_sha256": "0301e4671ace8992027bb17b73ff4d73bc5cc8c61c9c0149ebf8df9ece99a16d",
+      "family_id": "gnolls",
+      "rc_sha256": "e2e15e79596f374eda63ed5b539a10228469dd222da431295d52397966de0152",
+      "seed": "83029005"
+    },
+    "gnolls/variant-04": {
+      "case_metadata_sha256": "5388152f8aaf5d620cfb4efd9a1e81403fe850edfd086be3a6f89667cfb86944",
+      "family_id": "gnolls",
+      "rc_sha256": "f3c59f9c1d10ea6350fd4b390cd70a97454013bc0a57c7b72618e494975ff3f8",
+      "seed": "83029005"
+    },
+    "gnolls/variant-05": {
+      "case_metadata_sha256": "2e2cec669b2a1bdc957ec21eddabefeafcf388803aaad104453223e390affeb0",
+      "family_id": "gnolls",
+      "rc_sha256": "6027bb5a8dfebbc53035e3a9514a102e307760993328722a0875ad63c64f63f0",
+      "seed": "83029005"
+    },
+    "gnolls/variant-06": {
+      "case_metadata_sha256": "f1e2859c3bd9154d8ef636c7958ec40c1ccce9b234a2a43839329fdfef3e8f4c",
+      "family_id": "gnolls",
+      "rc_sha256": "a9849fb88ef88eea417eb4cd0fd4bc8b69b6951123a648afc0e18a1fb1a12dcd",
+      "seed": "83029005"
+    },
+    "gnolls/variant-07": {
+      "case_metadata_sha256": "2649e5bf1f82935cd5fb494b58d82365761b0d8868fa768eea105a99a01506b4",
+      "family_id": "gnolls",
+      "rc_sha256": "1cae1dd62fcc4fe7ed147768bae12f8deb9b755fda587a65ddce20cf0b2465fb",
+      "seed": "83029005"
+    },
+    "gnolls/variant-08": {
+      "case_metadata_sha256": "cc1105a9a943bf49db37d85c03721b8f7203ecf6943b093f91a11b0997d239ac",
+      "family_id": "gnolls",
+      "rc_sha256": "67f6657d8086ce912ba2e24945e762fb11379368e80fcd8a78fd46cd01df7911",
+      "seed": "83029005"
+    },
+    "gnolls/variant-09": {
+      "case_metadata_sha256": "a93e9840245c7fda4963c2268b46fb978ee6f1f53e2a59c56ce0e086696817f7",
+      "family_id": "gnolls",
+      "rc_sha256": "406d58da3148fd1a80f1aba5f05d41582664bfeef398082b91986fda7908eac8",
+      "seed": "83029005"
+    },
+    "jeremiah/variant-00": {
+      "case_metadata_sha256": "5d4b97915d3f35fcf91dd15e151c4e0591138c8d5cb939dcfc851e93db022253",
+      "family_id": "jeremiah",
+      "rc_sha256": "983091c28f064dd7774d501c5622841cca75e29f0f6f3774b617f9a35f8f2590",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-01": {
+      "case_metadata_sha256": "d646ba34a17c521cbc845ebdfa9d2bd10655e51cbbba89f38c136d652d39f7d5",
+      "family_id": "jeremiah",
+      "rc_sha256": "5b0e67f6d88e4995b1f0139a0a4da10c39e8122c24ca701dc567b674080cb6e1",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-02": {
+      "case_metadata_sha256": "f8f3ff77da307da595dc73c95652f384cb4a1de8a73b4683dcb9e2181a475669",
+      "family_id": "jeremiah",
+      "rc_sha256": "7dac66796927208c8b4b036f9b3406f0af214ec7fb3646c4ecf033f3a4fccc18",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-03": {
+      "case_metadata_sha256": "ec89cee0fe45c76c36b1472e02af016d1b245828188d584e6cb52dc14d3d5cd9",
+      "family_id": "jeremiah",
+      "rc_sha256": "e2e15e79596f374eda63ed5b539a10228469dd222da431295d52397966de0152",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-04": {
+      "case_metadata_sha256": "dd940bff21059b3ccc5fb9c54d8936e557e99a6eb8aa6b6c3d627d19d5206bb4",
+      "family_id": "jeremiah",
+      "rc_sha256": "f3c59f9c1d10ea6350fd4b390cd70a97454013bc0a57c7b72618e494975ff3f8",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-05": {
+      "case_metadata_sha256": "56afaa077c38c6a0e3918d5796c26dc97308ecd870615c2e9202f90e32fb492b",
+      "family_id": "jeremiah",
+      "rc_sha256": "6027bb5a8dfebbc53035e3a9514a102e307760993328722a0875ad63c64f63f0",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-06": {
+      "case_metadata_sha256": "5a4ebcb7c918895d8a498a954067a226bcff72f79b8474e76986a016153c50d8",
+      "family_id": "jeremiah",
+      "rc_sha256": "a9849fb88ef88eea417eb4cd0fd4bc8b69b6951123a648afc0e18a1fb1a12dcd",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-07": {
+      "case_metadata_sha256": "41006326ab44b9e89cdec68fa66ee19698736db1704b877434a400eba2e6a750",
+      "family_id": "jeremiah",
+      "rc_sha256": "1cae1dd62fcc4fe7ed147768bae12f8deb9b755fda587a65ddce20cf0b2465fb",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-08": {
+      "case_metadata_sha256": "e9dd888d7b5e0a4a7db1b29fb99b78d443ea5fba23859dee25a47ec0235a4195",
+      "family_id": "jeremiah",
+      "rc_sha256": "67f6657d8086ce912ba2e24945e762fb11379368e80fcd8a78fd46cd01df7911",
+      "seed": "83018004"
+    },
+    "jeremiah/variant-09": {
+      "case_metadata_sha256": "69aa8ddf21cc874db411b5c259be8b0b47b3ebbe74612dc3d816f4d543022e93",
+      "family_id": "jeremiah",
+      "rc_sha256": "406d58da3148fd1a80f1aba5f05d41582664bfeef398082b91986fda7908eac8",
+      "seed": "83018004"
+    },
+    "maggie/variant-00": {
+      "case_metadata_sha256": "211c4ad5455dc814163243cfd79115b00b2072ea944a3b531b5db06946a8e1ed",
+      "family_id": "maggie",
+      "rc_sha256": "983091c28f064dd7774d501c5622841cca75e29f0f6f3774b617f9a35f8f2590",
+      "seed": "83018004"
+    },
+    "maggie/variant-01": {
+      "case_metadata_sha256": "2c13a4fe07de5da8b8a0938e69197edddde216fb1460843a7fc7793c7b969f98",
+      "family_id": "maggie",
+      "rc_sha256": "5b0e67f6d88e4995b1f0139a0a4da10c39e8122c24ca701dc567b674080cb6e1",
+      "seed": "83018004"
+    },
+    "maggie/variant-02": {
+      "case_metadata_sha256": "735d031e17e46d0b217dcb039f29f6464341d103da920cef681c63219f4e1494",
+      "family_id": "maggie",
+      "rc_sha256": "7dac66796927208c8b4b036f9b3406f0af214ec7fb3646c4ecf033f3a4fccc18",
+      "seed": "83018004"
+    },
+    "maggie/variant-03": {
+      "case_metadata_sha256": "afed0f2f3a639a07dfd6d90acb3f81365d0213f52cb1946e79bf849a00898929",
+      "family_id": "maggie",
+      "rc_sha256": "e2e15e79596f374eda63ed5b539a10228469dd222da431295d52397966de0152",
+      "seed": "83018004"
+    },
+    "maggie/variant-04": {
+      "case_metadata_sha256": "9f1bf6086bf696ecf5fc83c50bf9fde13050f6a4c27251430879d4ceda021eef",
+      "family_id": "maggie",
+      "rc_sha256": "f3c59f9c1d10ea6350fd4b390cd70a97454013bc0a57c7b72618e494975ff3f8",
+      "seed": "83018004"
+    },
+    "maggie/variant-05": {
+      "case_metadata_sha256": "d00047318f01c7c172a4b684c06bbb0053022c94d3688dde9fcbf29b073020c3",
+      "family_id": "maggie",
+      "rc_sha256": "6027bb5a8dfebbc53035e3a9514a102e307760993328722a0875ad63c64f63f0",
+      "seed": "83018004"
+    },
+    "maggie/variant-06": {
+      "case_metadata_sha256": "1feb315a2b308a2fa0101f8d4080f192ea8e6cc535173c056efd0d3092d5bfde",
+      "family_id": "maggie",
+      "rc_sha256": "a9849fb88ef88eea417eb4cd0fd4bc8b69b6951123a648afc0e18a1fb1a12dcd",
+      "seed": "83018004"
+    },
+    "maggie/variant-07": {
+      "case_metadata_sha256": "8883275f8af030f2d883e436a8c7fb6d4ba7e552544692663890fe3c5c409eb3",
+      "family_id": "maggie",
+      "rc_sha256": "1cae1dd62fcc4fe7ed147768bae12f8deb9b755fda587a65ddce20cf0b2465fb",
+      "seed": "83018004"
+    },
+    "maggie/variant-08": {
+      "case_metadata_sha256": "e46aec70c522ed95b7901b375a4332395698f7b83d72c5fb53040728256296f2",
+      "family_id": "maggie",
+      "rc_sha256": "67f6657d8086ce912ba2e24945e762fb11379368e80fcd8a78fd46cd01df7911",
+      "seed": "83018004"
+    },
+    "maggie/variant-09": {
+      "case_metadata_sha256": "2034e0b9f8b6cdc3487ea2f98a0b2548ea1b9036c1017c90d4025fb0f23e5dbf",
+      "family_id": "maggie",
+      "rc_sha256": "406d58da3148fd1a80f1aba5f05d41582664bfeef398082b91986fda7908eac8",
+      "seed": "83018004"
+    },
+    "ogre/variant-00": {
+      "case_metadata_sha256": "ddce3afbe2af0d2b4322878bf776e83d2a239d0bb0c437baed1a27b17bcee027",
+      "family_id": "ogre",
+      "rc_sha256": "983091c28f064dd7774d501c5622841cca75e29f0f6f3774b617f9a35f8f2590",
+      "seed": "83029001"
+    },
+    "ogre/variant-01": {
+      "case_metadata_sha256": "8d4f72af213df8b646794e8dcadd9cedf2965bf387c0c0a44ca5c292281b4e9a",
+      "family_id": "ogre",
+      "rc_sha256": "5b0e67f6d88e4995b1f0139a0a4da10c39e8122c24ca701dc567b674080cb6e1",
+      "seed": "83029001"
+    },
+    "ogre/variant-02": {
+      "case_metadata_sha256": "67ff5547c6228518103cc072b0c990747f10e93c2f868675ee70a4387f5a7c53",
+      "family_id": "ogre",
+      "rc_sha256": "7dac66796927208c8b4b036f9b3406f0af214ec7fb3646c4ecf033f3a4fccc18",
+      "seed": "83029001"
+    },
+    "ogre/variant-03": {
+      "case_metadata_sha256": "fbcffb0758b913cd1c37d6a5dc6ce60db61d85227a7f44fcc065f1642e270619",
+      "family_id": "ogre",
+      "rc_sha256": "e2e15e79596f374eda63ed5b539a10228469dd222da431295d52397966de0152",
+      "seed": "83029001"
+    },
+    "ogre/variant-04": {
+      "case_metadata_sha256": "9e7b9262a5d796ec45563de505c1e780043b15b6646a49051c3c20230529ed6b",
+      "family_id": "ogre",
+      "rc_sha256": "f3c59f9c1d10ea6350fd4b390cd70a97454013bc0a57c7b72618e494975ff3f8",
+      "seed": "83029001"
+    },
+    "ogre/variant-05": {
+      "case_metadata_sha256": "5921da8280364ffd84488d9616fb3cb4628d32105b78d4053ef16769bbaa367f",
+      "family_id": "ogre",
+      "rc_sha256": "6027bb5a8dfebbc53035e3a9514a102e307760993328722a0875ad63c64f63f0",
+      "seed": "83029001"
+    },
+    "ogre/variant-06": {
+      "case_metadata_sha256": "954539979c7409ed6ca5a063985fa1a6c4ff3435efd914e9821effe7a6f96b8b",
+      "family_id": "ogre",
+      "rc_sha256": "a9849fb88ef88eea417eb4cd0fd4bc8b69b6951123a648afc0e18a1fb1a12dcd",
+      "seed": "83029001"
+    },
+    "ogre/variant-07": {
+      "case_metadata_sha256": "faf52f9ef13d7e3ba0567fca8716dff265bf19522100d5a85f0b2ce45860492e",
+      "family_id": "ogre",
+      "rc_sha256": "1cae1dd62fcc4fe7ed147768bae12f8deb9b755fda587a65ddce20cf0b2465fb",
+      "seed": "83029001"
+    },
+    "ogre/variant-08": {
+      "case_metadata_sha256": "0e732fd4a4c13c8b092303981887751f7c73ea0a70e87822692cde41202a1f2d",
+      "family_id": "ogre",
+      "rc_sha256": "67f6657d8086ce912ba2e24945e762fb11379368e80fcd8a78fd46cd01df7911",
+      "seed": "83029001"
+    },
+    "ogre/variant-09": {
+      "case_metadata_sha256": "753a57d0132819494aef9cd58e6a1dc28363a1572fd441a35a9fe6f19438bfbf",
+      "family_id": "ogre",
+      "rc_sha256": "406d58da3148fd1a80f1aba5f05d41582664bfeef398082b91986fda7908eac8",
+      "seed": "83029001"
+    }
+  },
+  "config_sha256": "73d8c52f86d060a2f847e02c2a7d178622ff91a7459b363d859bcf78fcbcdb35",
+  "controller_trials": 360,
+  "date": "2026-09-09",
+  "disabled_hook_check": {
+    "disabled_call_rejected": true,
+    "engine_sha256": "1ffb1a852d72c24436b92036113a451f38c42927326d2e0fe2a4b6761cb7c7e1",
+    "initial_unchanged": true,
+    "passed": true,
+    "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-pilot-v1/disabled-hook-check/worker-08a7ui55"
+  },
+  "disabled_hook_check_sha256": "74ca54bf8938b1ad18556f85e573d385069b1bcc865e4ec982b6e669ccb68c3a",
+  "engine_patch_sha256": "32b7cf1b4828cba13e74dd7a4892f700deba91fdd9518d2a67ccd140861f6bb2",
+  "engine_sha256": "1ffb1a852d72c24436b92036113a451f38c42927326d2e0fe2a4b6761cb7c7e1",
+  "families": 6,
+  "fitting": false,
+  "implementation_commit": "e3adc7e",
+  "limitations": [
+    "Synthetic variants of six inspected encounters/five parent seeds, not independent fresh examples.",
+    "Paired replay verification is bounded to 24 decisions or death; neutral engine equivalence bounded to 32 recorded decisions.",
+    "HP/RNG only, no enemy/terrain/item augmentation yet.",
+    "Negative-HP death-parser miss and distant invisible-marker recovery stall remain outstanding.",
+    "All variants evaluation-only, training_ready=false; parent seed/family grouping preserved."
+  ],
+  "lua_checks": 13,
+  "mixed_strategy_variants": 33,
+  "model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "neutral_reference_decisions": 163,
+  "no_recovery_variants": 9,
+  "normal_engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "outcomes": {
+    "death": 138,
+    "masked": 40,
+    "recovered_quiet": 181,
+    "unresolved_stall": 1
+  },
+  "parent_outcome_flips": 115,
+  "parent_seeds": 5,
+  "partition_sha256": "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae",
+  "production_export": false,
+  "production_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "python_tests": 139,
+  "recorded_decisions": 35041,
+  "reporting_commit": "64caff0",
+  "sources": {
+    "augment_encounters.py": "cfeb0d00c205d075a3392debc2ae82924bc1351fb275496b85707b9457806ef5",
+    "bench.py": "c792dce99d0bca835d1d301d6ef1d9652990bf4f4beca99553be8e602231fe8d",
+    "dataset_splits.py": "2af5fb2ced813b1b37ff194e9a794a18837ca54b8294a8066d92035aebbd7f1c",
+    "experiment.py": "439ba77e280105ed45a57deb698c1564a21966b649ef66f032ba38e52421373c",
+    "goal_bridge.lua": "f43162cb860452756173ac94d7a671d9a5831848bb7de12d488a46a1acbef0cf",
+    "goal_controllers.py": "1ca4e44cad06d9afa955ef75d214d68d9d871d9a332d76e6fe90798a41adc1f1",
+    "goal_env.py": "380b053b5e208656b0ef1fac26e407837f15844e230c72bada13d489b2d9f2b8",
+    "run_goals.py": "9b3a84764837cb1f4c0fb70b8c45c51cd55803a176cef6ea5eda4fefa94a3114",
+    "train_encounters.py": "c3d37437b32507e40c8c815d8ea2aa07eda015ea3442eee2fca9ff1a9a8f54dc"
+  },
+  "variants": 60,
+  "verification_prefix_limit": 24,
+  "verified_variants": 60
+}

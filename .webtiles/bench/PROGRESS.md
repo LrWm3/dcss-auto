@@ -1937,3 +1937,28 @@ D5 centaur. All four full-HP RNG variants per family produced distinct trace
 hashes. Launched 360 fixed-controller trials, no fitting. Artifacts:
 tactical/artifacts/augmentation-pilot-v1. Report: tactical/AUGMENTATION-PILOT.md.
 This entry records launch/verification, not completed tactical results.
+
+### Augmentation pilot completed
+
+360 fixed-policy trials completed: 181 audited recoveries, 138 observed deaths,
+40 masked choices, one unresolved stall; 35,041 completed recorded decisions.
+33/60 variants mix successful/dead strategies, nine have no available recovery,
+18 recover with every available strategy. Full-HP RNG variants have distinct
+normalized gameplay trajectories, not only differing messages. 139 Python tests
+plus 13 Lua checks pass. Disabled-hook live check rejects mutation and preserves
+the parent state. Original saves, normal lab engine, production RC, model and
+partitions unchanged; all 60 synthetic cases remain evaluation-only/non-training.
+
+Ogre 60%-HP/zero-RNG pursue0 died at -12 HP but the zero-HP-only morgue fallback
+missed the terminal redraw. Original raw harness_error/trace preserved; separate
+augmentation-pilot-v1-adjudicated records the verified death and morgue hashes,
+without inventing a missing terminal transition. Same variant pursue1 stalls at
+full HP due to an invisible-monster map marker at relative (39,9). Both findings
+remain outstanding; no frozen controller/harness edits during comparison.
+
+Examples: Maggie full-HP offsets 1 versus 17 change whether retreat/defend works;
+Eustachio offset 1 reverses original berserk/no-berserk outcomes; ogre 80%-HP with
+unchanged RNG loses with pursue0 but recovers with withdraw1/defend1. These are
+useful reliability/choice examples, not independent held-out generalization.
+Report: tactical/AUGMENTATION-PILOT.md. Evidence:
+tactical/evidence/augmentation-pilot-v1.json. No fitting or production deployment.
