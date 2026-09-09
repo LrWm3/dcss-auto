@@ -7,7 +7,7 @@ from collections import Counter
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from augmentation_dataset import inventory, read, verify_result
-from bench import HERE, ROOT, ENGINE, sha
+from bench import HERE, ROOT, ENGINE, ACTIONS, sha
 from character_dataset import canonical
 from verify_resume import normalized
 from goal_env import GoalEnvironment
@@ -21,6 +21,12 @@ from train_encounters import write
 def same_original(original, rich):
     a, b = normalized(original), normalized(rich)
     return all(k in b and v == b[k] for k,v in a.items())
+
+
+def common_action(action):
+    # Legacy checkpoints do not implement goal_safety / upstairs dispatch.
+    # This prefix tests observation equivalence, not controller performance.
+    return action if action in ACTIONS else 'wait'
 
 
 def family(task):
@@ -43,7 +49,7 @@ def family(task):
             assert same_original(states[0],states[1]) and same_original(states[0],states[2]), 'Original gameplay fields changed'
             assert canonical(states[1]) == canonical(states[2]), 'Rich replay mismatch'
             if step == 12 or states[0].get('terminal'): break
-            action = controller(states[1]); states = [env.step(action) for env in envs]
+            action = common_action(controller(states[1])); states = [env.step(action) for env in envs]
         result.update(prefix_verified=True, prefix_steps=step, initial=initial,
                       verification_workers=[str(env.work) for env in envs])
         for env in envs: env.close()

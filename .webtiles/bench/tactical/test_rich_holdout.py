@@ -1,8 +1,13 @@
 import unittest
-from evaluate_rich_holdout import summarize, same_original
+from evaluate_rich_holdout import summarize, same_original, common_action
 
 
 class HoldoutTests(unittest.TestCase):
+    def test_prefix_uses_legacy_commands(self):
+        self.assertEqual(common_action('safety'),'wait')
+        self.assertEqual(common_action('up'),'wait')
+        self.assertEqual(common_action('melee'),'melee')
+
     def test_original_projection_allows_only_added_fields(self):
         old=dict(hp=10,turn=5,monsters={},messages={})
         rich={**old,'player':{'xl':2},'known':{},'position':{'x':1,'y':1}}

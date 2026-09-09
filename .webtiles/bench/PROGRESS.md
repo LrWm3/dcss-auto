@@ -2142,7 +2142,7 @@ include raw outcomes and matched comparisons restricted to audited terminal
 outcomes across all three choices; stalls/errors are excluded, not deaths.
 Previously evaluated seeds are held out of fitting, not a pristine new benchmark.
 
-Run artifacts/goals-character-v2-holdout-v3; status/coverage updated as families
+Run artifacts/goals-character-v2-holdout-v4; status/coverage updated as families
 finish, final summary/completion written automatically. First launch v1 stopped
 before any replay due to a path-join typo; its empty output directory is retained.
 V2 launch exposed a comparator error: original checkpoints lack the new goal and
@@ -2153,3 +2153,10 @@ full rich-state equivalence between the two rich replays. The prefix controller
 reads rich geometry and submits identical actions to all three processes.
 Added regression coverage for extra fields, changed HP and missing original
 fields. No retraining or deployment in this evaluation.
+
+V3 then exposed a legacy transport incompatibility: prefix safety/up actions
+exist only in goal-derived checkpoints. Retained and stopped that run; V4 uses
+only shared legacy actions for the observation-equivalence prefix, substituting
+wait for goal-only commands. Actual policy trials retain full goal behavior.
+This changes only the evaluator's verification prefix, not the frozen model or
+controllers. Added a regression test for that command restriction.
