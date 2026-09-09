@@ -2160,3 +2160,25 @@ only shared legacy actions for the observation-equivalence prefix, substituting
 wait for goal-only commands. Actual policy trials retain full goal behavior.
 This changes only the evaluator's verification prefix, not the frozen model or
 controllers. Added a regression test for that command restriction.
+
+## 2026-09-09 — held-out RNG sensitivity sweep
+
+Original held-out evaluation completed:42 fully comparable families,126 audited
+trials,zero exclusions. V2 recovered40/42, fixed pursuit+berserk41/42, fixed
+pursuit without berserk42/42. The two model losses selected defend:0, on D:5
+clockroach/scorpion and centaur encounters. Model/production remained frozen.
+
+Started evaluate_rng_holdout.py: offsets1–10 for all42 held-out families,
+420 variants and1260 fresh trials, comparing the same frozen model and fixed
+pursuit policies. Original offset-zero results remain separate. Every visible
+initial field must remain unchanged; all parents are full HP. Per-family neutral
+engine checks and paired12-action replay verification precede labeling. Ten
+offsets are correlated perturbations, not independent seeds. Report all outcomes
+and per-encounter win/death/unknown gradients, not a filtered difficult subset.
+
+Losslessly archive only new closed private workers, verify every file's bytes
+before removing unpacked copies, and recheck archive hashes at completion.
+This keeps disk bounded without discarding replay evidence. Original artifacts
+are untouched. Smoke paired replay/archive verification passed;184 Python and
+13 Lua checks passed. See tactical/RNG-HOLDOUT.md. Active artifacts:
+tactical/artifacts/goals-character-v2-rng-holdout-v1. No fitting/deployment.
