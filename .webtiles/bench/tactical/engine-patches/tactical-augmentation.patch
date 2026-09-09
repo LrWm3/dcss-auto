@@ -1,0 +1,39 @@
+--- a/l-you.cc
++++ b/l-you.cc
+@@ -33,6 +33,7 @@
+ #include "place.h"
+ #include "player.h"
+ #include "prompt.h"
++#include "random.h"
+ #include "religion.h"
+ #include "shopping.h"
+ #include "skills.h"
+@@ -1426,8 +1427,28 @@
+  */
+ LUARET1(you_has_good_stab, boolean, you.has_good_stab())
+ 
++// Offline tactical augmentation only. Never enabled by an ordinary RC.
++LUAFN(you_tactical_augment)
++{
++    const char *enabled = getenv("DCSS_TACTICAL_AUGMENT");
++    if (!enabled || string(enabled) != "1")
++        return luaL_error(ls, "Tactical augmentation is disabled");
++    const int percent = luaL_safe_checkint(ls, 1);
++    const int draws = luaL_safe_checkint(ls, 2);
++    if (percent < 1 || percent > 100 || draws < 0 || draws > 100000
++        || you.hp <= 0 || you.hp_max <= 0 || you.turn_is_over)
++        return luaL_error(ls, "Invalid tactical augmentation state or recipe");
++    you.hp = max(1, you.hp_max * percent / 100);
++    you.redraw_hit_points = true;
++    rng::generator gameplay(rng::GAMEPLAY);
++    for (int i = 0; i < draws; ++i)
++        rng::get_uint32();
++    return 0;
++}
++
+ static const struct luaL_Reg you_clib[] =
+ {
++    { "tactical_augment", you_tactical_augment },
+     { "turn_is_over", you_turn_is_over },
+     { "turns"       , you_turns },
+     { "time"        , you_time },

@@ -1,0 +1,27 @@
+{
+  "families": [
+    {"id":"jeremiah", "benchmark":"artifacts/goals-fixes-broad-v2", "case_id":"mining-fresh-training-v1/collection/encounter-019"},
+    {"id":"maggie", "benchmark":"artifacts/goals-fixes-broad-v2", "case_id":"mining-fresh-training-v1/collection/encounter-024"},
+    {"id":"eustachio", "benchmark":"artifacts/goals-fixes-broad-v2", "case_id":"mining-fresh-training-v1/collection/encounter-030"},
+    {"id":"ogre", "benchmark":"artifacts/goals-fresh-v1", "case_id":"collection/encounter-001"},
+    {"id":"gnolls", "benchmark":"artifacts/goals-fresh-v1", "case_id":"collection/encounter-015"},
+    {"id":"centaur", "benchmark":"artifacts/goals-fresh-v1", "case_id":"supplemental/encounter-034"}
+  ],
+  "recipes": [
+    {"hp_percent":100,"rng_draws":1},
+    {"hp_percent":100,"rng_draws":17},
+    {"hp_percent":100,"rng_draws":101},
+    {"hp_percent":100,"rng_draws":1009},
+    {"hp_percent":80,"rng_draws":0},
+    {"hp_percent":80,"rng_draws":1},
+    {"hp_percent":80,"rng_draws":17},
+    {"hp_percent":60,"rng_draws":0},
+    {"hp_percent":60,"rng_draws":1},
+    {"hp_percent":60,"rng_draws":17}
+  ],
+  "jobs":10,
+  "verify_steps":24,
+  "steps":600,
+  "split":"evaluation_only",
+  "purpose":"Synthetic pilot, no fitting. All variants retain parent seed/family grouping; evaluation-only parents remain excluded from training."
+}
