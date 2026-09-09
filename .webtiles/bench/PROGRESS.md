@@ -1741,3 +1741,34 @@ validation selector replays and36validation control trials. Unavailable goals
 are masked. Reset checks, source/engine/checkpoint hashes, full transitions,
 controller reason events, and terminal labels are recorded. Test split untouched.
 This entry records launch, not completion. See tactical/GOAL-CONTROLLERS.md.
+
+Completed goals-trained-v3. All33derived reset checks matched parent projections
+and repeated normalized observations. Fresh162-combination matrix:136recoveries,
+15deaths,1bounded unresolved,10masked choices. Fitted from152actual training
+trials only; all27cases had at least one successful option. Frozen modelSHA
+1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0.
+
+Actual learned-selector replays:27/27training and6/6validation recovered with
+the new full-health+20quiet endpoint. All27selected training outcomes repeated
+the collection labels. Main018gnolls now succeed withdefense+berserk, chosen by
+the selector (139decisions). Selector used allsixcombinations ontraining. Fixed
+training controls:defend24/27(no rage),25/27(rage);pursue22/27each (oneunresolved
+without rage);withdraw21/22(no rage),22/22(rage),fivecasesmasked foreach.
+
+Validation controls:34/36recoveries,2deaths (bothdefensive variants oncase028).
+Selector chosepursue:no-rage there and recovered in57decisions. Withdrawal and
+pursuit controls each6/6; one validation seed does not establish superiority to
+the best fixed policy. No validation-driven refit. Acrossallphases231rows,
+221actualtrials,14,241decisions; zero harness errors. Models/code persisted under
+version control; production RC and reservedtest untouched. Missing arrival
+anchors in some first-contact checkpoints still conservatively mask withdrawal;
+documented rather than inferred from hidden map data. Next work should preserve
+capture-time arrival memory and evaluate harder independent seeds/full-game
+handoffs before deployment, not equate retreat recovery with dungeon progression.
+
+Final audit independently replayed the recovery counter over all203successful
+action traces and verified full health/observable safety plus20quiet single
+turns at every recorded success. Source hashes match the experiment manifest;
+27/27selector outcome repeats agree. Frozen weights copied byte-identically to
+tactical/models/goal-selector-v1.json. Tracked evidence/goals-trained-v3.json
+pins model, manifest, results, audit, reset checks, split, and production RC.

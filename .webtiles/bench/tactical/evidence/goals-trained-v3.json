@@ -1,0 +1,234 @@
+{
+  "artifacts": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-trained-v3",
+  "audit_sha256": "85d59dda5890ae9a86615e58b40c60156f4dfdc05fc01f1abc362f1f962493ff",
+  "audited_success_boundaries": 203,
+  "by_seed": {
+    "collect": {
+      "83017002": {
+        "recovered_quiet": 6
+      },
+      "83017005": {
+        "death": 1,
+        "recovered_quiet": 5
+      },
+      "83018002": {
+        "death": 1,
+        "recovered_quiet": 5
+      },
+      "83018003": {
+        "death": 2,
+        "recovered_quiet": 4
+      },
+      "83018004": {
+        "death": 1,
+        "recovered_quiet": 5
+      },
+      "83019001": {
+        "death": 1,
+        "masked": 2,
+        "recovered_quiet": 39
+      },
+      "83019002": {
+        "death": 2,
+        "recovered_quiet": 16
+      },
+      "83019003": {
+        "death": 4,
+        "masked": 6,
+        "recovered_quiet": 31,
+        "unresolved_stall": 1
+      },
+      "83019004": {
+        "death": 3,
+        "masked": 2,
+        "recovered_quiet": 25
+      }
+    },
+    "train_check": {
+      "83017002": {
+        "recovered_quiet": 1
+      },
+      "83017005": {
+        "recovered_quiet": 1
+      },
+      "83018002": {
+        "recovered_quiet": 1
+      },
+      "83018003": {
+        "recovered_quiet": 1
+      },
+      "83018004": {
+        "recovered_quiet": 1
+      },
+      "83019001": {
+        "recovered_quiet": 7
+      },
+      "83019002": {
+        "recovered_quiet": 3
+      },
+      "83019003": {
+        "recovered_quiet": 7
+      },
+      "83019004": {
+        "recovered_quiet": 5
+      }
+    },
+    "validation": {
+      "83017003": {
+        "recovered_quiet": 6
+      }
+    },
+    "validation_controls": {
+      "83017003": {
+        "death": 2,
+        "recovered_quiet": 34
+      }
+    }
+  },
+  "implementation_commit": "f0e105b",
+  "limitations": [
+    "Validation is six cases from one seed.",
+    "Withdrawal and pursuit fixed controls also pass all validation cases.",
+    "Recovery after retreat is not full-game progression.",
+    "Some arrival checkpoints lack recorded recovery anchors, conservatively masking withdrawal.",
+    "Selector chooses goal and berserk permission at entry, not learned per-turn timing."
+  ],
+  "manifest_sha256": "62180b36d5b095d0176ce2d1363c68a2a5a8659fa4ab8d4237b5aba458b8c5d3",
+  "model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "phases": {
+    "collect": {
+      "by_option": {
+        "defend:0": {
+          "death": 3,
+          "recovered_quiet": 24
+        },
+        "defend:1": {
+          "death": 2,
+          "recovered_quiet": 25
+        },
+        "pursue:0": {
+          "death": 4,
+          "recovered_quiet": 22,
+          "unresolved_stall": 1
+        },
+        "pursue:1": {
+          "death": 5,
+          "recovered_quiet": 22
+        },
+        "withdraw:0": {
+          "death": 1,
+          "masked": 5,
+          "recovered_quiet": 21
+        },
+        "withdraw:1": {
+          "masked": 5,
+          "recovered_quiet": 22
+        }
+      },
+      "outcomes": {
+        "death": 15,
+        "masked": 10,
+        "recovered_quiet": 136,
+        "unresolved_stall": 1
+      }
+    },
+    "train_check": {
+      "by_option": {
+        "defend:0": {
+          "recovered_quiet": 10
+        },
+        "defend:1": {
+          "recovered_quiet": 3
+        },
+        "pursue:0": {
+          "recovered_quiet": 1
+        },
+        "pursue:1": {
+          "recovered_quiet": 2
+        },
+        "withdraw:0": {
+          "recovered_quiet": 4
+        },
+        "withdraw:1": {
+          "recovered_quiet": 7
+        }
+      },
+      "outcomes": {
+        "recovered_quiet": 27
+      }
+    },
+    "validation": {
+      "by_option": {
+        "defend:0": {
+          "recovered_quiet": 1
+        },
+        "pursue:0": {
+          "recovered_quiet": 2
+        },
+        "withdraw:0": {
+          "recovered_quiet": 1
+        },
+        "withdraw:1": {
+          "recovered_quiet": 2
+        }
+      },
+      "outcomes": {
+        "recovered_quiet": 6
+      }
+    },
+    "validation_controls": {
+      "by_option": {
+        "defend:0": {
+          "death": 1,
+          "recovered_quiet": 5
+        },
+        "defend:1": {
+          "death": 1,
+          "recovered_quiet": 5
+        },
+        "pursue:0": {
+          "recovered_quiet": 6
+        },
+        "pursue:1": {
+          "recovered_quiet": 6
+        },
+        "withdraw:0": {
+          "recovered_quiet": 6
+        },
+        "withdraw:1": {
+          "recovered_quiet": 6
+        }
+      },
+      "outcomes": {
+        "death": 2,
+        "recovered_quiet": 34
+      }
+    }
+  },
+  "production_export": false,
+  "production_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "reserved_test_executed": false,
+  "reset_checks_sha256": "98314017fc0ae2ff7b471b1c87a3d5850a62fae98c5916b52381760a646176dd",
+  "results_sha256": "5ca2f3cabad62d648f73364fa26b1e662543c5f0433d41514ad494374f6fe399",
+  "selector_repeat_agreement": {
+    "matching": 27,
+    "total": 27
+  },
+  "sources": {
+    "bench.py": "c78eb01eb164b76f7c624bf4cf0ccb61cfa8a98b59074865edab2ec05a829fda",
+    "dataset_splits.py": "2af5fb2ced813b1b37ff194e9a794a18837ca54b8294a8066d92035aebbd7f1c",
+    "experiment.py": "439ba77e280105ed45a57deb698c1564a21966b649ef66f032ba38e52421373c",
+    "goal_bridge.lua": "2bb8acdff00dff75a945ba810404faa8d2f80feebcb1676fd95b12c279927eee",
+    "goal_controllers.py": "06d6ff708f6c0f9bad57c6ea16d3e97de17d90b684589d4334a546025444925e",
+    "goal_env.py": "380b053b5e208656b0ef1fac26e407837f15844e230c72bada13d489b2d9f2b8",
+    "run_goals.py": "113a38a68b8d47287de9292f02cb7df4a481de3e7d57996aba26f7e138d96be6",
+    "train_encounters.py": "c3d37437b32507e40c8c815d8ea2aa07eda015ea3442eee2fca9ff1a9a8f54dc"
+  },
+  "split_sha256": "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae",
+  "tests": {
+    "additional_lua_checks": 13,
+    "unittest": 103
+  },
+  "tracked_model": ".webtiles/bench/tactical/models/goal-selector-v1.json",
+  "verified_derived_resets": 33
+}

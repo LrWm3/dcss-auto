@@ -119,3 +119,46 @@ The expanded suite has 103 Python tests plus the existing three direct-transport
 and ten model-hook Lua checks. Dedicated Lua tests cover invisible probes,
 friendly protection, adjacent-only combat, emergency-resource preemption, and
 consuming a turn after a rejected ally attack.
+
+## Completed training/evaluation: goals-trained-v3
+
+Fresh collection checked 162 combinations: 136 recoveries, 15 deaths, one
+bounded unresolved result, and ten masked choices (152 actual trials). There
+was at least one successful available combination for every training case.
+
+| Strategy | Training recoveries | Validation recoveries |
+| --- | --- | --- |
+| Learned selector | 27/27 | 6/6 |
+| Defend, no berserk | 24/27 | 5/6 |
+| Defend, berserk permitted | 25/27 | 5/6 |
+| Pursue, no berserk | 22/27; one unresolved | 6/6 |
+| Pursue, berserk permitted | 22/27 | 6/6 |
+| Withdraw, no berserk | 21/22 available; five masked | 6/6 |
+| Withdraw, berserk permitted | 22/22 available; five masked | 6/6 |
+
+The selector's 27 engine replays all matched the corresponding collected outcome.
+It selected all six goal/permission combinations across training cases. The
+previously troublesome main018 gnolls recovered with defense+berserk; the
+selector chose that combination and reproduced recovery in139decisions. On the
+last validation encounter, both defensive controls died but the selector chose
+pursuit without berserk and recovered in57decisions. No model-selected trial
+died, stalled, or exhausted its budget. There were no harness errors.
+
+Across collection, selector replays, and validation controls:231recorded rows,
+221actual trials,14,241controller decisions. No weights were changed after
+validation. Validation comes from just one seed; withdrawal and pursuit controls
+also passed allsix, so this does not establish superiority to the best fixed
+strategy on unseen seeds. No full-game progression claim is made.
+
+Frozen weights: `models/goal-selector-v1.json` (lab-only; not compatible with the
+old production model hook). SHA256:
+`1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0`.
+Full artifacts: `artifacts/goals-trained-v3/`; tracked verification evidence:
+`evidence/goals-trained-v3.json`.
+
+One conservative availability limitation remains: first-contact checkpoints can
+pause immediately after descending, before the old RC updates its entry anchor.
+Withdrawal is masked if that anchor is missing, even when the character happens
+to stand on usable upstairs. Preserving arrival history at capture time would
+recover that option without inventing a route. This was not silently repaired
+from hidden engine state or special-cased by seed in the experiment.
