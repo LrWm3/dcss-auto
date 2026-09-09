@@ -2106,3 +2106,20 @@ No held-out seeds, fitting or production changes. Collector pins inputs/sources,
 retains traces and exports all complete verified training rows plus a mixed
 win/loss subset. Separate character_audit loader rechecks provenance/features,
 seed splits and outcome evidence before use. See tactical/CHARACTER-DATASET.md.
+
+## 2026-09-10 — retrain rich V2 selector on character profiles
+
+Character-training-v1 completed and audited:216 verified profiles across12
+training seeds,1296 policy trials,1176 eligible terminal training rows.46 mixed
+profiles supply272 contrast rows. Rejected setups and incomplete matrices remain
+excluded. No validation/test seeds entered this collection.
+
+Started retrain_character_goals.py at artifacts/goals-character-v2-trained-v1.
+One fixed1500-epoch fit on all1176 audited rows, deterministic seed42, existing
+linear outcome fitter and unchanged controllers. Candidate is a separate V2
+model; V1 models and production RC are pinned and untouched. Runner reloads the
+serialized candidate, evaluates recorded training matrices versus fixed pursuit
+choices, then runs six live checks (one per mutation axis plus control).
+This evaluation is in-sample, not evidence of held-out improvement.179 Python
+and13 Lua checks pass; fitting/live completion is recorded in the artifact's
+status.json and completion.json.
