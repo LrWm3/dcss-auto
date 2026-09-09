@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "purpose": "Prospective encounter evaluation after controller fixes, before further tuning",
+  "evaluation_only": ["83029001", "83029002", "83029003", "83029004", "83029005"],
+  "controller_commit": "de7e3f6",
+  "model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "policy": "Keep every checkpoint and repeat of these seeds out of training. Existing training partition remains unchanged and rejects these unassigned seeds. Collection training_ready means replay-verified, not permission to train.",
+  "collection_config": "mining-fresh-evaluation-v1.json",
+  "collection_artifacts": "artifacts/mining-fresh-evaluation-v2",
+  "excluded_aborted_launch": "artifacts/mining-fresh-evaluation-v1 used overlapping old seeds and was stopped; never count it as fresh."
+}

@@ -1862,3 +1862,20 @@ controller reproduced the poison death in 52 decisions and exercised the new
 verified-morgue terminal detector. Evidence: tactical/evidence/goals-fixes-v2.json;
 report: tactical/GOALS-FIXES-V2.md. These historical cases are now tuned regression
 tests, not an untouched test set; next generalization evidence needs fresh seeds.
+
+## 2026-09-09 — fresh encounter collection
+
+Reserved seeds 83029001–83029005 for evaluation only in
+tactical/fresh-evaluation-seeds-v1.json, with frozen controller de7e3f6 and
+goal-selector-v1 hash. Existing development split, model and RC unchanged.
+An initial launch accidentally reused 830190xx training seeds; stopped it and
+excluded its preserved artifacts/mining-fresh-evaluation-v1 directory. The
+replacement seeds had no prior matches in benchmark JSON/Markdown records.
+
+Collection config: tactical/mining-fresh-evaluation-v1.json; actual artifact root:
+tactical/artifacts/mining-fresh-evaluation-v2. Five discovery runs produced 314
+candidates (two deaths, three decision budgets). Selected 30 cases, six per seed,
+on D:1–D:7: 26 baseline recoveries, two deaths, two floor changes. Prefix and
+double-reset fidelity checks are in progress. The collector's training_ready
+field means technically replay-verified, not authorization to train on these
+evaluation-only seeds. No selector evaluation or fitting has been performed.

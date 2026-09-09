@@ -1,0 +1,10 @@
+{
+  "rc": ".webtiles/rcs/codex-autocrawl.rc",
+  "rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "seeds": ["83029001", "83029002", "83029003", "83029004", "83029005"],
+  "purpose": "Fresh evaluation-only encounters; do not merge into training or tune before frozen evaluation. Seeds reserved together, outside existing development partitions.",
+  "target": 30,
+  "encounters_per_seed": 200,
+  "max_decisions": 2500,
+  "jobs": 5
+}
