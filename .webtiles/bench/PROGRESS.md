@@ -1707,3 +1707,37 @@ Validation selector/retreat/imitation each6/6positive and6/6deeper. RC6/6positiv
 tactical/evidence/options-conservative-v1.json records verification/provenance.
 Fix committed separately from historical selector; no production deployment,
 reserved-test execution, or claims of general robustness from one validation seed.
+
+## 2026-09-09 — goal-based tactical controller laboratory
+
+Implemented a separate derived-checkpoint bridge/environment and three goal
+controllers: route-based withdrawal, nearby defensive positioning, and bounded
+known-terrain pursuit. Berserk permission is independent of each goal and never
+creates permanent fight commitment. Restricted emergency helpers do not explore,
+descend, or independently berserk. Upstairs must be a recorded entry stair to
+previously visited ground; rest/defensible-entry alternatives remain possible.
+
+Shared new endpoint: full HP, no observable hostile/unseen/hazard/recovery state,
+then20checked quiet single turns. Floor changes alone do not end encounters.
+Budgets and stalls remain unresolved. These labels are not interchangeable with
+the historical floor-change/handoff labels. Models/production RC unchanged.
+
+Controller pilot goals-pilot-v2 completed30trials onfive training cases:
+25recoveries,5deaths,0stalls,0harness errors. Both withdrawal variants recovered
+onallfive. D7withdrawal:21movement commands,1ascent toD6,20quiet waits; defense
+bothrecover; pursuitwithoutberserkdies, withberserkrecovers. Allfive enhanced
+resets repeated and matched parent observation projections.
+
+Pretraining fixes: synchronous stair command blocked the input cycle, replaced
+with queued normal'<'; monster list enumeration is normalized by coordinates/
+name (gnoll reset was otherwise identical), pursuit tie-breaking is explicit;
+Lua gsub's extra return value removed from invisible attack command arrays.
+103Python tests plus3transport/10model-hook checks pass. Earlier startup attempts
+are retained as goals-smoke-v1/goals-trained-v1/v2; no model was fitted there.
+
+Launched goals-trained-v3: all27training cases ×6goal/berserk combinations,
+then fresh outcome-value fitting, frozen27training selector replays, six
+validation selector replays and36validation control trials. Unavailable goals
+are masked. Reset checks, source/engine/checkpoint hashes, full transitions,
+controller reason events, and terminal labels are recorded. Test split untouched.
+This entry records launch, not completion. See tactical/GOAL-CONTROLLERS.md.
