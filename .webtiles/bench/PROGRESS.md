@@ -1591,3 +1591,19 @@ Launched options-pilot-v1:20training trials followed by33frozen comparisons
 (selector/fixed retreat/imitation on5training+6validation checkpoints). Reserved
 test excluded.67Python tests plus3transport and10model-hook checks pass.
 OPTIONS-PILOT.md documents scope, unused legacy config fields, and limitations.
+
+Completed53/53 with zero harness errors. Training sweep audited positives:
+retreat5/5,hold4/5,rage_hold2/5,baseline3/5. Fitted20outcomes from5contexts;
+training MSE3.47e-10 is fit evidence, not generalization. Frozen selector,
+retreat and imitation all pass5/5training and6/6validation bounded outcomes.
+Selector uses retreat3/hold1/baseline1 on training and retreat4/baseline2 on
+validation. D7 and centaur both survive, preserving successes lost by low-level
+Q. However validation selector reaches next floor5/6 vs6/6 for both baselines;
+remaining case is recovered at600RC decisions. No demonstrated learned benefit.
+
+Evidence tactical/evidence/options-pilot-v1.json pins artifacts/model/results.
+Next: expand option-outcome collection within training seeds, specifically
+find cases where retreat fails and another tactic succeeds. Current tiny set
+does not require learned selection to match its best fixed policy. Keep all
+references and reserved test unchanged; no deployment or new seed collection
+performed in this turn. Handoff timing remains an explicit future extension.

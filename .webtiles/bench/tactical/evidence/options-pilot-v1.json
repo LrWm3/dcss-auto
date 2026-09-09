@@ -1,0 +1,222 @@
+{
+  "completed": true,
+  "groups": [
+    {
+      "count": 5,
+      "credits": {
+        "-1.0": 2,
+        "1.0": 3
+      },
+      "handoffs": {
+        "floor_change": 3
+      },
+      "outcomes": {
+        "death": 2,
+        "safe_recovery": 3
+      },
+      "phase": "collect",
+      "policy": "baseline",
+      "selected_options": {
+        "baseline": 5
+      },
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "-1.0": 1,
+        "1.0": 4
+      },
+      "handoffs": {
+        "floor_change": 4
+      },
+      "outcomes": {
+        "death": 1,
+        "safe_recovery": 4
+      },
+      "phase": "collect",
+      "policy": "hold",
+      "selected_options": {
+        "hold": 5
+      },
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "-1.0": 3,
+        "1.0": 2
+      },
+      "handoffs": {
+        "death": 1,
+        "floor_change": 2
+      },
+      "outcomes": {
+        "death": 2,
+        "safe_recovery": 3
+      },
+      "phase": "collect",
+      "policy": "rage_hold",
+      "selected_options": {
+        "rage_hold": 5
+      },
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "1.0": 5
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 4
+      },
+      "outcomes": {
+        "safe_recovery": 5
+      },
+      "phase": "collect",
+      "policy": "retreat",
+      "selected_options": {
+        "retreat": 5
+      },
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "1.0": 5
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 4
+      },
+      "outcomes": {
+        "safe_recovery": 5
+      },
+      "phase": "evaluate",
+      "policy": "imitation",
+      "selected_options": {
+        "null": 5
+      },
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "1.0": 5
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 4
+      },
+      "outcomes": {
+        "safe_recovery": 5
+      },
+      "phase": "evaluate",
+      "policy": "retreat",
+      "selected_options": {
+        "retreat": 5
+      },
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "1.0": 5
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 4
+      },
+      "outcomes": {
+        "safe_recovery": 5
+      },
+      "phase": "evaluate",
+      "policy": "selector",
+      "selected_options": {
+        "baseline": 1,
+        "hold": 1,
+        "retreat": 3
+      },
+      "split": "train"
+    },
+    {
+      "count": 6,
+      "credits": {
+        "1.0": 6
+      },
+      "handoffs": {
+        "floor_change": 6
+      },
+      "outcomes": {
+        "safe_recovery": 6
+      },
+      "phase": "evaluate",
+      "policy": "imitation",
+      "selected_options": {
+        "null": 6
+      },
+      "split": "validation"
+    },
+    {
+      "count": 6,
+      "credits": {
+        "1.0": 6
+      },
+      "handoffs": {
+        "floor_change": 6
+      },
+      "outcomes": {
+        "safe_recovery": 6
+      },
+      "phase": "evaluate",
+      "policy": "retreat",
+      "selected_options": {
+        "retreat": 6
+      },
+      "split": "validation"
+    },
+    {
+      "count": 6,
+      "credits": {
+        "1.0": 6
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 5
+      },
+      "outcomes": {
+        "safe_recovery": 6
+      },
+      "phase": "evaluate",
+      "policy": "selector",
+      "selected_options": {
+        "baseline": 2,
+        "retreat": 4
+      },
+      "split": "validation"
+    }
+  ],
+  "production_export": false,
+  "training_mse": 3.4738264910067663e-10,
+  "trials": 53,
+  "implementation_commit": "14035f7",
+  "artifact_root": ".webtiles/bench/tactical/artifacts/options-pilot-v1",
+  "hashes": [
+    "2d92f826fe5e43328e347eb1d20a0894d89a889666231e42311031726c3a8f04  .webtiles/bench/tactical/artifacts/options-pilot-v1/manifest.json",
+    "66936dc2beb1389f26aea571cb88d612ea714786d8869cd41eb2bcaa8f094f83  .webtiles/bench/tactical/artifacts/options-pilot-v1/results.json",
+    "3bbe9980936d41da476e1e055f7982b0eb4dace3da82855196b4e01f32459a85  .webtiles/bench/tactical/artifacts/options-pilot-v1/model.json",
+    "71b86f503b92bd59695d3571698ea2e00cbbec2d41250e09a0a0a28643396962  .webtiles/bench/tactical/artifacts/options-pilot-v1/training-outcomes.json"
+  ],
+  "harness_errors": 0,
+  "reserved_test_executed": false,
+  "tests": "67 Python tests plus 3 direct-transport and 10 model-hook checks passed.",
+  "finding": "Whole-tactic selector preserves D7 and centaur success and matches fixed retreat/imitation on bounded survival. No learned advantage; validation floor changes 5/6 versus 6/6 for both baselines.",
+  "limitations": [
+    "One encounter-entry decision; no learned switching or handoff timing.",
+    "Five training contexts, one validation seed, one deterministic replay per comparison.",
+    "Bounded success includes recovered-but-not-progressed RC budget endpoints.",
+    "Legacy episodes/alpha/gamma/epsilon fields are unused by this contextual-bandit learner."
+  ],
+  "next": "Collect option outcomes on additional training checkpoints, especially where fixed retreat fails, before adding complexity or claiming learned value."
+}
