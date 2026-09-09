@@ -1879,3 +1879,17 @@ on D:1–D:7: 26 baseline recoveries, two deaths, two floor changes. Prefix and
 double-reset fidelity checks are in progress. The collector's training_ready
 field means technically replay-verified, not authorization to train on these
 evaluation-only seeds. No selector evaluation or fitting has been performed.
+
+Collection complete: 30 verified encounters, six per seed, 2,571 baseline
+transitions. Original 30 captures yielded 29 verified and one quarantined:
+encounter-019 repeats deterministically but diverges from original play at its
+first action. Preserved it, then captured next-ranked same-seed encounter-034
+separately; all checks passed. Combined verified-dataset/index.json contains
+30 eligible entries plus the excluded quarantine record. Eligible baseline
+outcomes: 26 safe recoveries, two deaths, two floor changes. Floors: D1=12,
+D2=8, D4=2, D5=6, D6=1, D7=1. These are not controller evaluation scores.
+
+Verified all eligible prefix/reset fidelity flags and checkpoint, RC, result,
+replay and combined-transition hashes. Frozen model and old seed partitions
+unchanged. Tracked evidence: tactical/evidence/mining-fresh-evaluation-v2.json.
+Ready for frozen-controller evaluation; no training or tactical tuning this run.

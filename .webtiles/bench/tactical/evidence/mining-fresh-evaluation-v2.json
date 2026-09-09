@@ -1,0 +1,837 @@
+{
+  "artifact_hashes": {
+    "candidates.json": "bb9a74b243013d16aba2e7c53c37166f0363a3a98e1a0eacae6fef20c1a23c99",
+    "collection/catalog.json": "1cc8f9c91dfbb6f2c0cfc871bd966fb8c44c2081591be5dd2c2acb92acd6f535",
+    "config.json": "02bd7a68311bfda5ad2f84c39105ff14ccebb9d023338806b3de446da07e8ef8",
+    "discoveries.json": "38978b2fb1fda759fa679e94034dc67b48c28c7ef367323bb67f95970da4da0a",
+    "manifest.json": "37f9a54cb4ef2ff849a584186f0e27b86e2d77b45b17270e7b6cbc84235bb1cf",
+    "summary.json": "a6505a65df5336d0e1e644dc77d2072a927508615d7cbb087ed24f323fc1b6ae",
+    "supplemental/catalog.json": "97ac1ae77c7bc64b3f195bc863a9ea1f68ce93770c51b557e5472f4c22fde48d",
+    "supplemental/manifest.json": "20dc01cf79e5b2ff87a6281cb4c97ac4968c790c37994c17c8570cd2c9ccbdd1",
+    "verified-dataset/index.json": "c5d4d17b64f73f2573975c7562d7b98f192f4ba8f34cdeddbba50d469b694cc8",
+    "verified-dataset/transitions.jsonl": "3f6a412d7b7584766293a801826aee1503cd039c5affafb75a1a98f7187dbf12"
+  },
+  "baseline_outcomes": {
+    "death": 2,
+    "floor_change": 2,
+    "safe_recovery": 26
+  },
+  "by_floor": {
+    "D:1": 12,
+    "D:2": 8,
+    "D:4": 2,
+    "D:5": 6,
+    "D:6": 1,
+    "D:7": 1
+  },
+  "by_seed": {
+    "83029001": 6,
+    "83029002": 6,
+    "83029003": 6,
+    "83029004": 6,
+    "83029005": 6
+  },
+  "case_evidence": [
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          225,
+          225
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-001",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          225,
+          225
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-001/result.json",
+      "result_sha256": "114c4589a15283868a064df17a6d8ee21f425870d5ac098c1838725d3369c728",
+      "save_sha256": "2bc75e50ecaf6a3c09907ecb815df27d3a66deb1c52153481a4a1416027bc240",
+      "seed": "83029001"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          14,
+          14
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-002",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          14,
+          14
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-002/result.json",
+      "result_sha256": "5aba1320ef315a49d5c226e3b2c5d88e3b423b9575143a9e1cc48fe7fde2a0d8",
+      "save_sha256": "54c1b6182caf426af9408ff5d22b31e933dac9b2ad9797ac725fa6eb9a47d0d9",
+      "seed": "83029002"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          111,
+          111
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-003",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          111,
+          111
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-003/result.json",
+      "result_sha256": "36a2c68b0d9e29b17cd33c8eab08163e3fd1775f3c37453e5690c5da058a8d59",
+      "save_sha256": "2872101d0c858b72d68a48d5ec358c17b132d7aaf67c792c9925391c18eeddce",
+      "seed": "83029003"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          40,
+          40
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-004",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          40,
+          40
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-004/result.json",
+      "result_sha256": "a4cc81197f8fa285ebd08736bad8a4bc4956f5c98375411dee7ecc80763298e1",
+      "save_sha256": "864c609452a5c5f45163781056d3e8ce7f8f0bd702c63a6d07922ebf2b152c7a",
+      "seed": "83029004"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          571,
+          571
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-005",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          571,
+          571
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-005/result.json",
+      "result_sha256": "ef805820fd153add8e3baa50c27917f3e4b0f0a3f6013a25b7af50d41b3a71ee",
+      "save_sha256": "1eb108543f73f19645e3cc6960f5f6d03355ab2c2917e0a23f450a974590d17b",
+      "seed": "83029005"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          93,
+          93
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-006",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          93,
+          93
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-006/result.json",
+      "result_sha256": "57dc9ad689e66c7aa013cc534e5ddc3befa7fcc39a390c1ec651bf8a9e1c2cb4",
+      "save_sha256": "7cb6d0d9c998a14b86da2aa19611367355ab9ab3863cad076934084fa8e0a894",
+      "seed": "83029001"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          31,
+          31
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-007",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          31,
+          31
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-007/result.json",
+      "result_sha256": "2f82c2bd1f446d626965d8341a7201023412a78726f8fd52352d0586d6a652fe",
+      "save_sha256": "557ade9de324838480b085c7b025ae6d2bcde50f38dff5522e151577c47430d3",
+      "seed": "83029002"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          114,
+          114
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-008",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          114,
+          114
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-008/result.json",
+      "result_sha256": "a9224504bdee1ccbf8a7a469b669c995b644c7c425ad9a20fc75f68b67c6a872",
+      "save_sha256": "d6c5268e16323f6e41625071fa15fd493d6b186f623ed941c1a9f68e5d4c078b",
+      "seed": "83029003"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          62,
+          62
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-009",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          62,
+          62
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-009/result.json",
+      "result_sha256": "a4bd3e6aa9f299a1ebaa978224a8e3d571d72c07d69b4157c5b792fe16f56247",
+      "save_sha256": "acc7993e6c2c3978df1add1dad09d3fda120c3f7aa979da838767275fe2d9e95",
+      "seed": "83029004"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          182,
+          182
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-010",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          182,
+          182
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-010/result.json",
+      "result_sha256": "0221e96eeadd80192b8864c0ded7d13806f3777fb12d1c45cfa9b7ac6c25824a",
+      "save_sha256": "0030c433fc9a906ac00972360d92d958ba6c709fa24c0e5897ee262749b9c199",
+      "seed": "83029005"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          94,
+          94
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-011",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          94,
+          94
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-011/result.json",
+      "result_sha256": "3e260079bd9420c3cfd8f8ce31bc930e2a5b16a6764092edf6ad9afd24e15e4b",
+      "save_sha256": "fef69de05ce2f047bd2fa0f9423c0105f05101f3dd03ca5668346d6b3dd9d881",
+      "seed": "83029001"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          6,
+          6
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-012",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          6,
+          6
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-012/result.json",
+      "result_sha256": "ecbb7f1ff88d49e4adde08a0ef1b9f41876fc853cbfabed67b30bc93a1d9ccd1",
+      "save_sha256": "b3ba781c405587849c3fcc29a8c3b3fd9e8d43b3a16c37b761cb8b9bee7ff5fc",
+      "seed": "83029002"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          54,
+          54
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-013",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          54,
+          54
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-013/result.json",
+      "result_sha256": "45f0a9270970778ee72e701195bde875402edcc2f986ab52b83e12b2f4df2f40",
+      "save_sha256": "176a4ea18c8fc708f0d1d041832b806e6ab0920bee584dbb4ff67ae8464dc888",
+      "seed": "83029003"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          103,
+          103
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-014",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          103,
+          103
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-014/result.json",
+      "result_sha256": "b1dca7bda7ecd916debe39cb2bf911a16ffd5f70a649357ff300dd4fec7a52d7",
+      "save_sha256": "30463e66833fbe859d29145f2903be895b0918ea35e689bb83e8f1551f037613",
+      "seed": "83029004"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          48,
+          48
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-015",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          48,
+          48
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-015/result.json",
+      "result_sha256": "5e3a7d68e9e0453e2b020c332e16add30d1124193bd26b4211f140d7c6f42b43",
+      "save_sha256": "8ab8425f57106e1c11929e45d05dc1209984efe8f0d033e68bdbcfb82d127ede",
+      "seed": "83029005"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          83,
+          83
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-016",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          83,
+          83
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-016/result.json",
+      "result_sha256": "26f0b6cdec36d1dda2baeb4ed7ff97c33d8a6679ef20834b77f25b5622c684f7",
+      "save_sha256": "72979a557a08d8abbbefb5aed9b74ff8c35d2fdc3d0e7e5d528c4fe42a441060",
+      "seed": "83029001"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          11,
+          11
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-017",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          11,
+          11
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-017/result.json",
+      "result_sha256": "6c3623f360f14cb16c3339983456c2e38aa23cc3e2642e217f9518b17d4d1871",
+      "save_sha256": "82c24c3ccda10c28d85d318539a37a01a84e310cf72f0ec801645ccfb434a690",
+      "seed": "83029002"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          21,
+          21
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-018",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          21,
+          21
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-018/result.json",
+      "result_sha256": "d6f8b2a1d01b4f1f0c82c73532e9bb1583e8d5bb1aed758770d43c1da11de710",
+      "save_sha256": "a4221d8a83b336e3f1fc5062618097402ef5b78e7b2cc954ee4229b920f6c2b8",
+      "seed": "83029003"
+    },
+    {
+      "eligible": false,
+      "fidelity": {
+        "first_difference": 1,
+        "lengths": [
+          28,
+          28
+        ],
+        "passed": false
+      },
+      "id": "collection/encounter-019",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          28,
+          28
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-019/result.json",
+      "result_sha256": "5800b02c36a25b1b82e49db3b6beca9a65bba293973ee521f0b1875b874b3029",
+      "save_sha256": "6cab69b9eb7e1f865438e89f3606ced49f10394a6705d9afd3c07940797391ca",
+      "seed": "83029004"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          327,
+          327
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-020",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          327,
+          327
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-020/result.json",
+      "result_sha256": "80e3fd1d4fa45fea20688e345bcc98d20f1466ea87b11dc2ab2cabbfe5b2edb8",
+      "save_sha256": "2cf98251770bdaf5a31e33f7594322d5cdb4783e836c5a476d460dc215cbf663",
+      "seed": "83029005"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          62,
+          62
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-021",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          62,
+          62
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-021/result.json",
+      "result_sha256": "e275c4af5bd8612a3126ef1c47b78a43d51397891d4003a9f5fccd0fd831c458",
+      "save_sha256": "a7c913c2e4c7e6d4b5f5c0294ef115d7f9c8e05241a0cbf89ae49f11458ef028",
+      "seed": "83029001"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          12,
+          12
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-022",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          12,
+          12
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-022/result.json",
+      "result_sha256": "0656c61d91072138be31fa68306a55ebc97072994127a1fe72e13687e0f0115f",
+      "save_sha256": "260aa86c4ffab6d24b8b0aad8a9f606241370542c6e326a0225211ab0a713285",
+      "seed": "83029002"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          32,
+          32
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-023",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          32,
+          32
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-023/result.json",
+      "result_sha256": "522d10bb0beca6e7a80927a41cce92951c9429c2c510d9f4697802a160622116",
+      "save_sha256": "525b85c7530f7d86e5afd721d6af31fa476468a7ed48d287bfef2329ea5a3020",
+      "seed": "83029003"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          49,
+          49
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-024",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          49,
+          49
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-024/result.json",
+      "result_sha256": "f97d9bba376b3eabc36ecde5cdd74a790fc1bdec9a30a43751c088d5c419c61c",
+      "save_sha256": "9b453ccf97e6807f57e1f068e1a31f9c7c142574660ac85e8c9175e32b460e28",
+      "seed": "83029004"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          23,
+          23
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-025",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          23,
+          23
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-025/result.json",
+      "result_sha256": "cd10c5f3f10ef7bec876e8dfb2c637dbb9e7e85caaacf37ae9ccd7805366222c",
+      "save_sha256": "4c637f61fd505063fc300999e67d9a8a9b2af0afeedbf3f0aab26e7f65f4834d",
+      "seed": "83029005"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          66,
+          66
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-026",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          66,
+          66
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-026/result.json",
+      "result_sha256": "910943ccde34907f255d20234ce6383732c1ada7fd3a7dedf58aa0406ae4d442",
+      "save_sha256": "0b37c51cf3f7ac2d48e0c52345cf26b1dc92fdadbd0639a3c7f9217eb46c2320",
+      "seed": "83029001"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          2,
+          2
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-027",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          2,
+          2
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-027/result.json",
+      "result_sha256": "a0a713a479b1acf464d90bff2409b0deb3b66ea3ad9fed87895adcb9b14e6236",
+      "save_sha256": "6609364067dbf888620094e31149d2d6fe26ac79264d34d011c75d156365612d",
+      "seed": "83029002"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          17,
+          17
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-028",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          17,
+          17
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-028/result.json",
+      "result_sha256": "592fb9f44d123a797d65767a62a1ee7332702b2bed160216ee11291be0ed088c",
+      "save_sha256": "7a7353541477f07fd4b232211a5eafac9daac1f07904a8b280ece3ce2153c984",
+      "seed": "83029003"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          75,
+          75
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-029",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          75,
+          75
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-029/result.json",
+      "result_sha256": "b982088d13c8ad6ca0beedf4c456a1f236f1b8f8f8a29dbcba62dbfbbcc8c918",
+      "save_sha256": "7f1be88cf414d67ea99434cba7ff0a7d39fb3195f24b022236da2b59f0cbc218",
+      "seed": "83029004"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          30,
+          30
+        ],
+        "passed": true
+      },
+      "id": "collection/encounter-030",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          30,
+          30
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/collection/encounter-030/result.json",
+      "result_sha256": "36001390e74d2a05dd5144cebf7ff71e60971d4632ef3be885ae8ce6f8ac6666",
+      "save_sha256": "1104277cea5ad8e0db2db92e6bb0868d1e806a7127d17dbf352983950d89dde3",
+      "seed": "83029005"
+    },
+    {
+      "eligible": true,
+      "fidelity": {
+        "first_difference": null,
+        "lengths": [
+          43,
+          43
+        ],
+        "passed": true
+      },
+      "id": "supplemental/encounter-034",
+      "rc_sha256": "7521a3f28c215e24ceb5b6ed424c125ded623e54e945bffe6e615a0369778e10",
+      "repeatability": {
+        "first_difference": null,
+        "lengths": [
+          43,
+          43
+        ],
+        "passed": true
+      },
+      "result": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/supplemental/encounter-034/result.json",
+      "result_sha256": "b63607a1afbcf2232f026399e909641997c37baffb788d4313ff0c684d6267db",
+      "save_sha256": "78196a863b7d02dc21aca5dfb8c0fe601db8f07ba21e51a0b01d0e4ab6fa5b87",
+      "seed": "83029004"
+    }
+  ],
+  "controller_commit": "de7e3f6",
+  "date": "2026-09-09",
+  "discovered": 314,
+  "eligible": 30,
+  "excluded_launch": "artifacts/mining-fresh-evaluation-v1 reused old 830190xx seeds and was stopped; never count as fresh.",
+  "limitations": [
+    "Instrumented baseline discovery, not frozen selector performance.",
+    "D1-D7 only; death/HP-loss-prioritized encounter sample, not representative full-game success rate.",
+    "training_ready/eligible means fidelity-verified, not permission to train."
+  ],
+  "model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "production_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "purpose": "fresh evaluation only; no policy evaluation or fitting performed",
+  "quarantine_note": "encounter-019 matches between resets but differs from original at first action; preserved and excluded. Next-ranked same-seed encounter-034 passed all checks.",
+  "quarantined": 1,
+  "reservation_commit": "493cb92",
+  "seeds": [
+    "83029001",
+    "83029002",
+    "83029003",
+    "83029004",
+    "83029005"
+  ],
+  "split_sha256": "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae",
+  "transitions": 2571,
+  "verification": "All 30 eligible prefixes, two reset trajectories, checkpoint/RC/result/trace hashes and combined transition hash verified."
+}
