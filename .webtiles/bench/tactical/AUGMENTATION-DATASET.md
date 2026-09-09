@@ -15,7 +15,7 @@ export DCSS_TACTICAL_ENGINE="$PWD/crawl-0.35/crawl-ref/source/crawl-tactical-aug
 export DCSS_TACTICAL_AUGMENT=1
 python .webtiles/bench/tactical/augmentation_dataset.py \
   .webtiles/bench/tactical/augmentation-all-v1.json \
-  .webtiles/bench/tactical/artifacts/augmentation-all-v3
+  .webtiles/bench/tactical/artifacts/augmentation-all-v4
 ```
 
 Add `--resume` to reuse completed families after an interrupted run. The config,
@@ -31,6 +31,12 @@ engines and gameplay-source hashes must all match. Incomplete families are rerun
 The new manifest links the old manifest and each reused family links its source
 evidence. Retain the old output: reused checkpoints and traces are referenced,
 not duplicated. Ordinary `--resume` still requires every source hash to match.
+
+A single automatic retry is allowed for the identified Lair map-parser startup
+failure, only before any observation or action. Its terminal log must match the
+specific error. The original failure is retained under `startup_attempts`; the
+retry uses the same checkpoint and recipe. Deaths, stalls, arbitrary errors and
+failures after gameplay starts are never retried to obtain a better label.
 
 Independent families run in separate worker processes, each with its own game,
 so Python geometry/JSON work does not share one interpreter lock.
@@ -80,6 +86,9 @@ that every arbitrarily long replay is deterministic.
 
 The supplement can feed the existing goal outcome fitter:
 
+Run Python with `.webtiles/bench/tactical` on `PYTHONPATH` and the same lab-engine
+environment as above.
+
 ```python
 from augmentation_dataset import load_training
 from run_goals import fit
@@ -127,13 +136,64 @@ recorded transitions and a stall at decision 242, respectively. Evidence:
 
 ## Broad demonstration
 
-Results will be recorded here after the frozen all-encounter run completes.
+The completed v4 run covers every usable encounter in the two configured indexes:
+
+| Coverage | Count |
+| --- | ---: |
+| Indexed original encounters | 118 |
+| Verified originals successfully augmented | 112 |
+| Pre-existing quarantined originals | 6 |
+| Replay-verified synthetic variants | 336 |
+| Strategy comparisons | 2,016 |
+| Mixed-outcome training variants | 31 |
+| Selected training rows | 180 |
+| Mixed-outcome fresh-evaluation variants, excluded from training | 13 |
+
+All 112 usable parents produced all three recipes and all six strategy outcomes.
+The six old captures failed original replay fidelity checks and are explicitly
+accounted for, not silently used as reliable examples. Three trials stalled;
+these make their variant labels incomplete and are excluded from training.
+One zero-observation engine startup error was repaired in v4 by the bounded
+retry policy above: the single retry recovered at decision 96 with 55/55 HP and
+20 quiet turns. Its variant is all-win, so training selection is unchanged.
+v4 reuses the completed v3 evidence, without rerolling any gameplay outcome.
+No model has been fitted or deployed.
+
+Final outcomes: 1,816 audited recoveries, 113 audited deaths, 84 unavailable
+choices and three unresolved stalls. The coordinator and training-loader audit
+exited successfully. All 161 Python tests and 13 Lua checks pass. Original save
+and RC hashes, the production RC, model and seed partitions remain unchanged.
+The v4 export preserves 2,015 v3 trial records exactly and adds only the one
+pre-observation retry, with its original attempt retained.
+
+Tracked provenance and checksums: [evidence/augmentation-all-v4.json](evidence/augmentation-all-v4.json).
+Final files: `artifacts/augmentation-all-v4/{summary,labels,training-index,training-rows}.json`.
+The supplement is ready for explicit use through `load_training`; the default
+training corpus/config has not been silently replaced.
+
+The additional stalls expose two remaining controller limitations: waiting
+while held in a web after enemies disappear (two held-out trials), and waiting
+near unreachable visible enemies (one training trial). They are not the fixed
+stale invisible-marker bug and are not labeled as deaths.
+
+Examples of useful training contrasts:
+
+- `development/mining-deeper-v1/collection/encounter-007/variant-02`:
+  D:4 orc priest and three orcs, 28/47 HP, RNG offset 1. Both pursue options
+  recover; both withdraw and both defend options die.
+- `development/mining-fresh-training-v1/collection/encounter-019/variant-00`
+  and `variant-01`: Jeremiah encounter. Defend/pursue with berserk permitted
+  recover; their no-berserk counterparts die; withdraw is unavailable.
+  The harder `variant-02` loses with all available options and is not selected.
+
+These compare complete recipes, not isolated causal effects of lowering HP:
+the recipes also differ in RNG offset. They do not establish model improvement.
 
 The initial run `augmentation-all-v1` was stopped after finding a false replay
 mismatch: both copies died on decision 7, but only one terminal observation
 included morgue provenance. The comparator fix passes that live regression in
 `augmentation-terminal-check-v1`. `augmentation-all-v2` aborted during reuse
 directory creation before launching games; the directory bug has a regression
-test. `augmentation-all-v3` resumes collection under the corrected implementation
+test. `augmentation-all-v3` completed collection under the corrected implementation
 and reuses 18 verified complete families (324 trials) from v1. No raw evidence was
 deleted and no tactical controller changed during these orchestration repairs.

@@ -1,0 +1,175 @@
+{
+  "artifact_root": ".webtiles/bench/tactical/artifacts/augmentation-all-v4",
+  "source_commit": "620f5fb",
+  "sources": {
+    "augment_encounters.py": "cfeb0d00c205d075a3392debc2ae82924bc1351fb275496b85707b9457806ef5",
+    "augmentation_dataset.py": "e78eb476acf1e206ccde3d17d0bebc2ff54abb1f5786ef071693edbabb0636e8",
+    "bench.py": "f312f37b23fec17e8b76af9aa0b1f7530066006f97143f917acafcc4a60d6090",
+    "dataset_splits.py": "2af5fb2ced813b1b37ff194e9a794a18837ca54b8294a8066d92035aebbd7f1c",
+    "experiment.py": "439ba77e280105ed45a57deb698c1564a21966b649ef66f032ba38e52421373c",
+    "goal_bridge.lua": "f43162cb860452756173ac94d7a671d9a5831848bb7de12d488a46a1acbef0cf",
+    "goal_controllers.py": "cf0faabfcd7190d3b33c49a0e16f7a5da3c8855d87c2fca8d76950a17869a417",
+    "goal_env.py": "380b053b5e208656b0ef1fac26e407837f15844e230c72bada13d489b2d9f2b8",
+    "run_goals.py": "9b3a84764837cb1f4c0fb70b8c45c51cd55803a176cef6ea5eda4fefa94a3114",
+    "startup_retry.py": "777346a52a5ae1394f1e837dd50ff5549b40bdabaa2d47dfda75b8e17f73c587",
+    "train_encounters.py": "c3d37437b32507e40c8c815d8ea2aa07eda015ea3442eee2fca9ff1a9a8f54dc",
+    "verify_resume.py": "6b9581155bda183f9f26569b272a8f66c1c4a514be91f17103ce8776ebdee134"
+  },
+  "inputs": {
+    ".webtiles/bench/tactical/artifacts/development-dataset-v3/index.json": "de0b169e3abd5dff5b01876da8a1786da720a61e27542e89e535a8cc9e3f84d4",
+    ".webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/verified-dataset/index.json": "c5d4d17b64f73f2573975c7562d7b98f192f4ba8f34cdeddbba50d469b694cc8",
+    ".webtiles/bench/tactical/dataset-split-v1.json": "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae",
+    ".webtiles/bench/tactical/fresh-evaluation-seeds-v1.json": "bcb89b81bc107b33dd78d46bf20cd44b7842c762a785a51d9e1a887a87c581c5"
+  },
+  "engine_sha256": "1ffb1a852d72c24436b92036113a451f38c42927326d2e0fe2a4b6761cb7c7e1",
+  "parent_engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "original_checkpoints_unchanged": 112,
+  "variant_checkpoints_checked": 336,
+  "paired_prefixes_verified": 336,
+  "prefix_decision_bound": 12,
+  "unchanged_trial_records": 2015,
+  "retried_trial": {
+    "case_id": "development/mining-fresh-training-v1/collection/encounter-008/variant-00",
+    "seed": "83018003",
+    "option": "pursue:1",
+    "outcome": "recovered_quiet",
+    "decisions": 96,
+    "final_hp": 55,
+    "quiet_turns": 20,
+    "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-all-v4/development/mining-fresh-training-v1/collection/encounter-008/startup-retries/variant-00/pursue-1/attempt-1/worker-dfnzl200",
+    "trace_sha256": "7b8157f392a6384b9eedca48abe35eaad5c78236a35e0857e78620c1d75bac51",
+    "startup_attempts": [
+      {
+        "case_id": "development/mining-fresh-training-v1/collection/encounter-008/variant-00",
+        "decisions": 0,
+        "error": "Unexpected engine exit; see /home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-all-v3/development/mining-fresh-training-v1/collection/encounter-008/attempt-0/variant-00/pursue-1/worker-393exq3s",
+        "evidence_verified": false,
+        "family_id": "development/mining-fresh-training-v1/collection/encounter-008",
+        "option": "pursue:1",
+        "outcome": "harness_error",
+        "phase": "augmentation_dataset",
+        "policy": "pursue:1",
+        "recipe": {
+          "hp_percent": 100,
+          "rng_draws": 17
+        },
+        "seed": "83018003",
+        "split": "train",
+        "split_group": "83018003",
+        "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-all-v3/development/mining-fresh-training-v1/collection/encounter-008/attempt-0/variant-00/pursue-1/worker-393exq3s"
+      }
+    ]
+  },
+  "unknown_trials": [
+    {
+      "case_id": "development/mining-option-training-v1/collection/encounter-002/variant-01",
+      "option": "pursue:0",
+      "outcome": "unresolved_stall",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-all-v3/development/mining-option-training-v1/collection/encounter-002/attempt-0/variant-01/pursue-0/worker-in02z0p9",
+      "trace_sha256": "f7230c06193e476697d6ba77ee465f6854fb366cd83c13336cad6c69287d95c4"
+    },
+    {
+      "case_id": "fresh-evaluation/collection/encounter-021/variant-02",
+      "option": "defend:0",
+      "outcome": "unresolved_stall",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-all-v3/fresh-evaluation/collection/encounter-021/attempt-0/variant-02/defend-0/worker-ffg_u_a2",
+      "trace_sha256": "ed319c6b30e06c742f5c246f6411fd7302d673d7b9e1abf54e2ac50895466d57"
+    },
+    {
+      "case_id": "fresh-evaluation/collection/encounter-021/variant-02",
+      "option": "defend:1",
+      "outcome": "unresolved_stall",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/augmentation-all-v3/fresh-evaluation/collection/encounter-021/attempt-0/variant-02/defend-1/worker-pqbx93u0",
+      "trace_sha256": "ed319c6b30e06c742f5c246f6411fd7302d673d7b9e1abf54e2ac50895466d57"
+    }
+  ],
+  "original_assets_sha256": {
+    ".webtiles/rcs/codex-autocrawl.rc": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+    ".webtiles/bench/tactical/models/goal-selector-v1.json": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+    ".webtiles/bench/tactical/dataset-split-v1.json": "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae"
+  },
+  "tests": {
+    "python": 161,
+    "lua": 13
+  },
+  "fitting": false,
+  "production_export": false,
+  "summary": {
+    "by_split": {
+      "evaluation_only": {
+        "mixed": 13,
+        "variants": 90
+      },
+      "test": {
+        "mixed": 0,
+        "variants": 18
+      },
+      "train": {
+        "mixed": 31,
+        "variants": 210
+      },
+      "validation": {
+        "mixed": 0,
+        "variants": 18
+      }
+    },
+    "coverage": {
+      "generated": 112,
+      "quarantined": 6
+    },
+    "encounters": 118,
+    "fitting": false,
+    "mixed_variants": 44,
+    "outcomes": {
+      "death": 113,
+      "masked": 84,
+      "recovered_quiet": 1816,
+      "unresolved_stall": 3
+    },
+    "production_export": false,
+    "training_cases": 31,
+    "training_rows": 180,
+    "training_seeds": [
+      "83017002",
+      "83017005",
+      "83018002",
+      "83018003",
+      "83018004",
+      "83018005",
+      "83019001",
+      "83019002",
+      "83019003",
+      "83019004"
+    ],
+    "trials": 2016,
+    "variants": 336,
+    "verified_variants": 336
+  },
+  "artifact_sha256": {
+    "manifest.json": "604c3bd699933085aeabb15c0162b4cf97284631fc9d2fca45250a19a746125c",
+    "coverage.json": "3c081a29e0728a1e38b00b48dd3ae558c6a4df94bc441feac59458914cb5eb67",
+    "results.json": "b265f6b6d031b4113a2dba3c3cc77f99244337a003b33eef8e87f197b104a341",
+    "labels.json": "6d02c27338833cef7c1ffba89189a4260399bb08e90e39d1752acb4474f764a9",
+    "training-index.json": "8ca7b1ece35b27be81aa552221ca70422a455bd2ee8a7bcc93e8e389e0ddf902",
+    "training-rows.json": "e5bb01f2c145aa40db0617acfb3bf4cb912c91bb81c84c38e65b84f11df143a1",
+    "summary.json": "91b1ce7876b9185e1226ab2142bb9aa8d2bf91c663129f8cce9de481bb52419b",
+    "reuse.json": "a8d2562fcf79b540d7c3923683a7740bd6588b23f90ede82c2a7dc70873f8336"
+  },
+  "audited_recoveries": 1816,
+  "audited_deaths": 113,
+  "loader_validation": "passed; coordinator exited 0",
+  "bugfix_evidence_sha256": {
+    "augmentation-bugfix-v1/manifest.json": "71e19dc96971afb16e860efd566240a582ada81acc2c6fa607c50d3cae7205e4",
+    "augmentation-bugfix-v1/results.json": "b3920f9f6c6711d776f163cbf60681ce99e4b5dcbeecded7073dd8310e6f5847",
+    "augmentation-bugfix-v1/audit.json": "fd4f3a4004346f4f7706cf8369f51723b9f472d5137b903ead0694092adfa592",
+    "augmentation-terminal-check-v1/verification.json": "0447d4af89f43c87e510a4ef15aebb110e57c806474a323ae2b616678883f64f"
+  },
+  "limitations": [
+    "Three correlated HP/RNG recipes per original, not independent seeds.",
+    "Replay equivalence checked up to 12 decisions or death, not unlimited determinism.",
+    "Six pre-existing original replay-fidelity quarantines excluded.",
+    "Three stalled trials make their variants incomplete; never labeled as deaths.",
+    "Mixed-outcome selection is deliberately biased; use unfiltered held-out families for evaluation.",
+    "Reused artifact roots v1 and v3 must be retained; originals and model unchanged."
+  ]
+}

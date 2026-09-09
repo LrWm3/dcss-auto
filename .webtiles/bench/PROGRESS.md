@@ -2003,3 +2003,36 @@ creation before launching any game; fixed and regression-tested. v3 uses separat
 worker processes and reuses 18 complete v1 families/324 trials. 154 Python tests
 and 13 Lua checks pass. No controller/model/production change. Full collection
 remains in progress under tactical/artifacts/augmentation-all-v3.
+
+### All-encounter augmentation completed and audited
+
+Final output: tactical/artifacts/augmentation-all-v4. All 118 indexed parents
+accounted for: 112 verified parents each produced three verified variants and
+six policy comparisons; six pre-existing replay-fidelity quarantines excluded.
+336 variants / 2016 trials: 1816 audited recovered_quiet, 113 audited death,
+84 unavailable and three unresolved_stall. No remaining harness errors.
+
+44 variants have mixed success/death labels: 31 training variants supply 180
+audited training rows across ten training seeds; 13 fresh-evaluation variants
+remain held out. Validation/test partitions also remain excluded. All-win,
+all-loss, masked and incomplete labels remain in the full result matrix.
+No fitting or production export occurred.
+
+v4 reuses all 112 generated v3 families with matching inputs/gameplay hashes,
+reverified paired prefixes and trace hashes. Exactly 2015 trial records are
+unchanged. One known Lair map-parser failure before the first observation was
+retried once from the same checkpoint/recipe: pursue1, mining-fresh-training
+encounter-008 variant-00, recovered at decision 96, 55/55 HP, 20 quiet turns.
+Its failed attempt is preserved. This all-win variant does not change selection.
+The bounded retry never applies to deaths, gameplay stalls or arbitrary errors.
+
+Three stalls expose two further controller limitations: held in a web after
+combat (two evaluation-only trials), and waiting near unreachable visible
+enemies (one training trial). Their variants are incomplete and excluded from
+training; they are not the fixed stale invisible-marker issue.
+
+161 Python tests plus 13 Lua checks pass. Final coordinator and load_training
+validation exit 0; all 112 original and 336 synthetic checkpoint hashes checked.
+Production RC, model and partition hashes unchanged. Source commit 620f5fb;
+tracked evidence: tactical/evidence/augmentation-all-v4.json. Documentation:
+tactical/AUGMENTATION-DATASET.md. Retain v1 and v3 artifacts referenced by reuse.
