@@ -1921,3 +1921,19 @@ decisions. All 191 successful traces independently audited. Report:
 tactical/GOALS-FRESH-V1.md; tracked evidence: tactical/evidence/goals-fresh-v1.json.
 No fitting or deployment. Fresh seeds are now inspected; preserve this result
 and reserve another cohort if tuning controllers on these failures.
+
+## 2026-09-09 — synthetic encounter augmentation pilot
+
+Implemented recipe-backed HP/gameplay-RNG variants in augment_encounters.py
+(e3adc7e), with a separate opt-in crawl-tactical-augment engine. Existing saves,
+normal lab binary, production RC and model unchanged. Current HP and deterministic
+gameplay RNG advancement only; no monster/terrain edits or additional game turns.
+All variants retain parent seed/family, evaluation_only and training_ready=false.
+
+Six neutral engine checks passed against up to 32 recorded pursuit actions;
+60/60 variants passed exact-initial-mutation and paired up-to-24-decision replay
+checks. Ten variants each of Jeremiah, Maggie, Eustachio, D5 ogre, D2 gnolls and
+D5 centaur. All four full-HP RNG variants per family produced distinct trace
+hashes. Launched 360 fixed-controller trials, no fitting. Artifacts:
+tactical/artifacts/augmentation-pilot-v1. Report: tactical/AUGMENTATION-PILOT.md.
+This entry records launch/verification, not completed tactical results.
