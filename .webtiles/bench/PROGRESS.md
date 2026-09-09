@@ -1576,3 +1576,18 @@ Next candidate: learn selection among coherent existing tactics, with explicit
 handoff timing, instead of choosing individual movement keys with linear values.
 Evidence tactical/evidence/rl-replay-pilot-v1.json includes artifact/model hashes.
 62Python tests plus3direct transport and10learned-hook checks pass; diff clean.
+
+## 2026-09-08 — encounter-level option pilot
+
+Implemented train_options.py: one persistent tactic per encounter selected from
+retreat/hold/rage_hold/baseline. Existing tactic state and hazard mask retained;
+proxy-recovery handoff timing and bounded RC audit unchanged. Full-feedback
+contextual bandit: try all four tactics on each of five training checkpoints,
+fit linear terminal-outcome values, freeze before validation. No low-level
+Q updates, validation fitting or production deployment. The exact preceding
+imitation model is hash-pinned, with source/training/split provenance checks.
+
+Launched options-pilot-v1:20training trials followed by33frozen comparisons
+(selector/fixed retreat/imitation on5training+6validation checkpoints). Reserved
+test excluded.67Python tests plus3transport and10model-hook checks pass.
+OPTIONS-PILOT.md documents scope, unused legacy config fields, and limitations.
