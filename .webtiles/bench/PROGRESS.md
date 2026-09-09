@@ -1657,3 +1657,23 @@ separate bounded recovery, floor changes and same-branch descent; reward is
 unchanged. Imitation is explicitly the old five-case reference, not retrained.
 74Python tests plus3transport/10model-hook checks pass, including live cached
 matrix integrity and exclusion of validation IDs. This records launch only.
+
+Completed105/105new trials, zero harness errors. Reused54pinned labels plus54new
+trials give108outcomes (27cases x4options). Fixed-policy training positives:
+retreat23/27,hold20/27,rage_hold17/27,RC17/27;26cases have some successful option.
+Frozen selector25/27positive,25floor changes but23same-branch descents. All27
+replay entry features and outcomes match their collected option labels.
+Eustachio selectsrage_hold and survives; Terence selectsRC and survives. D7
+regresses: selectsrage_hold and dies although retreat succeeds. Scores rage_hold
+0.6955 vsretreat0.6878. Gnoll case selectsrage_hold, proxy recovery then RC death
+39decisions later; all options negative on this case. No deployment.
+
+Validation6/6positive for selector,retreat,RC andold imitation. Selector/retreat/
+imitation all6/6same-branch deeper endpoints; RC4/6deeper,2recovered budget
+endpoints. No validation-driven fitting or revision. Validation is one seed,
+not evidence of broad learned advantage. Training MSE0.28944; fourD1contexts
+(new main010/013/016/019) collapse to identical model features. Next revision
+should address representation/value-fit and conservative near-tie choices,
+using training evidence before another frozen comparison. Retain D7 as explicit
+regression check. Evidence tactical/evidence/options-expanded-v1.json pins model,
+matrix andresults. Reserved test and production RC unchanged; old models retained.

@@ -1,0 +1,140 @@
+{
+  "cached_outcomes": 54,
+  "completed": true,
+  "groups": [
+    {
+      "count": 18,
+      "deaths": 6,
+      "deeper_same_branch": 10,
+      "floor_changes": 12,
+      "neutral": 0,
+      "phase": "collect",
+      "policy": "baseline",
+      "positive": 12,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 18,
+      "deaths": 4,
+      "deeper_same_branch": 13,
+      "floor_changes": 14,
+      "neutral": 0,
+      "phase": "collect",
+      "policy": "hold",
+      "positive": 14,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 18,
+      "deaths": 5,
+      "deeper_same_branch": 12,
+      "floor_changes": 13,
+      "neutral": 0,
+      "phase": "collect",
+      "policy": "rage_hold",
+      "positive": 13,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 27,
+      "deaths": 2,
+      "deeper_same_branch": 23,
+      "floor_changes": 25,
+      "neutral": 0,
+      "phase": "train_check",
+      "policy": "selector",
+      "positive": 25,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 4,
+      "floor_changes": 4,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "baseline",
+      "positive": 6,
+      "recovered_without_floor_change": 2
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 6,
+      "floor_changes": 6,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "imitation",
+      "positive": 6,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 6,
+      "floor_changes": 6,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "retreat",
+      "positive": 6,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 6,
+      "floor_changes": 6,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "selector",
+      "positive": 6,
+      "recovered_without_floor_change": 0
+    }
+  ],
+  "model_sha256": "140480813893af91b6e94c813193a564608f085a5523685cad6f9b100fa8b5da",
+  "new_trials": 105,
+  "production_export": false,
+  "training_cases": 27,
+  "training_mse": 0.28943786642412117,
+  "training_outcomes": 108,
+  "implementation_commit": "dc3ce26",
+  "artifact_root": ".webtiles/bench/tactical/artifacts/options-expanded-v1",
+  "hashes": [
+    "01aa111d82e6ee394b5eac10cb6b53b1827ed9c5e737e11b40ffbba858fa61ab  .webtiles/bench/tactical/artifacts/options-expanded-v1/manifest.json",
+    "2fddb3b63d5ae5035a334b8bc0927bad31ce9b42948e3701a61fa0a381794f0b  .webtiles/bench/tactical/artifacts/options-expanded-v1/results.json",
+    "b5caeff3ea41fa0ab9832c5632acf733f9b1133ca0e8e747814ad2d2ed57b46c  .webtiles/bench/tactical/artifacts/options-expanded-v1/training-outcomes.json",
+    "140480813893af91b6e94c813193a564608f085a5523685cad6f9b100fa8b5da  .webtiles/bench/tactical/artifacts/options-expanded-v1/model.json"
+  ],
+  "harness_errors": 0,
+  "reserved_test_executed": false,
+  "training_fixed_policy_positive": {
+    "retreat": 23,
+    "hold": 20,
+    "rage_hold": 17,
+    "baseline": 17
+  },
+  "training_cases_with_any_positive_option": 26,
+  "selector_replay_consistency": "All 27 entry feature vectors and audited outcomes agree with the corresponding collected option labels.",
+  "contrasts": {
+    "eustachio": "rage_hold chosen, positive",
+    "terence": "baseline chosen, positive",
+    "d7": "rage_hold chosen, death; retreat succeeds",
+    "d5_gnolls": "rage_hold chosen, proxy recovery followed by RC death39 decisions later; all options negative"
+  },
+  "d7_values": {
+    "retreat": 0.6878,
+    "hold": -0.41,
+    "rage_hold": 0.6955,
+    "baseline": -0.433
+  },
+  "feature_limit": "Four D1 training checkpoints (new main cases010/013/016/019) have identical entry feature vectors; the representation discards context that distinguishes them. This does not by itself explain the distinct D7 failure.",
+  "tests": "74 Python tests plus 3 direct-transport and 10 model-hook checks pass.",
+  "interpretation": "Expanded data improves training bounded outcomes versus fixed retreat but regresses D7. Validation parity with retreat/imitation, not demonstrated generalization improvement. No deployment.",
+  "limitations": [
+    "Six correlated validation checkpoints from one previously studied seed, one deterministic replay per policy.",
+    "27 selected training contexts, not all70 available. Frozen imitation still trained only on original five.",
+    "Cached trials reused only after hash/task/checkpoint/source verification; 54 reused plus54new form full108 option matrix.",
+    "Positive credit is bounded recovery or floor change, including ascent. Training selector25positive but23deeper-same-branch; validation selector6positive and6deeper.",
+    "No hyperparameter or model change based on validation. No additional fitting or checkpoint selection performed."
+  ]
+}
