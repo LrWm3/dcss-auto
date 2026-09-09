@@ -88,7 +88,10 @@ def clean(s):
     return (s['hp']==s['max_hp'] and not enemies(s) and s.get('safe')
         and not any(s.get(k) for k in ('berserk','cooldown','confused','poisoned','on_fire','unseen'))
         and not any(k in s.get('status','').lower() for k in harmful)
-        and not any(c.get('invisible_monster') for c in s.get('known',{}).values())
+        # Map memory retains old disturbances outside LOS. Only current visible
+        # markers block recovery; unseen/damage/status guards remain independent.
+        and not any(c.get('invisible_monster') and c.get('visible')
+                    for c in s.get('known',{}).values())
         and not geometry(s).get((0,0),{}).get('cloud'))
 
 class Recovery:

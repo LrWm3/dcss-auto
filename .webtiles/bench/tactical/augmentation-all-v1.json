@@ -1,0 +1,17 @@
+{
+  "datasets": [
+    {"name": "development", "index": ".webtiles/bench/tactical/artifacts/development-dataset-v3/index.json"},
+    {"name": "fresh-evaluation", "index": ".webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/verified-dataset/index.json"}
+  ],
+  "partitions": ".webtiles/bench/tactical/dataset-split-v1.json",
+  "reservation": ".webtiles/bench/tactical/fresh-evaluation-seeds-v1.json",
+  "parent_engine": "crawl-0.35/crawl-ref/source/crawl-observation-rng",
+  "recipes": [
+    {"hp_percent": 100, "rng_draws": 17},
+    {"hp_percent": 80, "rng_draws": 0},
+    {"hp_percent": 60, "rng_draws": 1}
+  ],
+  "verify_steps": 12,
+  "steps": 600,
+  "jobs": 12
+}

@@ -1962,3 +1962,26 @@ unchanged RNG loses with pursue0 but recovers with withdraw1/defend1. These are
 useful reliability/choice examples, not independent held-out generalization.
 Report: tactical/AUGMENTATION-PILOT.md. Evidence:
 tactical/evidence/augmentation-pilot-v1.json. No fitting or production deployment.
+
+## 2026-09-09 — automatic augmentation dataset and regression fixes
+
+Fixed negative-HP death morgue detection and limited the invisible-marker
+recovery blocker to currently visible cells. Targeted fresh resets of ogre
+60%-HP/RNG-zero now produce pursue0 death at decision 37 with a real terminal
+transition, and pursue1 audited recovery at decision 182 (61/61 HP, 20 quiet
+turns), replacing the missed terminal and decision-242 stale-marker stall.
+Evidence: tactical/artifacts/augmentation-bugfix-v1.
+
+Added augmentation_dataset.py and augmentation-all-v1.json: enumerate indexed
+encounters, validate original-to-lab engine prefixes, create recipe-backed
+variants, verify paired replay prefixes, run all six strategies, audit outcomes,
+and export a versioned mixed-success/death training supplement. No timeout,
+stall, masked choice or harness error counts as a death. All parent-seed splits
+are preserved; validation/test/fresh-evaluation stay out of training. Every
+original and synthetic label is retained for coverage, including rejected cases.
+
+150 Python tests plus 13 Lua checks pass. Launched three variants per eligible
+encounter across both canonical indexes: 118 indexed parents, 112 verified and
+six already quarantined; expected 336 variants and 2016 fixed-controller trials.
+Artifacts: tactical/artifacts/augmentation-all-v1. This entry records launch,
+not completion. No model fitting or production deployment.

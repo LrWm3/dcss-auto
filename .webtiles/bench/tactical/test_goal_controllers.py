@@ -20,6 +20,13 @@ def enemy(s,x=2,y=0):
     return s
 
 class GoalsTest(unittest.TestCase):
+    def test_remembered_disturbance_not_current_threat(self):
+        s=state();s['known']['39:9']=dict(x=39,y=9,invisible_monster=True,visible=False)
+        self.assertTrue(clean(s))
+        s['known']['39:9']['visible']=True
+        self.assertFalse(clean(s))
+        s['known']['39:9']['visible']=False;s['unseen']=True
+        self.assertFalse(clean(s))
     def test_shaft_masks_upstairs_not_rest(self):
         s=state();s['anchors']={}
         self.assertNotIn('withdraw',available(s))

@@ -14,6 +14,9 @@ class DeathRecordTest(unittest.TestCase):
         return f'Game seed: 123 (custom seed)\n2398 {NAME} the Cleaver (level 9, 0/79 HPs)\nSuccumbed to poison\nTurns: 101\n'
     def test_current_death_morgue(self):
         self.assertEqual(self.check(self.morgue())['terminal'],'death')
+    def test_overkill_death(self):
+        self.assertEqual(self.check(self.morgue().replace('0/79','-12/79'))['terminal'],'death')
+        self.assertIsNone(self.check(self.morgue().replace('0/79','12/79')))
     def test_wrong_seed(self):
         self.assertIsNone(self.check(self.morgue().replace('seed: 123','seed: 124')))
     def test_stale_turn(self):
