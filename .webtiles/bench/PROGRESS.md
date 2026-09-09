@@ -2084,3 +2084,25 @@ fit exercises selection, not a benchmarked replacement.173 Python and13 Lua test
 pass. Report tactical/RICH-GOAL-FEATURES.md; evidence
 tactical/evidence/rich-goals-v2-pilot-v2.json. Next substantive step is collecting
 rich rows across the broader dataset before retraining; production remains unchanged.
+
+## 2026-09-09 — V2 character mutation collection
+
+Added a separate crawl-tactical-character lab binary and tracked incremental
+engine patch. Allowlisted skill, XL, attribute, gear and innate resistance edits
+operate on disposable checkpoint copies. One-axis profiles use full resulting
+HP and zero battle RNG offset. A gameplay draw-count guard caught an initial
+local-RNG constructor leak; supplying both seed and sequence fixed it. Failed
+pilot artifacts remain preserved. New engine hash:
+d3853d4ff38b4d7ce9dc8c139329ca5dc58da25991d9b42780dac92b159d5dbc.
+
+Verification-only character-pilot-v2:18 accepted profiles,1 correctly rejected
+no-op armour replacement. Old/new neutral prefix and paired12-action replays
+pass, including all five mutation axes. Independent audit passes.179 Python and
+13 Lua checks pass. Evidence tactical/evidence/character-pilot-v2.json.
+
+Launched character-training-v1:12 training parents (one per existing training
+seed),19 requested recipes,all six goal/berserk choices per accepted variant.
+No held-out seeds, fitting or production changes. Collector pins inputs/sources,
+retains traces and exports all complete verified training rows plus a mixed
+win/loss subset. Separate character_audit loader rechecks provenance/features,
+seed splits and outcome evidence before use. See tactical/CHARACTER-DATASET.md.

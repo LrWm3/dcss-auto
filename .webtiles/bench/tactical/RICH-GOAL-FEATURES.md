@@ -60,9 +60,9 @@ continues to mean V1.
 
 Old labels have no rich initial snapshots and must not be silently treated as
 V2 training data. Collect verified rich snapshots and fresh policy labels before
-the next substantive retraining. Gear/skill/XL *mutation recipes* are not yet
-implemented: this change makes the representation sensitive to those variations,
-but does not manufacture synthetic gear or skill changes in the engine.
+the next substantive retraining. Actual gear/skill/XL/attribute/resistance
+mutation recipes are now available through the separate lab-only
+[character collection](CHARACTER-DATASET.md), not through this observation adapter.
 
 ## Verification
 

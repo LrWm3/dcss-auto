@@ -1,0 +1,138 @@
+{
+  "datasets": [
+    {
+      "index": ".webtiles/bench/tactical/artifacts/development-dataset-v3/index.json",
+      "name": "development"
+    },
+    {
+      "index": ".webtiles/bench/tactical/artifacts/mining-fresh-evaluation-v2/verified-dataset/index.json",
+      "name": "fresh-evaluation"
+    }
+  ],
+  "jobs": 1,
+  "verification_only": true,
+  "parent_engine": "crawl-0.35/crawl-ref/source/crawl-observation-rng",
+  "partitions": ".webtiles/bench/tactical/dataset-split-v1.json",
+  "recipes": [
+    {
+      "id": "control",
+      "axis": "none",
+      "name": "none",
+      "value": 0
+    },
+    {
+      "id": "skill-axes-minus3",
+      "axis": "skill",
+      "name": "Axes",
+      "value": -3
+    },
+    {
+      "id": "skill-axes-plus3",
+      "axis": "skill",
+      "name": "Axes",
+      "value": 3
+    },
+    {
+      "id": "skill-fighting-plus3",
+      "axis": "skill",
+      "name": "Fighting",
+      "value": 3
+    },
+    {
+      "id": "skill-dodging-plus3",
+      "axis": "skill",
+      "name": "Dodging",
+      "value": 3
+    },
+    {
+      "id": "xl-xl-minus2",
+      "axis": "xl",
+      "name": "xl",
+      "value": -2
+    },
+    {
+      "id": "xl-xl-plus2",
+      "axis": "xl",
+      "name": "xl",
+      "value": 2
+    },
+    {
+      "id": "attribute-str-minus4",
+      "axis": "attribute",
+      "name": "str",
+      "value": -4
+    },
+    {
+      "id": "attribute-str-plus4",
+      "axis": "attribute",
+      "name": "str",
+      "value": 4
+    },
+    {
+      "id": "attribute-dex-plus4",
+      "axis": "attribute",
+      "name": "dex",
+      "value": 4
+    },
+    {
+      "id": "attribute-int-plus4",
+      "axis": "attribute",
+      "name": "int",
+      "value": 4
+    },
+    {
+      "id": "gear-hand_axe-plus0",
+      "axis": "gear",
+      "name": "hand_axe",
+      "value": 0
+    },
+    {
+      "id": "gear-war_axe-plus3",
+      "axis": "gear",
+      "name": "war_axe",
+      "value": 3
+    },
+    {
+      "id": "gear-robe-plus2",
+      "axis": "gear",
+      "name": "robe",
+      "value": 2
+    },
+    {
+      "id": "gear-plate_armour-plus0",
+      "axis": "gear",
+      "name": "plate_armour",
+      "value": 0
+    },
+    {
+      "id": "resistance-fire-plus1",
+      "axis": "resistance",
+      "name": "fire",
+      "value": 1
+    },
+    {
+      "id": "resistance-cold-plus1",
+      "axis": "resistance",
+      "name": "cold",
+      "value": 1
+    },
+    {
+      "id": "resistance-poison-plus1",
+      "axis": "resistance",
+      "name": "poison",
+      "value": 1
+    },
+    {
+      "id": "resistance-electricity-plus1",
+      "axis": "resistance",
+      "name": "electricity",
+      "value": 1
+    }
+  ],
+  "reservation": ".webtiles/bench/tactical/fresh-evaluation-seeds-v1.json",
+  "steps": 600,
+  "verify_steps": 12,
+  "families": [
+    "development/mining-deeper-v1/collection/encounter-007"
+  ]
+}

@@ -1,0 +1,629 @@
+{
+  "artifact": ".webtiles/bench/tactical/artifacts/character-pilot-v2",
+  "audit": {
+    "audited": true,
+    "feature_version": 2,
+    "files": {
+      "coverage.json": "981c06ca4f38decb26f79ff02657f9056e4fc57c6089f85ea4a4d0f0aa88c94e",
+      "labels.json": "f1754c7acc89ad282ed14b19344ca226a34be1ea334115b16084569dcbe15df9",
+      "manifest.json": "f376c8be059c5dc47ad3d2f8998ad0b96acb8ef6ff2598c50db25b0d3a212008",
+      "mixed-training-rows.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "results.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "summary.json": "76256d119f5db3cb13aa80f1f0c177d367f4aede8193d1bccc97eebc607875c2",
+      "training-rows.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "fitting": false,
+    "mixed_rows": 0,
+    "rows": 0,
+    "seeds": []
+  },
+  "engine_sha256": "d3853d4ff38b4d7ce9dc8c139329ca5dc58da25991d9b42780dac92b159d5dbc",
+  "neutral": {
+    "passed": true,
+    "reference": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/character-pilot-v2/development/mining-deeper-v1/collection/encounter-007/old-engine/reference.json",
+    "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/character-pilot-v2/development/mining-deeper-v1/collection/encounter-007/neutral/worker-h1otpdlz"
+  },
+  "profiles": [
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {},
+      "recipe": {
+        "axis": "none",
+        "id": "control",
+        "name": "none",
+        "value": 0
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "skills": {
+          "after": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 2.2,
+            "Conjurations": 0.0,
+            "Dodging": 3.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 4.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 1.2,
+            "Necromancy": 0.0,
+            "Polearms": 1.2,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          },
+          "before": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 5.2,
+            "Conjurations": 0.0,
+            "Dodging": 3.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 4.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 3.1,
+            "Necromancy": 0.0,
+            "Polearms": 3.1,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          }
+        }
+      },
+      "recipe": {
+        "axis": "skill",
+        "id": "skill-axes-minus3",
+        "name": "Axes",
+        "value": -3
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "skills": {
+          "after": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 8.2,
+            "Conjurations": 0.0,
+            "Dodging": 3.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 4.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 5.0,
+            "Necromancy": 0.0,
+            "Polearms": 5.0,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          },
+          "before": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 5.2,
+            "Conjurations": 0.0,
+            "Dodging": 3.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 4.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 3.1,
+            "Necromancy": 0.0,
+            "Polearms": 3.1,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          }
+        }
+      },
+      "recipe": {
+        "axis": "skill",
+        "id": "skill-axes-plus3",
+        "name": "Axes",
+        "value": 3
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 52,
+      "player_changes": {
+        "skills": {
+          "after": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 5.2,
+            "Conjurations": 0.0,
+            "Dodging": 3.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 7.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 3.1,
+            "Necromancy": 0.0,
+            "Polearms": 3.1,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          },
+          "before": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 5.2,
+            "Conjurations": 0.0,
+            "Dodging": 3.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 4.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 3.1,
+            "Necromancy": 0.0,
+            "Polearms": 3.1,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          }
+        }
+      },
+      "recipe": {
+        "axis": "skill",
+        "id": "skill-fighting-plus3",
+        "name": "Fighting",
+        "value": 3
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "ev": {
+          "after": 7,
+          "before": 6
+        },
+        "skills": {
+          "after": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 5.2,
+            "Conjurations": 0.0,
+            "Dodging": 6.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 4.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 3.1,
+            "Necromancy": 0.0,
+            "Polearms": 3.1,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          },
+          "before": {
+            "Air Magic": 0.0,
+            "Alchemy": 0.0,
+            "Armour": 3.6,
+            "Axes": 5.2,
+            "Conjurations": 0.0,
+            "Dodging": 3.2,
+            "Earth Magic": 0.0,
+            "Evocations": 0.0,
+            "Fighting": 4.5,
+            "Fire Magic": 0.0,
+            "Forgecraft": 0.0,
+            "Hexes": 0.0,
+            "Ice Magic": 0.0,
+            "Invocations": 0.0,
+            "Long Blades": 0.0,
+            "Maces & Flails": 3.1,
+            "Necromancy": 0.0,
+            "Polearms": 3.1,
+            "Ranged Weapons": 0.0,
+            "Shapeshifting": 0.0,
+            "Shields": 0.0,
+            "Short Blades": 0.0,
+            "Spellcasting": 0.0,
+            "Staves": 0.0,
+            "Stealth": 0.0,
+            "Summonings": 0.0,
+            "Throwing": 0.0,
+            "Translocations": 0.0,
+            "Unarmed Combat": 0.0
+          }
+        }
+      },
+      "recipe": {
+        "axis": "skill",
+        "id": "skill-dodging-plus3",
+        "name": "Dodging",
+        "value": 3
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 34,
+      "player_changes": {
+        "max_mp": {
+          "after": 2,
+          "before": 4
+        },
+        "mp": {
+          "after": 2,
+          "before": 4
+        },
+        "xl": {
+          "after": 3,
+          "before": 5
+        }
+      },
+      "recipe": {
+        "axis": "xl",
+        "id": "xl-xl-minus2",
+        "name": "xl",
+        "value": -2
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 60,
+      "player_changes": {
+        "max_mp": {
+          "after": 6,
+          "before": 4
+        },
+        "mp": {
+          "after": 6,
+          "before": 4
+        },
+        "xl": {
+          "after": 7,
+          "before": 5
+        }
+      },
+      "recipe": {
+        "axis": "xl",
+        "id": "xl-xl-plus2",
+        "name": "xl",
+        "value": 2
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "ev": {
+          "after": 5,
+          "before": 6
+        },
+        "strength": {
+          "after": 19,
+          "before": 23
+        }
+      },
+      "recipe": {
+        "axis": "attribute",
+        "id": "attribute-str-minus4",
+        "name": "str",
+        "value": -4
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "ev": {
+          "after": 7,
+          "before": 6
+        },
+        "strength": {
+          "after": 27,
+          "before": 23
+        }
+      },
+      "recipe": {
+        "axis": "attribute",
+        "id": "attribute-str-plus4",
+        "name": "str",
+        "value": 4
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "dexterity": {
+          "after": 14,
+          "before": 10
+        }
+      },
+      "recipe": {
+        "axis": "attribute",
+        "id": "attribute-dex-plus4",
+        "name": "dex",
+        "value": 4
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "intelligence": {
+          "after": 8,
+          "before": 4
+        }
+      },
+      "recipe": {
+        "axis": "attribute",
+        "id": "attribute-int-plus4",
+        "name": "int",
+        "value": 4
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {},
+      "recipe": {
+        "axis": "gear",
+        "id": "gear-hand_axe-plus0",
+        "name": "hand_axe",
+        "value": 0
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {},
+      "recipe": {
+        "axis": "gear",
+        "id": "gear-war_axe-plus3",
+        "name": "war_axe",
+        "value": 3
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "ac": {
+          "after": 7,
+          "before": 14
+        },
+        "ev": {
+          "after": 11,
+          "before": 6
+        }
+      },
+      "recipe": {
+        "axis": "gear",
+        "id": "gear-robe-plus2",
+        "name": "robe",
+        "value": 2
+      },
+      "verified": true
+    },
+    {
+      "error": "AssertionError('No observable feature effect')",
+      "recipe": {
+        "axis": "gear",
+        "id": "gear-plate_armour-plus0",
+        "name": "plate_armour",
+        "value": 0
+      },
+      "verified": false
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "res_fire": {
+          "after": 1,
+          "before": 0
+        }
+      },
+      "recipe": {
+        "axis": "resistance",
+        "id": "resistance-fire-plus1",
+        "name": "fire",
+        "value": 1
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "res_cold": {
+          "after": 1,
+          "before": 0
+        }
+      },
+      "recipe": {
+        "axis": "resistance",
+        "id": "resistance-cold-plus1",
+        "name": "cold",
+        "value": 1
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "res_poison": {
+          "after": 1,
+          "before": 0
+        }
+      },
+      "recipe": {
+        "axis": "resistance",
+        "id": "resistance-poison-plus1",
+        "name": "poison",
+        "value": 1
+      },
+      "verified": true
+    },
+    {
+      "error": null,
+      "max_hp": 47,
+      "player_changes": {
+        "res_shock": {
+          "after": 1,
+          "before": 0
+        }
+      },
+      "recipe": {
+        "axis": "resistance",
+        "id": "resistance-electricity-plus1",
+        "name": "electricity",
+        "value": 1
+      },
+      "verified": true
+    }
+  ],
+  "summary": {
+    "families": 1,
+    "family_status": {
+      "complete": 1
+    },
+    "fitting": false,
+    "mixed_training_rows": 0,
+    "mixed_variants": 0,
+    "outcomes": {},
+    "production_export": false,
+    "training_rows": 0,
+    "training_seeds": [],
+    "trials": 0,
+    "variants": 19,
+    "verified": 18,
+    "verified_by_axis": {
+      "attribute": 4,
+      "gear": 3,
+      "none": 1,
+      "resistance": 4,
+      "skill": 4,
+      "xl": 2
+    }
+  },
+  "tests": {
+    "lua": 13,
+    "python": 179
+  }
+}
