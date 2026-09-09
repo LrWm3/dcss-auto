@@ -1,0 +1,33 @@
+{
+  "dataset": ".webtiles/bench/tactical/artifacts/development-dataset-v2/index.json",
+  "dataset_sha256": "7d6dd7ac88a23ffa3303c28445b158aba228732401c42de971e9516a2e7bcf27",
+  "evaluation_mode": "held_out",
+  "train_cases": [
+    "mining-deeper-v1/collection/encounter-005",
+    "mining-deeper-v1/collection/encounter-002",
+    "mining-fresh-training-v1/collection/encounter-002",
+    "mining-fresh-training-v1/collection/encounter-003",
+    "mining-fresh-training-v1/collection/encounter-004"
+  ],
+  "eval_cases": [
+    "mining-deeper-v1/collection/encounter-003",
+    "mining-deeper-v1/collection/encounter-008",
+    "mining-deeper-v1/collection/encounter-013",
+    "mining-deeper-v1/collection/encounter-018",
+    "mining-deeper-v1/collection/encounter-023",
+    "mining-deeper-v1/collection/encounter-028"
+  ],
+  "episodes": 10,
+  "steps": 600,
+  "turns": 1500,
+  "handoff_steps": 600,
+  "eval_repeats": 1,
+  "alpha": 0.03,
+  "gamma": 1.0,
+  "epsilon": 0.05,
+  "random_seed": 42,
+  "jobs": 4,
+  "hazard_shield": true,
+  "pretrain_batches": 300,
+  "online_batches": 50
+}

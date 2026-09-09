@@ -69,6 +69,21 @@ def features(state, memory):
     return f
 
 
+def guarded_actions(state):
+    """Optional lab shield; delegate known hazards to the unchanged RC."""
+    status=state.get('status','').lower()
+    if (any(state.get(k) for k in ('on_fire','poisoned','confused'))
+            or any(k in status for k in ('poison','on fire','confus','mesmer','constrict','held','rooted','petrif'))
+            or state.get('cells',{}).get('0:0',{}).get('cloud')
+            or (not enemies(state) and not state.get('safe'))):
+        return ['baseline']
+    allowed=actions(state)
+    # Healing beside a reachable opponent is not a learner-controlled action.
+    if any(e.get('reachable') and max(abs(e['x']),abs(e['y']))<=1 for e in enemies(state)):
+        allowed.remove('wait')
+    return allowed
+
+
 def value(model, action, f):
     return sum(model.get(action,{}).get(k,0)*v for k,v in f.items())
 
@@ -103,7 +118,8 @@ def reward_for(label, turns):
     return 100 if label=='safe_recovery' else -100 if label=='death' else 0
 
 
-def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0, controller=None, samples=None):
+def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0, controller=None, samples=None,
+                selector=None, transitions=None):
     env=Environment(root);start=time.monotonic()
     result=dict(case_id=entry['id'],seed=entry['seed'],policy=policy,training=training,
                 outcome='harness_error',decisions=0,total_reward=0.,actions={})
@@ -118,20 +134,31 @@ def run_episode(entry, root, policy, model, rng, cfg, training=False, epsilon=0,
         for decision in range(1,cfg['steps']+1):
             memory['peak_threat']=max(memory['peak_threat'],max((e['threat'] for e in enemies(state)),default=0))
             f=features(state,memory)
-            if controller is not None:
+            allowed=guarded_actions(state) if cfg.get('hazard_shield') else actions(state)
+            if selector is not None:
+                action=selector(state,memory,allowed)
+                if action not in allowed: raise ValueError('Selector chose masked action')
+            elif controller is not None:
                 action=controller(state)
                 if action not in actions(state):raise ValueError('Tactic chose masked action: '+action)
             elif policy=='baseline': action='baseline'
             elif policy=='melee': action='melee' if 'melee' in actions(state) else 'baseline'
             else: action=choose(model,state,memory,rng,epsilon if training else 0)
+            if action not in allowed: action='baseline'
             if samples is not None:
-                samples.append(dict(features=dict(f),allowed=actions(state),action=action))
+                samples.append(dict(features=dict(f),allowed=allowed,action=action))
             after=env.step(action);counts[action]+=1
             delta=max(0,after.get('turn',state['turn'])-state['turn'])
             nxt=dict(last_hp=state['hp']/state['max_hp'],
                      peak_threat=max(memory['peak_threat'],max((e['threat'] for e in enemies(after)),default=0)),
                      decisions=decision,noops=memory['noops']+1 if delta==0 else 0)
             label=outcome(after,floor,decision,after.get('turn',state['turn'])-first_turn,nxt['noops'],cfg)
+            if transitions is not None:
+                transitions.append(dict(features=f,allowed=allowed,action=action,turn_delta=delta,
+                    next_features=features(after,nxt) if not after.get('terminal') else {},
+                    next_allowed=(guarded_actions(after) if cfg.get('hazard_shield') else actions(after))
+                                 if not after.get('terminal') else [],
+                    reward=0.,end=bool(label)))
             reward=reward_for(label,delta)
             # Bootstrap time limits; absorbing endpoints/stalls do not bootstrap.
             bootstrap=0.

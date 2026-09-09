@@ -1538,3 +1538,25 @@ frozen evaluations (312total). Teacher/training stages sequential; evaluations
 use4workers. First teacher rollout completed recovery and reached D3 on RC
 handoff; next teacher running. This records launch, NOT completion or improvement.
 Known hazard/recovery-credit limitations unchanged; no automatic deployment.
+
+## 2026-09-08 — combined-corpus run completed; replay pilot
+
+The prior rl-retreat-development-v2 completed all312 trials with no harness
+errors.1559 accepted imitation actions,97.883% training action fit. Initial
+imitation:48proxy recoveries/6deaths across54cases; final online Q:
+25recoveries/28deaths/1budget endpoint. On the six validation checkpoints,
+initial imitation had6recoveries and6alive floor-change handoffs; final Q had
+4recoveries/2deaths. This is a regression, not a deployable model. Initial model
+SHA8765db2f83ea12057f98a04bbf044472486c1251ca5a616cbd5dcfd7583af9c1;
+final SHAcd011a9ac886312d512e90df5a54b552b9a84141b5da475501db17569bdb45d6.
+
+Implemented train_replay.py: opt-in hazard delegation, bounded RC-followup
+credit, permanent audited-positive demonstrations, uniform demo/self replay,
+target model, double-Q one/five-step credit and continued supervised margin.
+Linear DQfD-inspired experiment, not the published deep algorithm. Historical
+trainer and its reward files remain compatible; new credited-transitions are
+the learning source. REPLAY-PILOT.md describes objective and limitations.
+
+Launched rl-replay-pilot-v1:5training cases,6validation cases,10online episodes,
+59planned trials including frozen RC/imitation/initial-Q/final-Q comparisons.
+Reserved test excluded; no production RC changes or model deployment.
