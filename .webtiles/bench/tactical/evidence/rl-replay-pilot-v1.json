@@ -1,0 +1,193 @@
+{
+  "completed": true,
+  "demonstrations": 381,
+  "groups": [
+    {
+      "count": 5,
+      "credits": {
+        "-1.0": 1,
+        "1.0": 4
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "death": 1,
+        "floor_change": 3
+      },
+      "outcomes": {
+        "safe_recovery": 5
+      },
+      "phase": "final",
+      "policy": "q",
+      "split": "train"
+    },
+    {
+      "count": 6,
+      "credits": {
+        "1.0": 6
+      },
+      "handoffs": {
+        "floor_change": 5
+      },
+      "outcomes": {
+        "floor_change": 1,
+        "safe_recovery": 5
+      },
+      "phase": "final",
+      "policy": "q",
+      "split": "validation"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "-1.0": 2,
+        "1.0": 3
+      },
+      "handoffs": {
+        "floor_change": 3
+      },
+      "outcomes": {
+        "death": 2,
+        "safe_recovery": 3
+      },
+      "phase": "initial",
+      "policy": "baseline",
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "1.0": 5
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 4
+      },
+      "outcomes": {
+        "safe_recovery": 5
+      },
+      "phase": "initial",
+      "policy": "imitation",
+      "split": "train"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "-1.0": 1,
+        "1.0": 4
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 3
+      },
+      "outcomes": {
+        "death": 1,
+        "safe_recovery": 4
+      },
+      "phase": "initial",
+      "policy": "q",
+      "split": "train"
+    },
+    {
+      "count": 6,
+      "credits": {
+        "1.0": 6
+      },
+      "handoffs": {
+        "budget_alive": 2,
+        "floor_change": 4
+      },
+      "outcomes": {
+        "safe_recovery": 6
+      },
+      "phase": "initial",
+      "policy": "baseline",
+      "split": "validation"
+    },
+    {
+      "count": 6,
+      "credits": {
+        "1.0": 6
+      },
+      "handoffs": {
+        "floor_change": 6
+      },
+      "outcomes": {
+        "safe_recovery": 6
+      },
+      "phase": "initial",
+      "policy": "imitation",
+      "split": "validation"
+    },
+    {
+      "count": 6,
+      "credits": {
+        "1.0": 6
+      },
+      "handoffs": {
+        "floor_change": 6
+      },
+      "outcomes": {
+        "safe_recovery": 6
+      },
+      "phase": "initial",
+      "policy": "q",
+      "split": "validation"
+    },
+    {
+      "count": 5,
+      "credits": {
+        "1.0": 5
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "floor_change": 4
+      },
+      "outcomes": {
+        "safe_recovery": 5
+      },
+      "phase": "teacher",
+      "policy": "retreat",
+      "split": "train"
+    },
+    {
+      "count": 10,
+      "credits": {
+        "-1.0": 2,
+        "1.0": 8
+      },
+      "handoffs": {
+        "budget_alive": 1,
+        "death": 1,
+        "floor_change": 7
+      },
+      "outcomes": {
+        "death": 1,
+        "safe_recovery": 9
+      },
+      "phase": "train",
+      "policy": "q",
+      "split": "train"
+    }
+  ],
+  "imitation_accuracy": 1,
+  "production_export": false,
+  "trials": 59,
+  "artifact_root": ".webtiles/bench/tactical/artifacts/rl-replay-pilot-v1",
+  "implementation_commit": "7bcf50c",
+  "hashes": [
+    "c5e57cad0fccdbd54e2243b776c471343f055e50725b9a4d6cb30f4b51932d74  .webtiles/bench/tactical/artifacts/rl-replay-pilot-v1/manifest.json",
+    "9d81104c23feea23b50542b210c9279a7a7b31a680578e716046c1117289b806  .webtiles/bench/tactical/artifacts/rl-replay-pilot-v1/results.json",
+    "0c794ed258ab4e810a4e43dc2abaf46f9030c54bfed8bba861c428627354f4f8  .webtiles/bench/tactical/artifacts/rl-replay-pilot-v1/model.json",
+    "be8bc7b516bd73ab0038c00f9aa698538efc9e0f121b68bddeee157c41def512  .webtiles/bench/tactical/artifacts/rl-replay-pilot-v1/imitation.json",
+    "863c1f77b9506bdbbd135536fadf9e50424cc72207f71592fbef339886f8551f  .webtiles/bench/tactical/artifacts/rl-replay-pilot-v1/demonstrations.json"
+  ],
+  "harness_errors": 0,
+  "reserved_test_executed": false,
+  "limitations": [
+    "One validation seed; six correlated checkpoints, one rollout each.",
+    "Bounded follow-up credit is not floor clearance or permanent recovery.",
+    "Different data and shield from previous online-Q run; not a controlled algorithm-only ablation."
+  ],
+  "finding": "Final Q recovers centaur training case but loses D7 during fixed RC continuation after 33 decisions. Frozen imitation remains stronger on selected checkpoints.",
+  "tests": "62 Python tests plus 3 direct transport and 10 learned-hook cases passed."
+}

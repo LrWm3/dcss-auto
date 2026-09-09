@@ -1560,3 +1560,19 @@ the learning source. REPLAY-PILOT.md describes objective and limitations.
 Launched rl-replay-pilot-v1:5training cases,6validation cases,10online episodes,
 59planned trials including frozen RC/imitation/initial-Q/final-Q comparisons.
 Reserved test excluded; no production RC changes or model deployment.
+
+Completed59/59, zero harness errors.381audited-positive demo actions with100%
+imitation fit. Training-case positive audited outcomes: RC3/5, imitation5/5,
+initial Q4/5, final Q4/5. All three initial policies and final Q pass6/6validation
+checkpoints. Online episodes8positive/2death. Final Q fixes its initial centaur
+failure but losesD7:21tactical decisions to proxy recovery, then death33RC
+decisions later. New credit correctly marks this -1 rather than +100. Another
+training D7 apparent recovery dies110RC decisions later and is also negative.
+
+This does not beat frozen imitation. Validation has only one seed and results
+are not directly an algorithm-only comparison to the old larger-corpus run.
+Keep imitation as experimental reference; do not scale/deploy this learner yet.
+Next candidate: learn selection among coherent existing tactics, with explicit
+handoff timing, instead of choosing individual movement keys with linear values.
+Evidence tactical/evidence/rl-replay-pilot-v1.json includes artifact/model hashes.
+62Python tests plus3direct transport and10learned-hook checks pass; diff clean.
