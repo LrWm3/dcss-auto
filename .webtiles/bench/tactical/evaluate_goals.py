@@ -19,6 +19,18 @@ def select_cases(index,reference):
     return [dict(e,cohort='unseen_seed' if e['seed'] not in seeds else 'familiar_seed_new_case')
             for e in index['cases'] if e['eligible'] and e['id'] not in ids]
 
+def select_fresh_cases(index,reference,reservation,partitions):
+    reserved=set(reservation['evaluation_only'])
+    used={e['seed'] for e in reference['train']+reference['validation']}
+    used.update(s for group in ('train','validation','test') for s in partitions[group])
+    if reserved & used: raise ValueError('Fresh seed overlaps existing development seeds')
+    if reservation['model_sha256']!=MODEL_SHA: raise ValueError('Reservation model mismatch')
+    entries=[dict(e,cohort='fresh_seed') for e in index['cases'] if e['eligible']]
+    if not entries or any(e['seed'] not in reserved for e in entries):
+        raise ValueError('Unreserved or empty fresh evaluation')
+    if len({e['id'] for e in entries})!=len(entries): raise ValueError('Duplicate case ID')
+    return entries
+
 def check_entry(e):
     case=Path(e['case']);meta=json.loads((case/'case.json').read_text())
     if not meta.get('training_ready'): raise ValueError('Unverified original checkpoint')
@@ -33,6 +45,7 @@ def main():
     p.add_argument('--jobs',type=int,default=6)
     p.add_argument('--revised-controllers',action='store_true',help='Explicitly evaluate changed controller sources; never fit weights')
     p.add_argument('--case-id',action='append',help='Restrict to exact unused case IDs for targeted regression tests')
+    p.add_argument('--fresh-evaluation',action='store_true',help='Use the separately reserved, hash-pinned fresh encounter collection')
     a=p.parse_args()
     reference_path=HERE/'artifacts/goals-trained-v3/manifest.json'
     if sha(reference_path)!=REFERENCE_SHA: raise ValueError('Training manifest changed')
@@ -43,8 +56,17 @@ def main():
     if sha(model_path)!=MODEL_SHA: raise ValueError('Frozen model changed')
     model=json.loads(model_path.read_text());original=copy.deepcopy(model)
     index_path=HERE/'artifacts/development-dataset-v3/index.json'
-    if sha(index_path)!=reference['dataset_sha256']: raise ValueError('Dataset changed')
-    entries=select_cases(json.loads(index_path.read_text()),reference)
+    reservation_path=HERE/'fresh-evaluation-seeds-v1.json'
+    if a.fresh_evaluation:
+        index_path=HERE/'artifacts/mining-fresh-evaluation-v2/verified-dataset/index.json'
+        evidence=json.loads((HERE/'evidence/mining-fresh-evaluation-v2.json').read_text())
+        if sha(index_path)!=evidence['artifact_hashes']['verified-dataset/index.json']:
+            raise ValueError('Fresh dataset changed')
+        entries=select_fresh_cases(json.loads(index_path.read_text()),reference,
+            json.loads(reservation_path.read_text()),json.loads((HERE/'dataset-split-v1.json').read_text()))
+    else:
+        if sha(index_path)!=reference['dataset_sha256']: raise ValueError('Dataset changed')
+        entries=select_cases(json.loads(index_path.read_text()),reference)
     if a.case_id:
         if set(a.case_id)-{e['id'] for e in entries}: raise ValueError('Unknown/non-evaluation case ID')
         entries=[e for e in entries if e['id'] in a.case_id]
@@ -56,8 +78,11 @@ def main():
         sources={n:sha(HERE/n) for n in SOURCES+('evaluate_goals.py',)},
         fitting=False,production_export=False,
         revised_controllers=a.revised_controllers,reference_sources=reference['sources'],
+        fresh_evaluation=a.fresh_evaluation,
+        reservation_sha256=sha(reservation_path) if a.fresh_evaluation else None,
         reserved_test_executed=any(e['seed']=='83017004' for e in entries),
-        cohort_note='Unseen means unused by this selector; historical encounters are not prospectively fresh seeds.'))
+        cohort_note=('Prospectively reserved new seeds; baseline difficulty-selected D1-D7 encounters, not full-game performance.' if a.fresh_evaluation else
+                     'Unseen means unused by this selector; historical encounters are not prospectively fresh seeds.')))
     checks=[];cases={}
     def verify(i,e):
         check=dict(case_id=e['id'],seed=e['seed'],cohort=e['cohort'],passed=False)
@@ -92,7 +117,8 @@ def main():
         for f in as_completed(fs):
             e,policy=fs[f];r=f.result()
             r.update(phase=e['cohort'],cohort=e['cohort'],policy=policy,
-                     split='evaluation_only',dataset_partition='test' if e['seed']=='83017004' else 'train')
+                     split='evaluation_only',dataset_partition=('fresh_evaluation' if a.fresh_evaluation else
+                         'test' if e['seed']=='83017004' else 'train'))
             results.append(r);write(root/'results.json',results)
             print(json.dumps({k:r.get(k) for k in ('cohort','case_id','policy','option','outcome','error')}),flush=True)
     if model!=original or sha(model_path)!=MODEL_SHA: raise ValueError('Model mutated')
