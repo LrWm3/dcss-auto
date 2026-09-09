@@ -25,7 +25,7 @@ def normalized(s):
 
 def projection(s):
     return {k:v for k,v in normalized(s).items() if k not in
-        ('goal_version','position','known','anchors','unseen','can_berserk','seq','messages')}
+        ('goal_version','position','known','anchors','unseen','can_berserk','attack_ranges','seq','messages')}
 
 def options(s): return [g+':'+str(b) for g in available(s) for b in (0,1)]
 

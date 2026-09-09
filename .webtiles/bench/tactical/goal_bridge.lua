@@ -1,7 +1,13 @@
 -- Lab-only extension, inside the original RC lexical scope. No map revelation.
 local goal_floor
 function goal_observation(state)
-  observe_encounter(scan_hostiles())
+  local scan=scan_hostiles()
+  observe_encounter(scan)
+  state.attack_ranges={}
+  for _,e in ipairs(scan.monsters) do
+    local m=e.monster
+    state.attack_ranges[map_key(e.x,e.y)]={reach=m:reach_range(),range=m:range()}
+  end
   if goal_floor~=level_key() then
     travel.set_waypoint(8,0,0); goal_floor=level_key()
   end

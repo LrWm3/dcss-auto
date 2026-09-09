@@ -1818,3 +1818,29 @@ Report: tactical/GOALS-BROAD-V1.md. Evidence: tactical/evidence/goals-broad-v1.j
 pins raw results, analysis, audit, reset checks, sources, morgues and separate
 retry. Added frozen-evaluation and paired-summary tests; full suite passes
 112 Python tests plus three direct-transport and ten model-hook Lua checks.
+
+## 2026-09-09 — controller fixes before retraining
+
+Kept goal-selector-v1 weights and production RC unchanged. First fixes (141ca81)
+add withheld-aware legal approach while mesmerised, immediate lure-to-withdraw
+dispatch, persistent withdrawal despite old pursuit counters, and verified
+current-reset death-morgue fallback for terminal redraw misses. The first pilot
+recovered three of four prior selector deaths, but a conservative two-tile enemy
+heuristic retreated prematurely from a kobold and still died to Sigmund.
+
+Replaced that heuristic with exposed monster range/reach_range observations,
+without adding model features. Refined goals-fixes-pilot-v2 recovered all four
+prior selector deaths with unchanged choices; 28 rows: 23 recoveries, three deaths,
+two unavailable options. All 23 successes independently audited. Fixed pursuit
+without berserk still dies on D7 and regresses on Maggie, so not every controller
+combination improved. Report in tactical/GOALS-FIXES-V2.md.
+
+Launched goals-fixes-broad-v2 against all 49 prior evaluation cases, selector plus
+six fixed combinations, no fitting. Forty-eight reset checks passed; one original
+parent startup hit the known intermittent Lair-map parser failure. Separate
+goals-fixes-broad-v2-retry reverified that case and recovered on all seven options,
+with all seven successes audited. Preserve the failed startup record. The broader
+trial comparison is still in progress; do not treat this launch entry as final.
+
+127 Python tests plus 13 existing Lua checks pass. Old harness-bound training
+caches now correctly reject the changed bench.py hash; no cache checks bypassed.

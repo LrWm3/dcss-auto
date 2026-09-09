@@ -45,5 +45,21 @@ class GoalBridgeTest(unittest.TestCase):
         lua=self.runtime();lua.execute('BOT.ally_attack_rejected=true;goal_safety()')
         self.assertEqual(lua.globals().commands[1],'CMD_WAIT')
         self.assertFalse(lua.globals().BOT.ally_attack_rejected)
+    def test_observation_exports_withheld_and_known_attack_ranges(self):
+        lua=self.runtime()
+        lua.execute('''
+        level_key=function() return 'D:6' end
+        travel={set_waypoint=function() end,waypoint_delta=function() return 0,0 end}
+        view={get_map=function() return {{x=1,y=0,feature='floor',traversable=true}} end,
+              withheld=function(x,y) return x==1 and y==0 end}
+        you.ability_info=function() return {} end
+        scan.monsters={{x=2,y=0,monster={range=function() return 7 end,
+                                      reach_range=function() return 2 end}}}
+        state={}; goal_observation(state)
+        ''')
+        s=lua.globals().state
+        self.assertTrue(s.known['1:0'].withheld)
+        self.assertEqual(s.attack_ranges['2:0'].reach,2)
+        self.assertEqual(s.attack_ranges['2:0'].range,7)
 
 if __name__=='__main__': unittest.main()

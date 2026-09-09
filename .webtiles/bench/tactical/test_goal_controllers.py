@@ -74,8 +74,18 @@ class GoalsTest(unittest.TestCase):
         with self.assertRaises(ValueError): Controller('withdraw')(s)
     def test_reach_enemy_interrupts_hold(self):
         s=enemy(state(),2);c=Controller('defend');c.floor=s['floor']
+        s['attack_ranges']={'2:0':dict(reach=2,range=2)}
         c.target=(0,0);c.origin=(0,0)
         self.assertIn(c(s),('w','nw','sw'));self.assertEqual(c.goal,'withdraw')
+    def test_ordinary_two_tile_enemy_can_be_lured(self):
+        s=enemy(state(),2);s['monsters']['1']['threat']=0
+        s['attack_ranges']={'2:0':dict(reach=1,range=7)}
+        c=Controller('defend');c.floor=s['floor'];c.target=(0,0);c.origin=(0,0)
+        self.assertEqual(c(s),'wait')
+    def test_ranged_caster_interrupts_hold_before_damage(self):
+        s=enemy(state(),5);s['attack_ranges']={'5:0':dict(reach=2,range=7)}
+        c=Controller('defend');c.floor=s['floor'];c.target=(0,0);c.origin=(0,0)
+        self.assertIn(c(s),('w','nw','sw'))
     def test_damage_interrupts_distant_lure(self):
         s=enemy(state(),5);c=Controller('defend');c.floor=s['floor']
         c.target=(0,0);c.origin=(0,0)
@@ -93,6 +103,12 @@ class GoalsTest(unittest.TestCase):
         s=enemy(state(),1);s['status']='mesmerised'
         self.assertEqual(Controller('pursue',False)(s),'melee')
         self.assertEqual(Controller('pursue',True)(s),'berserk')
+    def test_mesmerised_never_steps_onto_forbidden_or_occupied_tile(self):
+        s=enemy(state(),3);s['status']='mesmerised'
+        for c in s['known'].values():
+            if max(abs(c['x']),abs(c['y']))==1: c['withheld']=True
+        s['known']['1:0']['withheld']=False;s['known']['1:0']['occupied']=True
+        self.assertEqual(Controller('pursue')(s),'safety')
     def test_withdraw_not_reversed_by_old_pursuit(self):
         s=enemy(state(),3);c=Controller('withdraw');c(s)
         c.pursuit=4;c.peak=0;c.enemy_count=0

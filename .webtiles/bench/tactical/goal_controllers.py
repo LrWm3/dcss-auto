@@ -24,6 +24,12 @@ def terrain(c):
 def geometry(s):
     return {point(c):c for c in s.get('known',{}).values()}
 
+def ranged_danger(s,e):
+    r=s.get('attack_ranges',{}).get(f"{e['x']}:{e['y']}",{})
+    d=dist(point(e))
+    return d>1 and ((r.get('reach',1)>=d and e['threat']>=1) or
+                    (r.get('range',1)>=d and e['threat']>=2))
+
 def paths(s, limit=100, ignore_occupied=False, frontier=True):
     """Dijkstra favors avoiding hostile adjacency, without assuming unseen safety."""
     cells=geometry(s); es=enemies(s); queue=[(0,0,(0,0))]
@@ -182,12 +188,12 @@ class Controller:
             self.fallback(s,'new threats during pursuit: reassess')
         self.peak=max(self.peak,peak); self.enemy_count=len(es)
         # A choke is not defensive if a non-adjacent enemy is already hurting us.
-        # Conservatively treat two-tile enemies as possible reach users, and
-        # distant red threats as unsafe to lure. No hidden weapon knowledge.
+        # Use player-exposed attack ranges, not enemy names or guessed weapons.
+        # A weak stone-throwing kobold alone need not trigger a long withdrawal.
         unsafe_hold=not adjacent and any(e.get('reachable') and
-            (damaged or dist(point(e))==2 or e['threat']>=3) for e in es)
+            (damaged or ranged_danger(s,e)) for e in es)
         if self.goal=='defend' and unsafe_hold:
-            self.fallback(s,'unsafe hold: damage, possible reach, or distant red threat')
+            self.fallback(s,'unsafe hold: damage or known ranged/reaching threat')
         # Do not rage merely because foes are visible: only actual close fighting.
         # Independent permission applies even to withdrawal blockers.
         if self.target is not None:
