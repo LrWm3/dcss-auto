@@ -2107,7 +2107,7 @@ retains traces and exports all complete verified training rows plus a mixed
 win/loss subset. Separate character_audit loader rechecks provenance/features,
 seed splits and outcome evidence before use. See tactical/CHARACTER-DATASET.md.
 
-## 2026-09-10 — retrain rich V2 selector on character profiles
+## 2026-09-09 — retrain rich V2 selector on character profiles
 
 Character-training-v1 completed and audited:216 verified profiles across12
 training seeds,1296 policy trials,1176 eligible terminal training rows.46 mixed
