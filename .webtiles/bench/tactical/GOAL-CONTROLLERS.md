@@ -203,3 +203,12 @@ successful fixed alternatives; one death required morgue adjudication because
 the terminal parser missed it. See the report for defensive-wait, mesmerisation,
 and harness findings. The expanded suite now has 112 Python tests plus the
 existing three direct-transport and ten model-hook Lua checks.
+
+Follow-up controller fixes, without retraining:
+[GOALS-FIXES-V2.md](GOALS-FIXES-V2.md). The same 49 initial model choices and
+feature dictionaries now yield 49/49 recoveries. The complete 343-row comparison
+has 325 audited recoveries, six deaths and 12 unavailable choices. Four fixed
+combinations regressed, none selected by the model. These are tuned historical
+checkpoints, not fresh held-out testing or full-game validation. Revised-source
+evaluation requires the explicit `--revised-controllers` flag; old source-bound
+training caches remain invalid. Production RC and model weights are unchanged.

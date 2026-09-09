@@ -1844,3 +1844,21 @@ trial comparison is still in progress; do not treat this launch entry as final.
 
 127 Python tests plus 13 existing Lua checks pass. Old harness-bound training
 caches now correctly reject the changed bench.py hash; no cache checks bypassed.
+
+### Completed broader controller-fix comparison
+
+Frozen source revision de7e3f6: selector 49/49 recovered, previously 45/49, with
+all choices and input features unchanged. Seed 83018004 improves 2/5 to 5/5;
+83018005 improves 5/6 to 6/6. Combined 343 rows: 325 recoveries, six deaths,
+12 masked choices; 22,855 decisions. All 325 successful traces independently
+audited; no stalls or truncations. Four fixed-policy regressions remain, none
+selected by the model. No fitting, production deployment or engine changes.
+
+Two pre-decision Lair-map startup failures are preserved. Separate unchanged-source
+retries passed reset checks and all seven options each; the combined artifact
+fills the quarantined case and replaces only the zero-decision error, with six
+duplicate successful repeats agreeing. An excluded diagnostic using the old
+controller reproduced the poison death in 52 decisions and exercised the new
+verified-morgue terminal detector. Evidence: tactical/evidence/goals-fixes-v2.json;
+report: tactical/GOALS-FIXES-V2.md. These historical cases are now tuned regression
+tests, not an untouched test set; next generalization evidence needs fresh seeds.

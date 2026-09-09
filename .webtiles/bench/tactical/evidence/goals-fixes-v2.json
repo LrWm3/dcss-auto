@@ -1,0 +1,385 @@
+{
+  "analysis": {
+    "by_cohort": {
+      "familiar_seed_new_case": {
+        "defend:0": {
+          "death": 1,
+          "masked": 1,
+          "recovered_quiet": 23
+        },
+        "defend:1": {
+          "masked": 1,
+          "recovered_quiet": 24
+        },
+        "pursue:0": {
+          "death": 2,
+          "recovered_quiet": 23
+        },
+        "pursue:1": {
+          "death": 1,
+          "recovered_quiet": 24
+        },
+        "selector": {
+          "recovered_quiet": 25
+        },
+        "withdraw:0": {
+          "masked": 1,
+          "recovered_quiet": 24
+        },
+        "withdraw:1": {
+          "masked": 1,
+          "recovered_quiet": 24
+        }
+      },
+      "unseen_seed": {
+        "defend:0": {
+          "death": 1,
+          "recovered_quiet": 23
+        },
+        "defend:1": {
+          "recovered_quiet": 24
+        },
+        "pursue:0": {
+          "death": 1,
+          "recovered_quiet": 23
+        },
+        "pursue:1": {
+          "recovered_quiet": 24
+        },
+        "selector": {
+          "recovered_quiet": 24
+        },
+        "withdraw:0": {
+          "masked": 4,
+          "recovered_quiet": 20
+        },
+        "withdraw:1": {
+          "masked": 4,
+          "recovered_quiet": 20
+        }
+      }
+    },
+    "by_seed": {
+      "83017001": {
+        "recovered_quiet": 6
+      },
+      "83017002": {
+        "recovered_quiet": 5
+      },
+      "83017004": {
+        "recovered_quiet": 6
+      },
+      "83017005": {
+        "recovered_quiet": 5
+      },
+      "83018001": {
+        "recovered_quiet": 6
+      },
+      "83018002": {
+        "recovered_quiet": 5
+      },
+      "83018003": {
+        "recovered_quiet": 5
+      },
+      "83018004": {
+        "recovered_quiet": 5
+      },
+      "83018005": {
+        "recovered_quiet": 6
+      }
+    },
+    "failure_types": {},
+    "failures": [],
+    "repeat_mismatches": [],
+    "selector_decisions": 3238
+  },
+  "artifacts_sha256": {
+    "goals-broad-v1": {
+      "analysis.json": "dcbd6348503549c73f38be5d5cad29955705eff1544af220dfafa9453612cf1c",
+      "audit.json": "5984611cb7e8ea22e287778267c8377d762eda53b6de8eeeb2c0f5cf3182af99",
+      "manifest.json": "860a553ec76a5706f31e8dadbe06e8d28c4fb533790fc25c2cb060fa1ee11890",
+      "reset-checks.json": "c2ce6d24ee74073bb9a7dc3b8a662969ef3cd7ca87e1e97947d5ae60e50cd3ab",
+      "results.json": "a5a9b8ce0f937ce1fbbb9de8dcf0b6d1a6d0604a5a56fbc879a7f6f079ed6e4a",
+      "startup-error-retry.json": "8c8844efe05b3a4579de5ab64a48e3d2f1f649f8b5d5536547ce0d31ba106e4a",
+      "summary.json": "685a202d8360b77e890d36af1012ad35aa859d15939a3d0768356ce6556bf209"
+    },
+    "goals-fixes-broad-v2": {
+      "manifest.json": "4a04e4dc008119744aafd0e9ae7aec4fac8c93af28cba20c9ba4afdf9e2694bb",
+      "reset-checks.json": "f6efc0878dffb9996ef28f0beaa57638a299b5cb6ddf527f7e836a383a6aa6c7",
+      "results.json": "65f02c9539e7214aeb4c3d4a5abdb06b088a6a81f6f3e0f108382a8bd10ea3ea",
+      "summary.json": "1d21fd70e0d87557636f44c4cb2df9924952b2d949cc2391311c56c8f4e033cc"
+    },
+    "goals-fixes-broad-v2-combined": {
+      "analysis.json": "662b01976a07f1218bc5af4a186a829dee6d2a319ffec5f32a2ee635c31d7584",
+      "audit.json": "40e33a8fbf70011c0207d14632d6db47e8669157f2da846917c8832d799a7688",
+      "comparison.json": "627ae296f63478aaca8571df98e6dad726a222878b20580c9c88ca536c10e9b3",
+      "manifest.json": "a68cd8d3ca14319069c6c683e696c9885a89bbde8da7bd43453449dbcd4b04fc",
+      "reset-checks.json": "50d9e96c3fc32254a0c86d28263c5f6847841a2a8b1638b32088a190c6b6aaa6",
+      "results.json": "49a7cd167ae8cc6f832542c14859770a38e4e0cf0c6278ec2af70c6bd0df840d"
+    },
+    "goals-fixes-broad-v2-retry": {
+      "audit.json": "4bd7f7605fae1376974a4202da128b1abb01648b72f0faf64adedd18def50cfa",
+      "manifest.json": "e3d1786bbf97e8c233ce28b1c6ac5b4488adf9015c628b93921d484c5c420687",
+      "reset-checks.json": "c1a7eccca89874ee3fac2fa25b58f1b9984f835dcba4bbf60eb1e109169863fc",
+      "results.json": "0cff67de6f9e54e089a32ddb51424cac087d0bf7a3093544cb0954e2e8577e23",
+      "summary.json": "b8c0f6c9b1e567773dc68a6a044e94259a061ae2bef74dbc6e4a62ecc12aa254"
+    },
+    "goals-fixes-broad-v2-retry2": {
+      "audit.json": "5de2e2f98ff5d0716034ac97b6d44bd4bb742f0bc87af794eddb4a08a22417f4",
+      "manifest.json": "da9d6e2616b7794435f6726cb1e95096880c5d6d940d7623d657c8c82be38a76",
+      "reset-checks.json": "4b73a32d8cbcdbdd08ce4680dd3cd2622229ffe9b87f986c33712c15ce87c917",
+      "results.json": "647e31ac96386ec1388d1a3edb3bf434470ec2217d1b02fdb23adf32a342cda5",
+      "summary.json": "958ff1e2fdb01986b9e74458beedbe24b54f3f41ff58bd697248edbe0dd11fa3"
+    },
+    "goals-fixes-death-regression": {
+      "manifest.json": "b557c12fcbd0b633358aca86a3bac87d3867d5f8789d88fbdea6033c96daae99",
+      "result.json": "4bb65a184d42d49734e3be7670b10b5a228194369b2d6e6f7241c2a1e7a8f321"
+    },
+    "goals-fixes-pilot-v1": {
+      "audit.json": "66f28de1e4c188484950638c84d68076a04da2cbb5698e75de78f789f530f235",
+      "manifest.json": "119475889ef19b737deeb3e6562a5169f9628e3f93c5b79cd8248d52a8bf16cb",
+      "reset-checks.json": "5f74b9858494c2e4511a069bc3410b7fc7e1b51ff174fa2fd1f8e5eb3e368878",
+      "results.json": "5963c7afbe72241f1404a6a0de60b68df1053c365e8db98bbc006fb75ab916ef",
+      "summary.json": "c193f205c94377c18a66562adc78ec7a0867bc575239e7d28636cbc560ae5cbd"
+    },
+    "goals-fixes-pilot-v2": {
+      "audit.json": "d7d9b2a7bfdd7491e421192c3b9e9ab707bbb47d4b255c6baa0ddd63cf7df0d8",
+      "manifest.json": "48724be6e6d757136d9e829cc2eca0eb907cadfa95f476e26f9292aed7d63716",
+      "reset-checks.json": "9fea727dea4d9bf1af98c3310ed9b271504a507d065579b0d2b379315f286b40",
+      "results.json": "7481a0d82b7f9bafc395d1933fc9a1cbbdf71fbc2b56e8a1e32e214ca0dd8d9c",
+      "summary.json": "23276b8098e0fda6976536a22a047b51028078c4604e53efc14467dbacf69e28"
+    }
+  },
+  "audited_success_boundaries": 325,
+  "by_policy": {
+    "defend:0": {
+      "death": 2,
+      "masked": 1,
+      "recovered_quiet": 46
+    },
+    "defend:1": {
+      "masked": 1,
+      "recovered_quiet": 48
+    },
+    "pursue:0": {
+      "death": 3,
+      "recovered_quiet": 46
+    },
+    "pursue:1": {
+      "death": 1,
+      "recovered_quiet": 48
+    },
+    "selector": {
+      "recovered_quiet": 49
+    },
+    "withdraw:0": {
+      "masked": 5,
+      "recovered_quiet": 44
+    },
+    "withdraw:1": {
+      "masked": 5,
+      "recovered_quiet": 44
+    }
+  },
+  "comparison": {
+    "changes": [
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-deeper-v1/collection/encounter-009",
+        "policy": "pursue:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-deeper-v1/collection/encounter-009",
+        "policy": "pursue:1"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-deeper-v1/collection/encounter-009",
+        "policy": "defend:1"
+      },
+      {
+        "after": "death",
+        "before": "recovered_quiet",
+        "case_id": "mining-deeper-v1/collection/encounter-015",
+        "policy": "pursue:1"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-005",
+        "policy": "selector"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-005",
+        "policy": "pursue:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-005",
+        "policy": "defend:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-005",
+        "policy": "defend:1"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-008",
+        "policy": "defend:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-009",
+        "policy": "selector"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-009",
+        "policy": "defend:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-009",
+        "policy": "defend:1"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-008",
+        "policy": "pursue:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-014",
+        "policy": "pursue:1"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "harness_error",
+        "case_id": "mining-fresh-training-v1/collection/encounter-019",
+        "policy": "selector"
+      },
+      {
+        "after": "death",
+        "before": "recovered_quiet",
+        "case_id": "mining-fresh-training-v1/collection/encounter-019",
+        "policy": "defend:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "harness_error",
+        "case_id": "mining-fresh-training-v1/collection/encounter-019",
+        "policy": "defend:1"
+      },
+      {
+        "after": "death",
+        "before": "recovered_quiet",
+        "case_id": "mining-fresh-training-v1/collection/encounter-024",
+        "policy": "pursue:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-024",
+        "policy": "selector"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-024",
+        "policy": "defend:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-024",
+        "policy": "withdraw:0"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-024",
+        "policy": "withdraw:1"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "death",
+        "case_id": "mining-fresh-training-v1/collection/encounter-024",
+        "policy": "defend:1"
+      },
+      {
+        "after": "recovered_quiet",
+        "before": "harness_error",
+        "case_id": "mining-fresh-training-v1/collection/encounter-027",
+        "policy": "withdraw:0"
+      },
+      {
+        "after": "death",
+        "before": "recovered_quiet",
+        "case_id": "mining-fresh-training-v1/collection/encounter-030",
+        "policy": "defend:0"
+      }
+    ],
+    "selector_choice_changes": [],
+    "selector_feature_changes": [],
+    "selector_recovered_after": 49,
+    "selector_recovered_before": 45
+  },
+  "controller_commit": "de7e3f6",
+  "dataset_sha256": "de0b169e3abd5dff5b01876da8a1786da720a61e27542e89e535a8cc9e3f84d4",
+  "date": "2026-09-09",
+  "death_detector_regression": {
+    "decisions": 52,
+    "excluded_from_comparison": true,
+    "morgue_sha256": "79701ccd542b4ef5695119636e42124c27624b8ed4034fe4e968b421e4351c0f",
+    "old_controller_commit": "905792d",
+    "outcome": "death"
+  },
+  "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "existing_lua_checks_passed": 13,
+  "first_fix_commit": "141ca81",
+  "limitations": [
+    "Tuned historical D1-D7 encounter checkpoints, not fresh held-out or full-game testing.",
+    "Four fixed-policy recovery-to-death regressions retained; none chosen by frozen selector."
+  ],
+  "model_fitted": false,
+  "model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "partition_sha256": "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae",
+  "production_deployed": false,
+  "production_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "python_tests_passed": 127,
+  "rows": 343,
+  "sources": {
+    "bench.py": "c792dce99d0bca835d1d301d6ef1d9652990bf4f4beca99553be8e602231fe8d",
+    "dataset_splits.py": "2af5fb2ced813b1b37ff194e9a794a18837ca54b8294a8066d92035aebbd7f1c",
+    "evaluate_goals.py": "e7121a7034b18d5f36e98d5b71099fbe4cf720f93552c56420b771392423dc90",
+    "experiment.py": "439ba77e280105ed45a57deb698c1564a21966b649ef66f032ba38e52421373c",
+    "goal_bridge.lua": "f43162cb860452756173ac94d7a671d9a5831848bb7de12d488a46a1acbef0cf",
+    "goal_controllers.py": "1ca4e44cad06d9afa955ef75d214d68d9d871d9a332d76e6fe90798a41adc1f1",
+    "goal_env.py": "380b053b5e208656b0ef1fac26e407837f15844e230c72bada13d489b2d9f2b8",
+    "run_goals.py": "9b3a84764837cb1f4c0fb70b8c45c51cd55803a176cef6ea5eda4fefa94a3114",
+    "train_encounters.py": "c3d37437b32507e40c8c815d8ea2aa07eda015ea3442eee2fca9ff1a9a8f54dc"
+  },
+  "startup_reconciliation": {
+    "cause": "Lair regret_index_lairdec_grave_grove map-parser error",
+    "duplicate_completed_outcomes_agreed": 6,
+    "originals_preserved": true,
+    "parent_startup_errors": 1,
+    "zero_decision_trial_startup_errors": 1
+  },
+  "untouched_test": false
+}

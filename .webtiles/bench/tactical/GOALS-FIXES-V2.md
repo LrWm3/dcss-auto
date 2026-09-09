@@ -15,8 +15,9 @@ endpoint and budgets as `goals-broad-v1`.
   enemy. The observation adapter exports the existing player-facing monster
   `range()` and `reach_range()` information. These do not enter model features.
   Weak stone-throwing enemies are not automatically reasons for a long retreat.
-- Switching from holding to withdrawal now executes a withdrawal step immediately,
-  instead of falling through into pursuit. Old pursuit counters cannot reverse
+- Switching after an exhausted lure allowance to withdrawal now executes a
+  withdrawal step immediately, instead of falling through into pursuit.
+  Old pursuit counters cannot reverse
   an ongoing withdrawal when a new enemy appears.
 - A missed terminal death message can be verified from the current reset's private
   death morgue. Character identity, seed, zero HP and non-stale turn must match.
@@ -68,3 +69,67 @@ change; do not bypass their provenance checks to reuse old labels.
 The legal-approach controller is intentionally small. It does not guarantee an
 escape from multiple beholders or route around every obstacle; when no useful
 legal neighbor exists, bounded safety handling can still end unresolved.
+
+## Completed broader comparison
+
+The unchanged selector recovered **49/49**, up from **45/49**. All 49 selected
+options and their input feature dictionaries were identical to the baseline.
+All 49 selected outcomes matched the corresponding revised fixed-option replay.
+The weakest prior seed, 83018004, improved from 2/5 to 5/5; 83018005 improved
+from 5/6 to 6/6. The other seven seeds retained all their selector recoveries.
+
+| Controller | Revised recovery | Unavailable |
+| --- | --- | --- |
+| Selector | 49/49 | 0 |
+| Withdraw, no berserk | 44/44 available | 5 |
+| Withdraw, berserk permitted | 44/44 available | 5 |
+| Defend, no berserk | 46/48 available | 1 |
+| Defend, berserk permitted | 48/48 available | 1 |
+| Pursue, no berserk | 46/49 | 0 |
+| Pursue, berserk permitted | 48/49 | 0 |
+
+The reconciled 343 combinations contain 325 recoveries, six deaths and 12
+unavailable choices, over 22,855 recorded controller decisions. No unresolved
+stall, no-turn stall or budget truncation occurred. Availability denominators
+differ: an always-withdraw policy does not cover all 49 cases.
+
+Four fixed combinations changed from recovery to death:
+
+- `mining-deeper-v1/collection/encounter-015`: pursue with berserk permitted.
+- `mining-fresh-training-v1/collection/encounter-019`: defend without berserk.
+- `mining-fresh-training-v1/collection/encounter-024`: pursue without berserk.
+- `mining-fresh-training-v1/collection/encounter-030`: defend without berserk.
+
+None was the selector's chosen combination. These regressions are retained,
+not removed from the benchmark. They caution against treating the revised
+controllers as universally better or assuming range-based retreat always helps.
+Berserk activation timing itself was not separately retuned in this iteration.
+
+### Startup errors and reconciliation
+
+The main run recorded 336 rows after quarantining one failed parent startup.
+Another trial exited before its first decision. Both printed the pre-existing
+Lair `regret_index_lairdec_grave_grove` map-parser error, not a game death.
+Two separate unchanged-source runs repeated the affected cases' reset checks and
+all seven choices. Both produced seven recoveries. The combined comparison fills
+the missing seven rows and replaces only the verified zero-decision startup-error
+row; six duplicate completed outcomes agreed and are not counted twice.
+
+All original files remain intact. The combined manifest records source/result
+hashes, the replaced worker and duplicate agreement. Artifacts:
+
+- `goals-fixes-broad-v2`: original 48-case execution and failed startup records.
+- `goals-fixes-broad-v2-retry`, `goals-fixes-broad-v2-retry2`: explicit repeats.
+- `goals-fixes-broad-v2-combined`: 49-case results, comparison and endpoint audit.
+- `goals-fixes-death-regression`: old controller/RC with the new detector, which
+  reproduced the previously missed poison death in 52 decisions and verified it
+  from the death morgue. This diagnostic is excluded from new-controller scores.
+
+No model fitting, dataset repartitioning, production deployment or engine change
+occurred. These are now tuned historical regression cases, not an untouched test.
+Fresh seed encounters and full-game integration should precede claims of broader
+generalization; fitting again on an already solved benchmark adds little evidence.
+
+All 325 successful traces passed the independent recovery-boundary audit.
+Verification also passed 127 Python tests and 13 existing Lua checks.
+Tracked provenance and comparison: [evidence/goals-fixes-v2.json](evidence/goals-fixes-v2.json).
