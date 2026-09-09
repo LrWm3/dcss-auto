@@ -86,3 +86,21 @@ floor-change metric implies clearance. These metrics do not change rewards.
 Artifacts preserve the full training matrix, source hashes, cached-label
 provenance, frozen model and all new trial results. Old corpora/models remain
 unchanged; this run does not deploy anything.
+
+## Conservative berserk selection
+
+`evaluate_conservative_options.py options-conservative-v1.json OUTPUT` evaluates
+the unchanged expanded model with one new selection rule: `rage_hold` must beat
+the best non-rage option by **more than 0.05** predicted reward. Otherwise use
+that alternative. The margin is a training-informed heuristic on fitted values,
+not a calibrated uncertainty estimate. No monster identities, floors, case IDs,
+or validation outcomes enter the rule. Delegated RC can still decide to berserk.
+
+The original selector and model remain unchanged. Training-label inspection
+identifies three changed decisions: D7 to retreat (repairs known failure), one
+already-successful case to RC, and the all-options-fail gnoll case to retreat.
+Eustachio's larger berserk advantage and Terence's RC choice remain unchanged.
+Margin is fixed before validation, no weight fitting is performed, and the
+runner replays all27training cases plus24frozen validation comparisons.
+Hash-pinned source model/matrix, selection scores/reasons and progress metrics
+are saved. Test seeds and production RC remain untouched.

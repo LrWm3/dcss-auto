@@ -1677,3 +1677,18 @@ should address representation/value-fit and conservative near-tie choices,
 using training evidence before another frozen comparison. Retain D7 as explicit
 regression check. Evidence tactical/evidence/options-expanded-v1.json pins model,
 matrix andresults. Reserved test and production RC unchanged; old models retained.
+
+## 2026-09-09 — conservative berserk regression fix
+
+D7 fitted scores rage_hold0.6955 vsretreat0.6878 expose a near-tie selecting an
+irreversible tactic despite its known training failure. Added separate selector
+wrapper requiring >0.05predicted reward advantage over best non-rage option.
+This is not a confidence estimate; no identity/floor exceptions. Model weights,
+old selector, four tactics and rewards unchanged. Training-only audit changes
+threechoices:D7to retreat, main017toRC (alloptionssucceed), main018to retreat
+(alloptionsfail). Eustachio and Terence successful choices preserved.
+
+Launched options-conservative-v1:27actual training replays then24validation
+comparisons, no fitting or deployment.79Python tests plus3transport/10model-hook
+checks passed before launch. Additional recorded-case regression assertions
+coverD7/Eustachio/Terence. This entry records the fix and launch, not completion.
