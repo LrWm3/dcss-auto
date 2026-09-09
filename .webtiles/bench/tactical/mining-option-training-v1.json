@@ -1,0 +1,10 @@
+{
+  "rc": ".webtiles/rcs/codex-autocrawl.rc",
+  "rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "seeds": ["83019001", "83019002", "83019003", "83019004"],
+  "partition": "train",
+  "target": 20,
+  "encounters_per_seed": 200,
+  "max_decisions": 2500,
+  "jobs": 4
+}

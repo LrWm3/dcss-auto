@@ -1607,3 +1607,12 @@ find cases where retreat fails and another tactic succeeds. Current tiny set
 does not require learned selection to match its best fixed policy. Keep all
 references and reserved test unchanged; no deployment or new seed collection
 performed in this turn. Handoff timing remains an explicit future extension.
+
+## 2026-09-08 — additional option-training collection
+
+Preassigned fresh seeds83019001..04 to training before discovery. Validation and
+test assignments unchanged. mining-option-training-v1 targets20verified
+checkpoints, ranked by fatal outcome/HP loss/threat/length, balanced across four
+seeds;2500discovery decisions per seed. Plan to screen hard captured encounters
+for retreat failures and alternative-tactic successes. This entry records seed
+assignment and planned collection, not completed data or model training.
