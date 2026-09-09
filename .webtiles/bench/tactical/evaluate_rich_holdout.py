@@ -9,13 +9,18 @@ from pathlib import Path
 from augmentation_dataset import inventory, read, verify_result
 from bench import HERE, ROOT, ENGINE, sha
 from character_dataset import canonical
-from check_rich_goals import original_projection
+from verify_resume import normalized
 from goal_env import GoalEnvironment
 from goal_controllers import Controller
 from rich_features import features
 from rich_goals import derive, run, select
 from run_goals import SOURCES
 from train_encounters import write
+
+
+def same_original(original, rich):
+    a, b = normalized(original), normalized(rich)
+    return all(k in b and v == b[k] for k,v in a.items())
 
 
 def family(task):
@@ -35,10 +40,10 @@ def family(task):
         initial = states[1]
         controller = Controller('pursue',False)
         for step in range(13):
-            assert original_projection(states[0]) == original_projection(states[1]) == original_projection(states[2])
-            assert canonical(states[1]) == canonical(states[2])
+            assert same_original(states[0],states[1]) and same_original(states[0],states[2]), 'Original gameplay fields changed'
+            assert canonical(states[1]) == canonical(states[2]), 'Rich replay mismatch'
             if step == 12 or states[0].get('terminal'): break
-            action = controller(states[0]); states = [env.step(action) for env in envs]
+            action = controller(states[1]); states = [env.step(action) for env in envs]
         result.update(prefix_verified=True, prefix_steps=step, initial=initial,
                       verification_workers=[str(env.work) for env in envs])
         for env in envs: env.close()
