@@ -1643,3 +1643,17 @@ not only visible enemy disappearance. Missing alternative trials are not labels.
 Evidence tactical/evidence/mining-option-training-v1.json pins datasets and screen
 results.69Python tests plus3transport/10model-hook checks pass. No model training,
 validation/test games, engine edits or production RC changes in this collection.
+
+## 2026-09-09 — expanded option matrix and frozen comparison launched
+
+Added train_options_expanded.py with pinned cache verification and namespaced
+case mapping. Config uses27training cases:original5plus22new, not all70available
+training cases. Reuses54verified option labels, runs54missing trials, requires
+complete108-row matrix before fitting the unchanged linear model/1000epochs.
+Then27actual frozen selector training replays and24validation comparisons
+(selector/retreat/RC/old frozen imitation on6checkpoints).105new game trials.
+Validation never fits weights; reserved test excluded. Progress metrics now
+separate bounded recovery, floor changes and same-branch descent; reward is
+unchanged. Imitation is explicitly the old five-case reference, not retrained.
+74Python tests plus3transport/10model-hook checks pass, including live cached
+matrix integrity and exclusion of validation IDs. This records launch only.

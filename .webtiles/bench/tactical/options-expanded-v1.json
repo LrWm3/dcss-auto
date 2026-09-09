@@ -1,0 +1,77 @@
+{
+  "dataset": ".webtiles/bench/tactical/artifacts/development-dataset-v3/index.json",
+  "dataset_sha256": "de0b169e3abd5dff5b01876da8a1786da720a61e27542e89e535a8cc9e3f84d4",
+  "evaluation_mode": "held_out",
+  "train_cases": [
+    "mining-deeper-v1/collection/encounter-005",
+    "mining-deeper-v1/collection/encounter-002",
+    "mining-fresh-training-v1/collection/encounter-002",
+    "mining-fresh-training-v1/collection/encounter-003",
+    "mining-fresh-training-v1/collection/encounter-004",
+    "mining-option-training-v1/collection/encounter-001",
+    "mining-option-training-v1/collection/encounter-002",
+    "mining-option-training-v1/collection/encounter-004",
+    "mining-option-training-v1/collection/encounter-005",
+    "mining-option-training-v1/collection/encounter-006",
+    "mining-option-training-v1/collection/encounter-007",
+    "mining-option-training-v1/collection/encounter-008",
+    "mining-option-training-v1/collection/encounter-009",
+    "mining-option-training-v1/collection/encounter-010",
+    "mining-option-training-v1/collection/encounter-011",
+    "mining-option-training-v1/collection/encounter-012",
+    "mining-option-training-v1/collection/encounter-013",
+    "mining-option-training-v1/collection/encounter-014",
+    "mining-option-training-v1/collection/encounter-015",
+    "mining-option-training-v1/collection/encounter-016",
+    "mining-option-training-v1/collection/encounter-017",
+    "mining-option-training-v1/collection/encounter-018",
+    "mining-option-training-v1/collection/encounter-019",
+    "mining-option-training-v1/collection/encounter-020",
+    "mining-option-training-retry-v1/collection/encounter-002",
+    "mining-option-training-retry-v1/collection/encounter-003",
+    "mining-option-training-retry-v1/collection/encounter-005"
+  ],
+  "eval_cases": [
+    "mining-deeper-v1/collection/encounter-003",
+    "mining-deeper-v1/collection/encounter-008",
+    "mining-deeper-v1/collection/encounter-013",
+    "mining-deeper-v1/collection/encounter-018",
+    "mining-deeper-v1/collection/encounter-023",
+    "mining-deeper-v1/collection/encounter-028"
+  ],
+  "episodes": 10,
+  "steps": 600,
+  "turns": 1500,
+  "handoff_steps": 600,
+  "eval_repeats": 1,
+  "alpha": 0.03,
+  "gamma": 1,
+  "epsilon": 0.05,
+  "random_seed": 42,
+  "jobs": 6,
+  "hazard_shield": true,
+  "fit_epochs": 1000,
+  "imitation_model": ".webtiles/bench/tactical/artifacts/rl-replay-pilot-v1/imitation.json",
+  "imitation_sha256": "be8bc7b516bd73ab0038c00f9aa698538efc9e0f121b68bddeee157c41def512",
+  "imitation_manifest_sha256": "c5e57cad0fccdbd54e2243b776c471343f055e50725b9a4d6cb30f4b51932d74",
+  "caches": [
+    {
+      "root": ".webtiles/bench/tactical/artifacts/options-pilot-v1",
+      "manifest_sha256": "2d92f826fe5e43328e347eb1d20a0894d89a889666231e42311031726c3a8f04",
+      "results_sha256": "66936dc2beb1389f26aea571cb88d612ea714786d8869cd41eb2bcaa8f094f83",
+      "labels_sha256": "c9bf0fe60178222015121131d18ad423300619093c5df772f55bd886b4096cc3"
+    },
+    {
+      "root": ".webtiles/bench/tactical/artifacts/screen-option-training-v1",
+      "manifest_sha256": "b0676c6d43fe2aaedf81f71cd01cf0704c2432a2f3ee25e3012d05cd876d175e",
+      "results_sha256": "8620f87d3998e669a7cc08138bce69be176e6080372e88c91edea160a8a3e35f",
+      "labels_sha256": "cb4f848ee8294a0c08472a419763ef022550e34c40e3f8e83ae9ba4209ad6655"
+    },
+    {
+      "root": ".webtiles/bench/tactical/artifacts/screen-option-training-retry-v1",
+      "manifest_sha256": "631c37d5d07c5776f0f0d6738c11a32950cd2d52bcf45b6e5a58295dd8bdc783",
+      "results_sha256": "d075b53b846e1b4df34c97b309c0fb908dd5b574a7e482fef49ab73360fa891f",
+      "labels_sha256": "0d1d2a016ac14decd4a1bb459f1909f595c800b65e5393f14414ad37ecc60d0a"
+    }
+  ]
+}

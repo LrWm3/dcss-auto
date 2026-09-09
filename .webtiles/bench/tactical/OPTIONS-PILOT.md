@@ -59,3 +59,30 @@ The collected option transitions can support later training; untested options
 are missing observations, not failures. This selective screen is deliberately
 biased toward retreat failures and must not be treated as a full option matrix
 or an unbiased estimate of other tactics' overall success rates.
+
+## Expanded full-matrix experiment
+
+`train_options_expanded.py options-expanded-v1.json OUTPUT` uses the original
+five training checkpoints plus 22 newly verified ones. It reuses 54 pinned
+option labels (20 original, 34 from selective screening), runs the 54 missing
+trials, and checks that all 27 x 4 outcomes are present before fitting once.
+Cached label bytes, manifest/results, checkpoint identity, sources, and bounded
+task settings are validated; case paths map collection-local IDs to namespaced
+dataset IDs. Only training cases can supply fitting labels.
+
+The fit algorithm, 1000 epochs, features, four tactics and reward are unchanged
+from the first option pilot. No validation-driven selection or tuning is done.
+The frozen selector is replayed on all 27 training cases. Validation runs the
+selector, fixed retreat, RC and the exact old imitation model on six checkpoints
+from its separate seed. Imitation is a frozen smaller-data reference, not an
+equally trained model. Reserved test is not run. Expected new game trials:105.
+
+Reports distinguish positive bounded outcomes, deaths, neutral endpoints,
+floor changes, and descent within the same branch. A recovered RC budget
+endpoint is positive but does not count as floor progress. Ascent counts only
+as a floor change; changing branches is not labeled deeper-same-branch. No
+floor-change metric implies clearance. These metrics do not change rewards.
+
+Artifacts preserve the full training matrix, source hashes, cached-label
+provenance, frozen model and all new trial results. Old corpora/models remain
+unchanged; this run does not deploy anything.
