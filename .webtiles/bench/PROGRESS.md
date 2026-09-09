@@ -2059,3 +2059,28 @@ tactical/evidence/goals-augmented-trained-v1.json, tactical/AUGMENTED-RETRAINING
 Recorded matrix evaluation is not a fresh rollout of every choice, and synthetic
 variants are correlated; these previously inspected held-out cases are not a
 pristine future benchmark.
+
+## 2026-09-09 — rich goal observation and feature adapter v2
+
+Implemented separate rich_goal_bridge.lua, rich_features.py and rich_goals.py.
+Player-visible structured observations include XL, HP/MP, defenses, attributes,
+resistances,29 skills, inventory/equipment properties, each visible hostile's
+position/type/wounds/defensive pips/resistances/spells/status, and known geometry.
+Sparse selector features add eight sorted enemy slots plus all-enemy aggregates,
+formation summaries, visible17x17 terrain/cloud encoding, equipment and actual
+retreat/choke path lengths. Seed/RNG/inscriptions/hidden monsters are excluded.
+Old V1 behavior and production files untouched; the new path is explicitly opt-in.
+
+Versioned rows/models pin feature and observation sources. Old models, stale rows,
+and held-out fitting are rejected. New runner collects rich feature labels and
+the existing linear fitter is wrapped for V2. This does not implement new
+gear/skill/XL mutation recipes or claim that the linear model now generalizes.
+
+Final live pilot rich-goals-v2-pilot-v2: three immutable checkpoint copies,12
+identical actions on original versus two rich resets each; state projection and
+feature repeatability passed.18 fresh full policy trials all match prior outcomes:
+14 recoveries,two deaths,two masked; all audited. Twenty-epoch train-only smoke
+fit exercises selection, not a benchmarked replacement.173 Python and13 Lua tests
+pass. Report tactical/RICH-GOAL-FEATURES.md; evidence
+tactical/evidence/rich-goals-v2-pilot-v2.json. Next substantive step is collecting
+rich rows across the broader dataset before retraining; production remains unchanged.

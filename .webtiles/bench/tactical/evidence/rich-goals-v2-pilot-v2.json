@@ -1,0 +1,59 @@
+{
+  "artifact_root": ".webtiles/bench/tactical/artifacts/rich-goals-v2-pilot-v2",
+  "summary": {
+    "audited": 18,
+    "model_note": "20-epoch integration smoke test only; not a benchmarked replacement",
+    "production_export": false,
+    "smoke_model_choices": [
+      "pursue:1",
+      "defend:1",
+      "defend:1"
+    ],
+    "trials": 18,
+    "verified_prefixes": 3
+  },
+  "outcomes": {
+    "recovered_quiet": 14,
+    "masked": 2,
+    "death": 2
+  },
+  "original_outcome_agreement": 18,
+  "save_bytes_unchanged": 3,
+  "features_per_snapshot": [
+    1156,
+    2004,
+    1787
+  ],
+  "sources": {
+    "check_rich_goals.py": "fa3d7fe94d67f44835b18fcdffa70823f4cc22a27252f9bde20ff633201f10d2",
+    "rich_features.py": "f98afd60c8ec16aee48aa64bac78b8ee2b8886710d4bcaf185337c1689c80c6a",
+    "rich_goal_bridge.lua": "8ca0c0d4b0a5f629914b16d0139f451382bdda0707ba78896b2f4bf677c938ad",
+    "rich_goals.py": "a8827f9a3606fc0e3a05cdd928d301425dd2609094133b7e65a2bd6d695e6368"
+  },
+  "artifact_sha256": {
+    "manifest.json": "51d7afd901e8690359e064ef8560a1b24e074d9206db8d5f16637bfbcdb0200c",
+    "checks.json": "866caf8776dc768de40b66ac2876fefcb10185b864d078aea15c4dce49d003e1",
+    "results.json": "52070df733de71263ebf8c2f9208b3b740b74b1bb605f02b24e8926c729a6879",
+    "summary.json": "18bf2f7b280e7ab436b2039910f7d05ede30d7061679e75b0f7a20dca49fd5e4",
+    "smoke-model.json": "be3684ad28d517c823b6923237fabdcfdd8be55ab007c022e25d4608b3c32187",
+    "observation-0.json": "90ec487626f28c6c0a0e556057934ccf0d58f0875c920efe6229fd8492bc566a",
+    "features-0.json": "dfe6214943e7e9b98876689786b475c75c09181433fcb4babcedffbfbc9e1705",
+    "observation-1.json": "ad5d49126e0c9ae9d72cb6c9860227e721f03875e434c9380a20909c15fc01bb",
+    "features-1.json": "339c309cdc8f1f5a8c55d3dc46a13e486c0c372c9eab004b721cd0856b2cff7a",
+    "observation-2.json": "254b5f71a576b13f77d8b6542b290d5fd64ca2225ae7e9b256ac45169d1df185",
+    "features-2.json": "571a1fb0f9d65455b4bc02a9faab8cd0c1169cb7d6cb8c43e944a1bc204eb932"
+  },
+  "tests": {
+    "python": 173,
+    "lua": 13
+  },
+  "production_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "baseline_model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "notes": [
+    "Twelve-action prefix equivalence on three cases, not an unlimited determinism proof.",
+    "18 full policy trials, all audited and matching original outcomes.",
+    "20-epoch integration smoke model only; no substantive retraining or deployment.",
+    "Original V1 files and datasets untouched.",
+    "Gear/skill/XL mutation generation remains future work."
+  ]
+}
