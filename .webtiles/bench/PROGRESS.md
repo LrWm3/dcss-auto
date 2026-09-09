@@ -2036,3 +2036,26 @@ validation exit 0; all 112 original and 336 synthetic checkpoint hashes checked.
 Production RC, model and partition hashes unchanged. Source commit 620f5fb;
 tracked evidence: tactical/evidence/augmentation-all-v4.json. Documentation:
 tactical/AUGMENTATION-DATASET.md. Retain v1 and v3 artifacts referenced by reuse.
+
+## 2026-09-09 — augmented selector retraining completed
+
+User authorized retraining. Added retrain_augmented_goals.py: validate the audited
+supplement, fit once on its 180 rows/31 scenarios (1500 epochs, RNG seed 42), freeze
+candidate, evaluate all 336 recorded variants against baseline and pursuit controls,
+then fresh-replay six changed held-out choices selected without outcome filtering.
+Older labels predating controller fixes are not reused. No held-out tuning.
+
+Candidate recovers 31/31 selected training variants and 207/210 total training-seed
+variants (baseline 201/210). Held-out results tie baseline: validation 18/18, test
+18/18, reserved evaluation 84/90, total120/126. Two evaluation deaths improve and
+two recoveries regress. Fixed pursue0 recovers121/126. No generalization gain shown.
+All six live smoke replays match audited labels. 164 Python and13 Lua tests pass.
+
+Saved separate models/goal-selector-augmented-v1.json; hash
+07791ad541f3955a40c8eef5343dcf3ed5baabc332243688e2802ab85a14710c.
+Baseline model and production RC unchanged; not deployed. Artifacts:
+tactical/artifacts/goals-augmented-trained-v1. Evidence and report:
+tactical/evidence/goals-augmented-trained-v1.json, tactical/AUGMENTED-RETRAINING.md.
+Recorded matrix evaluation is not a fresh rollout of every choice, and synthetic
+variants are correlated; these previously inspected held-out cases are not a
+pristine future benchmark.

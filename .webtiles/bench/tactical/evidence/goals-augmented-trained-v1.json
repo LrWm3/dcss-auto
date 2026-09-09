@@ -1,0 +1,104 @@
+{
+  "artifact_root": ".webtiles/bench/tactical/artifacts/goals-augmented-trained-v1",
+  "summary": {
+    "evaluation_only": {
+      "baseline": {
+        "death": 6,
+        "recovered_quiet": 84
+      },
+      "candidate": {
+        "death": 6,
+        "recovered_quiet": 84
+      },
+      "pursue_berserk": {
+        "death": 6,
+        "recovered_quiet": 84
+      },
+      "pursue_no_berserk": {
+        "death": 5,
+        "recovered_quiet": 85
+      }
+    },
+    "selected_training_fit": {
+      "recovered_quiet": 31
+    },
+    "test": {
+      "baseline": {
+        "recovered_quiet": 18
+      },
+      "candidate": {
+        "recovered_quiet": 18
+      },
+      "pursue_berserk": {
+        "recovered_quiet": 18
+      },
+      "pursue_no_berserk": {
+        "recovered_quiet": 18
+      }
+    },
+    "train": {
+      "baseline": {
+        "death": 9,
+        "recovered_quiet": 201
+      },
+      "candidate": {
+        "death": 3,
+        "recovered_quiet": 207
+      },
+      "pursue_berserk": {
+        "death": 13,
+        "recovered_quiet": 197
+      },
+      "pursue_no_berserk": {
+        "death": 12,
+        "recovered_quiet": 197,
+        "unresolved_stall": 1
+      }
+    },
+    "validation": {
+      "baseline": {
+        "recovered_quiet": 18
+      },
+      "candidate": {
+        "recovered_quiet": 18
+      },
+      "pursue_berserk": {
+        "recovered_quiet": 18
+      },
+      "pursue_no_berserk": {
+        "recovered_quiet": 18
+      }
+    }
+  },
+  "completion": {
+    "held_out_changed_choices": 66,
+    "held_out_variants": 126,
+    "live_checks": 6,
+    "live_passed": 6,
+    "model_sha256": "07791ad541f3955a40c8eef5343dcf3ed5baabc332243688e2802ab85a14710c",
+    "production_export": false
+  },
+  "artifact_sha256": {
+    "manifest.json": "f377dd01e261ff2adb41993352d7641e9946d906daecc2e9651f69d296cb7a78",
+    "model.json": "07791ad541f3955a40c8eef5343dcf3ed5baabc332243688e2802ab85a14710c",
+    "summary.json": "49d0d684a573e34977fa81543665205f2f52d2b0f3829227dce0dc266612a1a4",
+    "selections.json": "757ab5a53c4f35e6e63453501a431b9cab9a881c5599d7364bab30235755b01b",
+    "live-checks.json": "91c135d2022e58d63a2b71e80291e198bb6cc09311086304d6fffff3496d680a",
+    "completion.json": "674dc9ed8cc4c5e8b14a67cbf2d1eb1ffba37f12c383fefe7a423e17f72c0fe4"
+  },
+  "tests": {
+    "python": 164,
+    "lua": 13
+  },
+  "production_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "baseline_model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "limitations": [
+    "Single fixed 1500-epoch linear outcome-selector fit, not per-turn RL.",
+    "Synthetic mixed-outcome rows only; older controller labels deliberately excluded.",
+    "Benchmark uses exhaustive recorded policy outcomes, with six fresh replay checks.",
+    "126 held-out variants share parent seeds and are not independent samples.",
+    "Held-out cases were previously inspected; not a pristine future test.",
+    "Two held-out deaths improve and two surviving cases regress; no net held-out gain.",
+    "Candidate not deployed."
+  ]
+}
