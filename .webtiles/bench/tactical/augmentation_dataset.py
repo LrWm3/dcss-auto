@@ -22,6 +22,7 @@ from augment_encounters import (POLICIES, make_variant, validate_recipe, rollout
 from run_goals import SOURCES, run
 from train_encounters import write
 from verify_resume import normalized
+from startup_retry import retryable, run_with_retry
 
 
 def read(path): return json.loads(Path(path).read_text())
@@ -140,19 +141,40 @@ def reuse_families(origin,root,manifest):
     return reused
 
 
+def policy_trial(entry,case,root,policy,steps,previous=None):
+    # Each physical attempt owns new files; a completed gameplay result is never
+    # rerolled. Preserve an interrupted retry directory on a later resume.
+    def attempt(index):
+        target=root/f'attempt-{index}'
+        while target.exists():
+            index+=1;target=root/f'attempt-{index}'
+        return run(entry,case,target,policy,steps)
+    return run_with_retry(attempt,previous)
+
+
 def family(e,cfg,root):
     work=root/e['id'];completed=work/'family.json'
     if completed.exists():
         saved=read(completed)
+        repaired=False
         for v in saved.get('variants',[]):
             meta=read(Path(v['case'])/'case.json')
             for name,key in [('checkpoint.cs','save_sha256'),('trial.rc','rc_sha256')]:
                 if sha(Path(v['case'])/name)!=meta[key]: raise ValueError('Cached case changed')
+            for i,row in enumerate(v['rows']):
+                if retryable(row):
+                    retried=policy_trial(dict(id=v['id'],seed=e['seed']),Path(v['case']),
+                        work/'startup-retries'/Path(v['id']).name/row['option'].replace(':','-'),
+                        row['option'],cfg['steps'],previous=row)
+                    v['rows'][i]=verify_result(retried);repaired=True
+            v['label']=classify(v['rows'])
+        if repaired: write(completed,saved)
         return saved
     work.mkdir(parents=True,exist_ok=True)
     result=dict(id=e['id'],seed=e['seed'],split=e['split'],variants=[],status='quarantined')
     if not e['eligible']:
-        result['reason']='Original checkpoint quarantined: '+str(e.get('error'))
+        result['reason']='Original checkpoint quarantined: '+str(e.get('error') or
+            {'fidelity':e.get('fidelity'),'repeatability':e.get('repeatability')})
         write(completed,result);return result
     try:
         parent=Path(e['case']);meta=read(parent/'case.json')
@@ -183,7 +205,7 @@ def family(e,cfg,root):
             v['split']=e['split'];v['rows']=[]
             if v['replay_verified']:
                 for policy in POLICIES:
-                    r=run(dict(id=ident,seed=e['seed']),case,vroot/policy.replace(':','-'),
+                    r=policy_trial(dict(id=ident,seed=e['seed']),case,vroot/policy.replace(':','-'),
                           policy,cfg['steps'])
                     r.update(phase='augmentation_dataset',split=e['split'],family_id=e['id'],
                              split_group=e['seed'],recipe=recipe,policy=policy)
@@ -284,7 +306,7 @@ def main():
     manifest=dict(version=1,config=cfg,entries=entries,engine_sha256=sha(ENGINE),
         parent_engine_sha256=sha(ROOT/cfg['parent_engine']),
         inputs={n:sha(ROOT/n) for n in inputs},
-        sources={n:sha(HERE/n) for n in SOURCES+('augmentation_dataset.py','augment_encounters.py','verify_resume.py')},
+        sources={n:sha(HERE/n) for n in SOURCES+('augmentation_dataset.py','augment_encounters.py','verify_resume.py','startup_retry.py')},
         fitting=False,production_export=False)
     if a.resume and a.reuse: raise ValueError('Choose resume or reuse, not both')
     if a.reuse:

@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
-from augmentation_dataset import classify, inventory, read, load_training, export, compatible_cache, reuse_families
+from augmentation_dataset import classify, inventory, read, load_training, export, compatible_cache, reuse_families, policy_trial, family
 from run_goals import SOURCES
 from verify_resume import normalized
 from train_encounters import write
@@ -15,6 +15,26 @@ def rows():
     return [dict(option=o,outcome='recovered_quiet',evidence_verified=True) for o in POLICIES]
 
 class DatasetTests(unittest.TestCase):
+    def test_policy_retry_uses_separate_attempt_and_preserves_metadata(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);worker=root/'worker';worker.mkdir()
+            (worker/'terminal.txt').write_text("lair.des:2079: Map 'regret_index_lairdec_grave_grove' has no (possible) exits")
+            old=dict(outcome='harness_error',decisions=0,worker=str(worker),split='train')
+            with patch('augmentation_dataset.run',return_value=dict(outcome='death',decisions=3)) as run:
+                result=policy_trial({'id':'v'},root/'case',root/'retry','pursue:1',600,old)
+            self.assertEqual(run.call_args.args[2],root/'retry'/'attempt-1')
+            self.assertEqual(result['startup_attempts'],[old])
+            self.assertEqual(result['split'],'train')
+
+    def test_cached_gameplay_result_is_not_retried(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);case=root/'case';case.mkdir();work=root/'family';work.mkdir()
+            write(work/'family.json',dict(variants=[dict(id='family/v',case=str(case),rows=rows())]))
+            write(case/'case.json',dict(save_sha256='h',rc_sha256='h'))
+            with patch('augmentation_dataset.sha',return_value='h'),patch('augmentation_dataset.run') as run:
+                family(dict(id='family',seed='1'),{'steps':600},root)
+            run.assert_not_called()
+
     def test_reuse_creates_nested_family_output(self):
         with tempfile.TemporaryDirectory() as d:
             base=Path(d);origin=base/'old';root=base/'new';root.mkdir()
