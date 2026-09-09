@@ -1,0 +1,109 @@
+{
+  "berserk_margin": 0.05,
+  "completed": true,
+  "groups": [
+    {
+      "count": 27,
+      "deaths": 1,
+      "deeper_same_branch": 24,
+      "floor_changes": 26,
+      "neutral": 0,
+      "phase": "train_check",
+      "policy": "selector",
+      "positive": 26,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 4,
+      "floor_changes": 4,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "baseline",
+      "positive": 6,
+      "recovered_without_floor_change": 2
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 6,
+      "floor_changes": 6,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "imitation",
+      "positive": 6,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 6,
+      "floor_changes": 6,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "retreat",
+      "positive": 6,
+      "recovered_without_floor_change": 0
+    },
+    {
+      "count": 6,
+      "deaths": 0,
+      "deeper_same_branch": 6,
+      "floor_changes": 6,
+      "neutral": 0,
+      "phase": "validation",
+      "policy": "selector",
+      "positive": 6,
+      "recovered_without_floor_change": 0
+    }
+  ],
+  "model_sha256": "140480813893af91b6e94c813193a564608f085a5523685cad6f9b100fa8b5da",
+  "production_export": false,
+  "trials": 51,
+  "implementation_commit": "981d38d",
+  "artifact_root": ".webtiles/bench/tactical/artifacts/options-conservative-v1",
+  "hashes": [
+    "24786a3a42e91232ff0d9cd5a307a724756a1dd68126cd5d46b4e96fe5e7d921  .webtiles/bench/tactical/artifacts/options-conservative-v1/manifest.json",
+    "db36ed028e5645190c10a8f35603a3e17da0e65eb35ebd0e36d35dc498db139b  .webtiles/bench/tactical/artifacts/options-conservative-v1/results.json",
+    "c2b1639fbe3f914c962903f9b26824d80f1986440c9cefa167719949b7e08a7c  .webtiles/bench/tactical/artifacts/options-conservative-v1/training-selection-audit.json"
+  ],
+  "harness_errors": 0,
+  "reserved_test_executed": false,
+  "fix": "Require rage_hold to exceed best non-rage fitted value by more than0.05. Separate wrapper; underlying model, historical selector, rewards, and tactics unchanged.",
+  "confirmed": {
+    "d7": "retreat; reachedD8 alive",
+    "eustachio": "rage_hold; reachedD5 alive",
+    "terence": "baseline; reachedD3 alive",
+    "remaining_death": "main encounter018 D5 gnolls; every available tactic negative in recorded full matrix"
+  },
+  "comparison": {
+    "before": {
+      "train_positive": 25,
+      "train_deeper_same_branch": 23,
+      "validation_positive": 6,
+      "validation_deeper_same_branch": 6
+    },
+    "after": {
+      "train_positive": 26,
+      "train_deeper_same_branch": 24,
+      "validation_positive": 6,
+      "validation_deeper_same_branch": 6
+    }
+  },
+  "guard_applied": {
+    "train_cases": [
+      "mining-deeper-v1/collection/encounter-005",
+      "mining-option-training-v1/collection/encounter-017",
+      "mining-option-training-v1/collection/encounter-018"
+    ],
+    "validation_cases": []
+  },
+  "tests": "80Python tests plus3direct-transport and10model-hook checks pass.",
+  "limitations": [
+    "Training-informed heuristic margin; scores are not calibrated confidence.",
+    "Only one validation seed; no evidence of broad improvement beyond this benchmark.",
+    "Success is bounded audited recovery/floor change, not permanent recovery or clearance.",
+    "Delegated RC may still berserk independently. No model training or production deployment performed."
+  ]
+}

@@ -1692,3 +1692,18 @@ Launched options-conservative-v1:27actual training replays then24validation
 comparisons, no fitting or deployment.79Python tests plus3transport/10model-hook
 checks passed before launch. Additional recorded-case regression assertions
 coverD7/Eustachio/Terence. This entry records the fix and launch, not completion.
+
+Completed51/51verification trials, zero harness errors. D7 now retreats and
+reachesD8alive. Eustachio keepsrage_hold and reachesD5; Terence keepsRC and
+reachesD3. Training26/27positive (was25),26floor changes,24same-branch descents
+(was23). Only failure remains main018gnolls; allavailable tactics fail there.
+Guard activates onexactly3training cases predicted by training-only audit,
+andnone onvalidation. No fitting or validation-driven threshold adjustment.
+
+Validation selector/retreat/imitation each6/6positive and6/6deeper. RC6/6positive,
+4/6deeper,2recovered budget endpoints. Underlying expanded model hash remains
+140480813893af91b6e94c813193a564608f085a5523685cad6f9b100fa8b5da.
+80Python tests plus3transport/10model-hook checks pass. Evidence
+tactical/evidence/options-conservative-v1.json records verification/provenance.
+Fix committed separately from historical selector; no production deployment,
+reserved-test execution, or claims of general robustness from one validation seed.
