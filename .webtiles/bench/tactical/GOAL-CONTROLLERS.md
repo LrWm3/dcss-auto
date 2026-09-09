@@ -162,3 +162,44 @@ Withdrawal is masked if that anchor is missing, even when the character happens
 to stand on usable upstairs. Preserving arrival history at capture time would
 recover that option without inventing a route. This was not silently repaired
 from hidden engine state or special-cased by seed in the experiment.
+
+## Frozen broader evaluation
+
+`evaluate_goals.py` evaluates the pinned v1 model without fitting. It selects all
+eligible dataset encounters absent from the original training and validation
+manifest, checks checkpoint provenance and derived reset equivalence, then runs
+the selector and all six fixed combinations. It keeps unfamiliar-to-this-model
+seeds separate from new encounters on familiar training seeds. Historical
+checkpoints are not prospectively fresh seeds or full-game rollouts.
+
+```sh
+/usr/bin/python3 .webtiles/bench/tactical/evaluate_goals.py \
+  --output .webtiles/bench/tactical/artifacts/goals-broad-next --jobs 6
+/usr/bin/python3 .webtiles/bench/tactical/summarize_goal_evaluation.py \
+  .webtiles/bench/tactical/artifacts/goals-broad-next \
+  --output .webtiles/bench/tactical/artifacts/goals-broad-next/analysis.json
+/usr/bin/python3 .webtiles/bench/tactical/audit_goals.py \
+  .webtiles/bench/tactical/artifacts/goals-broad-next \
+  --output .webtiles/bench/tactical/artifacts/goals-broad-next/audit.json
+```
+
+Unlike the training runner, this explicitly opens the reserved test seed for
+evaluation. Results are marked `evaluation_only`; original partitions and model
+weights remain unchanged. Once inspected, these examples are no longer a pristine
+final test for subsequent changes. Reserve prospectively fresh seeds before the
+next tuning round.
+
+The report distinguishes a **selection miss** (another available option recovered)
+from a **controller coverage gap** (none of the available options recovered within
+the same limits). Missing trials and harness errors are not evidence of a coverage
+gap. Masked choices are unavailable, not deaths or successes. A coverage gap is not
+proof the encounter is unwinnable. The success audit rechecks complete saved traces
+against the common full-health-plus-quiet endpoint.
+
+Completed run: [GOALS-BROAD-V1.md](GOALS-BROAD-V1.md). The frozen selector recovered
+45/49, compared with 47/49 for fixed pursuit with berserk permitted. All 308
+successful primary traces passed the endpoint audit. Four selector failures have
+successful fixed alternatives; one death required morgue adjudication because
+the terminal parser missed it. See the report for defensive-wait, mesmerisation,
+and harness findings. The expanded suite now has 112 Python tests plus the
+existing three direct-transport and ten model-hook Lua checks.

@@ -1,0 +1,276 @@
+{
+  "artifact_hashes": {
+    "analysis.json": "dcbd6348503549c73f38be5d5cad29955705eff1544af220dfafa9453612cf1c",
+    "audit.json": "5984611cb7e8ea22e287778267c8377d762eda53b6de8eeeb2c0f5cf3182af99",
+    "manifest.json": "860a553ec76a5706f31e8dadbe06e8d28c4fb533790fc25c2cb060fa1ee11890",
+    "reset-checks.json": "c2ce6d24ee74073bb9a7dc3b8a662969ef3cd7ca87e1e97947d5ae60e50cd3ab",
+    "results.json": "a5a9b8ce0f937ce1fbbb9de8dcf0b6d1a6d0604a5a56fbc879a7f6f079ed6e4a",
+    "startup-error-retry.json": "8c8844efe05b3a4579de5ab64a48e3d2f1f649f8b5d5536547ce0d31ba106e4a"
+  },
+  "audited_successes": 308,
+  "dataset_sha256": "de0b169e3abd5dff5b01876da8a1786da720a61e27542e89e535a8cc9e3f84d4",
+  "date": "2026-09-09",
+  "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "error_adjudications": [
+    {
+      "adjudicated": "poison_death",
+      "case_id": "mining-fresh-training-v1/collection/encounter-019",
+      "decisions": 51,
+      "error": "No decision boundary (not counted as death); see /home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-245/worker-ogedjblt",
+      "morgues": [
+        {
+          "path": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-245/worker-ogedjblt/morgue/morgue-TacticalEustachio-20260909-115854.txt",
+          "sha256": "ca3ae92c0d97434fb7966db73afb5af328d43845bbfbcead5f8626e5c088f169"
+        }
+      ],
+      "option": "defend:1",
+      "policy": "selector",
+      "terminal_sha256": "014d254aba729e7f8558e86625a3489278d611a85d930cebd46c449ad0dcb56e",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-245/worker-ogedjblt"
+    },
+    {
+      "adjudicated": "poison_death",
+      "case_id": "mining-fresh-training-v1/collection/encounter-019",
+      "decisions": 51,
+      "error": "No decision boundary (not counted as death); see /home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-249/worker-gkmdg9g5",
+      "morgues": [
+        {
+          "path": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-249/worker-gkmdg9g5/morgue/morgue-TacticalEustachio-20260909-115905.txt",
+          "sha256": "ca3ae92c0d97434fb7966db73afb5af328d43845bbfbcead5f8626e5c088f169"
+        }
+      ],
+      "option": "defend:1",
+      "policy": "defend:1",
+      "terminal_sha256": "014d254aba729e7f8558e86625a3489278d611a85d930cebd46c449ad0dcb56e",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-249/worker-gkmdg9g5"
+    },
+    {
+      "adjudicated": "startup_error",
+      "case_id": "mining-fresh-training-v1/collection/encounter-027",
+      "decisions": 0,
+      "error": "Unexpected engine exit; see /home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-302/worker-lc_0ga0s",
+      "morgues": [],
+      "option": "withdraw:0",
+      "policy": "withdraw:0",
+      "terminal_sha256": "f835ce1511f5602e2c3090abde162c8c378966e1c642042e5b0c81d33872a368",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-302/worker-lc_0ga0s"
+    }
+  ],
+  "experiment": "goals-broad-v1",
+  "fitting": false,
+  "limitations": [
+    "Historical D1-D7 encounter checkpoints, not full-game progression",
+    "Four unused-by-model seeds; five familiar seeds with new cases",
+    "Reserved test seed 83017004 inspected, no fitting or repartitioning",
+    "All future tuning requires a new untouched evaluation set"
+  ],
+  "model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "normal_terminal_repeat_matches": 48,
+  "planned_rows": 343,
+  "production_export": false,
+  "production_rc_sha256": "e91b5106432d96b77817e4df7ac487e78cbf9545a4d0acbf517d859dd014b056",
+  "seed_partition_sha256": "ce984733708c7ce274f97f4085ab6f605a9206b61fee4946965878eb25eeddae",
+  "unit_tests_passed": 112,
+  "additional_lua_checks_passed": 13,
+  "raw_outcomes": {
+    "death": 20,
+    "harness_error": 3,
+    "masked": 12,
+    "recovered_quiet": 308
+  },
+  "recorded_decisions": 22476,
+  "recorded_rows": 343,
+  "repeat_mismatches": [],
+  "report_tools": {
+    "audit_goals.py": "bf88eaef32f1acb9b2fa232ed0927929a0b45720f4e0865a8eafff86a7a886b1",
+    "summarize_goal_evaluation.py": "2ef7f3ec979bc3d603e0f579a8f9b726036479b3b7a90e5d3935f4fd529d3318"
+  },
+  "reset_checks_passed": 49,
+  "policies_by_cohort": {
+    "familiar_seed_new_case": {
+      "defend:0": {
+        "death": 3,
+        "masked": 1,
+        "recovered_quiet": 21
+      },
+      "defend:1": {
+        "death": 2,
+        "harness_error": 1,
+        "masked": 1,
+        "recovered_quiet": 21
+      },
+      "pursue:0": {
+        "death": 2,
+        "recovered_quiet": 23
+      },
+      "pursue:1": {
+        "death": 1,
+        "recovered_quiet": 24
+      },
+      "selector": {
+        "death": 2,
+        "harness_error": 1,
+        "recovered_quiet": 22
+      },
+      "withdraw:0": {
+        "death": 1,
+        "harness_error": 1,
+        "masked": 1,
+        "recovered_quiet": 22
+      },
+      "withdraw:1": {
+        "death": 1,
+        "masked": 1,
+        "recovered_quiet": 23
+      }
+    },
+    "unseen_seed": {
+      "defend:0": {
+        "death": 1,
+        "recovered_quiet": 23
+      },
+      "defend:1": {
+        "death": 2,
+        "recovered_quiet": 22
+      },
+      "pursue:0": {
+        "death": 3,
+        "recovered_quiet": 21
+      },
+      "pursue:1": {
+        "death": 1,
+        "recovered_quiet": 23
+      },
+      "selector": {
+        "death": 1,
+        "recovered_quiet": 23
+      },
+      "withdraw:0": {
+        "masked": 4,
+        "recovered_quiet": 20
+      },
+      "withdraw:1": {
+        "masked": 4,
+        "recovered_quiet": 20
+      }
+    }
+  },
+  "selector_by_seed": {
+    "83017001": {
+      "recovered_quiet": 6
+    },
+    "83017002": {
+      "recovered_quiet": 5
+    },
+    "83017004": {
+      "recovered_quiet": 6
+    },
+    "83017005": {
+      "recovered_quiet": 5
+    },
+    "83018001": {
+      "recovered_quiet": 6
+    },
+    "83018002": {
+      "recovered_quiet": 5
+    },
+    "83018003": {
+      "recovered_quiet": 5
+    },
+    "83018004": {
+      "death": 2,
+      "harness_error": 1,
+      "recovered_quiet": 2
+    },
+    "83018005": {
+      "death": 1,
+      "recovered_quiet": 5
+    }
+  },
+  "selector_failures": [
+    {
+      "case_id": "mining-fresh-training-v1/collection/encounter-005",
+      "cohort": "unseen_seed",
+      "kind": "selection_miss",
+      "option": "defend:1",
+      "outcome": "death",
+      "seed": "83018005",
+      "successful_alternatives": [
+        "withdraw:0",
+        "withdraw:1",
+        "pursue:1"
+      ],
+      "trace_sha256": "d986064660cda1aa89bb2e45e26f4d9e4bf74f3e3096ee02e22b3e1fdd240201",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-161/worker-3sr3wvsv"
+    },
+    {
+      "case_id": "mining-fresh-training-v1/collection/encounter-009",
+      "cohort": "familiar_seed_new_case",
+      "kind": "selection_miss",
+      "option": "defend:0",
+      "outcome": "death",
+      "seed": "83018004",
+      "successful_alternatives": [
+        "withdraw:0",
+        "withdraw:1",
+        "pursue:0",
+        "pursue:1"
+      ],
+      "trace_sha256": "954d08a616f544d2d3482115f915fb128d2734ce334177c55abf6429928cf678",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-182/worker-5z_vx4pp"
+    },
+    {
+      "case_id": "mining-fresh-training-v1/collection/encounter-019",
+      "cohort": "familiar_seed_new_case",
+      "kind": "incomplete_or_error",
+      "option": "defend:1",
+      "outcome": "harness_error",
+      "seed": "83018004",
+      "successful_alternatives": [
+        "pursue:1",
+        "defend:0"
+      ],
+      "trace_sha256": "5257193f790343f127c3489b5ef1aac88dff44c1bda5972b0ac185bd6b00aab0",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-245/worker-ogedjblt"
+    },
+    {
+      "case_id": "mining-fresh-training-v1/collection/encounter-024",
+      "cohort": "familiar_seed_new_case",
+      "kind": "selection_miss",
+      "option": "withdraw:0",
+      "outcome": "death",
+      "seed": "83018004",
+      "successful_alternatives": [
+        "pursue:0",
+        "pursue:1"
+      ],
+      "trace_sha256": "3d977ab731ad5e625ea4dfea6a097910d1c0a3cd86d6c796960243b6c3175ee2",
+      "worker": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-broad-v1/trial-280/worker-zzbucu6o"
+    }
+  ],
+  "selector_observed": {
+    "deaths": 4,
+    "note": "One death adjudicated from morgue; raw harness result unchanged",
+    "recovered": 45
+  },
+  "selector_repeat_raw_matches": 49,
+  "source_hashes": {
+    "bench.py": "c78eb01eb164b76f7c624bf4cf0ccb61cfa8a98b59074865edab2ec05a829fda",
+    "dataset_splits.py": "2af5fb2ced813b1b37ff194e9a794a18837ca54b8294a8066d92035aebbd7f1c",
+    "evaluate_goals.py": "772270be00a2efe15ef6439f1e5f2b72df899c3044c45308710d3798b4a8ecdc",
+    "experiment.py": "439ba77e280105ed45a57deb698c1564a21966b649ef66f032ba38e52421373c",
+    "goal_bridge.lua": "2bb8acdff00dff75a945ba810404faa8d2f80feebcb1676fd95b12c279927eee",
+    "goal_controllers.py": "06d6ff708f6c0f9bad57c6ea16d3e97de17d90b684589d4334a546025444925e",
+    "goal_env.py": "380b053b5e208656b0ef1fac26e407837f15844e230c72bada13d489b2d9f2b8",
+    "run_goals.py": "113a38a68b8d47287de9292f02cb7df4a481de3e7d57996aba26f7e138d96be6",
+    "train_encounters.py": "c3d37437b32507e40c8c815d8ea2aa07eda015ea3442eee2fca9ff1a9a8f54dc"
+  },
+  "startup_retry": {
+    "audited_quiet_turns": 20,
+    "decisions": 26,
+    "included_in_primary_results": false,
+    "outcome": "recovered_quiet",
+    "trace_sha256": "a5ca9e01024addd31d068fa094f84dc2acc0fe5f1d4fc6ce64e93cb6b7263f0d"
+  },
+  "version": 1
+}

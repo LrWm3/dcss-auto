@@ -1772,3 +1772,49 @@ turns at every recorded success. Source hashes match the experiment manifest;
 27/27selector outcome repeats agree. Frozen weights copied byte-identically to
 tactical/models/goal-selector-v1.json. Tracked evidence/goals-trained-v3.json
 pins model, manifest, results, audit, reset checks, split, and production RC.
+
+## 2026-09-09 — frozen goal-selector broader evaluation
+
+Added evaluation-only runner evaluate_goals.py; no fitting or controller changes.
+Pinned model1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0
+and all training-manifest source hashes. Selected all49eligible cases not used
+in goal-selector training or validation:24cases fromfourunused-model seeds
+(83017001,83017004,83018001,83018005), plus25newcases fromfivefamiliarseeds.
+These are historical checkpoints, not prospectively fresh seeds. User requested
+broader testing; this run opens the reserved83017004testseed but never trains
+on its results or alters dataset partitions. Record the cohorts separately.
+
+Launched goals-broad-v1: verify parent projection and repeated derived resets,
+then selector +sixfixed goal/berserk combinations foreachcase (343plannedrows).
+Same600decision/1500turn limits andfull-health+20quiet endpoint. Unverified
+derived resets are quarantined; maskedgoals/errors/unresolvedresults are not
+wins. Frozen model, productionRC and oldbenchmark artifacts remain unchanged.
+This records launch, not completed results.
+
+Completed goals-broad-v1: all 49 reset checks passed and all 343 planned rows
+were recorded. Raw outcomes: 308 recoveries, 20 deaths, 12 unavailable choices,
+three harness errors; 22,476 recorded decisions. All 308 recovery traces passed
+the independent endpoint audit. No bounded stalls or budget truncations.
+
+Frozen selector: 23/24 on unused-model seeds, 22/25 on familiar-seed new cases;
+45/49 overall versus fixed pursue+berserk 47/49. Do not claim superiority.
+All 49 raw selected/fixed outcomes match, including one parser-error pair.
+Both members of that pair have identical poison-death morgues, so the selector
+had four observed deaths, not an unclassified surviving game. Raw result files
+remain unchanged. The third harness error was an unrelated pre-decision engine
+map-parser exit; a separate unchanged retry recovered in 26 decisions, also
+audited for full health plus 20 quiet turns. Not folded into primary results.
+
+Weakest seed 83018004 recovered 2/5. Four failed selector cases all have recovered
+alternatives: D2 reaching gnolls (defend+berserk), D2 Sigmund (defend), D7
+Jeremiah/Blorkula/poisoning brigand (defend+berserk), D6 Maggie (withdraw).
+The first two wait under ranged/reaching attacks; Maggie reveals a shared
+mesmerisation override that monopolizes turns with safety/wait. D7 also exposes
+premature berserk against a nearby weak foe while a distant caster remains.
+Recommend controller/harness fixes before new fitting, with fresh evaluation
+seeds reserved before tuning. No controller/model/production changes this run.
+
+Report: tactical/GOALS-BROAD-V1.md. Evidence: tactical/evidence/goals-broad-v1.json
+pins raw results, analysis, audit, reset checks, sources, morgues and separate
+retry. Added frozen-evaluation and paired-summary tests; full suite passes
+112 Python tests plus three direct-transport and ten model-hook Lua checks.
