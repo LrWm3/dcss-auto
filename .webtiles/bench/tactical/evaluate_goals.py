@@ -30,25 +30,33 @@ def check_entry(e):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
-    p.add_argument('--jobs',type=int,default=6);a=p.parse_args()
+    p.add_argument('--jobs',type=int,default=6)
+    p.add_argument('--revised-controllers',action='store_true',help='Explicitly evaluate changed controller sources; never fit weights')
+    p.add_argument('--case-id',action='append',help='Restrict to exact unused case IDs for targeted regression tests')
+    a=p.parse_args()
     reference_path=HERE/'artifacts/goals-trained-v3/manifest.json'
     if sha(reference_path)!=REFERENCE_SHA: raise ValueError('Training manifest changed')
     reference=json.loads(reference_path.read_text())
     for name,digest in reference['sources'].items():
-        if sha(HERE/name)!=digest: raise ValueError('Frozen source changed: '+name)
+        if sha(HERE/name)!=digest and not a.revised_controllers: raise ValueError('Frozen source changed: '+name)
     model_path=HERE/'models/goal-selector-v1.json'
     if sha(model_path)!=MODEL_SHA: raise ValueError('Frozen model changed')
     model=json.loads(model_path.read_text());original=copy.deepcopy(model)
     index_path=HERE/'artifacts/development-dataset-v3/index.json'
     if sha(index_path)!=reference['dataset_sha256']: raise ValueError('Dataset changed')
     entries=select_cases(json.loads(index_path.read_text()),reference)
+    if a.case_id:
+        if set(a.case_id)-{e['id'] for e in entries}: raise ValueError('Unknown/non-evaluation case ID')
+        entries=[e for e in entries if e['id'] in a.case_id]
     for e in entries: check_entry(e)
     root=a.output.resolve();root.mkdir(parents=True,exist_ok=False)
     write(root/'manifest.json',dict(version=1,entries=entries,steps=600,
         reference_manifest_sha256=REFERENCE_SHA,model_sha256=MODEL_SHA,
         dataset_sha256=sha(index_path),engine_sha256=sha(ENGINE),
         sources={n:sha(HERE/n) for n in SOURCES+('evaluate_goals.py',)},
-        fitting=False,production_export=False,reserved_test_executed=True,
+        fitting=False,production_export=False,
+        revised_controllers=a.revised_controllers,reference_sources=reference['sources'],
+        reserved_test_executed=any(e['seed']=='83017004' for e in entries),
         cohort_note='Unseen means unused by this selector; historical encounters are not prospectively fresh seeds.'))
     checks=[];cases={}
     def verify(i,e):

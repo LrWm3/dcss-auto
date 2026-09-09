@@ -35,14 +35,15 @@ class ExpandedTests(unittest.TestCase):
         self.assertFalse(same_checkpoint(a,dict(a,seed='2')))
         self.assertFalse(same_checkpoint(a,dict(a,save_sha256='x')))
 
-    def test_real_cached_training_matrix_is_complete_for_existing_labels(self):
+    def test_real_cache_is_rejected_when_harness_changed(self):
         from train_encounters import load_cases
+        from bench import ROOT,sha
         cfg=json.loads(Path(__file__).with_name('options-expanded-v1.json').read_text())
         (train,validation),_=load_cases(cfg)
-        cache,_=cached_rows(cfg['caches'],train,cfg)
-        self.assertEqual(len(cache),54)
-        self.assertEqual(len(train)*4-len(cache),54)
-        self.assertFalse({e['id'] for e in validation}&{key[0] for key in cache})
+        manifest=json.loads((ROOT/cfg['caches'][0]['root']/'manifest.json').read_text())
+        self.assertNotEqual(manifest['sources']['bench.py'],sha(Path(__file__).with_name('bench.py')))
+        with self.assertRaisesRegex(ValueError,'Cache source mismatch: bench.py'):
+            cached_rows(cfg['caches'],train,cfg)
 
 
 if __name__=='__main__': unittest.main()

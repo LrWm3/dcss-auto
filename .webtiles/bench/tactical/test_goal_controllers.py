@@ -72,5 +72,30 @@ class GoalsTest(unittest.TestCase):
     def test_unavailable_goal_rejected(self):
         s=state();s['anchors']={}
         with self.assertRaises(ValueError): Controller('withdraw')(s)
+    def test_reach_enemy_interrupts_hold(self):
+        s=enemy(state(),2);c=Controller('defend');c.floor=s['floor']
+        c.target=(0,0);c.origin=(0,0)
+        self.assertIn(c(s),('w','nw','sw'));self.assertEqual(c.goal,'withdraw')
+    def test_damage_interrupts_distant_lure(self):
+        s=enemy(state(),5);c=Controller('defend');c.floor=s['floor']
+        c.target=(0,0);c.origin=(0,0)
+        self.assertEqual(c(s),'wait');s['hp']-=2;s['turn']+=1
+        self.assertIn(c(s),('w','nw','sw'))
+    def test_lure_fallback_moves_to_stairs_same_decision(self):
+        s=enemy(state(),5);c=Controller('defend');c.floor=s['floor']
+        c.target=(0,0);c.origin=(0,0);c.idle=8
+        self.assertIn(c(s),('w','nw','sw'));self.assertEqual(c.pursuit,0)
+    def test_mesmerised_approach_and_no_forbidden_move(self):
+        s=enemy(state(),3);s['status']='mesmerised'
+        s['known']['1:0']['withheld']=True
+        self.assertIn(Controller('withdraw')(s),('ne','se'))
+    def test_mesmerised_melee_preserves_berserk_permission(self):
+        s=enemy(state(),1);s['status']='mesmerised'
+        self.assertEqual(Controller('pursue',False)(s),'melee')
+        self.assertEqual(Controller('pursue',True)(s),'berserk')
+    def test_withdraw_not_reversed_by_old_pursuit(self):
+        s=enemy(state(),3);c=Controller('withdraw');c(s)
+        c.pursuit=4;c.peak=0;c.enemy_count=0
+        self.assertIn(c(s),('w','nw','sw'));self.assertEqual(c.goal,'withdraw')
 
 if __name__=='__main__': unittest.main()

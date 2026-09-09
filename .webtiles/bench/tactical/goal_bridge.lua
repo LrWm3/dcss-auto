@@ -12,7 +12,8 @@ function goal_observation(state)
     state.known[map_key(c.x,c.y)]={x=c.x,y=c.y,feature=c.feature,
       visible=c.visible,traversable=c.traversable,frontier=c.frontier,
       mapped=c.mapped,excluded=c.excluded,unsafe=c.unsafe,cloud=c.cloud,
-      invisible_monster=c.invisible_monster,occupied=c.visible and c.monster~=nil}
+      invisible_monster=c.invisible_monster,occupied=c.visible and c.monster~=nil,
+      withheld=view.withheld(c.x,c.y)}
   end
   local a=BOT.recovery_anchor
   local dx,dy=travel.waypoint_delta(9)

@@ -110,6 +110,21 @@ class Environment:
         self.state=self.await_state(startup=True)
         return self.state
 
+    def death_record(self):
+        """Only a death morgue in this reset's private directory is evidence.
+
+        Ordinary character dumps, arbitrary exits and timeouts are not deaths.
+        Check character, seed, zero HP and a non-stale game turn as well.
+        """
+        for path in (self.work/'morgue').glob('morgue-'+NAME+'-*.txt'):
+            content=path.read_text(errors='replace')
+            turns=re.search(r'\bTurns:\s*(\d+)',content)
+            if (re.search(r'\b'+NAME+r'\b.*\(level \d+, 0/\d+ HPs\)',content)
+                and re.search(r'Game seed: '+re.escape(self.seed)+r'\b',content)
+                and turns and int(turns[1])>=getattr(self,'state',{}).get('turn',0)):
+                return dict(terminal='death',evidence=str(path),evidence_sha256=sha(path))
+        return None
+
     def await_state(self, startup=False, expected_seq=None):
         deadline = time.monotonic() + (600 if startup else 20)
         probed = False
@@ -143,6 +158,9 @@ class Environment:
                 return state
             if i == 1:
                 return {'terminal': 'death'}
+            if i in (4,5) and not startup:
+                death=self.death_record()
+                if death: return death
             if i in (2,3) and startup:
                 self.child.send(' ')
             elif i == 4:

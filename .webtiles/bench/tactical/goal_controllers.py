@@ -18,7 +18,7 @@ def sub(a,b): return (a[0]-b[0],a[1]-b[1])
 def terrain(c):
     f=c.get('feature','')
     return (c.get('traversable') and not any(c.get(k) for k in
-        ('cloud','unsafe','excluded','mapped','invisible_monster')) and
+        ('cloud','unsafe','excluded','mapped','invisible_monster','withheld')) and
         (f in ('floor','open_door') or f.startswith('stone_stairs_')))
 
 def geometry(s):
@@ -103,6 +103,7 @@ class Controller:
         self.events=[]; self.reason=''; self.idle=0; self.pursuit=0
         self.origin=None; self.peak=0; self.rage_attempt=None; self.emergency_turn=-100
         self.enemy_count=0
+        self.previous_hp=None
     def fight(self,s):
         if self.berserk and s.get('can_berserk') and not s.get('cooldown') and not s.get('berserk'):
             if self.rage_attempt is None or s['turn']-self.rage_attempt>10:
@@ -119,8 +120,34 @@ class Controller:
             self.goal='withdraw'; self.target=add(position(s),retreat[0]); self.kind=retreat[1]
         else:
             self.goal='pursue'; self.target=None; self.kind=None
+        self.idle=0; self.pursuit=0
+    def retreat_step(self,s):
+        if self.goal!='withdraw' or self.target is None: return None
+        relative=sub(self.target,position(s))
+        if relative==(0,0) and self.kind=='stairs': return 'up'
+        route=paths(s).get(relative)
+        return route[0] if route else None
+    def mesmerised_step(self,s,es,adjacent):
+        if adjacent:
+            self.note(s,'mesmerised: fight adjacent threat'); return self.fight(s)
+        cells=geometry(s); choices=[]
+        targets=[e for e in es if e.get('reachable')]
+        for action,d in DIRECTIONS.items():
+            c=cells.get(d,{})
+            if not terrain(c) or c.get('occupied'): continue
+            for e in targets:
+                distance=dist(d,point(e))
+                if distance<dist(point(e)):
+                    choices.append((distance,-e['threat'],action))
+        if choices:
+            self.note(s,'mesmerised: legal approach instead of passive wait')
+            return min(choices)[2]
+        self.note(s,'mesmerised: no legal approach, emergency resources')
+        return 'safety'
     def __call__(self,s):
         es=enemies(s); adjacent=[e for e in es if e.get('reachable') and dist(point(e))<=1]
+        damaged=self.previous_hp is not None and s['hp']<self.previous_hp
+        self.previous_hp=s['hp']
         if self.floor!=s['floor']:
             transitioned=self.floor is not None
             self.floor=s['floor']; self.target=None; self.origin=position(s)
@@ -135,11 +162,13 @@ class Controller:
                 if chosen: self.target=add(position(s),chosen[0]); self.kind=chosen[1]
         status=s.get('status','').lower()
         hazard=any(s.get(k) for k in ('confused','poisoned','on_fire')) or any(
-            k in status for k in ('mesmer','constrict','held','rooted','petrif','immotile'))
+            k in status for k in ('constrict','held','rooted','petrif','immotile'))
         emergency=s['hp']/s['max_hp']<.3 and s['turn']-self.emergency_turn>=5
         if hazard or geometry(s).get((0,0),{}).get('cloud') or emergency:
             self.emergency_turn=s['turn']
             self.note(s,'shared emergency/hazard response'); return 'safety'
+        if 'mesmer' in status:
+            return self.mesmerised_step(s,es,adjacent)
         if not es:
             self.idle=0
             if not s.get('safe') or s.get('unseen'):
@@ -149,9 +178,16 @@ class Controller:
             elif self.goal!='withdraw' or self.target is None:
                 self.note(s,'heal and verify quiet, one turn at a time'); return 'wait'
         peak=max((e['threat'] for e in es),default=0)
-        if self.pursuit and (peak>self.peak or len(es)>self.enemy_count):
+        if self.goal=='pursue' and self.pursuit and (peak>self.peak or len(es)>self.enemy_count):
             self.fallback(s,'new threats during pursuit: reassess')
         self.peak=max(self.peak,peak); self.enemy_count=len(es)
+        # A choke is not defensive if a non-adjacent enemy is already hurting us.
+        # Conservatively treat two-tile enemies as possible reach users, and
+        # distant red threats as unsafe to lure. No hidden weapon knowledge.
+        unsafe_hold=not adjacent and any(e.get('reachable') and
+            (damaged or dist(point(e))==2 or e['threat']>=3) for e in es)
+        if self.goal=='defend' and unsafe_hold:
+            self.fallback(s,'unsafe hold: damage, possible reach, or distant red threat')
         # Do not rage merely because foes are visible: only actual close fighting.
         # Independent permission applies even to withdrawal blockers.
         if self.target is not None:
@@ -166,6 +202,8 @@ class Controller:
                 if self.idle<=8:
                     self.note(s,'bounded lure at defensive destination'); return 'wait'
                 self.fallback(s,'enemy refuses lure: abandon stationary hold')
+                action=self.retreat_step(s)
+                if action: return action
             elif relative in routes and routes[relative]:
                 # Withdrawal can maneuver past enemies instead of automatically Tab-attacking.
                 self.note(s,'route to '+str(self.kind)); return routes[relative][0]
@@ -185,7 +223,10 @@ class Controller:
             if choices and self.pursuit<12 and dist(position(s),self.origin)<8:
                 self.pursuit+=1; self.note(s,'bounded known-terrain pursuit'); return min(choices)[2][0]
         self.idle+=1
-        if self.idle==9: self.fallback(s,'pursuit unavailable/exhausted: seek safety')
+        if self.idle==9:
+            self.fallback(s,'pursuit unavailable/exhausted: seek safety')
+            action=self.retreat_step(s)
+            if action: return action
         self.note(s,'no safe approach: bounded unresolved wait'); return 'safety'
 
 def features(s):
