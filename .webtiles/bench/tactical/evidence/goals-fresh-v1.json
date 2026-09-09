@@ -1,0 +1,174 @@
+{
+  "artifact_hashes": {
+    "goals-fresh-v1": {
+      "analysis.json": "c2dff811db41b9323c9d4b8eaf4c05817f5f2e40e572153f939edfc01cca3161",
+      "audit.json": "3fca79838ae193d38ed061d1111ea1c31c048b745e8091a64061d9e1567a53ca",
+      "manifest.json": "32568730a64b78382417fbbc084fc6b4c3ffa5bb2a3e943c7b3576fa0565af69",
+      "reset-checks.json": "0a110f866dd44f36f7d6168d81a302f09ad8e577d38ff350d5b7c8368481d9c6",
+      "results.json": "9be712f880a341fe3b077b2df5c82ae204038816240a05e49081262444ec5a2c",
+      "summary.json": "dc5a06b609987bd2afe03fdb033125f15838722aca353fa92b3b66c154e83b7b"
+    },
+    "goals-fresh-v1-combined": {
+      "analysis.json": "e0ccf1369c8e27503a228302f173f006cc4a3ee9b8108d935e2a46c1c6e39117",
+      "audit.json": "86694fb63c95c6c1ab20fa0310ac250f99a58f7d0d44af221f6087a65118a9df",
+      "manifest.json": "d62165da88a87ddd5b5b842c3cf0848d07687bada5eb8c627a23da3bf61d312e",
+      "reset-checks.json": "0a110f866dd44f36f7d6168d81a302f09ad8e577d38ff350d5b7c8368481d9c6",
+      "results.json": "962ceaff088e3ad4a6f97b98995695ebe35e73b2c19f2c858865027b2fb91aa5"
+    },
+    "goals-fresh-v1-retry": {
+      "manifest.json": "fb5d6d4c9131dca28e6752449162ee1fd170535e33c25ce2755d17b7edd84225",
+      "reset-checks.json": "cc4cac32cc0accfc98cc7d71129649a40ab0a9ed2b601021d3c82272006b405d",
+      "results.json": "e4565687992608875a265f2f009303c4e241513226c27cd5183c6c95683e845a",
+      "summary.json": "8fd7eb60b18b06ee09177f9794b6678187399a719a079f2a00c76dd1f8c50f1b"
+    }
+  },
+  "audited_recoveries": 191,
+  "controller_commit": "de7e3f6",
+  "dataset_sha256": "c5d4d17b64f73f2573975c7562d7b98f192f4ba8f34cdeddbba50d469b694cc8",
+  "date": "2026-09-09",
+  "deaths": 13,
+  "decisions": 12548,
+  "engine_sha256": "393c34054f447aa3dd94ae2b642462bbff34f0d50cb92c8b1fdec0432274d206",
+  "evaluator_commit": "1d8666e",
+  "failure_evidence": [
+    {
+      "case_id": "collection/encounter-001",
+      "morgues": {
+        "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-fresh-v1/trial-000/worker-gsn8yx6d/morgue/morgue-TacticalEustachio-20260909-135145.txt": "ea03788e1937a09ef527e972833fcd90297fc874fb97f48d4ccac4f84529f045"
+      },
+      "option": "withdraw:0",
+      "seed": "83029001",
+      "successful_alternatives": [
+        "withdraw:1",
+        "defend:1",
+        "pursue:0"
+      ],
+      "trace": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-fresh-v1/trial-000/worker-gsn8yx6d/transitions.jsonl",
+      "trace_sha256": "79d68785f16fb304df6176de743b5f577429243981fea8b22f5ba68c76fdb4a1"
+    },
+    {
+      "case_id": "collection/encounter-015",
+      "morgues": {
+        "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-fresh-v1/trial-098/worker-85i4xhnh/morgue/morgue-TacticalEustachio-20260909-135438.txt": "acd759cc6e241343b1f43413f9ff13a8dadf148ae90e24648bb5b0ea9ca19c52"
+      },
+      "option": "defend:1",
+      "seed": "83029005",
+      "successful_alternatives": [
+        "pursue:0",
+        "pursue:1",
+        "defend:0"
+      ],
+      "trace": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-fresh-v1/trial-098/worker-85i4xhnh/transitions.jsonl",
+      "trace_sha256": "5cc0fa0612bfbb3f58ac7b82a1eda71b0e43564b8e68e810b5335da61f4a7f70"
+    },
+    {
+      "case_id": "supplemental/encounter-034",
+      "morgues": {
+        "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-fresh-v1/trial-203/worker-_1d9uf1x/morgue/morgue-TacticalEustachio-20260909-135857.txt": "9c128b0653db347ba81633796ad2b013e3bca2fbcba5b6dad3e344eff32bf89f"
+      },
+      "option": "withdraw:1",
+      "seed": "83029004",
+      "successful_alternatives": [
+        "pursue:0",
+        "pursue:1"
+      ],
+      "trace": "/home/reeldata/wk/exp/dcss/.webtiles/bench/tactical/artifacts/goals-fresh-v1/trial-203/worker-_1d9uf1x/transitions.jsonl",
+      "trace_sha256": "d3e132460275f26dafdcc5b299bd36a6ed4587cb36baf3b06daa380d50bec244"
+    }
+  ],
+  "fitting": false,
+  "limitations": [
+    "Only five reserved fresh seeds, difficulty-selected D1-D7 encounters; not full-game success.",
+    "Now inspected: any tuning on these cases requires another fresh cohort to measure generalization.",
+    "Pursue:0 is a bounded goal controller with shared safety overrides, not blind Tab."
+  ],
+  "lua_checks": 13,
+  "masked": 6,
+  "model_sha256": "1f2b9cf7f525191cb4b2bf0c724bb95efdd43a26cf16db56befb9089d1efb7f0",
+  "production_export": false,
+  "python_tests": 131,
+  "reservation_sha256": "bcb89b81bc107b33dd78d46bf20cd44b7842c762a785a51d9e1a887a87c581c5",
+  "reset_checks_passed": 30,
+  "results": {
+    "by_cohort": {
+      "fresh_seed": {
+        "defend:0": {
+          "death": 2,
+          "recovered_quiet": 28
+        },
+        "defend:1": {
+          "death": 2,
+          "recovered_quiet": 28
+        },
+        "pursue:0": {
+          "recovered_quiet": 30
+        },
+        "pursue:1": {
+          "death": 1,
+          "recovered_quiet": 29
+        },
+        "selector": {
+          "death": 3,
+          "recovered_quiet": 27
+        },
+        "withdraw:0": {
+          "death": 3,
+          "masked": 3,
+          "recovered_quiet": 24
+        },
+        "withdraw:1": {
+          "death": 2,
+          "masked": 3,
+          "recovered_quiet": 25
+        }
+      }
+    },
+    "by_seed": {
+      "83029001": {
+        "death": 1,
+        "recovered_quiet": 5
+      },
+      "83029002": {
+        "recovered_quiet": 6
+      },
+      "83029003": {
+        "recovered_quiet": 6
+      },
+      "83029004": {
+        "death": 1,
+        "recovered_quiet": 5
+      },
+      "83029005": {
+        "death": 1,
+        "recovered_quiet": 5
+      }
+    },
+    "failure_types": {
+      "selection_miss": 3
+    },
+    "repeat_mismatches": [],
+    "selector_decisions": 1709
+  },
+  "selector_fixed_agreement": 30,
+  "sources": {
+    "bench.py": "c792dce99d0bca835d1d301d6ef1d9652990bf4f4beca99553be8e602231fe8d",
+    "dataset_splits.py": "2af5fb2ced813b1b37ff194e9a794a18837ca54b8294a8066d92035aebbd7f1c",
+    "evaluate_goals.py": "751d1703af29fef216041db2c05e6c5558599badc8e3ac417047a6b3c696219f",
+    "experiment.py": "439ba77e280105ed45a57deb698c1564a21966b649ef66f032ba38e52421373c",
+    "goal_bridge.lua": "f43162cb860452756173ac94d7a671d9a5831848bb7de12d488a46a1acbef0cf",
+    "goal_controllers.py": "1ca4e44cad06d9afa955ef75d214d68d9d871d9a332d76e6fe90798a41adc1f1",
+    "goal_env.py": "380b053b5e208656b0ef1fac26e407837f15844e230c72bada13d489b2d9f2b8",
+    "run_goals.py": "9b3a84764837cb1f4c0fb70b8c45c51cd55803a176cef6ea5eda4fefa94a3114",
+    "train_encounters.py": "c3d37437b32507e40c8c815d8ea2aa07eda015ea3442eee2fca9ff1a9a8f54dc"
+  },
+  "startup_reconciliation": {
+    "case_id": "collection/encounter-030",
+    "duplicate_agreement": 6,
+    "errors": 1,
+    "original_preserved": true,
+    "policy": "defend:1",
+    "predecision": true,
+    "retry_recovered": 7
+  },
+  "trials": 210
+}

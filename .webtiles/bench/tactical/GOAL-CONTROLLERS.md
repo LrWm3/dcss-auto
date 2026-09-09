@@ -212,3 +212,9 @@ combinations regressed, none selected by the model. These are tuned historical
 checkpoints, not fresh held-out testing or full-game validation. Revised-source
 evaluation requires the explicit `--revised-controllers` flag; old source-bound
 training caches remain invalid. Production RC and model weights are unchanged.
+
+Fresh-seed follow-up: [GOALS-FRESH-V1.md](GOALS-FRESH-V1.md). Frozen selector
+27/30, fixed pursuit without berserk 30/30. All three model failures have winning
+alternatives. All 191 combined recovery traces audited. This cohort does not
+demonstrate a selector advantage; see the report before interpreting the earlier
+historical 49/49 result as generalization.

@@ -1893,3 +1893,31 @@ Verified all eligible prefix/reset fidelity flags and checkpoint, RC, result,
 replay and combined-transition hashes. Frozen model and old seed partitions
 unchanged. Tracked evidence: tactical/evidence/mining-fresh-evaluation-v2.json.
 Ready for frozen-controller evaluation; no training or tactical tuning this run.
+
+## 2026-09-09 — fresh frozen-controller evaluation completed
+
+Added guarded --fresh-evaluation loading in evaluate_goals.py (1d8666e), with
+reserved-seed exclusion and pinned dataset checks. Controllers remain de7e3f6;
+model/engine/production RC/training partitions unchanged. 131 Python tests and
+13 Lua checks pass. All 30 enhanced reset checks passed.
+
+Frozen selector: 27/30 recovered; fixed pursue without berserk: 30/30. Other
+fixed choices: pursue+berserk 29/30; defend either permission 28/30; withdraw0
+24 recoveries, three deaths, three masked; withdraw1 25 recoveries, two deaths,
+three masked. All 30 selector outcomes match corresponding fixed replays.
+Three selection misses, no observed coverage gaps. Weakest seeds 83029001,
+83029004,83029005 each 5/6; remaining two seeds 6/6. No stalls or truncations.
+
+Failures: D5 old-rest destination accumulates wizard/ogre; D2 berserk-to-retreat
+switch runs through exhaustion under reaching gnoll attacks; D5 stairs retreat
+takes prolonged centaur fire. Each has successful alternatives. Do not infer
+that always pursuing or never berserking is universally optimal from this cohort.
+
+Original goals-fresh-v1 retains one zero-decision Lair-map startup error.
+Separate unchanged-source goals-fresh-v1-retry repeats all seven options on that
+case successfully, six duplicates agreeing. Combined artifacts replace only that
+verified startup error: 210 rows, 191 recoveries, 13 deaths, six masked, 12,548
+decisions. All 191 successful traces independently audited. Report:
+tactical/GOALS-FRESH-V1.md; tracked evidence: tactical/evidence/goals-fresh-v1.json.
+No fitting or deployment. Fresh seeds are now inspected; preserve this result
+and reserve another cohort if tuning controllers on these failures.
