@@ -9,7 +9,8 @@ from pathlib import Path
 from collect import _progression
 from general_env import GeneralEnvironment
 from policy import Policy
-from model import action_scores
+from model import action_scores, tensor_for_actions
+import torch
 import storage
 
 
@@ -34,6 +35,8 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
     storage.finish_logs(probe.works)
     model_policy, _ = Policy.from_checkpoint(model_path, epsilon=0.0)
     scores = action_scores(model_policy.model, state, actions)
+    with torch.no_grad():
+        predicted_values = model_policy.model.value(tensor_for_actions(state, actions))
     ranked = list(reversed(scores.argsort().tolist()))[:top_k]
     rng = random.Random(101)
     remaining = [i for i in range(len(actions)) if i not in ranked]
@@ -73,6 +76,8 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
             "type": "counterfactual", "case": str(case),
             "observation": state, "action": actions[action_index],
             "action_index": action_index, "model_value": float(scores[action_index]),
+            "policy_logit": float(scores[action_index]),
+            "predicted_log_score": float(predicted_values[action_index]),
             "outcomes": outcomes, "empirical_return": (
                 sum(numeric) / len(numeric) if len(numeric) == continuations else None),
             "continuations": continuations,

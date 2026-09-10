@@ -12,6 +12,19 @@ local ga_parent_ready = ready
 GENERAL_AGENT = GENERAL_AGENT or {active=true, seq=0, published=-1, actions={}}
 local GA = GENERAL_AGENT
 
+-- The rejected-action mask is adapter state, but it affects action indexing.
+-- Include it in Crawl's embedded Lua save hook so clones enumerate identically.
+table.insert(chk_lua_save, function()
+  local entries = {}
+  for key, value in pairs(GA.rejected_actions or {}) do
+    if value then entries[#entries+1] = "[" .. string.format("%q", key) .. "]=true" end
+  end
+  table.sort(entries)
+  return "GENERAL_AGENT = GENERAL_AGENT or {active=true,seq=0,published=-1,actions={}}; "
+    .. "GENERAL_AGENT.rejected_turn=" .. tostring(GA.rejected_turn or "nil") .. "; "
+    .. "GENERAL_AGENT.rejected_actions={" .. table.concat(entries, ",") .. "}\n"
+end)
+
 local GA_MOVES = {
   {dx=-1,dy=0,key="h",cmd="CMD_MOVE_LEFT"},
   {dx=0,dy=1,key="j",cmd="CMD_MOVE_DOWN"},
@@ -163,6 +176,11 @@ local function ga_target(monsters)
 end
 
 local function ga_add(actions, action)
+  local key = table.concat({action.kind or "", action.slot or "", action.name or "",
+    action.x or "", action.y or "", action.dx or "", action.dy or "", action.item_name or ""}, "|")
+  if GA.rejected_turn == ga_you("turns") and GA.rejected_actions and GA.rejected_actions[key] then
+    return
+  end
   if #actions < 88 then
     action.id = #actions
     actions[#actions+1] = action
@@ -251,7 +269,7 @@ local function ga_actions(cells, monsters, blocked)
       elseif class == "wand" and target and item.quantity and item.quantity > 0 then
         ga_add(actions, {kind="FIRE", slot=slot, x=target.x, y=target.y,
           item_name=name, label="FIRE "..label})
-      elseif item.is_throwable and target then
+      elseif item.is_throwable and target and not ga_you("caught") and not ga_you("berserk") then
         ga_add(actions, {kind="FIRE", slot=slot, x=target.x, y=target.y,
           item_name=name, label="THROW "..label})
       elseif item.equip_type and not item.equipped then
@@ -436,6 +454,15 @@ function ready()
     local action = GA.actions[index + 1]
     local spent = ga_dispatch(action)
     GA.last_action_result = {kind=action.kind, dispatch_accepted=spent and true or false}
+    if not spent and not you.turn_is_over() then
+      local turn = ga_you("turns")
+      if GA.rejected_turn ~= turn then GA.rejected_actions = {} end
+      GA.rejected_turn = turn
+      GA.rejected_actions = GA.rejected_actions or {}
+      local key = table.concat({action.kind or "", action.slot or "", action.name or "",
+        action.x or "", action.y or "", action.dx or "", action.dy or "", action.item_name or ""}, "|")
+      GA.rejected_actions[key] = true
+    end
     -- Stairs/equipment may start an engine delay without immediately spending
     -- a turn. Wake the outer command loop with a no-turn escape so it can
     -- advance that delay instead of blocking on terminal input.

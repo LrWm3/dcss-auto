@@ -33,7 +33,7 @@ PYTHONPATH=.webtiles/bench/autonomous \
   .webtiles/bench/autonomous/train_crawl_agent.py \
   --run-dir .webtiles/bench/autonomous/runs/first \
   --cycles 10 --bootstrap-episodes 8 --actor-episodes 8 \
-  --evaluation-episodes 5 --steps 200
+  --evaluation-episodes 5 --decisions-per-floor 2000 --total-steps 100000
 ```
 
 The command is restartable: rerunning it against the same run directory
@@ -51,8 +51,8 @@ all replay, checkpoints, failures, and evaluations.
 * `features.py`, `model.py`, `policy.py`: action-conditioned scoring over the
   current legal-action list; no fixed command output layer.
 * `collect.py`: actor trajectories and restorable initial states.
-* `train_model.py`: behavioral cloning plus conservative counterfactual
-  score-to-go updates.
+* `train_model.py`: anchored behavioral cloning, an independent score critic,
+  and small paired-state counterfactual preference updates with replay KL.
 * `counterfactual.py`: top-K plus random legal branches from exact checkpoints.
 * `evaluate.py` and `train_crawl_agent.py`: parallel actors, replay, candidate
   evaluation, champion/challenger promotion, metrics, and restartable status.
@@ -68,6 +68,31 @@ Official final scores are read from morgues and seeded xlogs. Progression is
 diagnostic only: incomplete paired games cannot cause a promotion. At least
 five complete score pairs and a positive bootstrap lower confidence bound are
 required. Truncated counterfactuals supply no fabricated score targets.
+
+### Decision budgets and update isolation
+
+`--steps` is now an alias for `--decisions-per-floor` (default 2,000), not a
+whole-game cap. Counts accumulate separately for each branch/floor and survive
+revisits within an episode. Descending to a new floor grants that floor its own
+allowance; stair bouncing does not replenish earlier floors. The default global
+safety cap is 100,000 decisions. Sixteen consecutive decisions without advancing
+game time trigger a separate adapter-stall cutoff. Waiting counts as a decision.
+
+Administrative cutoffs save a restorable checkpoint and report `truncated`,
+`truncation_reason`, `decision_budget`, and `resume_checkpoint`. They are not
+deaths and do not get a made-up final score. Resumption is explicit: these
+checkpoints are loadable through `GeneralEnvironment`, not automatically retried
+forever. Counterfactuals still have a separate, explicit continuation horizon.
+Existing configs migrate `steps_per_episode` to `decisions_per_floor` on restart.
+Use a new evaluation directory when comparing policies under the new protocol;
+old whole-game-cutoff results are not comparable final-score pairs.
+
+Model V2 has fully separate policy and return networks. Old V1 checkpoints load
+with policy logits unchanged. Absolute-score regression only updates the critic;
+it cannot silently replace policy logits. Actor updates are smaller anchored
+teacher corrections and comparisons of completed counterfactual returns from
+the same state. Incomplete comparisons do not provide preferences. This fixes
+the demonstrated overwrite bug, not the broader problem of learning strong play.
 
 Menu-confirmation abilities such as Renounce Religion are intentionally not
 enumerated in V1 because they are not one semantic action.  They are logged as

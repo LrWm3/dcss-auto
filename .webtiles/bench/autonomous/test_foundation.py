@@ -56,11 +56,13 @@ class FoundationTests(unittest.TestCase):
         state = {"schema":"crawl-general-v1", "actions":[{"kind":"WAIT"}]}
         features = tensor_for_actions(state,state["actions"])
         target = math.log1p(49)
-        initial = abs(model(features).item()-target)
+        initial = abs(model.value(features).item()-target)
+        actor_before = model(features).detach().clone()
         result = train_q_finetune(model,[{"observation":state,
             "action_index":0,"return":49}],epochs=5)
         self.assertEqual(result["usable"],5)
-        self.assertLess(abs(model(features).item()-target),initial)
+        self.assertLess(abs(model.value(features).item()-target),initial)
+        self.assertTrue(torch.equal(actor_before, model(features)))
 
 
 if __name__ == '__main__':

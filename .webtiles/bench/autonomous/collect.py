@@ -5,12 +5,14 @@ import argparse
 import json
 import random
 import time
+import itertools
 from pathlib import Path
 
 from general_env import GeneralEnvironment
 from policy import Policy
 from teacher import choose_action
 import storage
+from episode_budget import DecisionBudget
 
 
 def _progression(state: dict) -> float:
@@ -27,7 +29,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 replay_path: str | Path | None = None,
                 model_path: str | Path | None = None, epsilon: float = 0.05,
                 archive_dir: str | Path | None = None, policy_version: str = "teacher",
-                snapshot: bool = True) -> dict:
+                snapshot: bool = True, total_steps: int = 100000,
+                no_turn_limit: int = 16) -> dict:
     workspace = Path(workspace)
     if model_path and policy_version == "teacher":
         policy_version = Path(model_path).stem
@@ -41,6 +44,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
     rows = 0
     started = time.time()
     completed = False
+    budget = DecisionBudget(steps, total_steps, no_turn_limit)
     try:
         state = env.launch()
         archive_case = None
@@ -57,7 +61,9 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             policy, _ = Policy.from_checkpoint(model_path, epsilon=epsilon, seed=int(seed) & 0xFFFFFFFF)
         terminal = False
         captured = set()
-        for step in range(steps):
+        for step in itertools.count():
+            if budget.reason(state):
+                break
             # Archive encountered combat/floor states, not just new-game starts.
             bucket = (state.get("level"), bool(state.get("monsters")))
             if archive_dir and snapshot and bucket not in captured and len(captured) < 4:
@@ -75,6 +81,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 action_index = choose_action(before)
                 action = before["actions"][action_index]
             state = env.step(action_index)
+            budget.record(before, state)
             row = {
                 "type": "transition", "episode_seed": str(seed), "step": step,
                 "policy_version": policy_version, "observation": before,
@@ -91,9 +98,17 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             if state.get("terminal"):
                 terminal = True
                 break
+        truncation = budget.reason(state) if not terminal else None
+        resume_checkpoint = None
+        if truncation:
+            resume_checkpoint = workspace / "truncations" / f"seed-{seed}-{time.time_ns()}"
+            env.save_state(resume_checkpoint)
         result = {
             "seed": str(seed), "steps": rows, "terminal": terminal,
             "terminal_kind": state.get("terminal"),
+            "truncated": bool(truncation), "truncation_reason": truncation,
+            "resume_checkpoint": str(resume_checkpoint) if resume_checkpoint else None,
+            "decision_budget": budget.summary(),
             "score": state.get("score") if terminal else None,
             "progression": _progression(state), "final_level": state.get("level"),
             "final_turn": state.get("turn"), "archive_case": str(archive_case) if archive_case else None,
@@ -121,7 +136,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", type=Path, required=True)
     parser.add_argument("--seed", required=True)
-    parser.add_argument("--steps", type=int, default=100)
+    parser.add_argument("--steps", "--decisions-per-floor", type=int, default=2000)
+    parser.add_argument("--total-steps", type=int, default=100000)
     parser.add_argument("--replay", type=Path)
     parser.add_argument("--model", type=Path)
     parser.add_argument("--epsilon", type=float, default=0.05)
@@ -130,7 +146,7 @@ def main() -> None:
     print(json.dumps(run_episode(
         workspace=args.workspace, seed=args.seed, steps=args.steps,
         replay_path=args.replay, model_path=args.model, epsilon=args.epsilon,
-        archive_dir=args.archive), sort_keys=True))
+        archive_dir=args.archive, total_steps=args.total_steps), sort_keys=True))
 
 
 if __name__ == "__main__":

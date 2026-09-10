@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import copy
 from pathlib import Path
 
 import torch
@@ -11,7 +12,7 @@ from features import ACTION_DIM, FEATURE_VERSION, STATE_DIM, state_features, act
 from teacher import navigation_distances
 import storage
 
-MODEL_VERSION = "general-action-model-v1"
+MODEL_VERSION = "general-action-model-v2-separate-critic"
 
 
 class ActionValueModel(nn.Module):
@@ -22,9 +23,15 @@ class ActionValueModel(nn.Module):
             nn.Linear(STATE_DIM + ACTION_DIM, hidden), nn.LayerNorm(hidden), nn.ReLU(),
             nn.Linear(hidden, hidden), nn.ReLU(), nn.Linear(hidden, 1),
         )
+        # No shared parameters: absolute return regression must not rewrite
+        # action logits or the bootstrap navigation representation.
+        self.value_net = copy.deepcopy(self.net)
 
     def forward(self, state_action: torch.Tensor) -> torch.Tensor:
         return self.net(state_action).squeeze(-1)
+
+    def value(self, state_action: torch.Tensor) -> torch.Tensor:
+        return self.value_net(state_action).squeeze(-1)
 
 
 def tensor_for_actions(state: dict, actions: list[dict]) -> torch.Tensor:
@@ -60,11 +67,15 @@ def save_model(path: str | Path, model: ActionValueModel, metadata: dict | None 
 
 def load_model(path: str | Path) -> tuple[ActionValueModel, dict]:
     payload = torch.load(path, map_location="cpu", weights_only=False)
-    if payload.get("model_version") != MODEL_VERSION:
+    if payload.get("model_version") not in (MODEL_VERSION, "general-action-model-v1"):
         raise ValueError("unsupported model version")
     if payload.get("feature_version") != FEATURE_VERSION:
         raise ValueError("feature version mismatch; bootstrap a new run")
     model = ActionValueModel(int(payload.get("hidden", 192)))
-    model.load_state_dict(payload["state_dict"])
+    weights = dict(payload["state_dict"])
+    if payload["model_version"] == "general-action-model-v1":
+        weights.update({"value_net." + key[4:]: value.clone()
+                        for key, value in payload["state_dict"].items() if key.startswith("net.")})
+    model.load_state_dict(weights)
     model.eval()
     return model, payload

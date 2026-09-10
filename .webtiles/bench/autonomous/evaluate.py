@@ -30,14 +30,14 @@ def promotion_decision(champion, candidate, margin=0.0):
 
 def evaluate_model(model: str | Path, work: str | Path, seeds: list[str],
                    steps: int = 40, epsilon: float = 0.0,
-                   policy_version: str = "candidate") -> list[dict]:
+                   policy_version: str = "candidate", total_steps: int = 100000) -> list[dict]:
     work = Path(work)
     jobs = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, len(seeds))) as pool:
         for index, seed in enumerate(seeds):
             jobs.append(pool.submit(
                 run_episode, work / f"{policy_version}-{index}", seed, steps,
-                None, model, epsilon, None, policy_version, False))
+                None, model, epsilon, None, policy_version, False, total_steps))
         results = []
         for job in jobs:
             try:
@@ -58,6 +58,7 @@ def comparison(results: list[dict]) -> dict:
         "mean_progression": sum(progression) / len(progression) if progression else 0.0,
         "max_progression": max(progression, default=0.0),
         "terminal_count": sum(bool(row.get("terminal")) for row in valid),
+        "truncated_count": sum(bool(row.get("truncated")) for row in valid),
         "results": results,
         "metric_used": "actual_score" if len(actual) == len(results) and actual else "incomplete_scores_no_promotion",
     }

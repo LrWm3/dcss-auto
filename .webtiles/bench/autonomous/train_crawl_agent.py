@@ -16,7 +16,7 @@ from counterfactual import evaluate_checkpoint
 from evaluate import comparison, evaluate_model, promotion_decision
 from general_env import BASE_RC, ENGINE, sha
 from model import load_model, save_model
-from train_model import rows_from_replay, train_behavioral_clone, train_q_finetune
+from train_model import rows_from_replay, train_behavioral_clone, train_q_finetune, train_counterfactual_preferences
 
 DEFAULT_SEEDS = ["1760771545328102746", "1760771545328102747",
                  "1760771545328102748", "1760771545328102749",
@@ -98,6 +98,9 @@ def prepare(run_dir: Path, args) -> dict:
     if config_path.exists():
         config = json.loads(config_path.read_text())
         config["storage"] = storage.limits()
+        config["decisions_per_floor"] = config.get("decisions_per_floor", config.get("steps_per_episode", 2000))
+        config["total_decisions"] = config.get("total_decisions", args.total_steps)
+        config["budget_version"] = "cumulative_per_floor_v1"
         write(config_path, config)
         return config
     config = {
@@ -108,7 +111,9 @@ def prepare(run_dir: Path, args) -> dict:
         "bootstrap_epochs": args.bootstrap_epochs,
         "actor_episodes": args.actor_episodes,
         "evaluation_episodes": args.evaluation_episodes,
-        "steps_per_episode": args.steps,
+        "decisions_per_floor": args.steps,
+        "total_decisions": args.total_steps,
+        "budget_version": "cumulative_per_floor_v1",
         "counterfactual_top_k": args.top_k,
         "counterfactual_random_k": args.random_k,
         "counterfactual_continuations": args.continuations,
@@ -141,7 +146,7 @@ def status(run_dir: Path, phase: str, **extra) -> None:
 
 def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
                      steps: int, model: Path | None, epsilon: float,
-                     archive: bool) -> list[dict]:
+                     archive: bool, total_steps: int = 100000) -> list[dict]:
     selected = [seeds[i % len(seeds)] for i in range(episodes)]
     results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(4,len(selected)))) as pool:
@@ -161,7 +166,7 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
         jobs = [(i, pool.submit(
             run_episode, run_dir / "actors" / f"{label}-{i}", seed, steps,
             run_dir / "replay" / f"{label}-{i}.jsonl", model, epsilon,
-            run_dir / "state_archive" if archive else None, label, archive))
+            run_dir / "state_archive" if archive else None, label, archive, total_steps))
             for i, seed in pending]
         for i, job in jobs:
             try:
@@ -186,7 +191,9 @@ def main() -> None:
     parser.add_argument("--bootstrap-epochs", type=int, default=10)
     parser.add_argument("--actor-episodes", type=int, default=2)
     parser.add_argument("--evaluation-episodes", type=int, default=5)
-    parser.add_argument("--steps", type=int, default=2000)
+    parser.add_argument("--steps", "--decisions-per-floor", type=int, default=2000,
+                        help="cumulative decision allowance per distinct floor")
+    parser.add_argument("--total-steps", type=int, default=100000, help="whole-game emergency decision cap")
     parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument("--random-k", type=int, default=2)
     parser.add_argument("--continuations", type=int, default=2)
@@ -227,7 +234,7 @@ def main() -> None:
     else:
         status(run_dir, "bootstrap_collecting")
         collect_parallel(run_dir, seeds, "bootstrap", config["bootstrap_episodes"],
-                         config["steps_per_episode"], None, 0.0, True)
+                         config["decisions_per_floor"], None, 0.0, True, config["total_decisions"])
         rows = rows_from_replay(run_dir / "replay")
         if not rows:
             raise RuntimeError("bootstrap generated no replay rows")
@@ -243,8 +250,8 @@ def main() -> None:
         label = f"cycle-{cycle:04d}"
         status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion))
         actors = collect_parallel(run_dir, seeds, label, config["actor_episodes"],
-                                  config["steps_per_episode"], champion,
-                                  config["epsilon"], True)
+                                  config["decisions_per_floor"], champion,
+                                  config["epsilon"], True, config["total_decisions"])
         rows = rows_from_replay(run_dir / "replay")
         candidate_model, _ = load_model(champion)
         candidate_model, train_meta = train_behavioral_clone(
@@ -287,8 +294,10 @@ def main() -> None:
                             "return": row["empirical_return"]}
                            for row in cf_records]
                 q_meta = train_q_finetune(updated_model, cf_rows, epochs=1)
+                preference_meta = train_counterfactual_preferences(updated_model, cf_rows, anchors=rows)
                 save_model(candidate, updated_model,
-                           {**payload.get("metadata", {}), "counterfactual": q_meta})
+                           {**payload.get("metadata", {}), "counterfactual": q_meta,
+                            "counterfactual_policy_update": preference_meta})
             except Exception as exc:
                 append(run_dir / "failures" / "invalid_states" / "counterfactual.jsonl",
                        {"error": str(exc), "case": str(case)})
@@ -300,10 +309,10 @@ def main() -> None:
             raise ValueError("evaluation seeds overlap training seeds")
         champion_eval = comparison(evaluate_model(
             champion, run_dir / "evaluations" / f"{label}-champion", eval_seeds,
-            config["steps_per_episode"], 0.0, version))
+            config["decisions_per_floor"], 0.0, version, config["total_decisions"]))
         candidate_eval = comparison(evaluate_model(
             candidate, run_dir / "evaluations" / f"{label}-candidate", eval_seeds,
-            config["steps_per_episode"], 0.0, label))
+            config["decisions_per_floor"], 0.0, label, config["total_decisions"]))
         evaluation = {"cycle": cycle, "champion": champion_eval,
                       "candidate": candidate_eval, "candidate_path": str(candidate),
                       "train": train_meta, "counterfactual_rows": len(cf_records)}
