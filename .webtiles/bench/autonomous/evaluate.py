@@ -9,6 +9,7 @@ from collect import run_episode
 
 
 def promotion_decision(champion, candidate, margin=0.0):
+    """Legacy rule for historical diagnostics only; selection.py governs promotion."""
     left, right = champion["results"], candidate["results"]
     if len(left) != len(right) or len(left) < 5:
         return {"promote": False, "reason": "need at least five complete paired games"}
@@ -33,11 +34,11 @@ def evaluate_model(model: str | Path, work: str | Path, seeds: list[str],
                    policy_version: str = "candidate", total_steps: int = 100000) -> list[dict]:
     work = Path(work)
     jobs = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, len(seeds))) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(4, len(seeds)))) as pool:
         for index, seed in enumerate(seeds):
             jobs.append(pool.submit(
                 run_episode, work / f"{policy_version}-{index}", seed, steps,
-                None, model, epsilon, None, policy_version, False, total_steps))
+                None, model, epsilon, None, policy_version, False, total_steps, data_role="screen"))
         results = []
         for job in jobs:
             try:

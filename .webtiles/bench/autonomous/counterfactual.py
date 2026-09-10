@@ -12,6 +12,7 @@ from policy import Policy
 from model import action_scores, tensor_for_actions
 import torch
 import storage
+from data_split import assert_training_seed
 
 
 def _actions(state):
@@ -26,6 +27,10 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
                         random_k: int = 2, continuations: int = 2,
                         continuation_steps: int = 8) -> list[dict]:
     case = Path(case)
+    metadata = json.loads((case / "case.json").read_text())
+    assert_training_seed(metadata["seed"])
+    if metadata.get("data_role", "training") != "training":
+        raise ValueError("held-out checkpoints cannot be used for training counterfactuals")
     probe = GeneralEnvironment(Path(workspace) / "probe")
     try:
         state = probe.launch(case)

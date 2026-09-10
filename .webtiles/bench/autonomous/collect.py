@@ -13,6 +13,7 @@ from policy import Policy
 from teacher import choose_action
 import storage
 from episode_budget import DecisionBudget
+from data_split import assert_training_seed
 
 
 def _progression(state: dict) -> float:
@@ -30,7 +31,11 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 model_path: str | Path | None = None, epsilon: float = 0.05,
                 archive_dir: str | Path | None = None, policy_version: str = "teacher",
                 snapshot: bool = True, total_steps: int = 100000,
-                no_turn_limit: int = 16) -> dict:
+                no_turn_limit: int = 16, data_role: str = "training") -> dict:
+    if data_role == "training":
+        assert_training_seed(seed)
+    elif replay_path is not None or archive_dir is not None:
+        raise ValueError("held-out evaluation cannot write training replay/archive")
     workspace = Path(workspace)
     if model_path and policy_version == "teacher":
         policy_version = Path(model_path).stem
@@ -40,7 +45,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
         replay_path.parent.mkdir(parents=True, exist_ok=True)
     if archive_dir:
         archive_dir.mkdir(parents=True, exist_ok=True)
-    env = GeneralEnvironment(workspace, seed=str(seed))
+    env = GeneralEnvironment(workspace, seed=str(seed), data_role=data_role)
     rows = 0
     started = time.time()
     completed = False
@@ -84,6 +89,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             budget.record(before, state)
             row = {
                 "type": "transition", "episode_seed": str(seed), "step": step,
+                "data_role": data_role,
                 "policy_version": policy_version, "observation": before,
                 "action": action, "action_index": action_index,
                 "teacher_action_index": teacher_index,
@@ -105,6 +111,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             env.save_state(resume_checkpoint)
         result = {
             "seed": str(seed), "steps": rows, "terminal": terminal,
+            "data_role": data_role,
             "terminal_kind": state.get("terminal"),
             "truncated": bool(truncation), "truncation_reason": truncation,
             "resume_checkpoint": str(resume_checkpoint) if resume_checkpoint else None,

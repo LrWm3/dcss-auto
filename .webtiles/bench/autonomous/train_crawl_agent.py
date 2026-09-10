@@ -13,7 +13,9 @@ from pathlib import Path
 
 from collect import run_episode
 from counterfactual import evaluate_checkpoint
-from evaluate import comparison, evaluate_model, promotion_decision
+from evaluate import comparison, evaluate_model
+from selection import (ensure_protocol, screen_decision, prepare_batch, run_batch,
+                       promote_confirmed, audit_due, latest_champion, run_lock)
 from general_env import BASE_RC, ENGINE, sha
 from model import load_model, save_model
 from train_model import rows_from_replay, train_behavioral_clone, train_q_finetune, train_counterfactual_preferences
@@ -209,12 +211,20 @@ def main() -> None:
         current["storage"] = storage.health(run_dir)
         if current["storage"]["paused"]:
             current["phase"] = "paused_low_disk"
+        if current.get("confirmation_status") and Path(current["confirmation_status"]).exists():
+            current["confirmation_progress"] = json.loads(Path(current["confirmation_status"]).read_text())
         print(json.dumps(current,indent=2,sort_keys=True))
         return
+    with run_lock(run_dir):
+        run_training(args, run_dir)
+
+
+def run_training(args, run_dir):
     run_dir.mkdir(parents=True, exist_ok=True)
     storage.configure(run_dir)
     storage.guard()
     config = prepare(run_dir, args)
+    ensure_protocol(run_dir)
     storage.maintain(run_dir)
     seeds = list(config.get("seeds", DEFAULT_SEEDS))
     previous_status = {}
@@ -245,9 +255,26 @@ def main() -> None:
         status(run_dir, "bootstrapped", champion=str(champion), replay_rows=len(rows))
 
     cycle = start_cycle
+    audit_due(run_dir, config, start_cycle)
     end_cycle = None if args.forever else start_cycle + args.cycles
     while end_cycle is None or cycle < end_cycle:
         label = f"cycle-{cycle:04d}"
+        # Resume a frozen confirmation before any retraining can overwrite its
+        # candidate or repeat counterfactual collection for this partial cycle.
+        pending = run_dir / "evaluations" / "confirmations" / label
+        if (pending / "manifest.json").exists():
+            status(run_dir, "confirming", cycle=cycle,
+                   confirmation_status=str(pending / "status.json"))
+            decision = run_batch(pending)
+            promoted = promote_confirmed(run_dir, pending)
+            champion = latest_champion(run_dir)
+            version = champion.stem
+            cycle += 1
+            status(run_dir, "cycle_complete", cycle=cycle-1,
+                   completed_cycles=cycle, champion=str(champion),
+                   promoted=bool(promoted), promotion_decision=decision)
+            audit_due(run_dir, config, cycle)
+            continue
         status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion))
         actors = collect_parallel(run_dir, seeds, label, config["actor_episodes"],
                                   config["decisions_per_floor"], champion,
@@ -315,20 +342,32 @@ def main() -> None:
             config["decisions_per_floor"], 0.0, label, config["total_decisions"]))
         evaluation = {"cycle": cycle, "champion": champion_eval,
                       "candidate": candidate_eval, "candidate_path": str(candidate),
+                      "model_hashes": {"champion":sha(champion), "candidate":sha(candidate)},
+                      "role": "screen", "protocol":"screen-confirm-audit-v1",
                       "train": train_meta, "counterfactual_rows": len(cf_records)}
         append(run_dir / "evaluations" / "paired_seeds.jsonl", evaluation)
-        decision = promotion_decision(champion_eval, candidate_eval,
-                                      float(config["promotion_margin"]))
-        promote = decision["promote"]
-        if promote:
-            promoted = run_dir / "champions" / f"V{cycle + 1}.pt"
-            shutil.copy2(candidate, promoted)
-            champion, version = promoted, promoted.stem
+        screening = screen_decision(champion_eval, candidate_eval)
+        decision, promote = screening, False
+        write(run_dir / "evaluations" / "screens" / f"{label}.json", {"evaluation":evaluation,"decision":screening})
+        if screening["state"] == "awaiting_confirmation":
+            folder = prepare_batch(run_dir, label, champion, candidate, config)
+            status(run_dir, "confirming", cycle=cycle, champion=str(champion),
+                   candidate=str(candidate), confirmation_status=str(folder / "status.json"),
+                   screen_decision=screening)
+            decision = run_batch(folder)
+            promoted = promote_confirmed(run_dir, folder)
+            promote = bool(promoted)
+            if promote:
+                champion = latest_champion(run_dir)
+                version = champion.stem
         status(run_dir, "cycle_complete", cycle=cycle, champion=str(champion),
                completed_cycles=cycle + 1,
                candidate=str(candidate), promoted=promote, evaluation=evaluation,
                promotion_decision=decision)
         cycle += 1
+        if cycle % ensure_protocol(run_dir)["audit_every_completed_cycles"] == 0:
+            status(run_dir, "auditing", cycle=cycle, champion=str(champion))
+            audit_due(run_dir, config, cycle)
     status(run_dir, "idle", champion=str(champion),
            completed_cycles=cycle)
 

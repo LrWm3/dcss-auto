@@ -65,9 +65,57 @@ Runs contain the requested artifacts: `config.json`, `environment_version.txt`,
 
 The live observation uses `score=-1` with `score_status=live` until Crawl ends.
 Official final scores are read from morgues and seeded xlogs. Progression is
-diagnostic only: incomplete paired games cannot cause a promotion. At least
-five complete score pairs and a positive bootstrap lower confidence bound are
-required. Truncated counterfactuals supply no fabricated score targets.
+diagnostic only: incomplete paired games cannot cause a promotion.
+Truncated counterfactuals supply no fabricated score targets.
+
+### Screen, confirmation, and audit
+
+`selection.py` implements the predeclared `screen-confirm-audit-v1` protocol:
+
+* The existing five seeds are a cheap screen, never promotion evidence. Broken
+  candidates, severe loop regressions, and non-improving mean scores fail the
+  screen. Incomplete score pairs are inconclusive.
+* A promising candidate and champion are frozen and run on 30 fresh paired
+  seeds (60 games, four workers). Only after the entire batch finishes, a
+  one-sided 95% paired percentile-bootstrap lower bound above zero promotes.
+  The protocol fixes 10,000 resamples, bootstrap RNG 42, and zero margin;
+  the historical `--promotion-margin` setting does not override this protocol.
+* Inconclusive candidates remain available, but relabeling the same checkpoint
+  pair reuses its original batch, rather than buying another chance on new
+  seeds. Failed/truncated games make confirmation inconclusive, not fabricated
+  low scores. Confirmed-worse candidates are not promoted.
+* Every five completed cycles, a separate fresh 30-pair audit compares the
+  current champion with the frozen original V0. Audits report results but
+  never promote or change the policy.
+
+Checkpoints, environment hashes, budgets, seeds, and protocol are persisted in
+each batch's `manifest.json`. Per-game results survive restart; unfinished games
+are resumed by rerunning only the missing trials on the same seeds. A run lock
+prevents concurrent training/confirmation mutation. Restarting training during
+a frozen confirmation resumes that batch before any further training.
+
+Confirmation and audit use separate reserved seed namespaces. Their observations,
+snapshots, and results are tagged as held-out; collection, replay loading, and
+counterfactual entry points reject using them as training data.
+
+`evaluations/selection_protocol.json` records the fixed rule;
+`evaluations/confirmations/<label>/status.json` records live completion and the
+final decision; `evaluations/audits/` records scheduled baseline comparisons.
+The root status points to the active confirmation. To confirm an already
+screened candidate (repeat exactly this command to resume):
+
+```bash
+.webtiles/bench/tactical/.rl-venv/bin/python .webtiles/bench/autonomous/selection.py \
+  --run-dir .webtiles/bench/autonomous/artifacts/foundation-general-training-v4 \
+  --candidate .webtiles/bench/autonomous/artifacts/foundation-general-training-v4/candidates/cycle-0003.pt \
+  --label cycle-0003-confirmation-v1 --screen-cycle 3
+```
+
+There are no interim significance decisions. The 95% bound is approximate and
+per comparison, not a lifetime false-promotion guarantee across unlimited
+challengers. Thirty pairs improve evidence over five but may remain inconclusive,
+especially with skewed scores. The scheduled V0 audits provide an independent
+view of cumulative progress; they do not eliminate repeated-testing concerns.
 
 ### Decision budgets and update isolation
 

@@ -55,12 +55,13 @@ class GeneralEnvironment:
     """Private Crawl process with exact save/restore boundaries."""
 
     def __init__(self, workspace: str | Path, seed: str = SEED,
-                 source_rc: str | Path | None = None):
+                 source_rc: str | Path | None = None, data_role: str = "training"):
         self.workspace = Path(workspace).resolve()
         self.workspace.mkdir(parents=True, exist_ok=True)
         if not str(seed).isdigit() or not 0 <= int(seed) < 2**64:
             raise ValueError("seed must be an unsigned 64-bit integer")
         self.seed = str(seed)
+        self.data_role = data_role
         self.source_rc = Path(source_rc or BASE_RC).resolve()
         self.child = None
         self.pipe_fd = None
@@ -129,6 +130,7 @@ class GeneralEnvironment:
             "source_rc_sha256": sha(self.source_rc),
             "adapter_sha256": sha(Path(__file__)),
             "seed": self.seed,
+            "data_role": self.data_role,
             "character": CHARACTER,
             "started_unix": time.time(),
         }, indent=2) + "\n")
@@ -147,6 +149,7 @@ class GeneralEnvironment:
 
     def _event(self, value: dict) -> None:
         if self.events:
+            value = {**value, "episode_seed": self.seed, "data_role": self.data_role}
             self.events.write(json.dumps(value, sort_keys=True) + "\n")
             self.events.flush()
 
@@ -298,6 +301,7 @@ class GeneralEnvironment:
         metadata = {
             "schema_version": 1,
             "id": destination.name,
+            "data_role": self.data_role,
             "seed": self.seed,
             "character": CHARACTER,
             "engine_sha256": sha(ENGINE),

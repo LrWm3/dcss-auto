@@ -14,6 +14,7 @@ from torch import nn
 
 from model import ActionValueModel, save_model, tensor_for_actions
 import storage
+from data_split import assert_training_seed
 
 
 def _files(path: str | Path):
@@ -29,12 +30,18 @@ def rows_from_replay(path: str | Path) -> list[dict]:
         if file.name != "counterfactual.jsonl" and not result_path.exists():
             continue
         result = json.loads(result_path.read_text()) if result_path.exists() else {}
+        if result.get("data_role", "training") != "training":
+            continue
+        assert_training_seed(result.get("seed"))
         with storage.open_text(file) as stream:
             for line in stream:
                 try:
                     row = json.loads(line)
                 except json.JSONDecodeError:
                     continue
+                if row.get("data_role", "training") != "training":
+                    continue
+                assert_training_seed(row.get("episode_seed", row.get("source_seed")))
                 state = row.get("observation")
                 if (row.get("type") == "transition" or state) and isinstance(state, dict):
                     if state.get("schema") == "crawl-general-v1":
