@@ -25,7 +25,10 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 ENGINE = Path(os.environ.get(
     "DCSS_TACTICAL_ENGINE",
-    str(ROOT / "crawl-0.35/crawl-ref/source/crawl-tactical-chain-v2"),
+    # General gameplay uses the ordinary fast simulator.  The chain-v2
+    # binary is intentionally reserved for the archived chained-encounter
+    # benchmark and is not a representative starting Crawl distribution.
+    str(ROOT / "crawl-0.35/crawl-ref/source/crawl-tactical-sim"),
 )).resolve()
 BASE_RC = ROOT / ".webtiles/rcs/codex-autocrawl.rc"
 FIFO_ENV = "DCSS_TACTICAL_OBSERVATION_FIFO"

@@ -61,3 +61,8 @@ end.
 Menu-confirmation abilities such as Renounce Religion are intentionally not
 enumerated in V1 because they are not one semantic action.  They are logged as
 a bridge extension point rather than allowed to stall an actor.
+
+The default engine is `crawl-tactical-sim`, the ordinary fast-play simulator
+with the structured FIFO adapter.  `crawl-tactical-chain-v2` remains an
+archived chained-encounter engine and should only be selected explicitly for
+regression work.
