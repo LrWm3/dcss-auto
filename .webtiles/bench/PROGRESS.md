@@ -2328,3 +2328,27 @@ administrative closes, preserved original evidence and unchanged model checkpoin
 Artifacts: tactical/artifacts/action-dagger-v1. Report: tactical/ACTION-DAGGER.md.
 No deployment. Next: broader training-only learner-state coverage and combat
 rollout metrics; do not train on failed validation encounters.
+
+### 2026-09-10 — Broader training coverage and combat rollout metrics
+
+Added broaden_action_training.py and metric regression test. Included all six
+remaining audited control training seeds, giving 12 seeds / 36 RNG variants;
+18 new cases passed 36 deterministic preflight replays / 576 actions, no noops.
+Existing cases, validation and test unchanged. Two fixed correction rounds added
+4308 labels / 567 disagreements to the prior 4300 examples, ten epochs each.
+No PPO, adaptive stopping or interim validation.
+
+Matched expanded-training recovery/death/truncation: starting checkpoint 22/13/1,
+after first fit 20/13/3, final 19/12/5, pursuit teacher 23/8/5. Original 18 variants
+fell 15->14 recoveries; added 18 fell 7->5. Validation remained 6/2/0, trading a
+new water-moccasin RNG-0 recovery for a ribbon-worm RNG-1 death. No overall gain.
+Adjacent-enemy training waits fell 133/455 -> 11/459 -> 3/520; final validation
+still 38/144. Fixing training waiting did not produce reliable directional play
+or improved recovery. Final fit includes eight threatened-wait labels given 20%
+sampling mass, a potential rare-stratum overfitting concern, not proven causal.
+
+All 4308 label audits and 188 episode audits passed; no harness errors/no-turn
+stalls. 203 Python tests and 13 Lua checks passed. No deployment; keep prior
+checkpoint as reference. Artifacts tactical/artifacts/action-broader-v1; report
+tactical/ACTION-BROADER.md. Next proposed work: clearer spatial/directional
+features and safeguards against tiny-stratum oversampling, not more blind fitting.
