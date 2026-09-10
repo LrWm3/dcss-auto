@@ -2233,3 +2233,29 @@ were not changed. Historical terminal diagnostics require restoring the relevant
 terminal.txt with gzip -d; see tactical/LOG-RETENTION.md. Added reusable dry-run /
 apply helper compact_terminal_logs.py. Disk was already about 228 GiB free before
 this operation; the earlier much larger increase was not this cleanup's work.
+
+### 2026-09-10 — Source presentation suppression, scaling and cached resets
+
+Built separate crawl-tactical-sim (03e2bab7becee67c6133e6c1390027d7dcdd06750348f76d5c8f9d3b4b180a1b).
+Combined tactical-simulation.patch supersedes tactical-fifo.patch for the existing
+character-lab base. Explicit delays / final rendering can be suppressed separately
+after the first observation; visibility/map updates remain. Ablation 85 actions per
+mode: 22.93 step actions/s unchanged, 29.04 no-delay, 22.42 no-render, 30.87 both.
+Rendering-only gain not demonstrated; delay suppression is the clearer gain.
+
+Equal 510-action / 12-reset scaling workloads: 1/2/4/6 workers took respectively
+79.31/43.70/24.95/18.68 seconds uncached and 27.36/14.64/8.32/6.40 seconds cached.
+Independent six-worker cached repeat: 6.87 seconds. Mean serial reset fell from
+4.66 to 0.42 seconds. New cached_env.py verifies a template and privately copies
+only db/des engine caches per reset; saves, RNG and output remain isolated.
+All 575 cache-template files unchanged after runs. Aggregate batch throughput
+74–80 actions/s with six cached workers, about 11.5–12.4x one uncached worker with
+the same source flags. Includes reset/logging/validation/close, not model inference.
+
+5,344 actions in 128 replays across two encounter families matched historical
+rich states. Six deaths verified via post-close morgue hashes. 191 Python tests
+and 13 embedded Lua checks pass. No original adapter/case/binary/production RC/model
+changes; no training or broad policy evaluation. Derived cases not training-ready.
+See tactical/SIMULATION-BENCHMARK.md and artifacts/simulation-* for measurements,
+source snapshots, run hashes, observations and evidence. Next: observation
+construction profiling and explicit event-auditor/per-action training integration.

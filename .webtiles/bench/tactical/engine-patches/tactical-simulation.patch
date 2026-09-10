@@ -1,0 +1,165 @@
+diff --git a/crawl-ref/source/l-crawl.cc b/crawl-ref/source/l-crawl.cc
+index bb11387..2be09e7 100644
+--- a/crawl-ref/source/l-crawl.cc
++++ b/crawl-ref/source/l-crawl.cc
+@@ -5,6 +5,9 @@
+ #include "AppHdr.h"
+ 
+ #include "l-libs.h"
++#include "tactical-sim.h"
++
++bool tactical_sim_ready = false;
+ 
+ #include "branch.h"
+ #include "chardump.h"
+@@ -30,6 +33,7 @@
+ #include "output.h"
+ #include "perlin.h"
+ #include "prompt.h"
++#include "random.h"
+ #include "religion.h"
+ #include "sound.h"
+ #include "state.h"
+@@ -47,6 +51,10 @@
+ #else
+ # include <sys/time.h>
+ # include <time.h>
++# include <fcntl.h>
++# include <sys/stat.h>
++# include <unistd.h>
++# include <cerrno>
+ #endif
+ 
+ //
+@@ -1364,6 +1372,54 @@ static int crawl_tutorial_msg(lua_State *ls)
+  */
+ LUAWRAP(crawl_dump_char, dump_char(you.your_name, true))
+ 
++// Opt-in local laboratory transport. Evaluate observation under the same RNG
++// domain as dump_char; inspecting equipment must not consume gameplay rolls.
++static int crawl_tactical_emit(lua_State *ls)
++{
++#ifndef TARGET_OS_WINDOWS
++    const char *path = getenv("DCSS_TACTICAL_OBSERVATION_FIFO");
++    if (!path || !*path)
++        return luaL_error(ls, "Tactical observation FIFO is not configured");
++    tactical_sim_ready = true;
++    luaL_checktype(ls, 1, LUA_TFUNCTION);
++    lua_pushvalue(ls, 1);
++    int status;
++    {
++        rng::generator ui(rng::UI);
++        status = lua_pcall(ls, 0, 1, 0);
++    }
++    if (status)
++        return lua_error(ls);
++    size_t size;
++    const char *data = luaL_checklstring(ls, -1, &size);
++    const int fd = open(path, O_WRONLY | O_NOFOLLOW);
++    if (fd < 0)
++        return luaL_error(ls, "Cannot open tactical FIFO");
++    struct stat info;
++    if (fstat(fd, &info) || !S_ISFIFO(info.st_mode))
++    {
++        close(fd);
++        return luaL_error(ls, "Tactical output must be a FIFO");
++    }
++    size_t sent = 0;
++    while (sent < size)
++    {
++        const ssize_t n = write(fd, data + sent, size - sent);
++        if (n < 0 && errno == EINTR)
++            continue;
++        if (n <= 0)
++            break;
++        sent += n;
++    }
++    close(fd);
++    if (sent != size)
++        return luaL_error(ls, "Incomplete tactical observation");
++    return 0;
++#else
++    return luaL_error(ls, "Tactical FIFO transport requires Unix");
++#endif
++}
++
+ /*** Call lua in dungeon (dlua) context.
+  *
+  * @tparam string chunk code run
+@@ -1565,6 +1621,7 @@ static const struct luaL_Reg crawl_clib[] =
+     { "get_command",        crawl_get_command },
+     { "tutorial_msg",       crawl_tutorial_msg },
+     { "dump_char",          crawl_dump_char },
++    { "tactical_emit",      crawl_tactical_emit },
+ #ifdef WIZARD
+     { "call_dlua",          crawl_call_dlua },
+ #endif
+diff --git a/crawl-ref/source/libunix.cc b/crawl-ref/source/libunix.cc
+index fb8d0f1..d952115 100644
+--- a/crawl-ref/source/libunix.cc
++++ b/crawl-ref/source/libunix.cc
+@@ -14,6 +14,7 @@
+    Jan 1998 Svante Gerhard <svante@algonet.se>                          */
+ 
+ #include "AppHdr.h"
++#include "tactical-sim.h"
+ 
+ #define _LIBUNIX_IMPLEMENTATION
+ #include "libunix.h"
+@@ -997,6 +998,8 @@ void puttext(int x1, int y1, const crawl_view_buffer &vbuf)
+ // C++ string class.  -- bwr
+ void update_screen()
+ {
++    if (tactical_sim_enabled(2))
++        return;
+     // In objstat, headless, and similar modes, there might not be a screen to update.
+     if (stdscr)
+     {
+@@ -1832,6 +1835,8 @@ int wherey()
+ 
+ void delay(unsigned int time)
+ {
++    if (tactical_sim_enabled(1))
++        return;
+     if (crawl_state.disables[DIS_DELAY])
+         return;
+ 
+diff --git a/crawl-ref/source/view.cc b/crawl-ref/source/view.cc
+index 13e0572..57eb312 100644
+--- a/crawl-ref/source/view.cc
++++ b/crawl-ref/source/view.cc
+@@ -6,6 +6,7 @@
+ #include "AppHdr.h"
+ 
+ #include "view.h"
++#include "tactical-sim.h"
+ 
+ #include <algorithm>
+ #include <cmath>
+@@ -572,6 +573,8 @@ crawl_view_buffer view_dungeon(animation *a, bool anim_updates, view_renderer *r
+ 
+ static bool _viewwindow_should_render()
+ {
++    if (tactical_sim_enabled(2))
++        return false;
+     if (you.asleep())
+         return false;
+     if (mouse_control::current_mode() != MOUSE_MODE_NORMAL)
+diff --git a/crawl-ref/source/tactical-sim.h b/crawl-ref/source/tactical-sim.h
+new file mode 100644
+index 0000000..c30c6b0
+--- /dev/null
++++ b/crawl-ref/source/tactical-sim.h
+@@ -0,0 +1,12 @@
++#pragma once
++#include <cstdlib>
++
++// Local benchmark only. Activate after the first structured decision boundary,
++// so startup menus remain usable. Bit 1 suppresses delays; bit 2 presentation.
++extern bool tactical_sim_ready;
++inline bool tactical_sim_enabled(int bit)
++{
++    static const int flags = getenv("DCSS_TACTICAL_SIM_FLAGS")
++        ? atoi(getenv("DCSS_TACTICAL_SIM_FLAGS")) : 0;
++    return tactical_sim_ready && (flags & bit);
++}
