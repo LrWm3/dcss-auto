@@ -102,3 +102,23 @@ when to withhold it. Preserve seed-level holdouts and include its regressions;
 do not optimize against this ceiling-limited validation set. A future per-action
 binary chooser needs outcome-labelled intermediate states, rather than pretending
 this initial-context timing tree already supplies that capability.
+
+## Fresh RNG generalization
+
+Two additional three-offset batches were derived from the same twelve training
+families. Offsets 6–8 were run under all four rules: never recovered 24/36,
+contact 36/36, near 36/36, and late 28/36 (four deaths and four budgets). The
+initial-context tree cross-fit result was 31/36; its frozen validation remained
+8/8, so it still failed to beat the fixed near rule on genuinely fresh cases.
+
+Offsets 9–11 were then evaluated with the focused near/never pair: never recovered
+25/36 and died 11 times; near recovered 35/36 with one budget truncation and no
+deaths. These are fresh paired controls, not additional independent seeds.
+
+The follow-up state-level gate uses the first actual state with a visible enemy
+within two tiles and berserk available. It trains on original plus offsets 6–8
+(107 usable states) and is evaluated on offsets 9–11. It selected near for all
+36 cases and recovered 35/36, matching the near control. The first gate trained
+only on the original batch selected never too often and recovered 31/36; that
+model was rejected. Ties now explicitly preserve near, and never requires a
+0.05 predicted advantage. Details are in `BERSERK-GATE.md`.

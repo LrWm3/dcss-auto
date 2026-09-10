@@ -2431,3 +2431,30 @@ model reconstruction and summary recomputation. No harness errors or stalls.
 213 Python tests / 13 Lua checks passed. Artifacts tactical/artifacts/berserk-timing-v1;
 report tactical/BERSERK-TIMING.md. Next: improve learning when to withhold early
 berserk and test generalization, with early berserk as the strong baseline.
+
+### 2026-09-10 — Fresh berserk timing and state-level gate
+
+Added prepare_berserk_timing_fresh.py and derived seed-preserving fresh RNG
+offsets 6/7/8 and 9/10/11 from the twelve existing training families. The first
+fresh batch ran all four timing rules: never 24/36 recoveries, contact 36/36,
+near 36/36, late 28/36 (4 deaths/4 budgets). Initial-context cross-fit chooser
+recovered 31/36; frozen validation remained 8/8. Early near/contact timing is a
+stronger generalization baseline than the initial-context learner.
+
+Added learn_berserk_gate.py and run_berserk_pair.py. The gate trains on the first
+72 paired cases plus fresh batch 1 (107 usable decision states), and chooses only
+between berserk-now at the actual first two-tile state and never. Its first model
+trained on batch 1's predecessor only, chose never for 20/36 fresh cases and
+recovered 31/36, losing five cases near recovered; rejected. After adding batch 1,
+the gate chose near for all 36 third-batch cases, recovering 35/36, matching the
+near control; never recovered 25/36 and died 11 times. Withhold margin is .05 and
+ties preserve near. The result is a safe fallback, not evidence that withholding
+is learnable yet. No RC deployment.
+
+The trace extractor was changed to stream JSONL rather than materializing whole
+episodes after the combined dataset exposed memory pressure. Action audit of the
+final 36 gate episodes passed: 35 recoveries/one budget, no death/stall/harness
+error. 215 Python tests / 13 Lua checks passed. Reports:
+tactical/BERSERK-TIMING.md and tactical/BERSERK-GATE.md. Artifacts remain local
+under berserk-timing-v2/v3 and berserk-gate-v1/v2. Next useful data is targeted
+repeated cases where near loses but never/contact wins, then held-out RNG testing.
