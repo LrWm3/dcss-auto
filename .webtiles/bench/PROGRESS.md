@@ -2352,3 +2352,28 @@ stalls. 203 Python tests and 13 Lua checks passed. No deployment; keep prior
 checkpoint as reference. Artifacts tactical/artifacts/action-broader-v1; report
 tactical/ACTION-BROADER.md. Next proposed work: clearer spatial/directional
 features and safeguards against tiny-stratum oversampling, not more blind fitting.
+
+### 2026-09-10 — Shared directional scorer and bounded sampler
+
+Added direction_policy.py / train_direction_pilot.py. Re-encoded the same 8608
+audited training-only states as 10 action rows of 32 features. Shared [64,64]
+scorer sees action-relative geometry, direct targets and known-map route facts;
+not teacher outputs or hidden state. This supplies pursuit-relevant planning
+structure and omits old history/detailed attributes: improved imitation, not
+learned pathfinding or a demonstrated superior tactical controller.
+
+Fixed 30 epochs for two identically initialized scorers, differing only in sampler.
+New water-fill cap limits every example to 4x uniform probability; eight threatened
+waits drop from 20% mass to .3717%. Both fit all labels correctly. Training replay
+recovery/death/truncation 23/8/5 for both, matching teacher (prior broader actor
+19/12/5; reference 22/13/1). Predetermined capped model validation 8/0/0, up from
+6/2/0; teacher also 8/0/0. Original sampler not evaluated on validation. No model
+selection or additional fitting after results. Both new models have zero waits
+when teacher would act, including capped validation. Small studied validation seed.
+
+80 episode audits and 207 Python tests / 13 Lua checks passed, no harness errors.
+Recomputed all 6000 executed model decisions from saved checkpoints/states/masks;
+all matched, with checkpoint hashes verified.
+Artifacts tactical/artifacts/action-direction-v1; report tactical/ACTION-DIRECTIONS.md.
+Nothing deployed. Standalone torch scorer needs integration with PPO; next proposed
+work is constrained RL on teacher-failing training cases, preserving basic pursuit.
