@@ -2182,3 +2182,22 @@ This keeps disk bounded without discarding replay evidence. Original artifacts
 are untouched. Smoke paired replay/archive verification passed;184 Python and
 13 Lua checks passed. See tactical/RNG-HOLDOUT.md. Active artifacts:
 tactical/artifacts/goals-character-v2-rng-holdout-v1. No fitting/deployment.
+
+## 2026-09-09 — gnoll/centaur exhaustive strategy diagnostic
+
+Completed RNG sweep:419 verified variants,1257 trials. Model397 wins/21 deaths/
+2 unknown; fixed pursuit407/11/2; pursuit+berserk398/21/1, each out of420 planned.
+Unknowns include one rejected offset, one harness failure and one controller
+stall.2138 evidence archives verified. Model saved one paired pursuit death but
+introduced11 paired deaths where pursuit recovered. Outcomes remain held out.
+
+Started probe_rng_strategies.py on evaluation-only encounter015 (D:2 gnolls,
+seed83029005) and supplemental encounter034 (D:5 centaur,seed83029004). All six
+unchanged goal/berserk choices run afresh at each of ten already-verified RNG
+offsets:20 matrices/120 trials. Reused-case bytes and source archives are checked;
+previously tested choices must reproduce audited outcomes. New workers are
+audited then losslessly archived. Reports include per-strategy rates and offsets
+where any strategy wins versus all available strategies die; unknown/masked
+choices are not deaths. No fitting, controller edits or deployment. Active run:
+tactical/artifacts/gnoll-centaur-strategy-grid-v1. This is an inspected diagnostic,
+not a new unbiased benchmark or training dataset.
