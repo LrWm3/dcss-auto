@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+python_bin="${CRAWL_TRAIN_PYTHON:-$repo_root/.webtiles/bench/tactical/.rl-venv/bin/python}"
+run_dir="${CRAWL_RUN_DIR:-$repo_root/.webtiles/bench/autonomous/runs/default}"
+
+exec "$python_bin" \
+  "$repo_root/.webtiles/bench/autonomous/train_crawl_agent.py" \
+  --run-dir "$run_dir" "$@"
