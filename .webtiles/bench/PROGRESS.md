@@ -2281,3 +2281,25 @@ harness errors. PPO oscillates/waits and never berserks in validation; no improv
 195 Python tests plus 13 Lua checks passed. No production deployment.
 See tactical/ACTION-RL.md. Next proposed experiment: training-only imitation
 warm-start before fixed-budget RL, not additional validation-driven tuning.
+
+### 2026-09-10 — Training-only pursuit imitation, then fixed PPO fine-tuning
+
+Added train_action_imitation.py and masked-likelihood regression tests. Collected
+18 training-only teacher rollouts (six seeds, three RNG offsets): 1178 actions,
+15 recoveries, two deaths, one budget truncation. All trajectories retained.
+20 fixed imitation epochs: 96.60% training-label accuracy, but 1008/1178 labels
+were waits; directional accuracy only 130/170 (76.47%). Saved imitation checkpoint
+then trained exactly 6144 PPO actions, without inspecting validation between fits.
+
+Frozen replay recovery/death/truncation: imitation training 13/3/2 and validation
+4/3/1; imitation+PPO training 6/10/2 and validation 3/3/2. Teacher training 15/2/1,
+previous identical validation 8/0/0. Prior random-start PPO validation 3/4/1.
+PPO degraded imitation; neither is competitive with pursuit. Imitation waits beside
+adjacent enemies for 37/51 turns in two fatal ribbon-worm validation cases. No
+deterministic validation berserk use. Training sampled outcome counts alone were
+misleading; fixed replay checks exposed the regression. Test untouched, no deploy.
+Artifacts: tactical/artifacts/action-imitation-v1. Report: tactical/ACTION-IMITATION.md.
+All 153 episode audits passed, no harness errors or no-turn stalls; 197 Python
+tests and 13 embedded Lua checks passed.
+Next proposed work: combat-focused training labels, training-only on-policy teacher
+corrections, and constraining RL drift after verifying basic closed-loop imitation.
