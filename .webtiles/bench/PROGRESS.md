@@ -2494,3 +2494,13 @@ The full group matrix was rerun with expanded native timer diagnostics, retainin
 the same outcomes. Twelve simple-wave replays matched exact canonical traces.
 221 Python tests passed (including 13 embedded Lua checks). Historical sim binary
 untouched. See tactical/CHAIN-BENCHMARK.md and artifacts/chains-groups-v2.
+
+### 2026-09-10 — RNG offsets 1/2/3 on chained encounters
+
+Reran the 12 harder two/three-wave layouts at gameplay RNG offsets 1, 2 and 3:
+108 isolated trials, three policies, no stalls/harness errors. Recovery rates by
+offset were: never 2/12, 2/12, 6/12; every eligible wave 8/12, 11/12, 10/12;
+save-last 7/12, 8/12, 6/12. Outcomes changed across offsets for 8/12 layouts
+(never), 4/12 (every), and 8/12 (save-last), confirming that one RNG offset is
+not enough for evaluation. Full audit: 134 handoffs, 155 cooldown/recovery
+combat states. See tactical/CHAIN-OFFSETS.md and artifacts/chains-groups-offsets1-3-v1.

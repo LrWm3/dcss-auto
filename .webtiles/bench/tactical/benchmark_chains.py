@@ -69,7 +69,8 @@ def trial(task):
     try:
         env.reset(options={'case_index':index})
         env.recovery = ChainRecovery()
-        result.update(waves=env.entry['waves'], seed=env.entry['seed'],
+        result.update(waves=env.entry['waves'], chain_length=len(env.entry['waves']),
+                      seed=env.entry['seed'], rng_offset=env.entry['rng_offset'],
                       initial_player=env.state['player'], initial_hp=env.state['hp'])
         last_chain = env.state['chain']
         for _ in range(max_steps):
@@ -107,7 +108,7 @@ def trial(task):
     return result
 
 
-def prepare(parent, root, engine, seeds, offsets, recipes=None):
+def prepare(parent, root, engine, seeds, offsets, recipes=None, offset_start=0):
     old = json.loads(parent.read_text())
     if old.get('test_used'):
         raise ValueError('Do not derive from test data')
@@ -120,7 +121,7 @@ def prepare(parent, root, engine, seeds, offsets, recipes=None):
     engine_hash = bench.sha(engine)
     entries = []
     recipes = recipes or [[['hound'], ['ogre']], [['hound'], ['iguana'], ['ogre']]]
-    if offsets < 1 or any(len(r) not in (2,3) or any(not w or len(w)>8 for w in r) for r in recipes):
+    if offsets < 1 or offset_start < 0 or any(len(r) not in (2,3) or any(not w or len(w)>8 for w in r) for r in recipes):
         raise ValueError('Expected nonempty two/three-wave recipes and positive offsets')
     if len({len(r) for r in recipes}) != len(recipes):
         raise ValueError('Use one recipe per chain length in a benchmark')
@@ -135,7 +136,7 @@ def prepare(parent, root, engine, seeds, offsets, recipes=None):
         for recipe in recipes:
             for reverse in (False, True):
                 waves = list(reversed(recipe)) if reverse else recipe
-                for offset in range(offsets):
+                for offset in range(offset_start, offset_start + offsets):
                     dest = root/'cases'/f'{origin["seed"]}-{len(waves)}-{int(reverse)}-{offset}'
                     dest.mkdir(parents=True)
                     shutil.copy2(case/'checkpoint.cs', dest/'checkpoint.cs')
@@ -182,6 +183,8 @@ def main():
     p.add_argument('--output', required=True, type=Path)
     p.add_argument('--seeds', nargs='+', default=['83017001','83019003','83018003'])
     p.add_argument('--offsets', type=int, default=2)
+    p.add_argument('--offset-start', type=int, default=0,
+                   help='First gameplay RNG advance count (default: 0)')
     p.add_argument('--workers', type=int, default=6)
     p.add_argument('--max-steps', type=int, default=320)
     p.add_argument('--recipes', type=Path, help='JSON list of two/three-wave monster-name lists')
@@ -193,7 +196,8 @@ def main():
         config = args.config.resolve()
     else:
         recipes = json.loads(args.recipes.read_text()) if args.recipes else None
-        config = prepare(args.parent.resolve(), root, args.engine.resolve(), args.seeds, args.offsets, recipes)
+        config = prepare(args.parent.resolve(), root, args.engine.resolve(), args.seeds,
+                         args.offsets, recipes, args.offset_start)
     cfg = json.loads(config.read_text())
     tasks = [(str(config),str(root/'runs'),i,policy,args.max_steps)
              for i in range(len(cfg['cases'])) for policy in POLICIES]
