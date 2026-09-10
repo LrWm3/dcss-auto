@@ -2458,3 +2458,19 @@ error. 215 Python tests / 13 Lua checks passed. Reports:
 tactical/BERSERK-TIMING.md and tactical/BERSERK-GATE.md. Artifacts remain local
 under berserk-timing-v2/v3 and berserk-gate-v1/v2. Next useful data is targeted
 repeated cases where near loses but never/contact wins, then held-out RNG testing.
+
+### 2026-09-10 — Cost-aware berserk penalty pilot
+
+Added learn_berserk_cost_gate.py and test_berserk_cost_gate.py. Utility was fixed
+before evaluation: recovery +100, budget 0, death -100, and one -2 cost for an
+encounter that activates berserk. Train on original plus first fresh batch (107
+usable two-tile states), evaluate on held-out third fresh batch (36 paired cases).
+
+Never control recovered/died/budget 25/11/0; near control 35/0/1; cost-aware gate
+34/1/1, using berserk 24/36. It saved 12 activations but turned one near recovery
+into a death, total utility 3252 versus near's 3428. Varying cost 0.1–8 did not
+change choices: the tree partition, not cost magnitude, drove withholding. This
+is a negative regression and nothing deployed. Final cost-gate action audit passed
+with 34 recoveries, one death, one budget; targeted cost tests passed. Report:
+tactical/BERSERK-COST.md. Keep near as baseline and require confidence/repeated
+counterfactual evidence before allowing learned withholding.
