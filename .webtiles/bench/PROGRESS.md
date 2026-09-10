@@ -2377,3 +2377,27 @@ all matched, with checkpoint hashes verified.
 Artifacts tactical/artifacts/action-direction-v1; report tactical/ACTION-DIRECTIONS.md.
 Nothing deployed. Standalone torch scorer needs integration with PPO; next proposed
 work is constrained RL on teacher-failing training cases, preserving basic pursuit.
+
+### 2026-09-10 — Complete directional cycle beginning with collection
+
+Added run_direction_cycle.py and audit_direction_cycle.py. Reusable bounded loop
+derives unused RNG offsets, preflights, collects learner trajectories, labels with
+pursuit, fits ten epochs with capped sampling, and replays old/new training cases,
+new-offset teacher and unchanged validation. New cases use offsets 3/4/5 on the
+same 12 training seeds; not new seed mining. Parent cases preserved. Preflight:
+36 variants, 72 replays, 1152 matching actions, no noops.
+
+Collected 3437 action examples / 11 disagreements; added to 8608 parent rows for
+12045 total. New data has 858 distinct feature/mask/label triples, 681 absent from
+parent. Fixed ten-epoch warm-start fit reached 100% training-label accuracy.
+New-offset collection and updated-model replay both recovery/death/truncation
+29/3/4, matching new-offset teacher. Original offsets remain 23/8/5; validation
+remains 8/0/0. Updated total training 52/72 recovered. No aggregate outcome gain
+or regression; expanded coverage rather than surpassing pursuit. Zero unwanted
+waits in all reported groups. No validation fitting/test access or deployment.
+
+Audited 3437 reconstructed labels, exact dataset concatenation, all 10115 model
+decisions in 116 episodes, and all 224 episode records (including 72 preflight
+administrative closes). 209 Python tests / 13 Lua checks passed, no harness errors.
+Artifacts tactical/artifacts/action-direction-cycle-v1; report
+tactical/DIRECTION-CYCLE.md. Next cycle can use this run as parent with --rng-start 6.
