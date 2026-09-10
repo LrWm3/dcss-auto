@@ -13,6 +13,13 @@ The repository wrapper is the shortest form:
 ./train_crawl_agent --run-dir .webtiles/bench/autonomous/runs/first --cycles 10
 ```
 
+For a walk-away run, use `--forever`; stopping and rerunning the same command
+resumes from the last completed cycle:
+
+```bash
+./train_crawl_agent --run-dir .webtiles/bench/autonomous/runs/first --forever
+```
+
 Use the existing ML environment, which contains CPU PyTorch, NumPy, and
 pexpect:
 

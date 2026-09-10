@@ -140,6 +140,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--cycles", type=int, default=1)
+    parser.add_argument("--forever", action="store_true",
+                        help="continue cycles until the process is stopped")
     parser.add_argument("--bootstrap-episodes", type=int, default=2)
     parser.add_argument("--actor-episodes", type=int, default=2)
     parser.add_argument("--evaluation-episodes", type=int, default=2)
@@ -181,7 +183,9 @@ def main() -> None:
         version = "V0"
         status(run_dir, "bootstrapped", champion=str(champion), replay_rows=len(rows))
 
-    for cycle in range(start_cycle, start_cycle + args.cycles):
+    cycle = start_cycle
+    end_cycle = None if args.forever else start_cycle + args.cycles
+    while end_cycle is None or cycle < end_cycle:
         label = f"cycle-{cycle:04d}"
         status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion))
         actors = collect_parallel(run_dir, seeds, label, config["actor_episodes"],
@@ -252,8 +256,9 @@ def main() -> None:
             champion, version = promoted, promoted.stem
         status(run_dir, "cycle_complete", cycle=cycle, champion=str(champion),
                candidate=str(candidate), promoted=promote, evaluation=evaluation)
+        cycle += 1
     status(run_dir, "idle", champion=str(champion),
-           completed_cycles=start_cycle + args.cycles)
+           completed_cycles=cycle)
 
 
 if __name__ == "__main__":
