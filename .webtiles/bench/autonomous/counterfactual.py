@@ -10,6 +10,7 @@ from collect import _progression
 from general_env import GeneralEnvironment
 from policy import Policy
 from model import action_scores
+import storage
 
 
 def _actions(state):
@@ -30,6 +31,7 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
         actions = _actions(state)
     finally:
         probe.close()
+    storage.finish_logs(probe.works)
     model_policy, _ = Policy.from_checkpoint(model_path, epsilon=0.0)
     scores = action_scores(model_policy.model, state, actions)
     ranked = list(reversed(scores.argsort().tolist()))[:top_k]
@@ -42,6 +44,7 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
         outcomes = []
         for continuation in range(continuations):
             env = GeneralEnvironment(Path(workspace) / f"branch-{action_index}-{continuation}")
+            completed = False
             try:
                 current = env.launch(case)
                 current = env.step(action_index)
@@ -57,10 +60,13 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
                     "terminal": current.get("terminal"),
                     "level": current.get("level"), "turn": current.get("turn"),
                 })
+                completed = True
             except Exception as exc:
                 outcomes.append({"error": str(exc)})
             finally:
                 env.close()
+                if completed:
+                    storage.finish_logs(env.works)
         numeric = [float(x["score"]) for x in outcomes
                    if x.get("terminal") and x.get("score") is not None]
         records.append({

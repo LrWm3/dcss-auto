@@ -9,6 +9,7 @@ from torch import nn
 
 from features import ACTION_DIM, FEATURE_VERSION, STATE_DIM, state_features, action_features
 from teacher import navigation_distances
+import storage
 
 MODEL_VERSION = "general-action-model-v1"
 
@@ -41,6 +42,7 @@ def action_scores(model: ActionValueModel, state: dict, actions: list[dict]) -> 
 
 
 def save_model(path: str | Path, model: ActionValueModel, metadata: dict | None = None) -> None:
+    storage.guard()
     payload = {
         "model_version": MODEL_VERSION,
         "feature_version": FEATURE_VERSION,

@@ -6,6 +6,7 @@ from concurrent.futures import ProcessPoolExecutor
 from collections import Counter
 import torch
 from collect import run_episode
+import storage
 
 
 def trial(task):
@@ -17,10 +18,11 @@ def trial(task):
                              model, 1.0 if label == "random" else 0.0,
                              policy_version=label, snapshot=False)
         counts, levels = Counter(), set()
-        for line in replay.open():
-            row = json.loads(line)
-            counts[row["action"]["kind"]] += 1
-            levels.add(row["observation"]["level"])
+        with storage.open_text(replay.with_name(replay.name + ".gz")) as stream:
+            for line in stream:
+                row = json.loads(line)
+                counts[row["action"]["kind"]] += 1
+                levels.add(row["observation"]["level"])
         result.update(action_counts=dict(counts), levels=sorted(levels))
         return result
     except Exception as exc:

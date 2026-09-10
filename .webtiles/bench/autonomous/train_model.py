@@ -11,19 +11,23 @@ import torch
 from torch import nn
 
 from model import ActionValueModel, save_model, tensor_for_actions
+import storage
 
 
 def _files(path: str | Path):
     path = Path(path)
-    return sorted(path.glob("*.jsonl")) if path.is_dir() else [path]
+    return storage.replay_files(path) if path.is_dir() else [path]
 
 
 def rows_from_replay(path: str | Path) -> list[dict]:
     rows = []
     for file in _files(path):
-        result_path = file.with_suffix(".result.json")
+        result_path = storage.result_path(file)
+        # Interrupted episodes are forensic artifacts, not complete replay.
+        if file.name != "counterfactual.jsonl" and not result_path.exists():
+            continue
         result = json.loads(result_path.read_text()) if result_path.exists() else {}
-        with file.open() as stream:
+        with storage.open_text(file) as stream:
             for line in stream:
                 try:
                     row = json.loads(line)

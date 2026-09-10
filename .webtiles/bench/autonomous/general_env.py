@@ -18,6 +18,7 @@ import time
 from pathlib import Path
 
 import pexpect
+import storage
 
 HERE = Path(__file__).resolve().parent
 # autonomous/ is directly under .webtiles/bench (the older tactical package
@@ -68,6 +69,7 @@ class GeneralEnvironment:
         self.state = None
         self.events = None
         self.terminal_tail = ""
+        self.works = []
 
     @property
     def work_path(self) -> Path:
@@ -81,8 +83,10 @@ class GeneralEnvironment:
         return list(actions)
 
     def launch(self, checkpoint: str | Path | None = None) -> dict:
+        storage.guard()
         self.close()
         self.work = Path(tempfile.mkdtemp(prefix="general-", dir=self.workspace))
+        self.works.append(self.work)
         for directory in ("saves", "morgue", "macros"):
             (self.work / directory).mkdir()
         self.pipe_dir = Path(tempfile.mkdtemp(prefix="fifo-", dir=self.workspace))
@@ -248,6 +252,7 @@ class GeneralEnvironment:
         return self.launch(checkpoint)
 
     def step(self, action: int | dict) -> dict:
+        storage.guard()
         if not self.state or self.state.get("terminal"):
             raise RuntimeError("episode is terminal or not launched")
         actions = self.legal_actions()
@@ -270,6 +275,7 @@ class GeneralEnvironment:
         return after
 
     def save_state(self, destination: str | Path) -> dict:
+        storage.guard()
         destination = Path(destination).resolve()
         if destination.exists():
             raise FileExistsError(destination)

@@ -10,6 +10,7 @@ from pathlib import Path
 from general_env import GeneralEnvironment
 from policy import Policy
 from teacher import choose_action
+import storage
 
 
 def _progression(state: dict) -> float:
@@ -39,6 +40,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
     env = GeneralEnvironment(workspace, seed=str(seed))
     rows = 0
     started = time.time()
+    completed = False
     try:
         state = env.launch()
         archive_case = None
@@ -97,12 +99,22 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             "final_turn": state.get("turn"), "archive_case": str(archive_case) if archive_case else None,
             "policy_version": policy_version, "elapsed_seconds": time.time() - started,
             "work": str(env.work_path),
+            "work_paths": [str(p) for p in env.works],
         }
         if replay_path:
-            replay_path.with_suffix(".result.json").write_text(json.dumps(result) + "\n")
+            storage.guard()
+            result_file = replay_path.with_suffix(".result.json")
+            temporary = result_file.with_name(result_file.name + ".tmp")
+            temporary.write_text(json.dumps(result) + "\n")
+            temporary.replace(result_file)
+        completed = True
         return result
     finally:
         env.close()
+        if completed:
+            if replay_path:
+                storage.compress(replay_path)
+            storage.finish_logs(env.works, redundant=bool(replay_path))
 
 
 def main() -> None:

@@ -8,6 +8,7 @@ import json
 import shutil
 import time
 import torch
+import storage
 from pathlib import Path
 
 from collect import run_episode
@@ -30,6 +31,7 @@ def write(path: Path, value: dict) -> None:
 
 
 def append(path: Path, value: dict) -> None:
+    storage.guard()
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a") as stream:
         stream.write(json.dumps(value, sort_keys=True) + "\n")
@@ -38,7 +40,8 @@ def append(path: Path, value: dict) -> None:
 def jsonl_count(path: Path) -> int:
     if not path.exists():
         return 0
-    return sum(1 for line in path.open() if line.strip())
+    with storage.open_text(path) as stream:
+        return sum(1 for line in stream if line.strip())
 
 
 def artifact_counts(run_dir: Path) -> dict:
@@ -48,7 +51,7 @@ def artifact_counts(run_dir: Path) -> dict:
     restarted orchestrator can report the same totals without another state
     database.
     """
-    replay_files = sorted((run_dir / "replay").glob("*.jsonl"))
+    replay_files = storage.replay_files(run_dir / "replay")
     replay_rows = sum(jsonl_count(path) for path in replay_files)
     progression = run_dir / "metrics" / "progression.jsonl"
     games = actions = 0
@@ -62,10 +65,16 @@ def artifact_counts(run_dir: Path) -> dict:
                 continue
             games += 1
             actions += int(row.get("steps", 0) or 0)
-    failures = sum(
-        jsonl_count(path)
-        for path in (run_dir / "failures").glob("**/*.jsonl")
-    )
+    failures = interrupted = 0
+    for path in (run_dir / "failures").glob("**/*.jsonl"):
+        with path.open() as stream:
+            for line in stream:
+                try:
+                    record = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                failures += int("error" in record)
+                interrupted += int(record.get("type") == "transition")
     return {
         "games_generated": games,
         "actions_generated": actions,
@@ -76,6 +85,7 @@ def artifact_counts(run_dir: Path) -> dict:
         "evaluation_rows": jsonl_count(
             run_dir / "evaluations" / "paired_seeds.jsonl"),
         "failure_rows": failures,
+        "interrupted_replay_rows": interrupted,
     }
 
 
@@ -86,7 +96,10 @@ def prepare(run_dir: Path, args) -> dict:
         (run_dir / name).mkdir(parents=True, exist_ok=True)
     config_path = run_dir / "config.json"
     if config_path.exists():
-        return json.loads(config_path.read_text())
+        config = json.loads(config_path.read_text())
+        config["storage"] = storage.limits()
+        write(config_path, config)
+        return config
     config = {
         "schema_version": 1, "environment_version": "crawl-general-v1",
         "action_version": "crawl-semantic-actions-v1",
@@ -102,6 +115,7 @@ def prepare(run_dir: Path, args) -> dict:
         "counterfactual_steps": args.counterfactual_steps,
         "epsilon": args.epsilon, "promotion_margin": args.promotion_margin,
         "seeds": DEFAULT_SEEDS, "started_unix": time.time(),
+        "storage": storage.limits(),
     }
     write(config_path, config)
     write(run_dir / "environment_version.txt", {
@@ -112,12 +126,14 @@ def prepare(run_dir: Path, args) -> dict:
 
 
 def status(run_dir: Path, phase: str, **extra) -> None:
+    storage.guard()
     previous = {}
     if (run_dir / "latest_status.json").exists():
         previous = json.loads((run_dir / "latest_status.json").read_text())
     value = {"run_dir": str(run_dir), "phase": phase,
              "updated_unix": time.time(), "counts": artifact_counts(run_dir),
              "completed_cycles": previous.get("completed_cycles", 0),
+             "storage": storage.health(run_dir),
              **extra}
     write(run_dir / "latest_status.json", value)
     append(run_dir / "metrics" / "training.jsonl", value)
@@ -129,12 +145,25 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
     selected = [seeds[i % len(seeds)] for i in range(episodes)]
     results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(4,len(selected)))) as pool:
-        jobs = [pool.submit(
+        # A restarted partial cycle must not append a second episode to the
+        # previous trajectory. Preserve unfinished files for debugging.
+        for i in range(len(selected)):
+            path = run_dir / "replay" / f"{label}-{i}.jsonl"
+            if path.exists() and not storage.result_path(path).exists():
+                destination = run_dir / "failures" / "invalid_states" / f"{label}-{i}-{time.time_ns()}.jsonl"
+                path.replace(destination)
+        pending = [(i, seed) for i, seed in enumerate(selected)
+                   if not (run_dir / "replay" / f"{label}-{i}.result.json").exists()]
+        for i in range(len(selected)):
+            result_path = run_dir / "replay" / f"{label}-{i}.result.json"
+            if result_path.exists():
+                results.append(json.loads(result_path.read_text()))
+        jobs = [(i, pool.submit(
             run_episode, run_dir / "actors" / f"{label}-{i}", seed, steps,
             run_dir / "replay" / f"{label}-{i}.jsonl", model, epsilon,
-            run_dir / "state_archive" if archive else None, label, archive)
-            for i, seed in enumerate(selected)]
-        for i, job in enumerate(jobs):
+            run_dir / "state_archive" if archive else None, label, archive))
+            for i, seed in pending]
+        for i, job in jobs:
             try:
                 result = job.result()
             except Exception as exc:
@@ -142,6 +171,7 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
                 append(run_dir / "failures" / "crashes" / "actors.jsonl", result)
             results.append(result)
             append(run_dir / "metrics" / "progression.jsonl", result)
+    storage.maintain(run_dir)
     return results
 
 
@@ -169,9 +199,16 @@ def main() -> None:
     if args.status:
         current = json.loads((run_dir / "latest_status.json").read_text())
         current["counts"] = artifact_counts(run_dir)
+        current["storage"] = storage.health(run_dir)
+        if current["storage"]["paused"]:
+            current["phase"] = "paused_low_disk"
         print(json.dumps(current,indent=2,sort_keys=True))
         return
+    run_dir.mkdir(parents=True, exist_ok=True)
+    storage.configure(run_dir)
+    storage.guard()
     config = prepare(run_dir, args)
+    storage.maintain(run_dir)
     seeds = list(config.get("seeds", DEFAULT_SEEDS))
     previous_status = {}
     if (run_dir / "latest_status.json").exists():
@@ -229,12 +266,16 @@ def main() -> None:
                     config["counterfactual_continuations"], config["counterfactual_steps"])
                 for row in cf_records:
                     append(run_dir / "rollouts" / "counterfactual_results.jsonl", row)
-                    append(run_dir / "replay" / "counterfactual.jsonl", {
+                    append(run_dir / "replay" / f"{label}-counterfactual.jsonl", {
                         "type": "transition", "observation": row["observation"],
                         "action": row["action"], "action_index": row["action_index"],
                         "return": row["empirical_return"],
                         "policy_version": label + ":counterfactual",
                     })
+                if cf_records:
+                    write(run_dir / "replay" / f"{label}-counterfactual.result.json",
+                          {"steps": len(cf_records)})
+                    storage.maintain(run_dir)
                 # The branch result is now used immediately as an empirical
                 # score-to-go target, rather than waiting for the next cycle.
                 # This is intentionally a small conservative update; the
