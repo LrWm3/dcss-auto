@@ -2259,3 +2259,25 @@ changes; no training or broad policy evaluation. Derived cases not training-read
 See tactical/SIMULATION-BENCHMARK.md and artifacts/simulation-* for measurements,
 source snapshots, run hashes, observations and evidence. Next: observation
 construction profiling and explicit event-auditor/per-action training integration.
+
+### 2026-09-10 — Per-action environment and first masked PPO pilot
+
+Added action_env.py, prepare_action_pilot.py, train_action_ppo.py,
+audit_action_episodes.py and tests. Ten explicit choices (eight directions, wait,
+berserk), conservative masks, four-frame rich feature encoding, no scripted Tab
+or automatic rest. Success requires full-health/no-threat recovery plus 20 clean
+turns. Deaths require morgue evidence; budgets truncate, harness errors abort.
+
+Derived 18 training variants from six training seeds and eight validation variants
+from four encounters on seed 83017003. Test untouched. 52 preflight replays / 826
+actions matched. Two failed pilots exposed drained-HP death parsing and automatic
+pickup consuming an extra turn; fixed in the new adapter/derived RCs, preserving
+old artifacts. Final action-ppo-v3 completed 6144 actions in 119.39s, six workers.
+Training: 5 recoveries, 18 deaths, 23 budget truncations, six administrative closes.
+Validation recovery/death/truncation: PPO 3/4/1, random 3/3/2, action-matched pursuit
+8/0/0, pursuit+berserk 8/0/0, historical broader-action pursuit 8/0/0. No final-run
+harness errors. PPO oscillates/waits and never berserks in validation; no improvement.
+84 new-adapter episode audits and eight historical recovery checks passed;
+195 Python tests plus 13 Lua checks passed. No production deployment.
+See tactical/ACTION-RL.md. Next proposed experiment: training-only imitation
+warm-start before fixed-budget RL, not additional validation-driven tuning.
