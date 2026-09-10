@@ -2401,3 +2401,33 @@ decisions in 116 episodes, and all 224 episode records (including 72 preflight
 administrative closes). 209 Python tests / 13 Lua checks passed, no harness errors.
 Artifacts tactical/artifacts/action-direction-cycle-v1; report
 tactical/DIRECTION-CYCLE.md. Next cycle can use this run as parent with --rng-start 6.
+
+### 2026-09-10 — Outcome-trained berserk timing pilot
+
+Added learn_berserk_timing.py, test_berserk_timing.py and audit_berserk_timing.py.
+Hold pursuit movement/attacks fixed; compare never/contact/within-two-tiles/
+contact-at-70%-HP timing, at most one activation. Full recovery target, fixed
+192-action budget. Twelve training families/seeds x six RNG offsets x four rules
+= 288 paired training trials. Depth-two tree fits four recovery probabilities
+from initial observable features, minimum three families/leaf, 0.10 advantage
+over never required. One-shot rule choice with reactive timing checks, not
+unrestricted per-action RL. No fit or rule changes after seeing outcomes.
+
+Recovery/death/budget: never 52/11/9, contact 67/2/3, near 68/2/2, late 60/5/7.
+Learned leave-one-seed-out 60/8/4; fitted-data result 70/1/1 (not generalization).
+Frozen learned model and every constant rule recover all eight validation cases,
+four families on one previously studied seed. Test untouched. Cross-fit learner
+does not beat simple timing; post-run cross-fit best-constant selection 67/3/2.
+
+Near rescues 19 baseline failures but loses three baseline recoveries: one death
+(83019004 offset 5) and two recovery-budget overruns (83019002 offsets 2/4).
+The latter finish alive at 58/61 and 61/61 HP, no visible enemies; distinguish
+deadline failures from tactical deaths. Final tree's EV/enemy-count split is
+small-sample correlation, not established Crawl strategy. Nothing deployed.
+
+All 320 episodes, 26,533 action decisions and 201 activations audited, including
+paired coverage, masks/boundaries, death proofs, seed separation, training-only
+model reconstruction and summary recomputation. No harness errors or stalls.
+213 Python tests / 13 Lua checks passed. Artifacts tactical/artifacts/berserk-timing-v1;
+report tactical/BERSERK-TIMING.md. Next: improve learning when to withhold early
+berserk and test generalization, with early berserk as the strong baseline.
