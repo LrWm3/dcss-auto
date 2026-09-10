@@ -8,7 +8,7 @@ from action_env import ACTIONS, legal_mask
 from goal_controllers import Recovery
 from bench import sha
 
-def audit(path):
+def audit(path, recovery_factory=Recovery):
     path=Path(path);result=json.loads(path.read_text());worker=path.parent
     if sha(worker/'events.jsonl')!=result['events_sha256'] or sha(worker/'actions.jsonl')!=result['actions_sha256']:
         raise ValueError('Evidence checksum mismatch')
@@ -16,7 +16,7 @@ def audit(path):
     actions=[json.loads(x) for x in (worker/'actions.jsonl').read_text().splitlines()]
     if len(events)!=len(actions)+1 or len(actions)!=result['steps']:
         raise ValueError('Missing / duplicated transition')
-    before=events[0]['initial_observation'];recovery=Recovery();blocked=set();noops=0;total=0.
+    before=events[0]['initial_observation'];recovery=recovery_factory();blocked=set();noops=0;total=0.
     endpoint=None
     for i,(event,row) in enumerate(zip(events[1:],actions)):
         a=ACTIONS.index(row['action']);mask=legal_mask(before)

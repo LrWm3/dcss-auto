@@ -2474,3 +2474,23 @@ is a negative regression and nothing deployed. Final cost-gate action audit pass
 with 34 recoveries, one death, one budget; targeted cost tests passed. Report:
 tactical/BERSERK-COST.md. Keep near as baseline and require confidence/repeated
 counterfactual evidence before allowing learned withholding.
+
+### 2026-09-10 — No-healing two/three-encounter chains
+
+Added a private opt-in native wave spawner, Lua transition hook, configurable
+benchmark runner and chain auditor. One character remains in the same process;
+every status timer/HP/MP/position is preserved across zero-turn wave handoffs.
+Actual tracked deaths, not loss of sight, trigger the next wave. Recovery is
+only allowed after the final wave. No model trained or deployed; train seeds only.
+
+Simple waves: 72 runs, never/every-wave/last-wave recovered 23/24/24 of 24 each.
+Harder enemy groups: 72 runs, recovered 5/17/12 of 24; all other outcomes deaths,
+no stalls/errors. Saving berserk wins 3 paired cases early use loses, while early
+use wins 8 saving loses. Case 13 carries slow and cooldown into wave 3 at 33/55 HP
+and dies to the ogre; saving berserk recovers. Immediate waves can also benefit
+early rage by sharing one activation. Do not assume all chains discourage it.
+
+The full group matrix was rerun with expanded native timer diagnostics, retaining
+the same outcomes. Twelve simple-wave replays matched exact canonical traces.
+221 Python tests passed (including 13 embedded Lua checks). Historical sim binary
+untouched. See tactical/CHAIN-BENCHMARK.md and artifacts/chains-groups-v2.

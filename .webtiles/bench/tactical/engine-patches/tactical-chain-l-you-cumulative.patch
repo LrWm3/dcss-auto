@@ -1,0 +1,245 @@
+diff --git a/crawl-ref/source/l-you.cc b/crawl-ref/source/l-you.cc
+index 69c2813..554d1bc 100644
+--- a/crawl-ref/source/l-you.cc
++++ b/crawl-ref/source/l-you.cc
+@@ -27,0 +28,8 @@
++#include "mon-death.h"
++#include "mon-place.h"
++#include "mon-util.h"
++#include "mgen-data.h"
++#include "terrain.h"
++#include "view.h"
++#include "message.h"
++#include "player-stats.h"
+@@ -35,0 +44 @@
++#include "random.h"
+@@ -1428,0 +1438,225 @@ LUARET1(you_has_good_stab, boolean, you.has_good_stab())
++// Offline wave experiments only; hidden monster IDs never enter policy features.
++LUAFN(you_tactical_wave)
++{
++    const char *enabled = getenv("DCSS_TACTICAL_CHAIN");
++    if (!enabled || string(enabled) != "1" || you.turn_is_over || you.hp <= 0)
++        return luaL_error(ls, "Tactical chain disabled or not at a live boundary");
++    static vector<mid_t> ids;
++    const string command = luaL_checkstring(ls, 1);
++    int alive = 0;
++    for (auto id : ids)
++        if (const monster *m = monster_by_mid(id))
++            alive += m->alive();
++    if (command == "reset")
++    {
++        dismiss_monsters("");
++        ids.clear();
++        alive = 0;
++        viewwindow();
++    }
++    else if (command == "spawn")
++    {
++        if (alive)
++            return luaL_error(ls, "Previous wave still alive");
++        luaL_checktype(ls, 2, LUA_TTABLE);
++        const int seed = luaL_safe_checkint(ls, 3);
++        const int count = lua_rawlen(ls, 2);
++        if (count < 1 || count > 8)
++            return luaL_error(ls, "Invalid wave size");
++        vector<monster_type> types;
++        vector<coord_def> squares;
++        for (int i = 1; i <= count; ++i)
++        {
++            lua_rawgeti(ls, 2, i);
++            const auto mt = get_monster_by_name(luaL_checkstring(ls, -1));
++            lua_pop(ls, 1);
++            if (mt == MONS_PROGRAM_BUG || mt == MONS_NO_MONSTER)
++                return luaL_error(ls, "Unknown wave monster");
++            types.push_back(mt);
++        }
++        // Fixed visible floor ring: no relocation, travel, or healing of player.
++        for (int y = -3; y <= 3; ++y)
++            for (int x = -3; x <= 3; ++x)
++            {
++                const coord_def p = you.pos() + coord_def(x, y);
++                if (coord_def(x, y).rdist() == 3 && in_bounds(p)
++                    && you.see_cell(p) && env.grid(p) == DNGN_FLOOR && !monster_at(p))
++                    squares.push_back(p);
++            }
++        if (squares.size() < types.size())
++            return luaL_error(ls, "Insufficient visible floor for wave");
++        ids.clear();
++        bool failed = false;
++        {
++            // Monster construction must not advance the combat RNG stream.
++            rng::subgenerator setup_rng(seed, 1);
++            for (unsigned i = 0; i < types.size(); ++i)
++            {
++                auto *m = create_monster(mgen_data(types[i], BEH_HOSTILE,
++                    squares[i], MHITYOU, MG_FORCE_PLACE | MG_FORCE_BEH), false);
++                if (!m) { failed = true; break; }
++                ids.push_back(m->mid);
++            }
++        }
++        if (failed)
++            return luaL_error(ls, "Wave placement failed; invalidate trial");
++        alive = ids.size();
++        viewwindow();
++    }
++    else if (command != "status")
++        return luaL_error(ls, "Unknown wave command");
++    lua_newtable(ls);
++    auto field = [ls](const char *key, int value) {
++        lua_pushinteger(ls, value); lua_setfield(ls, -2, key);
++    };
++    field("alive", alive);
++    field("turn", you.num_turns);
++    field("hp", you.hp); field("max_hp", you.hp_max);
++    field("mp", you.magic_points); field("max_mp", you.max_magic_points);
++    field("x", you.pos().x); field("y", you.pos().y);
++    field("berserk", you.duration[DUR_BERSERK]);
++    field("berserk_cooldown", you.duration[DUR_BERSERK_COOLDOWN]);
++    field("berserk_penalty", you.berserk_penalty);
++    field("elapsed_time", you.elapsed_time);
++    field("slow", you.duration[DUR_SLOW]);
++    field("exhausted", you.duration[DUR_EXHAUSTED]);
++    lua_newtable(ls);
++    for (int i = 0; i < NUM_DURATIONS; ++i)
++    {
++        lua_pushinteger(ls, you.duration[i]); lua_rawseti(ls, -2, i + 1);
++    }
++    lua_setfield(ls, -2, "durations");
++    return 1;
++}
++
++// Offline tactical augmentation only. Never enabled by an ordinary RC.
++LUAFN(you_tactical_augment)
++{
++    const char *enabled = getenv("DCSS_TACTICAL_AUGMENT");
++    if (!enabled || string(enabled) != "1")
++        return luaL_error(ls, "Tactical augmentation is disabled");
++    const int percent = luaL_safe_checkint(ls, 1);
++    const int draws = luaL_safe_checkint(ls, 2);
++    if (percent < 1 || percent > 100 || draws < 0 || draws > 100000
++        || you.hp <= 0 || you.hp_max <= 0 || you.turn_is_over)
++        return luaL_error(ls, "Invalid tactical augmentation state or recipe");
++    you.hp = max(1, you.hp_max * percent / 100);
++    you.redraw_hit_points = true;
++    rng::generator gameplay(rng::GAMEPLAY);
++    for (int i = 0; i < draws; ++i)
++        rng::get_uint32();
++    return 0;
++}
++
++// Separate opt-in synthetic character profiles. One axis per call. Setup uses
++// a local RNG stream, leaving the saved gameplay stream intact.
++LUAFN(you_tactical_character)
++{
++    const char *enabled = getenv("DCSS_TACTICAL_CHARACTER");
++    if (!enabled || string(enabled) != "1")
++        return luaL_error(ls, "Tactical character mutation is disabled");
++    const string axis = luaL_checkstring(ls, 1);
++    const string name = luaL_checkstring(ls, 2);
++    const int value = luaL_safe_checkint(ls, 3);
++    if (you.species != SP_MINOTAUR || you.form != transformation::none
++        || you.hp <= 0 || you.turn_is_over || you.berserk())
++        return luaL_error(ls, "Unsupported tactical character state");
++    skill_type skill = SK_NONE;
++    stat_type stat = STAT_STR;
++    mutation_type mut = MUT_HEAT_RESISTANCE;
++    item_def replacement;
++    item_def *old = nullptr;
++    equipment_slot slot = SLOT_WEAPON;
++    if (axis == "skill")
++    {
++        skill = str_to_skill(name);
++        if ((skill != SK_AXES && skill != SK_FIGHTING && skill != SK_ARMOUR
++             && skill != SK_DODGING && skill != SK_SHIELDS && skill != SK_EVOCATIONS)
++            || value < -5 || value > 5 || value == 0)
++            return luaL_error(ls, "Invalid skill delta");
++    }
++    else if (axis == "xl")
++    {
++        if (name != "xl" || value < -3 || value > 3 || value == 0
++            || you.experience_level + value < 1 || you.experience_level + value > 27)
++            return luaL_error(ls, "Invalid XL delta");
++    }
++    else if (axis == "attribute")
++    {
++        if (name == "str") stat = STAT_STR;
++        else if (name == "int") stat = STAT_INT;
++        else if (name == "dex") stat = STAT_DEX;
++        else return luaL_error(ls, "Invalid attribute");
++        if (value < -6 || value > 6 || value == 0
++            || you.base_stats[stat] + value < 3 || you.base_stats[stat] + value > 50)
++            return luaL_error(ls, "Invalid attribute delta");
++    }
++    else if (axis == "resistance")
++    {
++        if (name == "fire") mut = MUT_HEAT_RESISTANCE;
++        else if (name == "cold") mut = MUT_COLD_RESISTANCE;
++        else if (name == "poison") mut = MUT_POISON_RESISTANCE;
++        else if (name == "electricity") mut = MUT_SHOCK_RESISTANCE;
++        else return luaL_error(ls, "Invalid resistance");
++        if (value != 1 || you.get_mutation_level(mut) != 0 || mut_check_conflict(mut))
++            return luaL_error(ls, "Resistance mutation unavailable");
++    }
++    else if (axis == "gear")
++    {
++        replacement.base_type = OBJ_WEAPONS;
++        if (name == "hand_axe") replacement.sub_type = WPN_HAND_AXE;
++        else if (name == "war_axe") replacement.sub_type = WPN_WAR_AXE;
++        else if (name == "robe" || name == "ring_mail" || name == "plate_armour")
++        {
++            slot = SLOT_BODY_ARMOUR; replacement.base_type = OBJ_ARMOUR;
++            replacement.sub_type = name == "robe" ? ARM_ROBE
++                : name == "ring_mail" ? ARM_RING_MAIL : ARM_PLATE_ARMOUR;
++        }
++        else return luaL_error(ls, "Invalid gear preset");
++        old = you.equipment.get_first_slot_item(slot);
++        if (!old || is_artefact(*old) || old->cursed() || value < 0 || value > 5)
++            return luaL_error(ls, "Gear replacement unavailable");
++        replacement.plus = value; replacement.quantity = 1;
++        replacement.brand = 0; replacement.flags = ISFLAG_IDENTIFIED;
++        replacement.rnd = 1; replacement.pos = old->pos;
++        replacement.link = old->link; replacement.slot = old->slot;
++        if (!can_equip_item(replacement))
++            return luaL_error(ls, "Gear cannot be equipped");
++    }
++    else return luaL_error(ls, "Invalid character mutation axis");
++    const auto before_rng = rng::get_states()[rng::GAMEPLAY];
++    bool ok = true;
++    {
++        // The one-argument constructor draws its sequence from gameplay RNG.
++        rng::subgenerator setup_rng(20260909, 1);
++        msg::suppress silence;
++        if (axis == "skill")
++            set_skill_level(skill, max(0., min(27., you.skill(skill, 10, false) / 10. + value)), true);
++        else if (axis == "xl") set_xl(you.experience_level + value, false, true);
++        else if (axis == "attribute")
++        {
++            you.base_stats[stat] += value;
++            notify_stat_change();
++        }
++        else if (axis == "resistance") ok = perma_mutate(mut, 1, "tactical lab profile");
++        else if (axis == "gear")
++        {
++            const int index = old->link;
++            ok = unequip_item(*old, false);
++            if (ok)
++            {
++                *old = replacement;
++                equip_item(slot, index, false);
++                you.equipment.update();
++            }
++        }
++        calc_hp(); calc_mp();
++        you.hp = max(1, min(you.hp, you.hp_max));
++        you.magic_points = min(you.magic_points, you.max_magic_points);
++        you.redraw_armour_class = you.redraw_evasion = you.wield_change = true;
++    }
++    if (!ok || rng::get_states()[rng::GAMEPLAY] != before_rng)
++        return luaL_error(ls, "Character mutation failed or leaked RNG");
++    return 0;
++}
++
+@@ -1430,0 +1665,3 @@ static const struct luaL_Reg you_clib[] =
++    { "tactical_augment", you_tactical_augment },
++    { "tactical_wave", you_tactical_wave },
++    { "tactical_character", you_tactical_character },
