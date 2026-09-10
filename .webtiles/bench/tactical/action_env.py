@@ -11,6 +11,8 @@ import json
 import os
 from pathlib import Path
 import re
+import time
+import pexpect
 
 import gymnasium as gym
 import numpy as np
@@ -27,6 +29,22 @@ HISTORY = 4
 FRAME_SIZE = BINS+len(ACTIONS)+4
 
 class ActionTransport(CachedEnvironment):
+    def close(self):
+        try:
+            return super().close()
+        except pexpect.ExceptionPexpect as exc:
+            if str(exc) != 'Could not terminate the child.':
+                raise
+            # PTY close already sent SIGKILL, but its short status poll can race
+            # process exit under load. Only wait for this owned child; never
+            # suppress a genuinely live process or an unrelated close error.
+            deadline = time.monotonic()+3
+            while self.child.isalive():
+                if time.monotonic() >= deadline:
+                    raise
+                time.sleep(.05)
+            return super().close()
+
     def death_record(self):
         # Draining adds an undrained maximum: "-2/56 (61) HPs". Historical
         # parser rejects that valid death. Keep this fix in the new adapter.

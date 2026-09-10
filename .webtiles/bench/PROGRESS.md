@@ -2303,3 +2303,28 @@ All 153 episode audits passed, no harness errors or no-turn stalls; 197 Python
 tests and 13 embedded Lua checks passed.
 Next proposed work: combat-focused training labels, training-only on-policy teacher
 corrections, and constraining RL drift after verifying basic closed-loop imitation.
+
+### 2026-09-10 — Combat-weighted imitation and learner-state corrections
+
+Added train_action_dagger.py: initialize previous imitation-only checkpoint, 20
+combat-weighted epochs then three fixed rounds of 18 training learner rollouts and
+10 aggregate-label epochs. Learner executes every action; pursuit supplies labels
+only, with double weight on disagreements within strata. No PPO or test access.
+Collected 3122 new labels, 62 disagreements (rounds 39/5/18); all independently
+audited against raw states, masks, actions and reconstructed observation histories.
+
+Combat weighting only: training recovery/death/truncation 14/4/0, validation 4/4/0.
+Final corrections: training 15/2/1, validation 6/2/0; previous imitation 13/3/2 and
+4/3/1; pursuit teacher 15/2/1 and 8/0/0. Both ribbon-worm variants now recover,
+adjacent waits reduced from 37/51 to 0/3. Both water-moccasin variants still die
+with 22/13 adjacent waits. Small correlated validation, not generalization proof.
+
+Training completed before a PTY cleanup race interrupted frozen evaluation.
+ActionTransport now retries close only after confirming its owned child exited,
+bounded at three seconds; still-live/unrelated errors raise. Added tests and
+evaluate_action_dagger.py resumer: reused 16 completed trials, replayed two
+administrative closes, preserved original evidence and unchanged model checkpoints.
+108 episode audits, 3122 label audits, 202 Python tests and 13 Lua checks passed.
+Artifacts: tactical/artifacts/action-dagger-v1. Report: tactical/ACTION-DAGGER.md.
+No deployment. Next: broader training-only learner-state coverage and combat
+rollout metrics; do not train on failed validation encounters.

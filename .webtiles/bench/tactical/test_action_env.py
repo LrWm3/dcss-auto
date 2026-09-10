@@ -2,11 +2,28 @@ import unittest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
+from unittest.mock import Mock
+import pexpect
 import numpy as np
 from action_env import ACTIONS, legal_mask, frame, FRAME_SIZE, BINS, feature_slot, ActionTransport
 from experiment import DIRECTIONS
 
 class ActionTests(unittest.TestCase):
+    def test_close_retries_only_verified_dead_child(self):
+        env=object.__new__(ActionTransport);env.child=Mock()
+        env.child.isalive.side_effect=[True,False]
+        error=pexpect.ExceptionPexpect('Could not terminate the child.')
+        with patch('action_env.CachedEnvironment.close',side_effect=[error,None]) as close, patch('action_env.time.sleep'):
+            env.close()
+        self.assertEqual(close.call_count,2)
+
+    def test_close_does_not_hide_live_child(self):
+        env=object.__new__(ActionTransport);env.child=Mock()
+        env.child.isalive.return_value=True
+        error=pexpect.ExceptionPexpect('Could not terminate the child.')
+        with patch('action_env.CachedEnvironment.close',side_effect=error), patch('action_env.time.monotonic',side_effect=[0,4]):
+            with self.assertRaises(pexpect.ExceptionPexpect):env.close()
+
     def test_drained_death_header(self):
         with tempfile.TemporaryDirectory() as tmp:
             env=object.__new__(ActionTransport);env.work=Path(tmp);env.seed='123';env.state={'turn':100}
