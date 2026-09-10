@@ -2220,3 +2220,16 @@ Approximately 2.3x step throughput, 1.4x startup+step improvement; startup still
 roughly five seconds. JSON logs about half the size. See tactical/FAST-TRANSPORT.md
 and artifacts/transport-{baseline-v1,nodelay-v1,fast-v1,fast-v2,fast-death-v1}.
 Compact events require an explicit training auditor/reader before integration.
+
+### 2026-09-09 — Recoverable old terminal log cleanup
+
+Compressed 6,774 closed worker terminal logs older than one hour, verifying each
+gzip by decompression and SHA256 before removing its uncompressed source.
+3,316,235,866 original bytes became 276,653,171 compressed bytes, reclaiming
+3,039,582,695 bytes (2.83 GiB). Recovery manifest:
+tactical/artifacts/terminal-compaction-20260909-235709.jsonl.
+Checkpoints, action traces, RCs, models, dumps, death morgues and existing archives
+were not changed. Historical terminal diagnostics require restoring the relevant
+terminal.txt with gzip -d; see tactical/LOG-RETENTION.md. Added reusable dry-run /
+apply helper compact_terminal_logs.py. Disk was already about 228 GiB free before
+this operation; the earlier much larger increase was not this cleanup's work.
