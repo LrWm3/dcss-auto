@@ -7,11 +7,12 @@ import concurrent.futures
 import json
 import shutil
 import time
+import torch
 from pathlib import Path
 
 from collect import run_episode
 from counterfactual import evaluate_checkpoint
-from evaluate import comparison, evaluate_model
+from evaluate import comparison, evaluate_model, promotion_decision
 from general_env import BASE_RC, ENGINE, sha
 from model import load_model, save_model
 from train_model import rows_from_replay, train_behavioral_clone, train_q_finetune
@@ -23,7 +24,9 @@ DEFAULT_SEEDS = ["1760771545328102746", "1760771545328102747",
 
 def write(path: Path, value: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    temporary.replace(path)
 
 
 def append(path: Path, value: dict) -> None:
@@ -87,7 +90,9 @@ def prepare(run_dir: Path, args) -> dict:
     config = {
         "schema_version": 1, "environment_version": "crawl-general-v1",
         "action_version": "crawl-semantic-actions-v1",
+        "feature_version": __import__("features").FEATURE_VERSION,
         "bootstrap_episodes": args.bootstrap_episodes,
+        "bootstrap_epochs": args.bootstrap_epochs,
         "actor_episodes": args.actor_episodes,
         "evaluation_episodes": args.evaluation_episodes,
         "steps_per_episode": args.steps,
@@ -107,8 +112,12 @@ def prepare(run_dir: Path, args) -> dict:
 
 
 def status(run_dir: Path, phase: str, **extra) -> None:
+    previous = {}
+    if (run_dir / "latest_status.json").exists():
+        previous = json.loads((run_dir / "latest_status.json").read_text())
     value = {"run_dir": str(run_dir), "phase": phase,
              "updated_unix": time.time(), "counts": artifact_counts(run_dir),
+             "completed_cycles": previous.get("completed_cycles", 0),
              **extra}
     write(run_dir / "latest_status.json", value)
     append(run_dir / "metrics" / "training.jsonl", value)
@@ -119,7 +128,7 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
                      archive: bool) -> list[dict]:
     selected = [seeds[i % len(seeds)] for i in range(episodes)]
     results = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, len(selected))) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(4,len(selected)))) as pool:
         jobs = [pool.submit(
             run_episode, run_dir / "actors" / f"{label}-{i}", seed, steps,
             run_dir / "replay" / f"{label}-{i}.jsonl", model, epsilon,
@@ -139,13 +148,15 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--status", action="store_true", help="print current status and live artifact counts")
     parser.add_argument("--cycles", type=int, default=1)
     parser.add_argument("--forever", action="store_true",
                         help="continue cycles until the process is stopped")
-    parser.add_argument("--bootstrap-episodes", type=int, default=2)
+    parser.add_argument("--bootstrap-episodes", type=int, default=5)
+    parser.add_argument("--bootstrap-epochs", type=int, default=10)
     parser.add_argument("--actor-episodes", type=int, default=2)
-    parser.add_argument("--evaluation-episodes", type=int, default=2)
-    parser.add_argument("--steps", type=int, default=40)
+    parser.add_argument("--evaluation-episodes", type=int, default=5)
+    parser.add_argument("--steps", type=int, default=2000)
     parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument("--random-k", type=int, default=2)
     parser.add_argument("--continuations", type=int, default=2)
@@ -153,7 +164,13 @@ def main() -> None:
     parser.add_argument("--epsilon", type=float, default=0.1)
     parser.add_argument("--promotion-margin", type=float, default=0.0)
     args = parser.parse_args()
+    torch.set_num_threads(1)
     run_dir = args.run_dir.resolve()
+    if args.status:
+        current = json.loads((run_dir / "latest_status.json").read_text())
+        current["counts"] = artifact_counts(run_dir)
+        print(json.dumps(current,indent=2,sort_keys=True))
+        return
     config = prepare(run_dir, args)
     seeds = list(config.get("seeds", DEFAULT_SEEDS))
     previous_status = {}
@@ -162,11 +179,11 @@ def main() -> None:
             previous_status = json.loads((run_dir / "latest_status.json").read_text())
         except json.JSONDecodeError:
             previous_status = {}
-    start_cycle = int(previous_status.get("completed_cycles", 0)) \
-        if previous_status.get("phase") == "idle" else 0
+    start_cycle = int(previous_status.get("completed_cycles", 0))
     status(run_dir, "starting", resume_from_cycle=start_cycle)
 
-    champion_paths = sorted((run_dir / "champions").glob("*.pt"))
+    champion_paths = sorted((run_dir / "champions").glob("V*.pt"),
+                            key=lambda p: int(p.stem[1:]))
     if champion_paths:
         champion = champion_paths[-1]
         version = champion.stem
@@ -177,7 +194,7 @@ def main() -> None:
         rows = rows_from_replay(run_dir / "replay")
         if not rows:
             raise RuntimeError("bootstrap generated no replay rows")
-        model, metadata = train_behavioral_clone(rows, epochs=3, seed=0)
+        model, metadata = train_behavioral_clone(rows, epochs=config.get("bootstrap_epochs",10), seed=0)
         champion = run_dir / "champions" / "V0.pt"
         save_model(champion, model, {**metadata, "policy_version": "V0", "bootstrap": True})
         version = "V0"
@@ -190,9 +207,12 @@ def main() -> None:
         status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion))
         actors = collect_parallel(run_dir, seeds, label, config["actor_episodes"],
                                   config["steps_per_episode"], champion,
-                                  config["epsilon"], False)
+                                  config["epsilon"], True)
         rows = rows_from_replay(run_dir / "replay")
-        candidate_model, train_meta = train_behavioral_clone(rows, epochs=2, seed=len(rows))
+        candidate_model, _ = load_model(champion)
+        candidate_model, train_meta = train_behavioral_clone(
+            rows, epochs=2, seed=len(rows), model=candidate_model)
+        train_meta["ordinary_play_returns"] = train_q_finetune(candidate_model, rows)
         candidate = run_dir / "candidates" / f"{label}.pt"
         save_model(candidate, candidate_model, {**train_meta, "candidate": label})
         status(run_dir, "counterfactual_collecting", cycle=cycle,
@@ -201,7 +221,7 @@ def main() -> None:
         cf_records = []
         archive_cases = sorted((run_dir / "state_archive").glob("*/case.json"))
         if archive_cases:
-            case = archive_cases[0].parent
+            case = archive_cases[cycle % len(archive_cases)].parent
             try:
                 cf_records = evaluate_checkpoint(
                     case, run_dir / "counterfactual", candidate,
@@ -234,7 +254,9 @@ def main() -> None:
 
         status(run_dir, "evaluating", cycle=cycle, candidate=str(candidate),
                counterfactual_rows=len(cf_records))
-        eval_seeds = seeds[:config["evaluation_episodes"]]
+        eval_seeds = [str(910000000000 + i) for i in range(config["evaluation_episodes"])]
+        if set(eval_seeds) & set(seeds):
+            raise ValueError("evaluation seeds overlap training seeds")
         champion_eval = comparison(evaluate_model(
             champion, run_dir / "evaluations" / f"{label}-champion", eval_seeds,
             config["steps_per_episode"], 0.0, version))
@@ -245,17 +267,17 @@ def main() -> None:
                       "candidate": candidate_eval, "candidate_path": str(candidate),
                       "train": train_meta, "counterfactual_rows": len(cf_records)}
         append(run_dir / "evaluations" / "paired_seeds.jsonl", evaluation)
-        left = (champion_eval["mean_score"] if champion_eval["mean_score"] is not None
-                else champion_eval["mean_progression"])
-        right = (candidate_eval["mean_score"] if candidate_eval["mean_score"] is not None
-                 else candidate_eval["mean_progression"])
-        promote = right > left + float(config["promotion_margin"])
+        decision = promotion_decision(champion_eval, candidate_eval,
+                                      float(config["promotion_margin"]))
+        promote = decision["promote"]
         if promote:
             promoted = run_dir / "champions" / f"V{cycle + 1}.pt"
             shutil.copy2(candidate, promoted)
             champion, version = promoted, promoted.stem
         status(run_dir, "cycle_complete", cycle=cycle, champion=str(champion),
-               candidate=str(candidate), promoted=promote, evaluation=evaluation)
+               completed_cycles=cycle + 1,
+               candidate=str(candidate), promoted=promote, evaluation=evaluation,
+               promotion_decision=decision)
         cycle += 1
     status(run_dir, "idle", champion=str(champion),
            completed_cycles=cycle)

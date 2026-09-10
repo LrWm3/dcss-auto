@@ -28,6 +28,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 archive_dir: str | Path | None = None, policy_version: str = "teacher",
                 snapshot: bool = True) -> dict:
     workspace = Path(workspace)
+    if model_path and policy_version == "teacher":
+        policy_version = Path(model_path).stem
     replay_path = Path(replay_path) if replay_path else None
     archive_dir = Path(archive_dir) if archive_dir else None
     if replay_path:
@@ -52,8 +54,19 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
         if model_path:
             policy, _ = Policy.from_checkpoint(model_path, epsilon=epsilon, seed=int(seed) & 0xFFFFFFFF)
         terminal = False
+        captured = set()
         for step in range(steps):
+            # Archive encountered combat/floor states, not just new-game starts.
+            bucket = (state.get("level"), bool(state.get("monsters")))
+            if archive_dir and snapshot and bucket not in captured and len(captured) < 4:
+                captured.add(bucket)
+                if step > 0:
+                    target = archive_dir / f"seed-{seed}-turn-{state.get('turn')}-{policy_version}"
+                    if not target.exists():
+                        env.save_state(target)
+                        state = env.launch(target)
             before = state
+            teacher_index = choose_action(before)
             if policy:
                 action_index, action = policy.choose(before)
             else:
@@ -64,8 +77,9 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 "type": "transition", "episode_seed": str(seed), "step": step,
                 "policy_version": policy_version, "observation": before,
                 "action": action, "action_index": action_index,
+                "teacher_action_index": teacher_index,
                 "next_observation": state, "reward": 0.0,
-                "return": float(state.get("score") or 0) if state.get("terminal") else 0.0,
+                "return": state.get("score") if state.get("terminal") else None,
                 "terminal": bool(state.get("terminal")),
             }
             if replay_path:
@@ -84,6 +98,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             "policy_version": policy_version, "elapsed_seconds": time.time() - started,
             "work": str(env.work_path),
         }
+        if replay_path:
+            replay_path.with_suffix(".result.json").write_text(json.dumps(result) + "\n")
         return result
     finally:
         env.close()

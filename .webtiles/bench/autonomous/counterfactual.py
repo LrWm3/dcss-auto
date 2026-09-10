@@ -61,14 +61,14 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
                 outcomes.append({"error": str(exc)})
             finally:
                 env.close()
-        numeric = [float(x["score"] if x.get("terminal") and x.get("score") is not None
-                          else x.get("progression", 0))
-                   for x in outcomes if "error" not in x]
+        numeric = [float(x["score"]) for x in outcomes
+                   if x.get("terminal") and x.get("score") is not None]
         records.append({
             "type": "counterfactual", "case": str(case),
             "observation": state, "action": actions[action_index],
             "action_index": action_index, "model_value": float(scores[action_index]),
-            "outcomes": outcomes, "empirical_return": sum(numeric) / max(1, len(numeric)),
+            "outcomes": outcomes, "empirical_return": (
+                sum(numeric) / len(numeric) if len(numeric) == continuations else None),
             "continuations": continuations,
         })
     return records

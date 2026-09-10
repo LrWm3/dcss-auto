@@ -1,4 +1,8 @@
-# Autonomous Crawl policy training (V1)
+# Autonomous Crawl policy training (V1 in development)
+
+See [FOUNDATION-RESULTS.md](FOUNDATION-RESULTS.md) for current evidence and
+unmet acceptance criteria. Basic neural exploration/combat/descent is now
+demonstrated; autonomous improvement on held-out score is still unproven.
 
 This package is the replacement for the archived scenario-specific controller.
 The old tactical system is preserved under
@@ -59,17 +63,18 @@ Runs contain the requested artifacts: `config.json`, `environment_version.txt`,
 `champions/`, `candidates/`, `replay/`, `state_archive/`, `evaluations/`,
 `rollouts/`, `metrics/`, `failures/`, and `latest_status.json`.
 
-The live observation uses `score=-1` with `score_status=live` until Crawl ends;
-death morgues are parsed for the official final score.  Short smoke evaluations
-therefore use paired progression as a diagnostic metric.  Full-game promotion
-runs should use terminal score as the primary metric once episodes reach an
-end.
+The live observation uses `score=-1` with `score_status=live` until Crawl ends.
+Official final scores are read from morgues and seeded xlogs. Progression is
+diagnostic only: incomplete paired games cannot cause a promotion. At least
+five complete score pairs and a positive bootstrap lower confidence bound are
+required. Truncated counterfactuals supply no fabricated score targets.
 
 Menu-confirmation abilities such as Renounce Religion are intentionally not
 enumerated in V1 because they are not one semantic action.  They are logged as
 a bridge extension point rather than allowed to stall an actor.
 
 The default engine is `crawl-tactical-sim`, the ordinary fast-play simulator
-with the structured FIFO adapter.  `crawl-tactical-chain-v2` remains an
-archived chained-encounter engine and should only be selected explicitly for
-regression work.
+with the structured FIFO adapter. `crawl-tactical-chain-v2` remains available
+for archived regression work. Earlier differences between short runs on these
+binaries do not establish that either removes normal monsters; that would
+require a paired engine comparison on identical seeds and actions.

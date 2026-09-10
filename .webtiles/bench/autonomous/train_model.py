@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import math
 from pathlib import Path
 
 import torch
@@ -20,6 +21,8 @@ def _files(path: str | Path):
 def rows_from_replay(path: str | Path) -> list[dict]:
     rows = []
     for file in _files(path):
+        result_path = file.with_suffix(".result.json")
+        result = json.loads(result_path.read_text()) if result_path.exists() else {}
         with file.open() as stream:
             for line in stream:
                 try:
@@ -29,6 +32,8 @@ def rows_from_replay(path: str | Path) -> list[dict]:
                 state = row.get("observation")
                 if (row.get("type") == "transition" or state) and isinstance(state, dict):
                     if state.get("schema") == "crawl-general-v1":
+                        if result.get("terminal") and result.get("score") is not None:
+                            row["return"] = result["score"]
                         rows.append(row)
     return rows
 
@@ -41,33 +46,40 @@ def _actions(state):
 
 
 def train_behavioral_clone(rows: list[dict], epochs: int = 3,
-                           seed: int = 0) -> tuple[ActionValueModel, dict]:
+                           seed: int = 0, model=None) -> tuple[ActionValueModel, dict]:
     if not rows:
         raise ValueError("replay contains no usable transitions")
     random.seed(seed)
     torch.manual_seed(seed)
-    model = ActionValueModel()
+    model = model or ActionValueModel()
     optimizer = torch.optim.AdamW(model.parameters(), lr=2e-3, weight_decay=1e-4)
     losses, usable = [], 0
+    encoded = {}
     for _ in range(epochs):
         order = list(range(len(rows)))
         random.shuffle(order)
         total = 0.0
+        epoch_usable = 0
         for row_index in order:
             row = rows[row_index]
             state = row["observation"]
             actions = _actions(state)
             chosen = row.get("action")
-            target = row.get("action_index")
+            target = row.get("teacher_action_index")
+            if target is None and row.get("policy_version") in ("teacher", "bootstrap"):
+                target = row.get("action_index")
             if target is None:
-                target = next((i for i, action in enumerate(actions) if action == chosen), -1)
+                continue
             if not 0 <= int(target) < len(actions):
                 continue
-            scores = model(tensor_for_actions(state, actions)).unsqueeze(0)
+            if row_index not in encoded:
+                encoded[row_index] = tensor_for_actions(state, actions)
+            scores = model(encoded[row_index]).unsqueeze(0)
             loss = nn.functional.cross_entropy(scores, torch.tensor([int(target)]))
             optimizer.zero_grad(); loss.backward(); optimizer.step()
             total += float(loss.detach()); usable += 1
-        losses.append(total / max(1, usable))
+            epoch_usable += 1
+        losses.append(total / max(1, epoch_usable))
     return model, {"rows": len(rows), "usable": usable, "epochs": epochs,
                    "losses": losses, "objective": "behavioral_cloning"}
 
@@ -79,6 +91,8 @@ def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1)
     for _ in range(epochs):
         total = 0.0
         for row in rows:
+            if row.get("return") is None:
+                continue
             state, actions = row.get("observation"), _actions(row.get("observation", {}))
             if not actions:
                 continue
@@ -87,7 +101,7 @@ def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1)
                 index = next((i for i, a in enumerate(actions) if a == row.get("action")), -1)
             if not 0 <= int(index) < len(actions):
                 continue
-            target = float(row.get("return", row.get("reward", 0.0)))
+            target = math.log1p(max(0.0, float(row["return"])))
             prediction = model(tensor_for_actions(state, actions))[int(index)]
             loss = (prediction - target) ** 2
             optimizer.zero_grad(); loss.backward(); optimizer.step()

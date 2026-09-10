@@ -25,9 +25,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 ENGINE = Path(os.environ.get(
     "DCSS_TACTICAL_ENGINE",
-    # General gameplay uses the ordinary fast simulator.  The chain-v2
-    # binary is intentionally reserved for the archived chained-encounter
-    # benchmark and is not a representative starting Crawl distribution.
+    # Use the established fast simulator; chain-v2 remains available for
+    # reproducing the archived chained-encounter benchmarks.
     str(ROOT / "crawl-0.35/crawl-ref/source/crawl-tactical-sim"),
 )).resolve()
 BASE_RC = ROOT / ".webtiles/rcs/codex-autocrawl.rc"
@@ -151,13 +150,30 @@ class GeneralEnvironment:
         for path in (self.work / "morgue").glob("morgue-*.txt"):
             content = path.read_text(errors="replace")
             if re.search(r"\bGame seed:\s*" + re.escape(self.seed) + r"\b", content):
-                return {"terminal": "death", "score": self._parse_score(content),
+                previous = self.state or {}
+                record = {"terminal": "death", "score": self._parse_score(content),
+                        "level": previous.get("level"), "branch": previous.get("branch"),
+                        "depth": previous.get("depth"), "turn": previous.get("turn"),
                         "evidence": str(path), "evidence_sha256": sha(path)}
+                for logfile in (self.work / "saves").glob("logfile*"):
+                    for line in logfile.read_text(errors="replace").splitlines():
+                        fields = dict(part.split("=",1) for part in
+                                      re.split(r"(?<!:):(?!:)",line) if "=" in part)
+                        if fields.get("seed") != self.seed or fields.get("name") != CHARACTER:
+                            continue
+                        record.update(score=int(fields["sc"]),
+                                      turn=int(fields["turn"]),
+                                      level=fields.get("place", "").replace("::",":"),
+                                      terminal={"winning":"win","leaving":"leave",
+                                                "quitting":"quit"}.get(fields.get("ktyp"),"death"),
+                                      death_cause=fields.get("killer"),
+                                      runes=int(fields.get("nrune",0)))
+                return record
         return None
 
     @staticmethod
     def _parse_score(content: str) -> int | None:
-        for pattern in (r"\bScore:\s*([0-9][0-9,]*)", r"\bscore\s+([0-9][0-9,]*)"):
+        for pattern in (r"(?m)^([0-9][0-9,]*) CodexGeneral .+\(level \d+,", r"\(([0-9][0-9,]*) points\)", r"\bScore:\s*([0-9][0-9,]*)", r"\bscore\s+([0-9][0-9,]*)"):
             match = re.search(pattern, content, re.I)
             if match:
                 return int(match.group(1).replace(",", ""))
@@ -211,6 +227,25 @@ class GeneralEnvironment:
 
     def legal_actions(self) -> list[dict]:
         return self._normalise_actions(self.state or {})
+
+    def get_observation(self) -> dict:
+        if self.state is None:
+            raise RuntimeError("environment not reset")
+        return self.state
+
+    get_legal_actions = legal_actions
+
+    def is_terminal(self) -> bool:
+        return bool((self.state or {}).get("terminal"))
+
+    def get_game_score(self):
+        return self.state.get("score") if self.is_terminal() else None
+
+    def reset(self, checkpoint=None):
+        return self.launch(checkpoint)
+
+    def restore_state(self, checkpoint):
+        return self.launch(checkpoint)
 
     def step(self, action: int | dict) -> dict:
         if not self.state or self.state.get("terminal"):
@@ -272,7 +307,9 @@ class GeneralEnvironment:
         return metadata
 
     def clone_state(self, destination: str | Path) -> dict:
-        return self.save_state(destination)
+        metadata = self.save_state(destination)
+        self.launch(destination)
+        return metadata
 
     def close(self) -> None:
         if getattr(self, "child", None) is not None:

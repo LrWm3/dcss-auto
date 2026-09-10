@@ -174,7 +174,7 @@ local function ga_actions(cells, monsters, blocked)
   local target = ga_target(monsters)
   for _, move in ipairs(GA_MOVES) do
     local cell = cells[ga_map_key(move.dx, move.dy)]
-    local occupied = cell and cell.monster and ga_call(cell.monster, "attitude") == 0
+    local occupied = cell and cell.visible and cell.monster and ga_call(cell.monster, "attitude") == 0
     if occupied then
       ga_add(actions, {kind="MELEE", dx=move.dx, dy=move.dy, x=move.dx, y=move.dy,
         target_name=tostring(ga_call(cell.monster, "name") or "unknown"),
@@ -343,6 +343,7 @@ local function ga_observation()
   local hp, max_hp = ga_you("hp")
   local mp, max_mp = ga_you("mp")
   return {schema="crawl-general-v1", seq=GA.seq, turn=ga_you("turns") or 0,
+    coordinate_frame="player_relative",
     level=ga_level(), branch=ga_you("branch") or "unknown", depth=ga_you("depth") or 0,
     player=ga_player(), hp={hp, max_hp}, mp={mp, max_mp},
     status=ga_you("status") or "", safe=ga_you("feel_safe") or false,
@@ -350,7 +351,7 @@ local function ga_observation()
     known=known_cells, actions=ga_actions(cells, monsters, blocked),
     -- Crawl computes its official score at game end.  -1 is the explicit
     -- live-game sentinel because Lua omits nil-valued object keys.
-    score=-1, score_status="live", terminal=false}
+    score=-1, score_status="live", terminal=false, last_action_result=GA.last_action_result}
 end
 
 local function ga_publish()
@@ -434,13 +435,16 @@ function ready()
   if index >= 0 and index < #GA.actions then
     local action = GA.actions[index + 1]
     local spent = ga_dispatch(action)
+    GA.last_action_result = {kind=action.kind, dispatch_accepted=spent and true or false}
+    -- Stairs/equipment may start an engine delay without immediately spending
+    -- a turn. Wake the outer command loop with a no-turn escape so it can
+    -- advance that delay instead of blocking on terminal input.
+    if not you.turn_is_over() then crawl.sendkeys("\027") end
     if spent or you.turn_is_over() then
       GA.seq = GA.seq + 1
       GA.published = -1
     else
-      -- A rejected menu/target action must not deadlock the actor.  The
-      -- fallback consumes one explicit wait and records a normal transition.
-      crawl.do_commands({"CMD_WAIT"})
+      -- Report rejection without silently executing a different game action.
       GA.seq = GA.seq + 1
       GA.published = -1
     end

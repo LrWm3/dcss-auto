@@ -7,7 +7,7 @@ from typing import Iterable
 
 STATE_DIM = 192
 ACTION_DIM = 96
-FEATURE_VERSION = "general-features-v1"
+FEATURE_VERSION = "general-features-v4-route-deltas"
 
 
 def _hash(value: object, modulo: int) -> int:
@@ -66,6 +66,7 @@ def state_features(state: dict) -> list[float]:
         float(any(c.get("frontier") for c in _values(state.get("known")))),
         float(any(c.get("cloud") for c in _values(state.get("cells")))),
         float(any(c.get("invisible_monster") for c in _values(state.get("cells")))),
+        float(hp >= max_hp), float(bool(monsters)),
     ]
     for index, value in enumerate(numeric):
         out[index] = max(-10.0, min(10.0, value))
@@ -76,6 +77,8 @@ def state_features(state: dict) -> list[float]:
     for skill, value in (player.get("skills") or {}).items():
         _put_hashed(out, "skill:" + skill, max(0.0, min(2.0, _scalar(value) / 27.0)))
     for monster in monsters:
+        _put_hashed(out, ("monster-position", monster.get("name"),
+                         monster.get("x"), monster.get("y")), 0.5)
         _put_hashed(out, "monster:" + str(monster.get("type", monster.get("name", "unknown"))),
                     1.0 / max(1, len(monsters)))
         for spell in _values(monster.get("spells")):
@@ -83,6 +86,9 @@ def state_features(state: dict) -> list[float]:
     for item in inventory:
         _put_hashed(out, "item:" + str(item.get("class", "unknown")), 0.25)
         _put_hashed(out, "itemname:" + str(item.get("name", "unknown")), 0.1)
+    for cell in _values(state.get("cells")):
+        _put_hashed(out, ("terrain", cell.get("x"), cell.get("y"),
+                         cell.get("feature"), cell.get("cloud")), 0.1)
     return [max(-10.0, min(10.0, float(x))) for x in out]
 
 
@@ -93,7 +99,7 @@ _KINDS = {name: index for index, name in enumerate((
 ))}
 
 
-def action_features(state: dict, action: dict) -> list[float]:
+def action_features(state: dict, action: dict, routes=None) -> list[float]:
     out = [0.0] * ACTION_DIM
     kind = str(action.get("kind", "UNKNOWN"))
     out[_KINDS.get(kind, len(_KINDS))] = 1.0
@@ -103,6 +109,19 @@ def action_features(state: dict, action: dict) -> list[float]:
     out[19] = max(-1.0, min(1.0, _scalar(action.get("y")) / 8.0))
     out[20] = _scalar(action.get("slot")) / 52.0
     out[21] = _scalar(action.get("quantity")) / 20.0
+    # Candidate-relative geometry exposes route costs without choosing a move.
+    from teacher import navigation_distances
+    destination = (action.get("dx", 0), action.get("dy", 0))
+    for i, stairs in enumerate((False, True)):
+        distances = routes[i] if routes is not None else navigation_distances(state, stairs)
+        distance = distances.get(destination)
+        origin = distances.get((0,0))
+        out[26+i] = (0.0 if distance is None or origin is None
+                     else max(-1.0,min(1.0,origin-distance)))
+        out[28+i] = float(distance is not None)
+    cell = (state.get("known") or {}).get(f"{destination[0]}:{destination[1]}", {})
+    out[30] = float(bool(cell.get("cloud")))
+    out[31] = float(bool(cell.get("frontier")))
     target = next((m for m in _values(state.get("monsters"))
                    if _scalar(m.get("x")) == _scalar(action.get("x"))
                    and _scalar(m.get("y")) == _scalar(action.get("y"))), None)
