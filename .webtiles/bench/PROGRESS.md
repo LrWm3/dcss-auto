@@ -2201,3 +2201,22 @@ where any strategy wins versus all available strategies die; unknown/masked
 choices are not deaths. No fitting, controller edits or deployment. Active run:
 tactical/artifacts/gnoll-centaur-strategy-grid-v1. This is an inspected diagnostic,
 not a new unbiased benchmark or training dataset.
+
+### 2026-09-09 — Fast transport benchmark
+
+Added separate fast_env.py and crawl-tactical-fast lab binary, with incremental
+engine-patches/tactical-fifo.patch. No historical adapter/case/engine or production
+RC/model edits. FIFO observation callback runs under UI RNG; PTY actions remain.
+Removed 50 ms input delay, full dump polling, explicit boundary redraws; buffered
+single-copy observation logs and bounded terminal tail. New case derivations
+remain training_ready=false and record parent/engine/RC hashes.
+
+Two fixed rich traces (gnolls 25 actions, centaur 60), twice each: baseline 9.46
+actions/s, delay-only 18.99, fast 21.53, independent fast repeat 22.31. Every
+initial/state transition matched historical canonical rich state: 680 benchmark
+actions total. Additional candidate replay matched 69 actions, including one
+morgue-verified centaur death. 188 Python tests and 13 embedded Lua checks pass.
+Approximately 2.3x step throughput, 1.4x startup+step improvement; startup still
+roughly five seconds. JSON logs about half the size. See tactical/FAST-TRANSPORT.md
+and artifacts/transport-{baseline-v1,nodelay-v1,fast-v1,fast-v2,fast-death-v1}.
+Compact events require an explicit training auditor/reader before integration.

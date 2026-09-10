@@ -1,0 +1,85 @@
+diff --git a/crawl-ref/source/l-crawl.cc b/crawl-ref/source/l-crawl.cc
+index bb11387..967d762 100644
+--- a/crawl-ref/source/l-crawl.cc
++++ b/crawl-ref/source/l-crawl.cc
+@@ -30,6 +30,7 @@
+ #include "output.h"
+ #include "perlin.h"
+ #include "prompt.h"
++#include "random.h"
+ #include "religion.h"
+ #include "sound.h"
+ #include "state.h"
+@@ -47,6 +48,10 @@
+ #else
+ # include <sys/time.h>
+ # include <time.h>
++# include <fcntl.h>
++# include <sys/stat.h>
++# include <unistd.h>
++# include <cerrno>
+ #endif
+ 
+ //
+@@ -1364,6 +1369,53 @@ static int crawl_tutorial_msg(lua_State *ls)
+  */
+ LUAWRAP(crawl_dump_char, dump_char(you.your_name, true))
+ 
++// Opt-in local laboratory transport. Evaluate observation under the same RNG
++// domain as dump_char; inspecting equipment must not consume gameplay rolls.
++static int crawl_tactical_emit(lua_State *ls)
++{
++#ifndef TARGET_OS_WINDOWS
++    const char *path = getenv("DCSS_TACTICAL_OBSERVATION_FIFO");
++    if (!path || !*path)
++        return luaL_error(ls, "Tactical observation FIFO is not configured");
++    luaL_checktype(ls, 1, LUA_TFUNCTION);
++    lua_pushvalue(ls, 1);
++    int status;
++    {
++        rng::generator ui(rng::UI);
++        status = lua_pcall(ls, 0, 1, 0);
++    }
++    if (status)
++        return lua_error(ls);
++    size_t size;
++    const char *data = luaL_checklstring(ls, -1, &size);
++    const int fd = open(path, O_WRONLY | O_NOFOLLOW);
++    if (fd < 0)
++        return luaL_error(ls, "Cannot open tactical FIFO");
++    struct stat info;
++    if (fstat(fd, &info) || !S_ISFIFO(info.st_mode))
++    {
++        close(fd);
++        return luaL_error(ls, "Tactical output must be a FIFO");
++    }
++    size_t sent = 0;
++    while (sent < size)
++    {
++        const ssize_t n = write(fd, data + sent, size - sent);
++        if (n < 0 && errno == EINTR)
++            continue;
++        if (n <= 0)
++            break;
++        sent += n;
++    }
++    close(fd);
++    if (sent != size)
++        return luaL_error(ls, "Incomplete tactical observation");
++    return 0;
++#else
++    return luaL_error(ls, "Tactical FIFO transport requires Unix");
++#endif
++}
++
+ /*** Call lua in dungeon (dlua) context.
+  *
+  * @tparam string chunk code run
+@@ -1565,6 +1617,7 @@ static const struct luaL_Reg crawl_clib[] =
+     { "get_command",        crawl_get_command },
+     { "tutorial_msg",       crawl_tutorial_msg },
+     { "dump_char",          crawl_dump_char },
++    { "tactical_emit",      crawl_tactical_emit },
+ #ifdef WIZARD
+     { "call_dlua",          crawl_call_dlua },
+ #endif
