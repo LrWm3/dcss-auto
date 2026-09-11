@@ -25,6 +25,7 @@ def configure(root):
 
 def limits():
     return {"pause_free_bytes": 20 * GIB, "resume_free_bytes": 22 * GIB,
+            "heavy_keep_cycles": 8,
             "replay_max_bytes": 2 * GIB, "replay_max_rows": 20000}
 
 
@@ -128,7 +129,10 @@ def maintain(root, max_bytes=None, max_rows=None):
             total -= sizes[p]
             count -= rows[p]
             removed.append(event)
+        from retention import prune
+        heavy_retention = prune(root)
         return {"retained_replay_bytes": total, "retained_replay_rows": count,
+                "heavy_retention": heavy_retention,
                 "removed": removed}
 
 

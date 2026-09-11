@@ -274,6 +274,7 @@ def run_training(args, run_dir):
                    completed_cycles=cycle, champion=str(champion),
                    promoted=bool(promoted), promotion_decision=decision)
             audit_due(run_dir, config, cycle)
+            storage.maintain(run_dir)
             continue
         status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion))
         actors = collect_parallel(run_dir, seeds, label, config["actor_episodes"],
@@ -300,9 +301,10 @@ def run_training(args, run_dir):
             case = archive_cases[cycle % len(archive_cases)].parent
             try:
                 cf_records = evaluate_checkpoint(
-                    case, run_dir / "counterfactual", candidate,
+                    case, run_dir / "counterfactual" / label, candidate,
                     config["counterfactual_top_k"], config["counterfactual_random_k"],
                     config["counterfactual_continuations"], config["counterfactual_steps"])
+                write(run_dir / "counterfactual" / label / "completed.json", {"complete": True})
                 for row in cf_records:
                     append(run_dir / "rollouts" / "counterfactual_results.jsonl", row)
                     append(run_dir / "replay" / f"{label}-counterfactual.jsonl", {
@@ -370,6 +372,7 @@ def run_training(args, run_dir):
                candidate=str(candidate), promoted=promote, evaluation=evaluation,
                promotion_decision=decision)
         cycle += 1
+        storage.maintain(run_dir)
         if cycle % ensure_protocol(run_dir)["audit_every_completed_cycles"] == 0:
             status(run_dir, "auditing", cycle=cycle, champion=str(champion))
             audit_due(run_dir, config, cycle)

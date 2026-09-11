@@ -179,6 +179,30 @@ require a paired engine comparison on identical seeds and actions.
 
 ## Disk safety and retention
 
+Heavy cycle artifacts have an **eight completed-cycle** retention window, plus
+all active/incomplete work. With 9 completed cycles (IDs 0–8), cycle 0 expires.
+Maintenance runs automatically during training and after cycle completion.
+It removes old completed replay shards, compressed observation/terminal logs,
+and generated `.dsc/.db/.idx/.lux` caches from attributable simulation folders,
+including finished confirmations and scheduled audits. Completed bootstrap
+actor logs/caches expire with cycle 0. Replay can expire sooner under its existing
+byte/row cap.
+
+It preserves scores, decisions, seed registries, manifests, models, morgues,
+snapshots, metrics, and failure evidence. Files from unknown legacy workspaces
+without reliable ownership/completion metadata are conservatively retained;
+new counterfactual workspaces are cycle-scoped. This is not a total run-size cap.
+No directory trees are deleted, and symlink targets are excluded. Every removed
+file is logged in `metrics/heavy_retention.jsonl`; deleted logs/caches are not
+recoverable except by rerunning the simulation (selected saves remain).
+
+Preview cleanup, or apply it while no training process owns the run:
+
+```bash
+.webtiles/bench/tactical/.rl-venv/bin/python .webtiles/bench/autonomous/retention.py \
+  --run-dir <run-directory>        # dry run; add --apply to delete
+```
+
 Training pauses before new game actions, launches, snapshots, compression writes,
 and model saves when the run filesystem has less than **20 GiB free**. It polls
 every five seconds and resumes at **22 GiB free**. Live Crawl processes remain
