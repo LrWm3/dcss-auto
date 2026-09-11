@@ -12,6 +12,27 @@ local ga_parent_ready = ready
 GENERAL_AGENT = GENERAL_AGENT or {active=true, seq=0, published=-1, actions={}}
 local GA = GENERAL_AGENT
 
+-- The invisibility targeter is an informational UI preview, not another
+-- gameplay choice. The selected ability already commits to activation.
+crawl.setopt("show_invis_targeter = false")
+local ga_old_answer_prompt = c_answer_prompt
+function c_answer_prompt(prompt)
+  local action = GA.dispatching
+  if action then
+    local text = tostring(prompt):lower()
+    if action.kind == "REMOVE" and action.item_name
+        and text:find(action.item_name, 1, true)
+        and (text:find("really remove", 1, true)
+          or text:find("really take off", 1, true)
+          or text:find("really unwield", 1, true)) then
+      return true
+    end
+    -- Unsupported confirmations cancel this action and return a rejection.
+    return false
+  end
+  if ga_old_answer_prompt then return ga_old_answer_prompt(prompt) end
+end
+
 -- The rejected-action mask is adapter state, but it affects action indexing.
 -- Include it in Crawl's embedded Lua save hook so clones enumerate identically.
 table.insert(chk_lua_save, function()
@@ -473,7 +494,9 @@ function ready()
   local index = key - 33
   if index >= 0 and index < #GA.actions then
     local action = GA.actions[index + 1]
+    GA.dispatching = action
     local spent = ga_dispatch(action)
+    GA.dispatching = nil
     GA.last_action_result = {kind=action.kind, dispatch_accepted=spent and true or false}
     if not spent and not you.turn_is_over() then
       local turn = ga_you("turns")

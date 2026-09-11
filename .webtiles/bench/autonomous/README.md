@@ -4,6 +4,11 @@ See [FOUNDATION-RESULTS.md](FOUNDATION-RESULTS.md) for current evidence and
 unmet acceptance criteria. Basic neural exploration/combat/descent is now
 demonstrated; autonomous improvement on held-out score is still unproven.
 
+See [SCORE-POLICY-REPAIR.md](SCORE-POLICY-REPAIR.md) for the latest prompt,
+score-driven policy update, feature migration, and two-cycle smoke-test results.
+The prepared next run is `artifacts/foundation-general-training-v5`; do not
+resume the partial v4 cycle with the new learning protocol.
+
 See [UPDATE-INVESTIGATION.md](UPDATE-INVESTIGATION.md) for the investigation
 after 22 cycles: cycle 3 lost an independent 30-pair audit, and update ablations
 identify teacher-dominated training, nonpersistent learner weights, and narrow
@@ -45,11 +50,11 @@ The command is restartable: rerunning it against the same run directory
 continues at the next completed cycle, reuses the current champion, and keeps
 all replay, checkpoints, failures, and evaluations.
 
-Each training cycle now collects exactly three champion-policy games: two fresh
+Each training cycle defaults to eight persistent-learner games: seven fresh
 training seeds and the lowest-scoring training seed from the previous cycle.
 Official budget-cutoff scores count; crashes and missing scores do not. Ties
 are broken by numeric seed. The first cycle chooses its retry from bootstrap;
-if the previous batch has no usable training score, all three seeds are fresh.
+if the previous batch has no usable training score, all seeds are fresh.
 Screen/confirmation/audit seeds are never eligible for this curriculum.
 
 `training_seeds/cycle-NNNN.json` freezes the selected seeds, source score, and
@@ -57,7 +62,7 @@ independent exploration RNG seeds before any actors start. Retries use new
 exploration randomness each cycle, while restarting a partial cycle reuses its
 exact plan. Fresh seeds occupy namespace A, disjoint from confirmation D and
 audit E. The selection ledger is permanent even after heavy-data retention.
-The historical `--actor-episodes` option is superseded by this three-game policy.
+`--actor-episodes` changes the batch size (minimum two).
 
 For a bounded unattended window, schedule one complete resumable cycle at a
 time. An already-running job keeps the lock; the scheduler waits and resumes
@@ -65,7 +70,7 @@ after it exits:
 
 ```bash
 .webtiles/bench/tactical/.rl-venv/bin/python .webtiles/bench/autonomous/schedule_training.py \
-  --run-dir .webtiles/bench/autonomous/artifacts/foundation-general-training-v4 \
+  --run-dir .webtiles/bench/autonomous/artifacts/foundation-general-training-v5 \
   --hours 8
 ```
 

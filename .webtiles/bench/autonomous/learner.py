@@ -5,7 +5,7 @@ from pathlib import Path
 
 from general_env import sha
 from model import load_model, save_model
-from train_model import train_behavioral_clone, train_q_finetune, train_counterfactual_preferences, FeatureCache
+from train_model import train_return_policy, train_q_finetune, train_counterfactual_preferences, FeatureCache
 
 
 def parent_for_cycle(root, cycle, champion):
@@ -27,7 +27,8 @@ def parent_for_cycle(root, cycle, champion):
         if sha(parent) != record['sha256']:
             raise ValueError('committed learner checkpoint changed')
     else:
-        parent = Path(champion)
+        initial = folder / 'initial.pt'
+        parent = initial if initial.exists() else Path(champion)
     temporary = path.with_suffix('.tmp')
     temporary.write_text(json.dumps({'path': str(parent.resolve()), 'sha256': sha(parent)}))
     temporary.replace(path)
@@ -58,14 +59,15 @@ def balanced_sample(rows, limit, seed):
 def prepare_candidate(parent, candidate, rows, cycle):
     model, payload = load_model(parent)
     optimizers = payload.get('metadata', {}).get('optimizer_states', {})
-    anchors = balanced_sample(rows, 256, cycle)
     features = FeatureCache()
-    model, metadata = train_behavioral_clone(anchors, epochs=1, seed=cycle,
-                                            model=model, optimizer_states=optimizers, feature_cache=features)
-    metadata['ordinary_play_returns'] = train_q_finetune(
+    metadata = {'ordinary_play_returns': train_q_finetune(
         model, balanced_sample(rows, 2048, cycle), optimizer_states=optimizers, feature_cache=features)
+    }
+    eligible = [r for r in rows if r.get('behavior_probability') is not None and not r.get('comparison_id')]
+    metadata['score_policy_update'] = train_return_policy(model, balanced_sample(eligible, 256, cycle),
+            optimizer_states=optimizers, feature_cache=features)
     metadata.update(parent=str(parent), parent_sha256=sha(parent),
-                    optimizer_states=optimizers, learner_version='persistent-v1')
+                    optimizer_states=optimizers, learner_version='score-policy-v2')
     save_model(candidate, model, metadata)
     return {k: v for k, v in metadata.items() if k != 'optimizer_states'}
 
@@ -74,7 +76,8 @@ def finish_candidate(root, cycle, candidate, rows):
     """Commit before evaluation: rejection never rolls learning back."""
     model, payload = load_model(candidate)
     metadata = payload['metadata']
-    preferences = [r for r in rows if r.get('comparison_id') and r.get('return') is not None]
+    preferences = [r for r in rows if r.get('comparison_id') and r.get('return') is not None
+                   and r.get('return_protocol') == 'official_score_at_terminal_or_fixed_horizon_v2']
     # Bounded by retained replay; comparison_id prevents mixing continuation
     # policies/horizons into a false paired comparison.
     metadata['counterfactual_policy_update'] = train_counterfactual_preferences(

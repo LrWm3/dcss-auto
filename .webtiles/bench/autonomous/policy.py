@@ -24,8 +24,11 @@ class Policy:
             actions = [actions[key] for key in sorted(actions, key=lambda x: int(x))]
         if not actions:
             raise ValueError("no legal semantic actions")
+        greedy = int(action_scores(self.model, state, actions).argmax().item())
         if self.rng.random() < self.epsilon:
             index = self.rng.randrange(len(actions))
         else:
-            index = int(action_scores(self.model, state, actions).argmax().item())
+            index = greedy
+        self.last_action_probability = self.epsilon / len(actions) + (
+            1 - self.epsilon if index == greedy else 0)
         return index, actions[index]

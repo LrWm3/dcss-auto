@@ -76,18 +76,21 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
         captured = set()
         floor_captures = {}
         last_archived = None
+        previous_combat = False
         for step in itertools.count():
             if budget.reason(state):
                 break
             # Archive encountered combat/floor states, not just new-game starts.
             # Keep collecting on later floors, and periodically within combat;
             # the old first-four-buckets cap excluded essentially all late play.
-            bucket = (state.get("level"), bool(state.get("monsters")),
+            combat = bool(state.get('monsters'))
+            encounter_start = combat and not previous_combat
+            bucket = (state.get("level"), combat,
                       step // 100 if state.get("monsters") else 0,
                       state.get('player', {}).get('hp', 1) / max(1, state.get('player', {}).get('max_hp', 1)) < .5)
             if (archive_dir and snapshot and bucket not in captured and len(captured) < 128
                     and floor_captures.get(state.get('level'), 0) < 4
-                    and (floor_captures.get(state.get('level'), 0) < 3 or bucket[-1])):
+                    and (floor_captures.get(state.get('level'), 0) < 3 or encounter_start)):
                 captured.add(bucket)
                 floor_captures[state.get('level')] = floor_captures.get(state.get('level'), 0) + 1
                 if step > 0:
@@ -97,6 +100,11 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                         if saved.get('save_mode') != 'in_place':
                             state = env.launch(target)
                     last_archived = target
+                    (target / 'sampling.json').write_text(json.dumps({
+                        'category': 'encounter_start' if encounter_start else
+                          ('healthy' if not bucket[-1] else 'danger'),
+                        'step': step, 'level': state.get('level')}))
+            previous_combat = combat
             before = state
             teacher_index = choose_action(before) if replay_path or not policy else None
             if policy:
@@ -113,6 +121,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 "policy_version": policy_version, "observation": before,
                 "action": action, "action_index": action_index,
                 "teacher_action_index": teacher_index,
+                "behavior_probability": policy.last_action_probability if policy else 1.0,
                 "next_observation": state, "reward": 0.0,
                 "return": state.get("score") if state.get("terminal") else None,
                 "terminal": bool(state.get("terminal")),

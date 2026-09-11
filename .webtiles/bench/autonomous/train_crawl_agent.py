@@ -14,6 +14,7 @@ from pathlib import Path
 from collect import run_episode
 from training_seeds import plan_cycle, POLICY as TRAINING_SEED_POLICY
 from counterfactual import evaluate_checkpoint
+from archive_sampling import select_cases
 from evaluate import comparison, evaluate_model
 from selection import (ensure_protocol, screen_decision, prepare_batch, run_batch,
                        promote_confirmed, audit_due, latest_champion, run_lock)
@@ -101,13 +102,18 @@ def prepare(run_dir: Path, args) -> dict:
     config_path = run_dir / "config.json"
     if config_path.exists():
         config = json.loads(config_path.read_text())
+        if (config.get('feature_version') != __import__('features').FEATURE_VERSION
+                and any((run_dir / 'learner').glob('cycle-*.ready.json'))):
+            raise ValueError('Old training protocol: use prepare_successor.py SOURCE NEW_RUN; '
+                             'do not resume frozen old-feature cycles in place')
         config["storage"] = storage.limits()
         config["decisions_per_floor"] = config.get("decisions_per_floor", config.get("steps_per_episode", 2000))
         config["total_decisions"] = config.get("total_decisions", args.total_steps)
         config["budget_version"] = "cumulative_per_floor_v1"
         config["training_seed_policy"] = TRAINING_SEED_POLICY
-        config["actor_episodes"] = args.actor_episodes or (8 if config.get('learner_version') != 'persistent-v1' else config.get('actor_episodes', 8))
-        config['learner_version'] = 'persistent-v1'
+        config["actor_episodes"] = args.actor_episodes or config.get('actor_episodes', 8)
+        config['learner_version'] = 'score-policy-v2'
+        config['feature_version'] = __import__('features').FEATURE_VERSION
         write(config_path, config)
         return config
     config = {
@@ -117,7 +123,7 @@ def prepare(run_dir: Path, args) -> dict:
         "bootstrap_episodes": args.bootstrap_episodes,
         "bootstrap_epochs": args.bootstrap_epochs,
         "actor_episodes": args.actor_episodes or 8, "training_seed_policy": TRAINING_SEED_POLICY,
-        "learner_version": "persistent-v1",
+        "learner_version": "score-policy-v2",
         "evaluation_episodes": args.evaluation_episodes,
         "decisions_per_floor": args.steps,
         "total_decisions": args.total_steps,
@@ -330,12 +336,11 @@ def run_training(args, run_dir):
                          if json.loads(p.read_text()).get("engine_sha256") == engine_hash
                          and json.loads(p.read_text()).get('bridge_sha256') == sha(HERE / 'general_bridge.lua')]
         if archive_cases and not ready_path.exists():
-            # Rotate between recent (including late-game) and uniform coverage.
-            archive_cases.sort(key=lambda p: ((p.parent / 'outcome.json').exists(), p.stat().st_mtime), reverse=True)
-            case = archive_cases[(cycle // 2) % min(32, len(archive_cases)) if cycle % 2 == 0
-                                 else (cycle * 37) % len(archive_cases)].parent
+            selected_cases = select_cases(archive_cases, cycle)
+            case = selected_cases[0]
             try:
-                selected_cases = [case] + [p.parent for p in archive_cases if p.parent != case][:3]
+                write(run_dir / 'counterfactual' / label / 'selection.json',
+                      {'cases': [str(p) for p in selected_cases], 'sampling': 'stratified-v2'})
                 for case_index, selected_case in enumerate(selected_cases):
                     try:
                         cf_records.extend(evaluate_checkpoint(
@@ -352,7 +357,9 @@ def run_training(args, run_dir):
                         "type": "transition", "observation": row["observation"],
                         "action": row["action"], "action_index": row["action_index"],
                         "return": row["empirical_return"],
-                        "comparison_id": f"{label}:{sha(candidate)}:{Path(row['case']).name}",
+                        "comparison_id": f"{label}:{sha(candidate)}:{Path(row['case']).name}:{row['return_protocol']}:{row['continuation_steps']}",
+                        "return_protocol": row['return_protocol'],
+                        "continuation_steps": row['continuation_steps'],
                         "policy_version": label + ":counterfactual",
                     })
                 if cf_records:

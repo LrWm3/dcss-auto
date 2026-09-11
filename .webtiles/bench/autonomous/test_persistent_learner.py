@@ -21,9 +21,10 @@ class PersistentLearnerTests(unittest.TestCase):
             save_model(champion, ActionValueModel())
             state = {'schema': 'crawl-general-v1', 'actions': [{'kind':'WAIT'}, {'kind':'MOVE','dx':1}]}
             rows = [{'observation': state, 'teacher_action_index':0, 'action_index':0,
-                     'return':1, 'episode_seed':'1'}]
+                     'return':1, 'episode_seed':'1', 'behavior_probability':0.5}]
             rows += [{'observation':state, 'action_index':i, 'return':v,
-                      'comparison_id':'first'} for i,v in enumerate([1,10])]
+                      'comparison_id':'first',
+                      'return_protocol':'official_score_at_terminal_or_fixed_horizon_v2'} for i,v in enumerate([1,10])]
             first = root / 'candidate0.pt'
             parent = parent_for_cycle(root, 0, champion)
             prepare_candidate(parent, first, rows, 0)
@@ -36,7 +37,7 @@ class PersistentLearnerTests(unittest.TestCase):
             finish_candidate(root, 1, second, rows)
             a = load_model(first)[1]['metadata']['optimizer_states']
             b = load_model(second)[1]['metadata']['optimizer_states']
-            for name in ('bc','critic','preferences'):
+            for name in ('actor_return','critic','preferences'):
                 self.assertGreater(b[name]['state'][0]['step'], a[name]['state'][0]['step'])
             self.assertFalse(all(torch.equal(v, load_model(second)[0].state_dict()[k])
                                  for k,v in load_model(first)[0].state_dict().items()))

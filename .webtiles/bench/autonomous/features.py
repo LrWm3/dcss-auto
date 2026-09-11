@@ -5,9 +5,9 @@ import hashlib
 import math
 from typing import Iterable
 
-STATE_DIM = 192
-ACTION_DIM = 96
-FEATURE_VERSION = "general-features-v4-route-deltas"
+STATE_DIM = 448
+ACTION_DIM = 160
+FEATURE_VERSION = "general-features-v5-combat-properties"
 
 
 def _hash(value: object, modulo: int) -> int:
@@ -16,7 +16,7 @@ def _hash(value: object, modulo: int) -> int:
 
 
 def _put_hashed(out: list[float], value: object, weight: float = 1.0,
-                offset: int = 48, width: int = STATE_DIM - 48) -> None:
+                offset: int = 48, width: int = 192 - 48) -> None:
     out[offset + _hash(value, width)] += weight
 
 
@@ -46,7 +46,7 @@ def state_features(state: dict) -> list[float]:
     threats = [_scalar(monster.get("threat")) for monster in monsters]
     distances = [max(abs(_scalar(monster.get("x"))), abs(_scalar(monster.get("y"))))
                  for monster in monsters]
-    out = [0.0] * STATE_DIM
+    out = [0.0] * 192
     numeric = [
         hp / max_hp, mp / max_mp, _scalar(player.get("xl")) / 27.0,
         _scalar(player.get("ac")) / 50.0, _scalar(player.get("ev")) / 50.0,
@@ -89,6 +89,18 @@ def state_features(state: dict) -> list[float]:
     for cell in _values(state.get("cells")):
         _put_hashed(out, ("terrain", cell.get("x"), cell.get("y"),
                          cell.get("feature"), cell.get("cloud")), 0.1)
+    extra = [_scalar(player.get(k)) / scale for k, scale in PLAYER_FIELDS]
+    extra += [_scalar(player.get('max_hp')) / 200, _scalar(player.get('max_mp')) / 100]
+    equipped = [i for i in inventory if i.get('equipped')]
+    for cls in ('weapon', 'armour', 'jewellery'):
+        selected = [i for i in equipped if cls in str(i.get('class',''))]
+        extra += [sum(item_properties(i)[j] for i in selected) for j in range(10)]
+    ordered = sorted(monsters, key=lambda m: (max(abs(m.get('x',0)),abs(m.get('y',0))),
+                                            m.get('y',0),m.get('x',0)))
+    for i in range(8):
+        extra += monster_properties(ordered[i]) if i < len(ordered) else [0.0]*24
+    extra += [float(len(monsters)>8)]
+    out += extra + [0.0] * (STATE_DIM-192-len(extra))
     return [max(-10.0, min(10.0, float(x))) for x in out]
 
 
@@ -133,8 +145,42 @@ def action_features(state: dict, action: dict, routes=None) -> list[float]:
     for index, value in enumerate((action.get("name"), action.get("item_name"),
                                    action.get("target_name"), action.get("label"))):
         if value:
-            out[32 + _hash(value, ACTION_DIM - 32)] += 1.0
+            out[32 + _hash(value, 96 - 32)] += 1.0
+    out[96:120] = monster_properties(target) if target else [0.0]*24
+    item = next((i for i in _values(state.get('inventory'))
+                 if action.get('slot') is not None and i.get('slot') == action['slot']), None)
+    out[120:130] = item_properties(item) if item else [0.0]*10
+    actual_cell = (state.get('cells') or {}).get(f"{destination[0]}:{destination[1]}", {})
+    for i, name in enumerate(('steam','fire','poison','miasma','freezing','acid')):
+        out[130+i] = float(name in str(actual_cell.get('cloud','')).lower())
     return [max(-10.0, min(10.0, float(x))) for x in out]
+
+
+PLAYER_FIELDS = [(k, s) for k, s in (
+    ('res_fire',3),('res_cold',3),('res_poison',3),('res_shock',3),('res_corr',3),
+    ('res_draining',3),('willpower',200),('poisoned',1),('on_fire',1),
+    ('flying',1),('see_invisible',1),('berserk',1),('confused',1),('safe',1))]
+
+
+def item_properties(item):
+    return [float(bool(item.get('equipped'))), _scalar(item.get('plus'))/10,
+            _scalar(item.get('damage'))/30, _scalar(item.get('accuracy'))/20,
+            _scalar(item.get('delay'))/20, _scalar(item.get('ac'))/20,
+            _scalar(item.get('ev'))/20, _scalar(item.get('quantity'))/30,
+            float(bool(item.get('is_ranged'))), float(bool(item.get('identified')))]
+
+
+def monster_properties(m):
+    numeric = [('x',8),('y',8),('threat',3),('damage_level',5),('ac',30),('ev',30),
+               ('wl',200),('range',8),('reach_range',8),('res_fire',3),('res_cold',3),
+               ('res_poison',3),('res_shock',3),('res_corr',3),('res_draining',3)]
+    values = [_scalar(m.get(k))/scale for k,scale in numeric]
+    values += [float(bool(m.get(k))) for k in
+               ('reachable','is_unique','is_stationary','is_constricting_you')]
+    values += [float(k in str(m.get('status','')).lower()) for k in
+               ('asleep','confused','invisible','berserk')]
+    values += [float('faster' in str(m.get('speed_description','')))]
+    return values
 
 
 def pair_features(state: dict, action: dict) -> list[float]:

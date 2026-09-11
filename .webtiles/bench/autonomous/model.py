@@ -69,13 +69,25 @@ def load_model(path: str | Path) -> tuple[ActionValueModel, dict]:
     payload = torch.load(path, map_location="cpu", weights_only=False)
     if payload.get("model_version") not in (MODEL_VERSION, "general-action-model-v1"):
         raise ValueError("unsupported model version")
-    if payload.get("feature_version") != FEATURE_VERSION:
+    migrating = payload.get('feature_version') == 'general-features-v4-route-deltas'
+    if payload.get("feature_version") != FEATURE_VERSION and not migrating:
         raise ValueError("feature version mismatch; bootstrap a new run")
     model = ActionValueModel(int(payload.get("hidden", 192)))
     weights = dict(payload["state_dict"])
     if payload["model_version"] == "general-action-model-v1":
         weights.update({"value_net." + key[4:]: value.clone()
                         for key, value in payload["state_dict"].items() if key.startswith("net.")})
+    if migrating:
+        for key in ('net.0.weight', 'value_net.0.weight'):
+            old = weights[key]
+            expanded = torch.zeros((old.shape[0], STATE_DIM + ACTION_DIM))
+            expanded[:, :192] = old[:, :192]
+            expanded[:, STATE_DIM:STATE_DIM+96] = old[:, 192:288]
+            weights[key] = expanded
+        payload = copy.deepcopy(payload)
+        payload['metadata'] = dict(payload.get('metadata', {}))
+        payload['metadata'].pop('optimizer_states', None)
+        payload['metadata']['feature_migration'] = 'v4_to_v5_zero_initialized_properties'
     model.load_state_dict(weights)
     model.eval()
     return model, payload

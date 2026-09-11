@@ -166,11 +166,71 @@ def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1,
             "objective": "independent_score_critic"}
 
 
+def train_return_policy(model, rows, optimizer_states=None, epochs=3, feature_cache=None):
+    """Bounded off-policy score-advantage update with a frozen reference.
+
+    Only scored ordinary trajectories with logged sampling probabilities enter.
+    The critic supplies a baseline; actual logged game returns supply the target.
+    A full-batch KL guard rolls back a proposed step (including Adam state) if
+    the mean policy KL exceeds .01. Teacher labels are not optimization targets.
+    """
+    feature_cache = feature_cache if feature_cache is not None else FeatureCache()
+    reference = copy.deepcopy(model).eval()
+    optimizer = torch.optim.AdamW(model.net.parameters(), lr=1e-4, weight_decay=0)
+    if optimizer_states is not None and 'actor_return' in optimizer_states:
+        optimizer.load_state_dict(optimizer_states['actor_return'])
+    encoded = []
+    for row in rows:
+        probability, result = row.get('behavior_probability'), row.get('return')
+        actions = _actions(row.get('observation', {}))
+        i = row.get('action_index', -1)
+        if (row.get('comparison_id') or probability is None or result is None
+                or not 0 < probability <= 1 or not 0 <= i < len(actions)):
+            continue
+        x = feature_cache.get(row['observation'])
+        with torch.no_grad():
+            prior = reference(x).softmax(-1)
+            baseline = (prior * reference.value(x)).sum()
+            advantage = (math.log1p(max(0, float(result))) - baseline).clamp(-2, 2)
+        encoded.append((x, i, probability, prior, advantage))
+    if not encoded:
+        return {'usable':0, 'updates':0, 'reason':'no scored trajectories with behavior probabilities'}
+    updates = 0
+    for _ in range(epochs):
+        weights, opt = copy.deepcopy(model.net.state_dict()), copy.deepcopy(optimizer.state_dict())
+        optimizer.zero_grad()
+        for x, i, behavior, prior, advantage in encoded:
+            logp = model(x).log_softmax(-1)
+            ratio = (logp[i].detach().exp() / behavior).clamp(max=5)
+            loss = -ratio * advantage * logp[i]
+            loss += 2 * nn.functional.kl_div(logp, prior, reduction='sum')
+            (loss / len(encoded)).backward()
+        nn.utils.clip_grad_norm_(model.net.parameters(), 1)
+        optimizer.step()
+        with torch.no_grad():
+            kl = sum(float(nn.functional.kl_div(model(x).log_softmax(-1), prior, reduction='sum'))
+                     for x, _, _, prior, _ in encoded) / len(encoded)
+        if not math.isfinite(kl) or kl > .01:
+            model.net.load_state_dict(weights); optimizer.load_state_dict(opt)
+            break
+        updates += 1
+    if optimizer_states is not None:
+        optimizer_states['actor_return'] = optimizer.state_dict()
+    with torch.no_grad():
+        final_kl = sum(float(nn.functional.kl_div(model(x).log_softmax(-1), prior, reduction='sum'))
+                       for x, _, _, prior, _ in encoded) / len(encoded)
+    return {'usable':len(encoded), 'updates':updates, 'mean_reference_kl':final_kl,
+            'objective':'clipped_score_advantage_with_kl',
+            'positive_advantages':sum(float(e[4])>0 for e in encoded),
+            'negative_advantages':sum(float(e[4])<0 for e in encoded)}
+
+
 def train_counterfactual_preferences(model, rows, anchors=(), epochs=20, optimizer_states=None, feature_cache=None):
     """Small policy updates from paired-state empirical return comparisons.
 
-    An isolated good/bad absolute return is not an action preference. Truncated
-    continuations and ties provide no ranking label. Replay KL limits drift.
+    An isolated good/bad absolute return is not an action preference.
+    Failed continuations and ties provide no ranking label. Official fixed-horizon
+    scores are valid comparisons within their own protocol. Replay KL limits drift.
     """
     feature_cache = feature_cache if feature_cache is not None else FeatureCache()
     groups = {}

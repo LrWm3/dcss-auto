@@ -23,6 +23,13 @@ def _actions(state):
     return list(actions)
 
 
+def empirical_return(outcomes, continuations):
+    numeric = [float(x['score']) for x in outcomes
+               if x.get('score_status') in ('final_official', 'cutoff_official')
+               and x.get('score') is not None and not x.get('error')]
+    return sum(numeric) / continuations if continuations > 0 and len(numeric) == continuations else None
+
+
 def evaluate_checkpoint(case: str | Path, workspace: str | Path,
                         model_path: str | Path, top_k: int = 3,
                         random_k: int = 2, continuations: int = 2,
@@ -68,6 +75,8 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
                 "score": current.get("score"),
                 "terminal": current.get("terminal"),
                 "level": current.get("level"), "turn": current.get("turn"),
+                "score_status": 'final_official' if current.get('terminal') else
+                    ('cutoff_official' if current.get('score_status') == 'live_official' else 'unavailable'),
             }
             completed = True
             return outcome
@@ -86,17 +95,16 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
     records = []
     for action_index in candidates:
         outcomes = [results[action_index, c] for c in range(continuations)]
-        numeric = [float(x["score"]) for x in outcomes
-                   if x.get("terminal") and x.get("score") is not None]
         records.append({
             "type": "counterfactual", "case": str(case),
             "observation": state, "action": actions[action_index],
             "action_index": action_index, "model_value": float(scores[action_index]),
             "policy_logit": float(scores[action_index]),
             "predicted_log_score": float(predicted_values[action_index]),
-            "outcomes": outcomes, "empirical_return": (
-                sum(numeric) / len(numeric) if len(numeric) == continuations else None),
+            "outcomes": outcomes, "empirical_return": empirical_return(outcomes, continuations),
             "continuations": continuations,
+            "return_protocol": "official_score_at_terminal_or_fixed_horizon_v2",
+            "continuation_steps": continuation_steps,
         })
     return records
 

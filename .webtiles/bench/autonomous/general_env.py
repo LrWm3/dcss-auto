@@ -289,7 +289,16 @@ class GeneralEnvironment:
         # 33 is '!' and leaves 0x1e available as a save control.  The Lua
         # bridge caps semantic actions at 88 so the byte protocol is unambiguous.
         self.child.send(chr(33 + index))
-        after = self.await_state(expected_seq=int(before["seq"]) + 1)
+        try:
+            after = self.await_state(expected_seq=int(before["seq"]) + 1)
+        except Exception as exc:
+            # The ordinary transition is only written on success. Preserve the
+            # attempted action as well, so a UI block is not blamed on the
+            # preceding successful move in the replay.
+            (self.work / 'failed_action.json').write_text(json.dumps({
+                'action': actions[index], 'action_index':index,
+                'observation':before, 'error':str(exc)}, indent=2))
+            raise
         self.state = after
         self._event({"type": "transition", "observation": before,
                      "action": actions[index], "action_index": index,
