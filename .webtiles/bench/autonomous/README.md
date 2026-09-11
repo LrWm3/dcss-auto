@@ -54,6 +54,20 @@ exact plan. Fresh seeds occupy namespace A, disjoint from confirmation D and
 audit E. The selection ledger is permanent even after heavy-data retention.
 The historical `--actor-episodes` option is superseded by this three-game policy.
 
+For a bounded unattended window, schedule one complete resumable cycle at a
+time. An already-running job keeps the lock; the scheduler waits and resumes
+after it exits:
+
+```bash
+.webtiles/bench/tactical/.rl-venv/bin/python .webtiles/bench/autonomous/schedule_training.py \
+  --run-dir .webtiles/bench/autonomous/artifacts/foundation-general-training-v4 \
+  --hours 8
+```
+
+`schedule.json` records the deadline and `metrics/scheduled-training.log`
+records each launch and exit. A cycle already in progress can finish slightly
+after the wall-clock deadline; the scheduler never terminates it mid-game.
+
 ## What is implemented
 
 * `general_env.py`: reset/load, structured observation, variable semantic legal
