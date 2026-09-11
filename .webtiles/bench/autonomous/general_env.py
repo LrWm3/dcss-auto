@@ -19,6 +19,7 @@ from pathlib import Path
 
 import pexpect
 import storage
+import engine_cache
 
 HERE = Path(__file__).resolve().parent
 # autonomous/ is directly under .webtiles/bench (the older tactical package
@@ -71,6 +72,7 @@ class GeneralEnvironment:
         self.events = None
         self.terminal_tail = ""
         self.works = []
+        self.record_events = True
 
     @property
     def work_path(self) -> Path:
@@ -86,10 +88,13 @@ class GeneralEnvironment:
     def launch(self, checkpoint: str | Path | None = None) -> dict:
         storage.guard()
         self.close()
+        self.terminal_tail = ''
         self.work = Path(tempfile.mkdtemp(prefix="general-", dir=self.workspace))
         self.works.append(self.work)
         for directory in ("saves", "morgue", "macros"):
             (self.work / directory).mkdir()
+        engine_hash = sha(ENGINE)
+        cache_template = engine_cache.install(self.work / 'saves', engine_hash)
         self.pipe_dir = Path(tempfile.mkdtemp(prefix="fifo-", dir=self.workspace))
         fifo = self.pipe_dir / "observations"
         os.mkfifo(fifo, 0o600)
@@ -122,6 +127,8 @@ class GeneralEnvironment:
         self.transcript = (self.work / "terminal.txt").open("w")
         (self.work / "run.json").write_text(json.dumps({
             "schema_version": 1,
+            "event_schema": "initial_then_next_v1" if self.record_events else "external_replay",
+            "cache_template": cache_template,
             "observation_schema": "crawl-general-v1",
             "action_schema": "crawl-semantic-actions-v1",
             "checkpoint": str(checkpoint_path) if checkpoint_path else None,
@@ -140,18 +147,21 @@ class GeneralEnvironment:
                                    env=child_env, encoding="utf-8",
                                    codec_errors="replace", dimensions=(50, 160),
                                    timeout=30)
-        self.child.logfile_read = self.transcript
+        self.child.delaybeforesend = None
+        self.child.logfile_read = None
         self.state = self.await_state(startup=True)
+        engine_cache.publish(self.work / 'saves', engine_hash)
         (self.work / "initial.json").write_text(json.dumps(self.state, indent=2) + "\n")
-        self.events = (self.work / "events.jsonl").open("a")
+        self.events = (self.work / "events.jsonl").open("a", buffering=65536) if self.record_events else None
         self._event({"type": "reset", "observation": self.state})
         return self.state
 
     def _event(self, value: dict) -> None:
         if self.events:
+            if value.get('type') == 'transition':
+                value = {k:v for k,v in value.items() if k != 'observation'}
             value = {**value, "episode_seed": self.seed, "data_role": self.data_role}
             self.events.write(json.dumps(value, sort_keys=True) + "\n")
-            self.events.flush()
 
     def death_record(self) -> dict | None:
         for path in (self.work / "morgue").glob("morgue-*.txt"):
@@ -337,6 +347,7 @@ class GeneralEnvironment:
             self.events.close()
             self.events = None
         if getattr(self, "transcript", None):
+            self.transcript.write(self.terminal_tail)
             self.transcript.close()
             self.transcript = None
         if getattr(self, "pipe_fd", None) is not None:

@@ -327,3 +327,49 @@ frozen parent plans, historical comparison replay, and seed-balanced sampling.
 `artifacts/persistent-learner-smoke-v1` exercises real collection, branching,
 learning, and evaluation with a process restart between cycles. Its small
 20-decisions/floor budget is an operational test, not evidence of stronger play.
+
+## Carried-over fast transport (2026-09-11)
+
+The general adapter now carries over the proven tactical harness optimizations:
+no Pexpect input delay; verified private copies of engine db/des caches; buffered
+initial-plus-next observation logs; a bounded terminal tail. Actors writing full
+training replay skip the duplicate environment event stream. Replay format is
+unchanged; standalone environment logs advertise `initial_then_next_v1` in
+`run.json` (the reset carries the first observation and transitions carry only
+the next observation). Do not interpret these as the old duplicated event format.
+
+Actor/screen concurrency is capped at six; independent counterfactual branches
+also use up to six workers. Each branch has its own Crawl process, save directory,
+and exploration RNG; results remain in deterministic task order. Confirmation
+and audit worker counts remain those in their frozen protocol.
+
+`engine_cache.py` adapts tactical/cached_env.py without its thread-unsafe global
+spawn patch. The first successful cold launch publishes the template atomically
+under a process lock. Subsequent launches verify checksums and make private byte
+copies of db/des only, never character saves or RNG state. Default template root:
+`artifacts/engine-cache`, overridable with `DCSS_GENERAL_CACHE_ROOT`. An engine
+hash change selects a new template. Corruption fails closed; templates are not
+silently trusted. The existing low-space guard still applies.
+
+Small before/after validation, not a comprehensive throughput benchmark:
+
+| Workload | Before / serial | After / parallel |
+| --- | ---: | ---: |
+| Two seeds, 80 fixed actions, two save/restores | 27.32 s | 7.21 s |
+| Six 20-decision counterfactual continuations | 5.62 s | 2.59 s |
+
+Every transport observation (including restored states) matched exactly. All
+counterfactual records also matched, with no errors. The transport measurement
+includes the first cold cache build; later startup/restores were 0.46–0.49 s.
+These are approximately 3.8x end-to-end and 2.2x branch-batch improvements on tiny
+workloads, not promised full-cycle speedups. Timing comparisons ran without
+concurrent test loads; the branch run was repeated after the tests completed.
+
+Evidence: `artifacts/transport-carryover-{baseline-v1,fast-v1}/results.json` and
+`artifacts/transport-carryover-parallel-v2/results.json`. Reusable small checks:
+`smoke_transport.py` (optional `--reference`) and `smoke_parallel.py`. All 52 tests
+passed with live-engine tests enabled, including private cache isolation,
+corruption detection, snapshot restoration, and low-space pause/resume.
+`artifacts/transport-carryover-cycle-v1` also completed a short real training
+cycle: two actor games, 48 actor decisions, 12 counterfactual action records,
+candidate training and evaluation, zero recorded failures. No long run launched.

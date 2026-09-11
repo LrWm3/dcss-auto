@@ -47,6 +47,9 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
     if archive_dir:
         archive_dir.mkdir(parents=True, exist_ok=True)
     env = GeneralEnvironment(workspace, seed=str(seed), data_role=data_role)
+    # Replay already retains complete transitions. Failed/partial replay is
+    # quarantined by the orchestrator; don't serialize a second full copy.
+    env.record_events = replay_path is None
     rows = 0
     started = time.time()
     completed = False

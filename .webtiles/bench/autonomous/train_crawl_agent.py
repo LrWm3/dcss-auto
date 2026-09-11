@@ -163,7 +163,7 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
                      exploration_seeds: list[int] | None = None) -> list[dict]:
     selected = [seeds[i % len(seeds)] for i in range(episodes)]
     results = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(4,len(selected)))) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(6,len(selected)))) as pool:
         # A restarted partial cycle must not append a second episode to the
         # previous trajectory. Preserve unfinished files for debugging.
         for i in range(len(selected)):

@@ -132,6 +132,7 @@ def environment_identity():
     return {"engine": sha(ENGINE), "base_rc": sha(BASE_RC),
             "bridge": sha(HERE / "general_bridge.lua"),
             "adapter": sha(HERE / "general_env.py"),
+            "engine_cache": sha(HERE / "engine_cache.py"),
             "features": sha(HERE / "features.py"),
             "policy": sha(HERE / "policy.py"),
             "model": sha(HERE / "model.py"),

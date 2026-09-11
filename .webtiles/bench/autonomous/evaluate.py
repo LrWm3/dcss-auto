@@ -35,7 +35,7 @@ def evaluate_model(model: str | Path, work: str | Path, seeds: list[str],
                    policy_version: str = "candidate", total_steps: int = 100000) -> list[dict]:
     work = Path(work)
     jobs = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(4, len(seeds)))) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(6, len(seeds)))) as pool:
         for index, seed in enumerate(seeds):
             jobs.append(pool.submit(
                 run_episode, work / f"{policy_version}-{index}", seed, steps,
