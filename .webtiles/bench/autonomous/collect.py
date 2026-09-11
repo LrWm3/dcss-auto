@@ -31,7 +31,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 model_path: str | Path | None = None, epsilon: float = 0.05,
                 archive_dir: str | Path | None = None, policy_version: str = "teacher",
                 snapshot: bool = True, total_steps: int = 100000,
-                no_turn_limit: int = 16, data_role: str = "training") -> dict:
+                no_turn_limit: int = 16, data_role: str = "training",
+                exploration_seed: int | None = None) -> dict:
     if data_role == "training":
         assert_training_seed(seed)
     elif replay_path is not None or archive_dir is not None:
@@ -63,7 +64,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 state = env.launch(archive_case)
         policy = None
         if model_path:
-            policy, _ = Policy.from_checkpoint(model_path, epsilon=epsilon, seed=int(seed) & 0xFFFFFFFF)
+            policy, _ = Policy.from_checkpoint(model_path, epsilon=epsilon,
+                seed=exploration_seed if exploration_seed is not None else int(seed) & 0xFFFFFFFF)
         terminal = False
         captured = set()
         for step in itertools.count():
@@ -90,6 +92,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             row = {
                 "type": "transition", "episode_seed": str(seed), "step": step,
                 "data_role": data_role,
+                "exploration_seed": exploration_seed,
                 "policy_version": policy_version, "observation": before,
                 "action": action, "action_index": action_index,
                 "teacher_action_index": teacher_index,
@@ -111,6 +114,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             env.save_state(resume_checkpoint)
         result = {
             "seed": str(seed), "steps": rows, "terminal": terminal,
+            "exploration_seed": exploration_seed,
+            "model_sha256": sha(Path(model_path)) if model_path else None,
             "data_role": data_role,
             "terminal_kind": state.get("terminal"),
             "truncated": bool(truncation), "truncation_reason": truncation,

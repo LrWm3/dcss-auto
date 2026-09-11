@@ -32,13 +32,27 @@ PYTHONPATH=.webtiles/bench/autonomous \
   .webtiles/bench/tactical/.rl-venv/bin/python \
   .webtiles/bench/autonomous/train_crawl_agent.py \
   --run-dir .webtiles/bench/autonomous/runs/first \
-  --cycles 10 --bootstrap-episodes 8 --actor-episodes 8 \
+  --cycles 10 --bootstrap-episodes 8 \
   --evaluation-episodes 5 --decisions-per-floor 2000 --total-steps 100000
 ```
 
 The command is restartable: rerunning it against the same run directory
 continues at the next completed cycle, reuses the current champion, and keeps
 all replay, checkpoints, failures, and evaluations.
+
+Each training cycle now collects exactly three champion-policy games: two fresh
+training seeds and the lowest-scoring training seed from the previous cycle.
+Official budget-cutoff scores count; crashes and missing scores do not. Ties
+are broken by numeric seed. The first cycle chooses its retry from bootstrap;
+if the previous batch has no usable training score, all three seeds are fresh.
+Screen/confirmation/audit seeds are never eligible for this curriculum.
+
+`training_seeds/cycle-NNNN.json` freezes the selected seeds, source score, and
+independent exploration RNG seeds before any actors start. Retries use new
+exploration randomness each cycle, while restarting a partial cycle reuses its
+exact plan. Fresh seeds occupy namespace A, disjoint from confirmation D and
+audit E. The selection ledger is permanent even after heavy-data retention.
+The historical `--actor-episodes` option is superseded by this three-game policy.
 
 ## What is implemented
 

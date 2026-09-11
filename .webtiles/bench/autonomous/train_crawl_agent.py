@@ -12,6 +12,7 @@ import storage
 from pathlib import Path
 
 from collect import run_episode
+from training_seeds import plan_cycle, POLICY as TRAINING_SEED_POLICY
 from counterfactual import evaluate_checkpoint
 from evaluate import comparison, evaluate_model
 from selection import (ensure_protocol, screen_decision, prepare_batch, run_batch,
@@ -103,6 +104,8 @@ def prepare(run_dir: Path, args) -> dict:
         config["decisions_per_floor"] = config.get("decisions_per_floor", config.get("steps_per_episode", 2000))
         config["total_decisions"] = config.get("total_decisions", args.total_steps)
         config["budget_version"] = "cumulative_per_floor_v1"
+        config["training_seed_policy"] = TRAINING_SEED_POLICY
+        config["actor_episodes"] = 3
         write(config_path, config)
         return config
     config = {
@@ -111,7 +114,7 @@ def prepare(run_dir: Path, args) -> dict:
         "feature_version": __import__("features").FEATURE_VERSION,
         "bootstrap_episodes": args.bootstrap_episodes,
         "bootstrap_epochs": args.bootstrap_epochs,
-        "actor_episodes": args.actor_episodes,
+        "actor_episodes": 3, "training_seed_policy": TRAINING_SEED_POLICY,
         "evaluation_episodes": args.evaluation_episodes,
         "decisions_per_floor": args.steps,
         "total_decisions": args.total_steps,
@@ -148,7 +151,8 @@ def status(run_dir: Path, phase: str, **extra) -> None:
 
 def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
                      steps: int, model: Path | None, epsilon: float,
-                     archive: bool, total_steps: int = 100000) -> list[dict]:
+                     archive: bool, total_steps: int = 100000,
+                     exploration_seeds: list[int] | None = None) -> list[dict]:
     selected = [seeds[i % len(seeds)] for i in range(episodes)]
     results = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(4,len(selected)))) as pool:
@@ -164,11 +168,17 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
         for i in range(len(selected)):
             result_path = run_dir / "replay" / f"{label}-{i}.result.json"
             if result_path.exists():
-                results.append(json.loads(result_path.read_text()))
+                cached = json.loads(result_path.read_text())
+                if str(cached.get('seed')) != str(selected[i]):
+                    raise ValueError('cached actor seed differs from frozen cycle plan')
+                if exploration_seeds is not None and cached.get('exploration_seed') != exploration_seeds[i]:
+                    raise ValueError('cached actor exploration RNG differs from frozen cycle plan')
+                results.append(cached)
         jobs = [(i, pool.submit(
             run_episode, run_dir / "actors" / f"{label}-{i}", seed, steps,
             run_dir / "replay" / f"{label}-{i}.jsonl", model, epsilon,
-            run_dir / "state_archive" if archive else None, label, archive, total_steps))
+            run_dir / "state_archive" if archive else None, label, archive, total_steps,
+            exploration_seed=exploration_seeds[i] if exploration_seeds is not None else None))
             for i, seed in pending]
         for i, job in jobs:
             try:
@@ -191,7 +201,8 @@ def main() -> None:
                         help="continue cycles until the process is stopped")
     parser.add_argument("--bootstrap-episodes", type=int, default=5)
     parser.add_argument("--bootstrap-epochs", type=int, default=10)
-    parser.add_argument("--actor-episodes", type=int, default=2)
+    parser.add_argument("--actor-episodes", type=int, default=3,
+                        help="legacy option; curriculum fixes each training cycle at three episodes")
     parser.add_argument("--evaluation-episodes", type=int, default=5)
     parser.add_argument("--steps", "--decisions-per-floor", type=int, default=2000,
                         help="cumulative decision allowance per distinct floor")
@@ -276,10 +287,14 @@ def run_training(args, run_dir):
             audit_due(run_dir, config, cycle)
             storage.maintain(run_dir)
             continue
-        status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion))
-        actors = collect_parallel(run_dir, seeds, label, config["actor_episodes"],
+        seed_plan = plan_cycle(run_dir, cycle)
+        cycle_seeds = [e['seed'] for e in seed_plan['episodes']]
+        status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion),
+               training_seed_plan=seed_plan)
+        actors = collect_parallel(run_dir, cycle_seeds, label, len(cycle_seeds),
                                   config["decisions_per_floor"], champion,
-                                  config["epsilon"], True, config["total_decisions"])
+                                  config["epsilon"], True, config["total_decisions"],
+                                  exploration_seeds=[e['exploration_seed'] for e in seed_plan['episodes']])
         rows = rows_from_replay(run_dir / "replay")
         candidate_model, _ = load_model(champion)
         candidate_model, train_meta = train_behavioral_clone(
