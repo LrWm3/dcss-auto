@@ -291,6 +291,11 @@ def run_training(args, run_dir):
 
         cf_records = []
         archive_cases = sorted((run_dir / "state_archive").glob("*/case.json"))
+        # Preserve old-engine states for reproduction, but only branch saves
+        # validated against the engine used by this training cycle.
+        engine_hash = sha(ENGINE)
+        archive_cases = [p for p in archive_cases
+                         if json.loads(p.read_text()).get("engine_sha256") == engine_hash]
         if archive_cases:
             case = archive_cases[cycle % len(archive_cases)].parent
             try:
@@ -343,7 +348,7 @@ def run_training(args, run_dir):
         evaluation = {"cycle": cycle, "champion": champion_eval,
                       "candidate": candidate_eval, "candidate_path": str(candidate),
                       "model_hashes": {"champion":sha(champion), "candidate":sha(candidate)},
-                      "role": "screen", "protocol":"screen-confirm-audit-v1",
+                      "role": "screen", "protocol":ensure_protocol(run_dir)["version"],
                       "train": train_meta, "counterfactual_rows": len(cf_records)}
         append(run_dir / "evaluations" / "paired_seeds.jsonl", evaluation)
         screening = screen_decision(champion_eval, candidate_eval)

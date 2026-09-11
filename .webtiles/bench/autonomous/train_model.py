@@ -15,6 +15,7 @@ from torch import nn
 from model import ActionValueModel, save_model, tensor_for_actions
 import storage
 from data_split import assert_training_seed
+from score_result import has_episode_score
 
 
 def _files(path: str | Path):
@@ -45,7 +46,7 @@ def rows_from_replay(path: str | Path) -> list[dict]:
                 state = row.get("observation")
                 if (row.get("type") == "transition" or state) and isinstance(state, dict):
                     if state.get("schema") == "crawl-general-v1":
-                        if result.get("terminal") and result.get("score") is not None:
+                        if has_episode_score(result):
                             row["return"] = result["score"]
                         rows.append(row)
     return rows

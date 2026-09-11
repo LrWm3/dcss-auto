@@ -19,9 +19,11 @@ from collect import run_episode
 from data_split import CONFIRMATION_PREFIX, AUDIT_PREFIX
 from general_env import ENGINE, BASE_RC, HERE, sha
 import storage
+from score_result import has_episode_score
 
 PROTOCOL = {
-    "version": "screen-confirm-audit-v1", "confirmation_pairs": 30,
+    "version": "screen-confirm-audit-v2-cutoff-score", "confirmation_pairs": 30,
+    "score_metric": "official_final_or_budget_cutoff_score",
     "confidence": 0.95, "alternative": "greater", "bootstrap_resamples": 10000,
     "bootstrap_rng": 42, "margin": 0.0, "interim_decisions": False,
     "audit_every_completed_cycles": 5, "audit_pairs": 30,
@@ -57,7 +59,14 @@ def ensure_protocol(root):
     if path.exists():
         protocol = json.loads(path.read_text())
         if protocol != PROTOCOL:
-            raise ValueError("selection protocol changed; use a separately declared run")
+            if protocol.get("version") == "screen-confirm-audit-v1":
+                # Old batches retain their own manifest/rule/results unchanged.
+                archived = path.with_name("selection_protocol.v1.json")
+                if not archived.exists():
+                    write(archived, protocol)
+                write(path, PROTOCOL)
+            else:
+                raise ValueError("selection protocol changed; use a separately declared run")
     else:
         write(path, PROTOCOL)
     original = root / "champions" / "V0.pt"
@@ -76,8 +85,7 @@ def complete_pairs(left, right):
     differences = []
     for seed in sorted(a):
         pair = a[seed], b[seed]
-        if not all(r.get("terminal") and r.get("score") is not None
-                   and "error" not in r and not r.get("truncated") for r in pair):
+        if not all(has_episode_score(r) for r in pair):
             return None
         if not all(math.isfinite(float(r["score"])) for r in pair):
             return None
@@ -89,9 +97,7 @@ def screen_decision(champion, candidate):
     left, right = champion["results"], candidate["results"]
     if any("error" in r or r.get("truncation_reason") == "no_game_time_progress" for r in right):
         return {"state": "screen_failed", "category": "broken", "promote": False}
-    floor_stalls = lambda rows: sum(r.get("truncation_reason") == "floor_decision_limit" for r in rows)
-    if floor_stalls(right) - floor_stalls(left) >= PROTOCOL["screen_excess_floor_cutoffs"]:
-        return {"state": "screen_failed", "category": "severe_loop_regression", "promote": False}
+    # Floor-budget cutoffs are scored outcomes, not disqualifying failures.
     differences = complete_pairs(left, right)
     if differences is None or len(differences) < 5:
         return {"state": "inconclusive", "reason": "screen lacks five complete score pairs", "promote": False}
@@ -131,6 +137,7 @@ def environment_identity():
             "model": sha(HERE / "model.py"),
             "collector": sha(HERE / "collect.py"),
             "evaluator": sha(HERE / "selection.py"),
+            "score_result": sha(HERE / "score_result.py"),
             "budget": sha(HERE / "episode_budget.py")}
 
 

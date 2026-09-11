@@ -6,6 +6,7 @@ import random
 from pathlib import Path
 
 from collect import run_episode
+from score_result import has_episode_score
 
 
 def promotion_decision(champion, candidate, margin=0.0):
@@ -51,7 +52,7 @@ def evaluate_model(model: str | Path, work: str | Path, seeds: list[str],
 def comparison(results: list[dict]) -> dict:
     valid = [row for row in results if "error" not in row]
     actual = [float(row["score"]) for row in valid
-              if row.get("terminal") and row.get("score") is not None]
+              if has_episode_score(row)]
     progression = [float(row.get("progression", 0)) for row in valid]
     return {
         "episodes": len(valid), "errors": len(results) - len(valid),

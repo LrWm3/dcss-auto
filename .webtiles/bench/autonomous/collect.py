@@ -8,7 +8,7 @@ import time
 import itertools
 from pathlib import Path
 
-from general_env import GeneralEnvironment
+from general_env import GeneralEnvironment, ENGINE, sha
 from policy import Policy
 from teacher import choose_action
 import storage
@@ -57,7 +57,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             # Saving is intentionally a separate engine boundary.  Restore the
             # fresh checkpoint before collecting, so the trajectory remains
             # contiguous while the exact RNG-preserving state is archived.
-            archive_case = archive_dir / f"seed-{seed}-initial"
+            archive_case = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-initial"
             if not archive_case.exists():
                 env.save_state(archive_case)
                 state = env.launch(archive_case)
@@ -74,7 +74,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             if archive_dir and snapshot and bucket not in captured and len(captured) < 4:
                 captured.add(bucket)
                 if step > 0:
-                    target = archive_dir / f"seed-{seed}-turn-{state.get('turn')}-{policy_version}"
+                    target = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-turn-{state.get('turn')}-{policy_version}"
                     if not target.exists():
                         env.save_state(target)
                         state = env.launch(target)
@@ -116,7 +116,11 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             "truncated": bool(truncation), "truncation_reason": truncation,
             "resume_checkpoint": str(resume_checkpoint) if resume_checkpoint else None,
             "decision_budget": budget.summary(),
-            "score": state.get("score") if terminal else None,
+            "score": state.get("score") if terminal or (
+                truncation and state.get("score_status") == "live_official") else None,
+            "score_status": "final_official" if terminal else (
+                "cutoff_official" if truncation and state.get("score_status") == "live_official"
+                else "unavailable"),
             "progression": _progression(state), "final_level": state.get("level"),
             "final_turn": state.get("turn"), "archive_case": str(archive_case) if archive_case else None,
             "policy_version": policy_version, "elapsed_seconds": time.time() - started,

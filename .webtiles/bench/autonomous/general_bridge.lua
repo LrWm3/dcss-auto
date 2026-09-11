@@ -367,9 +367,10 @@ local function ga_observation()
     status=ga_you("status") or "", safe=ga_you("feel_safe") or false,
     monsters=monsters, inventory=ga_inventory(), floor_items=ga_floor_items(), cells=visible_cells,
     known=known_cells, actions=ga_actions(cells, monsters, blocked),
-    -- Crawl computes its official score at game end.  -1 is the explicit
-    -- live-game sentinel because Lua omits nil-valued object keys.
-    score=-1, score_status="live", terminal=false, last_action_result=GA.last_action_result}
+    -- Standard-game non-winning score; old engines explicitly lack this API.
+    score=ga_you("game_score") or -1,
+    score_status=ga_you("game_score") ~= nil and "live_official" or "unavailable",
+    terminal=false, last_action_result=GA.last_action_result}
 end
 
 local function ga_publish()

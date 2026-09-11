@@ -63,14 +63,20 @@ Runs contain the requested artifacts: `config.json`, `environment_version.txt`,
 `champions/`, `candidates/`, `replay/`, `state_archive/`, `evaluations/`,
 `rollouts/`, `metrics/`, `failures/`, and `latest_status.json`.
 
-The live observation uses `score=-1` with `score_status=live` until Crawl ends.
-Official final scores are read from morgues and seeded xlogs. Progression is
-diagnostic only: incomplete paired games cannot cause a promotion.
-Truncated counterfactuals supply no fabricated score targets.
+The fork exports read-only `you.game_score()`, using the same standard-game
+formula as final scoring, without a victory bonus while the game is ongoing.
+Observations expose `score_status=live_official`; `get_game_score()` works during
+play. Unsupported old engines and custom Sprint scoring return unavailable,
+never a fabricated score. Final scores still come from morgues and seeded xlogs.
+At episode-budget cutoffs the collector records `score_status=cutoff_official`
+and the current score, keeping `terminal=false` and `truncated=true`. Evaluation
+and replay return targets accept these scores. Intermediate live scores are not
+per-turn rewards; short counterfactual horizons remain separate from full-episode
+budget cutoffs and do not automatically become final-return targets.
 
 ### Screen, confirmation, and audit
 
-`selection.py` implements the predeclared `screen-confirm-audit-v1` protocol:
+`selection.py` implements `screen-confirm-audit-v2-cutoff-score` for future batches:
 
 * The existing five seeds are a cheap screen, never promotion evidence. Broken
   candidates, severe loop regressions, and non-improving mean scores fail the
@@ -82,8 +88,8 @@ Truncated counterfactuals supply no fabricated score targets.
   the historical `--promotion-margin` setting does not override this protocol.
 * Inconclusive candidates remain available, but relabeling the same checkpoint
   pair reuses its original batch, rather than buying another chance on new
-  seeds. Failed/truncated games make confirmation inconclusive, not fabricated
-  low scores. Confirmed-worse candidates are not promoted.
+  seeds. Budget-truncated games with official scores count normally; missing
+  scores and crashes remain inconclusive. Confirmed-worse candidates are not promoted.
 * Every five completed cycles, a separate fresh 30-pair audit compares the
   current champion with the frozen original V0. Audits report results but
   never promote or change the policy.
@@ -111,6 +117,25 @@ screened candidate (repeat exactly this command to resume):
   --label cycle-0003-confirmation-v1 --screen-cycle 3
 ```
 
+The command above documents the historical V1 batch. Its frozen environment and
+decision are not rewritten or rerun under V2. On the next training launch,
+the run-level V1 protocol is archived before declaring V2 for future batches.
+Existing manifests keep their original rule and hashes. The previous engine is
+retained at `artifacts/engine-archive/crawl-tactical-sim-before-live-score`;
+old snapshots still require their matching engine unless explicitly migrated.
+New archive IDs include the engine hash, and counterfactual selection skips
+old-engine saves rather than trying to restore incompatible snapshots.
+
+The score API is in fork commit `c51f74b`. Rebuild the console simulator with:
+
+```bash
+make -C crawl-0.35/crawl-ref/source -j4 GAME=crawl-tactical-sim crawl-tactical-sim
+```
+
+`test_live_score.py` checks score acceptance, replay targets, protocol migration,
+and (with `CRAWL_STORAGE_LIVE_TEST=1`) equality between a live cutoff score and
+the official quit score from a copied checkpoint, with no turn advancement.
+
 There are no interim significance decisions. The 95% bound is approximate and
 per comparison, not a lifetime false-promotion guarantee across unlimited
 challengers. Thirty pairs improve evidence over five but may remain inconclusive,
@@ -128,7 +153,7 @@ game time trigger a separate adapter-stall cutoff. Waiting counts as a decision.
 
 Administrative cutoffs save a restorable checkpoint and report `truncated`,
 `truncation_reason`, `decision_budget`, and `resume_checkpoint`. They are not
-deaths and do not get a made-up final score. Resumption is explicit: these
+deaths; they receive the fork's actual current non-winning score. Resumption is explicit: these
 checkpoints are loadable through `GeneralEnvironment`, not automatically retried
 forever. Counterfactuals still have a separate, explicit continuation horizon.
 Existing configs migrate `steps_per_episode` to `decisions_per_floor` on restart.

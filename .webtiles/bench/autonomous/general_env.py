@@ -246,7 +246,9 @@ class GeneralEnvironment:
         return bool((self.state or {}).get("terminal"))
 
     def get_game_score(self):
-        return self.state.get("score") if self.is_terminal() else None
+        state = self.state or {}
+        return state.get("score") if (self.is_terminal()
+                    or state.get("score_status") == "live_official") else None
 
     def reset(self, checkpoint=None):
         return self.launch(checkpoint)
