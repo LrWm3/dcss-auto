@@ -4,6 +4,11 @@ See [FOUNDATION-RESULTS.md](FOUNDATION-RESULTS.md) for current evidence and
 unmet acceptance criteria. Basic neural exploration/combat/descent is now
 demonstrated; autonomous improvement on held-out score is still unproven.
 
+See [UPDATE-INVESTIGATION.md](UPDATE-INVESTIGATION.md) for the investigation
+after 22 cycles: cycle 3 lost an independent 30-pair audit, and update ablations
+identify teacher-dominated training, nonpersistent learner weights, and narrow
+counterfactual coverage as priorities for repair.
+
 This package is the replacement for the archived scenario-specific controller.
 The old tactical system is preserved under
 `.webtiles/bench/archive/TACTICAL-PRE-GENERAL.md` and the tag
