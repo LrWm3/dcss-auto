@@ -8,7 +8,7 @@ import time
 import itertools
 from pathlib import Path
 
-from general_env import GeneralEnvironment, ENGINE, sha
+from general_env import GeneralEnvironment, ENGINE, HERE, sha
 from policy import Policy
 from teacher import choose_action
 import storage
@@ -58,7 +58,7 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             # Saving is intentionally a separate engine boundary.  Restore the
             # fresh checkpoint before collecting, so the trajectory remains
             # contiguous while the exact RNG-preserving state is archived.
-            archive_case = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-initial"
+            archive_case = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-bridge-{sha(HERE / 'general_bridge.lua')[:12]}-initial"
             if not archive_case.exists():
                 env.save_state(archive_case)
                 state = env.launch(archive_case)
@@ -68,18 +68,28 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 seed=exploration_seed if exploration_seed is not None else int(seed) & 0xFFFFFFFF)
         terminal = False
         captured = set()
+        floor_captures = {}
+        last_archived = None
         for step in itertools.count():
             if budget.reason(state):
                 break
             # Archive encountered combat/floor states, not just new-game starts.
-            bucket = (state.get("level"), bool(state.get("monsters")))
-            if archive_dir and snapshot and bucket not in captured and len(captured) < 4:
+            # Keep collecting on later floors, and periodically within combat;
+            # the old first-four-buckets cap excluded essentially all late play.
+            bucket = (state.get("level"), bool(state.get("monsters")),
+                      step // 100 if state.get("monsters") else 0,
+                      state.get('player', {}).get('hp', 1) / max(1, state.get('player', {}).get('max_hp', 1)) < .5)
+            if (archive_dir and snapshot and bucket not in captured and len(captured) < 128
+                    and floor_captures.get(state.get('level'), 0) < 4
+                    and (floor_captures.get(state.get('level'), 0) < 3 or bucket[-1])):
                 captured.add(bucket)
+                floor_captures[state.get('level')] = floor_captures.get(state.get('level'), 0) + 1
                 if step > 0:
-                    target = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-turn-{state.get('turn')}-{policy_version}"
+                    target = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-bridge-{sha(HERE / 'general_bridge.lua')[:12]}-turn-{state.get('turn')}-{policy_version}"
                     if not target.exists():
                         env.save_state(target)
                         state = env.launch(target)
+                    last_archived = target
             before = state
             teacher_index = choose_action(before)
             if policy:
@@ -138,6 +148,10 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             temporary = result_file.with_name(result_file.name + ".tmp")
             temporary.write_text(json.dumps(result) + "\n")
             temporary.replace(result_file)
+        if last_archived:
+            (last_archived / 'outcome.json').write_text(json.dumps({
+                'terminal': terminal, 'terminal_kind': state.get('terminal'),
+                'final_turn': state.get('turn'), 'score': result['score']}))
         completed = True
         return result
     finally:

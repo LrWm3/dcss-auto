@@ -278,3 +278,52 @@ CRAWL_STORAGE_LIVE_TEST=1 .webtiles/bench/tactical/.rl-venv/bin/python -m unitte
 cycles with compressed replay and zero recorded failures. Tests also cover
 whole-shard byte/row eviction, protected artifacts, score preservation through
 compression, pause hysteresis, and exclusion of incomplete replay from learning.
+
+## Persistent learning and seed diversity (2026-09-11)
+
+The learner now continues from its previous candidate regardless of promotion.
+The champion is only the independently evaluated deployment baseline. Migration
+initializes the learner from the current champion once; old rejected models are
+preserved, not silently adopted. `learner/cycle-*.parent.json` freezes collection
+and initialization; `*.ready.json` commits the candidate before evaluation.
+Committed candidates are immutable on resume. Checkpoints carry separate Adam
+states for imitation, critic, and preference learning.
+
+Default collection is eight games/cycle: seven fresh training seeds plus the
+previous lowest-scoring training seed (eight fresh if no usable predecessor).
+`--actor-episodes` overrides the budget; existing partial-cycle seed plans remain
+frozen. Actors use the continuing learner, not necessarily the champion.
+Evaluation namespaces and promotion criteria are unchanged.
+
+Fine-tuning uses at most 256 seed-balanced imitation rows and 2,048 critic rows
+per cycle, instead of two full imitation passes. All retained, tagged
+counterfactual comparisons feed policy preference updates, not just the latest
+state. Comparisons from different continuation policies are never pooled into
+one ranking. Replay remains bounded by the existing 20,000-row/2-GiB limits;
+this is recent replay, not an unlimited lifetime dataset.
+
+Archive collection continues beyond the first four state buckets, with up to
+four snapshots/floor and 128/game. The most recent archived state gets an episode
+outcome sidecar. Up to four states/cycle are branched, mixing recent/final and
+rotating coverage. These are heuristic priorities, not a learned novelty system.
+Only current-engine/current-bridge saves enter new branching. Monster order is
+stable, restored legal actions are checked against the probe, and competing
+actions share the continuation exploration RNG seed. This pairs exploration
+randomness; it does not force different actions to consume identical game RNG.
+Only fully completed scored continuations currently supply preference targets.
+
+Research supports broad diversity, not eight as a proven Crawl threshold:
+[Procgen](https://proceedings.mlr.press/v119/cobbe20a.html) demonstrates the
+importance of diverse environments; [CoinRun](https://openai.com/index/quantifying-generalization-in-reinforcement-learning/)
+reported overfitting even at 16,000 training levels. Levels are not equivalent
+to whole Crawl seeds. Eight games/cycle is an initial throughput budget, with
+seven new seeds each cycle rather than a permanent eight-seed training set.
+Monitor held-out score and replay seed coverage before scaling further.
+
+Validation: all 51 automated tests pass with live-engine tests enabled, including
+snapshot restoration and low-space pause/resume. The persistent learner test
+checks weight changes, all three optimizer histories across rejected candidates,
+frozen parent plans, historical comparison replay, and seed-balanced sampling.
+`artifacts/persistent-learner-smoke-v1` exercises real collection, branching,
+learning, and evaluation with a process restart between cycles. Its small
+20-decisions/floor budget is an operational test, not evidence of stronger play.

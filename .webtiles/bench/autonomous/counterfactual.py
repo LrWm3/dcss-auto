@@ -55,9 +55,11 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
             completed = False
             try:
                 current = env.launch(case)
+                if _actions(current) != actions:
+                    raise ValueError('restored legal actions differ from probe; refusing index mismatch')
                 current = env.step(action_index)
                 policy = Policy(model_policy.model, epsilon=0.15,
-                                rng=random.Random(continuation + action_index * 997))
+                                rng=random.Random(continuation))
                 for _ in range(continuation_steps - 1):
                     if current.get("terminal"):
                         break

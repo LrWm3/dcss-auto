@@ -156,6 +156,10 @@ local function ga_enemy_scan(cells)
       end
     end
   end
+  table.sort(monsters, function(a, b)
+    if a.y ~= b.y then return a.y < b.y end
+    return a.x < b.x
+  end)
   return monsters, blocked
 end
 

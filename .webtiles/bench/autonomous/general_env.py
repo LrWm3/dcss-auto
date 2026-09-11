@@ -308,6 +308,9 @@ class GeneralEnvironment:
             "character": CHARACTER,
             "engine_sha256": sha(ENGINE),
             "rc_sha256": sha(destination / "trial.rc"),
+            "bridge_sha256": (sha(HERE / 'general_bridge.lua')
+                              if (HERE / 'general_bridge.lua').read_text() in (destination / 'trial.rc').read_text()
+                              else None),
             "save_sha256": sha(destination / "checkpoint.cs"),
             "observation_schema": "crawl-general-v1",
             "action_schema": "crawl-semantic-actions-v1",

@@ -1,4 +1,4 @@
-"""Durable training curriculum: two new seeds and last cycle's lowest score."""
+"""Durable training curriculum: fresh seeds and last cycle's lowest score."""
 import json
 from pathlib import Path
 import re
@@ -8,15 +8,18 @@ from data_split import assert_training_seed
 from score_result import has_episode_score
 import storage
 
-POLICY = 'two-fresh-plus-previous-lowest-v1'
+POLICY = 'fresh-plus-previous-lowest-v2'
 
 
-def plan_cycle(root, cycle):
+def plan_cycle(root, cycle, episodes=3):
+    if episodes < 2:
+        raise ValueError('at least two training episodes required')
+    episode_count = episodes
     root = Path(root)
     path = root/'training_seeds'/f'cycle-{cycle:04d}.json'
     if path.exists():
         plan = json.loads(path.read_text())
-        if plan['policy'] != POLICY or plan['cycle'] != cycle:
+        if plan['policy'] not in (POLICY, 'two-fresh-plus-previous-lowest-v1') or plan['cycle'] != cycle:
             raise ValueError('training seed plan mismatch')
         for episode in plan['episodes']:
             assert_training_seed(episode['seed'])
@@ -48,7 +51,7 @@ def plan_cycle(root, cycle):
     if config_path.exists():
         used.update(str(s) for s in json.loads(config_path.read_text()).get('seeds',[]))
     episodes = []
-    for _ in range(2 if weakest else 3):
+    for _ in range(episode_count - 1 if weakest else episode_count):
         while True:
             # Training namespace A cannot intersect confirmation D or audit E,
             # or the fixed five low-valued screen seeds.
@@ -70,7 +73,7 @@ def plan_cycle(root, cycle):
                 episode['exploration_seed'] = value
                 break
     plan = {'policy':POLICY, 'cycle':cycle, 'source_batch':previous,
-            'fallback':None if weakest else 'three fresh seeds; previous batch has no usable training score',
+            'fallback':None if weakest else 'all fresh seeds; previous batch has no usable training score',
             'episodes':episodes}
     tmp = path.with_suffix('.tmp')
     tmp.write_text(json.dumps(plan,indent=2)+'\n')

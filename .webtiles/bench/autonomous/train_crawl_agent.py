@@ -17,9 +17,10 @@ from counterfactual import evaluate_checkpoint
 from evaluate import comparison, evaluate_model
 from selection import (ensure_protocol, screen_decision, prepare_batch, run_batch,
                        promote_confirmed, audit_due, latest_champion, run_lock)
-from general_env import BASE_RC, ENGINE, sha
-from model import load_model, save_model
-from train_model import rows_from_replay, train_behavioral_clone, train_q_finetune, train_counterfactual_preferences
+from general_env import BASE_RC, ENGINE, HERE, sha
+from model import save_model
+from learner import parent_for_cycle, prepare_candidate, finish_candidate
+from train_model import rows_from_replay, train_behavioral_clone
 
 DEFAULT_SEEDS = ["1760771545328102746", "1760771545328102747",
                  "1760771545328102748", "1760771545328102749",
@@ -105,7 +106,8 @@ def prepare(run_dir: Path, args) -> dict:
         config["total_decisions"] = config.get("total_decisions", args.total_steps)
         config["budget_version"] = "cumulative_per_floor_v1"
         config["training_seed_policy"] = TRAINING_SEED_POLICY
-        config["actor_episodes"] = 3
+        config["actor_episodes"] = args.actor_episodes or (8 if config.get('learner_version') != 'persistent-v1' else config.get('actor_episodes', 8))
+        config['learner_version'] = 'persistent-v1'
         write(config_path, config)
         return config
     config = {
@@ -114,7 +116,8 @@ def prepare(run_dir: Path, args) -> dict:
         "feature_version": __import__("features").FEATURE_VERSION,
         "bootstrap_episodes": args.bootstrap_episodes,
         "bootstrap_epochs": args.bootstrap_epochs,
-        "actor_episodes": 3, "training_seed_policy": TRAINING_SEED_POLICY,
+        "actor_episodes": args.actor_episodes or 8, "training_seed_policy": TRAINING_SEED_POLICY,
+        "learner_version": "persistent-v1",
         "evaluation_episodes": args.evaluation_episodes,
         "decisions_per_floor": args.steps,
         "total_decisions": args.total_steps,
@@ -145,6 +148,11 @@ def status(run_dir: Path, phase: str, **extra) -> None:
              "completed_cycles": previous.get("completed_cycles", 0),
              "storage": storage.health(run_dir),
              **extra}
+    learners = sorted((run_dir / 'learner').glob('cycle-*.ready.json'))
+    if learners:
+        latest = json.loads(learners[-1].read_text())
+        value['learner'] = {'checkpoint': latest['path'], 'sha256': latest['sha256'],
+                            'parent': latest['parent'], 'manifest': str(learners[-1])}
     write(run_dir / "latest_status.json", value)
     append(run_dir / "metrics" / "training.jsonl", value)
 
@@ -173,6 +181,8 @@ def collect_parallel(run_dir: Path, seeds: list[str], label: str, episodes: int,
                     raise ValueError('cached actor seed differs from frozen cycle plan')
                 if exploration_seeds is not None and cached.get('exploration_seed') != exploration_seeds[i]:
                     raise ValueError('cached actor exploration RNG differs from frozen cycle plan')
+                if model and cached.get('model_sha256') != sha(model):
+                    raise ValueError('cached actor policy differs from frozen learner parent')
                 results.append(cached)
         jobs = [(i, pool.submit(
             run_episode, run_dir / "actors" / f"{label}-{i}", seed, steps,
@@ -201,8 +211,8 @@ def main() -> None:
                         help="continue cycles until the process is stopped")
     parser.add_argument("--bootstrap-episodes", type=int, default=5)
     parser.add_argument("--bootstrap-epochs", type=int, default=10)
-    parser.add_argument("--actor-episodes", type=int, default=3,
-                        help="legacy option; curriculum fixes each training cycle at three episodes")
+    parser.add_argument("--actor-episodes", type=int, default=None,
+                        help="games per cycle: default 8, one previous weakest and the remainder fresh")
     parser.add_argument("--evaluation-episodes", type=int, default=5)
     parser.add_argument("--steps", "--decisions-per-floor", type=int, default=2000,
                         help="cumulative decision allowance per distinct floor")
@@ -214,6 +224,8 @@ def main() -> None:
     parser.add_argument("--epsilon", type=float, default=0.1)
     parser.add_argument("--promotion-margin", type=float, default=0.0)
     args = parser.parse_args()
+    if args.actor_episodes is not None and args.actor_episodes < 2:
+        parser.error('--actor-episodes must be at least 2')
     torch.set_num_threads(1)
     run_dir = args.run_dir.resolve()
     if args.status:
@@ -287,21 +299,25 @@ def run_training(args, run_dir):
             audit_due(run_dir, config, cycle)
             storage.maintain(run_dir)
             continue
-        seed_plan = plan_cycle(run_dir, cycle)
+        parent = parent_for_cycle(run_dir, cycle, champion)
+        ready_path = run_dir / 'learner' / f'{label}.ready.json'
+        seed_plan = plan_cycle(run_dir, cycle, config['actor_episodes'])
         cycle_seeds = [e['seed'] for e in seed_plan['episodes']]
         status(run_dir, "actor_collecting", cycle=cycle, champion=str(champion),
                training_seed_plan=seed_plan)
         actors = collect_parallel(run_dir, cycle_seeds, label, len(cycle_seeds),
-                                  config["decisions_per_floor"], champion,
+                                  config["decisions_per_floor"], parent,
                                   config["epsilon"], True, config["total_decisions"],
                                   exploration_seeds=[e['exploration_seed'] for e in seed_plan['episodes']])
         rows = rows_from_replay(run_dir / "replay")
-        candidate_model, _ = load_model(champion)
-        candidate_model, train_meta = train_behavioral_clone(
-            rows, epochs=2, seed=len(rows), model=candidate_model)
-        train_meta["ordinary_play_returns"] = train_q_finetune(candidate_model, rows)
         candidate = run_dir / "candidates" / f"{label}.pt"
-        save_model(candidate, candidate_model, {**train_meta, "candidate": label})
+        if ready_path.exists():
+            ready = json.loads(ready_path.read_text())
+            if sha(candidate) != ready['sha256']:
+                raise ValueError('committed learner candidate changed')
+            train_meta = ready['train']
+        else:
+            train_meta = prepare_candidate(parent, candidate, rows, cycle)
         status(run_dir, "counterfactual_collecting", cycle=cycle,
                candidate=str(candidate), actors=len(actors))
 
@@ -311,14 +327,24 @@ def run_training(args, run_dir):
         # validated against the engine used by this training cycle.
         engine_hash = sha(ENGINE)
         archive_cases = [p for p in archive_cases
-                         if json.loads(p.read_text()).get("engine_sha256") == engine_hash]
-        if archive_cases:
-            case = archive_cases[cycle % len(archive_cases)].parent
+                         if json.loads(p.read_text()).get("engine_sha256") == engine_hash
+                         and json.loads(p.read_text()).get('bridge_sha256') == sha(HERE / 'general_bridge.lua')]
+        if archive_cases and not ready_path.exists():
+            # Rotate between recent (including late-game) and uniform coverage.
+            archive_cases.sort(key=lambda p: ((p.parent / 'outcome.json').exists(), p.stat().st_mtime), reverse=True)
+            case = archive_cases[(cycle // 2) % min(32, len(archive_cases)) if cycle % 2 == 0
+                                 else (cycle * 37) % len(archive_cases)].parent
             try:
-                cf_records = evaluate_checkpoint(
-                    case, run_dir / "counterfactual" / label, candidate,
-                    config["counterfactual_top_k"], config["counterfactual_random_k"],
-                    config["counterfactual_continuations"], config["counterfactual_steps"])
+                selected_cases = [case] + [p.parent for p in archive_cases if p.parent != case][:3]
+                for case_index, selected_case in enumerate(selected_cases):
+                    try:
+                        cf_records.extend(evaluate_checkpoint(
+                            selected_case, run_dir / "counterfactual" / label / f'case-{case_index}', candidate,
+                            config["counterfactual_top_k"], config["counterfactual_random_k"],
+                            config["counterfactual_continuations"], config["counterfactual_steps"]))
+                    except Exception as exc:
+                        append(run_dir / 'failures' / 'invalid_states' / 'counterfactual.jsonl',
+                               {'error': str(exc), 'case': str(selected_case)})
                 write(run_dir / "counterfactual" / label / "completed.json", {"complete": True})
                 for row in cf_records:
                     append(run_dir / "rollouts" / "counterfactual_results.jsonl", row)
@@ -326,31 +352,19 @@ def run_training(args, run_dir):
                         "type": "transition", "observation": row["observation"],
                         "action": row["action"], "action_index": row["action_index"],
                         "return": row["empirical_return"],
+                        "comparison_id": f"{label}:{sha(candidate)}:{Path(row['case']).name}",
                         "policy_version": label + ":counterfactual",
                     })
                 if cf_records:
                     write(run_dir / "replay" / f"{label}-counterfactual.result.json",
                           {"steps": len(cf_records)})
                     storage.maintain(run_dir)
-                # The branch result is now used immediately as an empirical
-                # score-to-go target, rather than waiting for the next cycle.
-                # This is intentionally a small conservative update; the
-                # archive/replay record remains the durable source of truth.
-                updated_model, payload = load_model(candidate)
-                cf_rows = [{"observation": row["observation"],
-                            "action": row["action"],
-                            "action_index": row["action_index"],
-                            "return": row["empirical_return"]}
-                           for row in cf_records]
-                q_meta = train_q_finetune(updated_model, cf_rows, epochs=1)
-                preference_meta = train_counterfactual_preferences(updated_model, cf_rows, anchors=rows)
-                save_model(candidate, updated_model,
-                           {**payload.get("metadata", {}), "counterfactual": q_meta,
-                            "counterfactual_policy_update": preference_meta})
             except Exception as exc:
                 append(run_dir / "failures" / "invalid_states" / "counterfactual.jsonl",
                        {"error": str(exc), "case": str(case)})
 
+        if not ready_path.exists():
+            train_meta = finish_candidate(run_dir, cycle, candidate, rows_from_replay(run_dir / 'replay'))
         status(run_dir, "evaluating", cycle=cycle, candidate=str(candidate),
                counterfactual_rows=len(cf_records))
         eval_seeds = [str(910000000000 + i) for i in range(config["evaluation_episodes"])]
