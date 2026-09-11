@@ -1,0 +1,96 @@
+--- a/files.h
++++ b/files.h
+@@ -99,6 +99,7 @@
+ 
+ // Save game without exiting (used when changing levels).
+ void save_game_state();
++void save_tactical_checkpoint();
+ 
+ void write_save_version(writer &file, save_version version);
+ save_version get_save_version(reader &file);
+--- a/files.cc
++++ b/files.cc
+@@ -2680,6 +2680,18 @@
+ }
+ 
+ // Saves the game without exiting.
++// Laboratory decision-boundary snapshot. Unlike the normal autosave, include
++// the current level; unlike save-and-quit, leave the package and game running.
++void save_tactical_checkpoint()
++{
++    unwind_bool saving_game(crawl_state.saving_game, true);
++    ASSERT(you.on_current_level && !you.entering_level && you.save);
++    _save_game_base();
++    save_level(level_id::current());
++    you.save->commit();
++}
++
++// Saves the game without exiting.
+ void save_game_state()
+ {
+     save_game(false);
+--- a/l-crawl.cc
++++ b/l-crawl.cc
+@@ -21,6 +21,7 @@
+ #include "english.h"
+ #include "evoke.h"
+ #include "fight.h"
++#include "files.h"
+ #include "hints.h"
+ #include "initfile.h"
+ #include "item-name.h"
+@@ -1373,6 +1374,45 @@
+ LUAWRAP(crawl_dump_char, dump_char(you.your_name, true))
+ 
+ // Opt-in local laboratory transport. Evaluate observation under the same RNG
++static int crawl_tactical_checkpoint(lua_State *ls)
++{
++    const char *path = getenv("DCSS_TACTICAL_OBSERVATION_FIFO");
++    if (!path || !*path || !tactical_sim_ready || !you.save
++        || !you.on_current_level || you.entering_level || you.turn_is_over
++        || Options.no_save)
++        return luaL_error(ls, "Checkpoint requires a laboratory decision boundary");
++    save_tactical_checkpoint();
++    return 0;
++}
++
++// Exact diagnostic states, as strings to avoid Lua double precision loss.
++// UI RNG is deliberately excluded: greetings/rendering may advance it on load.
++static int crawl_tactical_rng_state(lua_State *ls)
++{
++    const char *path = getenv("DCSS_TACTICAL_OBSERVATION_FIFO");
++    if (!path || !*path)
++        return luaL_error(ls, "RNG diagnostics require laboratory transport");
++    if (!getenv("DCSS_GENERAL_RNG_DIAGNOSTICS"))
++        return 0; // Do not put privileged RNG state in ordinary policy replay.
++    lua_newtable(ls);
++    for (int i = 0; i < rng::NUM_RNGS; ++i)
++    {
++        if (i == rng::UI)
++            continue;
++        // get_generator() currently resolves the active domain, not its
++        // argument. Select explicitly without drawing from any generator.
++        rng::generator selected(static_cast<rng::rng_type>(i));
++        auto *generator = rng::get_generator(static_cast<rng::rng_type>(i));
++        const string value = make_stringf("%016llx:%016llx",
++            static_cast<unsigned long long>(generator->get_state()),
++            static_cast<unsigned long long>(generator->get_inc()));
++        lua_pushstring(ls, value.c_str());
++        lua_rawseti(ls, -2, i + 1);
++    }
++    return 1;
++}
++
++// Opt-in local laboratory transport. Evaluate observation under the same RNG
+ // domain as dump_char; inspecting equipment must not consume gameplay rolls.
+ static int crawl_tactical_emit(lua_State *ls)
+ {
+@@ -1622,6 +1662,8 @@
+     { "tutorial_msg",       crawl_tutorial_msg },
+     { "dump_char",          crawl_dump_char },
+     { "tactical_emit",      crawl_tactical_emit },
++    { "tactical_checkpoint", crawl_tactical_checkpoint },
++    { "tactical_rng_state", crawl_tactical_rng_state },
+ #ifdef WIZARD
+     { "call_dlua",          crawl_call_dlua },
+ #endif

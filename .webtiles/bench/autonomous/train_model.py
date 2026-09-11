@@ -8,6 +8,7 @@ import math
 import copy
 import hashlib
 from pathlib import Path
+from collections import OrderedDict
 
 import torch
 from torch import nn
@@ -64,8 +65,24 @@ def _actions(state):
     return list(actions)
 
 
+class FeatureCache:
+    """Bounded training-only cache; replay observations must remain immutable."""
+    def __init__(self, limit=4096):
+        self.limit = limit
+        self.entries = OrderedDict()
+
+    def get(self, state):
+        key = id(state)
+        if key not in self.entries:
+            self.entries[key] = (state, tensor_for_actions(state, _actions(state)))
+            if len(self.entries) > self.limit:
+                self.entries.popitem(last=False)
+        self.entries.move_to_end(key)
+        return self.entries[key][1]
+
+
 def train_behavioral_clone(rows: list[dict], epochs: int = 3,
-                           seed: int = 0, model=None, optimizer_states=None) -> tuple[ActionValueModel, dict]:
+                           seed: int = 0, model=None, optimizer_states=None, feature_cache=None) -> tuple[ActionValueModel, dict]:
     if not rows:
         raise ValueError("replay contains no usable transitions")
     random.seed(seed)
@@ -77,7 +94,8 @@ def train_behavioral_clone(rows: list[dict], epochs: int = 3,
     if optimizer_states is not None and 'bc' in optimizer_states:
         optimizer.load_state_dict(optimizer_states['bc'])
     losses, usable = [], 0
-    encoded = {}
+    feature_cache = feature_cache if feature_cache is not None else FeatureCache()
+    priors = {}
     for _ in range(epochs):
         order = list(range(len(rows)))
         random.shuffle(order)
@@ -95,13 +113,14 @@ def train_behavioral_clone(rows: list[dict], epochs: int = 3,
                 continue
             if not 0 <= int(target) < len(actions):
                 continue
-            if row_index not in encoded:
-                encoded[row_index] = tensor_for_actions(state, actions)
-            scores = model(encoded[row_index]).unsqueeze(0)
+            features = feature_cache.get(state)
+            scores = model(features).unsqueeze(0)
             loss = nn.functional.cross_entropy(scores, torch.tensor([int(target)]))
             if reference is not None:
-                with torch.no_grad():
-                    prior = reference(encoded[row_index]).softmax(dim=-1)
+                if row_index not in priors:
+                    with torch.no_grad():
+                        priors[row_index] = reference(features).softmax(dim=-1)
+                prior = priors[row_index]
                 loss = loss + 2.0 * nn.functional.kl_div(
                     scores.log_softmax(dim=-1), prior.unsqueeze(0), reduction="batchmean")
             optimizer.zero_grad(); loss.backward(); optimizer.step()
@@ -114,12 +133,13 @@ def train_behavioral_clone(rows: list[dict], epochs: int = 3,
                    "losses": losses, "objective": "behavioral_cloning"}
 
 
-def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1, optimizer_states=None) -> dict:
+def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1, optimizer_states=None, feature_cache=None) -> dict:
     """Fit an independent return critic; cannot alter policy logits."""
     optimizer = torch.optim.AdamW(model.value_net.parameters(), lr=5e-4, weight_decay=1e-5)
     if optimizer_states is not None and 'critic' in optimizer_states:
         optimizer.load_state_dict(optimizer_states['critic'])
     usable, losses = 0, []
+    feature_cache = feature_cache if feature_cache is not None else FeatureCache()
     for _ in range(epochs):
         total = 0.0
         epoch_usable = 0
@@ -135,7 +155,7 @@ def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1,
             if not 0 <= int(index) < len(actions):
                 continue
             target = math.log1p(max(0.0, float(row["return"])))
-            prediction = model.value(tensor_for_actions(state, actions))[int(index)]
+            prediction = model.value(feature_cache.get(state))[int(index)]
             loss = (prediction - target) ** 2
             optimizer.zero_grad(); loss.backward(); optimizer.step()
             total += float(loss.detach()); usable += 1; epoch_usable += 1
@@ -146,12 +166,13 @@ def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1,
             "objective": "independent_score_critic"}
 
 
-def train_counterfactual_preferences(model, rows, anchors=(), epochs=20, optimizer_states=None):
+def train_counterfactual_preferences(model, rows, anchors=(), epochs=20, optimizer_states=None, feature_cache=None):
     """Small policy updates from paired-state empirical return comparisons.
 
     An isolated good/bad absolute return is not an action preference. Truncated
     continuations and ties provide no ranking label. Replay KL limits drift.
     """
+    feature_cache = feature_cache if feature_cache is not None else FeatureCache()
     groups = {}
     for row in rows:
         if row.get("return") is None:
@@ -165,14 +186,14 @@ def train_counterfactual_preferences(model, rows, anchors=(), epochs=20, optimiz
         if best["return"] <= worst["return"] or best["action_index"] == worst["action_index"]:
             continue
         state = best["observation"]
-        pairs.append((tensor_for_actions(state, _actions(state)),
+        pairs.append((feature_cache.get(state),
                       int(best["action_index"]), int(worst["action_index"])))
     if not pairs:
         return {"pairs": 0, "updates": 0, "reason": "no paired unequal completed returns"}
     reference = copy.deepcopy(model).eval()
     rng = random.Random(73)
     sample = rng.sample(list(anchors), min(128, len(anchors)))
-    encoded = [tensor_for_actions(r["observation"], _actions(r["observation"]))
+    encoded = [feature_cache.get(r["observation"])
                for r in sample if _actions(r["observation"])]
     optimizer = torch.optim.AdamW(model.net.parameters(), lr=1e-4, weight_decay=0)
     if optimizer_states is not None and 'preferences' in optimizer_states:
@@ -183,14 +204,15 @@ def train_counterfactual_preferences(model, rows, anchors=(), epochs=20, optimiz
             scores = model(features)
             return float(scores[best]-scores[worst])
     before = [margin(p) for p in pairs]
+    with torch.no_grad():
+        priors = {id(x):reference(x).softmax(-1) for x in encoded + [p[0] for p in pairs]}
     for _ in range(epochs):
         for features, best, worst in pairs:
             scores = model(features)
             loss = nn.functional.softplus(scores[worst]-scores[best])
             batch = [features] + rng.sample(encoded, min(8, len(encoded)))
             for x in batch:
-                with torch.no_grad():
-                    prior = reference(x).softmax(-1)
+                prior = priors[id(x)]
                 loss = loss + 10.0 / len(batch) * nn.functional.kl_div(
                     model(x).log_softmax(-1).unsqueeze(0), prior.unsqueeze(0), reduction="batchmean")
             optimizer.zero_grad(); loss.backward()

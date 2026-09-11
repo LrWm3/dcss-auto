@@ -97,12 +97,14 @@ class BudgetTests(unittest.TestCase):
             real_make_rc(path,source_rc)
             source=path.read_text()
             at=source.rfind(">")
-            # Seed an adapter rejection only in the original process (seq 1).
-            # Restored processes start at seq 0, so must use the saved mask.
+            # Only the original process sees seq 0. Restores now preserve seq
+            # and therefore must use the saved mask, not reinject it here.
             hook='''
 local test_ready = ready
+local test_original = false
 function ready()
-  if GA.seq == 1 and you.turns() == 1 then
+  if GA.seq == 0 then test_original = true end
+  if test_original and GA.seq == 1 and you.turns() == 1 then
     GA.rejected_turn = 1
     GA.rejected_actions = {["WAIT|||||||"]=true}
   end

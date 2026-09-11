@@ -372,7 +372,8 @@ def run_training(args, run_dir):
             raise ValueError("evaluation seeds overlap training seeds")
         champion_eval = comparison(evaluate_model(
             champion, run_dir / "evaluations" / f"{label}-champion", eval_seeds,
-            config["decisions_per_floor"], 0.0, version, config["total_decisions"]))
+            config["decisions_per_floor"], 0.0, version, config["total_decisions"],
+            cache_dir=run_dir / 'evaluations' / 'screen_cache'))
         candidate_eval = comparison(evaluate_model(
             candidate, run_dir / "evaluations" / f"{label}-candidate", eval_seeds,
             config["decisions_per_floor"], 0.0, label, config["total_decisions"]))

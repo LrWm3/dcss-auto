@@ -3,10 +3,14 @@ from __future__ import annotations
 
 import concurrent.futures
 import random
+import hashlib
+import json
+import tempfile
 from pathlib import Path
 
 from collect import run_episode
 from score_result import has_episode_score
+import storage
 
 
 def promotion_decision(champion, candidate, margin=0.0):
@@ -32,14 +36,49 @@ def promotion_decision(champion, candidate, margin=0.0):
 
 def evaluate_model(model: str | Path, work: str | Path, seeds: list[str],
                    steps: int = 40, epsilon: float = 0.0,
-                   policy_version: str = "candidate", total_steps: int = 100000) -> list[dict]:
+                   policy_version: str = "candidate", total_steps: int = 100000,
+                   cache_dir: str | Path | None = None) -> list[dict]:
     work = Path(work)
     jobs = []
+    identity = None
+    if cache_dir is not None:
+        from selection import environment_identity
+        from general_env import sha
+        identity = {'environment':environment_identity(), 'screen_evaluator':sha(Path(__file__)),
+                    'model':sha(Path(model)), 'steps':steps, 'total_steps':total_steps,
+                    'epsilon':epsilon, 'data_role':'screen', 'version':1}
+
+    def episode(index, seed):
+        key, path, specification = None, None, None
+        if identity is not None:
+            specification = {**identity, 'seed':str(seed)}
+            key = hashlib.sha256(json.dumps(specification,sort_keys=True).encode()).hexdigest()
+            path = Path(cache_dir)/f'{key}.json'
+            if path.exists():
+                try:
+                    cached = json.loads(path.read_text())
+                    result = cached['result']
+                    if (cached['identity'] == specification and has_episode_score(result)
+                            and result.get('model_sha256') == identity['model']
+                            and result.get('data_role') == 'screen'
+                            and str(result.get('seed')) == str(seed)):
+                        return {**result, 'policy_version':policy_version,
+                                'cache_hit':True, 'cache_source':str(path)}
+                except (ValueError, KeyError, TypeError):
+                    pass
+        result = run_episode(work / f"{policy_version}-{index}", seed, steps,
+                             None, model, epsilon, None, policy_version, False, total_steps, data_role="screen")
+        if path is not None and has_episode_score(result) and result.get('truncation_reason') != 'no_game_time_progress':
+            storage.guard()
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with tempfile.NamedTemporaryFile(mode='w',dir=path.parent,delete=False,suffix='.tmp') as stream:
+                json.dump({'identity':specification,'result':result},stream)
+            Path(stream.name).replace(path)
+        return result
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, min(6, len(seeds)))) as pool:
         for index, seed in enumerate(seeds):
-            jobs.append(pool.submit(
-                run_episode, work / f"{policy_version}-{index}", seed, steps,
-                None, model, epsilon, None, policy_version, False, total_steps, data_role="screen"))
+            jobs.append(pool.submit(episode, index, seed))
         results = []
         for job in jobs:
             try:

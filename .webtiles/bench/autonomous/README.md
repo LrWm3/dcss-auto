@@ -373,3 +373,55 @@ corruption detection, snapshot restoration, and low-space pause/resume.
 `artifacts/transport-carryover-cycle-v1` also completed a short real training
 cycle: two actor games, 48 actor decisions, 12 counterfactual action records,
 candidate training and evaluation, zero recorded failures. No long run launched.
+
+## Python overhead and non-exiting checkpoints (2026-09-11)
+
+Four additional optimizations are enabled: unchanged champion fixed-seed screen
+results are cached; neural evaluation skips unused teacher decisions; training
+reuses bounded state/action features and frozen-reference predictions; replay
+uses one buffered stream per episode, closed before its completion marker.
+Screen cache keys include model and environment hashes, evaluator code, seed,
+budgets, and exploration setting. Failed/stalled results are not published to
+the cache. Fresh confirmations and audits remain uncached.
+
+Small Python check (`smoke_python_perf.py`): repeated training took 1.60 s before
+and 1.46 s after (about 9% faster), with bit-identical resulting weights. Repeated
+screen evaluation took 0.90 s before and 0.043 s with cache hits; scores matched.
+First-pass evaluation remained about 0.97 s. Evidence lives in
+`artifacts/python-overhead-{before-v1,after-v1}/results.json`. These are tiny
+operation-level checks, not a claim about full-cycle throughput.
+
+The default engine is now `crawl-general-sim`. It commits the player and current
+level to the save package without exiting, then acknowledges the snapshot before
+the adapter copies it. Archive capture no longer restarts the live actor.
+`save_state(..., in_place=False)` retains the save/quit diagnostic path, and older
+engines fall back automatically. Restored Lua sequence and rejected-action state
+are preserved. Original binaries and existing saves have not been overwritten.
+
+The incremental source change is tracked in
+`engine-patches/nonexiting-checkpoint.patch`; it applies to our existing modified
+fork, not pristine upstream. Build the ASCII engine from the repository root:
+
+```bash
+make -C crawl-0.35/crawl-ref/source GAME=crawl-general-sim -j6 crawl-general-sim
+```
+
+The fork's existing god-greeting fix continues to isolate welcome randomness to
+the UI generator. `DCSS_GENERAL_RNG_DIAGNOSTICS=1` additionally exposes exact
+non-UI RNG states to the lab bridge for correctness tests only; ordinary
+observations/replay do not contain these diagnostics. The snapshot test compares
+all these generators as well as structured observations, not just player HP.
+
+`smoke_checkpoint.py` passed two 200-action traces, covering ten snapshot
+positions including combat. Both in-place and save/quit copies reproduced their
+continuations, and independent restores matched subsequent actions exactly.
+The second seed also matched a 40-action old-engine reference. On the first seed,
+in-place checkpoints averaged 0.077 s versus 0.82 s for save/restart (10.7x).
+Evidence: `artifacts/checkpoint-in-place-v2/results.json` and
+`artifacts/checkpoint-in-place-seed2-v1/results.json`.
+
+`artifacts/nonexiting-cycle-smoke-v1/latest_status.json` records two completed
+short cycles: four actor games, 80 actor actions, 21 counterfactual rows, five
+archive cases, and zero failures. All four actors kept a single work process;
+the second cycle reused the champion screen cache. This validates integration,
+not policy improvement. No long training run was started.

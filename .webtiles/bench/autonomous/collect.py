@@ -54,17 +54,20 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
     started = time.time()
     completed = False
     budget = DecisionBudget(steps, total_steps, no_turn_limit)
+    replay_stream = None
     try:
+        if replay_path:
+            replay_stream = replay_path.open('a', buffering=65536)
         state = env.launch()
         archive_case = None
         if snapshot and archive_dir:
-            # Saving is intentionally a separate engine boundary.  Restore the
-            # fresh checkpoint before collecting, so the trajectory remains
-            # contiguous while the exact RNG-preserving state is archived.
+            # Snapshot at a decision boundary. New engines continue in place;
+            # historical engines retain their explicit save/relaunch fallback.
             archive_case = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-bridge-{sha(HERE / 'general_bridge.lua')[:12]}-initial"
             if not archive_case.exists():
-                env.save_state(archive_case)
-                state = env.launch(archive_case)
+                saved = env.save_state(archive_case)
+                if saved.get('save_mode') != 'in_place':
+                    state = env.launch(archive_case)
         policy = None
         if model_path:
             policy, _ = Policy.from_checkpoint(model_path, epsilon=epsilon,
@@ -90,15 +93,16 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 if step > 0:
                     target = archive_dir / f"seed-{seed}-engine-{sha(ENGINE)[:12]}-bridge-{sha(HERE / 'general_bridge.lua')[:12]}-turn-{state.get('turn')}-{policy_version}"
                     if not target.exists():
-                        env.save_state(target)
-                        state = env.launch(target)
+                        saved = env.save_state(target)
+                        if saved.get('save_mode') != 'in_place':
+                            state = env.launch(target)
                     last_archived = target
             before = state
-            teacher_index = choose_action(before)
+            teacher_index = choose_action(before) if replay_path or not policy else None
             if policy:
                 action_index, action = policy.choose(before)
             else:
-                action_index = choose_action(before)
+                action_index = teacher_index
                 action = before["actions"][action_index]
             state = env.step(action_index)
             budget.record(before, state)
@@ -113,9 +117,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 "return": state.get("score") if state.get("terminal") else None,
                 "terminal": bool(state.get("terminal")),
             }
-            if replay_path:
-                with replay_path.open("a") as stream:
-                    stream.write(json.dumps(row, sort_keys=True) + "\n")
+            if replay_stream:
+                replay_stream.write(json.dumps(row, sort_keys=True) + "\n")
             rows += 1
             if state.get("terminal"):
                 terminal = True
@@ -147,6 +150,9 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
         }
         if replay_path:
             storage.guard()
+            # Publish completion only after the buffered trajectory is closed.
+            replay_stream.close()
+            replay_stream = None
             result_file = replay_path.with_suffix(".result.json")
             temporary = result_file.with_name(result_file.name + ".tmp")
             temporary.write_text(json.dumps(result) + "\n")
@@ -158,6 +164,8 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
         completed = True
         return result
     finally:
+        if replay_stream:
+            replay_stream.close()
         env.close()
         if completed:
             if replay_path:

@@ -5,7 +5,7 @@ from pathlib import Path
 
 from general_env import sha
 from model import load_model, save_model
-from train_model import train_behavioral_clone, train_q_finetune, train_counterfactual_preferences
+from train_model import train_behavioral_clone, train_q_finetune, train_counterfactual_preferences, FeatureCache
 
 
 def parent_for_cycle(root, cycle, champion):
@@ -59,10 +59,11 @@ def prepare_candidate(parent, candidate, rows, cycle):
     model, payload = load_model(parent)
     optimizers = payload.get('metadata', {}).get('optimizer_states', {})
     anchors = balanced_sample(rows, 256, cycle)
+    features = FeatureCache()
     model, metadata = train_behavioral_clone(anchors, epochs=1, seed=cycle,
-                                            model=model, optimizer_states=optimizers)
+                                            model=model, optimizer_states=optimizers, feature_cache=features)
     metadata['ordinary_play_returns'] = train_q_finetune(
-        model, balanced_sample(rows, 2048, cycle), optimizer_states=optimizers)
+        model, balanced_sample(rows, 2048, cycle), optimizer_states=optimizers, feature_cache=features)
     metadata.update(parent=str(parent), parent_sha256=sha(parent),
                     optimizer_states=optimizers, learner_version='persistent-v1')
     save_model(candidate, model, metadata)

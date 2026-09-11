@@ -27,9 +27,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 ENGINE = Path(os.environ.get(
     "DCSS_TACTICAL_ENGINE",
-    # Use the established fast simulator; chain-v2 remains available for
-    # reproducing the archived chained-encounter benchmarks.
-    str(ROOT / "crawl-0.35/crawl-ref/source/crawl-tactical-sim"),
+    # Dedicated non-exiting snapshot build; historical binaries are preserved.
+    str(ROOT / "crawl-0.35/crawl-ref/source/crawl-general-sim"),
 )).resolve()
 BASE_RC = ROOT / ".webtiles/rcs/codex-autocrawl.rc"
 FIFO_ENV = "DCSS_TACTICAL_OBSERVATION_FIFO"
@@ -197,7 +196,7 @@ class GeneralEnvironment:
         return None
 
     def await_state(self, startup: bool = False,
-                    expected_seq: int | None = None) -> dict:
+                    expected_seq: int | None = None, snapshot: bool = False) -> dict:
         deadline = time.monotonic() + (180 if startup else 30)
         terminal_tail = ""
         while time.monotonic() < deadline:
@@ -205,6 +204,15 @@ class GeneralEnvironment:
                 line, self.buffer = self.buffer.split(b"\n", 1)
                 if not line:
                     continue
+                if line.startswith(b'GSAVED ') and snapshot:
+                    ack = json.loads(line[7:])
+                    if ack.get('seq') != expected_seq:
+                        raise RuntimeError('snapshot acknowledgement sequence mismatch')
+                    if ack.get('rng_state') != self.state.get('rng_state'):
+                        raise RuntimeError('saving checkpoint changed non-UI RNG state')
+                    return ack
+                if snapshot:
+                    raise RuntimeError('expected checkpoint acknowledgement, not an observation')
                 if not line.startswith(b"GJSON "):
                     raise RuntimeError("invalid general observation frame")
                 state = json.loads(line[6:])
@@ -289,7 +297,7 @@ class GeneralEnvironment:
                      "terminated": after.get("terminal") == "death"})
         return after
 
-    def save_state(self, destination: str | Path) -> dict:
+    def save_state(self, destination: str | Path, *, in_place: bool = True) -> dict:
         storage.guard()
         destination = Path(destination).resolve()
         if destination.exists():
@@ -298,12 +306,16 @@ class GeneralEnvironment:
             raise RuntimeError("cannot save a terminal state")
         # ASCII record separator is deliberately outside the semantic action
         # range and is handled only by the Lua transport.
-        self.child.send(chr(30))
+        supported = bool(self.state.get('snapshot_in_place'))
+        in_place = in_place and supported
+        self.child.send(chr(29 if supported and not in_place else 30))
         # CMD_SAVE_GAME_NOW returns to Crawl's main menu rather than closing
         # the ncurses process.  The menu marker is the successful save
         # boundary; close the private process after seeing it.
-        self.child.expect([pexpect.EOF, "view rc file information and log"],
-                          timeout=30)
+        if in_place:
+            self.await_state(expected_seq=self.state['seq'], snapshot=True)
+        else:
+            self.child.expect([pexpect.EOF, "view rc file information and log"], timeout=30)
         save = self.work / "saves" / (CHARACTER + ".cs")
         if not save.exists():
             raise RuntimeError(f"Crawl exited without save: {self.work}")
@@ -326,14 +338,17 @@ class GeneralEnvironment:
             "action_schema": "crawl-semantic-actions-v1",
             "observation": self.state,
             "fidelity": "exact Crawl save boundary including engine RNG state",
+            "save_mode": "in_place" if in_place else "save_and_quit",
         }
         (destination / "case.json").write_text(json.dumps(metadata, indent=2) + "\n")
-        self.close()
+        if not in_place:
+            self.close()
         return metadata
 
     def clone_state(self, destination: str | Path) -> dict:
         metadata = self.save_state(destination)
-        self.launch(destination)
+        if metadata.get('save_mode') != 'in_place':
+            self.launch(destination)
         return metadata
 
     def close(self) -> None:

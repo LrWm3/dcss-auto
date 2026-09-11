@@ -23,6 +23,10 @@ table.insert(chk_lua_save, function()
   return "GENERAL_AGENT = GENERAL_AGENT or {active=true,seq=0,published=-1,actions={}}; "
     .. "GENERAL_AGENT.rejected_turn=" .. tostring(GA.rejected_turn or "nil") .. "; "
     .. "GENERAL_AGENT.rejected_actions={" .. table.concat(entries, ",") .. "}\n"
+    .. "GENERAL_AGENT.seq=" .. tostring(GA.seq) .. "; GENERAL_AGENT.published=-1;\n"
+    .. "GENERAL_AGENT.last_action_result=" .. (GA.last_action_result and
+       ("{kind=" .. string.format("%q", GA.last_action_result.kind) .. ",dispatch_accepted="
+        .. tostring(GA.last_action_result.dispatch_accepted) .. "}") or "nil") .. ";\n"
 end)
 
 local GA_MOVES = {
@@ -383,6 +387,10 @@ local function ga_publish()
   crawl.tactical_emit(function()
     local observation = ga_observation()
     observation.actions = GA.actions
+    -- Diagnostics are not model inputs; expose full non-UI RNG state so save /
+    -- restore checks can detect divergence before it affects visible combat.
+    if crawl.tactical_rng_state then observation.rng_state = crawl.tactical_rng_state() end
+    observation.snapshot_in_place = crawl.tactical_checkpoint ~= nil
     return "GJSON " .. ga_json(observation) .. "\n"
   end)
 end
@@ -449,8 +457,16 @@ function ready()
   if not GA.active or ga_you("turn_is_over") then return end
   if GA.published ~= GA.seq then ga_publish() end
   local key = crawl.getch()
+  if key == 29 then ga_save(); return end -- explicit legacy-save diagnostic
   if key == 30 then
-    ga_save()
+    if crawl.tactical_checkpoint then
+      crawl.tactical_checkpoint()
+      crawl.sendkeys("\027")
+      crawl.tactical_emit(function() return "GSAVED " .. ga_json({seq=GA.seq,
+        rng_state=crawl.tactical_rng_state()}) .. "\n" end)
+    else
+      ga_save()
+    end
     return
   end
   if key == 27 then return end
