@@ -1,0 +1,404 @@
+{
+  "samples_per_case": 300000,
+  "cases": 18,
+  "passed": true,
+  "criterion": "Six standard errors for block/dodge; six conservative bounded-variance standard errors for mean damage. Independent RNG streams.",
+  "results": [
+    {
+      "kind": 0,
+      "preblocks": 0,
+      "blocks": {
+        "native_mean": 0.16779,
+        "compact_mean": 0.16784666666666667,
+        "absolute_difference": 5.666666666667708e-05,
+        "conservative_z": 0.05872790704868147
+      },
+      "dodges": {
+        "native_mean": 0.3148766666666667,
+        "compact_mean": 0.3154,
+        "absolute_difference": 0.0005233333333333201,
+        "conservative_z": 0.43628677641638264
+      },
+      "damage": {
+        "native_mean": 0.22271333333333335,
+        "compact_mean": 0.22229,
+        "absolute_difference": 0.0004233333333333589,
+        "conservative_z": 0.20856170751119077
+      }
+    },
+    {
+      "kind": 0,
+      "preblocks": 1,
+      "blocks": {
+        "native_mean": 0.16723333333333334,
+        "compact_mean": 0.16806,
+        "absolute_difference": 0.0008266666666666422,
+        "conservative_z": 0.8570871789085994
+      },
+      "dodges": {
+        "native_mean": 0.3166233333333333,
+        "compact_mean": 0.3143033333333333,
+        "absolute_difference": 0.0023199999999999887,
+        "conservative_z": 1.9335800906577667
+      },
+      "damage": {
+        "native_mean": 0.21914333333333333,
+        "compact_mean": 0.22261333333333333,
+        "absolute_difference": 0.003470000000000001,
+        "conservative_z": 1.715322683675435
+      }
+    },
+    {
+      "kind": 0,
+      "preblocks": 2,
+      "blocks": {
+        "native_mean": 0.0,
+        "compact_mean": 0.0,
+        "absolute_difference": 0.0,
+        "conservative_z": 0
+      },
+      "dodges": {
+        "native_mean": 0.37844666666666665,
+        "compact_mean": 0.37761666666666666,
+        "absolute_difference": 0.0008299999999999974,
+        "conservative_z": 0.6629421822945706
+      },
+      "damage": {
+        "native_mean": 0.26708,
+        "compact_mean": 0.26552,
+        "absolute_difference": 0.0015600000000000058,
+        "conservative_z": 0.7081241399773642
+      }
+    },
+    {
+      "kind": 1,
+      "preblocks": 0,
+      "blocks": {
+        "native_mean": 0.16727333333333333,
+        "compact_mean": 0.16677333333333333,
+        "absolute_difference": 0.0005000000000000004,
+        "conservative_z": 0.5191713758883162
+      },
+      "dodges": {
+        "native_mean": 0.3141933333333333,
+        "compact_mean": 0.31615,
+        "absolute_difference": 0.001956666666666662,
+        "conservative_z": 1.6311691338029428
+      },
+      "damage": {
+        "native_mean": 0.21977666666666668,
+        "compact_mean": 0.22150666666666666,
+        "absolute_difference": 0.0017299999999999816,
+        "conservative_z": 0.8556102164662126
+      }
+    },
+    {
+      "kind": 1,
+      "preblocks": 1,
+      "blocks": {
+        "native_mean": 0.16846,
+        "compact_mean": 0.16694666666666666,
+        "absolute_difference": 0.0015133333333333387,
+        "conservative_z": 1.56881304997905
+      },
+      "dodges": {
+        "native_mean": 0.31398,
+        "compact_mean": 0.3140233333333333,
+        "absolute_difference": 4.333333333333966e-05,
+        "conservative_z": 0.036160982405613405
+      },
+      "damage": {
+        "native_mean": 0.22072666666666665,
+        "compact_mean": 0.22340666666666667,
+        "absolute_difference": 0.0026800000000000157,
+        "conservative_z": 1.32153435991763
+      }
+    },
+    {
+      "kind": 1,
+      "preblocks": 2,
+      "blocks": {
+        "native_mean": 0.0,
+        "compact_mean": 0.0,
+        "absolute_difference": 0.0,
+        "conservative_z": 0
+      },
+      "dodges": {
+        "native_mean": 0.37785,
+        "compact_mean": 0.37865666666666664,
+        "absolute_difference": 0.0008066666666666222,
+        "conservative_z": 0.6442312333032314
+      },
+      "damage": {
+        "native_mean": 0.26629,
+        "compact_mean": 0.26479,
+        "absolute_difference": 0.0015000000000000013,
+        "conservative_z": 0.6817674991247313
+      }
+    },
+    {
+      "kind": 2,
+      "preblocks": 0,
+      "blocks": {
+        "native_mean": 0.16938666666666666,
+        "compact_mean": 0.16841333333333333,
+        "absolute_difference": 0.0009733333333333261,
+        "conservative_z": 1.0061578657713597
+      },
+      "dodges": {
+        "native_mean": 0.31384,
+        "compact_mean": 0.3142666666666667,
+        "absolute_difference": 0.0004266666666666863,
+        "conservative_z": 0.3560307520641348
+      },
+      "damage": {
+        "native_mean": 0.06729,
+        "compact_mean": 0.06633,
+        "absolute_difference": 0.0009600000000000025,
+        "conservative_z": 1.489058949121503
+      }
+    },
+    {
+      "kind": 2,
+      "preblocks": 1,
+      "blocks": {
+        "native_mean": 0.16793333333333332,
+        "compact_mean": 0.16750666666666666,
+        "absolute_difference": 0.00042666666666665853,
+        "conservative_z": 0.44229014143885165
+      },
+      "dodges": {
+        "native_mean": 0.31561666666666666,
+        "compact_mean": 0.31555,
+        "absolute_difference": 6.666666666665932e-05,
+        "conservative_z": 0.05555677833968869
+      },
+      "damage": {
+        "native_mean": 0.06598666666666667,
+        "compact_mean": 0.06623,
+        "absolute_difference": 0.00024333333333333151,
+        "conservative_z": 0.3792895984020473
+      }
+    },
+    {
+      "kind": 2,
+      "preblocks": 2,
+      "blocks": {
+        "native_mean": 0.0,
+        "compact_mean": 0.0,
+        "absolute_difference": 0.0,
+        "conservative_z": 0
+      },
+      "dodges": {
+        "native_mean": 0.3772566666666667,
+        "compact_mean": 0.37899333333333335,
+        "absolute_difference": 0.0017366666666666641,
+        "conservative_z": 1.3870545756666
+      },
+      "damage": {
+        "native_mean": 0.07967333333333333,
+        "compact_mean": 0.07955666666666666,
+        "absolute_difference": 0.0001166666666666677,
+        "conservative_z": 0.1669207062087334
+      }
+    },
+    {
+      "kind": 3,
+      "preblocks": 0,
+      "blocks": {
+        "native_mean": 0.16865,
+        "compact_mean": 0.16776333333333332,
+        "absolute_difference": 0.0008866666666666745,
+        "conservative_z": 0.9180725377985025
+      },
+      "dodges": {
+        "native_mean": 0.3157933333333333,
+        "compact_mean": 0.31618666666666667,
+        "absolute_difference": 0.00039333333333335663,
+        "conservative_z": 0.32767139193846445
+      },
+      "damage": {
+        "native_mean": 0.3964533333333333,
+        "compact_mean": 0.3948333333333333,
+        "absolute_difference": 0.0016200000000000103,
+        "conservative_z": 0.46486228990775325
+      }
+    },
+    {
+      "kind": 3,
+      "preblocks": 1,
+      "blocks": {
+        "native_mean": 0.16779666666666668,
+        "compact_mean": 0.16657666666666668,
+        "absolute_difference": 0.0012199999999999989,
+        "conservative_z": 1.2662847779022413
+      },
+      "dodges": {
+        "native_mean": 0.31367333333333336,
+        "compact_mean": 0.31787333333333334,
+        "absolute_difference": 0.0041999999999999815,
+        "conservative_z": 3.4995453698204373
+      },
+      "damage": {
+        "native_mean": 0.39908666666666665,
+        "compact_mean": 0.39749666666666666,
+        "absolute_difference": 0.0015899999999999803,
+        "conservative_z": 0.45486516080038364
+      }
+    },
+    {
+      "kind": 3,
+      "preblocks": 2,
+      "blocks": {
+        "native_mean": 0.0,
+        "compact_mean": 0.0,
+        "absolute_difference": 0.0,
+        "conservative_z": 0
+      },
+      "dodges": {
+        "native_mean": 0.37745,
+        "compact_mean": 0.3804133333333333,
+        "absolute_difference": 0.002963333333333318,
+        "conservative_z": 2.3657999498363242
+      },
+      "damage": {
+        "native_mean": 0.47978666666666664,
+        "compact_mean": 0.47761333333333333,
+        "absolute_difference": 0.002173333333333305,
+        "conservative_z": 0.5721484332132715
+      }
+    },
+    {
+      "kind": 4,
+      "preblocks": 0,
+      "blocks": {
+        "native_mean": 0.16745666666666667,
+        "compact_mean": 0.16875666666666667,
+        "absolute_difference": 0.0012999999999999956,
+        "conservative_z": 1.3463666563836587
+      },
+      "dodges": {
+        "native_mean": 0.31445,
+        "compact_mean": 0.31509,
+        "absolute_difference": 0.0006399999999999739,
+        "conservative_z": 0.5337167776925142
+      },
+      "damage": {
+        "native_mean": 0.39964,
+        "compact_mean": 0.39592,
+        "absolute_difference": 0.003720000000000001,
+        "conservative_z": 1.0648386848130975
+      }
+    },
+    {
+      "kind": 4,
+      "preblocks": 1,
+      "blocks": {
+        "native_mean": 0.16737,
+        "compact_mean": 0.16735,
+        "absolute_difference": 1.9999999999992246e-05,
+        "conservative_z": 0.020750145984951014
+      },
+      "dodges": {
+        "native_mean": 0.31429666666666667,
+        "compact_mean": 0.3156233333333333,
+        "absolute_difference": 0.0013266666666666427,
+        "conservative_z": 1.1061708847451583
+      },
+      "damage": {
+        "native_mean": 0.39673,
+        "compact_mean": 0.39837,
+        "absolute_difference": 0.0016399999999999748,
+        "conservative_z": 0.4695686983158314
+      }
+    },
+    {
+      "kind": 4,
+      "preblocks": 2,
+      "blocks": {
+        "native_mean": 0.0,
+        "compact_mean": 0.0,
+        "absolute_difference": 0.0,
+        "conservative_z": 0
+      },
+      "dodges": {
+        "native_mean": 0.3780133333333333,
+        "compact_mean": 0.37951,
+        "absolute_difference": 0.0014966666666667017,
+        "conservative_z": 1.194975772280639
+      },
+      "damage": {
+        "native_mean": 0.47852333333333336,
+        "compact_mean": 0.47907,
+        "absolute_difference": 0.0005466666666666398,
+        "conservative_z": 0.14390160958162185
+      }
+    },
+    {
+      "kind": 5,
+      "preblocks": 0,
+      "blocks": {
+        "native_mean": 0.16807333333333332,
+        "compact_mean": 0.16825,
+        "absolute_difference": 0.00017666666666668607,
+        "conservative_z": 0.18294362909367762
+      },
+      "dodges": {
+        "native_mean": 0.31481,
+        "compact_mean": 0.3145233333333333,
+        "absolute_difference": 0.0002866666666666573,
+        "conservative_z": 0.23908181775696985
+      },
+      "damage": {
+        "native_mean": 0.22089666666666666,
+        "compact_mean": 0.22055,
+        "absolute_difference": 0.0003466666666666618,
+        "conservative_z": 0.17142245519596797
+      }
+    },
+    {
+      "kind": 5,
+      "preblocks": 1,
+      "blocks": {
+        "native_mean": 0.16894666666666666,
+        "compact_mean": 0.16924333333333333,
+        "absolute_difference": 0.0002966666666666673,
+        "conservative_z": 0.3065302548292053
+      },
+      "dodges": {
+        "native_mean": 0.3162,
+        "compact_mean": 0.31566666666666665,
+        "absolute_difference": 0.0005333333333333301,
+        "conservative_z": 0.4443216649794029
+      },
+      "damage": {
+        "native_mean": 0.22000666666666666,
+        "compact_mean": 0.21977333333333332,
+        "absolute_difference": 0.0002333333333333354,
+        "conservative_z": 0.11558159679247905
+      }
+    },
+    {
+      "kind": 5,
+      "preblocks": 2,
+      "blocks": {
+        "native_mean": 0.0,
+        "compact_mean": 0.0,
+        "absolute_difference": 0.0,
+        "conservative_z": 0
+      },
+      "dodges": {
+        "native_mean": 0.37883,
+        "compact_mean": 0.37838333333333335,
+        "absolute_difference": 0.0004466666666666508,
+        "conservative_z": 0.3566578571572053
+      },
+      "damage": {
+        "native_mean": 0.26537666666666665,
+        "compact_mean": 0.26578,
+        "absolute_difference": 0.00040333333333336663,
+        "conservative_z": 0.18330769373894124
+      }
+    }
+  ]
+}

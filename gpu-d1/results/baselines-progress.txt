@@ -1,0 +1,7 @@
+actors cpu cpu=6 B=2048 M=1 mixed heap=True chunk=64 obs=False: 139,661,178/s
+actors cpu cpu=6 B=2048 M=8 mixed heap=True chunk=64 obs=False: 4,959,834/s
+actors cpu cpu=6 B=2048 M=32 mixed heap=True chunk=64 obs=False: 483,381/s
+actors cpu cpu=6 B=2048 M=64 mixed heap=True chunk=64 obs=False: 209,736/s
+native-comparison cpu cpu=1 B=2048 M=8 combat heap=False chunk=64 obs=False: 1,896,074/s
+native-comparison cpu cpu=1 B=2048 M=8 approach heap=False chunk=64 obs=False: 554,259/s
+/home/reeldata/wk/exp/dcss/gpu-d1/results/baselines.jsonl

@@ -1,0 +1,19 @@
+launch cpu cpu=6 B=2048 M=8 mixed heap=False chunk=1 obs=False: 3,876,857/s
+launch cpu cpu=6 B=2048 M=8 mixed heap=False chunk=1 obs=True: 3,892,788/s
+launch cpu cpu=6 B=2048 M=8 mixed heap=False chunk=64 obs=False: 4,727,760/s
+launch cpu cpu=6 B=2048 M=8 mixed heap=False chunk=64 obs=True: 4,477,328/s
+launch cpu cpu=6 B=2048 M=8 mixed heap=False chunk=256 obs=False: 4,739,538/s
+launch cpu cpu=6 B=2048 M=8 mixed heap=False chunk=256 obs=True: 4,600,155/s
+launch thread cpu=1 B=2048 M=8 mixed heap=False chunk=1 obs=False: 2,253,884/s
+launch thread cpu=1 B=2048 M=8 mixed heap=False chunk=1 obs=True: 2,248,801/s
+launch thread cpu=1 B=2048 M=8 mixed heap=False chunk=64 obs=False: 2,734,764/s
+launch thread cpu=1 B=2048 M=8 mixed heap=False chunk=64 obs=True: 2,794,214/s
+launch thread cpu=1 B=2048 M=8 mixed heap=False chunk=256 obs=False: 2,745,399/s
+launch thread cpu=1 B=2048 M=8 mixed heap=False chunk=256 obs=True: 2,814,548/s
+launch warp cpu=1 B=2048 M=8 mixed heap=False chunk=1 obs=False: 5,442,527/s
+launch warp cpu=1 B=2048 M=8 mixed heap=False chunk=1 obs=True: 5,424,574/s
+launch warp cpu=1 B=2048 M=8 mixed heap=False chunk=64 obs=False: 9,330,042/s
+launch warp cpu=1 B=2048 M=8 mixed heap=False chunk=64 obs=True: 9,345,901/s
+launch warp cpu=1 B=2048 M=8 mixed heap=False chunk=256 obs=False: 9,340,376/s
+launch warp cpu=1 B=2048 M=8 mixed heap=False chunk=256 obs=True: 9,310,215/s
+/home/reeldata/wk/exp/dcss/gpu-d1/results/launch.jsonl

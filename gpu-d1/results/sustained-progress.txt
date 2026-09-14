@@ -1,0 +1,7 @@
+sustained cpu cpu=1 B=8192 M=8 mixed heap=False chunk=64 obs=False: 827,318/s
+sustained cpu cpu=1 B=8192 M=8 mixed heap=True chunk=64 obs=False: 895,544/s
+sustained cpu cpu=6 B=8192 M=8 mixed heap=False chunk=64 obs=False: 4,599,894/s
+sustained cpu cpu=6 B=8192 M=8 mixed heap=True chunk=64 obs=False: 4,953,560/s
+sustained thread cpu=1 B=8192 M=8 mixed heap=False chunk=64 obs=False: 8,505,292/s
+sustained warp cpu=1 B=8192 M=8 mixed heap=False chunk=64 obs=False: 10,164,650/s
+/home/reeldata/wk/exp/dcss/gpu-d1/results/sustained.jsonl

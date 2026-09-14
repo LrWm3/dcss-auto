@@ -1,0 +1,1 @@
+{"selftest":"passed","worlds_per_case":37,"steps":257,"counts":[0,1,8,32,64],"gpu_layouts":2,"schedulers":2,"checks":"exact RNG/state/counters/observations; occupancy; heap-scan parity"}

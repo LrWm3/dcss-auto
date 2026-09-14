@@ -1,0 +1,290 @@
+{
+  "predicate": "First ascending seed from 1001 with only supported terrain; no timing used for selection.",
+  "candidates": [
+    {
+      "seed": 1001,
+      "unsupported_tiles": 104,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1002,
+      "unsupported_tiles": 18,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1003,
+      "unsupported_tiles": 56,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1004,
+      "unsupported_tiles": 24,
+      "map_marker_count": 9
+    },
+    {
+      "seed": 1005,
+      "unsupported_tiles": 132,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1006,
+      "unsupported_tiles": 3,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1007,
+      "unsupported_tiles": 29,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1008,
+      "unsupported_tiles": 175,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1009,
+      "unsupported_tiles": 206,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1010,
+      "unsupported_tiles": 33,
+      "map_marker_count": 2
+    },
+    {
+      "seed": 1011,
+      "unsupported_tiles": 104,
+      "map_marker_count": 9
+    },
+    {
+      "seed": 1012,
+      "unsupported_tiles": 20,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1013,
+      "unsupported_tiles": 42,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1014,
+      "unsupported_tiles": 10,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1015,
+      "unsupported_tiles": 54,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1016,
+      "unsupported_tiles": 23,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1017,
+      "unsupported_tiles": 14,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1018,
+      "unsupported_tiles": 2,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1019,
+      "unsupported_tiles": 17,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1020,
+      "unsupported_tiles": 19,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1021,
+      "unsupported_tiles": 49,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1022,
+      "unsupported_tiles": 11,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1023,
+      "unsupported_tiles": 76,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1024,
+      "unsupported_tiles": 24,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1025,
+      "unsupported_tiles": 4,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1026,
+      "unsupported_tiles": 58,
+      "map_marker_count": 15
+    },
+    {
+      "seed": 1027,
+      "unsupported_tiles": 41,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1028,
+      "unsupported_tiles": 140,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1029,
+      "unsupported_tiles": 107,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1030,
+      "unsupported_tiles": 4,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1031,
+      "unsupported_tiles": 3,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1032,
+      "unsupported_tiles": 101,
+      "map_marker_count": 2
+    },
+    {
+      "seed": 1033,
+      "unsupported_tiles": 60,
+      "map_marker_count": 5
+    },
+    {
+      "seed": 1034,
+      "unsupported_tiles": 10,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1035,
+      "unsupported_tiles": 361,
+      "map_marker_count": 2
+    },
+    {
+      "seed": 1036,
+      "unsupported_tiles": 5,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1037,
+      "unsupported_tiles": 24,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1038,
+      "unsupported_tiles": 55,
+      "map_marker_count": 13
+    },
+    {
+      "seed": 1039,
+      "unsupported_tiles": 104,
+      "map_marker_count": 4
+    },
+    {
+      "seed": 1040,
+      "unsupported_tiles": 14,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1041,
+      "unsupported_tiles": 17,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1042,
+      "unsupported_tiles": 26,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1043,
+      "unsupported_tiles": 34,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1044,
+      "unsupported_tiles": 53,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1045,
+      "unsupported_tiles": 2,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1046,
+      "unsupported_tiles": 13,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1047,
+      "unsupported_tiles": 3,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1048,
+      "unsupported_tiles": 33,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1049,
+      "unsupported_tiles": 32,
+      "map_marker_count": 13
+    },
+    {
+      "seed": 1050,
+      "unsupported_tiles": 16,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1051,
+      "unsupported_tiles": 36,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1052,
+      "unsupported_tiles": 17,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1053,
+      "unsupported_tiles": 61,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1054,
+      "unsupported_tiles": 21,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1055,
+      "unsupported_tiles": 65,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1056,
+      "unsupported_tiles": 1,
+      "map_marker_count": 1
+    },
+    {
+      "seed": 1057,
+      "unsupported_tiles": 0,
+      "map_marker_count": 1
+    }
+  ]
+}

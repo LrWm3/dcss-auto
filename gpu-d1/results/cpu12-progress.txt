@@ -1,0 +1,3 @@
+sustained cpu cpu=12 B=8192 M=8 mixed heap=False chunk=64 obs=False: 2,122,860/s
+sustained cpu cpu=12 B=8192 M=8 mixed heap=True chunk=64 obs=False: 2,705,578/s
+/home/reeldata/wk/exp/dcss/gpu-d1/results/cpu12.jsonl

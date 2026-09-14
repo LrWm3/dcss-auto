@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "trials": 24,
+  "worlds": 8192,
+  "steps_per_world": 4096,
+  "counters": {
+    "turns": 33554432,
+    "actions": 279852180,
+    "attacks": 183791239,
+    "blocks": 26837667,
+    "dodges": 59387631,
+    "damage": 47468252,
+    "deaths": 2310643,
+    "resets": 2310544,
+    "moves": 78043851,
+    "repairs": 19440641,
+    "stalls": 18017090,
+    "move_turns": 10699025,
+    "combat_turns": 25608674
+  },
+  "cpu_warp_checksum": "3b04881c7b20c528"
+}
