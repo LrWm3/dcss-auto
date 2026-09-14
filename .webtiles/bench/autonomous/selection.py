@@ -129,7 +129,7 @@ def confirmation_decision(left, right, protocol=PROTOCOL):
 
 
 def environment_identity():
-    return {"engine": sha(ENGINE), "base_rc": sha(BASE_RC),
+    identity = {"engine": sha(ENGINE), "base_rc": sha(BASE_RC),
             "bridge": sha(HERE / "general_bridge.lua"),
             "adapter": sha(HERE / "general_env.py"),
             "engine_cache": sha(HERE / "engine_cache.py"),
@@ -140,6 +140,13 @@ def environment_identity():
             "evaluator": sha(HERE / "selection.py"),
             "score_result": sha(HERE / "score_result.py"),
             "budget": sha(HERE / "episode_budget.py")}
+    from features import FEATURE_VERSION
+    identity['feature_version'] = FEATURE_VERSION
+    if FEATURE_VERSION.startswith('general-features-v6-spatial-entities'):
+        for name in ('structured_features.py', 'structured_model.py',
+                     'structured_bridge.lua', 'observation_history.py'):
+            identity[name] = sha(HERE / name)
+    return identity
 
 
 def freeze_file(source, target):

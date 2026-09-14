@@ -22,10 +22,12 @@ from general_env import BASE_RC, ENGINE, HERE, sha
 from model import save_model
 from learner import parent_for_cycle, prepare_candidate, finish_candidate
 from train_model import rows_from_replay, train_behavioral_clone
+from evaluation_seeds import screen_seed_plan
 
 DEFAULT_SEEDS = ["1760771545328102746", "1760771545328102747",
                  "1760771545328102748", "1760771545328102749",
                  "1760771545328102750"]
+COUNTERFACTUAL_SAMPLING_VERSION = "targeted-frontier-v2"
 
 
 def write(path: Path, value: dict) -> None:
@@ -112,6 +114,19 @@ def prepare(run_dir: Path, args) -> dict:
         config["budget_version"] = "cumulative_per_floor_v1"
         config["training_seed_policy"] = TRAINING_SEED_POLICY
         config["actor_episodes"] = args.actor_episodes or config.get('actor_episodes', 8)
+        config["evaluation_pool_size"] = config.get("evaluation_pool_size", args.evaluation_pool_size)
+        if config.get("counterfactual_sampling_version") != COUNTERFACTUAL_SAMPLING_VERSION:
+            config.update({
+                "counterfactual_sampling_version": COUNTERFACTUAL_SAMPLING_VERSION,
+                "counterfactual_cases_per_cycle": args.counterfactual_cases_per_cycle,
+                "counterfactual_top_k": args.top_k,
+                "counterfactual_random_k": args.random_k,
+                "counterfactual_continuations": args.continuations,
+                "counterfactual_steps": args.counterfactual_steps,
+            })
+        else:
+            config["counterfactual_cases_per_cycle"] = config.get(
+                "counterfactual_cases_per_cycle", args.counterfactual_cases_per_cycle)
         config['learner_version'] = 'score-policy-v2'
         config['feature_version'] = __import__('features').FEATURE_VERSION
         write(config_path, config)
@@ -125,6 +140,7 @@ def prepare(run_dir: Path, args) -> dict:
         "actor_episodes": args.actor_episodes or 8, "training_seed_policy": TRAINING_SEED_POLICY,
         "learner_version": "score-policy-v2",
         "evaluation_episodes": args.evaluation_episodes,
+        "evaluation_pool_size": args.evaluation_pool_size,
         "decisions_per_floor": args.steps,
         "total_decisions": args.total_steps,
         "budget_version": "cumulative_per_floor_v1",
@@ -132,6 +148,8 @@ def prepare(run_dir: Path, args) -> dict:
         "counterfactual_random_k": args.random_k,
         "counterfactual_continuations": args.continuations,
         "counterfactual_steps": args.counterfactual_steps,
+        "counterfactual_sampling_version": COUNTERFACTUAL_SAMPLING_VERSION,
+        "counterfactual_cases_per_cycle": args.counterfactual_cases_per_cycle,
         "epsilon": args.epsilon, "promotion_margin": args.promotion_margin,
         "seeds": DEFAULT_SEEDS, "started_unix": time.time(),
         "storage": storage.limits(),
@@ -220,13 +238,16 @@ def main() -> None:
     parser.add_argument("--actor-episodes", type=int, default=None,
                         help="games per cycle: default 8, one previous weakest and the remainder fresh")
     parser.add_argument("--evaluation-episodes", type=int, default=5)
+    parser.add_argument("--evaluation-pool-size", type=int, default=50,
+                        help="rotating held-out screen pool; episodes are paired per cycle")
     parser.add_argument("--steps", "--decisions-per-floor", type=int, default=2000,
                         help="cumulative decision allowance per distinct floor")
     parser.add_argument("--total-steps", type=int, default=100000, help="whole-game emergency decision cap")
-    parser.add_argument("--top-k", type=int, default=3)
-    parser.add_argument("--random-k", type=int, default=2)
-    parser.add_argument("--continuations", type=int, default=2)
-    parser.add_argument("--counterfactual-steps", type=int, default=8)
+    parser.add_argument("--top-k", type=int, default=4)
+    parser.add_argument("--random-k", type=int, default=3)
+    parser.add_argument("--continuations", type=int, default=3)
+    parser.add_argument("--counterfactual-steps", type=int, default=12)
+    parser.add_argument("--counterfactual-cases-per-cycle", type=int, default=6)
     parser.add_argument("--epsilon", type=float, default=0.1)
     parser.add_argument("--promotion-margin", type=float, default=0.0)
     args = parser.parse_args()
@@ -278,6 +299,15 @@ def run_training(args, run_dir):
         if not rows:
             raise RuntimeError("bootstrap generated no replay rows")
         model, metadata = train_behavioral_clone(rows, epochs=config.get("bootstrap_epochs",10), seed=0)
+        if __import__('features').FEATURE_VERSION.startswith('general-features-v6-spatial-entities'):
+            from bootstrap_repair import repair
+            from model import load_model
+            provisional = run_dir / 'bootstrap_repair' / 'initial.pt'
+            save_model(provisional, model, {**metadata, 'bootstrap': True})
+            status(run_dir, 'bootstrap_repair')
+            accepted = repair(run_dir / 'bootstrap_repair', provisional, rows)
+            model, payload = load_model(accepted)
+            metadata = payload['metadata']
         champion = run_dir / "champions" / "V0.pt"
         save_model(champion, model, {**metadata, "policy_version": "V0", "bootstrap": True})
         version = "V0"
@@ -336,7 +366,8 @@ def run_training(args, run_dir):
                          if json.loads(p.read_text()).get("engine_sha256") == engine_hash
                          and json.loads(p.read_text()).get('bridge_sha256') == sha(HERE / 'general_bridge.lua')]
         if archive_cases and not ready_path.exists():
-            selected_cases = select_cases(archive_cases, cycle)
+            selected_cases = select_cases(
+                archive_cases, cycle, config.get("counterfactual_cases_per_cycle", 4))
             case = selected_cases[0]
             try:
                 write(run_dir / 'counterfactual' / label / 'selection.json',
@@ -359,12 +390,13 @@ def run_training(args, run_dir):
                         "return": row["empirical_return"],
                         "comparison_id": f"{label}:{sha(candidate)}:{Path(row['case']).name}:{row['return_protocol']}:{row['continuation_steps']}",
                         "return_protocol": row['return_protocol'],
+                        "score_version": row.get('score_version'),
                         "continuation_steps": row['continuation_steps'],
                         "policy_version": label + ":counterfactual",
                     })
                 if cf_records:
                     write(run_dir / "replay" / f"{label}-counterfactual.result.json",
-                          {"steps": len(cf_records)})
+                          {"steps": len(cf_records), "score_version": cf_records[0].get('score_version')})
                     storage.maintain(run_dir)
             except Exception as exc:
                 append(run_dir / "failures" / "invalid_states" / "counterfactual.jsonl",
@@ -374,7 +406,8 @@ def run_training(args, run_dir):
             train_meta = finish_candidate(run_dir, cycle, candidate, rows_from_replay(run_dir / 'replay'))
         status(run_dir, "evaluating", cycle=cycle, candidate=str(candidate),
                counterfactual_rows=len(cf_records))
-        eval_seeds = [str(910000000000 + i) for i in range(config["evaluation_episodes"])]
+        eval_seeds, eval_seed_plan = screen_seed_plan(
+            run_dir, cycle, config["evaluation_episodes"], config["evaluation_pool_size"])
         if set(eval_seeds) & set(seeds):
             raise ValueError("evaluation seeds overlap training seeds")
         champion_eval = comparison(evaluate_model(
@@ -387,6 +420,8 @@ def run_training(args, run_dir):
         evaluation = {"cycle": cycle, "champion": champion_eval,
                       "candidate": candidate_eval, "candidate_path": str(candidate),
                       "model_hashes": {"champion":sha(champion), "candidate":sha(candidate)},
+                      "evaluation_seeds": eval_seeds,
+                      "evaluation_seed_plan": str(eval_seed_plan),
                       "role": "screen", "protocol":ensure_protocol(run_dir)["version"],
                       "train": train_meta, "counterfactual_rows": len(cf_records)}
         append(run_dir / "evaluations" / "paired_seeds.jsonl", evaluation)

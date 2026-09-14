@@ -1,5 +1,11 @@
 # Progress journal
 
+Historical journal; original entries below are preserved. The consolidated
+[experiment ledger](EXPERIMENT-LEDGER.md) now also covers pre-journal trials,
+later general-policy work, final results recovered from artifacts, and evidence
+limitations. Historical “next” and “current” statements below are dated plans,
+not the present project status.
+
 ## 2026-09-07: establish worst-seed objective
 
 Historical original: ranks `[4, 7, 7, 6, 11]`, minimum **4**.

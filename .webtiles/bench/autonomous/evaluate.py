@@ -93,9 +93,14 @@ def comparison(results: list[dict]) -> dict:
     actual = [float(row["score"]) for row in valid
               if has_episode_score(row)]
     progression = [float(row.get("progression", 0)) for row in valid]
+    training = [float(row['training_score']) for row in valid
+                if row.get('training_score') is not None and has_episode_score(row)]
     return {
         "episodes": len(valid), "errors": len(results) - len(valid),
         "mean_score": sum(actual) / len(actual) if actual else None,
+        "mean_native_score": sum(actual) / len(actual) if actual else None,
+        "mean_training_score": sum(training) / len(training) if len(training) == len(results) and training else None,
+        "score_versions": sorted({r['score_version'] for r in valid if r.get('score_version')}),
         "mean_progression": sum(progression) / len(progression) if progression else 0.0,
         "max_progression": max(progression, default=0.0),
         "terminal_count": sum(bool(row.get("terminal")) for row in valid),

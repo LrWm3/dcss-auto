@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "observation_schema": "crawl-general-v1",
+  "action_schema": "crawl-semantic-actions-v1",
+  "bootstrap_episodes": 2,
+  "actor_episodes": 2,
+  "evaluation_episodes": 2,
+  "steps_per_episode": 40,
+  "counterfactual_top_k": 3,
+  "counterfactual_random_k": 2,
+  "counterfactual_continuation_steps": 8,
+  "epsilon": 0.1,
+  "promotion_margin": 0.0
+}

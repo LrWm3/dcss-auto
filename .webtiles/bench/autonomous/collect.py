@@ -1,15 +1,18 @@
 """Generate bootstrap or policy trajectories from real Crawl actors."""
 from __future__ import annotations
+from exploration_score import learning_score, report_fields
 
 import argparse
 import json
 import random
 import time
 import itertools
+from collections import Counter
 from pathlib import Path
 
 from general_env import GeneralEnvironment, ENGINE, HERE, sha
 from policy import Policy
+from model import action_scores
 from teacher import choose_action
 import storage
 from episode_budget import DecisionBudget
@@ -77,20 +80,47 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
         floor_captures = {}
         last_archived = None
         previous_combat = False
+        action_counts = Counter()
+        exploratory_steps = Counter()
+        teacher_agreements = 0
         for step in itertools.count():
             if budget.reason(state):
                 break
             # Archive encountered combat/floor states, not just new-game starts.
             # Keep collecting on later floors, and periodically within combat;
             # the old first-four-buckets cap excluded essentially all late play.
-            combat = bool(state.get('monsters'))
+            visible_monsters = state.get('monsters') or []
+            if isinstance(visible_monsters, dict):
+                visible_monsters = list(visible_monsters.values())
+            combat = bool(visible_monsters)
             encounter_start = combat and not previous_combat
+            hp_fraction = state.get('player', {}).get('hp', 1) / max(
+                1, state.get('player', {}).get('max_hp', 1))
+            categories = []
+            if encounter_start:
+                categories.append('encounter_start')
+            if hp_fraction < .35:
+                categories.extend(['danger', 'death_adjacent'])
+            elif not combat:
+                categories.append('healthy')
+            known_cells = state.get('known') or {}
+            if isinstance(known_cells, dict):
+                known_cells = known_cells.values()
+            if any(c.get('frontier') for c in known_cells):
+                categories.append('frontier')
+            if policy and len(state.get('actions', [])) > 1:
+                scores = action_scores(policy.model, state, state['actions'])
+                ranked = list(reversed(scores.argsort().tolist()))
+                if len(ranked) > 1 and float(scores[ranked[0]] - scores[ranked[1]]) < .10:
+                    categories.append('uncertain')
+            if not categories:
+                categories.append('coverage')
             bucket = (state.get("level"), combat,
                       step // 100 if state.get("monsters") else 0,
-                      state.get('player', {}).get('hp', 1) / max(1, state.get('player', {}).get('max_hp', 1)) < .5)
+                      hp_fraction < .5, tuple(categories))
             if (archive_dir and snapshot and bucket not in captured and len(captured) < 128
-                    and floor_captures.get(state.get('level'), 0) < 4
-                    and (floor_captures.get(state.get('level'), 0) < 3 or encounter_start)):
+                    and floor_captures.get(state.get('level'), 0) < 8
+                    and (floor_captures.get(state.get('level'), 0) < 6 or encounter_start)):
                 captured.add(bucket)
                 floor_captures[state.get('level')] = floor_captures.get(state.get('level'), 0) + 1
                 if step > 0:
@@ -101,17 +131,23 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                             state = env.launch(target)
                     last_archived = target
                     (target / 'sampling.json').write_text(json.dumps({
-                        'category': 'encounter_start' if encounter_start else
-                          ('healthy' if not bucket[-1] else 'danger'),
-                        'step': step, 'level': state.get('level')}))
+                        'category': categories[0], 'categories': categories,
+                        'step': step, 'level': state.get('level'),
+                        'hp_fraction': hp_fraction,
+                        'visible_monsters': len(visible_monsters),
+                        'max_threat': max((m.get('threat', 0) for m in visible_monsters),
+                                          default=0)}))
             previous_combat = combat
             before = state
             teacher_index = choose_action(before) if replay_path or not policy else None
             if policy:
-                action_index, action = policy.choose(before)
+                action_index, action = policy.choose(before, teacher_index=teacher_index)
+                exploratory_steps[policy.last_exploration_mode] += 1
+                teacher_agreements += int(teacher_index is not None and action_index == teacher_index)
             else:
                 action_index = teacher_index
                 action = before["actions"][action_index]
+            action_counts[str(action.get("kind", "UNKNOWN"))] += 1
             state = env.step(action_index)
             budget.record(before, state)
             row = {
@@ -122,8 +158,14 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
                 "action": action, "action_index": action_index,
                 "teacher_action_index": teacher_index,
                 "behavior_probability": policy.last_action_probability if policy else 1.0,
+                "score_before": before.get("score") if before.get("score_status") == "live_official" else None,
+                "score_after": state.get("score") if state.get("score_status") == "live_official" else None,
+                "training_score_before": before.get("training_score"),
+                "training_score_after": state.get("training_score"),
+                **report_fields(state),
+                "turn_before": before.get("turn"), "turn_after": state.get("turn"),
                 "next_observation": state, "reward": 0.0,
-                "return": state.get("score") if state.get("terminal") else None,
+                "return": learning_score(state) if state.get("terminal") else None,
                 "terminal": bool(state.get("terminal")),
             }
             if replay_stream:
@@ -151,9 +193,13 @@ def run_episode(workspace: str | Path, seed: str, steps: int,
             "score_status": "final_official" if terminal else (
                 "cutoff_official" if truncation and state.get("score_status") == "live_official"
                 else "unavailable"),
+            **report_fields(state),
             "progression": _progression(state), "final_level": state.get("level"),
             "final_turn": state.get("turn"), "archive_case": str(archive_case) if archive_case else None,
             "policy_version": policy_version, "elapsed_seconds": time.time() - started,
+            "action_counts": dict(action_counts),
+            "exploration_counts": dict(exploratory_steps),
+            "teacher_agreements": teacher_agreements,
             "work": str(env.work_path),
             "work_paths": [str(p) for p in env.works],
         }

@@ -76,7 +76,9 @@ def choose_action(state: dict) -> int:
             ))[0]
 
     if hp < max_hp:
-        return next(i for i, a in enumerate(actions) if a["kind"] == "WAIT")
+        for i, a in enumerate(actions):
+            if a['kind'] in ('WAIT', 'REST'):
+                return i
     for i, a in enumerate(actions):
         if a["kind"] == "TAKE_STAIRS_DOWN":
             return i
@@ -100,6 +102,6 @@ def choose_action(state: dict) -> int:
         if action.get("kind") == "MOVE":
             return i
     for i, action in enumerate(actions):
-        if action.get("kind") == "WAIT":
+        if action.get("kind") in ("WAIT", "REST"):
             return i
     return 0

@@ -28,7 +28,9 @@ ROOT = HERE.parents[2]
 ENGINE = Path(os.environ.get(
     "DCSS_TACTICAL_ENGINE",
     # Dedicated non-exiting snapshot build; historical binaries are preserved.
-    str(ROOT / "crawl-0.35/crawl-ref/source/crawl-general-sim"),
+    str(ROOT / "crawl-0.35/crawl-ref/source" / (
+        "crawl-general-explore-sim" if os.environ.get('DCSS_EXPLORATION_SCORE') == '1'
+        else "crawl-general-sim")),
 )).resolve()
 BASE_RC = ROOT / ".webtiles/rcs/codex-autocrawl.rc"
 FIFO_ENV = "DCSS_TACTICAL_OBSERVATION_FIFO"
@@ -47,6 +49,12 @@ def make_rc(path: Path, source_rc: Path | None = None) -> Path:
     if at <= 0 or source[at + 1 :].strip():
         raise ValueError("source RC does not have a single final Lua block")
     bridge = (HERE / "general_bridge.lua").read_text()
+    if os.environ.get('DCSS_REST_ONLY') == '1':
+        bridge = 'GENERAL_AGENT_REST_ONLY = true\n' + bridge
+    if os.environ.get('DCSS_TARGET_DETAILS') == '1':
+        bridge = 'GENERAL_AGENT_TARGET_DETAILS = true\n' + bridge
+    if os.environ.get('DCSS_REPRESENTATION') == 'spatial-v6':
+        bridge += '\n' + (HERE / 'structured_bridge.lua').read_text()
     path.write_text(source[:at] + "\n" + bridge + "\n>\n")
     return path
 
@@ -110,6 +118,9 @@ class GeneralEnvironment:
             shutil.copy2(checkpoint_path / "checkpoint.cs",
                          self.work / "saves" / (CHARACTER + ".cs"))
             shutil.copy2(checkpoint_path / "trial.rc", rc)
+            saved_rest = 'GENERAL_AGENT_REST_ONLY = true\n' in rc.read_text()
+            if saved_rest != (os.environ.get('DCSS_REST_ONLY') == '1'):
+                raise ValueError('checkpoint REST/WAIT action mode mismatch; start a fresh game')
             self.seed = str(metadata["seed"])
         else:
             make_rc(rc, self.source_rc)
@@ -142,6 +153,7 @@ class GeneralEnvironment:
         }, indent=2) + "\n")
         child_env = {**os.environ, "TERM": "xterm", FIFO_ENV: str(fifo),
                      "DCSS_TACTICAL_SIM_FLAGS": "3"}
+        child_env['DCSS_EXPLORATION_RESULT'] = str(self.work / 'exploration-final.json')
         self.child = pexpect.spawn(str(ENGINE), args, cwd=str(ENGINE.parent),
                                    env=child_env, encoding="utf-8",
                                    codec_errors="replace", dimensions=(50, 160),
@@ -149,6 +161,13 @@ class GeneralEnvironment:
         self.child.delaybeforesend = None
         self.child.logfile_read = None
         self.state = self.await_state(startup=True)
+        if os.environ.get('DCSS_REPRESENTATION') == 'spatial-v6':
+            self.state['history'] = (metadata.get('observation', {}).get('history', [])
+                                     if checkpoint_path else [])
+        if os.environ.get('DCSS_VISIT_MEMORY') == '1':
+            from visit_memory import initial
+            self.state['visit_memory'] = ((metadata.get('observation', {}).get('visit_memory')
+                                          if checkpoint_path else None) or initial(self.state))
         engine_cache.publish(self.work / 'saves', engine_hash)
         (self.work / "initial.json").write_text(json.dumps(self.state, indent=2) + "\n")
         self.events = (self.work / "events.jsonl").open("a", buffering=65536) if self.record_events else None
@@ -184,6 +203,14 @@ class GeneralEnvironment:
                                                 "quitting":"quit"}.get(fields.get("ktyp"),"death"),
                                       death_cause=fields.get("killer"),
                                       runes=int(fields.get("nrune",0)))
+                if os.environ.get('DCSS_EXPLORATION_SCORE') == '1':
+                    final = json.loads((self.work / 'exploration-final.json').read_text())
+                    if (final.get('version') != 1 or final.get('seed') != self.seed
+                            or final.get('native_score') != record['score']):
+                        raise ValueError('terminal exploration/native score mismatch')
+                    record['exploration_raw'] = final['exploration_raw']
+                    from exploration_score import attach
+                    record = attach(record)
                 return record
         return None
 
@@ -216,6 +243,8 @@ class GeneralEnvironment:
                 if not line.startswith(b"GJSON "):
                     raise RuntimeError("invalid general observation frame")
                 state = json.loads(line[6:])
+                from exploration_score import attach
+                state = attach(state)
                 state["actions"] = self._normalise_actions(state)
                 if expected_seq is not None and state.get("seq") != expected_seq:
                     continue
@@ -299,6 +328,12 @@ class GeneralEnvironment:
                 'action': actions[index], 'action_index':index,
                 'observation':before, 'error':str(exc)}, indent=2))
             raise
+        if os.environ.get('DCSS_REPRESENTATION') == 'spatial-v6':
+            from observation_history import add_history
+            after = add_history(before, actions[index], after)
+        if os.environ.get('DCSS_VISIT_MEMORY') == '1':
+            from visit_memory import advance
+            after['visit_memory'] = advance(before, actions[index], after)
         self.state = after
         self._event({"type": "transition", "observation": before,
                      "action": actions[index], "action_index": index,

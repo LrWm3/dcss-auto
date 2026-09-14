@@ -5,13 +5,23 @@ import random
 
 def select_cases(paths, cycle, limit=4):
     rng = random.Random(cycle)
-    buckets = {'encounter_start': [], 'healthy': [], 'danger': [], 'coverage': []}
+    buckets = {name: [] for name in (
+        'death_adjacent', 'uncertain', 'danger', 'encounter_start',
+        'frontier', 'healthy', 'coverage')}
     for path in sorted(paths):
         try:
             tags = json.loads((path.parent / 'sampling.json').read_text())
         except (OSError, ValueError):
             tags = {}
-        buckets.get(tags.get('category'), buckets['coverage']).append(path.parent)
+        categories = tags.get('categories') or [tags.get('category', 'coverage')]
+        placed = False
+        for category in buckets:
+            if category in categories:
+                buckets[category].append(path.parent)
+                placed = True
+                break
+        if not placed:
+            buckets['coverage'].append(path.parent)
     for bucket in buckets.values():
         rng.shuffle(bucket)
     selected = []

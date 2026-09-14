@@ -1,0 +1,5 @@
+travel_delay = -1
+explore_delay = -1
+rest_delay = -1
+show_travel_trail = true
+default_manual_training = true

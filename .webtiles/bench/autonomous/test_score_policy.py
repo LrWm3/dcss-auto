@@ -40,6 +40,23 @@ class ScorePolicyTests(unittest.TestCase):
         changed['monsters'][0]['damage_level'] = 5
         self.assertNotEqual(action_features(changed,action), action_features(self.state,action))
 
+    def test_tactical_geometry_and_hazards_reach_the_encoder(self):
+        state = copy.deepcopy(self.state)
+        state['known'] = {'1:0': {'x': 1, 'y': 0, 'frontier': True,
+                                  'traversable': True, 'unsafe': False}}
+        state['cells'] = {'1:0': {'x': 1, 'y': 0, 'cloud': 'steam',
+                                  'invisible_monster': True}}
+        state['monsters'][0].update({'reachable': False, 'range': 6,
+                                     'is_unique': True})
+        baseline = state_features(state)
+        changed = copy.deepcopy(state)
+        changed['known']['1:0']['unsafe'] = True
+        changed['cells']['1:0']['cloud'] = 'liquid fire'
+        changed['monsters'][0]['reachable'] = True
+        self.assertNotEqual(state_features(changed), baseline)
+        self.assertNotEqual(action_features(state, {'kind': 'MOVE', 'dx': 1, 'dy': 0}),
+                             action_features(changed, {'kind': 'MOVE', 'dx': 1, 'dy': 0}))
+
     def test_official_cutoffs_count_but_errors_do_not(self):
         outcomes = [{'score_status':'final_official','score':10},
                     {'score_status':'cutoff_official','score':20}]

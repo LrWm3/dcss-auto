@@ -1,5 +1,24 @@
 # Autonomous Crawl policy training (V1 in development)
 
+**History/status audit, 2026-09-14:** see the consolidated
+[experiment ledger](../EXPERIMENT-LEDGER.md) for all phases, results and sources.
+The fresh PPO evaluation did not reproduce the development gains. The frozen
+critic experiment is complete, but its small prediction advantage is
+tail-sensitive and is not gameplay improvement. Older launch/“latest” notes
+below are retained as historical context, not instructions to resume old jobs.
+
+The current bounded on-policy experiment is documented in
+[PPO-PILOT.md](PPO-PILOT.md): general-action PPO, score-difference rewards,
+resumable actor games, paired evaluation, and no automatic promotion. It keeps
+the older learner and all historical experiments intact. Smoke tests prove
+that data collection, updates and resume work; gameplay improvement remains
+an empirical question.
+
+The new spatial/entity representation uses `train_structured_agent.py` and a
+fresh V6 run directory. See [REPRESENTATION-V6.md](REPRESENTATION-V6.md) for the
+input schema, correctness fixes, validation, and launch/resume instructions.
+Existing V5 jobs retain their historical encoder through the original entry point.
+
 See [FOUNDATION-RESULTS.md](FOUNDATION-RESULTS.md) for current evidence and
 unmet acceptance criteria. Basic neural exploration/combat/descent is now
 demonstrated; autonomous improvement on held-out score is still unproven.
@@ -64,6 +83,13 @@ exact plan. Fresh seeds occupy namespace A, disjoint from confirmation D and
 audit E. The selection ledger is permanent even after heavy-data retention.
 `--actor-episodes` changes the batch size (minimum two).
 
+Screen evaluation uses a rotating held-out pool of 50 deterministic seeds by
+default. Five paired seeds are evaluated per cycle, advancing through the pool
+in order and covering it once every ten cycles, then repeating. Each cycle's
+exact list is written to `evaluations/screen_seeds/cycle-NNNN.json`, so an
+interrupted cycle cannot silently change cases. Override the pool size with
+`--evaluation-pool-size`; `--evaluation-episodes` controls the window size.
+
 For a bounded unattended window, schedule one complete resumable cycle at a
 time. An already-running job keeps the lock; the scheduler waits and resumes
 after it exits:
@@ -89,9 +115,11 @@ after the wall-clock deadline; the scheduler never terminates it mid-game.
 * `features.py`, `model.py`, `policy.py`: action-conditioned scoring over the
   current legal-action list; no fixed command output layer.
 * `collect.py`: actor trajectories and restorable initial states.
-* `train_model.py`: anchored behavioral cloning, an independent score critic,
-  and small paired-state counterfactual preference updates with replay KL.
-* `counterfactual.py`: top-K plus random legal branches from exact checkpoints.
+* `train_model.py`: anchored behavioral cloning, short-horizon score-difference
+  targets with successor bootstrapping, an independent score critic, and paired
+  state counterfactual preference updates with replay KL.
+* `counterfactual.py`: targeted top-K plus reproducible per-state random legal
+  branches from exact checkpoints.
 * `evaluate.py` and `train_crawl_agent.py`: parallel actors, replay, candidate
   evaluation, champion/challenger promotion, metrics, and restartable status.
 
@@ -116,7 +144,7 @@ budget cutoffs and do not automatically become final-return targets.
 
 `selection.py` implements `screen-confirm-audit-v2-cutoff-score` for future batches:
 
-* The existing five seeds are a cheap screen, never promotion evidence. Broken
+* The rotating five-of-50 screen is a cheap screen, never promotion evidence. Broken
   candidates, severe loop regressions, and non-improving mean scores fail the
   screen. Incomplete score pairs are inconclusive.
 * A promising candidate and champion are frozen and run on 30 fresh paired
@@ -286,19 +314,20 @@ compression, pause hysteresis, and exclusion of incomplete replay from learning.
 
 ## Persistent learning and seed diversity (2026-09-11)
 
-The learner now continues from its previous candidate regardless of promotion.
-The champion is only the independently evaluated deployment baseline. Migration
-initializes the learner from the current champion once; old rejected models are
-preserved, not silently adopted. `learner/cycle-*.parent.json` freezes collection
-and initialization; `*.ready.json` commits the candidate before evaluation.
+The learner now resets each new candidate to the latest promoted champion when
+the previous candidate was not promoted. This prevents an unvalidated candidate
+chain from becoming the de facto policy while the official champion remains
+unchanged. `learner/cycle-*.parent.json` freezes collection and initialization;
+`*.ready.json` commits the candidate before evaluation. Existing frozen parent
+plans remain immutable for reproducibility.
 Committed candidates are immutable on resume. Checkpoints carry separate Adam
 states for imitation, critic, and preference learning.
 
 Default collection is eight games/cycle: seven fresh training seeds plus the
 previous lowest-scoring training seed (eight fresh if no usable predecessor).
 `--actor-episodes` overrides the budget; existing partial-cycle seed plans remain
-frozen. Actors use the continuing learner, not necessarily the champion.
-Evaluation namespaces and promotion criteria are unchanged.
+frozen. Actors use the candidate parent frozen for that cycle. Evaluation
+namespaces and promotion criteria are unchanged.
 
 Fine-tuning uses at most 256 seed-balanced imitation rows and 2,048 critic rows
 per cycle, instead of two full imitation passes. All retained, tagged
@@ -308,9 +337,10 @@ one ranking. Replay remains bounded by the existing 20,000-row/2-GiB limits;
 this is recent replay, not an unlimited lifetime dataset.
 
 Archive collection continues beyond the first four state buckets, with up to
-four snapshots/floor and 128/game. The most recent archived state gets an episode
-outcome sidecar. Up to four states/cycle are branched, mixing recent/final and
-rotating coverage. These are heuristic priorities, not a learned novelty system.
+eight snapshots/floor and 128/game. States are tagged for danger, death-adjacent
+HP, uncertainty, exploration frontier, encounter starts, and ordinary coverage.
+Up to six targeted states/cycle are branched, mixing those categories. These are
+heuristic priorities, not a learned novelty system.
 Only current-engine/current-bridge saves enter new branching. Monster order is
 stable, restored legal actions are checked against the probe, and competing
 actions share the continuation exploration RNG seed. This pairs exploration

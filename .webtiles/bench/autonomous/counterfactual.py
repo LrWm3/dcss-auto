@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import random
 from concurrent.futures import ThreadPoolExecutor
@@ -14,6 +15,7 @@ from model import action_scores, tensor_for_actions
 import torch
 import storage
 from data_split import assert_training_seed
+from exploration_score import learning_score, report_fields, VERSION as EXPLORATION_VERSION
 
 
 def _actions(state):
@@ -24,16 +26,20 @@ def _actions(state):
 
 
 def empirical_return(outcomes, continuations):
-    numeric = [float(x['score']) for x in outcomes
+    versions = {x.get('score_version') for x in outcomes if not x.get('error')}
+    if len(versions) > 1:
+        return None
+    numeric = [float(learning_score(x)) for x in outcomes
                if x.get('score_status') in ('final_official', 'cutoff_official')
-               and x.get('score') is not None and not x.get('error')]
+               and learning_score(x) is not None and not x.get('error')]
     return sum(numeric) / continuations if continuations > 0 and len(numeric) == continuations else None
 
 
 def evaluate_checkpoint(case: str | Path, workspace: str | Path,
                         model_path: str | Path, top_k: int = 3,
                         random_k: int = 2, continuations: int = 2,
-                        continuation_steps: int = 8, max_workers: int = 6) -> list[dict]:
+                        continuation_steps: int = 8, max_workers: int = 6,
+                        include_teacher: bool = False) -> list[dict]:
     case = Path(case)
     metadata = json.loads((case / "case.json").read_text())
     assert_training_seed(metadata["seed"])
@@ -51,13 +57,22 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
     with torch.no_grad():
         predicted_values = model_policy.model.value(tensor_for_actions(state, actions))
     ranked = list(reversed(scores.argsort().tolist()))[:top_k]
-    rng = random.Random(101)
+    # Different archived states should not repeatedly receive the same random
+    # alternatives; keep the choice reproducible for exact replay.
+    case_seed = int.from_bytes(hashlib.blake2b(str(case).encode(), digest_size=8).digest(), 'little')
+    rng = random.Random(case_seed)
     remaining = [i for i in range(len(actions)) if i not in ranked]
     rng.shuffle(remaining)
     candidates = ranked + remaining[:random_k]
+    if include_teacher:
+        from teacher import choose_action
+        suggestion = choose_action(state)
+        if suggestion not in candidates:
+            candidates.append(suggestion)
     def rollout(task):
         action_index, continuation = task
         env = GeneralEnvironment(Path(workspace) / f"branch-{action_index}-{continuation}")
+        env.record_events = False
         completed = False
         try:
             current = env.launch(case)
@@ -73,6 +88,7 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
             outcome = {
                 "progression": _progression(current),
                 "score": current.get("score"),
+                **report_fields(current),
                 "terminal": current.get("terminal"),
                 "level": current.get("level"), "turn": current.get("turn"),
                 "score_status": 'final_official' if current.get('terminal') else
@@ -103,8 +119,13 @@ def evaluate_checkpoint(case: str | Path, workspace: str | Path,
             "predicted_log_score": float(predicted_values[action_index]),
             "outcomes": outcomes, "empirical_return": empirical_return(outcomes, continuations),
             "continuations": continuations,
-            "return_protocol": "official_score_at_terminal_or_fixed_horizon_v2",
+            "return_protocol": ("exploration_score_at_terminal_or_fixed_horizon_v1"
+                if state.get('score_version') == EXPLORATION_VERSION else
+                "official_score_at_terminal_or_fixed_horizon_v2"),
+            "score_version": state.get('score_version'),
             "continuation_steps": continuation_steps,
+            "continuation_exploration": "epsilon_0.15_uniform_legal_actions",
+            "randomness": "identical engine RNG restored; paired policy sampling seeds across first actions",
         })
     return records
 

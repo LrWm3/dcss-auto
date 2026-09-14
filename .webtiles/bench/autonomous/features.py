@@ -185,3 +185,11 @@ def monster_properties(m):
 
 def pair_features(state: dict, action: dict) -> list[float]:
     return state_features(state) + action_features(state, action)
+
+
+# V5 stays byte-compatible for historical checkpoints and in-flight runs.
+# The V6 entry point opts into the replacement before importing the trainer.
+import os
+if os.environ.get('DCSS_REPRESENTATION') == 'spatial-v6':
+    from structured_features import (STATE_DIM, ACTION_DIM, FEATURE_VERSION,
+                                    state_features, action_features)

@@ -29,16 +29,14 @@ class PersistentLearnerTests(unittest.TestCase):
             parent = parent_for_cycle(root, 0, champion)
             prepare_candidate(parent, first, rows, 0)
             finish_candidate(root, 0, first, rows)
-            # No promotion: V0 remains champion, but next learner uses candidate0.
-            self.assertEqual(parent_for_cycle(root, 1, champion), first)
-            self.assertEqual(parent_for_cycle(root, 1, champion), first)
+            # No promotion: V0 remains champion and rejected candidate0 is not
+            # silently promoted to the next candidate's parent.
+            self.assertEqual(parent_for_cycle(root, 1, champion), champion)
+            self.assertEqual(parent_for_cycle(root, 1, champion), champion)
             second = root / 'candidate1.pt'
-            prepare_candidate(first, second, rows, 1)
+            prepare_candidate(champion, second, rows, 1)
             finish_candidate(root, 1, second, rows)
-            a = load_model(first)[1]['metadata']['optimizer_states']
-            b = load_model(second)[1]['metadata']['optimizer_states']
-            for name in ('actor_return','critic','preferences'):
-                self.assertGreater(b[name]['state'][0]['step'], a[name]['state'][0]['step'])
+            self.assertEqual(load_model(second)[1]['metadata']['parent'], str(champion))
             self.assertFalse(all(torch.equal(v, load_model(second)[0].state_dict()[k])
                                  for k,v in load_model(first)[0].state_dict().items()))
 

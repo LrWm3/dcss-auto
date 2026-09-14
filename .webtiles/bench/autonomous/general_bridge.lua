@@ -225,6 +225,11 @@ local function ga_actions(cells, monsters, blocked)
     if occupied then
       ga_add(actions, {kind="MELEE", dx=move.dx, dy=move.dy, x=move.dx, y=move.dy,
         target_name=tostring(ga_call(cell.monster, "name") or "unknown"),
+        -- Firewood is intentionally absent from the threatening-enemy list,
+        -- but it is still a visible target. Do not encode attacks on bushes
+        -- as attacks on a missing/unknown entity.
+        target=GENERAL_AGENT_TARGET_DETAILS and ga_monster_detail(cell.monster,
+          move.dx, move.dy, ga_call(cell.monster, "threat") or 0, true) or nil,
         label="MELEE "..move.key})
     elseif ga_cell_passable(cell) and not blocked[ga_map_key(move.dx, move.dy)] then
       ga_add(actions, {kind="MOVE", dx=move.dx, dy=move.dy, x=move.dx, y=move.dy,
@@ -232,7 +237,20 @@ local function ga_actions(cells, monsters, blocked)
     end
   end
 
-  ga_add(actions, {kind="WAIT", label="WAIT"})
+  if GENERAL_AGENT_REST_ONLY then
+    local hp, max_hp = ga_you("hp")
+    local enemy = #monsters > 0
+    for _, cell in pairs(cells) do
+      if cell.visible and cell.monster and ga_call(cell.monster, "attitude") == 0 then
+        enemy = true
+      end
+    end
+    if hp and max_hp and hp < max_hp and not enemy and ga_you("feel_safe") then
+      ga_add(actions, {kind="REST", label="REST"})
+    end
+  else
+    ga_add(actions, {kind="WAIT", label="WAIT"})
+  end
   local here = cells["0:0"]
   local feature = here and tostring(here.feature or "") or ""
   if feature:find("stone_stairs_down", 1, true) then
@@ -390,6 +408,8 @@ local function ga_observation()
   local hp, max_hp = ga_you("hp")
   local mp, max_mp = ga_you("mp")
   return {schema="crawl-general-v1", seq=GA.seq, turn=ga_you("turns") or 0,
+    action_mode=GENERAL_AGENT_REST_ONLY and "rest-only-v1" or "wait-v1",
+    target_details_version=GENERAL_AGENT_TARGET_DETAILS and "visible-melee-target-v1" or nil,
     coordinate_frame="player_relative",
     level=ga_level(), branch=ga_you("branch") or "unknown", depth=ga_you("depth") or 0,
     player=ga_player(), hp={hp, max_hp}, mp={mp, max_mp},
@@ -398,6 +418,7 @@ local function ga_observation()
     known=known_cells, actions=ga_actions(cells, monsters, blocked),
     -- Standard-game non-winning score; old engines explicitly lack this API.
     score=ga_you("game_score") or -1,
+    exploration_raw=ga_you("exploration_credit"),
     score_status=ga_you("game_score") ~= nil and "live_official" or "unavailable",
     terminal=false, last_action_result=GA.last_action_result}
 end
@@ -433,6 +454,10 @@ local function ga_dispatch(action)
     end
   elseif action.kind == "WAIT" then
     crawl.do_commands({"CMD_WAIT"}); return true
+  elseif action.kind == "REST" then
+    -- Queue the native rest key for the outer command loop. Executing REST
+    -- synchronously and then sending our usual wake-up ESC cancels its delay.
+    crawl.sendkeys("5"); return true
   elseif action.kind == "TAKE_STAIRS_DOWN" then
     crawl.do_commands({"CMD_GO_DOWNSTAIRS"}); return true
   elseif action.kind == "TAKE_STAIRS_UP" then
@@ -510,7 +535,7 @@ function ready()
     -- Stairs/equipment may start an engine delay without immediately spending
     -- a turn. Wake the outer command loop with a no-turn escape so it can
     -- advance that delay instead of blocking on terminal input.
-    if not you.turn_is_over() then crawl.sendkeys("\027") end
+    if not you.turn_is_over() and action.kind ~= "REST" then crawl.sendkeys("\027") end
     if spent or you.turn_is_over() then
       GA.seq = GA.seq + 1
       GA.published = -1

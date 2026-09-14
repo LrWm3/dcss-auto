@@ -53,8 +53,8 @@ def plan_cycle(root, cycle, episodes=3):
     episodes = []
     for _ in range(episode_count - 1 if weakest else episode_count):
         while True:
-            # Training namespace A cannot intersect confirmation D or audit E,
-            # or the fixed five low-valued screen seeds.
+            # Training namespace A cannot intersect the reserved screen C,
+            # confirmation D, or audit E namespaces.
             seed = str((0xA << 60) | secrets.randbits(60))
             if seed not in used:
                 used.add(seed)

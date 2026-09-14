@@ -1,0 +1,4 @@
+include = /home/reeldata/wk/exp/dcss/.webtiles/rcs/codex-autocrawl.rc
+<
+BOT.paused = true
+>

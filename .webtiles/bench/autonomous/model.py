@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import copy
+import os
 from pathlib import Path
 
 import torch
@@ -11,6 +12,7 @@ from torch import nn
 from features import ACTION_DIM, FEATURE_VERSION, STATE_DIM, state_features, action_features
 from teacher import navigation_distances
 import storage
+from exploration_score import VERSION as EXPLORATION_VERSION
 
 MODEL_VERSION = "general-action-model-v2-separate-critic"
 
@@ -19,10 +21,14 @@ class ActionValueModel(nn.Module):
     def __init__(self, hidden: int = 192):
         super().__init__()
         self.hidden = hidden
-        self.net = nn.Sequential(
-            nn.Linear(STATE_DIM + ACTION_DIM, hidden), nn.LayerNorm(hidden), nn.ReLU(),
-            nn.Linear(hidden, hidden), nn.ReLU(), nn.Linear(hidden, 1),
-        )
+        if FEATURE_VERSION.startswith('general-features-v6-spatial-entities'):
+            from structured_model import StructuredScorer
+            self.net = StructuredScorer(hidden)
+        else:
+            self.net = nn.Sequential(
+                nn.Linear(STATE_DIM + ACTION_DIM, hidden), nn.LayerNorm(hidden), nn.ReLU(),
+                nn.Linear(hidden, hidden), nn.ReLU(), nn.Linear(hidden, 1),
+            )
         # No shared parameters: absolute return regression must not rewrite
         # action logits or the bootstrap navigation representation.
         self.value_net = copy.deepcopy(self.net)
@@ -37,6 +43,11 @@ class ActionValueModel(nn.Module):
 def tensor_for_actions(state: dict, actions: list[dict]) -> torch.Tensor:
     base = state_features(state)
     routes = [navigation_distances(state, stairs) for stairs in (False, True)]
+    if FEATURE_VERSION.startswith('general-features-v6-spatial-entities'):
+        # Store the large spatial observation only once, not once per action.
+        return (torch.tensor(base, dtype=torch.float32).unsqueeze(0),
+                torch.tensor([action_features(state, action, routes) for action in actions],
+                             dtype=torch.float32))
     return torch.tensor([base + action_features(state, action, routes) for action in actions],
                         dtype=torch.float32)
 
@@ -52,6 +63,8 @@ def save_model(path: str | Path, model: ActionValueModel, metadata: dict | None 
     storage.guard()
     payload = {
         "model_version": MODEL_VERSION,
+        "score_version": (EXPLORATION_VERSION
+                          if os.environ.get('DCSS_EXPLORATION_SCORE') == '1' else None),
         "feature_version": FEATURE_VERSION,
         "state_dim": STATE_DIM,
         "action_dim": ACTION_DIM,
@@ -70,6 +83,8 @@ def load_model(path: str | Path) -> tuple[ActionValueModel, dict]:
     if payload.get("model_version") not in (MODEL_VERSION, "general-action-model-v1"):
         raise ValueError("unsupported model version")
     migrating = payload.get('feature_version') == 'general-features-v4-route-deltas'
+    if FEATURE_VERSION.startswith('general-features-v6-spatial-entities') and payload.get('feature_version') != FEATURE_VERSION:
+        raise ValueError('V6 requires a fresh bootstrap; old features/weights are incompatible')
     if payload.get("feature_version") != FEATURE_VERSION and not migrating:
         raise ValueError("feature version mismatch; bootstrap a new run")
     model = ActionValueModel(int(payload.get("hidden", 192)))

@@ -15,13 +15,94 @@ from torch import nn
 
 from model import ActionValueModel, save_model, tensor_for_actions
 import storage
+import os
+from exploration_score import learning_score, VERSION as EXPLORATION_VERSION
 from data_split import assert_training_seed
 from score_result import has_episode_score
+
+N_STEP_HORIZON = 3
+N_STEP_GAMMA = 0.995
+RETURN_POLICY_LR = 2e-4
+RETURN_POLICY_MAX_KL = 0.01
 
 
 def _files(path: str | Path):
     path = Path(path)
     return storage.replay_files(path) if path.is_dir() else [path]
+
+
+def _log_score(value):
+    try:
+        value = float(value)
+    except (TypeError, ValueError):
+        return None
+    return math.log1p(value) if math.isfinite(value) and value >= 0 else None
+
+
+def _annotate_n_step(rows, result, horizon=N_STEP_HORIZON, gamma=N_STEP_GAMMA):
+    """Attach short-horizon score-difference targets without rewriting replay.
+
+    Crawl exposes a live official score, so each decision gets a local score
+    delta plus a bootstrap state. Terminal rows use the final official score.
+    The fields are derived in memory for compatibility with old replay shards.
+    """
+    final_score = learning_score(result)
+    for start, row in enumerate(rows):
+        reward, discount, next_state = 0.0, 1.0, None
+        terminal, used, score_observed = False, 0, False
+        for offset in range(horizon):
+            index = start + offset
+            if index >= len(rows):
+                break
+            item = rows[index]
+            exploration = result.get('score_version') == EXPLORATION_VERSION
+            before = item.get("training_score_before" if exploration else "score_before")
+            if before is None:
+                observation = item.get("observation") or {}
+                before = learning_score(observation) if observation.get("score_status") == "live_official" else None
+            after = item.get("training_score_after" if exploration else "score_after")
+            candidate_next = item.get("next_observation") or {}
+            if after is None:
+                after = learning_score(candidate_next) if candidate_next.get("score_status") == "live_official" else None
+            before = _log_score(before)
+            after = _log_score(after)
+            if item.get("terminal"):
+                terminal_score = item.get("return")
+                if terminal_score is None:
+                    terminal_score = final_score
+                after = _log_score(terminal_score)
+            if before is not None and after is not None:
+                reward += discount * (after - before)
+                score_observed = True
+            next_state = item.get("next_observation")
+            used += 1
+            if item.get("terminal") or (next_state and next_state.get("terminal")):
+                terminal = True
+                break
+            discount *= gamma
+        row["n_step_reward"] = reward
+        row["n_step_discount"] = discount
+        row["n_step_terminal"] = terminal
+        row["n_step_steps"] = used
+        row["n_step_score_observed"] = score_observed
+        row["n_step_next_observation"] = next_state
+
+
+def _td_target(reference, row, feature_cache):
+    """Return an action-level target, falling back to historical final scores."""
+    terminal = row.get("n_step_terminal")
+    if terminal:
+        score = row.get("return")
+        return _log_score(score)
+    next_state = row.get("n_step_next_observation") or row.get("next_observation")
+    actions = _actions(next_state or {})
+    if next_state and actions and row.get("n_step_steps") and row.get("n_step_score_observed"):
+        with torch.no_grad():
+            next_values = reference.value(feature_cache.get(next_state))
+            continuation = float(next_values.max().detach())
+        return float(row.get("n_step_reward", 0.0)) + float(
+            row.get("n_step_discount", N_STEP_GAMMA)) * continuation
+    return _log_score(row.get("return"))
 
 
 def rows_from_replay(path: str | Path) -> list[dict]:
@@ -35,6 +116,10 @@ def rows_from_replay(path: str | Path) -> list[dict]:
         if result.get("data_role", "training") != "training":
             continue
         assert_training_seed(result.get("seed"))
+        expected_score_version = EXPLORATION_VERSION if os.environ.get('DCSS_EXPLORATION_SCORE') == '1' else None
+        if result.get('score_version') != expected_score_version:
+            continue  # Never mix native and scaled exploration return units.
+        file_rows = []
         with storage.open_text(file) as stream:
             for line in stream:
                 try:
@@ -48,13 +133,15 @@ def rows_from_replay(path: str | Path) -> list[dict]:
                 if (row.get("type") == "transition" or state) and isinstance(state, dict):
                     if state.get("schema") == "crawl-general-v1":
                         if has_episode_score(result):
-                            row["return"] = result["score"]
+                            row["return"] = learning_score(result)
                         # Historical branch shards already identify their
                         # frozen cycle policy. State hashing further separates
                         # distinct probes; do not discard their useful labels.
                         if str(row.get('policy_version', '')).endswith(':counterfactual'):
                             row.setdefault('comparison_id', 'legacy:' + row['policy_version'])
-                        rows.append(row)
+                        file_rows.append(row)
+        _annotate_n_step(file_rows, result)
+        rows.extend(file_rows)
     return rows
 
 
@@ -68,7 +155,8 @@ def _actions(state):
 class FeatureCache:
     """Bounded training-only cache; replay observations must remain immutable."""
     def __init__(self, limit=4096):
-        self.limit = limit
+        from features import FEATURE_VERSION
+        self.limit = min(limit, 128) if FEATURE_VERSION.startswith('general-features-v6-spatial-entities') else limit
         self.entries = OrderedDict()
 
     def get(self, state):
@@ -134,18 +222,18 @@ def train_behavioral_clone(rows: list[dict], epochs: int = 3,
 
 
 def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1, optimizer_states=None, feature_cache=None) -> dict:
-    """Fit an independent return critic; cannot alter policy logits."""
+    """Fit an independent short-horizon score critic; cannot alter policy logits."""
     optimizer = torch.optim.AdamW(model.value_net.parameters(), lr=5e-4, weight_decay=1e-5)
     if optimizer_states is not None and 'critic' in optimizer_states:
         optimizer.load_state_dict(optimizer_states['critic'])
     usable, losses = 0, []
     feature_cache = feature_cache if feature_cache is not None else FeatureCache()
+    reference = copy.deepcopy(model).eval()
+    target_kinds = {"n_step": 0, "terminal_score": 0, "legacy_score": 0}
     for _ in range(epochs):
         total = 0.0
         epoch_usable = 0
         for row in rows:
-            if row.get("return") is None:
-                continue
             state, actions = row.get("observation"), _actions(row.get("observation", {}))
             if not actions:
                 continue
@@ -154,16 +242,24 @@ def train_q_finetune(model: ActionValueModel, rows: list[dict], epochs: int = 1,
                 index = next((i for i, a in enumerate(actions) if a == row.get("action")), -1)
             if not 0 <= int(index) < len(actions):
                 continue
-            target = math.log1p(max(0.0, float(row["return"])))
+            target = _td_target(reference, row, feature_cache)
+            if target is None:
+                continue
+            if row.get("n_step_steps") and row.get("n_step_score_observed"):
+                target_kinds["n_step" if not row.get("n_step_terminal") else "terminal_score"] += 1
+            else:
+                target_kinds["legacy_score"] += 1
             prediction = model.value(feature_cache.get(state))[int(index)]
-            loss = (prediction - target) ** 2
+            loss = nn.functional.smooth_l1_loss(prediction, prediction.new_tensor(target))
             optimizer.zero_grad(); loss.backward(); optimizer.step()
             total += float(loss.detach()); usable += 1; epoch_usable += 1
         losses.append(total / max(1, epoch_usable))
     if optimizer_states is not None:
         optimizer_states['critic'] = optimizer.state_dict()
     return {"usable": usable, "epochs": epochs, "losses": losses,
-            "objective": "independent_score_critic"}
+            "objective": "independent_n_step_score_critic",
+            "target_kinds": target_kinds, "horizon": N_STEP_HORIZON,
+            "gamma": N_STEP_GAMMA}
 
 
 def train_return_policy(model, rows, optimizer_states=None, epochs=3, feature_cache=None):
@@ -176,22 +272,32 @@ def train_return_policy(model, rows, optimizer_states=None, epochs=3, feature_ca
     """
     feature_cache = feature_cache if feature_cache is not None else FeatureCache()
     reference = copy.deepcopy(model).eval()
-    optimizer = torch.optim.AdamW(model.net.parameters(), lr=1e-4, weight_decay=0)
+    optimizer = torch.optim.AdamW(model.net.parameters(), lr=RETURN_POLICY_LR, weight_decay=0)
     if optimizer_states is not None and 'actor_return' in optimizer_states:
         optimizer.load_state_dict(optimizer_states['actor_return'])
     encoded = []
+    target_kinds = {"n_step": 0, "terminal_score": 0, "legacy_score": 0}
+    advantages = []
     for row in rows:
-        probability, result = row.get('behavior_probability'), row.get('return')
+        probability = row.get('behavior_probability')
         actions = _actions(row.get('observation', {}))
         i = row.get('action_index', -1)
-        if (row.get('comparison_id') or probability is None or result is None
+        if (row.get('comparison_id') or probability is None
                 or not 0 < probability <= 1 or not 0 <= i < len(actions)):
             continue
         x = feature_cache.get(row['observation'])
         with torch.no_grad():
             prior = reference(x).softmax(-1)
             baseline = (prior * reference.value(x)).sum()
-            advantage = (math.log1p(max(0, float(result))) - baseline).clamp(-2, 2)
+            target = _td_target(reference, row, feature_cache)
+            if target is None:
+                continue
+            advantage = (target - baseline).clamp(-2, 2)
+        if row.get("n_step_steps") and row.get("n_step_score_observed"):
+            target_kinds["terminal_score" if row.get("n_step_terminal") else "n_step"] += 1
+        else:
+            target_kinds["legacy_score"] += 1
+        advantages.append(float(advantage))
         encoded.append((x, i, probability, prior, advantage))
     if not encoded:
         return {'usable':0, 'updates':0, 'reason':'no scored trajectories with behavior probabilities'}
@@ -210,7 +316,7 @@ def train_return_policy(model, rows, optimizer_states=None, epochs=3, feature_ca
         with torch.no_grad():
             kl = sum(float(nn.functional.kl_div(model(x).log_softmax(-1), prior, reduction='sum'))
                      for x, _, _, prior, _ in encoded) / len(encoded)
-        if not math.isfinite(kl) or kl > .01:
+        if not math.isfinite(kl) or kl > RETURN_POLICY_MAX_KL:
             model.net.load_state_dict(weights); optimizer.load_state_dict(opt)
             break
         updates += 1
@@ -222,7 +328,10 @@ def train_return_policy(model, rows, optimizer_states=None, epochs=3, feature_ca
     return {'usable':len(encoded), 'updates':updates, 'mean_reference_kl':final_kl,
             'objective':'clipped_score_advantage_with_kl',
             'positive_advantages':sum(float(e[4])>0 for e in encoded),
-            'negative_advantages':sum(float(e[4])<0 for e in encoded)}
+            'negative_advantages':sum(float(e[4])<0 for e in encoded),
+            'mean_abs_advantage':sum(abs(x) for x in advantages) / max(1, len(advantages)),
+            'target_kinds': target_kinds, 'horizon': N_STEP_HORIZON,
+            'learning_rate': RETURN_POLICY_LR, 'max_kl': RETURN_POLICY_MAX_KL}
 
 
 def train_counterfactual_preferences(model, rows, anchors=(), epochs=20, optimizer_states=None, feature_cache=None):

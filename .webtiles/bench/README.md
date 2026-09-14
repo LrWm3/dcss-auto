@@ -1,5 +1,10 @@
 # Fixed-seed benchmark
 
+For the complete project history, including failed experiments and later neural
+training, start with [EXPERIMENT-LEDGER.md](EXPERIMENT-LEDGER.md). Its linked
+source inventory covers the original journal, test reports, Git and the relevant
+Codex conversation ancestry. This README describes the historical RC runner.
+
 ## Config-driven batch runner
 
 Edit `batch.example.json`: give each experiment a unique `version` and fresh
