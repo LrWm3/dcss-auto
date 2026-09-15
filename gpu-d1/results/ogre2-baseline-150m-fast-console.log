@@ -1,0 +1,48 @@
+Resuming ogre2_base-seed0 at 55,607,296 decisions
+{"job": "ogre2_base-seed0", "decisions": 75005952, "train_seconds": 1172.133, "decisions_per_train_second": 63991.0, "clears": 0.3427734375, "kills": 16.791015625}
+{"job": "ogre2_base-seed0", "decisions": 100007936, "train_seconds": 1333.34, "decisions_per_train_second": 75005.6, "clears": 0.326171875, "kills": 16.794921875}
+{"job": "ogre2_base-seed0", "decisions": 125009920, "train_seconds": 1488.663, "decisions_per_train_second": 83974.6, "clears": 0.3505859375, "kills": 17.3291015625}
+{"job": "ogre2_base-seed0", "decisions": 150011904, "train_seconds": 1642.102, "decisions_per_train_second": 91353.6, "clears": 0.3984375, "kills": 17.939453125}
+{
+  "jobs": [
+    {
+      "name": "ogre2_base",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 150000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "id": "ogre2_base-seed0"
+    }
+  ],
+  "total_requested_decisions": 150000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-baseline-150m-fast",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+{"job": "ogre2_base-seed0", "status": "complete", "decisions": 150011904, "train_seconds": 1642.102, "decisions_per_train_second": 91353.6}
+Suite outputs: 28.0 MiB
+{"status": "suite_complete", "train_seconds": 1642.102, "decisions_per_train_second": 91353.6}

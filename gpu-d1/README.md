@@ -1,3 +1,5 @@
+A playable floor-clear task and three completed PPO learning runs are now available: see [LEARNING.md](LEARNING.md) for the fixed-layout task, [LEARNING-SLEEP.md](LEARNING-SLEEP.md) for the sleep-only ablation, and [LEARNING-V2.md](LEARNING-V2.md) for the multi-layout sleep/statistics task.
+
 This is an executable CUDA/CPU prototype of the restricted D:1 wait workload. It includes a seeded native map export, shared simulation rules, two CUDA layouts, two schedulers, a native comparison harness, and measured benchmarks. Start with [RESULTS.md](RESULTS.md) for performance and limitations.
 
 Everything is contained in this folder. The build does not use the repository's other simulation or training projects. The native integration modifies only a disposable copy under `native/`.
@@ -66,3 +68,7 @@ The matrix takes several minutes, particularly the CPU crowding cases. Sustained
 | [WAIT_BENCH_PLAN.md](WAIT_BENCH_PLAN.md), [DESIGN.md](DESIGN.md) | Original implementation plan and broader port design |
 
 This tests the value of compact simulation and batching for incoming melee combat. It is a starting point for a D:1 port, not support for arbitrary D:1 play.
+
+For measured PPO performance improvements, see [PERFORMANCE.md](PERFORMANCE.md). New main-runner suites default to `--performance fast`; use `--performance reference` for the original computation path in a fresh output directory.
+
+Latest completed ogre, optional-label and pressure-curriculum results: [OGRE-RESULTS.md](OGRE-RESULTS.md).

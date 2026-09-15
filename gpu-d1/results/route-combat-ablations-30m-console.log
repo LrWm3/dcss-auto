@@ -1,0 +1,115 @@
+{
+  "jobs": [
+    {
+      "name": "route_awake",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": true,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_awake-seed0"
+    },
+    {
+      "name": "route_stack4",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 4,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_stack4-seed0"
+    },
+    {
+      "name": "route_death5",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 5000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_death5-seed0"
+    }
+  ],
+  "total_requested_decisions": 90000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-combat-ablations-30m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-awake
+{"job": "route_awake-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.681640625}
+{"job": "route_awake-seed0", "decisions": 1015808, "train_seconds": 10.886, "decisions_per_train_second": 93310.2, "clears": 0.0, "kills": 8.181640625}
+{"job": "route_awake-seed0", "decisions": 3014656, "train_seconds": 44.046, "decisions_per_train_second": 68443.1, "clears": 0.111328125, "kills": 14.693359375}
+{"job": "route_awake-seed0", "decisions": 10027008, "train_seconds": 184.276, "decisions_per_train_second": 54413.1, "clears": 0.353515625, "kills": 22.005859375}
+{"job": "route_awake-seed0", "decisions": 30015488, "train_seconds": 596.926, "decisions_per_train_second": 50283.5, "clears": 0.513671875, "kills": 26.9482421875}
+{"job": "route_awake-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 596.926, "decisions_per_train_second": 50283.5}
+Suite outputs: 25.9 MiB
+Building ring-reward2-frontier1-route1
+{"job": "route_stack4-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.6865234375}
+{"job": "route_stack4-seed0", "decisions": 1015808, "train_seconds": 12.108, "decisions_per_train_second": 83896.5, "clears": 0.0, "kills": 8.373046875}
+{"job": "route_stack4-seed0", "decisions": 3014656, "train_seconds": 49.27, "decisions_per_train_second": 61185.8, "clears": 0.1611328125, "kills": 15.3173828125}
+{"job": "route_stack4-seed0", "decisions": 10027008, "train_seconds": 200.218, "decisions_per_train_second": 50080.5, "clears": 0.2861328125, "kills": 20.2841796875}
+{"job": "route_stack4-seed0", "decisions": 30015488, "train_seconds": 638.479, "decisions_per_train_second": 47010.9, "clears": 0.421875, "kills": 24.2109375}
+{"job": "route_stack4-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 638.479, "decisions_per_train_second": 47010.9}
+Suite outputs: 57.2 MiB
+Building ring-reward2-frontier1-route1-death5000
+{"job": "route_death5-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.658203125}
+{"job": "route_death5-seed0", "decisions": 1015808, "train_seconds": 9.734, "decisions_per_train_second": 104354.5, "clears": 0.0, "kills": 6.6484375}
+{"job": "route_death5-seed0", "decisions": 3014656, "train_seconds": 35.766, "decisions_per_train_second": 84288.3, "clears": 0.02734375, "kills": 14.9228515625}
+{"job": "route_death5-seed0", "decisions": 10027008, "train_seconds": 170.905, "decisions_per_train_second": 58670.1, "clears": 0.306640625, "kills": 21.0576171875}
+{"job": "route_death5-seed0", "decisions": 30015488, "train_seconds": 577.467, "decisions_per_train_second": 51977.8, "clears": 0.5078125, "kills": 26.4150390625}
+{"job": "route_death5-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 577.467, "decisions_per_train_second": 51977.8}
+Suite outputs: 83.0 MiB
+{"status": "suite_complete", "train_seconds": 1812.872, "decisions_per_train_second": 49670.6}

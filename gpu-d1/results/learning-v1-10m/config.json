@@ -1,0 +1,28 @@
+{
+  "output": "gpu-d1/learning-runs/clear-v1-10m",
+  "resume_from": "gpu-d1/learning-runs/clear-v1",
+  "mode": "train",
+  "enemies": 8,
+  "seeds": "0,1,2",
+  "steps": 10000000,
+  "batch": 512,
+  "horizon": 64,
+  "eval_episodes": 1024,
+  "lr": 0.0003,
+  "gamma": 0.99,
+  "gae_lambda": 0.95,
+  "entropy": 0.01,
+  "epochs": 4,
+  "minibatch": 4096,
+  "torch": "2.6.0+cu124",
+  "gpu": "Quadro RTX 5000 with Max-Q Design",
+  "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.39",
+  "scope": "one fixed native map; fresh randomized placements and combat; proxy player melee",
+  "sources": {
+    "src/learn.cu": "113c7d5fe5889ddf4e7da056fc68e215c7894af727691f200d477d9f13c49413",
+    "src/sim.h": "2c4c2aacaf94d19aa2c5a9e70b5353750cd42f42fd1309ea36800de45fac6118",
+    "scripts/learn_env.py": "30e3a7312db537a47447902afbf17a8b479ee30e7bb97594c2629cfbee1ce4af",
+    "scripts/train_clear.py": "afaf84a764bc77dbef4b99633f55b82497c0a6b4d86b0085ee2abc301d22b6c0",
+    "fixtures/fixture.bin": "af72ec047fb96bee6c32fda79e495776fd0132f9103fc27fea187f4717cee3ec"
+  }
+}

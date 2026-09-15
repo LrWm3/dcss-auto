@@ -1,0 +1,16 @@
+{
+  "temperatures": [
+    0.0,
+    0.25,
+    0.5,
+    1.0,
+    1.5,
+    2.0
+  ],
+  "episodes_per_map": 32,
+  "evaluation_seed": 910777,
+  "source_sha256": "fe26ed4bbabc1e57781afae874a2358619f82054aba4235cb9ee70b7a13b5ffb",
+  "coverage": "Floor tiles visible in pre-action 9x9 observations; terminal observation excluded because of auto-reset.",
+  "stall": "Fraction of turns ending a 32-position window with at most two distinct positions and no adjacent live enemy throughout.",
+  "timing": "Evaluation includes diagnostics, excludes model/map loading; no training performed."
+}

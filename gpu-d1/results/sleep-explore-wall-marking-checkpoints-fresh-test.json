@@ -1,0 +1,98 @@
+[
+  {
+    "variant": "ring-walls",
+    "checkpoint": 10027008,
+    "mode": "sampled",
+    "clear_rate": 0.255859375,
+    "kills": 6.62060546875,
+    "timeout_rate": 0.73095703125
+  },
+  {
+    "variant": "ring-walls",
+    "checkpoint": 10027008,
+    "mode": "greedy",
+    "clear_rate": 0.2529296875,
+    "kills": 6.3408203125,
+    "timeout_rate": 0.73486328125
+  },
+  {
+    "variant": "ring-walls",
+    "checkpoint": 30015488,
+    "mode": "sampled",
+    "clear_rate": 0.49169921875,
+    "kills": 7.12451171875,
+    "timeout_rate": 0.4970703125
+  },
+  {
+    "variant": "ring-walls",
+    "checkpoint": 30015488,
+    "mode": "greedy",
+    "clear_rate": 0.44970703125,
+    "kills": 6.82666015625,
+    "timeout_rate": 0.53857421875
+  },
+  {
+    "variant": "ring-walls",
+    "checkpoint": 100007936,
+    "mode": "sampled",
+    "clear_rate": 0.61376953125,
+    "kills": 7.33837890625,
+    "timeout_rate": 0.376953125
+  },
+  {
+    "variant": "ring-walls",
+    "checkpoint": 100007936,
+    "mode": "greedy",
+    "clear_rate": 0.58642578125,
+    "kills": 7.2060546875,
+    "timeout_rate": 0.4033203125
+  },
+  {
+    "variant": "frontier-walls",
+    "checkpoint": 10027008,
+    "mode": "sampled",
+    "clear_rate": 0.01611328125,
+    "kills": 4.51953125,
+    "timeout_rate": 0.97802734375
+  },
+  {
+    "variant": "frontier-walls",
+    "checkpoint": 10027008,
+    "mode": "greedy",
+    "clear_rate": 0.01171875,
+    "kills": 4.3388671875,
+    "timeout_rate": 0.9755859375
+  },
+  {
+    "variant": "frontier-walls",
+    "checkpoint": 30015488,
+    "mode": "sampled",
+    "clear_rate": 0.017578125,
+    "kills": 4.44287109375,
+    "timeout_rate": 0.9755859375
+  },
+  {
+    "variant": "frontier-walls",
+    "checkpoint": 30015488,
+    "mode": "greedy",
+    "clear_rate": 0.01611328125,
+    "kills": 4.2880859375,
+    "timeout_rate": 0.97412109375
+  },
+  {
+    "variant": "frontier-walls",
+    "checkpoint": 100007936,
+    "mode": "sampled",
+    "clear_rate": 0.2392578125,
+    "kills": 6.52685546875,
+    "timeout_rate": 0.75634765625
+  },
+  {
+    "variant": "frontier-walls",
+    "checkpoint": 100007936,
+    "mode": "greedy",
+    "clear_rate": 0.23046875,
+    "kills": 6.42138671875,
+    "timeout_rate": 0.76171875
+  }
+]

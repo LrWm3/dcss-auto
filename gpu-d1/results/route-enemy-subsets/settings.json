@@ -1,0 +1,308 @@
+{
+  "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ring-route-cue-corrected-200m-seed0/runs/route_cue-seed0/latest.pt",
+  "checkpoint_sha256": "51c35f49034e59d67feb351f67ea6b71797a7d72acf756a2fa0babe09684be75",
+  "library_sha256": "601d651a375eae62a24fb9fd5a0e352feea382cf57b112bfa91ce7c3c369a56b",
+  "adapter_sha256": "2b44db26192188fddca9374b6e1bffba1c20eabd2b576d8c7fa12d39ed6ee558",
+  "seed": 900000,
+  "episodes": 1024,
+  "maps": [
+    {
+      "path": "map-62655.bin",
+      "seed": 62655,
+      "cells": 457,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-63315.bin",
+      "seed": 63315,
+      "cells": 1142,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-63391.bin",
+      "seed": 63391,
+      "cells": 1167,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-63453.bin",
+      "seed": 63453,
+      "cells": 1011,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-63913.bin",
+      "seed": 63913,
+      "cells": 1268,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-64026.bin",
+      "seed": 64026,
+      "cells": 966,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-64106.bin",
+      "seed": 64106,
+      "cells": 1008,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-64379.bin",
+      "seed": 64379,
+      "cells": 881,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-64869.bin",
+      "seed": 64869,
+      "cells": 1039,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-64952.bin",
+      "seed": 64952,
+      "cells": 947,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-65051.bin",
+      "seed": 65051,
+      "cells": 1099,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-65650.bin",
+      "seed": 65650,
+      "cells": 848,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-65772.bin",
+      "seed": 65772,
+      "cells": 868,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-65838.bin",
+      "seed": 65838,
+      "cells": 1139,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-66008.bin",
+      "seed": 66008,
+      "cells": 1024,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-66179.bin",
+      "seed": 66179,
+      "cells": 1344,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-66384.bin",
+      "seed": 66384,
+      "cells": 967,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-70377.bin",
+      "seed": 70377,
+      "cells": 1267,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-71260.bin",
+      "seed": 71260,
+      "cells": 919,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-71314.bin",
+      "seed": 71314,
+      "cells": 645,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-71555.bin",
+      "seed": 71555,
+      "cells": 1112,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-71600.bin",
+      "seed": 71600,
+      "cells": 985,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-71651.bin",
+      "seed": 71651,
+      "cells": 1065,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-71831.bin",
+      "seed": 71831,
+      "cells": 1072,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72094.bin",
+      "seed": 72094,
+      "cells": 658,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72244.bin",
+      "seed": 72244,
+      "cells": 1004,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72250.bin",
+      "seed": 72250,
+      "cells": 1452,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72288.bin",
+      "seed": 72288,
+      "cells": 1023,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72296.bin",
+      "seed": 72296,
+      "cells": 860,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72423.bin",
+      "seed": 72423,
+      "cells": 1862,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72475.bin",
+      "seed": 72475,
+      "cells": 1003,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    },
+    {
+      "path": "map-72581.bin",
+      "seed": 72581,
+      "cells": 1070,
+      "hp": 18,
+      "ac": 681,
+      "ev": 794,
+      "sh": 906
+    }
+  ],
+  "enemy_counts": [
+    40,
+    32,
+    24,
+    16,
+    8
+  ],
+  "selection": "Retain slots 0..count-1 from identical 40-enemy initial states; preserve types and RNG.",
+  "action_mode": "sampled temperature 1",
+  "training_seconds": 0
+}

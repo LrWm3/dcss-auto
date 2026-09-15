@@ -1,0 +1,41 @@
+{
+  "jobs": [
+    {
+      "name": "ogre2_no_optional_label",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 50000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "no_optional_label": true,
+      "id": "ogre2_no_optional_label-seed0"
+    }
+  ],
+  "total_requested_decisions": 50000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-no-optional-label-50m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}

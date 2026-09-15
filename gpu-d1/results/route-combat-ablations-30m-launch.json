@@ -1,0 +1,18 @@
+{
+  "pid": 2055369,
+  "command": [
+    "/home/reeldata/wk/exp/dcss/gpu-d1/.venv/bin/python",
+    "-u",
+    "/home/reeldata/wk/exp/dcss/gpu-d1/scripts/run_ring_ablations.py",
+    "--variants",
+    "route_awake,route_stack4,route_death5",
+    "--seeds",
+    "0",
+    "--steps",
+    "30000000",
+    "--output",
+    "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-combat-ablations-30m"
+  ],
+  "log": "/home/reeldata/wk/exp/dcss/gpu-d1/results/route-combat-ablations-30m-console.log",
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-combat-ablations-30m"
+}

@@ -1,3 +1,22 @@
 /build/
 /native/
 __pycache__/
+/.venv/
+/learning-runs/
+/performance/*.so
+/performance/*.sqlite
+/performance/*.qdstrm
+/performance/*.nsys-rep
+/performance/*.ncu-rep
+/performance/*.trace.json
+/performance/nsight-libs/
+
+# Regenerable resident-map caches and process-local files.
+**/map-*.bin
+**/*.pid
+/fixtures/d1-corpus-part-*/
+/fixtures/test-export-*/
+/fixtures/v2-corpus-extra/
+/fixtures/v2-corpus/
+/fixtures/v2-test/
+/fixtures/v2-train/

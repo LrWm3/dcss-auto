@@ -1,0 +1,172 @@
+[
+  {
+    "decisions": 0,
+    "train_seconds": 0.0,
+    "sampled": {
+      "clear_rate": 0.0,
+      "kills": 4.0791015625,
+      "death_rate": 0.552734375,
+      "timeout_rate": 0.447265625,
+      "turns": 565.849609375,
+      "shaped_return": 3.2486348152160645,
+      "ogres_killed": 0.0,
+      "ogre_damage": 2.259765625,
+      "ogre_actions": 2.177734375,
+      "ogre_adjacent_turns": 0.80078125,
+      "awake_ogres_at_end": 0.12109375,
+      "living_ogres_at_end": 1.0,
+      "ogre_death_rate": 0.1025390625
+    },
+    "greedy": {
+      "clear_rate": 0.0,
+      "kills": 1.6103515625,
+      "death_rate": 0.3759765625,
+      "timeout_rate": 0.6240234375,
+      "turns": 699.259765625,
+      "shaped_return": 0.6029783487319946,
+      "ogres_killed": 0.0,
+      "ogre_damage": 0.1611328125,
+      "ogre_actions": 0.173828125,
+      "ogre_adjacent_turns": 0.052734375,
+      "awake_ogres_at_end": 0.0126953125,
+      "living_ogres_at_end": 1.0,
+      "ogre_death_rate": 0.009765625
+    }
+  },
+  {
+    "decisions": 1015808,
+    "train_seconds": 10.708836381556466,
+    "sampled": {
+      "clear_rate": 0.001953125,
+      "kills": 7.44921875,
+      "death_rate": 0.845703125,
+      "timeout_rate": 0.15234375,
+      "turns": 330.5537109375,
+      "shaped_return": 6.860352039337158,
+      "ogres_killed": 0.0,
+      "ogre_damage": 7.431640625,
+      "ogre_actions": 9.5947265625,
+      "ogre_adjacent_turns": 2.734375,
+      "awake_ogres_at_end": 0.4169921875,
+      "living_ogres_at_end": 1.0,
+      "ogre_death_rate": 0.3359375
+    },
+    "greedy": {
+      "clear_rate": 0.0,
+      "kills": 4.404296875,
+      "death_rate": 0.6201171875,
+      "timeout_rate": 0.3798828125,
+      "turns": 519.3876953125,
+      "shaped_return": 3.5217394828796387,
+      "ogres_killed": 0.0009765625,
+      "ogre_damage": 2.662109375,
+      "ogre_actions": 2.451171875,
+      "ogre_adjacent_turns": 0.96875,
+      "awake_ogres_at_end": 0.1484375,
+      "living_ogres_at_end": 0.9990234375,
+      "ogre_death_rate": 0.126953125
+    }
+  },
+  {
+    "decisions": 3014656,
+    "train_seconds": 43.97978023812175,
+    "sampled": {
+      "clear_rate": 0.0439453125,
+      "kills": 10.7001953125,
+      "death_rate": 0.9501953125,
+      "timeout_rate": 0.005859375,
+      "turns": 244.9755859375,
+      "shaped_return": 10.47650146484375,
+      "ogres_killed": 0.0009765625,
+      "ogre_damage": 10.822265625,
+      "ogre_actions": 26.525390625,
+      "ogre_adjacent_turns": 3.9306640625,
+      "awake_ogres_at_end": 0.6279296875,
+      "living_ogres_at_end": 0.9990234375,
+      "ogre_death_rate": 0.46875
+    },
+    "greedy": {
+      "clear_rate": 0.0341796875,
+      "kills": 9.986328125,
+      "death_rate": 0.837890625,
+      "timeout_rate": 0.1279296875,
+      "turns": 349.7060546875,
+      "shaped_return": 9.629837036132812,
+      "ogres_killed": 0.001953125,
+      "ogre_damage": 8.5859375,
+      "ogre_actions": 20.212890625,
+      "ogre_adjacent_turns": 2.77734375,
+      "awake_ogres_at_end": 0.4970703125,
+      "living_ogres_at_end": 0.998046875,
+      "ogre_death_rate": 0.3857421875
+    }
+  },
+  {
+    "decisions": 10027008,
+    "train_seconds": 177.18784620333463,
+    "sampled": {
+      "clear_rate": 0.26171875,
+      "kills": 14.4375,
+      "death_rate": 0.7353515625,
+      "timeout_rate": 0.0029296875,
+      "turns": 326.7041015625,
+      "shaped_return": 15.271306037902832,
+      "ogres_killed": 0.0,
+      "ogre_damage": 8.59765625,
+      "ogre_actions": 56.1787109375,
+      "ogre_adjacent_turns": 3.06640625,
+      "awake_ogres_at_end": 0.685546875,
+      "living_ogres_at_end": 1.0,
+      "ogre_death_rate": 0.3505859375
+    },
+    "greedy": {
+      "clear_rate": 0.1845703125,
+      "kills": 12.697265625,
+      "death_rate": 0.6328125,
+      "timeout_rate": 0.1826171875,
+      "turns": 444.888671875,
+      "shaped_return": 13.122443199157715,
+      "ogres_killed": 0.001953125,
+      "ogre_damage": 7.0224609375,
+      "ogre_actions": 46.447265625,
+      "ogre_adjacent_turns": 2.75390625,
+      "awake_ogres_at_end": 0.5537109375,
+      "living_ogres_at_end": 0.998046875,
+      "ogre_death_rate": 0.2880859375
+    }
+  },
+  {
+    "decisions": 30015488,
+    "train_seconds": 581.1538340651896,
+    "sampled": {
+      "clear_rate": 0.4267578125,
+      "kills": 16.669921875,
+      "death_rate": 0.5703125,
+      "timeout_rate": 0.0029296875,
+      "turns": 383.556640625,
+      "shaped_return": 18.274877548217773,
+      "ogres_killed": 0.0009765625,
+      "ogre_damage": 7.279296875,
+      "ogre_actions": 80.0654296875,
+      "ogre_adjacent_turns": 2.73828125,
+      "awake_ogres_at_end": 0.7666015625,
+      "living_ogres_at_end": 0.9990234375,
+      "ogre_death_rate": 0.2626953125
+    },
+    "greedy": {
+      "clear_rate": 0.34375,
+      "kills": 14.98046875,
+      "death_rate": 0.5205078125,
+      "timeout_rate": 0.1357421875,
+      "turns": 466.5859375,
+      "shaped_return": 16.152740478515625,
+      "ogres_killed": 0.001953125,
+      "ogre_damage": 6.1015625,
+      "ogre_actions": 69.9755859375,
+      "ogre_adjacent_turns": 2.2255859375,
+      "awake_ogres_at_end": 0.6533203125,
+      "living_ogres_at_end": 0.998046875,
+      "ogre_death_rate": 0.2314453125
+    }
+  }
+]

@@ -1,0 +1,4 @@
+PASS enemies=1: 37 worlds x 300 mixed actions, exact full-state CPU/CUDA parity; 352 terminations
+PASS enemies=6: 37 worlds x 300 mixed actions, exact full-state CPU/CUDA parity; 136 terminations
+PASS enemies=8: 37 worlds x 300 mixed actions, exact full-state CPU/CUDA parity; 133 terminations
+PASS non-default CUDA stream, movement, last kill/no retaliation, timeout, death, reset, occupancy/dead-actor invariants

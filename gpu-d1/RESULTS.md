@@ -1,5 +1,7 @@
 # D:1 wait prototype: measurements and limits
 
+For the subsequent movement/attack task and measured PPO learning results, see [LEARNING.md](LEARNING.md), [LEARNING-SLEEP.md](LEARNING-SLEEP.md), and [LEARNING-V2.md](LEARNING-V2.md). The measurements below remain those of the original wait prototype.
+
 The prototype runs the restricted D:1 workload on both CPU and CUDA. It achieves useful GPU acceleration for large batches, with substantial differences between quiet waiting, contact combat, and navigation through crowds. These are resident simulation rates, including real player damage, deaths, and resets. They exclude policy inference and per-step CPU readback.
 
 **Sustained comparison.** The final comparison uses 8,192 independent worlds, eight monsters per world, mixed approach/contact phases, 64 waits per kernel, and exactly 4,096 waits per world per trial: **33,554,432 transitions per trial on every backend**. Both CPU schedulers are measured. Rates below are medians of three trials; ranges show the minimum and maximum.
@@ -102,3 +104,5 @@ The explicit device arrays occupy **93,597,088 bytes (89.3 MiB)** at batch 8,192
 Commands are in [README.md](README.md). [summary.csv](results/summary.csv), [matrix.jsonl](results/matrix.jsonl), [baselines.jsonl](results/baselines.jsonl), [sustained.jsonl](results/sustained.jsonl), and [launch.jsonl](results/launch.jsonl) contain the measurements. The final launch file supersedes launch rows in the initial matrix after an explicit warp observation barrier was added. [environment.json](results/environment.json) records hardware, flags, and source/fixture fingerprints. Native validation and sanitizer logs remain under `results/`.
 
 **What this supports.** Compact representation yields the largest improvement over native engine overhead. GPU batching adds a useful further gain, especially for contact combat, but navigation/crowding sharply reduces throughput. The next worthwhile performance work is the bounded repair search and broader map/position coverage. Adding movement/player attacks, additional D:1 monsters, awareness, or mutable terrain requires new rules and fresh measurements. This result is evidence for the restricted wait prototype, not a measured full D:1 port.
+
+Latest completed ogre, optional-label and pressure-curriculum results: [OGRE-RESULTS.md](OGRE-RESULTS.md).

@@ -1,0 +1,4 @@
+{"job": "pressure10-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 8.25, "pressure_train_clear": 0.0, "pressure_heldout_clear": 0.0}
+Resuming pressure10-seed0 at 256 decisions
+{"job": "pressure10-seed0", "decisions": 512, "train_seconds": 0.232, "decisions_per_train_second": 2209.8, "clears": 0.0, "kills": 7.5, "pressure_train_clear": 0.0, "pressure_heldout_clear": 0.0}
+PASS: interrupted resume exactly matches uninterrupted smoke training

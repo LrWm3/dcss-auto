@@ -1,0 +1,177 @@
+Queued: waiting for /home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-no-optional-label-50m
+Preceding suite complete; starting ogre feature screen.
+{
+  "jobs": [
+    {
+      "name": "ordinary_only",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 50000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "pressure_permille": 0,
+      "id": "ordinary_only-seed0"
+    },
+    {
+      "name": "pressure10",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 50000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "pressure_permille": 100,
+      "id": "pressure10-seed0"
+    }
+  ],
+  "total_requested_decisions": 100000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre-pressure-screen-50m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-fast-ogres2-features0
+{"job": "ordinary_only-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 3.9267578125, "pressure_train_clear": 0.0224609375, "pressure_heldout_clear": 0.037109375}
+{"job": "ordinary_only-seed0", "decisions": 1015808, "train_seconds": 4.971, "decisions_per_train_second": 204361.2, "clears": 0.0, "kills": 5.3837890625, "pressure_train_clear": 0.119140625, "pressure_heldout_clear": 0.1328125}
+{"job": "ordinary_only-seed0", "decisions": 3014656, "train_seconds": 15.321, "decisions_per_train_second": 196765.2, "clears": 0.0, "kills": 7.1953125, "pressure_train_clear": 0.51953125, "pressure_heldout_clear": 0.443359375}
+{"job": "ordinary_only-seed0", "decisions": 10027008, "train_seconds": 54.865, "decisions_per_train_second": 182757.5, "clears": 0.0546875, "kills": 10.900390625, "pressure_train_clear": 0.947265625, "pressure_heldout_clear": 0.95703125}
+{"job": "ordinary_only-seed0", "decisions": 30015488, "train_seconds": 183.225, "decisions_per_train_second": 163818.0, "clears": 0.2412109375, "kills": 15.009765625, "pressure_train_clear": 0.99609375, "pressure_heldout_clear": 0.99609375}
+{"job": "ordinary_only-seed0", "decisions": 50003968, "train_seconds": 315.182, "decisions_per_train_second": 158651.0, "clears": 0.306640625, "kills": 16.2578125, "pressure_train_clear": 0.9990234375, "pressure_heldout_clear": 0.998046875}
+{"job": "ordinary_only-seed0", "status": "complete", "decisions": 50003968, "train_seconds": 315.182, "decisions_per_train_second": 158651.0}
+Suite outputs: 28.5 MiB
+{"job": "pressure10-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 3.9267578125, "pressure_train_clear": 0.0224609375, "pressure_heldout_clear": 0.037109375}
+{"job": "pressure10-seed0", "decisions": 1015808, "train_seconds": 5.075, "decisions_per_train_second": 200176.9, "clears": 0.0, "kills": 6.0966796875, "pressure_train_clear": 0.1572265625, "pressure_heldout_clear": 0.1796875}
+{"job": "pressure10-seed0", "decisions": 3014656, "train_seconds": 15.844, "decisions_per_train_second": 190273.1, "clears": 0.005859375, "kills": 8.2607421875, "pressure_train_clear": 0.7138671875, "pressure_heldout_clear": 0.7421875}
+{"job": "pressure10-seed0", "decisions": 10027008, "train_seconds": 57.24, "decisions_per_train_second": 175173.6, "clears": 0.107421875, "kills": 12.3515625, "pressure_train_clear": 0.9921875, "pressure_heldout_clear": 0.98046875}
+{"job": "pressure10-seed0", "decisions": 30015488, "train_seconds": 186.698, "decisions_per_train_second": 160770.1, "clears": 0.263671875, "kills": 15.4091796875, "pressure_train_clear": 1.0, "pressure_heldout_clear": 0.99609375}
+{"job": "pressure10-seed0", "decisions": 50003968, "train_seconds": 319.317, "decisions_per_train_second": 156596.4, "clears": 0.2861328125, "kills": 15.6005859375, "pressure_train_clear": 0.9951171875, "pressure_heldout_clear": 0.994140625}
+{"job": "pressure10-seed0", "status": "complete", "decisions": 50003968, "train_seconds": 319.317, "decisions_per_train_second": 156596.4}
+Suite outputs: 55.7 MiB
+{"status": "suite_complete", "train_seconds": 634.5, "decisions_per_train_second": 157617.0}
+[
+  {
+    "job": "ordinary_only-seed0",
+    "decisions": 50003968,
+    "train_seconds": 315.18220132635906,
+    "ordinary_clear": 0.306640625,
+    "pressure_train_clear": 0.9990234375,
+    "pressure_heldout_clear": 0.998046875,
+    "pressure_heldout_ogre_death": 0.001953125,
+    "pressure_heldout_clear_ogre_alive": 0.998046875,
+    "pressure_decision_fraction": 0.0,
+    "training_groups": {
+      "ordinary": {
+        "decisions": 50003968.0,
+        "episodes": 148120.0,
+        "clears": 27667.0,
+        "deaths": 118410.0,
+        "ogre_deaths": 73151.0,
+        "ogres_killed": 198.0,
+        "ogre_damage": 1822798.0,
+        "wake_events": 182171.0,
+        "awake_adjacent_turns": 646957.0,
+        "awake_near_turns": 4271364.0,
+        "shaped_return": 2068237.620238118,
+        "completed_episode_turns": 49873169.0
+      },
+      "ogre_pressure": {
+        "decisions": 0.0,
+        "episodes": 0.0,
+        "clears": 0.0,
+        "deaths": 0.0,
+        "ogre_deaths": 0.0,
+        "ogres_killed": 0.0,
+        "ogre_damage": 0.0,
+        "wake_events": 0.0,
+        "awake_adjacent_turns": 0.0,
+        "awake_near_turns": 0.0,
+        "shaped_return": 0.0,
+        "completed_episode_turns": 0.0
+      }
+    }
+  },
+  {
+    "job": "pressure10-seed0",
+    "decisions": 50003968,
+    "train_seconds": 319.31739240768366,
+    "ordinary_clear": 0.2861328125,
+    "pressure_train_clear": 0.9951171875,
+    "pressure_heldout_clear": 0.994140625,
+    "pressure_heldout_ogre_death": 0.005859375,
+    "pressure_heldout_clear_ogre_alive": 0.994140625,
+    "pressure_decision_fraction": 0.015270808108668496,
+    "training_groups": {
+      "ordinary": {
+        "decisions": 49240367.0,
+        "episodes": 146761.0,
+        "clears": 29641.0,
+        "deaths": 115527.0,
+        "ogre_deaths": 70387.0,
+        "ogres_killed": 134.0,
+        "ogre_damage": 1746230.0,
+        "wake_events": 184117.0,
+        "awake_adjacent_turns": 628491.0,
+        "awake_near_turns": 3946607.0,
+        "shaped_return": 2109996.697676207,
+        "completed_episode_turns": 49112145.0
+      },
+      "ogre_pressure": {
+        "decisions": 763601.0,
+        "episodes": 16294.0,
+        "clears": 15322.0,
+        "deaths": 971.0,
+        "ogre_deaths": 952.0,
+        "ogres_killed": 1.0,
+        "ogre_damage": 27957.0,
+        "wake_events": 6229.0,
+        "awake_adjacent_turns": 10620.0,
+        "awake_near_turns": 47310.0,
+        "shaped_return": 63228.712199006,
+        "completed_episode_turns": 763468.0
+      }
+    }
+  }
+]

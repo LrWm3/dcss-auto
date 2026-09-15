@@ -1,0 +1,17 @@
+{
+  "pid": 2059106,
+  "command": [
+    "/home/reeldata/wk/exp/dcss/gpu-d1/.venv/bin/python",
+    "-u",
+    "/home/reeldata/wk/exp/dcss/gpu-d1/scripts/run_route_no_explore.py",
+    "--after-suite",
+    "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-combat-ablations-30m",
+    "--steps",
+    "30000000",
+    "--seeds",
+    "0",
+    "--output",
+    "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-no-explore-30m"
+  ],
+  "log": "/home/reeldata/wk/exp/dcss/gpu-d1/results/route-no-explore-30m-console.log"
+}

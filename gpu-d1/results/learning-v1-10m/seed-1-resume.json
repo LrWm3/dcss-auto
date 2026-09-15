@@ -1,0 +1,12 @@
+{
+  "source": "gpu-d1/learning-runs/clear-v1/seed-1",
+  "decisions": 3014656,
+  "restored": [
+    "model",
+    "optimizer",
+    "torch_rng",
+    "cuda_rng"
+  ],
+  "environment_restored": false,
+  "environment_reset_seed": 4100000
+}

@@ -1,0 +1,2023 @@
+{
+  "format": "gpu-d1-d1-floor-corpus-split",
+  "split": "validation",
+  "count": 32,
+  "maps": [
+    {
+      "seed": 62655,
+      "cells": 457,
+      "sha256": "53dc235a8ccc8f665131e8807480c60dc1a550c4c9560eec985bbd827cbcfe17",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-62655.bin"
+    },
+    {
+      "seed": 63315,
+      "cells": 1142,
+      "sha256": "d93e624b447368d2001469ca6536cc4aac06fdcf61751bda39ee66be10aa1934",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-63315.bin"
+    },
+    {
+      "seed": 63391,
+      "cells": 1167,
+      "sha256": "f14257ba7b7766e3d3dc93233b016689cdaa26bbb3dcacaafb114c43a809f94b",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-63391.bin"
+    },
+    {
+      "seed": 63453,
+      "cells": 1011,
+      "sha256": "383e5b1e87118bf4dd62b3554400ba5fa16a87a21a0fd1c35ce0b819ee6ce36b",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-63453.bin"
+    },
+    {
+      "seed": 63913,
+      "cells": 1268,
+      "sha256": "d82244d8088febc01c27eb081acfcdb305146079dc9a158df71fbfe69857d2cf",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-63913.bin"
+    },
+    {
+      "seed": 64026,
+      "cells": 966,
+      "sha256": "07593651c8b261f574918fbff1e8ebfce6248579115c4714a6f527ac517b9c83",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-64026.bin"
+    },
+    {
+      "seed": 64106,
+      "cells": 1008,
+      "sha256": "5f1b53051f01316871327e5379dd14437babc0fd74740ef2801fe20516394ada",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-64106.bin"
+    },
+    {
+      "seed": 64379,
+      "cells": 881,
+      "sha256": "24dfcbb831c9f58108477a8a345aef667ded63af31b040667023750d46239169",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-64379.bin"
+    },
+    {
+      "seed": 64869,
+      "cells": 1039,
+      "sha256": "86fb2f824f728746047576d1af7c6cb47e1b742fd0df1575a19280249cf29ed8",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-64869.bin"
+    },
+    {
+      "seed": 64952,
+      "cells": 947,
+      "sha256": "e6ac54dbec64fd3c3b4aa61b28446866b72d484ace19a1c2360c743baa1b84c8",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-64952.bin"
+    },
+    {
+      "seed": 65051,
+      "cells": 1099,
+      "sha256": "f82e497943a70f1a55423f66e2fc6fa1ee517c36bf94606e1d5b5ac4df6d5776",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-65051.bin"
+    },
+    {
+      "seed": 65650,
+      "cells": 848,
+      "sha256": "583fae68849cfaca31383c878c865eaa367d170ffbd0494797bacb6cebd2c26e",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-65650.bin"
+    },
+    {
+      "seed": 65772,
+      "cells": 868,
+      "sha256": "b3706c89e60340ae599ca24da0562d859c1fbbf41a60088de3cbbe8d41d0e45e",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-65772.bin"
+    },
+    {
+      "seed": 65838,
+      "cells": 1139,
+      "sha256": "cc8f1b2f4192539a94e4d166a618febb436a9c265d7e0f4b6780bae4b30b6bb6",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-65838.bin"
+    },
+    {
+      "seed": 66008,
+      "cells": 1024,
+      "sha256": "e6217386c376cbdc6ea3f0e46b6012b4dcc58cf6886018b1a0cfe20024eef37f",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-66008.bin"
+    },
+    {
+      "seed": 66179,
+      "cells": 1344,
+      "sha256": "8af888bcb770b7243260926bad8ffad94d6ff8015e8dc977564e965b0760e34c",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-66179.bin"
+    },
+    {
+      "seed": 66384,
+      "cells": 967,
+      "sha256": "523f28cd7b5b63830e698077b8d7466be478028fb5bbcd7fb13d4d1188d5d06f",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-66384.bin"
+    },
+    {
+      "seed": 70377,
+      "cells": 1267,
+      "sha256": "bbffde585c74694ac1978b92fddcb24b16fd2d0ff3e937b09840ea818b609ff7",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-70377.bin"
+    },
+    {
+      "seed": 71260,
+      "cells": 919,
+      "sha256": "a6a549850d2560c4e807a35e9a249046458dd1dd4aed319be992f92636a738fa",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-71260.bin"
+    },
+    {
+      "seed": 71314,
+      "cells": 645,
+      "sha256": "c0ac591d8183fb5060e91f0c4bbb08c9bd0ac4a47be354f752418ac1dd6c8cc6",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-71314.bin"
+    },
+    {
+      "seed": 71555,
+      "cells": 1112,
+      "sha256": "f7e2a5efdbd15cd526fdf4e6dc5fd7e00d0e195515644c29532671a5c93f41d1",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-71555.bin"
+    },
+    {
+      "seed": 71600,
+      "cells": 985,
+      "sha256": "f43e759835e8333639ddb0f4c868daf0540aad20cf324ab0158037ce52a8266c",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-71600.bin"
+    },
+    {
+      "seed": 71651,
+      "cells": 1065,
+      "sha256": "27643c20c7600529e8df6654b9b7020a4bc3b3cb55651af07c1fb8e5b5adbaae",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-71651.bin"
+    },
+    {
+      "seed": 71831,
+      "cells": 1072,
+      "sha256": "0772cdee92309a1e6e3871b2d9160f2d3409a69e9fe9677492abd4f6b1bab32a",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-71831.bin"
+    },
+    {
+      "seed": 72094,
+      "cells": 658,
+      "sha256": "e328ce00c7eafc38f91f28907b1be13a38a75fd544a12f50bd712fbc264c74f4",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72094.bin"
+    },
+    {
+      "seed": 72244,
+      "cells": 1004,
+      "sha256": "556099b4fed282043dfd999454812556dc031fa2e0754fe1f2c61ce5d86ee327",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72244.bin"
+    },
+    {
+      "seed": 72250,
+      "cells": 1452,
+      "sha256": "a434d2e44162abad831ce9a8ae6cc0dc37d11e32dc490c851a680706e408b063",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72250.bin"
+    },
+    {
+      "seed": 72288,
+      "cells": 1023,
+      "sha256": "795b1b0df249a0ca73a73e2ecd9fb8327a950d81cae59dbf420374419b9a4fd5",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72288.bin"
+    },
+    {
+      "seed": 72296,
+      "cells": 860,
+      "sha256": "bd8bcc45089096ee530b4f6209d809aa664e10649ee9c6c2441c4d4f24733fc7",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72296.bin"
+    },
+    {
+      "seed": 72423,
+      "cells": 1862,
+      "sha256": "1faeaf1716593673fa322b9aac4dbd385a29ff153a02644c9e20697605e5a374",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72423.bin"
+    },
+    {
+      "seed": 72475,
+      "cells": 1003,
+      "sha256": "6cc8aa1810c42b16b7950c1202c4c641ca2886652f4ab5e2ce05641281e3a4af",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72475.bin"
+    },
+    {
+      "seed": 72581,
+      "cells": 1070,
+      "sha256": "c446c679ecd57c4c7b48ec28da14ced3d7450672c9600f619ec3fc72bf453425",
+      "player_hp": 18,
+      "monster_roster": [
+        {
+          "name": "rat",
+          "native_type": 14,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "frilled lizard",
+          "native_type": 1,
+          "hd": 1,
+          "damage": 3,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "goblin",
+          "native_type": 181,
+          "hd": 1,
+          "damage": 1,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "hobgoblin",
+          "native_type": 182,
+          "hd": 1,
+          "damage": 5,
+          "speed": 10,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "quokka",
+          "native_type": 19,
+          "hd": 1,
+          "damage": 5,
+          "speed": 12,
+          "to_hit": 19,
+          "bypass": 15
+        },
+        {
+          "name": "jackal",
+          "native_type": 21,
+          "hd": 1,
+          "damage": 3,
+          "speed": 14,
+          "to_hit": 19,
+          "bypass": 15
+        }
+      ],
+      "file": "map-72581.bin"
+    }
+  ]
+}

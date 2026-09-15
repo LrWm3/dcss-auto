@@ -1,0 +1,240 @@
+Queued: waiting for /home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-healing-30m
+Preceding suite complete; starting ogre feature screen.
+{
+  "jobs": [
+    {
+      "name": "ogre0_base",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 24,
+      "ogres": 0,
+      "ogre_features": 0,
+      "id": "ogre0_base-seed0"
+    },
+    {
+      "name": "ogre1_base",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 25,
+      "ogres": 1,
+      "ogre_features": 0,
+      "id": "ogre1_base-seed0"
+    },
+    {
+      "name": "ogre1_awake",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 25,
+      "ogres": 1,
+      "ogre_features": 1,
+      "id": "ogre1_awake-seed0"
+    },
+    {
+      "name": "ogre1_speed",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 25,
+      "ogres": 1,
+      "ogre_features": 2,
+      "id": "ogre1_speed-seed0"
+    },
+    {
+      "name": "ogre1_stats",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 25,
+      "ogres": 1,
+      "ogre_features": 4,
+      "id": "ogre1_stats-seed0"
+    },
+    {
+      "name": "ogre1_all",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 25,
+      "ogres": 1,
+      "ogre_features": 7,
+      "id": "ogre1_all-seed0"
+    }
+  ],
+  "total_requested_decisions": 180000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre-feature-screen-30m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-ogres0-features0
+{"job": "ogre0_base-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.3671875}
+{"job": "ogre0_base-seed0", "decisions": 1015808, "train_seconds": 10.812, "decisions_per_train_second": 93950.3, "clears": 0.0087890625, "kills": 9.2783203125}
+{"job": "ogre0_base-seed0", "decisions": 3014656, "train_seconds": 48.873, "decisions_per_train_second": 61683.4, "clears": 0.4287109375, "kills": 14.7880859375}
+{"job": "ogre0_base-seed0", "decisions": 10027008, "train_seconds": 193.836, "decisions_per_train_second": 51729.4, "clears": 0.615234375, "kills": 17.873046875}
+{"job": "ogre0_base-seed0", "decisions": 30015488, "train_seconds": 607.48, "decisions_per_train_second": 49409.9, "clears": 0.728515625, "kills": 19.6298828125}
+{"job": "ogre0_base-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 607.48, "decisions_per_train_second": 49409.9}
+Suite outputs: 27.3 MiB
+Building ring-reward2-frontier1-route1-ogres1-features0
+{"job": "ogre1_base-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.091796875}
+{"job": "ogre1_base-seed0", "decisions": 1015808, "train_seconds": 10.718, "decisions_per_train_second": 94778.0, "clears": 0.0009765625, "kills": 7.0107421875}
+{"job": "ogre1_base-seed0", "decisions": 3014656, "train_seconds": 40.578, "decisions_per_train_second": 74292.9, "clears": 0.0205078125, "kills": 9.8515625}
+{"job": "ogre1_base-seed0", "decisions": 10027008, "train_seconds": 167.458, "decisions_per_train_second": 59877.8, "clears": 0.2333984375, "kills": 14.720703125}
+{"job": "ogre1_base-seed0", "decisions": 30015488, "train_seconds": 570.224, "decisions_per_train_second": 52638.0, "clears": 0.4228515625, "kills": 16.5712890625}
+{"job": "ogre1_base-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 570.224, "decisions_per_train_second": 52638.0}
+Suite outputs: 54.6 MiB
+Building ring-reward2-frontier1-route1-ogres1-features1
+{"job": "ogre1_awake-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.091796875}
+{"job": "ogre1_awake-seed0", "decisions": 1015808, "train_seconds": 10.702, "decisions_per_train_second": 94921.6, "clears": 0.0029296875, "kills": 7.625}
+{"job": "ogre1_awake-seed0", "decisions": 3014656, "train_seconds": 44.285, "decisions_per_train_second": 68073.6, "clears": 0.0439453125, "kills": 10.4189453125}
+{"job": "ogre1_awake-seed0", "decisions": 10027008, "train_seconds": 175.649, "decisions_per_train_second": 57085.4, "clears": 0.2724609375, "kills": 14.2548828125}
+{"job": "ogre1_awake-seed0", "decisions": 30015488, "train_seconds": 580.562, "decisions_per_train_second": 51700.7, "clears": 0.4375, "kills": 17.5224609375}
+{"job": "ogre1_awake-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 580.562, "decisions_per_train_second": 51700.7}
+Suite outputs: 82.0 MiB
+Building ring-reward2-frontier1-route1-ogres1-features2
+{"job": "ogre1_speed-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.08984375}
+{"job": "ogre1_speed-seed0", "decisions": 1015808, "train_seconds": 10.374, "decisions_per_train_second": 97914.8, "clears": 0.001953125, "kills": 7.369140625}
+{"job": "ogre1_speed-seed0", "decisions": 3014656, "train_seconds": 40.133, "decisions_per_train_second": 75116.9, "clears": 0.025390625, "kills": 10.2802734375}
+{"job": "ogre1_speed-seed0", "decisions": 10027008, "train_seconds": 167.776, "decisions_per_train_second": 59764.2, "clears": 0.228515625, "kills": 14.3173828125}
+{"job": "ogre1_speed-seed0", "decisions": 30015488, "train_seconds": 563.992, "decisions_per_train_second": 53219.7, "clears": 0.3876953125, "kills": 16.4423828125}
+{"job": "ogre1_speed-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 563.992, "decisions_per_train_second": 53219.7}
+Suite outputs: 109.3 MiB
+Building ring-reward2-frontier1-route1-ogres1-features4
+{"job": "ogre1_stats-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.076171875}
+{"job": "ogre1_stats-seed0", "decisions": 1015808, "train_seconds": 10.279, "decisions_per_train_second": 98820.6, "clears": 0.0, "kills": 7.2412109375}
+{"job": "ogre1_stats-seed0", "decisions": 3014656, "train_seconds": 40.013, "decisions_per_train_second": 75342.5, "clears": 0.0146484375, "kills": 9.8154296875}
+{"job": "ogre1_stats-seed0", "decisions": 10027008, "train_seconds": 165.217, "decisions_per_train_second": 60690.0, "clears": 0.1787109375, "kills": 13.3525390625}
+{"job": "ogre1_stats-seed0", "decisions": 30015488, "train_seconds": 563.284, "decisions_per_train_second": 53286.6, "clears": 0.435546875, "kills": 16.96484375}
+{"job": "ogre1_stats-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 563.284, "decisions_per_train_second": 53286.6}
+Suite outputs: 136.6 MiB
+Building ring-reward2-frontier1-route1-ogres1-features7
+{"job": "ogre1_all-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.0791015625}
+{"job": "ogre1_all-seed0", "decisions": 1015808, "train_seconds": 10.709, "decisions_per_train_second": 94857.0, "clears": 0.001953125, "kills": 7.44921875}
+{"job": "ogre1_all-seed0", "decisions": 3014656, "train_seconds": 43.98, "decisions_per_train_second": 68546.4, "clears": 0.0439453125, "kills": 10.7001953125}
+{"job": "ogre1_all-seed0", "decisions": 10027008, "train_seconds": 177.188, "decisions_per_train_second": 56589.7, "clears": 0.26171875, "kills": 14.4375}
+{"job": "ogre1_all-seed0", "decisions": 30015488, "train_seconds": 581.154, "decisions_per_train_second": 51648.1, "clears": 0.4267578125, "kills": 16.669921875}
+{"job": "ogre1_all-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 581.154, "decisions_per_train_second": 51648.1}
+Suite outputs: 163.9 MiB
+{"status": "suite_complete", "train_seconds": 3466.697, "decisions_per_train_second": 51949.4}

@@ -1,0 +1,154 @@
+{
+  "jobs": [
+    {
+      "name": "route_heal0",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "heal_charges": 0,
+      "id": "route_heal0-seed0"
+    },
+    {
+      "name": "route_heal1",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "heal_charges": 1,
+      "id": "route_heal1-seed0"
+    },
+    {
+      "name": "route_heal2",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "heal_charges": 2,
+      "id": "route_heal2-seed0"
+    },
+    {
+      "name": "route_heal4",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "heal_charges": 4,
+      "id": "route_heal4-seed0"
+    }
+  ],
+  "total_requested_decisions": 120000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-healing-30m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-heal0
+{"job": "route_heal0-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.546875}
+{"job": "route_heal0-seed0", "decisions": 1015808, "train_seconds": 10.508, "decisions_per_train_second": 96669.3, "clears": 0.0, "kills": 7.9384765625}
+{"job": "route_heal0-seed0", "decisions": 3014656, "train_seconds": 41.435, "decisions_per_train_second": 72755.5, "clears": 0.0693359375, "kills": 13.4375}
+{"job": "route_heal0-seed0", "decisions": 10027008, "train_seconds": 181.967, "decisions_per_train_second": 55103.6, "clears": 0.26953125, "kills": 19.5888671875}
+{"job": "route_heal0-seed0", "decisions": 30015488, "train_seconds": 610.591, "decisions_per_train_second": 49158.1, "clears": 0.4541015625, "kills": 25.5361328125}
+{"job": "route_heal0-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 610.591, "decisions_per_train_second": 49158.1}
+Suite outputs: 25.9 MiB
+Building ring-reward2-frontier1-route1-heal1
+{"job": "route_heal1-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.9560546875}
+{"job": "route_heal1-seed0", "decisions": 1015808, "train_seconds": 10.66, "decisions_per_train_second": 95290.6, "clears": 0.0, "kills": 9.1142578125}
+{"job": "route_heal1-seed0", "decisions": 3014656, "train_seconds": 42.235, "decisions_per_train_second": 71378.1, "clears": 0.103515625, "kills": 16.6728515625}
+{"job": "route_heal1-seed0", "decisions": 10027008, "train_seconds": 184.311, "decisions_per_train_second": 54402.7, "clears": 0.40234375, "kills": 24.73046875}
+{"job": "route_heal1-seed0", "decisions": 30015488, "train_seconds": 599.82, "decisions_per_train_second": 50040.8, "clears": 0.658203125, "kills": 31.8076171875}
+{"job": "route_heal1-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 599.82, "decisions_per_train_second": 50040.8}
+Suite outputs: 51.7 MiB
+Building ring-reward2-frontier1-route1-heal2
+{"job": "route_heal2-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 5.6611328125}
+{"job": "route_heal2-seed0", "decisions": 1015808, "train_seconds": 10.911, "decisions_per_train_second": 93098.5, "clears": 0.0, "kills": 8.8671875}
+{"job": "route_heal2-seed0", "decisions": 3014656, "train_seconds": 43.081, "decisions_per_train_second": 69975.9, "clears": 0.134765625, "kills": 17.9248046875}
+{"job": "route_heal2-seed0", "decisions": 10027008, "train_seconds": 188.638, "decisions_per_train_second": 53154.9, "clears": 0.3984375, "kills": 25.9462890625}
+{"job": "route_heal2-seed0", "decisions": 30015488, "train_seconds": 611.951, "decisions_per_train_second": 49048.9, "clears": 0.6728515625, "kills": 32.6474609375}
+{"job": "route_heal2-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 611.951, "decisions_per_train_second": 49048.9}
+Suite outputs: 77.6 MiB
+Building ring-reward2-frontier1-route1-heal4
+{"job": "route_heal4-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 6.4990234375}
+{"job": "route_heal4-seed0", "decisions": 1015808, "train_seconds": 10.882, "decisions_per_train_second": 93351.0, "clears": 0.0, "kills": 10.3359375}
+{"job": "route_heal4-seed0", "decisions": 3014656, "train_seconds": 43.592, "decisions_per_train_second": 69155.4, "clears": 0.16796875, "kills": 20.1318359375}
+{"job": "route_heal4-seed0", "decisions": 10027008, "train_seconds": 191.614, "decisions_per_train_second": 52329.2, "clears": 0.546875, "kills": 29.990234375}
+{"job": "route_heal4-seed0", "decisions": 30015488, "train_seconds": 627.433, "decisions_per_train_second": 47838.6, "clears": 0.7802734375, "kills": 35.392578125}
+{"job": "route_heal4-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 627.433, "decisions_per_train_second": 47838.6}
+Suite outputs: 103.5 MiB
+{"status": "suite_complete", "train_seconds": 2449.795, "decisions_per_train_second": 49009.0}

@@ -1,0 +1,109 @@
+{
+  "jobs": [
+    {
+      "name": "route_cue",
+      "seed": 0,
+      "maps": 2,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 512,
+      "batch": 8,
+      "horizon": 16,
+      "eval_per_map": 2,
+      "validation_maps": 2,
+      "checkpoint_every": 256,
+      "lr": 0.0003,
+      "epochs": 1,
+      "minibatch": 128,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_cue-seed0"
+    },
+    {
+      "name": "route_heal1",
+      "seed": 0,
+      "maps": 2,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 512,
+      "batch": 8,
+      "horizon": 16,
+      "eval_per_map": 2,
+      "validation_maps": 2,
+      "checkpoint_every": 256,
+      "lr": 0.0003,
+      "epochs": 1,
+      "minibatch": 128,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "heal_charges": 1,
+      "id": "route_heal1-seed0"
+    },
+    {
+      "name": "route_stack4",
+      "seed": 0,
+      "maps": 2,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 4,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 512,
+      "batch": 8,
+      "horizon": 16,
+      "eval_per_map": 2,
+      "validation_maps": 2,
+      "checkpoint_every": 256,
+      "lr": 0.0003,
+      "epochs": 1,
+      "minibatch": 128,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_stack4-seed0"
+    }
+  ],
+  "total_requested_decisions": 1536,
+  "output": "/tmp/dcss-performance-smoke",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-fast
+{"job": "route_cue-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 5.25}
+{"job": "route_cue-seed0", "decisions": 512, "train_seconds": 0.172, "decisions_per_train_second": 2980.0, "clears": 0.0, "kills": 2.75}
+{"job": "route_cue-seed0", "status": "complete", "decisions": 512, "train_seconds": 0.172, "decisions_per_train_second": 2980.0}
+Suite outputs: 3.0 MiB
+Building ring-reward2-frontier1-route1-heal1-fast
+{"job": "route_heal1-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 7.75}
+{"job": "route_heal1-seed0", "decisions": 512, "train_seconds": 0.176, "decisions_per_train_second": 2913.4, "clears": 0.0, "kills": 9.75}
+{"job": "route_heal1-seed0", "status": "complete", "decisions": 512, "train_seconds": 0.176, "decisions_per_train_second": 2913.4}
+Suite outputs: 6.0 MiB
+{"job": "route_stack4-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 3.0}
+{"job": "route_stack4-seed0", "decisions": 512, "train_seconds": 0.199, "decisions_per_train_second": 2577.1, "clears": 0.0, "kills": 4.75}
+{"job": "route_stack4-seed0", "status": "complete", "decisions": 512, "train_seconds": 0.199, "decisions_per_train_second": 2577.1}
+Suite outputs: 10.9 MiB
+{"status": "suite_complete", "train_seconds": 0.546, "decisions_per_train_second": 2812.0}

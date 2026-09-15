@@ -1,0 +1,4 @@
+{"job": "ogre2_base-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 8.25}
+Resuming ogre2_base-seed0 at 256 decisions
+{"job": "ogre2_base-seed0", "decisions": 512, "train_seconds": 0.173, "decisions_per_train_second": 2966.9, "clears": 0.0, "kills": 7.25}
+PASS: interrupted resume exactly matches uninterrupted smoke training

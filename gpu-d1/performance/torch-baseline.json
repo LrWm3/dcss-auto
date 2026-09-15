@@ -1,0 +1,23 @@
+{
+  "mode": "baseline",
+  "library": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ring-route-cue-corrected-200m-seed0/build/ring-reward2-frontier1-route1.so",
+  "updates": [
+    {
+      "rollout_s": 0.6136290410067886,
+      "gae_s": 0.019566830014809966,
+      "ppo_s": 0.13057238794863224,
+      "total_s": 0.7637682589702308
+    }
+  ],
+  "median": {
+    "rollout_s": 0.6136290410067886,
+    "gae_s": 0.019566830014809966,
+    "ppo_s": 0.13057238794863224,
+    "total_s": 0.7637682589702308
+  },
+  "gpu": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "decisions_per_update": 32768,
+  "final_loss": true,
+  "decisions_per_second": 42903.06596948694
+}

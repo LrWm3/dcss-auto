@@ -1,0 +1,53 @@
+{
+  "checkpoint": "gpu-d1/learning-runs/v2-4e-10m/seed-2/policy-10027008.pt",
+  "stat_mode": 1,
+  "player_mode": 1,
+  "greedy": {
+    "mode": "greedy",
+    "eval_seed": 900000,
+    "episodes": 2048,
+    "clear_rate": 0.01806640625,
+    "clear_ci95": [
+      0.013135342724132474,
+      0.024802088703322744
+    ],
+    "enemies_killed": 1.02099609375,
+    "killed_fraction": 0.2552490234375,
+    "mean_hp": 27.53955078125,
+    "mean_length": 474.08203125,
+    "clear_length": 154.9729766845703,
+    "death_rate": 0.072265625,
+    "timeout_rate": 0.90966796875,
+    "mean_awake": 0.08837890625,
+    "mean_damage_taken": 8.7490234375,
+    "map_counts": {
+      "0": 1035,
+      "1": 1013
+    },
+    "mean_return": 0.5288494229316711
+  },
+  "sampled": {
+    "mode": "sampled",
+    "eval_seed": 900000,
+    "episodes": 2048,
+    "clear_rate": 0.13525390625,
+    "clear_ci95": [
+      0.12112304835293498,
+      0.1507505699614612
+    ],
+    "enemies_killed": 2.04296875,
+    "killed_fraction": 0.5107421875,
+    "mean_hp": 26.9814453125,
+    "mean_length": 455.03125,
+    "clear_length": 242.51625061035156,
+    "death_rate": 0.05029296875,
+    "timeout_rate": 0.814453125,
+    "mean_awake": 0.08251953125,
+    "mean_damage_taken": 15.5263671875,
+    "map_counts": {
+      "0": 1035,
+      "1": 1013
+    },
+    "mean_return": 1.9434094429016113
+  }
+}

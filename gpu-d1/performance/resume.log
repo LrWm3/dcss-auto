@@ -1,0 +1,4 @@
+{"job": "route_stack4-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 3.0}
+Resuming route_stack4-seed0 at 256 decisions
+{"job": "route_stack4-seed0", "decisions": 512, "train_seconds": 0.217, "decisions_per_train_second": 2354.5, "clears": 0.0, "kills": 4.75}
+PASS: interrupted resume exactly matches uninterrupted smoke training

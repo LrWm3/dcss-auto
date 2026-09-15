@@ -1,0 +1,24 @@
+{
+  "library": "gpu-d1/learning-runs/ring-route-cue-corrected-200m-seed0/build/ring-reward2-frontier1-route1.so",
+  "active": false,
+  "rows": [
+    {
+      "seconds": 9.46138104912825,
+      "clear_rate": 0.673828125,
+      "death_rate": 0.3212890625,
+      "kills": 30.87890625
+    },
+    {
+      "seconds": 9.339341909158975,
+      "clear_rate": 0.673828125,
+      "death_rate": 0.3212890625,
+      "kills": 30.87890625
+    },
+    {
+      "seconds": 9.332244866993278,
+      "clear_rate": 0.673828125,
+      "death_rate": 0.3212890625,
+      "kills": 30.87890625
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "name": "route_clear_scaled",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "clear_per_enemy_milli": 250,
+      "id": "route_clear_scaled-seed0"
+    }
+  ],
+  "total_requested_decisions": 30000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/route-clear-scaled-30m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-clear-per-enemy250
+{"job": "route_clear_scaled-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.658203125}
+{"job": "route_clear_scaled-seed0", "decisions": 1015808, "train_seconds": 10.618, "decisions_per_train_second": 95669.9, "clears": 0.0, "kills": 7.609375}
+{"job": "route_clear_scaled-seed0", "decisions": 3014656, "train_seconds": 40.814, "decisions_per_train_second": 73863.1, "clears": 0.0634765625, "kills": 13.353515625}
+{"job": "route_clear_scaled-seed0", "decisions": 10027008, "train_seconds": 177.058, "decisions_per_train_second": 56631.3, "clears": 0.27734375, "kills": 19.1923828125}
+{"job": "route_clear_scaled-seed0", "decisions": 30015488, "train_seconds": 583.635, "decisions_per_train_second": 51428.5, "clears": 0.498046875, "kills": 26.4462890625}
+{"job": "route_clear_scaled-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 583.635, "decisions_per_train_second": 51428.5}
+Suite outputs: 25.8 MiB
+{"status": "suite_complete", "train_seconds": 583.635, "decisions_per_train_second": 51428.5}

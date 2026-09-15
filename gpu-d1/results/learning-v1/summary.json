@@ -1,0 +1,331 @@
+{
+  "checkpoints": [
+    {
+      "decisions": 0,
+      "clear_sampled": [
+        0.439453125,
+        0.451171875,
+        0.435546875
+      ],
+      "clear_greedy": [
+        0.1181640625,
+        0.1962890625,
+        0.0625
+      ],
+      "train_seconds": [
+        0,
+        0,
+        0
+      ],
+      "updates": 0,
+      "collection_seconds": [
+        0,
+        0,
+        0
+      ],
+      "update_seconds": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "decisions": 131072,
+      "clear_sampled": [
+        0.6201171875,
+        0.6064453125,
+        0.6015625
+      ],
+      "clear_greedy": [
+        0.46484375,
+        0.5673828125,
+        0.5361328125
+      ],
+      "train_seconds": [
+        0.907243920257315,
+        0.6978517260868102,
+        0.704112884355709
+      ],
+      "updates": 4,
+      "collection_seconds": [
+        0.4154712001327425,
+        0.39381421194411814,
+        0.4001285422127694
+      ],
+      "update_seconds": [
+        0.4917727201245725,
+        0.3040375141426921,
+        0.30398434214293957
+      ]
+    },
+    {
+      "decisions": 327680,
+      "clear_sampled": [
+        0.693359375,
+        0.720703125,
+        0.701171875
+      ],
+      "clear_greedy": [
+        0.6328125,
+        0.5634765625,
+        0.75390625
+      ],
+      "train_seconds": [
+        1.938557910034433,
+        1.719489543698728,
+        1.7489117882214487
+      ],
+      "updates": 10,
+      "collection_seconds": [
+        0.9878123779781163,
+        0.9510897204745561,
+        0.9595218072645366
+      ],
+      "update_seconds": [
+        0.9507455320563167,
+        0.768399823224172,
+        0.789389980956912
+      ]
+    },
+    {
+      "decisions": 1015808,
+      "clear_sampled": [
+        0.853515625,
+        0.84375,
+        0.8359375
+      ],
+      "clear_greedy": [
+        0.7822265625,
+        0.6298828125,
+        0.7705078125
+      ],
+      "train_seconds": [
+        5.431113167898729,
+        5.158274721587077,
+        5.202585908817127
+      ],
+      "updates": 31,
+      "collection_seconds": [
+        2.837870565475896,
+        2.75450561568141,
+        2.7962421600241214
+      ],
+      "update_seconds": [
+        2.5932426024228334,
+        2.403769105905667,
+        2.406343748793006
+      ]
+    },
+    {
+      "decisions": 3014656,
+      "clear_sampled": [
+        0.912109375,
+        0.9033203125,
+        0.9052734375
+      ],
+      "clear_greedy": [
+        0.87890625,
+        0.8759765625,
+        0.9140625
+      ],
+      "train_seconds": [
+        15.49470678390935,
+        14.912399613764137,
+        15.334774136310443
+      ],
+      "updates": 92,
+      "collection_seconds": [
+        7.976415912620723,
+        7.813311342615634,
+        7.832052011042833
+      ],
+      "update_seconds": [
+        7.518290871288627,
+        7.099088271148503,
+        7.50272212526761
+      ]
+    }
+  ],
+  "fresh_test": {
+    "eval_seed": 1200000,
+    "episodes_per_policy": 2048,
+    "baselines": {
+      "wait": {
+        "mode": "wait",
+        "eval_seed": 1200000,
+        "episodes": 2048,
+        "clear_rate": 0.0,
+        "clear_ci95": [
+          0.0,
+          0.0018722692823851506
+        ],
+        "enemies_killed": 0.0,
+        "killed_fraction": 0.0,
+        "mean_hp": 0.74462890625,
+        "mean_length": 77.0205078125,
+        "clear_length": null,
+        "death_rate": 0.93505859375,
+        "timeout_rate": 0.06494140625,
+        "mean_return": -1.0120792388916016
+      },
+      "random": {
+        "mode": "random",
+        "eval_seed": 1200000,
+        "episodes": 2048,
+        "clear_rate": 0.45703125,
+        "clear_ci95": [
+          0.4355567229250332,
+          0.4786666752164217
+        ],
+        "enemies_killed": 5.37939453125,
+        "killed_fraction": 0.67242431640625,
+        "mean_hp": 5.19091796875,
+        "mean_length": 95.86572265625,
+        "clear_length": 132.0673065185547,
+        "death_rate": 0.54296875,
+        "timeout_rate": 0.0,
+        "mean_return": 6.111656665802002
+      },
+      "pursuit": {
+        "mode": "pursuit",
+        "eval_seed": 1200000,
+        "episodes": 2048,
+        "clear_rate": 0.9150390625,
+        "clear_ci95": [
+          0.9021723794239563,
+          0.9263516158006263
+        ],
+        "enemies_killed": 7.7421875,
+        "killed_fraction": 0.9677734375,
+        "mean_hp": 11.7626953125,
+        "mean_length": 60.45263671875,
+        "clear_length": 62.03788757324219,
+        "death_rate": 0.0849609375,
+        "timeout_rate": 0.0,
+        "mean_return": 10.341893196105957
+      }
+    },
+    "seeds": [
+      {
+        "seed": 0,
+        "decisions": 3014656,
+        "greedy": {
+          "mode": "greedy",
+          "eval_seed": 1200000,
+          "episodes": 2048,
+          "clear_rate": 0.869140625,
+          "clear_ci95": [
+            0.8538405730675994,
+            0.8830584156262645
+          ],
+          "enemies_killed": 7.671875,
+          "killed_fraction": 0.958984375,
+          "mean_hp": 11.52587890625,
+          "mean_length": 74.763671875,
+          "clear_length": 70.58651733398438,
+          "death_rate": 0.10595703125,
+          "timeout_rate": 0.02490234375,
+          "mean_return": 10.098578453063965
+        },
+        "sampled": {
+          "mode": "sampled",
+          "eval_seed": 1200000,
+          "episodes": 2048,
+          "clear_rate": 0.90869140625,
+          "clear_ci95": [
+            0.8954390251643486,
+            0.920413426603858
+          ],
+          "enemies_killed": 7.6904296875,
+          "killed_fraction": 0.9613037109375,
+          "mean_hp": 11.7470703125,
+          "mean_length": 70.181640625,
+          "clear_length": 71.97635650634766,
+          "death_rate": 0.09130859375,
+          "timeout_rate": 0.0,
+          "mean_return": 10.255016326904297
+        }
+      },
+      {
+        "seed": 1,
+        "decisions": 3014656,
+        "greedy": {
+          "mode": "greedy",
+          "eval_seed": 1200000,
+          "episodes": 2048,
+          "clear_rate": 0.884765625,
+          "clear_ci95": [
+            0.8702102503015825,
+            0.8978802299772071
+          ],
+          "enemies_killed": 7.65869140625,
+          "killed_fraction": 0.95733642578125,
+          "mean_hp": 11.66357421875,
+          "mean_length": 71.48681640625,
+          "clear_length": 69.57450103759766,
+          "death_rate": 0.1005859375,
+          "timeout_rate": 0.0146484375,
+          "mean_return": 10.140918731689453
+        },
+        "sampled": {
+          "mode": "sampled",
+          "eval_seed": 1200000,
+          "episodes": 2048,
+          "clear_rate": 0.91064453125,
+          "clear_ci95": [
+            0.8975088164331388,
+            0.9222425717831835
+          ],
+          "enemies_killed": 7.68408203125,
+          "killed_fraction": 0.96051025390625,
+          "mean_hp": 11.58447265625,
+          "mean_length": 69.4619140625,
+          "clear_length": 71.30402374267578,
+          "death_rate": 0.08935546875,
+          "timeout_rate": 0.0,
+          "mean_return": 10.257200241088867
+        }
+      },
+      {
+        "seed": 2,
+        "decisions": 3014656,
+        "greedy": {
+          "mode": "greedy",
+          "eval_seed": 1200000,
+          "episodes": 2048,
+          "clear_rate": 0.90966796875,
+          "clear_ci95": [
+            0.8964737034680673,
+            0.921328216524197
+          ],
+          "enemies_killed": 7.70361328125,
+          "killed_fraction": 0.96295166015625,
+          "mean_hp": 11.80419921875,
+          "mean_length": 69.0615234375,
+          "clear_length": 69.93827056884766,
+          "death_rate": 0.0869140625,
+          "timeout_rate": 0.00341796875,
+          "mean_return": 10.276643753051758
+        },
+        "sampled": {
+          "mode": "sampled",
+          "eval_seed": 1200000,
+          "episodes": 2048,
+          "clear_rate": 0.9228515625,
+          "clear_ci95": [
+            0.9104872346294008,
+            0.9336325063876445
+          ],
+          "enemies_killed": 7.7392578125,
+          "killed_fraction": 0.9674072265625,
+          "mean_hp": 11.84521484375,
+          "mean_length": 70.04052734375,
+          "clear_length": 71.44444274902344,
+          "death_rate": 0.0771484375,
+          "timeout_rate": 0.0,
+          "mean_return": 10.360626220703125
+        }
+      }
+    ]
+  }
+}

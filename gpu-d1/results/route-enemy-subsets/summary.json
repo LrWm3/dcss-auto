@@ -1,0 +1,1342 @@
+[
+  {
+    "enemies": 40,
+    "evaluation_seconds": 9.4231048040092,
+    "clear_rate": 0.673828125,
+    "kills": 30.87890625,
+    "kill_fraction": 0.77197265625,
+    "death_rate": 0.3212890625,
+    "timeout_rate": 0.0048828125,
+    "turns": 507.1533203125,
+    "maps": {
+      "62655": {
+        "clear_rate": 0.5625,
+        "kills": 25.03125,
+        "kill_fraction": 0.625781238079071,
+        "death_rate": 0.4375,
+        "timeout_rate": 0.0,
+        "turns": 357.4375
+      },
+      "63315": {
+        "clear_rate": 0.78125,
+        "kills": 35.5625,
+        "kill_fraction": 0.8890625238418579,
+        "death_rate": 0.21875,
+        "timeout_rate": 0.0,
+        "turns": 590.40625
+      },
+      "63391": {
+        "clear_rate": 0.65625,
+        "kills": 30.53125,
+        "kill_fraction": 0.7632812857627869,
+        "death_rate": 0.34375,
+        "timeout_rate": 0.0,
+        "turns": 482.40625
+      },
+      "63453": {
+        "clear_rate": 0.84375,
+        "kills": 34.875,
+        "kill_fraction": 0.871874988079071,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 503.0625
+      },
+      "63913": {
+        "clear_rate": 0.625,
+        "kills": 29.1875,
+        "kill_fraction": 0.7296874523162842,
+        "death_rate": 0.34375,
+        "timeout_rate": 0.03125,
+        "turns": 497.375
+      },
+      "64026": {
+        "clear_rate": 0.84375,
+        "kills": 35.25,
+        "kill_fraction": 0.8812500238418579,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 549.90625
+      },
+      "64106": {
+        "clear_rate": 0.6875,
+        "kills": 31.3125,
+        "kill_fraction": 0.7828124761581421,
+        "death_rate": 0.3125,
+        "timeout_rate": 0.0,
+        "turns": 547.125
+      },
+      "64379": {
+        "clear_rate": 0.15625,
+        "kills": 15.3125,
+        "kill_fraction": 0.3828125,
+        "death_rate": 0.84375,
+        "timeout_rate": 0.0,
+        "turns": 190.3125
+      },
+      "64869": {
+        "clear_rate": 0.78125,
+        "kills": 36.21875,
+        "kill_fraction": 0.905468761920929,
+        "death_rate": 0.21875,
+        "timeout_rate": 0.0,
+        "turns": 600.28125
+      },
+      "64952": {
+        "clear_rate": 0.71875,
+        "kills": 33.59375,
+        "kill_fraction": 0.8398438096046448,
+        "death_rate": 0.28125,
+        "timeout_rate": 0.0,
+        "turns": 527.0
+      },
+      "65051": {
+        "clear_rate": 0.28125,
+        "kills": 17.84375,
+        "kill_fraction": 0.44609373807907104,
+        "death_rate": 0.71875,
+        "timeout_rate": 0.0,
+        "turns": 237.3125
+      },
+      "65650": {
+        "clear_rate": 0.625,
+        "kills": 31.53125,
+        "kill_fraction": 0.788281261920929,
+        "death_rate": 0.34375,
+        "timeout_rate": 0.03125,
+        "turns": 517.4375
+      },
+      "65772": {
+        "clear_rate": 0.75,
+        "kills": 33.03125,
+        "kill_fraction": 0.8257811665534973,
+        "death_rate": 0.25,
+        "timeout_rate": 0.0,
+        "turns": 511.3125
+      },
+      "65838": {
+        "clear_rate": 0.78125,
+        "kills": 34.78125,
+        "kill_fraction": 0.8695312142372131,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.03125,
+        "turns": 665.53125
+      },
+      "66008": {
+        "clear_rate": 0.84375,
+        "kills": 37.09375,
+        "kill_fraction": 0.9273437261581421,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 680.3125
+      },
+      "66179": {
+        "clear_rate": 0.59375,
+        "kills": 28.625,
+        "kill_fraction": 0.7156250476837158,
+        "death_rate": 0.40625,
+        "timeout_rate": 0.0,
+        "turns": 469.71875
+      },
+      "66384": {
+        "clear_rate": 0.65625,
+        "kills": 29.625,
+        "kill_fraction": 0.7406250238418579,
+        "death_rate": 0.34375,
+        "timeout_rate": 0.0,
+        "turns": 448.6875
+      },
+      "70377": {
+        "clear_rate": 0.53125,
+        "kills": 26.25,
+        "kill_fraction": 0.6562500596046448,
+        "death_rate": 0.46875,
+        "timeout_rate": 0.0,
+        "turns": 381.59375
+      },
+      "71260": {
+        "clear_rate": 0.625,
+        "kills": 28.78125,
+        "kill_fraction": 0.719531238079071,
+        "death_rate": 0.375,
+        "timeout_rate": 0.0,
+        "turns": 483.21875
+      },
+      "71314": {
+        "clear_rate": 0.53125,
+        "kills": 25.46875,
+        "kill_fraction": 0.6367188096046448,
+        "death_rate": 0.46875,
+        "timeout_rate": 0.0,
+        "turns": 322.96875
+      },
+      "71555": {
+        "clear_rate": 0.8125,
+        "kills": 34.1875,
+        "kill_fraction": 0.8546875715255737,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 591.375
+      },
+      "71600": {
+        "clear_rate": 0.90625,
+        "kills": 38.0,
+        "kill_fraction": 0.949999988079071,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.03125,
+        "turns": 715.59375
+      },
+      "71651": {
+        "clear_rate": 0.84375,
+        "kills": 34.84375,
+        "kill_fraction": 0.87109375,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 622.5625
+      },
+      "71831": {
+        "clear_rate": 0.78125,
+        "kills": 33.96875,
+        "kill_fraction": 0.8492187261581421,
+        "death_rate": 0.21875,
+        "timeout_rate": 0.0,
+        "turns": 574.15625
+      },
+      "72094": {
+        "clear_rate": 0.5,
+        "kills": 25.0625,
+        "kill_fraction": 0.6265625357627869,
+        "death_rate": 0.5,
+        "timeout_rate": 0.0,
+        "turns": 323.125
+      },
+      "72244": {
+        "clear_rate": 0.84375,
+        "kills": 37.5625,
+        "kill_fraction": 0.9390624761581421,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 694.21875
+      },
+      "72250": {
+        "clear_rate": 0.5625,
+        "kills": 29.21875,
+        "kill_fraction": 0.7304686903953552,
+        "death_rate": 0.4375,
+        "timeout_rate": 0.0,
+        "turns": 475.59375
+      },
+      "72288": {
+        "clear_rate": 0.625,
+        "kills": 29.625,
+        "kill_fraction": 0.7406250238418579,
+        "death_rate": 0.375,
+        "timeout_rate": 0.0,
+        "turns": 463.46875
+      },
+      "72296": {
+        "clear_rate": 0.75,
+        "kills": 32.59375,
+        "kill_fraction": 0.8148437738418579,
+        "death_rate": 0.25,
+        "timeout_rate": 0.0,
+        "turns": 520.3125
+      },
+      "72423": {
+        "clear_rate": 0.875,
+        "kills": 37.40625,
+        "kill_fraction": 0.9351562261581421,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.03125,
+        "turns": 799.28125
+      },
+      "72475": {
+        "clear_rate": 0.8125,
+        "kills": 35.21875,
+        "kill_fraction": 0.8804687261581421,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 573.09375
+      },
+      "72581": {
+        "clear_rate": 0.375,
+        "kills": 20.53125,
+        "kill_fraction": 0.5132812857627869,
+        "death_rate": 0.625,
+        "timeout_rate": 0.0,
+        "turns": 312.71875
+      }
+    }
+  },
+  {
+    "enemies": 32,
+    "evaluation_seconds": 9.216665969928727,
+    "clear_rate": 0.791015625,
+    "kills": 27.3095703125,
+    "kill_fraction": 0.853424072265625,
+    "death_rate": 0.205078125,
+    "timeout_rate": 0.00390625,
+    "turns": 503.9775390625,
+    "maps": {
+      "62655": {
+        "clear_rate": 0.8125,
+        "kills": 27.0,
+        "kill_fraction": 0.84375,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 431.09375
+      },
+      "63315": {
+        "clear_rate": 0.84375,
+        "kills": 28.59375,
+        "kill_fraction": 0.8935546875,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 532.5625
+      },
+      "63391": {
+        "clear_rate": 0.6875,
+        "kills": 23.875,
+        "kill_fraction": 0.74609375,
+        "death_rate": 0.3125,
+        "timeout_rate": 0.0,
+        "turns": 421.8125
+      },
+      "63453": {
+        "clear_rate": 0.78125,
+        "kills": 26.9375,
+        "kill_fraction": 0.841796875,
+        "death_rate": 0.21875,
+        "timeout_rate": 0.0,
+        "turns": 438.0
+      },
+      "63913": {
+        "clear_rate": 0.71875,
+        "kills": 25.1875,
+        "kill_fraction": 0.787109375,
+        "death_rate": 0.28125,
+        "timeout_rate": 0.0,
+        "turns": 460.0
+      },
+      "64026": {
+        "clear_rate": 0.9375,
+        "kills": 31.0625,
+        "kill_fraction": 0.970703125,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.0,
+        "turns": 561.5
+      },
+      "64106": {
+        "clear_rate": 0.78125,
+        "kills": 26.96875,
+        "kill_fraction": 0.8427734375,
+        "death_rate": 0.21875,
+        "timeout_rate": 0.0,
+        "turns": 526.25
+      },
+      "64379": {
+        "clear_rate": 0.5625,
+        "kills": 22.9375,
+        "kill_fraction": 0.716796875,
+        "death_rate": 0.4375,
+        "timeout_rate": 0.0,
+        "turns": 326.5
+      },
+      "64869": {
+        "clear_rate": 0.8125,
+        "kills": 27.96875,
+        "kill_fraction": 0.8740234375,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 540.6875
+      },
+      "64952": {
+        "clear_rate": 0.8125,
+        "kills": 28.40625,
+        "kill_fraction": 0.8876953125,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 507.8125
+      },
+      "65051": {
+        "clear_rate": 0.5,
+        "kills": 18.96875,
+        "kill_fraction": 0.5927734375,
+        "death_rate": 0.5,
+        "timeout_rate": 0.0,
+        "turns": 264.78125
+      },
+      "65650": {
+        "clear_rate": 0.78125,
+        "kills": 26.34375,
+        "kill_fraction": 0.8232421875,
+        "death_rate": 0.21875,
+        "timeout_rate": 0.0,
+        "turns": 481.90625
+      },
+      "65772": {
+        "clear_rate": 0.75,
+        "kills": 26.3125,
+        "kill_fraction": 0.822265625,
+        "death_rate": 0.21875,
+        "timeout_rate": 0.03125,
+        "turns": 495.90625
+      },
+      "65838": {
+        "clear_rate": 0.875,
+        "kills": 29.21875,
+        "kill_fraction": 0.9130859375,
+        "death_rate": 0.125,
+        "timeout_rate": 0.0,
+        "turns": 613.34375
+      },
+      "66008": {
+        "clear_rate": 0.90625,
+        "kills": 30.3125,
+        "kill_fraction": 0.947265625,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 656.90625
+      },
+      "66179": {
+        "clear_rate": 0.84375,
+        "kills": 28.9375,
+        "kill_fraction": 0.904296875,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 549.8125
+      },
+      "66384": {
+        "clear_rate": 0.75,
+        "kills": 25.96875,
+        "kill_fraction": 0.8115234375,
+        "death_rate": 0.25,
+        "timeout_rate": 0.0,
+        "turns": 408.53125
+      },
+      "70377": {
+        "clear_rate": 0.6875,
+        "kills": 25.4375,
+        "kill_fraction": 0.794921875,
+        "death_rate": 0.28125,
+        "timeout_rate": 0.03125,
+        "turns": 415.125
+      },
+      "71260": {
+        "clear_rate": 0.84375,
+        "kills": 28.125,
+        "kill_fraction": 0.87890625,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 524.15625
+      },
+      "71314": {
+        "clear_rate": 0.75,
+        "kills": 25.9375,
+        "kill_fraction": 0.810546875,
+        "death_rate": 0.25,
+        "timeout_rate": 0.0,
+        "turns": 354.5
+      },
+      "71555": {
+        "clear_rate": 0.8125,
+        "kills": 27.5625,
+        "kill_fraction": 0.861328125,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 523.28125
+      },
+      "71600": {
+        "clear_rate": 0.96875,
+        "kills": 31.0625,
+        "kill_fraction": 0.970703125,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 676.0625
+      },
+      "71651": {
+        "clear_rate": 0.90625,
+        "kills": 29.40625,
+        "kill_fraction": 0.9189453125,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 610.65625
+      },
+      "71831": {
+        "clear_rate": 0.90625,
+        "kills": 30.5,
+        "kill_fraction": 0.953125,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.03125,
+        "turns": 646.09375
+      },
+      "72094": {
+        "clear_rate": 0.5625,
+        "kills": 23.46875,
+        "kill_fraction": 0.7333984375,
+        "death_rate": 0.4375,
+        "timeout_rate": 0.0,
+        "turns": 319.71875
+      },
+      "72244": {
+        "clear_rate": 0.90625,
+        "kills": 30.5,
+        "kill_fraction": 0.953125,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 628.40625
+      },
+      "72250": {
+        "clear_rate": 0.65625,
+        "kills": 25.03125,
+        "kill_fraction": 0.7822265625,
+        "death_rate": 0.34375,
+        "timeout_rate": 0.0,
+        "turns": 455.03125
+      },
+      "72288": {
+        "clear_rate": 0.8125,
+        "kills": 27.96875,
+        "kill_fraction": 0.8740234375,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 475.46875
+      },
+      "72296": {
+        "clear_rate": 0.875,
+        "kills": 28.90625,
+        "kill_fraction": 0.9033203125,
+        "death_rate": 0.125,
+        "timeout_rate": 0.0,
+        "turns": 529.9375
+      },
+      "72423": {
+        "clear_rate": 0.96875,
+        "kills": 31.03125,
+        "kill_fraction": 0.9697265625,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 781.34375
+      },
+      "72475": {
+        "clear_rate": 0.84375,
+        "kills": 28.53125,
+        "kill_fraction": 0.8916015625,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 516.71875
+      },
+      "72581": {
+        "clear_rate": 0.65625,
+        "kills": 25.4375,
+        "kill_fraction": 0.794921875,
+        "death_rate": 0.3125,
+        "timeout_rate": 0.03125,
+        "turns": 453.375
+      }
+    }
+  },
+  {
+    "enemies": 24,
+    "evaluation_seconds": 9.400827835081145,
+    "clear_rate": 0.896484375,
+    "kills": 22.3837890625,
+    "kill_fraction": 0.9326578974723816,
+    "death_rate": 0.1015625,
+    "timeout_rate": 0.001953125,
+    "turns": 480.9033203125,
+    "maps": {
+      "62655": {
+        "clear_rate": 0.875,
+        "kills": 21.46875,
+        "kill_fraction": 0.89453125,
+        "death_rate": 0.125,
+        "timeout_rate": 0.0,
+        "turns": 391.5
+      },
+      "63315": {
+        "clear_rate": 0.90625,
+        "kills": 22.84375,
+        "kill_fraction": 0.9518229365348816,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 510.28125
+      },
+      "63391": {
+        "clear_rate": 0.84375,
+        "kills": 21.8125,
+        "kill_fraction": 0.9088541269302368,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 448.59375
+      },
+      "63453": {
+        "clear_rate": 0.96875,
+        "kills": 23.71875,
+        "kill_fraction": 0.98828125,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 422.78125
+      },
+      "63913": {
+        "clear_rate": 0.90625,
+        "kills": 22.34375,
+        "kill_fraction": 0.9309896230697632,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 482.96875
+      },
+      "64026": {
+        "clear_rate": 1.0,
+        "kills": 24.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 517.90625
+      },
+      "64106": {
+        "clear_rate": 0.84375,
+        "kills": 20.875,
+        "kill_fraction": 0.8697916865348816,
+        "death_rate": 0.15625,
+        "timeout_rate": 0.0,
+        "turns": 503.0
+      },
+      "64379": {
+        "clear_rate": 0.75,
+        "kills": 20.75,
+        "kill_fraction": 0.8645832538604736,
+        "death_rate": 0.25,
+        "timeout_rate": 0.0,
+        "turns": 323.875
+      },
+      "64869": {
+        "clear_rate": 0.96875,
+        "kills": 23.4375,
+        "kill_fraction": 0.9765625,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 489.59375
+      },
+      "64952": {
+        "clear_rate": 0.9375,
+        "kills": 23.28125,
+        "kill_fraction": 0.9700521230697632,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.0,
+        "turns": 500.0
+      },
+      "65051": {
+        "clear_rate": 0.71875,
+        "kills": 20.09375,
+        "kill_fraction": 0.8372395634651184,
+        "death_rate": 0.28125,
+        "timeout_rate": 0.0,
+        "turns": 325.46875
+      },
+      "65650": {
+        "clear_rate": 0.90625,
+        "kills": 22.03125,
+        "kill_fraction": 0.91796875,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 478.84375
+      },
+      "65772": {
+        "clear_rate": 0.90625,
+        "kills": 22.46875,
+        "kill_fraction": 0.9361979365348816,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 466.40625
+      },
+      "65838": {
+        "clear_rate": 0.9375,
+        "kills": 23.0625,
+        "kill_fraction": 0.9609375,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.03125,
+        "turns": 566.53125
+      },
+      "66008": {
+        "clear_rate": 0.90625,
+        "kills": 22.40625,
+        "kill_fraction": 0.93359375,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 542.78125
+      },
+      "66179": {
+        "clear_rate": 0.90625,
+        "kills": 22.5625,
+        "kill_fraction": 0.9401041865348816,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 510.71875
+      },
+      "66384": {
+        "clear_rate": 0.8125,
+        "kills": 21.875,
+        "kill_fraction": 0.9114583134651184,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 412.125
+      },
+      "70377": {
+        "clear_rate": 0.8125,
+        "kills": 20.34375,
+        "kill_fraction": 0.84765625,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 366.40625
+      },
+      "71260": {
+        "clear_rate": 0.96875,
+        "kills": 23.28125,
+        "kill_fraction": 0.9700520634651184,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 545.90625
+      },
+      "71314": {
+        "clear_rate": 0.875,
+        "kills": 22.34375,
+        "kill_fraction": 0.9309895634651184,
+        "death_rate": 0.125,
+        "timeout_rate": 0.0,
+        "turns": 341.90625
+      },
+      "71555": {
+        "clear_rate": 0.96875,
+        "kills": 23.96875,
+        "kill_fraction": 0.9986978769302368,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 534.25
+      },
+      "71600": {
+        "clear_rate": 0.96875,
+        "kills": 23.84375,
+        "kill_fraction": 0.9934895634651184,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 611.78125
+      },
+      "71651": {
+        "clear_rate": 0.875,
+        "kills": 22.09375,
+        "kill_fraction": 0.9205728769302368,
+        "death_rate": 0.125,
+        "timeout_rate": 0.0,
+        "turns": 528.875
+      },
+      "71831": {
+        "clear_rate": 0.9375,
+        "kills": 23.15625,
+        "kill_fraction": 0.9648436903953552,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.0,
+        "turns": 542.25
+      },
+      "72094": {
+        "clear_rate": 0.6875,
+        "kills": 18.0,
+        "kill_fraction": 0.75,
+        "death_rate": 0.3125,
+        "timeout_rate": 0.0,
+        "turns": 299.625
+      },
+      "72244": {
+        "clear_rate": 0.96875,
+        "kills": 23.8125,
+        "kill_fraction": 0.9921875,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 570.4375
+      },
+      "72250": {
+        "clear_rate": 0.875,
+        "kills": 21.9375,
+        "kill_fraction": 0.9140625,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.03125,
+        "turns": 511.28125
+      },
+      "72288": {
+        "clear_rate": 0.90625,
+        "kills": 22.71875,
+        "kill_fraction": 0.9466145634651184,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 482.75
+      },
+      "72296": {
+        "clear_rate": 0.96875,
+        "kills": 23.28125,
+        "kill_fraction": 0.9700520634651184,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 477.34375
+      },
+      "72423": {
+        "clear_rate": 0.96875,
+        "kills": 23.375,
+        "kill_fraction": 0.9739583134651184,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 689.03125
+      },
+      "72475": {
+        "clear_rate": 1.0,
+        "kills": 24.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 544.0
+      },
+      "72581": {
+        "clear_rate": 0.8125,
+        "kills": 21.09375,
+        "kill_fraction": 0.87890625,
+        "death_rate": 0.1875,
+        "timeout_rate": 0.0,
+        "turns": 449.6875
+      }
+    }
+  },
+  {
+    "enemies": 16,
+    "evaluation_seconds": 9.2692939681001,
+    "clear_rate": 0.970703125,
+    "kills": 15.6875,
+    "kill_fraction": 0.98046875,
+    "death_rate": 0.029296875,
+    "timeout_rate": 0.0,
+    "turns": 432.763671875,
+    "maps": {
+      "62655": {
+        "clear_rate": 0.9375,
+        "kills": 15.25,
+        "kill_fraction": 0.953125,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.0,
+        "turns": 372.40625
+      },
+      "63315": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 453.4375
+      },
+      "63391": {
+        "clear_rate": 0.875,
+        "kills": 14.59375,
+        "kill_fraction": 0.912109375,
+        "death_rate": 0.125,
+        "timeout_rate": 0.0,
+        "turns": 378.59375
+      },
+      "63453": {
+        "clear_rate": 0.90625,
+        "kills": 14.6875,
+        "kill_fraction": 0.91796875,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 339.34375
+      },
+      "63913": {
+        "clear_rate": 0.96875,
+        "kills": 15.59375,
+        "kill_fraction": 0.974609375,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 416.5625
+      },
+      "64026": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 434.59375
+      },
+      "64106": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 484.6875
+      },
+      "64379": {
+        "clear_rate": 0.9375,
+        "kills": 15.59375,
+        "kill_fraction": 0.974609375,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.0,
+        "turns": 300.03125
+      },
+      "64869": {
+        "clear_rate": 0.96875,
+        "kills": 15.5625,
+        "kill_fraction": 0.97265625,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 431.03125
+      },
+      "64952": {
+        "clear_rate": 0.96875,
+        "kills": 15.59375,
+        "kill_fraction": 0.974609375,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 444.09375
+      },
+      "65051": {
+        "clear_rate": 0.96875,
+        "kills": 15.875,
+        "kill_fraction": 0.9921875,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 312.9375
+      },
+      "65650": {
+        "clear_rate": 0.96875,
+        "kills": 15.75,
+        "kill_fraction": 0.984375,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 427.15625
+      },
+      "65772": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 421.5
+      },
+      "65838": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 532.03125
+      },
+      "66008": {
+        "clear_rate": 0.96875,
+        "kills": 15.71875,
+        "kill_fraction": 0.982421875,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 523.03125
+      },
+      "66179": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 487.40625
+      },
+      "66384": {
+        "clear_rate": 0.875,
+        "kills": 14.8125,
+        "kill_fraction": 0.92578125,
+        "death_rate": 0.125,
+        "timeout_rate": 0.0,
+        "turns": 352.4375
+      },
+      "70377": {
+        "clear_rate": 0.90625,
+        "kills": 14.78125,
+        "kill_fraction": 0.923828125,
+        "death_rate": 0.09375,
+        "timeout_rate": 0.0,
+        "turns": 315.875
+      },
+      "71260": {
+        "clear_rate": 0.96875,
+        "kills": 15.65625,
+        "kill_fraction": 0.978515625,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 471.40625
+      },
+      "71314": {
+        "clear_rate": 0.96875,
+        "kills": 15.875,
+        "kill_fraction": 0.9921875,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 288.9375
+      },
+      "71555": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 479.90625
+      },
+      "71600": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 533.65625
+      },
+      "71651": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 486.125
+      },
+      "71831": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 516.96875
+      },
+      "72094": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 324.3125
+      },
+      "72244": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 513.90625
+      },
+      "72250": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 499.21875
+      },
+      "72288": {
+        "clear_rate": 0.96875,
+        "kills": 15.59375,
+        "kill_fraction": 0.974609375,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 418.15625
+      },
+      "72296": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 426.0625
+      },
+      "72423": {
+        "clear_rate": 1.0,
+        "kills": 16.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 621.5
+      },
+      "72475": {
+        "clear_rate": 0.96875,
+        "kills": 15.75,
+        "kill_fraction": 0.984375,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 466.5
+      },
+      "72581": {
+        "clear_rate": 0.9375,
+        "kills": 15.3125,
+        "kill_fraction": 0.95703125,
+        "death_rate": 0.0625,
+        "timeout_rate": 0.0,
+        "turns": 374.625
+      }
+    }
+  },
+  {
+    "enemies": 8,
+    "evaluation_seconds": 8.96663052891381,
+    "clear_rate": 0.9990234375,
+    "kills": 7.998046875,
+    "kill_fraction": 0.999755859375,
+    "death_rate": 0.0009765625,
+    "timeout_rate": 0.0,
+    "turns": 344.837890625,
+    "maps": {
+      "62655": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 290.96875
+      },
+      "63315": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 339.375
+      },
+      "63391": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 344.46875
+      },
+      "63453": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 292.4375
+      },
+      "63913": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 358.59375
+      },
+      "64026": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 356.6875
+      },
+      "64106": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 362.59375
+      },
+      "64379": {
+        "clear_rate": 0.96875,
+        "kills": 7.9375,
+        "kill_fraction": 0.9921875,
+        "death_rate": 0.03125,
+        "timeout_rate": 0.0,
+        "turns": 218.34375
+      },
+      "64869": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 358.09375
+      },
+      "64952": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 365.71875
+      },
+      "65051": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 233.125
+      },
+      "65650": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 353.9375
+      },
+      "65772": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 316.71875
+      },
+      "65838": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 452.96875
+      },
+      "66008": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 430.59375
+      },
+      "66179": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 340.9375
+      },
+      "66384": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 284.8125
+      },
+      "70377": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 272.25
+      },
+      "71260": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 375.09375
+      },
+      "71314": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 204.40625
+      },
+      "71555": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 368.0625
+      },
+      "71600": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 459.28125
+      },
+      "71651": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 404.0
+      },
+      "71831": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 405.90625
+      },
+      "72094": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 244.6875
+      },
+      "72244": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 385.9375
+      },
+      "72250": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 407.46875
+      },
+      "72288": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 336.15625
+      },
+      "72296": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 325.84375
+      },
+      "72423": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 474.25
+      },
+      "72475": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 330.6875
+      },
+      "72581": {
+        "clear_rate": 1.0,
+        "kills": 8.0,
+        "kill_fraction": 1.0,
+        "death_rate": 0.0,
+        "timeout_rate": 0.0,
+        "turns": 340.40625
+      }
+    }
+  }
+]

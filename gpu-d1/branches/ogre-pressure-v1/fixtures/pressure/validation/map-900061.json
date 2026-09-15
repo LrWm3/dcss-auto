@@ -1,0 +1,16 @@
+{
+  "player": 2662,
+  "ogre": 2589,
+  "monster": 2675,
+  "awake": 1,
+  "energy": 75,
+  "family": "loop_detour",
+  "seed": 900061,
+  "static_safe_path": true,
+  "canonical_geometry_sha256": "35054c48c8b8f19e3c2920c6ef9d242925c80d7a448096325b4d4faacaef9c21",
+  "split": "validation",
+  "scenario_id": "validation-006",
+  "label": "ogre_pressure",
+  "sha256": "79be57a48ddb794bbf51f56e9f73136bec97d91bd2c786f7a9a7e3be502ffaaf",
+  "geometry_sha256": "41c74b4eff163125d2ee87adea08fef7e0ff7cbf544ce50c7910cec288a4f214"
+}

@@ -1,0 +1,176 @@
+[
+  {
+    "mode": "wait",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.0,
+    "clear_ci95": [
+      0.0,
+      0.0018722692823851506
+    ],
+    "enemies_killed": 0.0,
+    "killed_fraction": 0.0,
+    "mean_hp": 13.20751953125,
+    "mean_length": 222.25537109375,
+    "clear_length": null,
+    "death_rate": 0.21240234375,
+    "timeout_rate": 0.78759765625,
+    "mean_return": -0.4346579313278198
+  },
+  {
+    "mode": "random",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.0,
+    "clear_ci95": [
+      0.0,
+      0.0018722692823851506
+    ],
+    "enemies_killed": 1.3466796875,
+    "killed_fraction": 0.1683349609375,
+    "mean_hp": 17.509765625,
+    "mean_length": 252.24609375,
+    "clear_length": null,
+    "death_rate": 0.0205078125,
+    "timeout_rate": 0.9794921875,
+    "mean_return": 1.2417446374893188
+  },
+  {
+    "mode": "pursuit",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.99755859375,
+    "clear_ci95": [
+      0.9942973045140454,
+      0.9989567556434248
+    ],
+    "enemies_killed": 7.9951171875,
+    "killed_fraction": 0.9993896484375,
+    "mean_hp": 16.8154296875,
+    "mean_length": 166.06640625,
+    "clear_length": 166.0680389404297,
+    "death_rate": 0.00146484375,
+    "timeout_rate": 0.0009765625,
+    "mean_return": 11.571174621582031
+  },
+  {
+    "mode": "sampled",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.57666015625,
+    "clear_ci95": [
+      0.5551370813264116,
+      0.5978961742621289
+    ],
+    "enemies_killed": 7.28369140625,
+    "killed_fraction": 0.91046142578125,
+    "mean_hp": 17.083984375,
+    "mean_length": 218.42529296875,
+    "clear_length": 193.49618530273438,
+    "death_rate": 0.0078125,
+    "timeout_rate": 0.41552734375,
+    "mean_return": 9.783414840698242,
+    "policy": "seed-0",
+    "checkpoint": "gpu-d1/learning-runs/sleep-explore-ring-v1-100m-corrected/seed-0/policy-100007936.pt"
+  },
+  {
+    "mode": "greedy",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.56494140625,
+    "clear_ci95": [
+      0.5433678716508659,
+      0.5862717652489806
+    ],
+    "enemies_killed": 7.173828125,
+    "killed_fraction": 0.896728515625,
+    "mean_hp": 16.8447265625,
+    "mean_length": 217.55859375,
+    "clear_length": 192.91702270507812,
+    "death_rate": 0.01708984375,
+    "timeout_rate": 0.41796875,
+    "mean_return": 9.61103630065918,
+    "policy": "seed-0",
+    "checkpoint": "gpu-d1/learning-runs/sleep-explore-ring-v1-100m-corrected/seed-0/policy-100007936.pt"
+  },
+  {
+    "mode": "sampled",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.59423828125,
+    "clear_ci95": [
+      0.5728139924613576,
+      0.615309691160224
+    ],
+    "enemies_killed": 7.3115234375,
+    "killed_fraction": 0.9139404296875,
+    "mean_hp": 17.10205078125,
+    "mean_length": 217.892578125,
+    "clear_length": 194.13394165039062,
+    "death_rate": 0.0068359375,
+    "timeout_rate": 0.39892578125,
+    "mean_return": 9.873897552490234,
+    "policy": "seed-1",
+    "checkpoint": "gpu-d1/learning-runs/sleep-explore-ring-v1-100m-corrected/seed-1/policy-100007936.pt"
+  },
+  {
+    "mode": "greedy",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.5810546875,
+    "clear_ci95": [
+      0.5595536971424835,
+      0.6022521654543174
+    ],
+    "enemies_killed": 7.15478515625,
+    "killed_fraction": 0.89434814453125,
+    "mean_hp": 17.146484375,
+    "mean_length": 218.61279296875,
+    "clear_length": 194.05125427246094,
+    "death_rate": 0.0078125,
+    "timeout_rate": 0.4111328125,
+    "mean_return": 9.655174255371094,
+    "policy": "seed-1",
+    "checkpoint": "gpu-d1/learning-runs/sleep-explore-ring-v1-100m-corrected/seed-1/policy-100007936.pt"
+  },
+  {
+    "mode": "sampled",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.58642578125,
+    "clear_ci95": [
+      0.5649541414558057,
+      0.6075737963733132
+    ],
+    "enemies_killed": 7.25927734375,
+    "killed_fraction": 0.90740966796875,
+    "mean_hp": 17.02880859375,
+    "mean_length": 219.11474609375,
+    "clear_length": 196.29225158691406,
+    "death_rate": 0.01025390625,
+    "timeout_rate": 0.4033203125,
+    "mean_return": 9.793623924255371,
+    "policy": "seed-2",
+    "checkpoint": "gpu-d1/learning-runs/sleep-explore-ring-v1-100m-corrected/seed-2/policy-100007936.pt"
+  },
+  {
+    "mode": "greedy",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.55419921875,
+    "clear_ci95": [
+      0.5325901230958455,
+      0.5756053633393646
+    ],
+    "enemies_killed": 7.09716796875,
+    "killed_fraction": 0.88714599609375,
+    "mean_hp": 16.9853515625,
+    "mean_length": 218.7177734375,
+    "clear_length": 193.0325927734375,
+    "death_rate": 0.01318359375,
+    "timeout_rate": 0.4326171875,
+    "mean_return": 9.514276504516602,
+    "policy": "seed-2",
+    "checkpoint": "gpu-d1/learning-runs/sleep-explore-ring-v1-100m-corrected/seed-2/policy-100007936.pt"
+  }
+]

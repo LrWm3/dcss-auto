@@ -1,0 +1,41 @@
+{
+  "jobs": [
+    {
+      "name": "route_cue",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "steps": 10000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_cue-seed0"
+    }
+  ],
+  "total_requested_decisions": 10000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ring-route-cue-corrected-seed0",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1
+{"job": "route_cue-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.658203125}
+{"job": "route_cue-seed0", "decisions": 1015808, "train_seconds": 10.491, "decisions_per_train_second": 96824.8, "clears": 0.0, "kills": 7.609375}
+{"job": "route_cue-seed0", "decisions": 3014656, "train_seconds": 41.018, "decisions_per_train_second": 73496.2, "clears": 0.0693359375, "kills": 13.4189453125}
+{"job": "route_cue-seed0", "decisions": 10027008, "train_seconds": 177.346, "decisions_per_train_second": 56539.1, "clears": 0.33203125, "kills": 21.5537109375}
+{"job": "route_cue-seed0", "status": "complete", "decisions": 10027008, "train_seconds": 177.346, "decisions_per_train_second": 56539.1}
+Suite outputs: 25.7 MiB
+{"status": "suite_complete", "train_seconds": 177.346, "decisions_per_train_second": 56539.1}

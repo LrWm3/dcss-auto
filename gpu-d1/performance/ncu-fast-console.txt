@@ -1,0 +1,6 @@
+==WARNING== No metrics to collect found in sections.
+==PROF== Connected to process 2502278 (/usr/bin/python3.12)
+==PROF== Profiling "step_kernel": 0%....50%....100% - 1 pass
+{"mode": "baseline", "library": "gpu-d1/performance/learn_fast.so", "median": {"rollout_s": 0.412346808006987, "gae_s": 0.022443017922341824, "ppo_s": 0.2161076650954783, "total_s": 0.6508974910248071}, "gpu": "Quadro RTX 5000 with Max-Q Design", "torch": "2.6.0+cu124", "decisions_per_update": 32768, "final_loss": true, "decisions_per_second": 50342.79660290032}
+==PROF== Disconnected from process 2502278
+==PROF== Report: /home/reeldata/wk/exp/dcss/gpu-d1/performance/ncu-fast.ncu-rep

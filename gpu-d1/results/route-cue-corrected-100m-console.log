@@ -1,0 +1,107 @@
+{
+  "jobs": [
+    {
+      "name": "route_cue",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "steps": 100000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_cue-seed0"
+    },
+    {
+      "name": "route_cue",
+      "seed": 1,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "steps": 100000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_cue-seed1"
+    },
+    {
+      "name": "route_cue",
+      "seed": 2,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "steps": 100000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "id": "route_cue-seed2"
+    }
+  ],
+  "total_requested_decisions": 300000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ring-route-cue-corrected-100m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1
+{"job": "route_cue-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.658203125}
+{"job": "route_cue-seed0", "decisions": 1015808, "train_seconds": 10.341, "decisions_per_train_second": 98233.0, "clears": 0.0, "kills": 7.609375}
+{"job": "route_cue-seed0", "decisions": 3014656, "train_seconds": 40.522, "decisions_per_train_second": 74395.3, "clears": 0.0693359375, "kills": 13.4189453125}
+{"job": "route_cue-seed0", "decisions": 10027008, "train_seconds": 176.165, "decisions_per_train_second": 56918.3, "clears": 0.33203125, "kills": 21.5537109375}
+{"job": "route_cue-seed0", "decisions": 30015488, "train_seconds": 583.522, "decisions_per_train_second": 51438.5, "clears": 0.5361328125, "kills": 27.412109375}
+{"job": "route_cue-seed0", "decisions": 100007936, "train_seconds": 2037.071, "decisions_per_train_second": 49094.0, "clears": 0.5927734375, "kills": 28.7607421875}
+{"job": "route_cue-seed0", "status": "complete", "decisions": 100007936, "train_seconds": 2037.071, "decisions_per_train_second": 49094.0}
+Suite outputs: 25.8 MiB
+{"job": "route_cue-seed1", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.591796875}
+{"job": "route_cue-seed1", "decisions": 1015808, "train_seconds": 10.307, "decisions_per_train_second": 98552.8, "clears": 0.0, "kills": 8.1806640625}
+{"job": "route_cue-seed1", "decisions": 3014656, "train_seconds": 41.958, "decisions_per_train_second": 71848.6, "clears": 0.076171875, "kills": 13.8759765625}
+{"job": "route_cue-seed1", "decisions": 10027008, "train_seconds": 181.585, "decisions_per_train_second": 55219.3, "clears": 0.28515625, "kills": 19.7041015625}
+{"job": "route_cue-seed1", "decisions": 30015488, "train_seconds": 590.59, "decisions_per_train_second": 50822.9, "clears": 0.453125, "kills": 25.330078125}
+{"job": "route_cue-seed1", "decisions": 100007936, "train_seconds": 2041.346, "decisions_per_train_second": 48991.2, "clears": 0.583984375, "kills": 28.4072265625}
+{"job": "route_cue-seed1", "status": "complete", "decisions": 100007936, "train_seconds": 2041.346, "decisions_per_train_second": 48991.2}
+Suite outputs: 50.3 MiB
+{"job": "route_cue-seed2", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 4.6904296875}
+{"job": "route_cue-seed2", "decisions": 1015808, "train_seconds": 10.343, "decisions_per_train_second": 98216.8, "clears": 0.0, "kills": 8.1435546875}
+{"job": "route_cue-seed2", "decisions": 3014656, "train_seconds": 41.867, "decisions_per_train_second": 72005.2, "clears": 0.0830078125, "kills": 13.8740234375}
+{"job": "route_cue-seed2", "decisions": 10027008, "train_seconds": 181.729, "decisions_per_train_second": 55175.6, "clears": 0.296875, "kills": 19.7314453125}
+{"job": "route_cue-seed2", "decisions": 30015488, "train_seconds": 590.147, "decisions_per_train_second": 50861.0, "clears": 0.46875, "kills": 25.5654296875}
+{"job": "route_cue-seed2", "decisions": 100007936, "train_seconds": 2042.341, "decisions_per_train_second": 48967.3, "clears": 0.59765625, "kills": 28.615234375}
+{"job": "route_cue-seed2", "status": "complete", "decisions": 100007936, "train_seconds": 2042.341, "decisions_per_train_second": 48967.3}
+Suite outputs: 74.9 MiB
+{"status": "suite_complete", "train_seconds": 6120.759, "decisions_per_train_second": 49017.4}

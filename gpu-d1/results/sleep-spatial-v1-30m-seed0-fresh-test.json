@@ -1,0 +1,86 @@
+[
+  {
+    "mode": "sampled",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.0791015625,
+    "clear_ci95": [
+      0.0681846616121859,
+      0.09159453381888437
+    ],
+    "enemies_killed": 5.5908203125,
+    "killed_fraction": 0.6988525390625,
+    "mean_hp": 17.68212890625,
+    "mean_length": 249.140625,
+    "clear_length": 191.1234588623047,
+    "death_rate": 0.0087890625,
+    "timeout_rate": 0.912109375,
+    "mean_return": 6.508615493774414,
+    "policy": "seed-0",
+    "checkpoint": "gpu-d1/learning-runs/sleep-spatial-v1-30m-seed0/seed-0/policy-10027008.pt",
+    "decisions": 10027008
+  },
+  {
+    "mode": "greedy",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.06201171875,
+    "clear_ci95": [
+      0.05236392554475265,
+      0.07329957596530541
+    ],
+    "enemies_killed": 5.14208984375,
+    "killed_fraction": 0.64276123046875,
+    "mean_hp": 17.3564453125,
+    "mean_length": 248.08154296875,
+    "clear_length": 181.6299285888672,
+    "death_rate": 0.02392578125,
+    "timeout_rate": 0.9140625,
+    "mean_return": 5.913591384887695,
+    "policy": "seed-0",
+    "checkpoint": "gpu-d1/learning-runs/sleep-spatial-v1-30m-seed0/seed-0/policy-10027008.pt",
+    "decisions": 10027008
+  },
+  {
+    "mode": "sampled",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.40625,
+    "clear_ci95": [
+      0.3851736397296208,
+      0.4276774107608263
+    ],
+    "enemies_killed": 7.0830078125,
+    "killed_fraction": 0.8853759765625,
+    "mean_hp": 17.2998046875,
+    "mean_length": 232.8212890625,
+    "clear_length": 202.53965759277344,
+    "death_rate": 0.00830078125,
+    "timeout_rate": 0.58544921875,
+    "mean_return": 9.084203720092773,
+    "policy": "seed-0",
+    "checkpoint": "gpu-d1/learning-runs/sleep-spatial-v1-30m-seed0/seed-0/policy-30015488.pt",
+    "decisions": 30015488
+  },
+  {
+    "mode": "greedy",
+    "eval_seed": 1200000,
+    "episodes": 2048,
+    "clear_rate": 0.36767578125,
+    "clear_ci95": [
+      0.34705858526983,
+      0.3887884703703324
+    ],
+    "enemies_killed": 6.73486328125,
+    "killed_fraction": 0.84185791015625,
+    "mean_hp": 17.0927734375,
+    "mean_length": 232.51708984375,
+    "clear_length": 198.4130096435547,
+    "death_rate": 0.015625,
+    "timeout_rate": 0.61669921875,
+    "mean_return": 8.545235633850098,
+    "policy": "seed-0",
+    "checkpoint": "gpu-d1/learning-runs/sleep-spatial-v1-30m-seed0/seed-0/policy-30015488.pt",
+    "decisions": 30015488
+  }
+]

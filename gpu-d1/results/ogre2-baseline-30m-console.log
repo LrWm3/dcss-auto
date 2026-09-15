@@ -1,0 +1,48 @@
+{
+  "jobs": [
+    {
+      "name": "ogre2_base",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "steps": 30000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "id": "ogre2_base-seed0"
+    }
+  ],
+  "total_requested_decisions": 30000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-baseline-30m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-ogres2-features0
+{"job": "ogre2_base-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 3.9267578125}
+{"job": "ogre2_base-seed0", "decisions": 1015808, "train_seconds": 10.112, "decisions_per_train_second": 100457.3, "clears": 0.0, "kills": 5.3837890625}
+{"job": "ogre2_base-seed0", "decisions": 3014656, "train_seconds": 36.154, "decisions_per_train_second": 83384.1, "clears": 0.0, "kills": 7.1953125}
+{"job": "ogre2_base-seed0", "decisions": 10027008, "train_seconds": 150.822, "decisions_per_train_second": 66482.6, "clears": 0.0546875, "kills": 10.900390625}
+{"job": "ogre2_base-seed0", "decisions": 30015488, "train_seconds": 536.258, "decisions_per_train_second": 55972.1, "clears": 0.2412109375, "kills": 15.009765625}
+{"job": "ogre2_base-seed0", "status": "complete", "decisions": 30015488, "train_seconds": 536.258, "decisions_per_train_second": 55972.1}
+Suite outputs: 27.3 MiB
+{"status": "suite_complete", "train_seconds": 536.258, "decisions_per_train_second": 55972.1}

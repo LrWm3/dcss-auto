@@ -1,0 +1,18 @@
+{
+  "pid": 2475428,
+  "command": [
+    "/home/reeldata/wk/exp/dcss/gpu-d1/.venv/bin/python",
+    "-u",
+    "/home/reeldata/wk/exp/dcss/gpu-d1/branches/ogre-v1/scripts/run_ring_ablations.py",
+    "--variants",
+    "ogre2_base",
+    "--steps",
+    "30000000",
+    "--seeds",
+    "0",
+    "--output",
+    "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-baseline-30m"
+  ],
+  "log": "/home/reeldata/wk/exp/dcss/gpu-d1/results/ogre2-baseline-30m-console.log",
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-baseline-30m"
+}

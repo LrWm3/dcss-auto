@@ -1,0 +1,53 @@
+Queued: waiting for /home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-baseline-150m-fast
+Preceding suite complete; starting ogre feature screen.
+{
+  "jobs": [
+    {
+      "name": "ogre2_no_optional_label",
+      "seed": 0,
+      "maps": 256,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 50000000,
+      "batch": 512,
+      "horizon": 64,
+      "eval_per_map": 32,
+      "validation_maps": 32,
+      "checkpoint_every": 1000000,
+      "lr": 0.0003,
+      "epochs": 4,
+      "minibatch": 4096,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "no_optional_label": true,
+      "id": "ogre2_no_optional_label-seed0"
+    }
+  ],
+  "total_requested_decisions": 50000000,
+  "output": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/ogre2-no-optional-label-50m",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-fast-ogres2-features0
+{"job": "ogre2_no_optional_label-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 3.9228515625}
+{"job": "ogre2_no_optional_label-seed0", "decisions": 1015808, "train_seconds": 5.029, "decisions_per_train_second": 201998.6, "clears": 0.0, "kills": 5.8486328125}
+{"job": "ogre2_no_optional_label-seed0", "decisions": 3014656, "train_seconds": 15.855, "decisions_per_train_second": 190142.5, "clears": 0.0048828125, "kills": 8.1201171875}
+{"job": "ogre2_no_optional_label-seed0", "decisions": 10027008, "train_seconds": 57.137, "decisions_per_train_second": 175492.0, "clears": 0.1396484375, "kills": 12.833984375}
+{"job": "ogre2_no_optional_label-seed0", "decisions": 30015488, "train_seconds": 194.46, "decisions_per_train_second": 154353.1, "clears": 0.2958984375, "kills": 15.4970703125}
+{"job": "ogre2_no_optional_label-seed0", "decisions": 50003968, "train_seconds": 331.073, "decisions_per_train_second": 151036.3, "clears": 0.2900390625, "kills": 16.33984375}
+{"job": "ogre2_no_optional_label-seed0", "status": "complete", "decisions": 50003968, "train_seconds": 331.073, "decisions_per_train_second": 151036.3}
+Suite outputs: 27.7 MiB
+{"status": "suite_complete", "train_seconds": 331.073, "decisions_per_train_second": 151036.3}

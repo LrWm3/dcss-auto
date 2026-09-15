@@ -1,0 +1,16 @@
+{
+  "player": 3645,
+  "ogre": 3715,
+  "monster": 3626,
+  "awake": 1,
+  "energy": 70,
+  "family": "wide_pillar",
+  "seed": 800031,
+  "static_safe_path": true,
+  "canonical_geometry_sha256": "da1bd58880801c8340319e9efa987156bf0d8e61685cde237561bae5696686f0",
+  "split": "train",
+  "scenario_id": "train-003",
+  "label": "ogre_pressure",
+  "sha256": "b5814223dc8834b6254db2b81386fe086bd83acfc299a8542bf6718bae40ea72",
+  "geometry_sha256": "825bd6c0e52683de5f326306f72356cef1f4d320bd84484d386fa21e3a2e0612"
+}

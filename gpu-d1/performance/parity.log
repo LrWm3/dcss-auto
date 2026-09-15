@@ -1,0 +1,2 @@
+PASS: 1200 steps x 8 worlds, unchanged observations, masks and transitions
+PASS: inactive worlds frozen; active worlds match ordinary stepping

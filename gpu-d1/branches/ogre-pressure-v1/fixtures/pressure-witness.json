@@ -1,0 +1,386 @@
+[
+  {
+    "scenario_id": "train-000",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-001",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-002",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-003",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-004",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-005",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-006",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-007",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-008",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-009",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-010",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-011",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-012",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-013",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-014",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-015",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-017",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-018",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-019",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-020",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-021",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-022",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-023",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-024",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-025",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-026",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-027",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-028",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-029",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-030",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-031",
+    "family": "wide_pillar",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "train-016",
+    "family": "loop_detour",
+    "split": "train",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-001",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-002",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-003",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-004",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-005",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-006",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-008",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-009",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-011",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-013",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-014",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-015",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-000",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-007",
+    "family": "wide_pillar",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-010",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  },
+  {
+    "scenario_id": "validation-012",
+    "family": "loop_detour",
+    "split": "validation",
+    "clear": true,
+    "ogre_damage": 0.0,
+    "ogres_alive": 1
+  }
+]

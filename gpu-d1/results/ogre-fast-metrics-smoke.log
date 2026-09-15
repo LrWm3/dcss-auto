@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "name": "ogre2_base",
+      "seed": 0,
+      "maps": 2,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 512,
+      "batch": 8,
+      "horizon": 16,
+      "eval_per_map": 2,
+      "validation_maps": 2,
+      "checkpoint_every": 256,
+      "lr": 0.0003,
+      "epochs": 1,
+      "minibatch": 128,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "id": "ogre2_base-seed0"
+    }
+  ],
+  "total_requested_decisions": 512,
+  "output": "/tmp/ogre-fast-metrics-smoke",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-fast-ogres2-features0
+{"job": "ogre2_base-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 8.25}
+{"job": "ogre2_base-seed0", "decisions": 512, "train_seconds": 0.174, "decisions_per_train_second": 2937.2, "clears": 0.0, "kills": 7.25}
+{"job": "ogre2_base-seed0", "status": "complete", "decisions": 512, "train_seconds": 0.174, "decisions_per_train_second": 2937.2}
+Suite outputs: 3.8 MiB
+{"status": "suite_complete", "train_seconds": 0.174, "decisions_per_train_second": 2937.2}

@@ -1,0 +1,83 @@
+{
+  "jobs": [
+    {
+      "name": "ordinary_only",
+      "seed": 0,
+      "maps": 2,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 512,
+      "batch": 8,
+      "horizon": 16,
+      "eval_per_map": 2,
+      "validation_maps": 2,
+      "checkpoint_every": 256,
+      "lr": 0.0003,
+      "epochs": 1,
+      "minibatch": 128,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "pressure_permille": 0,
+      "id": "ordinary_only-seed0"
+    },
+    {
+      "name": "pressure10",
+      "seed": 0,
+      "maps": 2,
+      "width": 128,
+      "no_xy": false,
+      "no_ring": false,
+      "frontier": true,
+      "route_cue": true,
+      "explore_milli": 2,
+      "gamma": 0.99,
+      "awake": false,
+      "frames": 1,
+      "death_milli": 1000,
+      "performance": "fast",
+      "steps": 512,
+      "batch": 8,
+      "horizon": 16,
+      "eval_per_map": 2,
+      "validation_maps": 2,
+      "checkpoint_every": 256,
+      "lr": 0.0003,
+      "epochs": 1,
+      "minibatch": 128,
+      "entropy": 0.01,
+      "gae_lambda": 0.95,
+      "enemies": 26,
+      "ogres": 2,
+      "ogre_features": 0,
+      "pressure_permille": 100,
+      "id": "pressure10-seed0"
+    }
+  ],
+  "total_requested_decisions": 1024,
+  "output": "/tmp/ogre-pressure-smoke",
+  "max_disk_gb": 2,
+  "free_space_reserve_gb": 5,
+  "retention": "one live-world latest.pt plus compact best.pt per job; no map copies"
+}
+Building ring-reward2-frontier1-route1-fast-ogres2-features0
+{"job": "ordinary_only-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 8.25, "pressure_train_clear": 0.0, "pressure_heldout_clear": 0.0}
+{"job": "ordinary_only-seed0", "decisions": 512, "train_seconds": 0.212, "decisions_per_train_second": 2415.3, "clears": 0.0, "kills": 7.25, "pressure_train_clear": 0.0, "pressure_heldout_clear": 0.0}
+{"job": "ordinary_only-seed0", "status": "complete", "decisions": 512, "train_seconds": 0.212, "decisions_per_train_second": 2415.3}
+Suite outputs: 4.0 MiB
+{"job": "pressure10-seed0", "decisions": 0, "train_seconds": 0.0, "decisions_per_train_second": null, "clears": 0.0, "kills": 8.25, "pressure_train_clear": 0.0, "pressure_heldout_clear": 0.0}
+{"job": "pressure10-seed0", "decisions": 512, "train_seconds": 0.243, "decisions_per_train_second": 2105.3, "clears": 0.0, "kills": 7.5, "pressure_train_clear": 0.0, "pressure_heldout_clear": 0.0}
+{"job": "pressure10-seed0", "status": "complete", "decisions": 512, "train_seconds": 0.243, "decisions_per_train_second": 2105.3}
+Suite outputs: 6.6 MiB
+{"status": "suite_complete", "train_seconds": 0.455, "decisions_per_train_second": 2249.7}
