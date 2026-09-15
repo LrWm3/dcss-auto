@@ -23,6 +23,9 @@ constexpr int BLOCK_SIZE=LEARN_BLOCK_SIZE;
 #ifndef OGRE_COUNT
 #define OGRE_COUNT 0
 #endif
+#ifndef OPTIONAL_LABEL_OBS
+#define OPTIONAL_LABEL_OBS 0
+#endif
 #ifndef OGRE_FEATURES
 #define OGRE_FEATURES 0
 #endif
@@ -534,7 +537,7 @@ HD void observe(State &s, Config c, const Tables &t, float *o, float *mask) {
     for(int i=0;i<c.count;i++) if(s.hp[i]>0) {
         int j=BASE_OBS+55+i*8;
         bool ogre=i>=REQUIRED;
-        o[j]=!ogre; // Always available: kill required for completion.
+        o[j]=OPTIONAL_LABEL_OBS ? !ogre : 0; // Explicit role cue is opt-in.
         if(OGRE_FEATURES & 1) o[j+1]=s.awake[i];
         if(OGRE_FEATURES & 2) o[j+2]=ogre ? .5f : c.kinds[i%6].speed/10.f;
         if(OGRE_FEATURES & 4) {

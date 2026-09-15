@@ -27,6 +27,8 @@ class NoOptionalLabelEnv(OriginalEnv):
 
 
 def main():
+    if '--optional-label' in sys.argv:
+        raise SystemExit('--optional-label conflicts with the no-label ablation')
     environment.Env = NoOptionalLabelEnv
     runner.VARIANTS = {'ogre2_no_optional_label': dict(runner.VARIANTS['ogre2_base'], no_optional_label=True)}
     runner.DEFAULT = 'ogre2_no_optional_label'

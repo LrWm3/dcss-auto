@@ -1,19 +1,24 @@
 """CPU/CUDA parity and matched initial ordinary encounters across ogre counts."""
+import json
 import pathlib
 import sys
 import torch
 from learn_env_ring_multi import Env
 
 suite=pathlib.Path(sys.argv[1]); corpus=pathlib.Path(__file__).resolve().parents[3]/'fixtures/d1-corpus-388/train'
+jobs=json.loads((suite/'manifest.json').read_text())['jobs']
 initial=[]
 for n,feature in [(0,0),(1,7),(2,7)]:
-    lib=suite/'build'/f'ring-reward2-frontier1-route1-fast-ogres{n}-features{feature}.so'
-    if not lib.exists():
-        lib=suite/'build'/f'ring-reward2-frontier1-route1-ogres{n}-features{feature}.so'
+    job=next(j for j in jobs if j['ogres']==n and j['ogre_features']==feature)
+    # Historical manifests omitted this setting and exposed the label.
+    label=job.get('optional_label', not job.get('no_optional_label', False))
+    suffix=f'-optional-label{int(label)}' if 'optional_label' in job else ''
+    fast='-fast' if job.get('performance')=='fast' else ''
+    lib=suite/'build'/f'ring-reward2-frontier1-route1{fast}{suffix}-ogres{n}-features{feature}.so'
     args=dict(batch=8,enemies=24+n,seed=123,map_limit=2,corpus=corpus,library_path=lib)
     cpu=Env(device='cpu',**args); gpu=Env(device='cuda',**args)
     initial.append(cpu.obs.clone())
-    assert (cpu.obs[:,421:421+24*8:8]==1).all()
+    assert (cpu.obs[:,421:421+24*8:8]==int(label)).all()
     for i in range(24,24+n):
         delta=cpu.obs[:,162+i*5:164+i*5]*torch.tensor([80.,70.])
         assert (delta.abs().max(1).values>=11.999).all()

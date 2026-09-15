@@ -40,3 +40,11 @@ The mixed arm consumed 763,601 pressure decisions, **1.53% of total decisions**,
 Full final metrics, per-map results, compact checkpoint curves and training-group counts are archived in [results/ogre-summary](results/ogre-summary). See [the pressure design](branches/ogre-pressure-v1/EXPERIMENT.md), [label ablation](branches/ogre-metrics-v2/NO-OPTIONAL-LABEL.md), and [performance measurements](PERFORMANCE.md).
 
 The archive contains no model weights, live worlds or compiled map caches. Regenerate pressure maps with `gpu-d1/.venv/bin/python gpu-d1/branches/ogre-pressure-v1/scripts/generate_pressure.py`; ordinary corpus collection/compilation uses the scripts documented in the ablation runner and corpus experiments. Existing historical run paths in archived JSON identify local provenance and are not bundled training checkpoints.
+
+## Default for future runs
+
+The explicit required/optional enemy label is now disabled by default in all three ogre branches. Use `--optional-label` with `scripts/run_ring_ablations.py` to restore it for a comparison; direct native builds use `-DOPTIONAL_LABEL_OBS=1`. Jobs record `optional_label`, and compiled library names distinguish the setting. Observation width stays 741, with the role slots zeroed. Monster type, position, HP, and any enabled feature channels remain available. Existing results and saved policies retain their original observation assumptions; use a fresh suite directory for new runs.
+
+This is an experimental default, not evidence that the label hurts: the 50M seed-0 comparison was +1.66 percentage points for the label, with a paired map-bootstrap 95% interval of −2.15 to +5.47 points.
+
+See [close, awake ogre evaluation](HARD-OGRE-PRESSURE.md): all four trained policies clear 99.5–99.8%, versus 61.7% for direct chase and 2.3% for random actions. This harder placement suite still has a ceiling for trained policies.

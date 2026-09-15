@@ -66,6 +66,7 @@ def jobs_for(args):
             job = dict(name=name, seed=seed, maps=256, width=128, no_xy=False,
                        no_ring=False, frontier=False, route_cue=False, explore_milli=2, gamma=.99,
                        awake=False, frames=1, death_milli=1000, performance=args.performance,
+                       optional_label=args.optional_label,
                        steps=args.baseline_steps if name == 'baseline' else args.steps,
                        batch=512, horizon=64, eval_per_map=args.eval_per_map,
                        validation_maps=32, checkpoint_every=args.checkpoint_every,
@@ -94,6 +95,7 @@ def library_key(job):
         key += f'-heal{job["heal_charges"]}'
     if job.get('performance') == 'fast':
         key += '-fast'
+    key += f'-optional-label{int(job.get("optional_label", False))}'
     return key + f'-ogres{job["ogres"]}-features{job["ogre_features"]}'
 
 
@@ -124,6 +126,7 @@ def build(store, job):
         output = pathlib.Path(tmp) / 'library.so'
         flags = ['-DLEARN_ENEMIES=40', '-DMULTI_MAP', '-DSLEEP_ON', '-DEXPLORE_REWARD',
                  '-DMARK_WALLS', f'-DEXPLORE_MILLI={job["explore_milli"]}']
+        flags += [f'-DOPTIONAL_LABEL_OBS={int(job.get("optional_label", False))}']
         flags += [f'-DOGRE_COUNT={job["ogres"]}', f'-DOGRE_FEATURES={job["ogre_features"]}']
         flags += (['-DFRONTIER_RING_MEMORY_WALLS_OBS', '-DKNOWN_FRONTIER'] if job['frontier']
                   else ['-DFRONTIER_RING_WALLS_OBS'])
@@ -432,6 +435,8 @@ def main():
     ap.add_argument('--min-free-gb', type=float, default=5)
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--smoke', action='store_true')
+    ap.add_argument('--optional-label', action='store_true',
+                    help='Expose required/optional enemy role (disabled by default)')
     ap.add_argument('--performance', choices=('fast', 'reference'), default='fast')
     ap.add_argument('--worker', help=argparse.SUPPRESS)
     args = ap.parse_args()

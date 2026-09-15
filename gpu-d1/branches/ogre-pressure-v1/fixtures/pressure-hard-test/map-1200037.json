@@ -1,0 +1,19 @@
+{
+  "seed": 1200037,
+  "player": 2280,
+  "ogre": 2283,
+  "monster": 2291,
+  "awake": 1,
+  "energy": 75,
+  "family": "close_awake_loop",
+  "geometry_id": 9,
+  "initial_distance": 3,
+  "corridor_width": 3,
+  "canonical_geometry_sha256": "52e80ec6ad3b9e78c0cdce0dd35ccdba94d0bfc7d1469b0abdd8b78e85388a9f",
+  "static_safe_path": true,
+  "split": "diagnostic_test",
+  "label": "ogre_pressure",
+  "scenario_id": "hard-037",
+  "sha256": "1b301063133a6f18bb73f14835cec4cc3f17518d3acc74e68d302e0bb1f9cdcb",
+  "geometry_sha256": "7e3236a052b8b6209edad7b7e2874d8d283bd8afc041285304f396d041924851"
+}
