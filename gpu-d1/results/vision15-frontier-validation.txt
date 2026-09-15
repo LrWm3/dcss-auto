@@ -1,0 +1,3 @@
+vision15_no_travel-seed0 PASS: 8400 policy transitions; 8400 physical turns; 0 travel uses; native semantics, rewards, expanded clock, active masks
+vision15_travel-seed0 PASS: 8400 policy transitions; 11000 physical turns; 969 travel uses; native semantics, rewards, expanded clock, active masks
+PASS: matched primitive trajectories; direct 15x15 LOS/remembered-terrain/radius-8 ring checks; 22928 visible cells beyond radius four
