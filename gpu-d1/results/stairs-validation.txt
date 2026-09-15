@@ -1,0 +1,4 @@
+immediate-seed0 PASS: native semantics, 8,400 CPU/CUDA world steps, matched dynamics
+bank_full-seed0 PASS: native semantics, 8,400 CPU/CUDA world steps, matched dynamics
+bank_half-seed0 PASS: native semantics, 8,400 CPU/CUDA world steps, matched dynamics
+bank_quarter-seed0 PASS: native semantics, 8,400 CPU/CUDA world steps, matched dynamics
