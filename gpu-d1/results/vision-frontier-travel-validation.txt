@@ -1,0 +1,2 @@
+ogre2_wake_los-seed0 1083.0 trips / 3150.0 travel turns; PASS: native occlusion/knowledge-leak assertions; 8,400 CPU/CUDA world steps; ogre dynamics/diagnostics; visibility-based reward accounting; active masking
+PASS: primitive-only replay exactly matches original ogre task for 8,400 turns

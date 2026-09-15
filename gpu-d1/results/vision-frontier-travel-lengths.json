@@ -1,0 +1,27 @@
+{
+  "trips": 64047,
+  "clear_rate": 0.021484375,
+  "planned_mean": 3.3958499431610107,
+  "actual_mean": 2.883507490158081,
+  "planned_median": 3.0,
+  "planned_p90": 5.0,
+  "planned_max": 96.0,
+  "planned_at_most_3": 0.6332693099975586,
+  "planned_at_most_4": 0.8990897536277771,
+  "interrupt_fraction": 0.21671584248542786,
+  "arrival_fraction": 0.8474557995796204,
+  "interrupted_planned_mean": 4.386815547943115,
+  "interrupted_actual_mean": 2.0868875980377197,
+  "completed_mean": 3.061352014541626,
+  "planned_histogram": {
+    "1": 11184,
+    "2": 16021,
+    "3": 13354,
+    "4": 17025,
+    "5": 1362,
+    "6": 803,
+    "7": 651,
+    "8": 562
+  },
+  "planned_above8": 3085
+}

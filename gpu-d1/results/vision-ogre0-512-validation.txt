@@ -1,0 +1,1 @@
+{"status": "PASS", "branch": "vision-ogre-v1", "turn_limit": 512, "ogres": 0, "travel": false, "policy_transitions": 16800, "physical_turns": 16800, "travel_uses": 0}

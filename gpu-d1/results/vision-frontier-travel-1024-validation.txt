@@ -1,0 +1,1 @@
+{"status": "PASS", "branch": "vision-frontier-travel-v1-1024", "turn_limit": 1024, "ogres": 2, "travel": true, "policy_transitions": 16800, "physical_turns": 21431, "travel_uses": 2231}
