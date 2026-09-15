@@ -1,0 +1,74 @@
+[
+  {
+    "job": "global_no_los-seed0",
+    "snapshots": 1024,
+    "errors": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "clear_rate": 0.236328125,
+    "matched_final_clear_rate": true
+  },
+  {
+    "job": "local_no_los-seed0",
+    "snapshots": 1024,
+    "errors": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "clear_rate": 0.3681640625,
+    "matched_final_clear_rate": true
+  },
+  {
+    "job": "local_los-seed0",
+    "snapshots": 1024,
+    "errors": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "clear_rate": 0.21875,
+    "matched_final_clear_rate": true
+  },
+  {
+    "job": "global_los-seed0",
+    "snapshots": 1024,
+    "errors": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "clear_rate": 0.13671875,
+    "matched_final_clear_rate": true
+  }
+]

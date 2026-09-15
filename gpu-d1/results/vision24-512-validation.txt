@@ -1,0 +1,6 @@
+global_no_los-seed0 PASS: native occlusion/knowledge-leak assertions; 8,400 CPU/CUDA world steps; matched combat; visibility-based reward accounting; active masking
+local_no_los-seed0 PASS: native occlusion/knowledge-leak assertions; 8,400 CPU/CUDA world steps; matched combat; visibility-based reward accounting; active masking
+local_los-seed0 PASS: native occlusion/knowledge-leak assertions; 8,400 CPU/CUDA world steps; matched combat; visibility-based reward accounting; active masking
+global_los-seed0 PASS: native occlusion/knowledge-leak assertions; 8,400 CPU/CUDA world steps; matched combat; visibility-based reward accounting; active masking
+Independent Python packed-mask checks passed for all four arms.
+Cached masks matched all 9,710,400 visibility pairs in six available native exports.
