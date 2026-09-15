@@ -20,3 +20,27 @@ __pycache__/
 /fixtures/v2-corpus/
 /fixtures/v2-test/
 /fixtures/v2-train/
+
+# Regenerable diagnostic evaluation libraries.
+/results/hard-ogre-pressure/build/
+
+# Generated artifacts in isolated experiment branches as well as the main task.
+**/build/
+**/learning-runs/
+*.so
+*.o
+*.a
+*.log
+*.lock
+*.tmp
+
+# Raw native exports are reproducible from the checked-in corpus manifests.
+/fixtures/d1-corpus-388/raw/
+
+# Machine-local launch plans/status and historical bulk training traces.
+/results/*-launch.json
+/results/*-plan.json
+/results/*-status.json
+/results/vision-budget-comparison-queue.json
+/results/learning-v1/
+/results/learning-v1-10m/

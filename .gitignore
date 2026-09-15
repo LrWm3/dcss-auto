@@ -22,6 +22,7 @@ __pycache__/
 *.pt
 *.pth
 *.ttyrec
+/saves/
 
 # Credentials and editor/OS debris must never be committed.
 .env
