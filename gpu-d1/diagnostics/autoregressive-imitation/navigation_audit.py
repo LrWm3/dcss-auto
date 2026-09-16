@@ -1,16 +1,17 @@
 """Greedy navigation loops and type-first versus joint argmax comparison."""
-import json,pathlib,sys,time,torch
+import argparse,json,pathlib,sys,time,torch
 ROOT=pathlib.Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'branches/autoregressive-imitation-v1/scripts'))
 from tactical_models import Policy
 from learn_env_ring_multi import Env
 @torch.no_grad()
 def main():
- torch.set_num_threads(1);root=ROOT/'learning-runs/autoregressive-imitation-no-entropy';j=json.loads((root/'manifest.json').read_text())['jobs'][0]
+ parser=argparse.ArgumentParser();parser.add_argument('--suite',default='autoregressive-imitation-no-entropy');parser.add_argument('--result',default='autoregressive-imitation-no-entropy');parser.add_argument('--output',default='autoregressive-navigation-audit');parser.add_argument('--stages',nargs='+',type=int,default=[0,500224,1000448]);parser.add_argument('--modes',nargs='+',choices=['type_greedy','joint_greedy'],default=['type_greedy','joint_greedy']);args=parser.parse_args()
+ torch.set_num_threads(1);root=ROOT/'learning-runs'/args.suite;j=json.loads((root/'manifest.json').read_text())['jobs'][0]
  corpus=ROOT/'fixtures/d1-corpus-388/validation';out={};start=time.monotonic()
- original=json.loads((ROOT/'results/autoregressive-imitation-no-entropy.json').read_text())['evaluations']
- for stage in [0,500224,1000448]:
+ original=json.loads((ROOT/'results'/f'{args.result}.json').read_text())['evaluations']
+ for stage in args.stages:
   cp=root/'runs'/j['id']/'snapshots'/f'{stage:012d}.pt';model=Policy('d4_exact',128).cuda();model.load_state_dict(torch.load(cp,map_location='cpu',weights_only=False)['model']);model.eval()
-  for mode in ['type_greedy','joint_greedy']:
+  for mode in args.modes:
    env=Env(1024,24,seed=900000,corpus=corpus,map_limit=32,map_filter=-2,library_path=j['eval_library']);active=torch.ones(1024,device='cuda',dtype=torch.bool);terminal=torch.zeros_like(env.out)
    prevxy=torch.full((1024,2),-100,device='cuda');prevobs=env.obs.clone();streak=torch.zeros(1024,device='cuda',dtype=torch.long);maxstreak=streak.clone();loops=torch.zeros_like(streak);selfmoves=streak.clone();moves=streak.clone();sameobs=streak.clone();examples=[]
    for step in range(2048):
@@ -34,5 +35,5 @@ def main():
    if mode=='type_greedy':
     ref=next(r for r in original if r['decisions']==stage)['greedy'];assert stats['clears']==round(ref['clear_rate']*1024) and stats['timeouts']==round(ref['timeout_rate']*1024)
    out[f'{stage}_{mode}']=stats;print(stage,mode,json.dumps({k:v for k,v in stats.items() if k!='examples'}),flush=True)
-   (ROOT/'results/autoregressive-navigation-audit.json').write_text(json.dumps(dict(results=out,seconds=time.monotonic()-start,definition='Immediate reversal: MOVE returns to previous decision position; streak>=8 identifies repeated two-square oscillation. Observation equality excludes elapsed time only.'),indent=2)+'\n')
+   (ROOT/'results'/f'{args.output}.json').write_text(json.dumps(dict(results=out,seconds=time.monotonic()-start,definition='Immediate reversal: MOVE returns to previous decision position; streak>=8 identifies repeated two-square oscillation. Observation equality excludes elapsed time only.'),indent=2)+'\n')
 if __name__=='__main__':main()
