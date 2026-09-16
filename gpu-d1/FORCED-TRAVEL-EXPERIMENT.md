@@ -63,3 +63,40 @@ Artifact: `results/vision15-forced-travel-validation.txt`.
 The sequential full suite was launched in the background after these checks.
 Log: `results/vision15-forced-travel-30m-console.log`. Expected completion roughly
 10-15 minutes after launch, subject to the decision-budget arm's longer episodes.
+
+## Completed training and fixed-policy deadline transfer
+
+Both full runs completed at 30,015,488 outer decisions. The physical-budget
+model trained for 278.001 seconds and cleared 22.27%; the decision-budget model
+trained for 322.761 seconds and cleared 88.28% on sampled validation.
+
+To separate learned behavior from the evaluation deadline, evaluate the **final
+physical-budget checkpoint without further training** in both environments:
+
+| Evaluation of the same turn-trained policy | Clear | Death | Timeout | Mean game turns |
+|---|---:|---:|---:|---:|
+| Original 512-turn deadline and clock | 22.27% | 11.52% | 66.21% | 458.16 |
+| 512-decision deadline and decision clock | 87.11% | 12.60% | 0.29% | 541.25 |
+| 512-decision deadline, original physical clock | 87.79% | 12.01% | 0.20% | 545.00 |
+
+Each row uses the same 32 validation maps x 32 episodes and evaluation seed.
+The original sampled and greedy aggregate metrics reproduce exactly. No model
+or optimizer updates occur, and the source checkpoint hash remains unchanged.
+The physical-clock control exposes elapsed game turns / 512, without clipping,
+so it can exceed the training input range after the old deadline. The primary
+transfer uses the decision-clock semantics of the new environment instead.
+
+The large gain therefore does not require learning under the longer deadline:
+the existing policy can already finish many episodes when allowed more time.
+This does not establish an advantage of forced over optional travel at the new
+deadline, nor statistical equivalence to the decision-trained policy. These
+remain results for one training seed and the validation split.
+
+```sh
+gpu-d1/.venv/bin/python gpu-d1/branches/vision15-forced-travel-v1/scripts/evaluate_deadline_transfer.py \
+  --suite gpu-d1/learning-runs/vision15-forced-travel-30m \
+  --output gpu-d1/results/vision15-forced-travel-deadline-transfer.json
+```
+
+The result artifact includes sampled and greedy outcomes and per-map metrics,
+checkpoint/library/script hashes, and evaluation time.
