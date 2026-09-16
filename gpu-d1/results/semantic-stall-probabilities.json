@@ -1,0 +1,1920 @@
+{
+  "definition": "Greedy WAIT streak >=32 decisions; summaries weighted by stalled decisions, not episodes. Exact original 1024 validation placements; no intervention.",
+  "script_sha256": "b808ab219ec40bf734627489b766f1df05b4c251e9485684e808ffcd465211f2",
+  "results": {
+    "clear-only-seed0": {
+      "outcomes": {
+        "clears": 0,
+        "deaths": 16,
+        "timeouts": 1008
+      },
+      "episodes_with_stall": 1008,
+      "stall_decisions": 2002448,
+      "wait_probability_quantiles": {
+        "min": 0.5000000596046448,
+        "p10": 0.5134044289588928,
+        "median": 0.5840597748756409,
+        "p90": 0.7420433759689331,
+        "max": 0.8587232232093811
+      },
+      "wait_margin_quantiles": [
+        8.940696716308594e-08,
+        0.16811954975128174,
+        0.7174464464187622
+      ],
+      "fraction_wait_over_90_percent": 0.0,
+      "fraction_non_time_observation_unchanged": 1.0,
+      "groups": {
+        "all": {
+          "decisions": 2002448,
+          "mean_probs": {
+            "attack": 0.0,
+            "explore": 0.29432836174964905,
+            "engage": 0.10014041513204575,
+            "wait": 0.6055311560630798,
+            "rest": 0.0
+          },
+          "availability_fraction": {
+            "attack": 0.0,
+            "explore": 0.6682510375976562,
+            "engage": 0.33174893260002136,
+            "wait": 1.0,
+            "rest": 0.0
+          }
+        },
+        "sleepers_only": {
+          "decisions": 664310,
+          "mean_probs": {
+            "attack": 0.0,
+            "explore": 0.0,
+            "engage": 0.3018559217453003,
+            "wait": 0.6981439590454102,
+            "rest": 0.0
+          },
+          "availability_fraction": {
+            "attack": 0.0,
+            "explore": 0.0,
+            "engage": 1.0,
+            "wait": 1.0,
+            "rest": 0.0
+          }
+        },
+        "no_visible": {
+          "decisions": 1338138,
+          "mean_probs": {
+            "attack": 0.0,
+            "explore": 0.44044578075408936,
+            "engage": 0.0,
+            "wait": 0.5595542192459106,
+            "rest": 0.0
+          },
+          "availability_fraction": {
+            "attack": 0.0,
+            "explore": 1.0,
+            "engage": 0.0,
+            "wait": 1.0,
+            "rest": 0.0
+          }
+        }
+      },
+      "examples": {
+        "2": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.4139357805252075,
+              "engage": 0.0,
+              "wait": 0.5860642194747925,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.4141509532928467,
+              "engage": 0.0,
+              "wait": 0.5858489871025085,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.41458162665367126,
+              "engage": 0.0,
+              "wait": 0.5854184031486511,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.4154442250728607,
+              "engage": 0.0,
+              "wait": 0.5845557451248169,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.4171741008758545,
+              "engage": 0.0,
+              "wait": 0.5828258991241455,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.42065247893333435,
+              "engage": 0.0,
+              "wait": 0.579347550868988,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.42415544390678406,
+              "engage": 0.0,
+              "wait": 0.5758445858955383,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.42768195271492004,
+              "engage": 0.0,
+              "wait": 0.5723180174827576,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": true,
+              "engage": false,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": []
+          }
+        ],
+        "3": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.25273120403289795,
+              "wait": 0.747268795967102,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2528480589389801,
+              "wait": 0.7471519112586975,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2530825436115265,
+              "wait": 0.7469174265861511,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2535545527935028,
+              "wait": 0.7464454770088196,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2545102536678314,
+              "wait": 0.745489776134491,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.25646883249282837,
+              "wait": 0.7435311675071716,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2584902346134186,
+              "wait": 0.741509735584259,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2605738043785095,
+              "wait": 0.7394261956214905,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          }
+        ],
+        "5": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24068304896354675,
+              "wait": 0.7593169808387756,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24077549576759338,
+              "wait": 0.759224534034729,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2409611940383911,
+              "wait": 0.7590388059616089,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24133476614952087,
+              "wait": 0.7586652040481567,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2420922815799713,
+              "wait": 0.7579076886177063,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2436487227678299,
+              "wait": 0.7563512921333313,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24526135623455048,
+              "wait": 0.7547386288642883,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24693143367767334,
+              "wait": 0.7530685067176819,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          }
+        ],
+        "8": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.25056183338165283,
+              "wait": 0.7494381666183472,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2506652772426605,
+              "wait": 0.7493346929550171,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.25087299942970276,
+              "wait": 0.7491269707679749,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2512914538383484,
+              "wait": 0.7487084865570068,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2521410286426544,
+              "wait": 0.7478589415550232,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2538899779319763,
+              "wait": 0.7461100220680237,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2557050585746765,
+              "wait": 0.7442950010299683,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.25758522748947144,
+              "wait": 0.7424147129058838,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          }
+        ]
+      },
+      "checkpoint_sha256": "6259fee20f9e62c67dbaecd37343e4921eeac2491cbecf0052749fa281ddba4b",
+      "library_sha256": "4f101b6d61966fbcaa22334af854560b417248940bef47782eafc0ae59cc6ce6",
+      "seconds": 14.064827783964574
+    },
+    "gamma1.0-seed0": {
+      "outcomes": {
+        "clears": 0,
+        "deaths": 16,
+        "timeouts": 1008
+      },
+      "episodes_with_stall": 1008,
+      "stall_decisions": 1985852,
+      "wait_probability_quantiles": {
+        "min": 0.5621131658554077,
+        "p10": 0.6914694309234619,
+        "median": 0.7563923597335815,
+        "p90": 0.8358851075172424,
+        "max": 0.9617724418640137
+      },
+      "wait_margin_quantiles": [
+        0.12422636151313782,
+        0.5127847790718079,
+        0.9235448241233826
+      ],
+      "fraction_wait_over_90_percent": 0.0031945984810590744,
+      "fraction_non_time_observation_unchanged": 1.0,
+      "groups": {
+        "all": {
+          "decisions": 1985852,
+          "mean_probs": {
+            "attack": 0.0,
+            "explore": 0.0006288244039751589,
+            "engage": 0.23868224024772644,
+            "wait": 0.760688841342926,
+            "rest": 0.0
+          },
+          "availability_fraction": {
+            "attack": 0.0,
+            "explore": 0.005314595531672239,
+            "engage": 0.9946854114532471,
+            "wait": 1.0,
+            "rest": 0.0
+          }
+        },
+        "sleepers_only": {
+          "decisions": 1975298,
+          "mean_probs": {
+            "attack": 0.0,
+            "explore": 0.0,
+            "engage": 0.23995746672153473,
+            "wait": 0.7600425481796265,
+            "rest": 0.0
+          },
+          "availability_fraction": {
+            "attack": 0.0,
+            "explore": 0.0,
+            "engage": 1.0,
+            "wait": 1.0,
+            "rest": 0.0
+          }
+        },
+        "no_visible": {
+          "decisions": 10554,
+          "mean_probs": {
+            "attack": 0.0,
+            "explore": 0.11832025647163391,
+            "engage": 0.0,
+            "wait": 0.8816797733306885,
+            "rest": 0.0
+          },
+          "availability_fraction": {
+            "attack": 0.0,
+            "explore": 1.0,
+            "engage": 0.0,
+            "wait": 1.0,
+            "rest": 0.0
+          }
+        }
+      },
+      "examples": {
+        "3": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3175816833972931,
+              "wait": 0.6824182868003845,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3172159194946289,
+              "wait": 0.6827841401100159,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.31636032462120056,
+              "wait": 0.683639645576477,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.31406575441360474,
+              "wait": 0.6859342455863953,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.30633121728897095,
+              "wait": 0.693668782711029,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.27174079418182373,
+              "wait": 0.7282592058181763,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.213712677359581,
+              "wait": 0.786287248134613,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.1649194210767746,
+              "wait": 0.8350805640220642,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 7,
+                "dy": -3,
+                "hp": 10.0,
+                "awake": false
+              }
+            ]
+          }
+        ],
+        "5": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3133951425552368,
+              "wait": 0.6866047978401184,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.31265413761138916,
+              "wait": 0.6873458623886108,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3109787106513977,
+              "wait": 0.6890212893486023,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.30675068497657776,
+              "wait": 0.6932493448257446,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2939522862434387,
+              "wait": 0.7060477137565613,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24774812161922455,
+              "wait": 0.752251923084259,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.18940219283103943,
+              "wait": 0.8105977773666382,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.15152092278003693,
+              "wait": 0.8484790921211243,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -6,
+                "dy": -7,
+                "hp": 12.0,
+                "awake": false
+              }
+            ]
+          }
+        ],
+        "8": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.31118083000183105,
+              "wait": 0.688819169998169,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3102903664112091,
+              "wait": 0.6897096633911133,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.30830106139183044,
+              "wait": 0.6916989684104919,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3033970296382904,
+              "wait": 0.696603000164032,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2892186641693115,
+              "wait": 0.7107813358306885,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24232307076454163,
+              "wait": 0.7576769590377808,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.1874951869249344,
+              "wait": 0.8125048279762268,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.1527513861656189,
+              "wait": 0.8472486734390259,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": -4,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          }
+        ],
+        "9": [
+          {
+            "decision": 31,
+            "turn": 31,
+            "hp_fraction": 1.0,
+            "wait_streak": 32,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.31231746077537537,
+              "wait": 0.6876825094223022,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 63,
+            "turn": 63,
+            "hp_fraction": 1.0,
+            "wait_streak": 64,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3114073872566223,
+              "wait": 0.6885926723480225,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 127,
+            "turn": 127,
+            "hp_fraction": 1.0,
+            "wait_streak": 128,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3093755543231964,
+              "wait": 0.690624475479126,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 255,
+            "turn": 255,
+            "hp_fraction": 1.0,
+            "wait_streak": 256,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.3043782711029053,
+              "wait": 0.6956217288970947,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 511,
+            "turn": 511,
+            "hp_fraction": 1.0,
+            "wait_streak": 512,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.2900255024433136,
+              "wait": 0.7099745273590088,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1023,
+            "turn": 1023,
+            "hp_fraction": 1.0,
+            "wait_streak": 1024,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.24337176978588104,
+              "wait": 0.7566282749176025,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 1535,
+            "turn": 1535,
+            "hp_fraction": 1.0,
+            "wait_streak": 1536,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.18975716829299927,
+              "wait": 0.8102428317070007,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          },
+          {
+            "decision": 2047,
+            "turn": 2047,
+            "hp_fraction": 1.0,
+            "wait_streak": 2048,
+            "probabilities": {
+              "attack": 0.0,
+              "explore": 0.0,
+              "engage": 0.15552648901939392,
+              "wait": 0.8444734811782837,
+              "rest": 0.0
+            },
+            "available": {
+              "attack": false,
+              "explore": false,
+              "engage": true,
+              "wait": true,
+              "rest": false
+            },
+            "enemies": [
+              {
+                "dx": 3,
+                "dy": -7,
+                "hp": 16.0,
+                "awake": false
+              }
+            ]
+          }
+        ]
+      },
+      "checkpoint_sha256": "063be758a53769a183fbe03ce890f776b8316ab5342e81bb35e7d4217d83accf",
+      "library_sha256": "69158fcb2d81b7e9dea3c350381b0894f05a2fa218aba3d72ea2aa2deed4b58e",
+      "seconds": 16.073913360014558
+    }
+  }
+}
