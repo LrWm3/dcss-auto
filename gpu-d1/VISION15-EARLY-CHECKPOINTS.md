@@ -43,3 +43,37 @@ Smoke validation retained both 0 and 512-decision compact checkpoints, verified
 the nine-action head and absence of optimizer/live worlds in those files, and
 checked the original native/environment sources and Python syntax. Artifact:
 `results/vision15-learning-curve-validation.txt`.
+
+## Completed results
+
+All nine checkpoints are retained. Training took 60.557 measured seconds to
+10,027,008 decisions; extended validation took 89.032 seconds. These exclude
+compilation and original-deadline validation from training time.
+
+| Actual decisions | Training seconds | Clear at 512 turns | Clear at 2048, budget clock | Clear at 2048, training clock |
+|---|---:|---:|---:|---:|
+| 0 | 0.00 | 0.00% | 0.00% | 0.00% |
+| 131,072 | 0.68 | 0.00% | 0.00% | 0.00% |
+| 327,680 | 1.72 | 0.00% | 0.00% | 0.00% |
+| 1,015,808 | 5.05 | 0.00% | 0.00% | 0.00% |
+| 2,031,616 | 10.52 | 1.27% | 49.22% | 44.82% |
+| 3,014,656 | 16.28 | 3.03% | 51.86% | 50.49% |
+| 5,013,504 | 28.79 | 6.05% | 60.06% | 53.71% |
+| 7,503,872 | 44.31 | 9.67% | 63.38% | 61.04% |
+| 10,027,008 | 60.56 | 11.33% | 65.43% | 62.79% |
+
+All shared checkpoints (0, roughly 1M, 3M and 10M) reproduce the earlier run's
+sampled and greedy clear/death/timeout rates and mean kills exactly. Compact
+checkpoint hashes remained unchanged during evaluation. Every extended-budget
+episode ended by 2,048 physical turns and every timeout occurred exactly there.
+
+The original deadline hides substantial completion ability as early as 2M in
+this seed. The sampled snapshots only localize the change between roughly 1M and
+2M; they do not identify a precise learning threshold. Improvement continues
+after 2M, reaching 65.43% at 10M, compared with the previously measured 77.34%
+at 30M under the same extended deadline/budget-clock evaluation. Changing only
+the clock back to its training units reduces levels but preserves the main trend.
+No travel action, longer training deadline, or test-set exposure was introduced.
+
+Artifact: `results/vision15-no-travel-early-2048.json`, including per-map metrics,
+turn distributions, training times and checkpoint/evaluator provenance.
