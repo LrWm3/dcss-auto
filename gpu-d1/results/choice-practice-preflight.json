@@ -1,0 +1,29 @@
+{
+  "target": {
+    "mixed_resume_exact": true,
+    "counts": [
+      7298.0,
+      894.0,
+      29.0,
+      37.0,
+      0.0,
+      15.0,
+      29.0,
+      22.0
+    ]
+  },
+  "sleep": {
+    "mixed_resume_exact": true,
+    "counts": [
+      6269.0,
+      1923.0,
+      25.0,
+      35.0,
+      0.0,
+      2.0,
+      25.0,
+      33.0
+    ]
+  },
+  "ppo_and_resume_all_arms": true
+}

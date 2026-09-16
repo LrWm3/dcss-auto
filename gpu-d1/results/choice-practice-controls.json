@@ -1,0 +1,541 @@
+{
+  "target/train": {
+    "0": {
+      "task": "target",
+      "split": "train",
+      "controller": 0,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.620361328125,
+        "death": 0.379638671875,
+        "unresolved": 0.0,
+        "turns": 6.09765625,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 3.717203378677368,
+        "wake_observed_rate": 0.932373046875
+      },
+      "groups": {
+        "equal_hp": {
+          "episodes": 2011,
+          "clear": 0.5992043614387512,
+          "death": 0.4007956087589264,
+          "unresolved": 0.0,
+          "turns": 5.969666481018066,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.705059051513672,
+          "wake_observed_rate": 0.9239184260368347
+        },
+        "weak_wounded": {
+          "episodes": 1077,
+          "clear": 0.6267409324645996,
+          "death": 0.373259037733078,
+          "unresolved": 0.0,
+          "turns": 7.7585883140563965,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.7959184646606445,
+          "wake_observed_rate": 0.9554317593574524
+        },
+        "dangerous_wounded": {
+          "episodes": 1008,
+          "clear": 0.655754029750824,
+          "death": 0.3442460596561432,
+          "unresolved": 0.0,
+          "turns": 4.578373432159424,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.6545064449310303,
+          "wake_observed_rate": 0.9246032238006592
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 1.0
+    },
+    "1": {
+      "task": "target",
+      "split": "train",
+      "controller": 1,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.68017578125,
+        "death": 0.31982421875,
+        "unresolved": 0.0,
+        "turns": 6.135498046875,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 3.723698139190674,
+        "wake_observed_rate": 0.9375
+      },
+      "groups": {
+        "equal_hp": {
+          "episodes": 2011,
+          "clear": 0.6872202754020691,
+          "death": 0.3127796947956085,
+          "unresolved": 0.0,
+          "turns": 6.227746963500977,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.705059051513672,
+          "wake_observed_rate": 0.9239184260368347
+        },
+        "weak_wounded": {
+          "episodes": 1077,
+          "clear": 0.48746517300605774,
+          "death": 0.5125347971916199,
+          "unresolved": 0.0,
+          "turns": 6.67780876159668,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.715277910232544,
+          "wake_observed_rate": 0.9359331130981445
+        },
+        "dangerous_wounded": {
+          "episodes": 1008,
+          "clear": 0.87202388048172,
+          "death": 0.127976194024086,
+          "unresolved": 0.0,
+          "turns": 5.372024059295654,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.7679672241210938,
+          "wake_observed_rate": 0.9662699103355408
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 1.0
+    },
+    "2": {
+      "task": "target",
+      "split": "train",
+      "controller": 2,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.673583984375,
+        "death": 0.326416015625,
+        "unresolved": 0.0,
+        "turns": 6.29296875,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 3.7451436519622803,
+        "wake_observed_rate": 0.942626953125
+      },
+      "groups": {
+        "equal_hp": {
+          "episodes": 2011,
+          "clear": 0.5992043614387512,
+          "death": 0.4007956087589264,
+          "unresolved": 0.0,
+          "turns": 5.969666481018066,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.705059051513672,
+          "wake_observed_rate": 0.9239184260368347
+        },
+        "weak_wounded": {
+          "episodes": 1077,
+          "clear": 0.6267409324645996,
+          "death": 0.373259037733078,
+          "unresolved": 0.0,
+          "turns": 7.7585883140563965,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.7959184646606445,
+          "wake_observed_rate": 0.9554317593574524
+        },
+        "dangerous_wounded": {
+          "episodes": 1008,
+          "clear": 0.87202388048172,
+          "death": 0.127976194024086,
+          "unresolved": 0.0,
+          "turns": 5.372024059295654,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.7679672241210938,
+          "wake_observed_rate": 0.9662699103355408
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 1.0
+    }
+  },
+  "target/heldout": {
+    "0": {
+      "task": "target",
+      "split": "heldout",
+      "controller": 0,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.743896484375,
+        "death": 0.256103515625,
+        "unresolved": 0.0,
+        "turns": 6.626953125,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 4.613253116607666,
+        "wake_observed_rate": 0.968994140625
+      },
+      "groups": {
+        "equal_hp": {
+          "episodes": 2047,
+          "clear": 0.715192973613739,
+          "death": 0.284807026386261,
+          "unresolved": 0.0,
+          "turns": 6.682462215423584,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.539314270019531,
+          "wake_observed_rate": 0.9692232608795166
+        },
+        "weak_wounded": {
+          "episodes": 1025,
+          "clear": 0.7492682933807373,
+          "death": 0.2507317066192627,
+          "unresolved": 0.0,
+          "turns": 8.27414608001709,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.773092269897461,
+          "wake_observed_rate": 0.9717073440551758
+        },
+        "dangerous_wounded": {
+          "episodes": 1024,
+          "clear": 0.7958984375,
+          "death": 0.2041015625,
+          "unresolved": 0.0,
+          "turns": 4.8671875,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.600606918334961,
+          "wake_observed_rate": 0.9658203125
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 1.0
+    },
+    "1": {
+      "task": "target",
+      "split": "heldout",
+      "controller": 1,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.78955078125,
+        "death": 0.21044921875,
+        "unresolved": 0.0,
+        "turns": 6.67724609375,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 4.61947774887085,
+        "wake_observed_rate": 0.97265625
+      },
+      "groups": {
+        "equal_hp": {
+          "episodes": 2047,
+          "clear": 0.7933561205863953,
+          "death": 0.20664386451244354,
+          "unresolved": 0.0,
+          "turns": 6.8964338302612305,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.539314270019531,
+          "wake_observed_rate": 0.9692232608795166
+        },
+        "weak_wounded": {
+          "episodes": 1025,
+          "clear": 0.6321951150894165,
+          "death": 0.3678048849105835,
+          "unresolved": 0.0,
+          "turns": 7.5756096839904785,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.6515607833862305,
+          "wake_observed_rate": 0.968780517578125
+        },
+        "dangerous_wounded": {
+          "episodes": 1024,
+          "clear": 0.939453125,
+          "death": 0.060546875,
+          "unresolved": 0.0,
+          "turns": 5.33984375,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.745779514312744,
+          "wake_observed_rate": 0.9833984375
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 1.0
+    },
+    "2": {
+      "task": "target",
+      "split": "heldout",
+      "controller": 2,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.77978515625,
+        "death": 0.22021484375,
+        "unresolved": 0.0,
+        "turns": 6.7451171875,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 4.649862289428711,
+        "wake_observed_rate": 0.973388671875
+      },
+      "groups": {
+        "equal_hp": {
+          "episodes": 2047,
+          "clear": 0.715192973613739,
+          "death": 0.284807026386261,
+          "unresolved": 0.0,
+          "turns": 6.682462215423584,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.539314270019531,
+          "wake_observed_rate": 0.9692232608795166
+        },
+        "weak_wounded": {
+          "episodes": 1025,
+          "clear": 0.7492682933807373,
+          "death": 0.2507317066192627,
+          "unresolved": 0.0,
+          "turns": 8.27414608001709,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.773092269897461,
+          "wake_observed_rate": 0.9717073440551758
+        },
+        "dangerous_wounded": {
+          "episodes": 1024,
+          "clear": 0.939453125,
+          "death": 0.060546875,
+          "unresolved": 0.0,
+          "turns": 5.33984375,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 4.745779514312744,
+          "wake_observed_rate": 0.9833984375
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 1.0
+    }
+  },
+  "sleep/train": {
+    "3": {
+      "task": "sleep",
+      "split": "train",
+      "controller": 3,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.4853515625,
+        "death": 0.5146484375,
+        "unresolved": 0.0,
+        "turns": 13.85888671875,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 6.00146484375,
+        "wake_observed_rate": 1.0
+      },
+      "groups": {
+        "low_weak": {
+          "episodes": 0
+        },
+        "low_dangerous": {
+          "episodes": 3072,
+          "clear": 0.3141276240348816,
+          "death": 0.6858724355697632,
+          "unresolved": 0.0,
+          "turns": 11.966471672058105,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 2.001953125,
+          "wake_observed_rate": 1.0
+        },
+        "full_weak": {
+          "episodes": 0
+        },
+        "full_dangerous": {
+          "episodes": 1024,
+          "clear": 0.9990234375,
+          "death": 0.0009765625,
+          "unresolved": 0.0,
+          "turns": 19.5361328125,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 18.0,
+          "wake_observed_rate": 1.0
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 0.0
+    },
+    "4": {
+      "task": "sleep",
+      "split": "train",
+      "controller": 4,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.998779296875,
+        "death": 0.001220703125,
+        "unresolved": 0.0,
+        "turns": 72.009033203125,
+        "wait_turns": 52.494140625,
+        "asleep_wait_turns": 52.494140625,
+        "wake_hp": 18.0,
+        "wake_observed_rate": 1.0
+      },
+      "groups": {
+        "low_weak": {
+          "episodes": 0
+        },
+        "low_dangerous": {
+          "episodes": 3072,
+          "clear": 0.9986979365348816,
+          "death": 0.0013020833721384406,
+          "unresolved": 0.0,
+          "turns": 89.5,
+          "wait_turns": 69.9921875,
+          "asleep_wait_turns": 69.9921875,
+          "wake_hp": 18.0,
+          "wake_observed_rate": 1.0
+        },
+        "full_weak": {
+          "episodes": 0
+        },
+        "full_dangerous": {
+          "episodes": 1024,
+          "clear": 0.9990234375,
+          "death": 0.0009765625,
+          "unresolved": 0.0,
+          "turns": 19.5361328125,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 18.0,
+          "wake_observed_rate": 1.0
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 0.0
+    }
+  },
+  "sleep/heldout": {
+    "3": {
+      "task": "sleep",
+      "split": "heldout",
+      "controller": 3,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.62158203125,
+        "death": 0.37841796875,
+        "unresolved": 0.0,
+        "turns": 14.31640625,
+        "wait_turns": 0.0,
+        "asleep_wait_turns": 0.0,
+        "wake_hp": 6.89697265625,
+        "wake_observed_rate": 1.0
+      },
+      "groups": {
+        "low_weak": {
+          "episodes": 0
+        },
+        "low_dangerous": {
+          "episodes": 3033,
+          "clear": 0.4889548122882843,
+          "death": 0.5110451579093933,
+          "unresolved": 0.0,
+          "turns": 13.213979721069336,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 3.0056049823760986,
+          "wake_observed_rate": 1.0
+        },
+        "full_weak": {
+          "episodes": 0
+        },
+        "full_dangerous": {
+          "episodes": 1063,
+          "clear": 1.0,
+          "death": 0.0,
+          "unresolved": 0.0,
+          "turns": 17.46190071105957,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 18.0,
+          "wake_observed_rate": 1.0
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 0.0
+    },
+    "4": {
+      "task": "sleep",
+      "split": "heldout",
+      "controller": 4,
+      "seed": 921000,
+      "cap": 512,
+      "overall": {
+        "episodes": 4096,
+        "clear": 0.99951171875,
+        "death": 0.00048828125,
+        "unresolved": 0.0,
+        "turns": 66.0498046875,
+        "wait_turns": 48.482666015625,
+        "asleep_wait_turns": 48.482666015625,
+        "wake_hp": 18.0,
+        "wake_observed_rate": 1.0
+      },
+      "groups": {
+        "low_weak": {
+          "episodes": 0
+        },
+        "low_dangerous": {
+          "episodes": 3033,
+          "clear": 0.9993405938148499,
+          "death": 0.0006594131118617952,
+          "unresolved": 0.0,
+          "turns": 83.07879638671875,
+          "wait_turns": 65.47477722167969,
+          "asleep_wait_turns": 65.47477722167969,
+          "wake_hp": 18.0,
+          "wake_observed_rate": 1.0
+        },
+        "full_weak": {
+          "episodes": 0
+        },
+        "full_dangerous": {
+          "episodes": 1063,
+          "clear": 1.0,
+          "death": 0.0,
+          "unresolved": 0.0,
+          "turns": 17.46190071105957,
+          "wait_turns": 0.0,
+          "asleep_wait_turns": 0.0,
+          "wake_hp": 18.0,
+          "wake_observed_rate": 1.0
+        }
+      },
+      "initial_visible_rate": 1.0,
+      "initial_awake_rate": 0.0
+    }
+  },
+  "mechanism_checks_passed": true
+}
