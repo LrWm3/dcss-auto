@@ -61,3 +61,18 @@ comparison, not an established optimal coefficient or general causal explanation
 Training took 25.45 seconds, 1,161,813 physical turns; full training/evaluation
 pipeline took 95.29 seconds, plus loop diagnostic replay. Preflight also verified
 158 physical REST turns with the new penalty. All checkpoints preserved.
+
+## Continuation to 10M
+
+Authorized seed-0 continuation resumes the 1,000,448-decision checkpoint including
+optimizer, model, simulator, RNG and training history. Original 1M artifacts remain
+unchanged. No reward or PPO hyperparameter changes. Evaluation targets are 5M
+and 10M; actual batch-aligned checkpoints are 5,000,192 and 10,000,384 decisions.
+New validation summaries additionally report physical turns conditional on clear,
+death and timeout, separating successful completion time from early deaths.
+
+Launcher: scripts/continue_10m.py in the same branch. New suite:
+learning-runs/autoregressive-turn-cost-10m. Results:
+results/autoregressive-turn-cost-10m.json. Source checkpoint digest and original
+training time recorded in continuation manifest. Same disk limits apply. Additional
+training time is reported separately from cumulative time.

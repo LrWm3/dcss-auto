@@ -257,6 +257,7 @@ def worker(store, manifest, job):
                         turns=t[:, 5].mean().item(), shaped_return=r.mean().item())
             assert torch.equal(t[:,26],t[:,5]), 'Underlying turns must equal episode ticks'
             result['actions']={name:float(t[:,45+i].mean()) for i,name in enumerate(['move','attack','wait','rest'])}
+            result['turns_by_outcome']={name:float(t[t[:,col]>0,5].mean()) if (t[:,col]>0).any() else None for name,col in [('clear',2),('death',6),('timeout',7)]}
             result.update(wait_actions=t[:,42].mean().item(),safe_low_hp_wait_actions=t[:,43].mean().item(),recovery_opportunities=t[:,44].mean().item())
             result.update(rest_uses=t[:,34].mean().item(),rest_turns=t[:,35].mean().item(),rest_completions=t[:,36].mean().item(),rest_interrupts=t[:,37].mean().item(),rest_invalid=t[:,38].mean().item(),rest_net_hp=t[:,39].mean().item())
             result.update(policy_decisions=t[:,33].mean().item(),
@@ -390,7 +391,7 @@ def worker(store, manifest, job):
     actions = torch.empty((T, B), dtype=torch.int64, device='cuda')
     oldlp = torch.empty((T, B), device='cuda')
     values, rewards, dones, advantages, durations = [torch.empty_like(oldlp) for _ in range(5)]
-    milestones = sorted(set([500_000,1_000_000,job['steps']]))
+    milestones = sorted(set(job.get('evaluation_steps',[500_000,1_000_000])+[job['steps']]))
     milestones = [x for x in milestones if total < x <= job['steps']]
     next_save = (total//job['checkpoint_every']+1)*job['checkpoint_every']
     while total < job['steps'] and not stop[0]:
