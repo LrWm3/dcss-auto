@@ -33,3 +33,27 @@ results/autoregressive-kill001-navigation.json. Ignored checkpoints:
 learning-runs/autoregressive-kill001, 2 GiB cap/10 GiB free reserve.
 Training time and total wall time are recorded. One seed is exploratory evidence,
 not an established coefficient ranking or proof of the cause of PPO degradation.
+
+## Training completed
+
+All initial behavior metrics matched the control. Final checkpoint: 1,000,448
+decisions, 24.76 training seconds, 106.53 seconds including builds/preflight and
+validation (navigation replay separately queued). Preflight exercised 348 kills
+and 1429 physical REST turns with identical physics.
+
+| Decisions | Kill reward | Sampled clears/1024 | Greedy clears/1024 |
+|---:|---:|---:|---:|
+| 500,224 | 0 (control) | 983 | 793 |
+| 500,224 | .01 | 985 | 6 |
+| 1,000,448 | 0 (control) | 975 | 351 |
+| 1,000,448 | .01 | 979 | 228 |
+
+At 1M, kill-reward sampled deaths/timeouts were 40/5, versus control 45/4;
+greedy deaths/timeouts were 38/758, versus 25/648. Successful sampled clears
+averaged 692.32 physical turns, versus control 707.77 (from prior replay).
+Initial imitation clears were 992 sampled, 967 greedy, with sampled clear-only
+turns 680.28. Thus this small kill reward does not preserve greedy competence;
+sampled differences versus control are small in this one-seed comparison.
+Under the new objective its sampled mean return fell from initial 1.196307 to
+1.181779. Reward degradation therefore persists even under the added feedback.
+This tests one kill coefficient, not the usefulness of all intermediate rewards.
