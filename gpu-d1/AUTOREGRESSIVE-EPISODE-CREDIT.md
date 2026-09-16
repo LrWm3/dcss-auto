@@ -79,3 +79,37 @@ Before interruption, the first GAE control update (33,733 decisions) reduced
 greedy clears on 128 diagnostic placements from 120 to 6; sampled clears changed
 124 to 125, and successful sampled completion time rose from 687.7 to 808.7 turns.
 There was no full-return result yet, so this is not an estimator comparison.
+
+## Completed matched comparison
+
+Both variants completed after the rounding-check fix. Final validation uses the
+same 1024 placements as prior full-panel evaluations; initial imitation had
+992 sampled and 967 greedy clears. Each intermediate panel had only 128 episodes.
+
+| Variant | Decisions | Updates | Training seconds | Sampled clears/deaths/timeouts | Greedy clears/deaths/timeouts | Sampled clear-only turns |
+|---|---:|---:|---:|---|---|---:|
+| GAE64 | 1,030,053 | 26 | 128.12 | 983 / 37 / 4 | 195 / 20 / 809 | 800.40 |
+| Full episode return | 1,047,124 | 20 | 134.59 | 900 / 27 / 97 | 0 / 19 / 1005 | 1229.52 |
+
+Total wall time 415.55 seconds (6.93 minutes), including validation. Actual budgets
+overshoot to finish complete batches. Slower full-return episodes mean larger
+batches and fewer updates under the matched collection rule.
+
+After the identical first 33,733-decision batch, full-return greedy clears were
+115/128 versus 6/128 for GAE (initial 120/128). This early preservation did not
+last: at ~291K full-return greedy clears were 13/128, and at ~768K they were zero.
+Final GAE greedy timeouts with >=8 consecutive reversals: 806/809; full-return:
+981/1005. Sampled mean MOVE decisions were 483.01 versus 982.79. Full-return
+sampled reward .866136 was lower than GAE .952132 under the same objective.
+
+Using observed complete returns therefore does not fix deterioration in this
+setup; at ~1M it is worse for both greedy and sampled success and completion time.
+This weakens a simple explanation based solely on a short rollout's missing
+terminal rewards, not every possible credit-assignment explanation. MC returns
+can reinforce detours in successful episodes; neither estimator measures the
+counterfactual benefit of each action. Both actor advantages and critic targets
+changed together, so this experiment does not isolate actor loss, critic-induced
+shared-feature drift, or update size as the remaining cause. Mean old-value and
+sampled-return estimates in the final full-return training batch were .9106 and
+.9082 respectively, but matching these means does not establish critic accuracy
+or correct action ranking. One seed; no claim of universal estimator superiority.

@@ -1,0 +1,2119 @@
+{
+  "status": "complete",
+  "checkpoint_sha256": "f493b83526140026e7ad04623f8ebcefd9d32cdf6eeb0d7b0c17fc3ab7d58b9d",
+  "script_sha256": "bcf022b64e17cef4fea94b1f7004c5b7896e653f8e03c0255d6af05e10ff5c69",
+  "reference_job": {
+    "name": "turn-cost",
+    "seed": 0,
+    "maps": 256,
+    "width": 128,
+    "no_xy": false,
+    "no_ring": false,
+    "frontier": true,
+    "route_cue": true,
+    "explore_milli": 0,
+    "gamma": 1.0,
+    "awake": false,
+    "frames": 1,
+    "death_milli": 0,
+    "performance": "fast",
+    "steps": 1000000,
+    "batch": 512,
+    "horizon": 64,
+    "eval_per_map": 32,
+    "validation_maps": 32,
+    "checkpoint_every": 250000,
+    "lr": 0.0003,
+    "epochs": 4,
+    "minibatch": 4096,
+    "entropy": 0.0,
+    "gae_lambda": 0.95,
+    "enemies": 24,
+    "turn_limit": 2048,
+    "terrain_los": 1,
+    "global_enemies": 0,
+    "vision_radius": 7,
+    "ogres": 0,
+    "frontier_travel": false,
+    "ogre_features": 0,
+    "optional_label": false,
+    "monster_wake_los": true,
+    "clump_mode": 1,
+    "kill_milli": 0,
+    "clear_milli": 1000,
+    "progress_input": 2,
+    "id": "turn-cost-seed0",
+    "architecture": "d4_exact",
+    "curriculum": false,
+    "train_library": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-turn-cost-assets/autoregressive-clump1.so",
+    "eval_library": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-turn-cost-assets/autoregressive-clump0.so",
+    "rest_action": 1,
+    "sleep_status": "visible_encounter_slot_signed",
+    "budget_unit": "physical_turns",
+    "action_interface": "move_attack_wait_rest_conditioned_direction",
+    "discount_unit": "physical_turns",
+    "turn_milli": -0.01,
+    "reward_scheme": "clear_minus_turn_cost",
+    "initial_model": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-imitation/imitation.pt",
+    "initial_model_sha256": "f493b83526140026e7ad04623f8ebcefd9d32cdf6eeb0d7b0c17fc3ab7d58b9d",
+    "turn_reward": -1e-05
+  },
+  "variants": {
+    "gae64": {
+      "history": [
+        {
+          "update": 1,
+          "decisions": 33733,
+          "rollout": {
+            "episodes": 64,
+            "clears": 55,
+            "deaths": 9,
+            "timeouts": 0,
+            "turns": 602.65625,
+            "reward": 0.8533484935760498,
+            "decisions": 33733,
+            "physical_turns": 38570,
+            "loop_episodes": 0,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 671.7999877929688,
+              "death": 180.11111450195312,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.0,
+          "mc_return_mean": 0.9547895789146423,
+          "gae_target_mse_vs_mc": 0.919599711894989,
+          "normalized_advantage_sign_agreement": 0.0969080701470375,
+          "reversal_decisions": 382,
+          "gae_positive_reversal_advantage_fraction": 0.020942408591508865,
+          "mc_positive_reversal_advantage_fraction": 0.9581152200698853,
+          "positive_advantage_mean_logprob_change": -0.04909427464008331,
+          "negative_advantage_mean_logprob_change": -0.11912417411804199,
+          "reversal_mean_logprob_change": -0.30543234944343567,
+          "approx_kl": 0.04227504879236221,
+          "train_seconds": 3.2584536981303245,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 125,
+              "deaths": 2,
+              "timeouts": 1,
+              "turns": 805.8984375,
+              "reward": 0.9685035347938538,
+              "loop_episodes": 68,
+              "loop_timeouts": 1,
+              "actions": {
+                "move": 508.734375,
+                "attack": 144.65625,
+                "wait": 58.9765625,
+                "rest": 8.9765625
+              },
+              "turns_by_outcome": {
+                "clear": 808.7040405273438,
+                "death": 9.5,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 6,
+              "deaths": 2,
+              "timeouts": 120,
+              "turns": 1959.7109375,
+              "reward": 0.02727789431810379,
+              "loop_episodes": 120,
+              "loop_timeouts": 118,
+              "actions": {
+                "move": 1830.1015625,
+                "attack": 62.25,
+                "wait": 23.9140625,
+                "rest": 4.109375
+              },
+              "turns_by_outcome": {
+                "clear": 842.5,
+                "death": 14.0,
+                "timeout": 2048.0
+              }
+            }
+          }
+        },
+        {
+          "update": 2,
+          "decisions": 78151,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 8,
+            "timeouts": 0,
+            "turns": 775.5,
+            "reward": 0.8672450184822083,
+            "decisions": 44418,
+            "physical_turns": 49632,
+            "loop_episodes": 36,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 835.3214721679688,
+              "death": 356.75,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.021761713549494743,
+          "mc_return_mean": 0.940561830997467,
+          "gae_target_mse_vs_mc": 0.8730415105819702,
+          "normalized_advantage_sign_agreement": 0.16610382497310638,
+          "reversal_decisions": 6328,
+          "gae_positive_reversal_advantage_fraction": 0.08043616265058517,
+          "mc_positive_reversal_advantage_fraction": 0.9495891332626343,
+          "positive_advantage_mean_logprob_change": 0.0011354022426530719,
+          "negative_advantage_mean_logprob_change": -0.02567639946937561,
+          "reversal_mean_logprob_change": -0.07672631740570068,
+          "approx_kl": 0.014480317942798138,
+          "train_seconds": 9.407924690051004
+        },
+        {
+          "update": 3,
+          "decisions": 121395,
+          "rollout": {
+            "episodes": 64,
+            "clears": 60,
+            "deaths": 4,
+            "timeouts": 0,
+            "turns": 760.609375,
+            "reward": 0.929893970489502,
+            "decisions": 43244,
+            "physical_turns": 48679,
+            "loop_episodes": 37,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 807.9667358398438,
+              "death": 50.25,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.03554476052522659,
+          "mc_return_mean": 0.9916049838066101,
+          "gae_target_mse_vs_mc": 0.8929342031478882,
+          "normalized_advantage_sign_agreement": 0.43037185072898865,
+          "reversal_decisions": 4043,
+          "gae_positive_reversal_advantage_fraction": 0.1469206064939499,
+          "mc_positive_reversal_advantage_fraction": 0.9784813523292542,
+          "positive_advantage_mean_logprob_change": -0.0001327524660155177,
+          "negative_advantage_mean_logprob_change": -0.021560214459896088,
+          "reversal_mean_logprob_change": -0.07278827577829361,
+          "approx_kl": 0.013430140912532806,
+          "train_seconds": 15.092609868152067
+        },
+        {
+          "update": 4,
+          "decisions": 165889,
+          "rollout": {
+            "episodes": 64,
+            "clears": 62,
+            "deaths": 2,
+            "timeouts": 0,
+            "turns": 782.515625,
+            "reward": 0.9609248638153076,
+            "decisions": 44494,
+            "physical_turns": 50081,
+            "loop_episodes": 27,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 803.7257690429688,
+              "death": 125.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.055483318865299225,
+          "mc_return_mean": 0.9901224970817566,
+          "gae_target_mse_vs_mc": 0.8561996817588806,
+          "normalized_advantage_sign_agreement": 0.4787611663341522,
+          "reversal_decisions": 4307,
+          "gae_positive_reversal_advantage_fraction": 0.19549570977687836,
+          "mc_positive_reversal_advantage_fraction": 0.9698165655136108,
+          "positive_advantage_mean_logprob_change": -0.0020233960822224617,
+          "negative_advantage_mean_logprob_change": -0.021703042089939117,
+          "reversal_mean_logprob_change": -0.08781812340021133,
+          "approx_kl": 0.0141392657533288,
+          "train_seconds": 21.287213824223727
+        },
+        {
+          "update": 5,
+          "decisions": 204696,
+          "rollout": {
+            "episodes": 64,
+            "clears": 60,
+            "deaths": 4,
+            "timeouts": 0,
+            "turns": 687.140625,
+            "reward": 0.9306285977363586,
+            "decisions": 38807,
+            "physical_turns": 43977,
+            "loop_episodes": 22,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 725.7667236328125,
+              "death": 107.75,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.08139631897211075,
+          "mc_return_mean": 0.985438346862793,
+          "gae_target_mse_vs_mc": 0.8036773800849915,
+          "normalized_advantage_sign_agreement": 0.46679720282554626,
+          "reversal_decisions": 2701,
+          "gae_positive_reversal_advantage_fraction": 0.22362089157104492,
+          "mc_positive_reversal_advantage_fraction": 0.9766753315925598,
+          "positive_advantage_mean_logprob_change": -0.008930912241339684,
+          "negative_advantage_mean_logprob_change": -0.02615775354206562,
+          "reversal_mean_logprob_change": -0.09706398844718933,
+          "approx_kl": 0.020009927451610565,
+          "train_seconds": 25.442626640200615
+        },
+        {
+          "update": 6,
+          "decisions": 248209,
+          "rollout": {
+            "episodes": 64,
+            "clears": 60,
+            "deaths": 3,
+            "timeouts": 1,
+            "turns": 766.5625,
+            "reward": 0.9298344254493713,
+            "decisions": 43513,
+            "physical_turns": 49060,
+            "loop_episodes": 22,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 771.11669921875,
+              "death": 248.33334350585938,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.11469940096139908,
+          "mc_return_mean": 0.9371557235717773,
+          "gae_target_mse_vs_mc": 0.7135205268859863,
+          "normalized_advantage_sign_agreement": 0.3277411460876465,
+          "reversal_decisions": 3021,
+          "gae_positive_reversal_advantage_fraction": 0.1939755082130432,
+          "mc_positive_reversal_advantage_fraction": 0.7682886719703674,
+          "positive_advantage_mean_logprob_change": 0.002250698860734701,
+          "negative_advantage_mean_logprob_change": -0.013385588303208351,
+          "reversal_mean_logprob_change": -0.047507189214229584,
+          "approx_kl": 0.006851891055703163,
+          "train_seconds": 31.632348095066845
+        },
+        {
+          "update": 7,
+          "decisions": 286894,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 6,
+            "timeouts": 0,
+            "turns": 683.875,
+            "reward": 0.8994113206863403,
+            "decisions": 38685,
+            "physical_turns": 43768,
+            "loop_episodes": 22,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 747.862060546875,
+              "death": 65.33333587646484,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.12807635962963104,
+          "mc_return_mean": 0.9870779514312744,
+          "gae_target_mse_vs_mc": 0.725260317325592,
+          "normalized_advantage_sign_agreement": 0.4070311486721039,
+          "reversal_decisions": 2375,
+          "gae_positive_reversal_advantage_fraction": 0.1267368346452713,
+          "mc_positive_reversal_advantage_fraction": 0.9633684158325195,
+          "positive_advantage_mean_logprob_change": 0.0036705955862998962,
+          "negative_advantage_mean_logprob_change": -0.011896469630300999,
+          "reversal_mean_logprob_change": -0.058159563690423965,
+          "approx_kl": 0.005342242773622274,
+          "train_seconds": 35.9725512820296,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 123,
+              "deaths": 4,
+              "timeouts": 1,
+              "turns": 747.2734375,
+              "reward": 0.9534647464752197,
+              "loop_episodes": 43,
+              "loop_timeouts": 1,
+              "actions": {
+                "move": 449.203125,
+                "attack": 145.578125,
+                "wait": 58.6953125,
+                "rest": 9.2890625
+              },
+              "turns_by_outcome": {
+                "clear": 753.2113647460938,
+                "death": 239.5,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 24,
+              "deaths": 5,
+              "timeouts": 99,
+              "turns": 1762.7265625,
+              "reward": 0.16987276077270508,
+              "loop_episodes": 106,
+              "loop_timeouts": 98,
+              "actions": {
+                "move": 1580.953125,
+                "attack": 88.796875,
+                "wait": 34.4375,
+                "rest": 5.5546875
+              },
+              "turns_by_outcome": {
+                "clear": 879.4166870117188,
+                "death": 354.20001220703125,
+                "timeout": 2048.0
+              }
+            }
+          }
+        },
+        {
+          "update": 8,
+          "decisions": 325228,
+          "rollout": {
+            "episodes": 64,
+            "clears": 60,
+            "deaths": 4,
+            "timeouts": 0,
+            "turns": 676.546875,
+            "reward": 0.9307345151901245,
+            "decisions": 38334,
+            "physical_turns": 43299,
+            "loop_episodes": 19,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 710.9166870117188,
+              "death": 161.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.14687113463878632,
+          "mc_return_mean": 0.9806424379348755,
+          "gae_target_mse_vs_mc": 0.6898985505104065,
+          "normalized_advantage_sign_agreement": 0.3825324773788452,
+          "reversal_decisions": 2334,
+          "gae_positive_reversal_advantage_fraction": 0.17137961089611053,
+          "mc_positive_reversal_advantage_fraction": 0.9717223644256592,
+          "positive_advantage_mean_logprob_change": 0.0005724419606849551,
+          "negative_advantage_mean_logprob_change": -0.01723533309996128,
+          "reversal_mean_logprob_change": -0.05948099493980408,
+          "approx_kl": 0.008190490305423737,
+          "train_seconds": 39.98030858114362
+        },
+        {
+          "update": 9,
+          "decisions": 364747,
+          "rollout": {
+            "episodes": 64,
+            "clears": 61,
+            "deaths": 3,
+            "timeouts": 0,
+            "turns": 702.140625,
+            "reward": 0.946103572845459,
+            "decisions": 39519,
+            "physical_turns": 44937,
+            "loop_episodes": 16,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 723.1146850585938,
+              "death": 275.66668701171875,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.16100192070007324,
+          "mc_return_mean": 0.9785727858543396,
+          "gae_target_mse_vs_mc": 0.667371392250061,
+          "normalized_advantage_sign_agreement": 0.40132594108581543,
+          "reversal_decisions": 2664,
+          "gae_positive_reversal_advantage_fraction": 0.18018019199371338,
+          "mc_positive_reversal_advantage_fraction": 0.9692192673683167,
+          "positive_advantage_mean_logprob_change": 0.0015115141868591309,
+          "negative_advantage_mean_logprob_change": -0.01443333551287651,
+          "reversal_mean_logprob_change": -0.04269392788410187,
+          "approx_kl": 0.007947640493512154,
+          "train_seconds": 44.428885616129264
+        },
+        {
+          "update": 10,
+          "decisions": 401723,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 6,
+            "timeouts": 0,
+            "turns": 662.765625,
+            "reward": 0.89962238073349,
+            "decisions": 36976,
+            "physical_turns": 42417,
+            "loop_episodes": 14,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 720.3793334960938,
+              "death": 105.83333587646484,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.1894407719373703,
+          "mc_return_mean": 0.9806546568870544,
+          "gae_target_mse_vs_mc": 0.6242725253105164,
+          "normalized_advantage_sign_agreement": 0.43433576822280884,
+          "reversal_decisions": 1994,
+          "gae_positive_reversal_advantage_fraction": 0.25125375390052795,
+          "mc_positive_reversal_advantage_fraction": 0.8901705145835876,
+          "positive_advantage_mean_logprob_change": -0.0068103717640042305,
+          "negative_advantage_mean_logprob_change": -0.023128561675548553,
+          "reversal_mean_logprob_change": -0.07664280384778976,
+          "approx_kl": 0.01436477992683649,
+          "train_seconds": 48.30497794225812
+        },
+        {
+          "update": 11,
+          "decisions": 438928,
+          "rollout": {
+            "episodes": 64,
+            "clears": 48,
+            "deaths": 14,
+            "timeouts": 2,
+            "turns": 648.28125,
+            "reward": 0.7435172200202942,
+            "decisions": 37205,
+            "physical_turns": 41490,
+            "loop_episodes": 12,
+            "loop_timeouts": 2,
+            "turns_by_outcome": {
+              "clear": 722.7083740234375,
+              "death": 193.1428680419922,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.18929028511047363,
+          "mc_return_mean": 0.828471839427948,
+          "gae_target_mse_vs_mc": 0.5301410555839539,
+          "normalized_advantage_sign_agreement": 0.39653271436691284,
+          "reversal_decisions": 3136,
+          "gae_positive_reversal_advantage_fraction": 0.265625,
+          "mc_positive_reversal_advantage_fraction": 0.5475127696990967,
+          "positive_advantage_mean_logprob_change": -0.00663734320551157,
+          "negative_advantage_mean_logprob_change": -0.019994106143712997,
+          "reversal_mean_logprob_change": -0.025847697630524635,
+          "approx_kl": 0.014254557900130749,
+          "train_seconds": 54.29036652110517
+        },
+        {
+          "update": 12,
+          "decisions": 477208,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 6,
+            "timeouts": 0,
+            "turns": 681.015625,
+            "reward": 0.8994398713111877,
+            "decisions": 38280,
+            "physical_turns": 43585,
+            "loop_episodes": 15,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 722.7069091796875,
+              "death": 278.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.18837733566761017,
+          "mc_return_mean": 0.9574300050735474,
+          "gae_target_mse_vs_mc": 0.6120947599411011,
+          "normalized_advantage_sign_agreement": 0.3391849398612976,
+          "reversal_decisions": 2252,
+          "gae_positive_reversal_advantage_fraction": 0.22824156284332275,
+          "mc_positive_reversal_advantage_fraction": 0.9622557759284973,
+          "positive_advantage_mean_logprob_change": 0.0013812636025249958,
+          "negative_advantage_mean_logprob_change": -0.014672016724944115,
+          "reversal_mean_logprob_change": -0.07538556307554245,
+          "approx_kl": 0.007909907028079033,
+          "train_seconds": 58.30191258015111
+        },
+        {
+          "update": 13,
+          "decisions": 518279,
+          "rollout": {
+            "episodes": 64,
+            "clears": 61,
+            "deaths": 3,
+            "timeouts": 0,
+            "turns": 727.53125,
+            "reward": 0.9458496570587158,
+            "decisions": 41071,
+            "physical_turns": 46562,
+            "loop_episodes": 18,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 757.3933715820312,
+              "death": 120.33333587646484,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.21555358171463013,
+          "mc_return_mean": 0.9884223341941833,
+          "gae_target_mse_vs_mc": 0.5896494388580322,
+          "normalized_advantage_sign_agreement": 0.4767841100692749,
+          "reversal_decisions": 2619,
+          "gae_positive_reversal_advantage_fraction": 0.2222222089767456,
+          "mc_positive_reversal_advantage_fraction": 0.8373425006866455,
+          "positive_advantage_mean_logprob_change": -0.008218975737690926,
+          "negative_advantage_mean_logprob_change": -0.025773636996746063,
+          "reversal_mean_logprob_change": -0.13357071578502655,
+          "approx_kl": 0.017787795513868332,
+          "train_seconds": 62.391632811166346,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 118,
+              "deaths": 5,
+              "timeouts": 5,
+              "turns": 770.1796875,
+              "reward": 0.9141732454299927,
+              "loop_episodes": 41,
+              "loop_timeouts": 5,
+              "actions": {
+                "move": 474.90625,
+                "attack": 143.71875,
+                "wait": 58.8828125,
+                "rest": 9.0234375
+              },
+              "turns_by_outcome": {
+                "clear": 741.584716796875,
+                "death": 167.1999969482422,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 19,
+              "deaths": 1,
+              "timeouts": 108,
+              "turns": 1861.546875,
+              "reward": 0.1298220455646515,
+              "loop_episodes": 114,
+              "loop_timeouts": 108,
+              "actions": {
+                "move": 1663.921875,
+                "attack": 95.2109375,
+                "wait": 36.59375,
+                "rest": 6.15625
+              },
+              "turns_by_outcome": {
+                "clear": 898.7894897460938,
+                "death": 17.0,
+                "timeout": 2048.0
+              }
+            }
+          }
+        },
+        {
+          "update": 14,
+          "decisions": 557435,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 7,
+            "timeouts": 1,
+            "turns": 689.90625,
+            "reward": 0.8681010007858276,
+            "decisions": 39156,
+            "physical_turns": 44154,
+            "loop_episodes": 17,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 732.6250610351562,
+              "death": 154.1428680419922,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.22567716240882874,
+          "mc_return_mean": 0.9231125116348267,
+          "gae_target_mse_vs_mc": 0.5372735261917114,
+          "normalized_advantage_sign_agreement": 0.34079068899154663,
+          "reversal_decisions": 2696,
+          "gae_positive_reversal_advantage_fraction": 0.21995548903942108,
+          "mc_positive_reversal_advantage_fraction": 0.7563056349754333,
+          "positive_advantage_mean_logprob_change": 0.0011393750319257379,
+          "negative_advantage_mean_logprob_change": -0.013442985713481903,
+          "reversal_mean_logprob_change": -0.035455334931612015,
+          "approx_kl": 0.006312564481049776,
+          "train_seconds": 68.51284027006477
+        },
+        {
+          "update": 15,
+          "decisions": 598228,
+          "rollout": {
+            "episodes": 64,
+            "clears": 57,
+            "deaths": 7,
+            "timeouts": 0,
+            "turns": 714.59375,
+            "reward": 0.883479118347168,
+            "decisions": 40793,
+            "physical_turns": 45734,
+            "loop_episodes": 18,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 787.3508911132812,
+              "death": 122.14286041259766,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.25024887919425964,
+          "mc_return_mean": 0.9759248495101929,
+          "gae_target_mse_vs_mc": 0.5328338742256165,
+          "normalized_advantage_sign_agreement": 0.4240188002586365,
+          "reversal_decisions": 2946,
+          "gae_positive_reversal_advantage_fraction": 0.20366598665714264,
+          "mc_positive_reversal_advantage_fraction": 0.8703325986862183,
+          "positive_advantage_mean_logprob_change": 0.0031035395804792643,
+          "negative_advantage_mean_logprob_change": -0.014428313821554184,
+          "reversal_mean_logprob_change": -0.04418603703379631,
+          "approx_kl": 0.007248167414218187,
+          "train_seconds": 75.19049271009862
+        },
+        {
+          "update": 16,
+          "decisions": 636472,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 5,
+            "timeouts": 1,
+            "turns": 683.765625,
+            "reward": 0.8994123935699463,
+            "decisions": 38244,
+            "physical_turns": 43761,
+            "loop_episodes": 18,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 711.7069091796875,
+              "death": 86.80000305175781,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.25738704204559326,
+          "mc_return_mean": 0.9347702860832214,
+          "gae_target_mse_vs_mc": 0.5022546648979187,
+          "normalized_advantage_sign_agreement": 0.35004183650016785,
+          "reversal_decisions": 2497,
+          "gae_positive_reversal_advantage_fraction": 0.19303163886070251,
+          "mc_positive_reversal_advantage_fraction": 0.7312775254249573,
+          "positive_advantage_mean_logprob_change": 0.0038041204679757357,
+          "negative_advantage_mean_logprob_change": -0.01567058451473713,
+          "reversal_mean_logprob_change": -0.06255888193845749,
+          "approx_kl": 0.006834826897829771,
+          "train_seconds": 81.42853836808354
+        },
+        {
+          "update": 17,
+          "decisions": 676647,
+          "rollout": {
+            "episodes": 64,
+            "clears": 61,
+            "deaths": 3,
+            "timeouts": 0,
+            "turns": 718.34375,
+            "reward": 0.9459415674209595,
+            "decisions": 40175,
+            "physical_turns": 45974,
+            "loop_episodes": 23,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 752.7540283203125,
+              "death": 18.666667938232422,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.28718286752700806,
+          "mc_return_mean": 0.9947655200958252,
+          "gae_target_mse_vs_mc": 0.489316463470459,
+          "normalized_advantage_sign_agreement": 0.5593279600143433,
+          "reversal_decisions": 2157,
+          "gae_positive_reversal_advantage_fraction": 0.2665739357471466,
+          "mc_positive_reversal_advantage_fraction": 0.6453407406806946,
+          "positive_advantage_mean_logprob_change": 0.0009872947121039033,
+          "negative_advantage_mean_logprob_change": -0.017465142533183098,
+          "reversal_mean_logprob_change": -0.08767180144786835,
+          "approx_kl": 0.009479840286076069,
+          "train_seconds": 86.10040031000972
+        },
+        {
+          "update": 18,
+          "decisions": 715461,
+          "rollout": {
+            "episodes": 64,
+            "clears": 61,
+            "deaths": 3,
+            "timeouts": 0,
+            "turns": 693.796875,
+            "reward": 0.9461870789527893,
+            "decisions": 38814,
+            "physical_turns": 44403,
+            "loop_episodes": 11,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 719.8196411132812,
+              "death": 164.6666717529297,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.3031281530857086,
+          "mc_return_mean": 0.9854321479797363,
+          "gae_target_mse_vs_mc": 0.4636627435684204,
+          "normalized_advantage_sign_agreement": 0.47668367624282837,
+          "reversal_decisions": 1614,
+          "gae_positive_reversal_advantage_fraction": 0.23915737867355347,
+          "mc_positive_reversal_advantage_fraction": 0.7236679196357727,
+          "positive_advantage_mean_logprob_change": 0.0027836805675178766,
+          "negative_advantage_mean_logprob_change": -0.012834745459258556,
+          "reversal_mean_logprob_change": -0.03354009985923767,
+          "approx_kl": 0.005338798742741346,
+          "train_seconds": 90.8120612311177
+        },
+        {
+          "update": 19,
+          "decisions": 751883,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 6,
+            "timeouts": 0,
+            "turns": 648.453125,
+            "reward": 0.8997654914855957,
+            "decisions": 36422,
+            "physical_turns": 41501,
+            "loop_episodes": 9,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 707.8275756835938,
+              "death": 74.5,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.3192434012889862,
+          "mc_return_mean": 0.9853063821792603,
+          "gae_target_mse_vs_mc": 0.4413241147994995,
+          "normalized_advantage_sign_agreement": 0.4492614269256592,
+          "reversal_decisions": 1482,
+          "gae_positive_reversal_advantage_fraction": 0.21052630245685577,
+          "mc_positive_reversal_advantage_fraction": 0.7685559988021851,
+          "positive_advantage_mean_logprob_change": 0.0045625679194927216,
+          "negative_advantage_mean_logprob_change": -0.015959417447447777,
+          "reversal_mean_logprob_change": -0.06371355801820755,
+          "approx_kl": 0.006909970194101334,
+          "train_seconds": 95.00547399208881,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 120,
+              "deaths": 7,
+              "timeouts": 1,
+              "turns": 713.8984375,
+              "reward": 0.9303610324859619,
+              "loop_episodes": 40,
+              "loop_timeouts": 0,
+              "actions": {
+                "move": 423.140625,
+                "attack": 142.9296875,
+                "wait": 57.9140625,
+                "rest": 8.984375
+              },
+              "turns_by_outcome": {
+                "clear": 730.8833618164062,
+                "death": 232.1428680419922,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 37,
+              "deaths": 1,
+              "timeouts": 90,
+              "turns": 1718.296875,
+              "reward": 0.27187955379486084,
+              "loop_episodes": 104,
+              "loop_timeouts": 89,
+              "actions": {
+                "move": 1518.234375,
+                "attack": 97.515625,
+                "wait": 38.21875,
+                "rest": 6.421875
+              },
+              "turns_by_outcome": {
+                "clear": 947.648681640625,
+                "death": 559.0,
+                "timeout": 2048.0
+              }
+            }
+          }
+        },
+        {
+          "update": 20,
+          "decisions": 793775,
+          "rollout": {
+            "episodes": 64,
+            "clears": 59,
+            "deaths": 3,
+            "timeouts": 2,
+            "turns": 740.59375,
+            "reward": 0.9144691228866577,
+            "decisions": 41892,
+            "physical_turns": 47398,
+            "loop_episodes": 20,
+            "loop_timeouts": 2,
+            "turns_by_outcome": {
+              "clear": 717.1356201171875,
+              "death": 330.3333435058594,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.34212541580200195,
+          "mc_return_mean": 0.8816720843315125,
+          "gae_target_mse_vs_mc": 0.3857816159725189,
+          "normalized_advantage_sign_agreement": 0.3926047682762146,
+          "reversal_decisions": 4559,
+          "gae_positive_reversal_advantage_fraction": 0.28032463788986206,
+          "mc_positive_reversal_advantage_fraction": 0.41368719935417175,
+          "positive_advantage_mean_logprob_change": -0.0012657932238653302,
+          "negative_advantage_mean_logprob_change": -0.0932547077536583,
+          "reversal_mean_logprob_change": -0.47244223952293396,
+          "approx_kl": 0.042601630091667175,
+          "train_seconds": 101.40488354605623
+        },
+        {
+          "update": 21,
+          "decisions": 833407,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 7,
+            "timeouts": 1,
+            "turns": 702.71875,
+            "reward": 0.8679728507995605,
+            "decisions": 39632,
+            "physical_turns": 44974,
+            "loop_episodes": 17,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 729.1607666015625,
+              "death": 299.0,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.3466472625732422,
+          "mc_return_mean": 0.8992748856544495,
+          "gae_target_mse_vs_mc": 0.3839757442474365,
+          "normalized_advantage_sign_agreement": 0.3984154164791107,
+          "reversal_decisions": 3037,
+          "gae_positive_reversal_advantage_fraction": 0.20645372569561005,
+          "mc_positive_reversal_advantage_fraction": 0.6723740100860596,
+          "positive_advantage_mean_logprob_change": 0.000347946654073894,
+          "negative_advantage_mean_logprob_change": -0.017506420612335205,
+          "reversal_mean_logprob_change": -0.038173217326402664,
+          "approx_kl": 0.009725520387291908,
+          "train_seconds": 107.69987799716182
+        },
+        {
+          "update": 22,
+          "decisions": 871675,
+          "rollout": {
+            "episodes": 64,
+            "clears": 60,
+            "deaths": 4,
+            "timeouts": 0,
+            "turns": 687.40625,
+            "reward": 0.9306259155273438,
+            "decisions": 38268,
+            "physical_turns": 43994,
+            "loop_episodes": 17,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 720.2833862304688,
+              "death": 194.25,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.36114224791526794,
+          "mc_return_mean": 0.9790143966674805,
+          "gae_target_mse_vs_mc": 0.3888864815235138,
+          "normalized_advantage_sign_agreement": 0.39785200357437134,
+          "reversal_decisions": 1909,
+          "gae_positive_reversal_advantage_fraction": 0.24672605097293854,
+          "mc_positive_reversal_advantage_fraction": 0.8742797374725342,
+          "positive_advantage_mean_logprob_change": 0.0023424308747053146,
+          "negative_advantage_mean_logprob_change": -0.014830180443823338,
+          "reversal_mean_logprob_change": -0.03915569931268692,
+          "approx_kl": 0.006514565087854862,
+          "train_seconds": 111.39194025006145
+        },
+        {
+          "update": 23,
+          "decisions": 910696,
+          "rollout": {
+            "episodes": 64,
+            "clears": 62,
+            "deaths": 2,
+            "timeouts": 0,
+            "turns": 695.375,
+            "reward": 0.9617962837219238,
+            "decisions": 39021,
+            "physical_turns": 44504,
+            "loop_episodes": 17,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 717.3547973632812,
+              "death": 14.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.3645077347755432,
+          "mc_return_mean": 0.9956201910972595,
+          "gae_target_mse_vs_mc": 0.38984695076942444,
+          "normalized_advantage_sign_agreement": 0.532277524471283,
+          "reversal_decisions": 2223,
+          "gae_positive_reversal_advantage_fraction": 0.25056231021881104,
+          "mc_positive_reversal_advantage_fraction": 0.6333783268928528,
+          "positive_advantage_mean_logprob_change": 0.0021453071385622025,
+          "negative_advantage_mean_logprob_change": -0.015367843210697174,
+          "reversal_mean_logprob_change": -0.0324384905397892,
+          "approx_kl": 0.008520461618900299,
+          "train_seconds": 115.1417111151386
+        },
+        {
+          "update": 24,
+          "decisions": 949293,
+          "rollout": {
+            "episodes": 64,
+            "clears": 59,
+            "deaths": 5,
+            "timeouts": 0,
+            "turns": 684.109375,
+            "reward": 0.9150339365005493,
+            "decisions": 38597,
+            "physical_turns": 43783,
+            "loop_episodes": 19,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 729.4576416015625,
+              "death": 149.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.35931017994880676,
+          "mc_return_mean": 0.9810584187507629,
+          "gae_target_mse_vs_mc": 0.3914526700973511,
+          "normalized_advantage_sign_agreement": 0.45674535632133484,
+          "reversal_decisions": 2333,
+          "gae_positive_reversal_advantage_fraction": 0.27003857493400574,
+          "mc_positive_reversal_advantage_fraction": 0.798114001750946,
+          "positive_advantage_mean_logprob_change": 0.00425323098897934,
+          "negative_advantage_mean_logprob_change": -0.013271785341203213,
+          "reversal_mean_logprob_change": -0.05158397927880287,
+          "approx_kl": 0.006377828307449818,
+          "train_seconds": 119.0885466800537
+        },
+        {
+          "update": 25,
+          "decisions": 990105,
+          "rollout": {
+            "episodes": 64,
+            "clears": 62,
+            "deaths": 2,
+            "timeouts": 0,
+            "turns": 723.90625,
+            "reward": 0.9615108966827393,
+            "decisions": 40812,
+            "physical_turns": 46330,
+            "loop_episodes": 16,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 746.290283203125,
+              "death": 30.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.3651253581047058,
+          "mc_return_mean": 0.9947898983955383,
+          "gae_target_mse_vs_mc": 0.3902880847454071,
+          "normalized_advantage_sign_agreement": 0.5369744300842285,
+          "reversal_decisions": 2344,
+          "gae_positive_reversal_advantage_fraction": 0.2581057846546173,
+          "mc_positive_reversal_advantage_fraction": 0.6518771052360535,
+          "positive_advantage_mean_logprob_change": 0.0020850670989602804,
+          "negative_advantage_mean_logprob_change": -0.016425633803009987,
+          "reversal_mean_logprob_change": 0.010681015439331532,
+          "approx_kl": 0.007327760104089975,
+          "train_seconds": 123.92866812599823
+        },
+        {
+          "update": 26,
+          "decisions": 1030053,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 6,
+            "timeouts": 0,
+            "turns": 707.703125,
+            "reward": 0.8991730213165283,
+            "decisions": 39948,
+            "physical_turns": 45293,
+            "loop_episodes": 18,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 770.7413940429688,
+              "death": 98.33333587646484,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.3796358108520508,
+          "mc_return_mean": 0.9820055365562439,
+          "gae_target_mse_vs_mc": 0.3686884939670563,
+          "normalized_advantage_sign_agreement": 0.4667317569255829,
+          "reversal_decisions": 2463,
+          "gae_positive_reversal_advantage_fraction": 0.26958993077278137,
+          "mc_positive_reversal_advantage_fraction": 0.8258221745491028,
+          "positive_advantage_mean_logprob_change": -0.0005602392484433949,
+          "negative_advantage_mean_logprob_change": -0.016274241730570793,
+          "reversal_mean_logprob_change": 0.013801394030451775,
+          "approx_kl": 0.008212793618440628,
+          "train_seconds": 128.12013642396778,
+          "evaluation": {
+            "sampled": {
+              "episodes": 1024,
+              "clears": 983,
+              "deaths": 37,
+              "timeouts": 4,
+              "turns": 782.888671875,
+              "reward": 0.9521321058273315,
+              "loop_episodes": 409,
+              "loop_timeouts": 3,
+              "actions": {
+                "move": 483.005859375,
+                "attack": 144.2421875,
+                "wait": 61.779296875,
+                "rest": 8.833984375
+              },
+              "turns_by_outcome": {
+                "clear": 800.3977661132812,
+                "death": 180.94595336914062,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 1024,
+              "clears": 195,
+              "deaths": 20,
+              "timeouts": 809,
+              "turns": 1899.8291015625,
+              "reward": 0.17143142223358154,
+              "loop_episodes": 990,
+              "loop_timeouts": 806,
+              "actions": {
+                "move": 1721.021484375,
+                "attack": 86.6630859375,
+                "wait": 34.5966796875,
+                "rest": 5.4853515625
+              },
+              "turns_by_outcome": {
+                "clear": 1458.882080078125,
+                "death": 205.5500030517578,
+                "timeout": 2048.0
+              }
+            }
+          }
+        }
+      ],
+      "initial": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 124,
+          "deaths": 4,
+          "timeouts": 0,
+          "turns": 671.8828125,
+          "reward": 0.9620311856269836,
+          "loop_episodes": 2,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 373.875,
+            "attack": 144.9140625,
+            "wait": 58.0390625,
+            "rest": 9.1171875
+          },
+          "turns_by_outcome": {
+            "clear": 687.7177124023438,
+            "death": 181.0,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 120,
+          "deaths": 3,
+          "timeouts": 5,
+          "turns": 722.6484375,
+          "reward": 0.9302735328674316,
+          "loop_episodes": 5,
+          "loop_timeouts": 5,
+          "actions": {
+            "move": 430.5859375,
+            "attack": 142.3984375,
+            "wait": 57.5546875,
+            "rest": 8.9765625
+          },
+          "turns_by_outcome": {
+            "clear": 685.2083740234375,
+            "death": 11.333333969116211,
+            "timeout": 2048.0
+          }
+        }
+      }
+    },
+    "episode_return": {
+      "history": [
+        {
+          "update": 1,
+          "decisions": 33733,
+          "rollout": {
+            "episodes": 64,
+            "clears": 55,
+            "deaths": 9,
+            "timeouts": 0,
+            "turns": 602.65625,
+            "reward": 0.8533484935760498,
+            "decisions": 33733,
+            "physical_turns": 38570,
+            "loop_episodes": 0,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 671.7999877929688,
+              "death": 180.11111450195312,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.0,
+          "mc_return_mean": 0.9547895789146423,
+          "gae_target_mse_vs_mc": 0.919599711894989,
+          "normalized_advantage_sign_agreement": 0.0969080701470375,
+          "reversal_decisions": 382,
+          "gae_positive_reversal_advantage_fraction": 0.020942408591508865,
+          "mc_positive_reversal_advantage_fraction": 0.9581152200698853,
+          "positive_advantage_mean_logprob_change": -0.02637726441025734,
+          "negative_advantage_mean_logprob_change": -0.11542569100856781,
+          "reversal_mean_logprob_change": -0.024694444611668587,
+          "approx_kl": 0.013516644015908241,
+          "train_seconds": 3.2792627499438822,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 124,
+              "deaths": 3,
+              "timeouts": 1,
+              "turns": 690.90625,
+              "reward": 0.9618409872055054,
+              "loop_episodes": 3,
+              "loop_timeouts": 0,
+              "actions": {
+                "move": 398.625,
+                "attack": 143.953125,
+                "wait": 54.6953125,
+                "rest": 9.15625
+              },
+              "turns_by_outcome": {
+                "clear": 696.3870849609375,
+                "death": 12.0,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 115,
+              "deaths": 2,
+              "timeouts": 11,
+              "turns": 821.65625,
+              "reward": 0.8902209997177124,
+              "loop_episodes": 13,
+              "loop_timeouts": 10,
+              "actions": {
+                "move": 531.78125,
+                "attack": 142.265625,
+                "wait": 56.3984375,
+                "rest": 9.0
+              },
+              "turns_by_outcome": {
+                "clear": 718.4782104492188,
+                "death": 9.5,
+                "timeout": 2048.0
+              }
+            }
+          }
+        },
+        {
+          "update": 2,
+          "decisions": 66765,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 8,
+            "timeouts": 0,
+            "turns": 598.25,
+            "reward": 0.869017481803894,
+            "decisions": 33032,
+            "physical_turns": 38288,
+            "loop_episodes": 0,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 654.6428833007812,
+              "death": 203.5,
+              "timeout": null
+            }
+          },
+          "value_mean": 1.0067919492721558,
+          "mc_return_mean": 0.9539928436279297,
+          "gae_target_mse_vs_mc": 0.04002324864268303,
+          "normalized_advantage_sign_agreement": 0.6424981951713562,
+          "reversal_decisions": 686,
+          "gae_positive_reversal_advantage_fraction": 0.32507288455963135,
+          "mc_positive_reversal_advantage_fraction": 0.5058309435844421,
+          "positive_advantage_mean_logprob_change": -0.06317228078842163,
+          "negative_advantage_mean_logprob_change": -0.156925231218338,
+          "reversal_mean_logprob_change": -0.08010585606098175,
+          "approx_kl": 0.08353421837091446,
+          "train_seconds": 7.033325446071103
+        },
+        {
+          "update": 3,
+          "decisions": 108664,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 7,
+            "timeouts": 1,
+            "turns": 740.125,
+            "reward": 0.8675987720489502,
+            "decisions": 41899,
+            "physical_turns": 47368,
+            "loop_episodes": 14,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 803.1785888671875,
+              "death": 48.85714340209961,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.9786182045936584,
+          "mc_return_mean": 0.9418301582336426,
+          "gae_target_mse_vs_mc": 0.04714122787117958,
+          "normalized_advantage_sign_agreement": 0.5656698346138,
+          "reversal_decisions": 3712,
+          "gae_positive_reversal_advantage_fraction": 0.38631466031074524,
+          "mc_positive_reversal_advantage_fraction": 0.7273706793785095,
+          "positive_advantage_mean_logprob_change": -0.012645209208130836,
+          "negative_advantage_mean_logprob_change": -0.0409657247364521,
+          "reversal_mean_logprob_change": -0.08082151412963867,
+          "approx_kl": 0.01652633212506771,
+          "train_seconds": 14.217543888138607
+        },
+        {
+          "update": 4,
+          "decisions": 152662,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 8,
+            "timeouts": 0,
+            "turns": 760.296875,
+            "reward": 0.8673970699310303,
+            "decisions": 43998,
+            "physical_turns": 48659,
+            "loop_episodes": 11,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 834.2500610351562,
+              "death": 242.625,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.9420666098594666,
+          "mc_return_mean": 0.9556671977043152,
+          "gae_target_mse_vs_mc": 0.03595586493611336,
+          "normalized_advantage_sign_agreement": 0.6816446185112,
+          "reversal_decisions": 3395,
+          "gae_positive_reversal_advantage_fraction": 0.496023565530777,
+          "mc_positive_reversal_advantage_fraction": 0.8002945780754089,
+          "positive_advantage_mean_logprob_change": -0.0028619247023016214,
+          "negative_advantage_mean_logprob_change": -0.014950012788176537,
+          "reversal_mean_logprob_change": -0.0062704747542738914,
+          "approx_kl": 0.007932819426059723,
+          "train_seconds": 20.155708661070094
+        },
+        {
+          "update": 5,
+          "decisions": 195935,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 5,
+            "timeouts": 1,
+            "turns": 761.703125,
+            "reward": 0.8986330032348633,
+            "decisions": 43273,
+            "physical_turns": 48749,
+            "loop_episodes": 16,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 782.1896362304688,
+              "death": 266.8000183105469,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.955106794834137,
+          "mc_return_mean": 0.9233126640319824,
+          "gae_target_mse_vs_mc": 0.06798984855413437,
+          "normalized_advantage_sign_agreement": 0.4857994616031647,
+          "reversal_decisions": 3815,
+          "gae_positive_reversal_advantage_fraction": 0.38086503744125366,
+          "mc_positive_reversal_advantage_fraction": 0.8096985816955566,
+          "positive_advantage_mean_logprob_change": -0.007366515696048737,
+          "negative_advantage_mean_logprob_change": -0.07493650168180466,
+          "reversal_mean_logprob_change": -0.025196757167577744,
+          "approx_kl": 0.011394526809453964,
+          "train_seconds": 27.435710850171745
+        },
+        {
+          "update": 6,
+          "decisions": 244029,
+          "rollout": {
+            "episodes": 64,
+            "clears": 62,
+            "deaths": 2,
+            "timeouts": 0,
+            "turns": 835.34375,
+            "reward": 0.9603965878486633,
+            "decisions": 48094,
+            "physical_turns": 53462,
+            "loop_episodes": 13,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 859.0322265625,
+              "death": 101.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.9222933053970337,
+          "mc_return_mean": 0.9919482469558716,
+          "gae_target_mse_vs_mc": 0.008494890294969082,
+          "normalized_advantage_sign_agreement": 0.7447707056999207,
+          "reversal_decisions": 3786,
+          "gae_positive_reversal_advantage_fraction": 0.4926043152809143,
+          "mc_positive_reversal_advantage_fraction": 0.584786057472229,
+          "positive_advantage_mean_logprob_change": -0.00018183690553996712,
+          "negative_advantage_mean_logprob_change": -0.010472199879586697,
+          "reversal_mean_logprob_change": -0.027442241087555885,
+          "approx_kl": 0.005735345184803009,
+          "train_seconds": 34.34766070707701
+        },
+        {
+          "update": 7,
+          "decisions": 291330,
+          "rollout": {
+            "episodes": 64,
+            "clears": 57,
+            "deaths": 6,
+            "timeouts": 1,
+            "turns": 817.375,
+            "reward": 0.8824512958526611,
+            "decisions": 47301,
+            "physical_turns": 52312,
+            "loop_episodes": 9,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 851.9122924804688,
+              "death": 284.16668701171875,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.9886126518249512,
+          "mc_return_mean": 0.9196698665618896,
+          "gae_target_mse_vs_mc": 0.07238177210092545,
+          "normalized_advantage_sign_agreement": 0.5193970799446106,
+          "reversal_decisions": 4377,
+          "gae_positive_reversal_advantage_fraction": 0.4484806954860687,
+          "mc_positive_reversal_advantage_fraction": 0.7882111072540283,
+          "positive_advantage_mean_logprob_change": -0.0015173767460510135,
+          "negative_advantage_mean_logprob_change": -0.037099048495292664,
+          "reversal_mean_logprob_change": 0.0029177458491176367,
+          "approx_kl": 0.005268319975584745,
+          "train_seconds": 41.29706868925132,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 120,
+              "deaths": 6,
+              "timeouts": 2,
+              "turns": 855.34375,
+              "reward": 0.9289466142654419,
+              "loop_episodes": 28,
+              "loop_timeouts": 1,
+              "actions": {
+                "move": 559.4453125,
+                "attack": 144.5,
+                "wait": 64.25,
+                "rest": 8.6484375
+              },
+              "turns_by_outcome": {
+                "clear": 863.9583740234375,
+                "death": 285.5,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 13,
+              "deaths": 2,
+              "timeouts": 113,
+              "turns": 1944.2734375,
+              "reward": 0.08211977779865265,
+              "loop_episodes": 124,
+              "loop_timeouts": 113,
+              "actions": {
+                "move": 1794.6796875,
+                "attack": 72.6328125,
+                "wait": 27.7734375,
+                "rest": 4.8359375
+              },
+              "turns_by_outcome": {
+                "clear": 1339.769287109375,
+                "death": 13.0,
+                "timeout": 2048.0
+              }
+            }
+          }
+        },
+        {
+          "update": 8,
+          "decisions": 335444,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 6,
+            "timeouts": 0,
+            "turns": 779.125,
+            "reward": 0.8984587788581848,
+            "decisions": 44114,
+            "physical_turns": 49864,
+            "loop_episodes": 19,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 816.4483032226562,
+              "death": 418.3333435058594,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.9200073480606079,
+          "mc_return_mean": 0.9466671347618103,
+          "gae_target_mse_vs_mc": 0.047517601400613785,
+          "normalized_advantage_sign_agreement": 0.6064288020133972,
+          "reversal_decisions": 4007,
+          "gae_positive_reversal_advantage_fraction": 0.4903917908668518,
+          "mc_positive_reversal_advantage_fraction": 0.8911903500556946,
+          "positive_advantage_mean_logprob_change": -0.011092239990830421,
+          "negative_advantage_mean_logprob_change": -0.040530767291784286,
+          "reversal_mean_logprob_change": -0.03529907017946243,
+          "approx_kl": 0.016929347068071365,
+          "train_seconds": 46.42899658228271
+        },
+        {
+          "update": 9,
+          "decisions": 385915,
+          "rollout": {
+            "episodes": 64,
+            "clears": 58,
+            "deaths": 5,
+            "timeouts": 1,
+            "turns": 877.15625,
+            "reward": 0.897478461265564,
+            "decisions": 50471,
+            "physical_turns": 56138,
+            "loop_episodes": 21,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 903.4655151367188,
+              "death": 337.8000183105469,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.9416238069534302,
+          "mc_return_mean": 0.9245586395263672,
+          "gae_target_mse_vs_mc": 0.06452329456806183,
+          "normalized_advantage_sign_agreement": 0.5108874440193176,
+          "reversal_decisions": 5264,
+          "gae_positive_reversal_advantage_fraction": 0.4407294988632202,
+          "mc_positive_reversal_advantage_fraction": 0.8803191781044006,
+          "positive_advantage_mean_logprob_change": -0.0031335747335106134,
+          "negative_advantage_mean_logprob_change": -0.07478984445333481,
+          "reversal_mean_logprob_change": -0.018803909420967102,
+          "approx_kl": 0.00656046811491251,
+          "train_seconds": 53.1867650593631
+        },
+        {
+          "update": 10,
+          "decisions": 437537,
+          "rollout": {
+            "episodes": 64,
+            "clears": 53,
+            "deaths": 8,
+            "timeouts": 3,
+            "turns": 876.078125,
+            "reward": 0.8193642497062683,
+            "decisions": 51622,
+            "physical_turns": 56069,
+            "loop_episodes": 15,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 913.660400390625,
+              "death": 187.625,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.9147368669509888,
+          "mc_return_mean": 0.8527041673660278,
+          "gae_target_mse_vs_mc": 0.12069428712129593,
+          "normalized_advantage_sign_agreement": 0.5521483421325684,
+          "reversal_decisions": 6186,
+          "gae_positive_reversal_advantage_fraction": 0.582282543182373,
+          "mc_positive_reversal_advantage_fraction": 0.7765923142433167,
+          "positive_advantage_mean_logprob_change": -0.0021335992496460676,
+          "negative_advantage_mean_logprob_change": -0.050766319036483765,
+          "reversal_mean_logprob_change": -0.011687817983329296,
+          "approx_kl": 0.007665690500289202,
+          "train_seconds": 60.82881385041401
+        },
+        {
+          "update": 11,
+          "decisions": 488612,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 5,
+            "timeouts": 3,
+            "turns": 878.90625,
+            "reward": 0.8662109375,
+            "decisions": 51075,
+            "physical_turns": 56250,
+            "loop_episodes": 25,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 875.732177734375,
+              "death": 213.0,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.8532254099845886,
+          "mc_return_mean": 0.8611966967582703,
+          "gae_target_mse_vs_mc": 0.11285832524299622,
+          "normalized_advantage_sign_agreement": 0.5347038507461548,
+          "reversal_decisions": 5233,
+          "gae_positive_reversal_advantage_fraction": 0.5572329759597778,
+          "mc_positive_reversal_advantage_fraction": 0.8222817182540894,
+          "positive_advantage_mean_logprob_change": 0.0012506252387538552,
+          "negative_advantage_mean_logprob_change": -0.026022637262940407,
+          "reversal_mean_logprob_change": 0.008576247841119766,
+          "approx_kl": 0.0047921910881996155,
+          "train_seconds": 68.27421431150287
+        },
+        {
+          "update": 12,
+          "decisions": 540635,
+          "rollout": {
+            "episodes": 64,
+            "clears": 62,
+            "deaths": 2,
+            "timeouts": 0,
+            "turns": 900.140625,
+            "reward": 0.9597486257553101,
+            "decisions": 52023,
+            "physical_turns": 57609,
+            "loop_episodes": 26,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 928.5645141601562,
+              "death": 19.0,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.900343656539917,
+          "mc_return_mean": 0.9943895936012268,
+          "gae_target_mse_vs_mc": 0.02433592453598976,
+          "normalized_advantage_sign_agreement": 0.598619818687439,
+          "reversal_decisions": 5446,
+          "gae_positive_reversal_advantage_fraction": 0.5429673194885254,
+          "mc_positive_reversal_advantage_fraction": 0.5211163759231567,
+          "positive_advantage_mean_logprob_change": 0.005533530842512846,
+          "negative_advantage_mean_logprob_change": -0.010819629766047001,
+          "reversal_mean_logprob_change": 0.0036508552730083466,
+          "approx_kl": 0.005999401211738586,
+          "train_seconds": 74.3859178875573,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 119,
+              "deaths": 4,
+              "timeouts": 5,
+              "turns": 940.6328125,
+              "reward": 0.9202812314033508,
+              "loop_episodes": 50,
+              "loop_timeouts": 2,
+              "actions": {
+                "move": 639.109375,
+                "attack": 143.671875,
+                "wait": 66.28125,
+                "rest": 8.875
+              },
+              "turns_by_outcome": {
+                "clear": 919.8403930664062,
+                "death": 175.0,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 4,
+              "deaths": 2,
+              "timeouts": 122,
+              "turns": 1999.828125,
+              "reward": 0.011251723393797874,
+              "loop_episodes": 125,
+              "loop_timeouts": 121,
+              "actions": {
+                "move": 1907.0,
+                "attack": 46.3984375,
+                "wait": 17.140625,
+                "rest": 3.0
+              },
+              "turns_by_outcome": {
+                "clear": 1524.0,
+                "death": 13.0,
+                "timeout": 2047.9998779296875
+              }
+            }
+          }
+        },
+        {
+          "update": 13,
+          "decisions": 593293,
+          "rollout": {
+            "episodes": 64,
+            "clears": 61,
+            "deaths": 3,
+            "timeouts": 0,
+            "turns": 907.171875,
+            "reward": 0.9440533518791199,
+            "decisions": 52658,
+            "physical_turns": 58059,
+            "loop_episodes": 31,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 947.6720581054688,
+              "death": 83.66667175292969,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.9992321133613586,
+          "mc_return_mean": 0.991102933883667,
+          "gae_target_mse_vs_mc": 0.003927529323846102,
+          "normalized_advantage_sign_agreement": 0.6729841828346252,
+          "reversal_decisions": 6246,
+          "gae_positive_reversal_advantage_fraction": 0.5096061825752258,
+          "mc_positive_reversal_advantage_fraction": 0.564041018486023,
+          "positive_advantage_mean_logprob_change": 0.001212701085023582,
+          "negative_advantage_mean_logprob_change": -0.01562664471566677,
+          "reversal_mean_logprob_change": 0.013845535926520824,
+          "approx_kl": 0.007248581387102604,
+          "train_seconds": 80.27763689449057
+        },
+        {
+          "update": 14,
+          "decisions": 647293,
+          "rollout": {
+            "episodes": 64,
+            "clears": 59,
+            "deaths": 5,
+            "timeouts": 0,
+            "turns": 931.84375,
+            "reward": 0.9125566482543945,
+            "decisions": 54000,
+            "physical_turns": 59638,
+            "loop_episodes": 31,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 1005.0678100585938,
+              "death": 67.80000305175781,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.9919144511222839,
+          "mc_return_mean": 0.9885624647140503,
+          "gae_target_mse_vs_mc": 0.004368940368294716,
+          "normalized_advantage_sign_agreement": 0.7371110916137695,
+          "reversal_decisions": 7022,
+          "gae_positive_reversal_advantage_fraction": 0.5052691698074341,
+          "mc_positive_reversal_advantage_fraction": 0.5890059471130371,
+          "positive_advantage_mean_logprob_change": -0.00221414677798748,
+          "negative_advantage_mean_logprob_change": -0.015096206218004227,
+          "reversal_mean_logprob_change": 0.023897415027022362,
+          "approx_kl": 0.008391994051635265,
+          "train_seconds": 87.49270493444055
+        },
+        {
+          "update": 15,
+          "decisions": 708467,
+          "rollout": {
+            "episodes": 64,
+            "clears": 55,
+            "deaths": 5,
+            "timeouts": 4,
+            "turns": 1041.65625,
+            "reward": 0.8489584922790527,
+            "decisions": 61174,
+            "physical_turns": 66666,
+            "loop_episodes": 32,
+            "loop_timeouts": 2,
+            "turns_by_outcome": {
+              "clear": 1048.1090087890625,
+              "death": 165.60000610351562,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.9891079068183899,
+          "mc_return_mean": 0.8504332900047302,
+          "gae_target_mse_vs_mc": 0.13790012896060944,
+          "normalized_advantage_sign_agreement": 0.5335436463356018,
+          "reversal_decisions": 8956,
+          "gae_positive_reversal_advantage_fraction": 0.5106074213981628,
+          "mc_positive_reversal_advantage_fraction": 0.8271549940109253,
+          "positive_advantage_mean_logprob_change": -0.0037130345590412617,
+          "negative_advantage_mean_logprob_change": -0.0358588807284832,
+          "reversal_mean_logprob_change": 0.003576461924239993,
+          "approx_kl": 0.008750807493925095,
+          "train_seconds": 95.18443998135626
+        },
+        {
+          "update": 16,
+          "decisions": 767604,
+          "rollout": {
+            "episodes": 64,
+            "clears": 54,
+            "deaths": 6,
+            "timeouts": 4,
+            "turns": 1007.40625,
+            "reward": 0.8336760401725769,
+            "decisions": 59137,
+            "physical_turns": 64474,
+            "loop_episodes": 33,
+            "loop_timeouts": 2,
+            "turns_by_outcome": {
+              "clear": 1033.2037353515625,
+              "death": 81.5,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.8469425439834595,
+          "mc_return_mean": 0.8556994795799255,
+          "gae_target_mse_vs_mc": 0.07580450177192688,
+          "normalized_advantage_sign_agreement": 0.6144714951515198,
+          "reversal_decisions": 9131,
+          "gae_positive_reversal_advantage_fraction": 0.5563465356826782,
+          "mc_positive_reversal_advantage_fraction": 0.6700251698493958,
+          "positive_advantage_mean_logprob_change": -0.0032651841174811125,
+          "negative_advantage_mean_logprob_change": -0.024034962058067322,
+          "reversal_mean_logprob_change": 0.005170373246073723,
+          "approx_kl": 0.011914967559278011,
+          "train_seconds": 103.04290932533331,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 119,
+              "deaths": 3,
+              "timeouts": 6,
+              "turns": 1130.1171875,
+              "reward": 0.9183864593505859,
+              "loop_episodes": 70,
+              "loop_timeouts": 2,
+              "actions": {
+                "move": 820.453125,
+                "attack": 145.296875,
+                "wait": 70.65625,
+                "rest": 8.8203125
+              },
+              "turns_by_outcome": {
+                "clear": 1108.7227783203125,
+                "death": 143.0,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 0,
+              "deaths": 2,
+              "timeouts": 126,
+              "turns": 2016.203125,
+              "reward": -0.020162031054496765,
+              "loop_episodes": 126,
+              "loop_timeouts": 126,
+              "actions": {
+                "move": 1970.40625,
+                "attack": 23.8125,
+                "wait": 7.890625,
+                "rest": 1.4453125
+              },
+              "turns_by_outcome": {
+                "clear": null,
+                "death": 13.0,
+                "timeout": 2048.0
+              }
+            }
+          }
+        },
+        {
+          "update": 17,
+          "decisions": 833859,
+          "rollout": {
+            "episodes": 64,
+            "clears": 56,
+            "deaths": 6,
+            "timeouts": 2,
+            "turns": 1110.609375,
+            "reward": 0.863893985748291,
+            "decisions": 66255,
+            "physical_turns": 71079,
+            "loop_episodes": 35,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 1165.196533203125,
+              "death": 288.66668701171875,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.8785607814788818,
+          "mc_return_mean": 0.9089998602867126,
+          "gae_target_mse_vs_mc": 0.08460097014904022,
+          "normalized_advantage_sign_agreement": 0.6162402629852295,
+          "reversal_decisions": 11339,
+          "gae_positive_reversal_advantage_fraction": 0.5540171265602112,
+          "mc_positive_reversal_advantage_fraction": 0.5382308959960938,
+          "positive_advantage_mean_logprob_change": -0.004672707058489323,
+          "negative_advantage_mean_logprob_change": -0.017117144539952278,
+          "reversal_mean_logprob_change": -0.0020601479336619377,
+          "approx_kl": 0.010388815775513649,
+          "train_seconds": 110.50976605038159
+        },
+        {
+          "update": 18,
+          "decisions": 904541,
+          "rollout": {
+            "episodes": 64,
+            "clears": 54,
+            "deaths": 2,
+            "timeouts": 8,
+            "turns": 1190.25,
+            "reward": 0.831847608089447,
+            "decisions": 70682,
+            "physical_turns": 76176,
+            "loop_episodes": 32,
+            "loop_timeouts": 5,
+            "turns_by_outcome": {
+              "clear": 1102.388916015625,
+              "death": 131.5,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.9026356935501099,
+          "mc_return_mean": 0.7678148746490479,
+          "gae_target_mse_vs_mc": 0.1687391996383667,
+          "normalized_advantage_sign_agreement": 0.5244899988174438,
+          "reversal_decisions": 12222,
+          "gae_positive_reversal_advantage_fraction": 0.548682689666748,
+          "mc_positive_reversal_advantage_fraction": 0.7668139338493347,
+          "positive_advantage_mean_logprob_change": 0.0022801044397056103,
+          "negative_advantage_mean_logprob_change": -0.022083384916186333,
+          "reversal_mean_logprob_change": -0.006301813758909702,
+          "approx_kl": 0.004307307302951813,
+          "train_seconds": 118.49779023346491
+        },
+        {
+          "update": 19,
+          "decisions": 975406,
+          "rollout": {
+            "episodes": 64,
+            "clears": 55,
+            "deaths": 5,
+            "timeouts": 4,
+            "turns": 1184.9375,
+            "reward": 0.8475257754325867,
+            "decisions": 70865,
+            "physical_turns": 75836,
+            "loop_episodes": 34,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 1224.92724609375,
+              "death": 54.60000228881836,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.7504321932792664,
+          "mc_return_mean": 0.8792144656181335,
+          "gae_target_mse_vs_mc": 0.1173466145992279,
+          "normalized_advantage_sign_agreement": 0.5817117094993591,
+          "reversal_decisions": 12553,
+          "gae_positive_reversal_advantage_fraction": 0.5715765357017517,
+          "mc_positive_reversal_advantage_fraction": 0.5699833035469055,
+          "positive_advantage_mean_logprob_change": -0.0034571790602058172,
+          "negative_advantage_mean_logprob_change": -0.020195448771119118,
+          "reversal_mean_logprob_change": 0.02086859755218029,
+          "approx_kl": 0.009943326935172081,
+          "train_seconds": 126.39339074329473
+        },
+        {
+          "update": 20,
+          "decisions": 1047124,
+          "rollout": {
+            "episodes": 64,
+            "clears": 60,
+            "deaths": 1,
+            "timeouts": 3,
+            "turns": 1213.546875,
+            "reward": 0.92536461353302,
+            "decisions": 71718,
+            "physical_turns": 77667,
+            "loop_episodes": 40,
+            "loop_timeouts": 1,
+            "turns_by_outcome": {
+              "clear": 1187.60009765625,
+              "death": 267.0,
+              "timeout": 2048.0
+            }
+          },
+          "value_mean": 0.9106103777885437,
+          "mc_return_mean": 0.9081610441207886,
+          "gae_target_mse_vs_mc": 0.06514839082956314,
+          "normalized_advantage_sign_agreement": 0.514110803604126,
+          "reversal_decisions": 13837,
+          "gae_positive_reversal_advantage_fraction": 0.5409409403800964,
+          "mc_positive_reversal_advantage_fraction": 0.9172508120536804,
+          "positive_advantage_mean_logprob_change": -0.000795831554569304,
+          "negative_advantage_mean_logprob_change": -0.028337759897112846,
+          "reversal_mean_logprob_change": 0.0009031348745338619,
+          "approx_kl": 0.004709526430815458,
+          "train_seconds": 134.58537940727547,
+          "evaluation": {
+            "sampled": {
+              "episodes": 1024,
+              "clears": 900,
+              "deaths": 27,
+              "timeouts": 97,
+              "turns": 1277.083984375,
+              "reward": 0.8661355972290039,
+              "loop_episodes": 586,
+              "loop_timeouts": 49,
+              "actions": {
+                "move": 982.794921875,
+                "attack": 143.298828125,
+                "wait": 57.923828125,
+                "rest": 8.88671875
+              },
+              "turns_by_outcome": {
+                "clear": 1229.515625,
+                "death": 93.11111450195312,
+                "timeout": 2047.9998779296875
+              }
+            },
+            "greedy": {
+              "episodes": 1024,
+              "clears": 0,
+              "deaths": 19,
+              "timeouts": 1005,
+              "turns": 2010.716796875,
+              "reward": -0.020107166841626167,
+              "loop_episodes": 982,
+              "loop_timeouts": 981,
+              "actions": {
+                "move": 1973.02734375,
+                "attack": 18.21484375,
+                "wait": 5.65625,
+                "rest": 1.126953125
+              },
+              "turns_by_outcome": {
+                "clear": null,
+                "death": 38.6315803527832,
+                "timeout": 2048.0
+              }
+            }
+          }
+        }
+      ],
+      "initial": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 124,
+          "deaths": 4,
+          "timeouts": 0,
+          "turns": 671.8828125,
+          "reward": 0.9620311856269836,
+          "loop_episodes": 2,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 373.875,
+            "attack": 144.9140625,
+            "wait": 58.0390625,
+            "rest": 9.1171875
+          },
+          "turns_by_outcome": {
+            "clear": 687.7177124023438,
+            "death": 181.0,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 120,
+          "deaths": 3,
+          "timeouts": 5,
+          "turns": 722.6484375,
+          "reward": 0.9302735328674316,
+          "loop_episodes": 5,
+          "loop_timeouts": 5,
+          "actions": {
+            "move": 430.5859375,
+            "attack": 142.3984375,
+            "wait": 57.5546875,
+            "rest": 8.9765625
+          },
+          "turns_by_outcome": {
+            "clear": 685.2083740234375,
+            "death": 11.333333969116211,
+            "timeout": 2048.0
+          }
+        }
+      }
+    }
+  },
+  "notes": "Both conditions collect full episodes with frozen policy, same 64-world batches; differ only targets: GAE .95 reset each 64 decisions with value bootstrap, versus full remaining return minus old value. Gamma=1, entropy=0, same original tiny turn cost. Reset to fresh training placements every update. Updates use all valid decisions, no partial-episode truncation. This collection differs from the historical streaming PPO control. Final budget can overshoot to finish an episode batch. MC is a noisy sampled return, not counterfactual action quality.",
+  "wall_seconds": 415.5465224329382
+}
