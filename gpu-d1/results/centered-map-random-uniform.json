@@ -1,0 +1,596 @@
+{
+  "label": "uniform",
+  "mode": "uniform",
+  "checkpoint": null,
+  "episodes": 1024,
+  "maps": 32,
+  "env_seed": 900000,
+  "action_seed": 900000,
+  "seconds": 115.1406330880709,
+  "config": [
+    24,
+    3631,
+    18,
+    681,
+    794,
+    906,
+    2,
+    23,
+    1,
+    25,
+    26,
+    10,
+    3,
+    19,
+    15,
+    10,
+    3,
+    19,
+    15,
+    10,
+    1,
+    19,
+    15,
+    10,
+    5,
+    19,
+    15,
+    12,
+    5,
+    19,
+    15,
+    14,
+    3,
+    19,
+    15
+  ],
+  "clear_rate": 0.0,
+  "death_rate": 0.5224609375,
+  "timeout_rate": 0.4775390625,
+  "kills": 5.48046875,
+  "turns": 1141.5185546875,
+  "means": {
+    "decisions": 1115.0361328125,
+    "moves": 861.7431640625,
+    "attacks": 37.4091796875,
+    "hits": 29.66015625,
+    "damage": 68.7236328125,
+    "waits": 214.5166015625,
+    "rests": 1.3671875,
+    "rest_turns": 27.849609375,
+    "rest_available": 8.4951171875,
+    "adjacent_decisions": 142.7734375,
+    "attack_when_adjacent": 37.4091796875,
+    "legal_directions": 5507.939453125,
+    "max_displacement": 17.33984375,
+    "killed_initially_near": 1.1103515625,
+    "rest_probability_sum": 1.361473798751831,
+    "prob_uniform_abs_max_sum": 0.0
+  },
+  "unique_tiles": 113.9013671875,
+  "initial_enemies_within_wake_radius": 1.6962890625,
+  "initial_has_enemy_within_wake_radius": 0.7705078125,
+  "enemies_ever_awake_lower_bound": 7.2314453125,
+  "enemies_ever_adjacent_lower_bound": 7.0693359375,
+  "action_histogram": [
+    138445.0,
+    142192.0,
+    139018.0,
+    142347.0,
+    90516.0,
+    89003.0,
+    90080.0,
+    89131.0,
+    219665.0,
+    1400.0
+  ],
+  "rest_fraction_when_available": 0.16093803942203522,
+  "mean_max_probability_deviation_from_uniform": 0.0,
+  "kill_quantiles": [
+    0.0,
+    2.0,
+    5.0,
+    9.0,
+    20.0
+  ],
+  "movement_quantiles": [
+    0.0,
+    8.0,
+    17.0,
+    24.25,
+    50.0
+  ],
+  "kill_validation": "Every kill matched an attack on an adjacent enemy with <=4 HP; nonterminal kill deltas matched enemy HP disappearance.",
+  "limitations": "Wake/adjacency omit final transition; hits/damage omit nonfatal damage on terminal death/timeout turns; diagnostics use AMP for both checkpoints.",
+  "examples": [
+    {
+      "episode": 0,
+      "map_seed": 62655,
+      "start": [
+        26,
+        52
+      ],
+      "end": [
+        23,
+        51
+      ],
+      "kills": 14.0,
+      "initial_near": 4,
+      "unique_tiles": 138,
+      "max_displacement": 14.0,
+      "moves": 1568.0,
+      "attacks": 86.0,
+      "rests": 3.0,
+      "turns": 2048,
+      "death": false,
+      "kill_events": [
+        {
+          "episode": 0,
+          "decision": 23,
+          "turn": 23,
+          "player": [
+            26,
+            52
+          ],
+          "enemy_initial": [
+            31,
+            51
+          ],
+          "enemy_start_distance": 5,
+          "kills": 1
+        },
+        {
+          "episode": 0,
+          "decision": 36,
+          "turn": 36,
+          "player": [
+            26,
+            53
+          ],
+          "enemy_initial": [
+            22,
+            46
+          ],
+          "enemy_start_distance": 6,
+          "kills": 2
+        },
+        {
+          "episode": 0,
+          "decision": 49,
+          "turn": 49,
+          "player": [
+            26,
+            52
+          ],
+          "enemy_initial": [
+            25,
+            46
+          ],
+          "enemy_start_distance": 6,
+          "kills": 3
+        },
+        {
+          "episode": 0,
+          "decision": 64,
+          "turn": 64,
+          "player": [
+            26,
+            52
+          ],
+          "enemy_initial": [
+            30,
+            48
+          ],
+          "enemy_start_distance": 4,
+          "kills": 4
+        },
+        {
+          "episode": 0,
+          "decision": 128,
+          "turn": 163,
+          "player": [
+            30,
+            52
+          ],
+          "enemy_initial": [
+            22,
+            45
+          ],
+          "enemy_start_distance": 7,
+          "kills": 5
+        },
+        {
+          "episode": 0,
+          "decision": 142,
+          "turn": 177,
+          "player": [
+            30,
+            52
+          ],
+          "enemy_initial": [
+            30,
+            44
+          ],
+          "enemy_start_distance": 8,
+          "kills": 6
+        },
+        {
+          "episode": 0,
+          "decision": 154,
+          "turn": 189,
+          "player": [
+            32,
+            56
+          ],
+          "enemy_initial": [
+            35,
+            54
+          ],
+          "enemy_start_distance": 9,
+          "kills": 7
+        },
+        {
+          "episode": 0,
+          "decision": 170,
+          "turn": 205,
+          "player": [
+            33,
+            56
+          ],
+          "enemy_initial": [
+            33,
+            46
+          ],
+          "enemy_start_distance": 7,
+          "kills": 8
+        },
+        {
+          "episode": 0,
+          "decision": 380,
+          "turn": 418,
+          "player": [
+            22,
+            51
+          ],
+          "enemy_initial": [
+            30,
+            41
+          ],
+          "enemy_start_distance": 11,
+          "kills": 9
+        },
+        {
+          "episode": 0,
+          "decision": 429,
+          "turn": 467,
+          "player": [
+            27,
+            48
+          ],
+          "enemy_initial": [
+            33,
+            42
+          ],
+          "enemy_start_distance": 10,
+          "kills": 10
+        },
+        {
+          "episode": 0,
+          "decision": 960,
+          "turn": 998,
+          "player": [
+            22,
+            41
+          ],
+          "enemy_initial": [
+            43,
+            52
+          ],
+          "enemy_start_distance": 17,
+          "kills": 11
+        },
+        {
+          "episode": 0,
+          "decision": 962,
+          "turn": 1000,
+          "player": [
+            22,
+            41
+          ],
+          "enemy_initial": [
+            43,
+            54
+          ],
+          "enemy_start_distance": 17,
+          "kills": 12
+        },
+        {
+          "episode": 0,
+          "decision": 972,
+          "turn": 1010,
+          "player": [
+            22,
+            41
+          ],
+          "enemy_initial": [
+            34,
+            34
+          ],
+          "enemy_start_distance": 18,
+          "kills": 13
+        },
+        {
+          "episode": 0,
+          "decision": 973,
+          "turn": 1011,
+          "player": [
+            22,
+            41
+          ],
+          "enemy_initial": [
+            37,
+            41
+          ],
+          "enemy_start_distance": 11,
+          "kills": 14
+        }
+      ]
+    },
+    {
+      "episode": 1,
+      "map_seed": 63315,
+      "start": [
+        59,
+        13
+      ],
+      "end": [
+        35,
+        32
+      ],
+      "kills": 5.0,
+      "initial_near": 0,
+      "unique_tiles": 249,
+      "max_displacement": 28.0,
+      "moves": 1681.0,
+      "attacks": 27.0,
+      "rests": 1.0,
+      "turns": 2048,
+      "death": false,
+      "kill_events": [
+        {
+          "episode": 1,
+          "decision": 42,
+          "turn": 42,
+          "player": [
+            49,
+            13
+          ],
+          "enemy_initial": [
+            51,
+            13
+          ],
+          "enemy_start_distance": 8,
+          "kills": 1
+        },
+        {
+          "episode": 1,
+          "decision": 238,
+          "turn": 238,
+          "player": [
+            48,
+            15
+          ],
+          "enemy_initial": [
+            38,
+            25
+          ],
+          "enemy_start_distance": 21,
+          "kills": 2
+        },
+        {
+          "episode": 1,
+          "decision": 247,
+          "turn": 247,
+          "player": [
+            50,
+            13
+          ],
+          "enemy_initial": [
+            41,
+            25
+          ],
+          "enemy_start_distance": 18,
+          "kills": 3
+        },
+        {
+          "episode": 1,
+          "decision": 263,
+          "turn": 263,
+          "player": [
+            55,
+            13
+          ],
+          "enemy_initial": [
+            41,
+            26
+          ],
+          "enemy_start_distance": 18,
+          "kills": 4
+        },
+        {
+          "episode": 1,
+          "decision": 993,
+          "turn": 993,
+          "player": [
+            57,
+            34
+          ],
+          "enemy_initial": [
+            62,
+            25
+          ],
+          "enemy_start_distance": 12,
+          "kills": 5
+        }
+      ]
+    },
+    {
+      "episode": 2,
+      "map_seed": 63391,
+      "start": [
+        12,
+        18
+      ],
+      "end": [
+        30,
+        24
+      ],
+      "kills": 9.0,
+      "initial_near": 1,
+      "unique_tiles": 321,
+      "max_displacement": 18.0,
+      "moves": 1663.0,
+      "attacks": 58.0,
+      "rests": 1.0,
+      "turns": 2048,
+      "death": false,
+      "kill_events": [
+        {
+          "episode": 2,
+          "decision": 30,
+          "turn": 30,
+          "player": [
+            11,
+            17
+          ],
+          "enemy_initial": [
+            15,
+            24
+          ],
+          "enemy_start_distance": 6,
+          "kills": 1
+        },
+        {
+          "episode": 2,
+          "decision": 93,
+          "turn": 93,
+          "player": [
+            10,
+            23
+          ],
+          "enemy_initial": [
+            22,
+            16
+          ],
+          "enemy_start_distance": 10,
+          "kills": 2
+        },
+        {
+          "episode": 2,
+          "decision": 104,
+          "turn": 104,
+          "player": [
+            11,
+            23
+          ],
+          "enemy_initial": [
+            23,
+            25
+          ],
+          "enemy_start_distance": 11,
+          "kills": 3
+        },
+        {
+          "episode": 2,
+          "decision": 120,
+          "turn": 120,
+          "player": [
+            13,
+            18
+          ],
+          "enemy_initial": [
+            16,
+            29
+          ],
+          "enemy_start_distance": 11,
+          "kills": 4
+        },
+        {
+          "episode": 2,
+          "decision": 282,
+          "turn": 318,
+          "player": [
+            8,
+            21
+          ],
+          "enemy_initial": [
+            14,
+            33
+          ],
+          "enemy_start_distance": 15,
+          "kills": 5
+        },
+        {
+          "episode": 2,
+          "decision": 425,
+          "turn": 461,
+          "player": [
+            26,
+            12
+          ],
+          "enemy_initial": [
+            25,
+            17
+          ],
+          "enemy_start_distance": 13,
+          "kills": 6
+        },
+        {
+          "episode": 2,
+          "decision": 498,
+          "turn": 534,
+          "player": [
+            22,
+            27
+          ],
+          "enemy_initial": [
+            18,
+            30
+          ],
+          "enemy_start_distance": 12,
+          "kills": 7
+        },
+        {
+          "episode": 2,
+          "decision": 1011,
+          "turn": 1047,
+          "player": [
+            8,
+            20
+          ],
+          "enemy_initial": [
+            34,
+            16
+          ],
+          "enemy_start_distance": 22,
+          "kills": 8
+        },
+        {
+          "episode": 2,
+          "decision": 1016,
+          "turn": 1052,
+          "player": [
+            12,
+            18
+          ],
+          "enemy_initial": [
+            34,
+            14
+          ],
+          "enemy_start_distance": 22,
+          "kills": 9
+        }
+      ]
+    }
+  ]
+}
