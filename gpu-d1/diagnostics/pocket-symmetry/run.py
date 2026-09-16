@@ -18,7 +18,7 @@ from learn_env_ring_multi import Env
 from run_ring_ablations import digest
 
 
-def maps(folder,distance,mirror):
+def maps(folder,distance,mirror,center_pocket=False):
  # Same native ray definition used by the corpus compiler, evaluated on test geometry.
  lines=iter((ROOT/'fixtures/native-1057.rays').read_text().splitlines());ends=[tuple(map(int,next(lines).split())) for _ in range(int(next(lines)))];blockers=[]
  for line in lines:
@@ -27,6 +27,7 @@ def maps(folder,distance,mirror):
  for r in range(4):
   floor=np.zeros(5600,np.uint8)
   def pos(x,y):
+   if center_pocket:x-=distance;y-=distance
    if mirror:x=-x
    for _ in range(r):x,y=-y,x
    return (35+y)*80+40+x
