@@ -1,0 +1,26 @@
+{
+  "execution": "fused_maps_amp_v1",
+  "native_semantics": true,
+  "cpu_gpu_48_step_parity": true,
+  "sleeping_enemy_does_not_block_rest": true,
+  "waking_or_approaching_awake_enemy_interrupts": true,
+  "rest_stops_at_2048_physical_turns": true,
+  "full_map_and_all_enemies": true,
+  "no_frontier_guidance": true,
+  "centering_extremes_and_d4": true,
+  "ppo_resume": true,
+  "benchmark_decisions": 32768,
+  "benchmark_train_seconds": 8.658201284939423,
+  "estimated_10m_train_seconds": 2642.2733413511423,
+  "finite_updated_weights": true,
+  "optimizer_step_counts": [
+    32
+  ],
+  "grad_scaler": {
+    "scale": 65536.0,
+    "growth_factor": 2.0,
+    "backoff_factor": 0.5,
+    "growth_interval": 2000,
+    "_growth_tracker": 32
+  }
+}

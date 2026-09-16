@@ -35,3 +35,13 @@ Run status/logs/checkpoints: `gpu-d1/learning-runs/vision15-centered-map/`. Pref
 ## Launch and measured speed
 
 All preflight checks passed. A full 32,768-decision PPO update took 43.05 training seconds (~761 decisions/s), projecting 3h39m training for 10M, excluding validation. Allow roughly four hours or more overall; later rollout cost and GPU load can change this. The first ordinary-floor checkpoint is at approximately 1M decisions.
+
+## Performance update
+
+Execution now uses a fused CUDA map builder and mixed-precision convolutions/linear layers with channels-last layout. The fused builder combines recentering, all eight D4 transforms, padding, and layout conversion, producing exactly the same map values as the original implementation. Model weights, optimizer state, PPO losses, probability normalization, and reported values remain float32; GradScaler protects FP16 backpropagation and is checkpointed. This preserves the task, information, architecture and logical minibatches, but does not guarantee bit-identical training trajectories.
+
+On a 64-world batch, inference fell from 8.04ms to 2.38ms and forward/backward from 12.37ms to 5.05ms. Maximum probability discrepancy in the sampled checkpoint batch was 0.0000176, with identical greedy actions. A complete 32,768-decision PPO update fell from 43.05s to 8.66s (4.97× faster), projecting about 44 minutes of training plus evaluation. All 32 optimizer steps completed, all weights were finite and changed, and scaler/checkpoint resume worked.
+
+The original run stopped safely at 65,536 training decisions. The accelerated run resumes its saved weights, optimizer, RNG, and environment state; no training progress was discarded. Its prior manifest is retained under `manifest-before-fused-amp.json`; the new manifest records execution version `fused_maps_amp_v1`. The initial 65,536 training decisions and initialization metrics used FP32. Allow roughly 60–75 minutes after relaunch, depending on validation and GPU load.
+
+Evidence: `results/centered-map-performance.json`, `results/centered-map-profile.txt`, and `results/centered-map-fast-preflight.json`. Reproduce the accelerated PPO smoke test with `preflight.py --fast`. Optional standalone checks live under `diagnostics/centered-map-performance/`.

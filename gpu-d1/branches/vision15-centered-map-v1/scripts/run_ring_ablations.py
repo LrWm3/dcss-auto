@@ -223,7 +223,7 @@ def worker(store, manifest, job):
                 transform(ev)
                 ids=active.nonzero().flatten()
                 if not len(ids):break
-                dist, _ = model(ev.obs[ids], ev.mask[ids])
+                dist, _ = policy(ev.obs[ids], ev.mask[ids])
                 action=torch.full((ev.batch,),8,dtype=torch.long,device='cuda')
                 action[ids] = dist.probs.argmax(-1) if mode == 'greedy' else dist.sample()
                 available=ev.mask[:,9]>0
@@ -297,7 +297,11 @@ def worker(store, manifest, job):
                           for i, m in enumerate(ev.metadata)}
         return result
 
-    model = Policy(job.get('architecture','mlp'),job['width']).cuda()
+    model = Policy(job.get('architecture','mlp'),job['width']).cuda().to(memory_format=torch.channels_last)
+    model.fast_maps=True
+    scaler=torch.amp.GradScaler('cuda')
+    def policy(obs,mask):
+        with torch.autocast('cuda',dtype=torch.float16):return model(obs,mask)
     opt = torch.optim.Adam(model.parameters(), lr=job['lr'], eps=1e-5)
     folder = pathlib.Path('runs') / job['id']
     latest = store.root / folder / 'latest.pt'
@@ -311,6 +315,7 @@ def worker(store, manifest, job):
         if saved['job'] != job:
             raise ValueError('Resume job does not match checkpoint')
         model.load_state_dict(saved['model']); opt.load_state_dict(saved['optimizer'])
+        if 'grad_scaler' in saved:scaler.load_state_dict(saved['grad_scaler'])
         env.state.copy_(saved['env_state'])
         if job.get('curriculum'):
             if 'curriculum_state' in saved:env.restore(saved['curriculum_state'])
@@ -339,7 +344,7 @@ def worker(store, manifest, job):
 
     def persist():
         data = dict(job=job, decisions=total, updates=updates, train_seconds=train_seconds, work_totals=work_totals,
-                    model=cpu_weights(), optimizer=opt.state_dict(), history=history,
+                    model=cpu_weights(), optimizer=opt.state_dict(), grad_scaler=scaler.state_dict(), execution_version="fused_maps_amp_v1", history=history,
                     env_state=env.state.cpu(), env_obs=env.obs.cpu(), env_mask=env.mask.cpu(),
                     torch_rng=torch.get_rng_state(), cuda_rng=torch.cuda.get_rng_state(),
                     best=best, best_score=best_score)
@@ -392,12 +397,12 @@ def worker(store, manifest, job):
             for t in range(T):
                 transform(env)
                 observations[t].copy_(env.obs); masks[t].copy_(env.mask)
-                dist, v = model(env.obs, env.mask); action = dist.sample()
+                dist, v = policy(env.obs, env.mask); action = dist.sample()
                 actions[t] = action; oldlp[t] = dist.log_prob(action); values[t] = v
                 _, out = env.step(action); rewards[t] = out[:, 0]; dones[t] = out[:, 1]
                 rollout_work += torch.cat((out[:,26:33],out[:,34:40]),1).sum(0)
             transform(env)
-            _, nextv = model(env.obs, env.mask)
+            _, nextv = policy(env.obs, env.mask)
             gae = torch.zeros(B, device='cuda')
             for t in reversed(range(T)):
                 live = 1-dones[t]
@@ -410,15 +415,18 @@ def worker(store, manifest, job):
             for inds in torch.randperm(T*B, device='cuda').split(job['minibatch']):
                 opt.zero_grad(set_to_none=True)
                 for chunk in inds.split(job.get('gradient_chunk',512)):
-                    dist, v = model(observations.flatten(0, 1)[chunk], masks.flatten(0, 1)[chunk])
+                    dist, v = policy(observations.flatten(0, 1)[chunk], masks.flatten(0, 1)[chunk])
                     ratio = (dist.log_prob(actions.flatten()[chunk])-oldlp.flatten()[chunk]).exp()
                     pg = -torch.minimum(ratio*adv[chunk], ratio.clamp(.8, 1.2)*adv[chunk]).mean()
                     loss = pg+.25*(v-returns[chunk]).square().mean()-job['entropy']*dist.entropy().mean()
                     if not torch.isfinite(loss).item():raise RuntimeError('Non-finite PPO loss')
-                    (loss*(len(chunk)/len(inds))).backward()
-                nn.utils.clip_grad_norm_(model.parameters(), .5); opt.step()
+                    scaler.scale(loss*(len(chunk)/len(inds))).backward()
+                scaler.unscale_(opt)
+                nn.utils.clip_grad_norm_(model.parameters(), .5)
+                scaler.step(opt);scaler.update()
         torch.cuda.synchronize(); train_seconds += time.perf_counter()-start
         total += T*B; updates += 1
+        if updates==1:print(json.dumps(dict(event="first_update",decisions=total,train_seconds=train_seconds,execution="fused_maps_amp_v1")),flush=True)
         work_totals=[a+int(b) for a,b in zip(work_totals,rollout_work.cpu().tolist())]
         do_eval = bool(milestones and total >= milestones[0])
         if do_eval:
@@ -433,6 +441,7 @@ def worker(store, manifest, job):
     result = dict(job=job, decisions=total, train_seconds=train_seconds, work_totals=work_totals, train_underlying_turns=work_totals[0], train_travel_uses=work_totals[1], train_travel_turns=work_totals[2],
                   final=history[-1], best_decisions=best['decisions'], best_score=best_score)
     result['train_rest_totals']=dict(zip(['uses','turns','completions','interrupts','invalid','net_hp'],work_totals[7:]))
+    result['execution_version']='fused_maps_amp_v1'
     result['parameter_count']=sum(p.numel() for p in model.parameters())
     result['additional_train_seconds']=train_seconds-job.get('source_train_seconds',0)
     if job.get('curriculum'):result['curriculum_counts']=env.counts.cpu().tolist()

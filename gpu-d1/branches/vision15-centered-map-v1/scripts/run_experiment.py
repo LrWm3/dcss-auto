@@ -10,7 +10,7 @@ def plan():
  for rest in [1]:
   name='rest' if rest else 'wait'
   jobs.append(dict(base,name=name,id=f'{name}-seed0',steps=10000000,rest_action=rest,sleep_status="global_signed",architecture="centered_map",terrain_los=0,global_enemies=1,monster_wake_los=False,frontier=False,route_cue=False,no_ring=True,explore_milli=0,gradient_chunk=512,curriculum=False,checkpoint_every=1000000,train_library=str(ASSETS/f'rest{rest}-clump1.so'),eval_library=str(ASSETS/f'rest{rest}-clump0.so'),budget_unit='game_turns',rest_rule='no_awake_enemy_within_chebyshev_7'))
- return dict(format='centered-map-v1',jobs=jobs,corpus=old['corpus'],maps=old['maps'],sources={str(p.relative_to(runner.ROOT)):runner.digest(p) for sub in ['scripts','src'] for p in sorted((runner.ROOT/sub).iterdir()) if p.suffix in ['.py','.cu','.h']},libraries={p.name:runner.digest(p) for p in sorted(ASSETS.glob('*.so'))})
+ return dict(format='centered-map-v1',execution='fused_maps_amp_v1',jobs=jobs,corpus=old['corpus'],maps=old['maps'],sources={str(p.relative_to(runner.ROOT)):runner.digest(p) for sub in ['scripts','src'] for p in sorted((runner.ROOT/sub).iterdir()) if p.suffix in ['.py','.cu','.h']},libraries={p.name:runner.digest(p) for p in sorted(ASSETS.glob('*.so'))})
 def main():
  SUITE.mkdir(parents=True,exist_ok=True);store=runner.Store(SUITE,2*runner.GIB,10*runner.GIB);start=time.monotonic()
  with (SUITE/'.pipeline.lock').open('a') as lock:

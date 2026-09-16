@@ -1,0 +1,21 @@
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------
+                                              aten::cat         0.46%      60.178us         0.67%      88.561us      29.520us       2.654ms        24.64%       2.654ms     884.661us             3
+                             aten::convolution_backward         1.38%     181.875us         3.01%     397.450us     132.483us       2.651ms        24.61%       2.790ms     929.877us             3
+void at::native::(anonymous namespace)::CatArrayBatc...         0.00%       0.000us         0.00%       0.000us       0.000us       2.492ms        23.14%       2.492ms       2.492ms             1
+void wgrad_alg0_engine<float, 128, 5, 5, 3, 3, 3, fa...         0.00%       0.000us         0.00%       0.000us       0.000us       1.706ms        15.84%       1.706ms     568.704us             3
+                                            aten::copy_         0.72%      94.515us         1.70%     224.910us      18.743us       1.201ms        11.15%       1.201ms     100.109us            12
+                                             aten::flip         0.85%     112.169us         2.27%     300.185us      30.018us       1.158ms        10.75%       1.158ms     115.782us            10
+void at::native::index_elementwise_kernel<128, 4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       1.158ms        10.75%       1.158ms     115.782us            10
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us     955.998us         8.87%     955.998us     318.666us             3
+                                aten::cudnn_convolution         0.92%     121.791us         1.40%     185.173us      61.724us     837.600us         7.78%     837.600us     279.200us             3
+         _5x_cudnn_volta_scudnn_128x32_relu_small_nn_v1         0.00%       0.000us         0.00%       0.000us       0.000us     831.680us         7.72%     831.680us     277.227us             3
+void cudnn::detail::dgrad_engine<float, 512, 6, 5, 3...         0.00%       0.000us         0.00%       0.000us       0.000us     831.519us         7.72%     831.519us     415.760us             2
+                                            aten::fill_         0.42%      55.074us         0.85%     112.390us      16.056us     534.111us         4.96%     534.111us      76.302us             7
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     531.648us         4.94%     531.648us      88.608us             6
+                               aten::threshold_backward         0.38%      49.868us         0.66%      86.512us      28.837us     355.840us         3.30%     355.840us     118.613us             3
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     327.392us         3.04%     327.392us     163.696us             2
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------
+Self CPU time total: 13.195ms
+Self CUDA time total: 10.772ms

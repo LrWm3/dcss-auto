@@ -27,7 +27,7 @@ def native():
 
 def spatial():
  torch.set_num_threads(1);torch.manual_seed(0)
- model=Policy().cuda();obs=torch.zeros(2,6599,device='cuda');mask=torch.ones(2,10,device='cuda')
+ model=Policy().cuda();model.fast_maps=True;obs=torch.zeros(2,6599,device='cuda');mask=torch.ones(2,10,device='cuda')
  # Opposite map corners: all displacement extremes must survive recentering.
  obs[0,652:654]=torch.tensor([0.,0.],device='cuda');obs[1,652:654]=torch.tensor([79/80,69/70],device='cuda')
  obs[:,999:]=-1;obs[0,999+69*80+79]=1;obs[1,999]=1
@@ -51,13 +51,13 @@ def spatial():
 def main():
  subprocess.run([sys.executable,__file__,'--native'],check=True)
  subprocess.run([sys.executable,__file__,'--spatial'],check=True)
- m=plan();smoke=ROOT/'learning-runs/centered-map-smoke';smoke.mkdir(parents=True,exist_ok=True);store=runner.Store(smoke,2*runner.GIB,10*runner.GIB)
+ m=plan();smoke=ROOT/('learning-runs/centered-map-fast-smoke' if '--fast' in sys.argv else 'learning-runs/centered-map-smoke');smoke.mkdir(parents=True,exist_ok=True);store=runner.Store(smoke,2*runner.GIB,10*runner.GIB)
  m['jobs']=[dict(j,steps=32768,maps=2,validation_maps=1,eval_per_map=1,checkpoint_every=32768) for j in m['jobs']];store.json('manifest.json',m)
  for j in m['jobs']:
   for _ in range(2):subprocess.run([sys.executable,str(pathlib.Path(__file__).with_name('run_ring_ablations.py')),'--worker',j['id'],'--output',str(smoke),'--max-disk-gb','2','--min-free-gb','10'],check=True)
  result=json.loads((smoke/'runs/rest-seed0/result.json').read_text())
- report=dict(native_semantics=True,cpu_gpu_48_step_parity=True,sleeping_enemy_does_not_block_rest=True,waking_or_approaching_awake_enemy_interrupts=True,rest_stops_at_2048_physical_turns=True,full_map_and_all_enemies=True,no_frontier_guidance=True,centering_extremes_and_d4=True,ppo_resume=True,benchmark_decisions=result['decisions'],benchmark_train_seconds=result['train_seconds'],estimated_10m_train_seconds=result['train_seconds']*10000000/result['decisions'])
- (ROOT/'results/centered-map-preflight.json').write_text(json.dumps(report,indent=2)+'\n');print(report,flush=True)
+ report=dict(execution="fused_maps_amp_v1",native_semantics=True,cpu_gpu_48_step_parity=True,sleeping_enemy_does_not_block_rest=True,waking_or_approaching_awake_enemy_interrupts=True,rest_stops_at_2048_physical_turns=True,full_map_and_all_enemies=True,no_frontier_guidance=True,centering_extremes_and_d4=True,ppo_resume=True,benchmark_decisions=result['decisions'],benchmark_train_seconds=result['train_seconds'],estimated_10m_train_seconds=result['train_seconds']*10000000/result['decisions'])
+ (ROOT/('results/centered-map-fast-preflight.json' if '--fast' in sys.argv else 'results/centered-map-preflight.json')).write_text(json.dumps(report,indent=2)+'\n');print(report,flush=True)
 if __name__=='__main__':
  if '--native' in sys.argv:native()
  elif '--spatial' in sys.argv:spatial()
