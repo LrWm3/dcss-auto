@@ -4,20 +4,23 @@ import numpy as np
 import torch
 HERE=pathlib.Path(__file__).resolve().parent
 ROOT=HERE.parents[1]
-sys.path.insert(0,str(ROOT/'branches/vision15-rest-full-v1/scripts'))
+SLEEP_STATUS='--sleep-status' in sys.argv
+EXPERIMENT='rest-sleep' if SLEEP_STATUS else 'rest-full'
+PREFIX='rest-sleep-recovery' if SLEEP_STATUS else 'rest-recovery'
+sys.path.insert(0,str(ROOT/f'branches/vision15-{EXPERIMENT}-v1/scripts'))
 from assets import FLAGS
 from learn_env_ring_multi import Env
 from tactical_models import Policy
 
 def prepare():
-    work=ROOT/'learning-runs/rest-recovery-probe';work.mkdir(parents=True,exist_ok=True)
+    work=ROOT/f'learning-runs/{PREFIX}-probe';work.mkdir(parents=True,exist_ok=True)
     maps=work/'maps';maps.mkdir(exist_ok=True)
     if not (maps/'map-0.bin').exists():
         spec=importlib.util.spec_from_file_location('map_compile',ROOT/'branches/vision15-choice-practice-v1/scripts/map_compile.py')
         mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
         mod.compile_map({'floor':[(x,y) for x in range(-10,11) for y in range(-10,11)]},maps/'map-0.bin',0)
     lib=work/'probe.so'
-    subprocess.run(['nvcc','-O3','-std=c++17','-arch=sm_75','-ccbin','/usr/bin/g++-12','-shared','-Xcompiler','-fPIC',*FLAGS,'-DREST_ACTION=1','-DCLUMP_MODE=0',str(HERE/'probe.cu'),'-o',str(lib)],check=True)
+    subprocess.run(['nvcc','-O3','-std=c++17','-arch=sm_75','-ccbin','/usr/bin/g++-12','-shared','-Xcompiler','-fPIC',*FLAGS,*(['-DPROBE_SLEEP'] if SLEEP_STATUS else []),'-DREST_ACTION=1','-DCLUMP_MODE=0',str(HERE/'probe.cu'),'-o',str(lib)],check=True)
     return work,maps,lib
 
 def conditions():
@@ -46,9 +49,12 @@ def evaluate(env,params,rows,reps,arm,mode):
     assert torch.equal(env.mask[:,9].bool(),(~expected)&(params[:,0]<18))
     assert (env.obs[~expected,225:650]==0).all(), 'Hidden monster leaked into observations'
     assert torch.all(env.obs[:,651]==0)
+    if SLEEP_STATUS:
+        assert torch.equal(env.obs[:,959:].sum(1),expected.float())
+        assert (env.obs[:,959:]>=0).all()
     policy=None
     if arm in ['wait','rest']:
-        checkpoint=ROOT/f'learning-runs/vision15-rest-full/runs/{arm}-seed0/snapshots/000010027008.pt'
+        checkpoint=ROOT/f'learning-runs/vision15-{EXPERIMENT}/runs/{arm}-seed0/snapshots/000010027008.pt'
         policy=Policy('d4_exact',128).to(dev).eval();policy.load_state_dict(torch.load(checkpoint,map_location=dev,weights_only=False)['model'])
     keys=['clear','death','timeout','decisions','turns','waits_asleep','waits_awake','rest_uses','rest_turns','rest_full','rest_interrupted','first_wait_probability','first_rest_probability','wake_hp','contact_hp','first_rest_hp','healed_before_wake','rest_before_wake']
     data={k:torch.zeros(n,device=dev) for k in keys}
@@ -116,7 +122,7 @@ def evaluate(env,params,rows,reps,arm,mode):
     return dict(arm=arm,mode=mode,seconds=time.monotonic()-start,conditions=results)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--reps',type=int,default=128);parser.add_argument('--arms',nargs='+',default=['engage_now','heal_first','wait','rest']);parser.add_argument('--greedy',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--reps',type=int,default=128);parser.add_argument('--arms',nargs='+',default=['engage_now','heal_first','wait','rest']);parser.add_argument('--greedy',action='store_true');parser.add_argument('--sleep-status',action='store_true');args=parser.parse_args()
     torch.set_num_threads(1);torch.backends.cuda.matmul.allow_tf32=False
     work,maps,lib=prepare();rows=conditions();n=len(rows)*args.reps
     env=Env(batch=n,corpus=maps,library_path=lib)
@@ -127,6 +133,6 @@ def main():
     for arm in args.arms:
         for mode in (['sampled','greedy'] if args.greedy and arm in ['wait','rest'] else ['sampled' if arm in ['wait','rest'] else 'scripted']):
             result=evaluate(env,params,rows,args.reps,arm,mode)
-            result['design']=dict(replicates_per_orientation=args.reps,orientations=8,decision_limit=2048,player_max_hp=18,room='21x21 open room; center start',checkpoint_decisions=10027008,rng_seed=930000,policy_seed=76031,conditions=rows)
-            path=ROOT/f'results/rest-recovery-{arm}-{mode}.json';path.write_text(json.dumps(result,indent=2)+'\n');print(path,flush=True)
+            result['design']=dict(sleep_status=SLEEP_STATUS,training_suite=f'vision15-{EXPERIMENT}',replicates_per_orientation=args.reps,orientations=8,decision_limit=2048,player_max_hp=18,room='21x21 open room; center start',checkpoint_decisions=10027008,rng_seed=930000,policy_seed=76031,conditions=rows)
+            path=ROOT/f'results/{PREFIX}-{arm}-{mode}.json';path.write_text(json.dumps(result,indent=2)+'\n');print(path,flush=True)
 if __name__=='__main__':main()

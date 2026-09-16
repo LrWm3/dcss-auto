@@ -1,4 +1,8 @@
+#ifdef PROBE_SLEEP
+#include "../../branches/vision15-rest-sleep-v1/src/learn.cu"
+#else
 #include "../../branches/vision15-rest-full-v1/src/learn.cu"
+#endif
 __global__ void setup_probe(State*s,int n,Config c,Tables t,const int*p,int reps,float*obs,float*mask){
  int i=blockIdx.x*blockDim.x+threadIdx.x;if(i>=n)return;
  State&v=s[i];v={};v.map_id=0;v.player=35*W+40;v.w.hp=p[i*5];v.killed=REQUIRED-1;
