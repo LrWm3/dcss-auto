@@ -45,3 +45,23 @@ On a 64-world batch, inference fell from 8.04ms to 2.38ms and forward/backward f
 The original run stopped safely at 65,536 training decisions. The accelerated run resumes its saved weights, optimizer, RNG, and environment state; no training progress was discarded. Its prior manifest is retained under `manifest-before-fused-amp.json`; the new manifest records execution version `fused_maps_amp_v1`. The initial 65,536 training decisions and initialization metrics used FP32. Allow roughly 60–75 minutes after relaunch, depending on validation and GPU load.
 
 Evidence: `results/centered-map-performance.json`, `results/centered-map-profile.txt`, and `results/centered-map-fast-preflight.json`. Reproduce the accelerated PPO smoke test with `preflight.py --fast`. Optional standalone checks live under `diagnostics/centered-map-performance/`.
+
+## Completed 10M result (2026-09-16)
+
+Seed 0 finished at 10,027,008 policy decisions. Sampled validation uses 1,024 episodes on 32 held-out validation layouts.
+
+| Decisions | Clear % | Kills / 24 | Death % | Timeout % | Mean game turns | Rest uses |
+|---|---:|---:|---:|---:|---:|---:|
+| 0 | 0.00 | 5.29 | 51.56 | 48.44 | 1140 | 1.2852 |
+| 1,015,808 | 0.00 | 5.63 | 34.08 | 65.92 | 1410 | 0.6074 |
+| 3,014,656 | 0.78 | 8.50 | 42.77 | 56.45 | 1239 | 0.7051 |
+| 5,013,504 | 3.03 | 11.10 | 49.80 | 47.17 | 1096 | 0.2939 |
+| 10,027,008 | 14.26 | 13.29 | 43.95 | 41.80 | 1074 | 0.0020 |
+
+Clears improved from 31/1,024 at 5M to 146/1,024 at 10M; both deaths and timeouts decreased over that interval. The run has not demonstrated a plateau. Greedy 10M evaluation remains much weaker: 6/1,024 clears (0.59%), 8.15 kills, 29.49% deaths, and 69.92% timeouts. Sampling materially changes outcomes; aggregate results alone do not establish why.
+
+The sampled 10M policy uses rest only twice across all 1,024 episodes, so this result does not demonstrate useful learning of the rest action. One seed and different observation, wake, exploration-reward and budget settings prevent attributing differences from earlier experiments solely to the map representation.
+
+Recorded cumulative training time: 2,881.4 seconds (48.0 minutes), including the original pre-resume training. Accelerated pipeline wall time: 3,155.0 seconds (52.6 minutes) from relaunch, including validation, excluding the earlier stopped attempt. Concurrent trajectory audits shared the GPU during part of the run.
+
+Final metrics: `results/centered-map-training-summary.json`. Trajectory accounting and random-policy controls: [CENTERED-MAP-RANDOM-AUDIT.md](CENTERED-MAP-RANDOM-AUDIT.md).
