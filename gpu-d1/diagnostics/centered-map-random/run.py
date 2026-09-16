@@ -53,6 +53,10 @@ def run(args):
    weights=env.mask[live].clone()
    if args.mode=='wall_blind':weights[:,:8]=1
    if args.mode=='wait':weights.zero_();weights[:,8]=1
+   if args.mode in ('heuristic','heuristic_rest'):
+    chosen=env.heuristic()[live].clone()
+    if args.mode=='heuristic_rest':chosen=torch.where(available[live],9,chosen)
+    weights.zero_();weights.scatter_(1,chosen[:,None],1)
    probs=weights/weights.sum(-1,keepdim=True)
   action=torch.full((n,),8,device=device,dtype=torch.long)
   action[live]=torch.distributions.Categorical(probs=probs).sample()
@@ -122,4 +126,4 @@ def run(args):
  print(json.dumps({k:v for k,v in result.items() if k not in ('examples','config')}),flush=True)
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--mode',choices=['uniform','wall_blind','wait'],default='uniform');p.add_argument('--checkpoint');p.add_argument('--label',required=True);p.add_argument('--episodes',type=int,default=1024);run(p.parse_args())
+ p=argparse.ArgumentParser();p.add_argument('--mode',choices=['uniform','wall_blind','wait','heuristic','heuristic_rest'],default='uniform');p.add_argument('--checkpoint');p.add_argument('--label',required=True);p.add_argument('--episodes',type=int,default=1024);run(p.parse_args())

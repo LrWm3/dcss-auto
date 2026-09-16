@@ -41,3 +41,7 @@ claim about algorithm superiority.
 
 After all four evaluations, run `plot.py` and `report.py` with the same Python
 interpreter to regenerate the example figure and `CENTERED-MAP-RANDOM-AUDIT.md`.
+
+Additional modes: `--mode heuristic` evaluates native full-map seek and destroy;
+`--mode heuristic_rest` gives rest priority whenever the production mask permits
+it. See `gpu-d1/CENTERED-MAP-SEEK-DESTROY.md` for results and exact commands.
