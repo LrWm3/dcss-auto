@@ -3,11 +3,14 @@ import ctypes as C
 import importlib.util
 import json
 import pathlib
+import sys
 import subprocess
 import time
 import numpy as np
 import torch
 ROOT=pathlib.Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/'diagnostics'))
+from model_selection import select_models, result_path
 spec=importlib.util.spec_from_file_location('symmetry',ROOT/'diagnostics/pocket-symmetry/run.py')
 sym=importlib.util.module_from_spec(spec);spec.loader.exec_module(sym)
 Env,Policy,digest=sym.Env,sym.Policy,sym.digest
@@ -21,7 +24,7 @@ def transform(x,y,r,m):
 
 def main():
  started=time.monotonic();torch.set_num_threads(1);torch.backends.cuda.matmul.allow_tf32=False
- paths={'ordinary':ROOT/'learning-runs/vision15-seen-death4-30m/runs/tiles_seen_death4-seed0/snapshots/000030015488.pt','mixed':ROOT/'learning-runs/vision15-clumps-30m/runs/clumps_third-seed0/snapshots/000030015488.pt'}
+ paths=select_models({'ordinary':ROOT/'learning-runs/vision15-seen-death4-30m/runs/tiles_seen_death4-seed0/snapshots/000030015488.pt','mixed':ROOT/'learning-runs/vision15-clumps-30m/runs/clumps_third-seed0/snapshots/000030015488.pt'})
  models={}
  for name,path in paths.items():
   model=Policy().cuda().eval();model.load_state_dict(torch.load(path,weights_only=False,map_location='cpu')['model']);models[name]=model
@@ -63,7 +66,7 @@ def main():
  report['exact_observation_symmetry_verified']=True
  report['source_hashes']={str(p.relative_to(ROOT)):digest(p) for p in [folder/'run.py',folder/'probe.cu',ROOT/'diagnostics/pocket-symmetry/run.py',ROOT/'branches/vision15-clumps-v1/src/learn.cu']}
  report['elapsed_seconds']=time.monotonic()-started
- (ROOT/'results/pocket-static-actions.json').write_text(json.dumps(report,indent=2)+'\n')
+ result_path(ROOT,'pocket-static-actions.json').write_text(json.dumps(report,indent=2)+'\n')
  for case in report['cases']:
   if case['kind']==3 and case['player_hp']==12 and case['enemy_hp']=='full':print(case)
 if __name__=='__main__':main()

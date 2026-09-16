@@ -1,0 +1,12 @@
+{
+  "independent_feature_reference": true,
+  "identity_exact": true,
+  "all_inverse_transforms": true,
+  "all_action_roundtrips": true,
+  "native_state_obs_mask_output_parity": true,
+  "worlds": 64,
+  "steps": 256,
+  "resets": 18,
+  "episode_orientation_stable": true,
+  "resume_replay_exact": true
+}

@@ -12,6 +12,8 @@ import torch
 from torch import nn
 from torch.distributions import Categorical
 ROOT=pathlib.Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/'diagnostics'))
+from model_selection import select_models, result_path
 sys.path.insert(0,str(ROOT/'branches/vision15-clumps-v1/scripts'))
 from learn_env_ring_multi import Env
 from run_ring_ablations import digest
@@ -77,7 +79,7 @@ def main():
  env=Env(24*512,24,seed=900000,corpus=build,map_limit=4,library_path=lib)
  p=C.c_void_p;i=C.c_int;env.lib.hall_init.argtypes=[p,i,p,p,C.c_uint64,p,p,p];env.lib.hall_control.argtypes=[p,i,p,p,i,p];env.lib.hall_status.argtypes=[p,i,p,p,p]
  report=dict(training_performed=False,rollouts_per_condition=512,rollout_limit=256,initial_tick=256,source_hashes={str(q.relative_to(ROOT)):digest(q) for q in [folder/'run.py',folder/'probe.cu',ROOT/'fixtures/native-1057.rays',ROOT/'branches/vision15-clumps-v1/src/learn.cu',ROOT/'branches/vision15-clumps-v1/src/sim.h']},conditions=[dict(kind='weak' if g<12 else 'tough',hp=[6,12,18][g//4%3],rotation=g%4) for g in range(24)],arms={})
- paths={'ordinary':ROOT/'learning-runs/vision15-seen-death4-30m/runs/tiles_seen_death4-seed0/snapshots/000030015488.pt','mixed':ROOT/'learning-runs/vision15-clumps-30m/runs/clumps_third-seed0/snapshots/000030015488.pt'}
+ paths=select_models({'ordinary':ROOT/'learning-runs/vision15-seen-death4-30m/runs/tiles_seen_death4-seed0/snapshots/000030015488.pt','mixed':ROOT/'learning-runs/vision15-clumps-30m/runs/clumps_third-seed0/snapshots/000030015488.pt'})
  back=torch.tensor([(2+(j//512)%4)%4 for j in range(env.batch)],device='cuda')
  for arm in ['hold_fight','retreat_fight','ordinary','ordinary_force_retreat','mixed','mixed_force_retreat','ordinary_force_three','mixed_force_three']:
   env.check(env.lib.hall_init(env.state.data_ptr(),env.batch,C.byref(env.config),C.byref(env.tables),900000,env.obs.data_ptr(),env.mask.data_ptr(),env.stream))
@@ -114,6 +116,6 @@ def main():
   def means(x):return x.float().reshape(24,512).mean(1).tolist()
   report['arms'][arm]=dict(first=first,checkpoint_sha256=checkpoint,protected_contact_turns=means(protected_contact),protected_attack_turns=means(protected_attack),protected_wait_turns=means(protected_wait),win=means(won),death=means(dead),unresolved=means(active),turns=means(turns),reached_hallway=means(reached),attacked_before_hallway=means(attack_before),mean_first_reach_turn=[float(first_reach.reshape(24,512)[j][reached.reshape(24,512)[j]].mean()) if reached.reshape(24,512)[j].any() else None for j in range(24)])
   report['elapsed_seconds']=time.monotonic()-started
-  (ROOT/'results/hallway-six-retreat.json').write_text(json.dumps(report,indent=2)+'\n')
+  result_path(ROOT,'hallway-six-retreat.json').write_text(json.dumps(report,indent=2)+'\n')
   print(arm,'win',means(won),'unresolved',int(active.sum()),flush=True)
 if __name__=='__main__':main()
