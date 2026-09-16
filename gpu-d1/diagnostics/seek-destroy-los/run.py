@@ -13,7 +13,7 @@ CASES=[
  ('los15-sleep-rest','vision15-rest-sleep-v1','vision15-rest-sleep','rest-seed0'),
 ]
 
-def worker(index):
+def worker(index,local=False):
  import torch
  torch.set_num_threads(1)
  label,branch,suite,job_id=CASES[index]
@@ -30,13 +30,19 @@ def worker(index):
  n=job['validation_maps']*job['eval_per_map'];assert n==1024
  env=Env(n,job['enemies'],seed=900000,corpus=pathlib.Path(manifest['corpus'])/'validation',map_limit=job['validation_maps'],map_filter=-2,library_path=lib,limit=job['turn_limit'])
  metrics={}
+ if local:
+  from local_policy import LocalPolicy
  for rest in ([False,True] if job.get('rest_action') else [False]):
-  env.reset(900000);active=torch.ones(n,dtype=torch.bool,device='cuda');terminal=torch.zeros_like(env.out)
+  env.reset(900000)
+  local_policy=LocalPolicy(env,job.get('vision_radius',4)*2+1,rest) if local else None
+  categories=torch.zeros(5,device='cuda')
+  active=torch.ones(n,dtype=torch.bool,device='cuda');terminal=torch.zeros_like(env.out)
   decisions=torch.zeros(n,device='cuda');rests=torch.zeros(n,device='cuda');rest_turns=torch.zeros(n,device='cuda')
   for _ in range(job['turn_limit']):
    if not active.any():break
-   action=env.heuristic().clone()
-   if rest:action=torch.where(env.mask[:,9]>0,9,action)
+   action=local_policy(active).clone() if local else env.heuristic().clone()
+   if local:categories+=torch.bincount(local_policy.reason[active].long(),minlength=5)
+   elif rest:action=torch.where(env.mask[:,9]>0,9,action)
    assert bool(((env.mask.gather(1,action[:,None]).squeeze(1)>0)|~active).all())
    decisions+=active
    if rest:rests+=active&(action==9)
@@ -46,12 +52,13 @@ def worker(index):
   assert not bool(active.any())
   clears=terminal[:,2]>0
   metrics['seek_destroy_rest' if rest else 'seek_destroy']=dict(clear_rate=float(clears.float().mean()),kills=float(terminal[:,3].mean()),death_rate=float(terminal[:,6].mean()),timeout_rate=float(terminal[:,7].mean()),turns=float(terminal[:,5].mean()),clear_only_turns=float(terminal[clears,5].mean()),policy_decisions=float(decisions.mean()),rest_uses=float(rests.mean()),rest_turns=float(rest_turns.mean()),episodes=n)
+  if local:metrics['seek_destroy_rest' if rest else 'seek_destroy']['action_categories_per_episode']={k:float(v/n) for k,v in zip(['attack','pursue_visible','frontier','rest','idle'],categories)}
   print(label,rest,metrics['seek_destroy_rest' if rest else 'seek_destroy'],flush=True)
- result=dict(label=label,branch=branch,suite=suite,job=job,library=str(lib),library_sha256=digest,config=list(env.config),map_ids=[m['seed'] for m in env.metadata],map_sha256={m['path']:hashlib.sha256((pathlib.Path(manifest['corpus'])/'validation'/m['path']).read_bytes()).hexdigest() for m in env.metadata},seed=900000,trained_decisions=learned['decisions'],learned_source=str(directory/'runs'/job_id/'result.json'),learned=learned['final'],heuristics=metrics)
- out=ROOT/'results'/f'seek-destroy-{label}.json';out.write_text(json.dumps(result,indent=2)+'\n')
+ result=dict(information='visible enemies and observed terrain only' if local else 'privileged',label=label,branch=branch,suite=suite,job=job,library=str(lib),library_sha256=digest,config=list(env.config),map_ids=[m['seed'] for m in env.metadata],map_sha256={m['path']:hashlib.sha256((pathlib.Path(manifest['corpus'])/'validation'/m['path']).read_bytes()).hexdigest() for m in env.metadata},seed=900000,trained_decisions=learned['decisions'],learned_source=str(directory/'runs'/job_id/'result.json'),learned=learned['final'],heuristics=metrics)
+ out=ROOT/'results'/f"{'local' if local else 'seek'}-destroy-{label}.json";out.write_text(json.dumps(result,indent=2)+'\n')
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--worker',type=int);args=p.parse_args()
- if args.worker is not None:worker(args.worker)
+ p=argparse.ArgumentParser();p.add_argument('--worker',type=int);p.add_argument('--local',action='store_true');args=p.parse_args()
+ if args.worker is not None:worker(args.worker,args.local)
  else:
-  for i in range(len(CASES)):subprocess.run([sys.executable,__file__,'--worker',str(i)],check=True)
+  for i in range(len(CASES)):subprocess.run([sys.executable,__file__,'--worker',str(i)]+(['--local'] if args.local else []),check=True)
