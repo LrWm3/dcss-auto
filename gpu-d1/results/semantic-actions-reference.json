@@ -1,0 +1,8220 @@
+{
+  "episodes": 1024,
+  "seed": 900000,
+  "library_sha256": "6750da813cc73f545c5aba59770ad690389eeb7a39fa2c64fa28911aadb940d0",
+  "source_sha256": "fccab8f44fa83356f6dfaff913b4828e63955627d71b7d07258249657ec164e9",
+  "rules": "Attack if adjacent; else rest if available; else wait if awake visible; else engage if available; else explore if available; else wait.",
+  "metrics": {
+    "clears": 986,
+    "deaths": 27,
+    "timeouts": 11,
+    "clear_rate": 0.962890625,
+    "kills": 23.3447265625,
+    "physical_turns": 681.0048828125,
+    "clear_only_turns": 681.3671264648438,
+    "policy_decisions": 260.4580078125,
+    "shaped_return": 27.30378532409668,
+    "actions": {
+      "attack": 144.0244140625,
+      "explore": 29.9375,
+      "engage": 20.4423828125,
+      "wait": 57.1640625,
+      "rest": 8.8896484375
+    },
+    "evaluation_seconds": 25.254506811965257
+  },
+  "episodes_detail": [
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 598
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 699
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 668
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 568
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 673
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 660
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 688
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 527
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 852
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 628
+    },
+    {
+      "map_seed": 65051,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 17,
+      "physical_turns": 333
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 619
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 712
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 803
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 764
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 779
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 546
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 666
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 687
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 538
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 841
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 828
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 728
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 742
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 500
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 757
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 664
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 559
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 681
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 945
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 534
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 556
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 671
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 609
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 643
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 796
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 822
+    },
+    {
+      "map_seed": 64106,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "physical_turns": 13
+    },
+    {
+      "map_seed": 64379,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 17,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 786
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 770
+    },
+    {
+      "map_seed": 65051,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 17,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 735
+    },
+    {
+      "map_seed": 65772,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 13,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 771
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 826
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 748
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 602
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 568
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 770
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 517
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 642
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 831
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 802
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 840
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 559
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 741
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 659
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 687
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 729
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1028
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 581
+    },
+    {
+      "map_seed": 62655,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "physical_turns": 28
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 703
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 663
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 574
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 596
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 676
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 727
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 593
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 717
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 710
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 461
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 724
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 623
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 818
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 642
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 659
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 514
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 538
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 795
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 519
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 686
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 725
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 720
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 810
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 484
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 897
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 529
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 683
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1064
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 727
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 644
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 613
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 786
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 526
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 821
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 654
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 839
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 585
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 881
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 742
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 519
+    },
+    {
+      "map_seed": 65650,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 4,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 787
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 836
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 716
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 551
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 542
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 689
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 530
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 662
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 846
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 670
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 763
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 483
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 721
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 566
+    },
+    {
+      "map_seed": 72288,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 11,
+      "physical_turns": 243
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 682
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1047
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 636
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 688
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 670
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 608
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 554
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 721
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 697
+    },
+    {
+      "map_seed": 64379,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "physical_turns": 13
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 698
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 734
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 466
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 738
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 679
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 796
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 769
+    },
+    {
+      "map_seed": 66179,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 20,
+      "physical_turns": 482
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 626
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 525
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 733
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 511
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 835
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 795
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 725
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 800
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 502
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 794
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 647
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 653
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 710
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 967
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 761
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 603
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 601
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 731
+    },
+    {
+      "map_seed": 63391,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 1,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 535
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 539
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 738
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 701
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 491
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 735
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 514
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 701
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 613
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 773
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 826
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 695
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 554
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 621
+    },
+    {
+      "map_seed": 71260,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "physical_turns": 28
+    },
+    {
+      "map_seed": 71314,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 25
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 713
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 776
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 774
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 808
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 498
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 529
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 662
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 723
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 847
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 732
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 674
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 747
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 608
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 555
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 735
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 698
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 518
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 746
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 485
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 745
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 593
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 812
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 844
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 713
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 534
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 487
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 679
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 574
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 779
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 917
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 677
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 797
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 476
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 692
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 547
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 808
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 593
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 913
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 738
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 584
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 681
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 599
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 605
+    },
+    {
+      "map_seed": 63913,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 9,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 597
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 765
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 438
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 780
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 705
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 493
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 749
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 690
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 685
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 752
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 619
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 526
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 527
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 727
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 570
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 754
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 836
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 828
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 710
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 597
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 581
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 667
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 726
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1011
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 690
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 541
+    },
+    {
+      "map_seed": 62655,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 16
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 651
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 675
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 566
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 606
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 756
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 588
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 662
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 735
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 431
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 757
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 621
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 707
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 803
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 631
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 542
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 486
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 739
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 572
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 630
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 782
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 774
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 706
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 515
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 819
+    },
+    {
+      "map_seed": 72250,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 19
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 692
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 748
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 981
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 725
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 593
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 545
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 692
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 473
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 579
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 600
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 630
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 539
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 782
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 739
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 527
+    },
+    {
+      "map_seed": 65650,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "physical_turns": 17
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 663
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 847
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 771
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 833
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 702
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 614
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 700
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 603
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 585
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 907
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 712
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 759
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 474
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 691
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 616
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 738
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 711
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 888
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 940
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 575
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 597
+    },
+    {
+      "map_seed": 63315,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "physical_turns": 10
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 599
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 602
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 556
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 681
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 661
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 477
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 711
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 718
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 446
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 703
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 722
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 842
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 885
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 598
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 506
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 553
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 514
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 792
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 824
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 859
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 771
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 548
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 759
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 713
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 677
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 695
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 953
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 671
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 589
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 618
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 625
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 609
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 547
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 661
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 584
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 729
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 516
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 901
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 828
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 520
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 524
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 643
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 842
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 672
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 665
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 507
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 539
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 765
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 517
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 763
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 887
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 745
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 683
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 478
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 753
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 683
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 665
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 905
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 622
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 587
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 651
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 656
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 596
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 742
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 775
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 674
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 708
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 661
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 475
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 723
+    },
+    {
+      "map_seed": 65772,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 8,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 881
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 837
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 726
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 497
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 546
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 712
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 508
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 672
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 956
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 819
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 729
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 491
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 789
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 615
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 615
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 654
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1018
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 707
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 575
+    },
+    {
+      "map_seed": 62655,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "physical_turns": 11
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 803
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 609
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 573
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 745
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 701
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 700
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 508
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 766
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 746
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 528
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 667
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 673
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 767
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 726
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 633
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 588
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 569
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 693
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 450
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 665
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 801
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 786
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 870
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 496
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 630
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 529
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 616
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 781
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 702
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 648
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 497
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 718
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 656
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 773
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 641
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 749
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 528
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 636
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 745
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 505
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 751
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 761
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 686
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 655
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 613
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 548
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 826
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 539
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 728
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 762
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 761
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 925
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 518
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 699
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 655
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 690
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 664
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 951
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 544
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 639
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 695
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 611
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 599
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 744
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 705
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 568
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 742
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 767
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 587
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 600
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 796
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 831
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 844
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 690
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 557
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 598
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 767
+    },
+    {
+      "map_seed": 71314,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 26
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 720
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 804
+    },
+    {
+      "map_seed": 71651,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "physical_turns": 16
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 813
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 537
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 742
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 682
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 714
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1052
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 719
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 674
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 626
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 745
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 632
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 527
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 627
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 764
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 705
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 581
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 761
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 786
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 520
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 693
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 697
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 813
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 819
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 648
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 576
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 577
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 662
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 485
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 758
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 708
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 889
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 730
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 481
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 790
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 645
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 772
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 658
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 876
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 703
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 491
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 555
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 624
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 658
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 513
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 808
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 761
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 581
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 549
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 652
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 662
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 537
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 732
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 645
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 725
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 849
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 780
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 647
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 559
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 826
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 454
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 675
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 846
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 782
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 810
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 474
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 801
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 607
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 648
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 545
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 961
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 815
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 471
+    },
+    {
+      "map_seed": 62655,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 31
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 810
+    },
+    {
+      "map_seed": 63391,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 22
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 484
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 734
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 857
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 579
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 711
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 817
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 521
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 728
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 822
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 706
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 764
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 564
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 565
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 547
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 814
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 571
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 804
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 800
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 793
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 758
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 494
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 892
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 624
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 630
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 733
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 904
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 708
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 578
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 556
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 709
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 519
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 519
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 807
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 675
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 804
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 488
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 751
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 466
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 680
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 767
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 845
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 825
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 708
+    },
+    {
+      "map_seed": 66384,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "physical_turns": 10
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 571
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 726
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 443
+    },
+    {
+      "map_seed": 71555,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 20,
+      "physical_turns": 621
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 768
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 819
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 896
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 476
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 725
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 596
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 709
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 895
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 798
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 637
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 645
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 665
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 588
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 522
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 638
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 723
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 755
+    },
+    {
+      "map_seed": 64379,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 2,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 770
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 756
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 403
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 731
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 654
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 820
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 834
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 862
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 544
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 547
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 816
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 491
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 686
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 829
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 808
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 799
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 571
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 766
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 738
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 677
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 788
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 955
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 748
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 610
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 633
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 765
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 521
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 580
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 733
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 856
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 789
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 515
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 768
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 670
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 461
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 759
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 669
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 851
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 699
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 766
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 598
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 629
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 718
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 518
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 721
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 773
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 733
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 718
+    },
+    {
+      "map_seed": 72094,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 1,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 701
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 584
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 727
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 674
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 796
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 779
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 603
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 496
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 740
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 636
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 643
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 840
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 582
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 746
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 570
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 576
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 684
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 475
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 701
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 659
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 880
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 756
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 674
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 547
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 611
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 744
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 477
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 678
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 831
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 736
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 754
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 484
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 791
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 622
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 772
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 738
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 905
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 698
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 470
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 589
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 686
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 607
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 494
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 647
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 748
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 790
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 570
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 603
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 757
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 470
+    },
+    {
+      "map_seed": 65650,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "physical_turns": 26
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 735
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 799
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 877
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 654
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 644
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 452
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 702
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 528
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 716
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 876
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 533
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 795
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 564
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 720
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 782
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 806
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 556
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 511
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 696
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 728
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 540
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 569
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 659
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 682
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 765
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 586
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 713
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 684
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 479
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 713
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 706
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 655
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 750
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 838
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 514
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 540
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 735
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 551
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 649
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 819
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 836
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 807
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 446
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 819
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 527
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 635
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 603
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 883
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 820
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 602
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 643
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 625
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 766
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 548
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 788
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 628
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 681
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 506
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 693
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 564
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 733
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 704
+    },
+    {
+      "map_seed": 65838,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 19
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 731
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 638
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 539
+    },
+    {
+      "map_seed": 70377,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 18,
+      "physical_turns": 390
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 843
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 478
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 756
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 900
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 658
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 525
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 625
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 691
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 589
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 726
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 936
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 708
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 693
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 526
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 792
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 609
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 458
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 489
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 727
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 605
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 539
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 838
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 699
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 542
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 778
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 634
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 863
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 733
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 596
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 626
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 544
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 744
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 480
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 689
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 803
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 800
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 707
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 443
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 768
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 647
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 732
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 754
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 979
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 498
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 493
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 788
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 567
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 594
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 690
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 799
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 644
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 509
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 676
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 647
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 543
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 796
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 754
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 723
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 801
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 746
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 514
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 555
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 758
+    },
+    {
+      "map_seed": 71314,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 3,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 613
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 867
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 748
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 866
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 521
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 803
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 591
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 677
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 854
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 682
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 550
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 673
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 648
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 524
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 517
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 772
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 766
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 723
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 517
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 731
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 795
+    },
+    {
+      "map_seed": 65051,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "physical_turns": 15
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 754
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 743
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 744
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 687
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 824
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 532
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 582
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 709
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 501
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 684
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 794
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 817
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 764
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 574
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 821
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 632
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 566
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 738
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 763
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 609
+    },
+    {
+      "map_seed": 62655,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "physical_turns": 59
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 747
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 564
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 609
+    },
+    {
+      "map_seed": 63913,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "physical_turns": 14
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 579
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 591
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 496
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 746
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 715
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 523
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 644
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 763
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 785
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 814
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 880
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 480
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 583
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 821
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 525
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 774
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 806
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 725
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 733
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 529
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 798
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 472
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 559
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 627
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1008
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 728
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 544
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 687
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 677
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 782
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 637
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 735
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 744
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 683
+    },
+    {
+      "map_seed": 64379,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "physical_turns": 23
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 831
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 737
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 475
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 808
+    },
+    {
+      "map_seed": 65772,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 783
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 752
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 707
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 633
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 515
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 590
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 629
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 469
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 673
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 676
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 633
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 839
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 558
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 771
+    },
+    {
+      "map_seed": 72250,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 20,
+      "physical_turns": 483
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 673
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 556
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 973
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 785
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 579
+    },
+    {
+      "map_seed": 62655,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 639
+    },
+    {
+      "map_seed": 63315,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 714
+    },
+    {
+      "map_seed": 63391,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 472
+    },
+    {
+      "map_seed": 63453,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 631
+    },
+    {
+      "map_seed": 63913,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 575
+    },
+    {
+      "map_seed": 64026,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 709
+    },
+    {
+      "map_seed": 64106,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 750
+    },
+    {
+      "map_seed": 64379,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 475
+    },
+    {
+      "map_seed": 64869,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 750
+    },
+    {
+      "map_seed": 64952,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 755
+    },
+    {
+      "map_seed": 65051,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 531
+    },
+    {
+      "map_seed": 65650,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 651
+    },
+    {
+      "map_seed": 65772,
+      "clear": false,
+      "death": false,
+      "timeout": true,
+      "kills": 5,
+      "physical_turns": 2048
+    },
+    {
+      "map_seed": 65838,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 745
+    },
+    {
+      "map_seed": 66008,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 697
+    },
+    {
+      "map_seed": 66179,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 615
+    },
+    {
+      "map_seed": 66384,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 567
+    },
+    {
+      "map_seed": 70377,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 539
+    },
+    {
+      "map_seed": 71260,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 780
+    },
+    {
+      "map_seed": 71314,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 553
+    },
+    {
+      "map_seed": 71555,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 723
+    },
+    {
+      "map_seed": 71600,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 798
+    },
+    {
+      "map_seed": 71651,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 780
+    },
+    {
+      "map_seed": 71831,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 858
+    },
+    {
+      "map_seed": 72094,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 497
+    },
+    {
+      "map_seed": 72244,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 855
+    },
+    {
+      "map_seed": 72250,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 700
+    },
+    {
+      "map_seed": 72288,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 757
+    },
+    {
+      "map_seed": 72296,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 710
+    },
+    {
+      "map_seed": 72423,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 1007
+    },
+    {
+      "map_seed": 72475,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 757
+    },
+    {
+      "map_seed": 72581,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "physical_turns": 588
+    }
+  ]
+}
