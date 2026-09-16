@@ -39,8 +39,10 @@ extern "C" int hall_control(State*s,int n,Config*c,int64_t*a,int retreat,void*st
 __global__ void hall_measure(const State*s,int n,const int64_t*actions,int*out){
  int i=blockIdx.x*blockDim.x+threadIdx.x;if(i>=n)return;
  int r=(i/512)%4;const State&v=s[i];int a=actions[i],q=a<8?neighbor(v.player,a):-1;
- out[i*2]=v.player==rotated(0,3,r);
- out[i*2+1]=q>=0 && v.occ[q]>=0;
+ out[i*4]=v.player==rotated(0,3,r);
+ out[i*4+1]=q>=0 && v.occ[q]>=0;
+ int adjacent=0;for(int j=0;j<24;j++)if(v.hp[j]>0 && cheb(v.player,v.pos[j])==1)adjacent++;
+ out[i*4+2]=adjacent;out[i*4+3]=a==8;
 }
 extern "C" int hall_status(State*s,int n,int64_t*a,int*out,void*stream){
  hall_measure<<<(n+127)/128,128,0,(cudaStream_t)stream>>>(s,n,a,out);return cudaGetLastError();

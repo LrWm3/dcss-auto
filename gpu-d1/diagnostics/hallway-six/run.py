@@ -87,7 +87,8 @@ def main():
   assert (env.mask.sum(1)==9).all()
   assert torch.all(env.obs[:,958]==17/1024)
   active=torch.ones(env.batch,dtype=torch.bool,device='cuda');won=torch.zeros_like(active);dead=torch.zeros_like(active);turns=torch.zeros(env.batch,device='cuda')
-  reached=torch.zeros_like(active);attack_before=torch.zeros_like(active);first_reach=torch.zeros(env.batch,device='cuda');status=torch.empty((env.batch,2),dtype=torch.int32,device='cuda')
+  reached=torch.zeros_like(active);attack_before=torch.zeros_like(active);first_reach=torch.zeros(env.batch,device='cuda');status=torch.empty((env.batch,4),dtype=torch.int32,device='cuda')
+  protected_contact=torch.zeros(env.batch,device='cuda');protected_attack=torch.zeros_like(protected_contact);protected_wait=torch.zeros_like(protected_contact)
   first=None;checkpoint=None
   if arm not in ['hold_fight','retreat_fight']:
    path=paths[arm.split('_')[0]];model=Policy().cuda().eval();model.load_state_dict(torch.load(path,weights_only=False,map_location='cpu')['model']);checkpoint=digest(path)
@@ -103,13 +104,15 @@ def main():
      if step==0 and arm.endswith('force_retreat'):actions=back
      if step<3 and arm.endswith('force_three'):actions=back
     env.check(env.lib.hall_status(env.state.data_ptr(),env.batch,actions.data_ptr(),status.data_ptr(),env.stream))
-    here=active & (status[:,0]>0);new=here & ~reached;first_reach[new]=step;reached |= here
+    here=active & (status[:,0]>0)
+    contact=here & (status[:,2]>0);protected_contact+=contact;protected_attack+=contact & (status[:,1]>0);protected_wait+=contact & (status[:,3]>0)
+    new=here & ~reached;first_reach[new]=step;reached |= here
     attack_before |= active & ~reached & (status[:,1]>0)
     env.step(actions,active=active);turns+=active
     won|=active&(env.out[:,2]>0);dead|=active&(env.out[:,6]>0);active &= env.out[:,1]==0
     if not active.any():break
   def means(x):return x.float().reshape(24,512).mean(1).tolist()
-  report['arms'][arm]=dict(first=first,checkpoint_sha256=checkpoint,win=means(won),death=means(dead),unresolved=means(active),turns=means(turns),reached_hallway=means(reached),attacked_before_hallway=means(attack_before),mean_first_reach_turn=[float(first_reach.reshape(24,512)[j][reached.reshape(24,512)[j]].mean()) if reached.reshape(24,512)[j].any() else None for j in range(24)])
+  report['arms'][arm]=dict(first=first,checkpoint_sha256=checkpoint,protected_contact_turns=means(protected_contact),protected_attack_turns=means(protected_attack),protected_wait_turns=means(protected_wait),win=means(won),death=means(dead),unresolved=means(active),turns=means(turns),reached_hallway=means(reached),attacked_before_hallway=means(attack_before),mean_first_reach_turn=[float(first_reach.reshape(24,512)[j][reached.reshape(24,512)[j]].mean()) if reached.reshape(24,512)[j].any() else None for j in range(24)])
   report['elapsed_seconds']=time.monotonic()-started
   (ROOT/'results/hallway-six-retreat.json').write_text(json.dumps(report,indent=2)+'\n')
   print(arm,'win',means(won),'unresolved',int(active.sum()),flush=True)
