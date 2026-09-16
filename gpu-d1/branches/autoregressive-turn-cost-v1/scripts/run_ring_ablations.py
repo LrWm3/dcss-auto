@@ -194,6 +194,9 @@ def worker(store, manifest, job):
     for world in (env,ev):
         world.lib.learn_return_gamma.restype=ctypes.c_float
         assert abs(world.lib.learn_return_gamma()-job['gamma'])<1e-7
+        if 'turn_cost_n' in job:
+            world.lib.learn_turn_cost.restype=ctypes.c_float
+            assert abs(world.lib.learn_turn_cost()+job['turn_reward'])<1e-9
     if job.get('curriculum'):
         from tactical_env import TacticalEnv, MixedEnv
         tactical = TacticalEnv(job['batch'], 24, seed=7017+job['seed']*100000, corpus=pathlib.Path(job['tactical_corpus']), map_limit=64, library_path=job['tactical_library'])
@@ -251,7 +254,7 @@ def worker(store, manifest, job):
         assert not active.any().item()
         terminal, returns = torch.cat((terminal,waiting,action_counts),1).cpu(), returns.cpu()
         def metrics(t, r):
-            torch.testing.assert_close(r,t[:,2]-0.00001*t[:,5],rtol=0,atol=2e-5)
+            torch.testing.assert_close(r,t[:,2]+job.get('turn_reward',-.00001)*t[:,5],rtol=0,atol=1e-4)
             result = dict(clear_rate=t[:, 2].mean().item(), kills=t[:, 3].mean().item(),
                         death_rate=t[:, 6].mean().item(), timeout_rate=t[:, 7].mean().item(),
                         turns=t[:, 5].mean().item(), shaped_return=r.mean().item())

@@ -76,3 +76,37 @@ learning-runs/autoregressive-turn-cost-10m. Results:
 results/autoregressive-turn-cost-10m.json. Source checkpoint digest and original
 training time recorded in continuation manifest. Same disk limits apply. Additional
 training time is reported separately from cumulative time.
+
+Continuation completed: at 5,000,192 decisions, sampled clears were 968/1024
+(94.53%), deaths 38, timeouts 18. Successful clears averaged 924.86 physical
+turns. Greedy clears were 73/1024, with 933 timeouts. At 10,000,384 decisions,
+**both sampled and greedy clears were zero**. Sampled had 32 deaths and 992
+timeouts; greedy had 21 deaths and 1003 timeouts. Thus the original tiny cost
+only delayed deterioration. Cumulative training: 239.46 seconds, of which
+214.01 seconds were additional training; continuation wall time 267.38 seconds.
+
+## Coefficient sweep
+
+Run `scripts/run_sweep.py` to compare n=0,1,3,10,30,100 with reward
+`clear_indicator - 0.00001*n*physical_turns`. Reuse completed n=0 and n=1
+checkpoints/results; train n=3,10,30,100 independently from the same original
+imitation weights, with fresh zero critic/optimizer and identical seed-0 PPO
+settings. Evaluate at 0, 500,224 and 1,000,448 decisions. No continuation from a
+degraded policy, no entropy bonus, no other reward changes. Coefficients are
+native floating-point compile definitions with separate libraries. Preflight
+checks unchanged state/observations/masks and reward including internal REST
+turns against the zero-cost environment. Evaluation checks the episode reward
+identity to 1e-4 and identical initial behavior across coefficients.
+
+Track sampled/greedy clears, deaths, timeouts, mean turns, successful-clear
+turns, rest usage, and movement reversals. Historical n=0/1 files do not yet
+contain conditional clear-turn metrics. Results are written incrementally to
+results/autoregressive-turn-sweep.json; bounded checkpoints stay under
+learning-runs/autoregressive-turn-sweep (2 GiB cap, 10 GiB free reserve).
+
+The largest coefficient costs 0.6 reward over 600 turns and 2.048 over the full
+deadline. It changes the objective enough that dying early may beat a late
+clear; inspect deaths, not just speed or reward. A successful short-run
+coefficient would still need longer training and additional seeds before claiming
+it fixes the instability. No coefficient succeeding would rule out only this
+reward range/settings, not prove a fundamental impossibility.

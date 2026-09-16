@@ -748,7 +748,10 @@ HD void primitive_transition(State &s, Config c, const Tables &t, int action, in
 #ifdef EXPLORE_REWARD
     float reward=0.001f*float(reward_milli);
 #endif
-    reward-=0.00001f; // Per physical turn, including every internal REST turn.
+    #ifndef TURN_COST
+#define TURN_COST 0.00001f
+#endif
+    reward-=TURN_COST; // Per physical turn, including every internal REST turn.
     out[26]=1;
     out[33]=out[33] || visible_enemy(s,c,t);
     out[41]=out[41] || visible_awake(s,c,t);
@@ -854,6 +857,7 @@ __global__ void heuristic_kernel(State *s,int n,Config c,Tables t,int64_t *actio
 } // namespace learn
 using namespace learn;
 extern "C" {
+float learn_turn_cost(){return TURN_COST;}
 float learn_return_gamma() { return 1.f; }
 int learn_state_bytes() { return sizeof(State); }
 int learn_obs_size() { return OBS; }
