@@ -177,3 +177,62 @@ Artifact: `results/vision15-forced-travel-turn-distribution.json` includes full
 metrics, all-episode and clear-only turn distributions, and counts of successful
 clears/ongoing episodes at candidate cutoffs. Source/checkpoint/library hashes
 are recorded and original checkpoints remain unchanged.
+
+## Frozen-policy validation without forced travel, 2048 game turns
+
+`scripts/evaluate_unforced_2048.py` evaluates the same five checkpoints without
+forced travel or retraining. Nine-action models retain movement/attack/wait;
+ten-action models may select travel under its original availability rules.
+The original optional/no-travel native libraries enforce a physical deadline of
+2,048 turns through their existing runtime ABI. Macro steps consume that budget
+and are interrupted at the deadline. There is no separate 512-decision cap.
+
+Primary evaluation supplies elapsed physical turns / 2048 as the clock input.
+A sensitivity evaluation preserves the training clock: physical turns / 512 for
+four policies, outer decisions / 512 for the decision-trained forced policy.
+The latter controls can exceed the original training input range. Both sampled
+and greedy evaluation use the existing 32 validation layouts x 32 episodes and
+seed 900000. This is validation-only; no test maps or optimizer updates are used.
+
+The forced-trained policies never learned whether to select travel when it was
+available: their training mask made that choice deterministic. Removing that
+mask is therefore a policy-distribution change, and their optional-travel behavior
+must not be interpreted as a policy trained to make that choice.
+
+The evaluator verifies corpus/library/checkpoint hashes, retains the original
+action-head size, checks that ordinary wait remains available alongside travel,
+and asserts that every episode ends by 2,048 game turns and every timeout occurs
+exactly there. It records unchanged checkpoint hashes after evaluation.
+
+```sh
+gpu-d1/.venv/bin/python gpu-d1/branches/vision15-forced-travel-v1/scripts/evaluate_unforced_2048.py \
+  --output gpu-d1/results/vision15-unforced-2048.json
+```
+
+Completed sampled validation, no additional training:
+
+| Source policy | Clear, budget clock | Death | Timeout | Mean turns | Clear, training clock |
+|---|---:|---:|---:|---:|---:|
+| Optional travel, 30M | 83.59% | 16.21% | 0.20% | 528.15 | 82.42% |
+| No travel, 30M | 77.34% | 21.78% | 0.88% | 527.32 | 75.29% |
+| No travel, 42.66M | 82.91% | 15.92% | 1.17% | 559.62 | 80.47% |
+| Forced, turn-trained | 87.89% | 11.72% | 0.39% | 990.61 | 81.45% |
+| Forced, decision-trained | 89.06% | 10.84% | 0.10% | 989.81 | 79.30% |
+
+Timeouts are rare with the budget-normalized clock. No-travel policies show
+large completion gains without any macro action, supporting the conclusion that
+the old physical deadline was a major bottleneck. Formerly forced policies
+still finish many episodes, but now take about 990 turns on average and choose
+travel less often; removing the forced mask changes their navigation behavior.
+The earlier roughly-1,024-turn estimate was based on forced-travel trajectories,
+so it should not automatically be applied to this changed controller.
+
+Clock sensitivity is material for forced-trained policies, especially the one
+trained with a decision clock. Its preserved-clock control clears 79.30%, with
+7.03% timeouts and 13.67% deaths; it now sees decision/512 values beyond training.
+These are single-seed frozen-policy comparisons with changed evaluation inputs,
+not evidence that any source training approach is reproducibly superior.
+
+Artifact: `results/vision15-unforced-2048.json` contains both evaluation modes,
+both clock conventions, per-map metrics, turn distributions, and provenance.
+All physical-deadline and checkpoint-immutability checks passed.

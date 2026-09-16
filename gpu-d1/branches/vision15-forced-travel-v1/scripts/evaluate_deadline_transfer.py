@@ -23,7 +23,8 @@ class Policy(nn.Module):
 
 
 @torch.no_grad()
-def evaluate(model, env, mode, physical_clock):
+def evaluate(model, env, mode, physical_clock, max_decisions=512,
+             clock_mode=None, clock_denominator=512, physical_limit=None):
     env.reset(900000)
     active = torch.ones(env.batch, dtype=torch.bool, device='cuda')
     terminal = torch.zeros_like(env.out)
@@ -33,11 +34,13 @@ def evaluate(model, env, mode, physical_clock):
     travel_turns = torch.zeros_like(decisions)
     travel_uses = torch.zeros_like(decisions)
     torch.manual_seed(900000)
-    for _ in range(512):
-        if physical_clock:
+    for _ in range(max_decisions):
+        if clock_mode == 'decisions':
+            env.obs[:, 651] = decisions / clock_denominator
+        elif physical_clock or clock_mode == 'physical':
             # Preserve the training clock's units, allowing values >1 beyond
             # the old deadline. This explicitly tests an out-of-range input.
-            env.obs[:, 651] = turns / 512
+            env.obs[:, 651] = turns / clock_denominator
         dist = model(env.obs, env.mask)
         action = dist.sample() if mode == 'sampled' else dist.probs.argmax(-1)
         _, out = env.step(action, active=active)
@@ -51,6 +54,9 @@ def evaluate(model, env, mode, physical_clock):
         active &= ~ended
     assert not active.any().item()
     assert torch.equal(turns, terminal[:, 5])
+    if physical_limit is not None:
+        assert (turns <= physical_limit).all()
+        assert (turns[terminal[:, 7] > 0] == physical_limit).all()
 
     def metrics(index):
         t = terminal[index]
@@ -79,7 +85,7 @@ def evaluate(model, env, mode, physical_clock):
         str(limit): dict(clears_by_turn=int((cleared & (turns <= limit)).sum().item()),
                          clears_after_turn=int((cleared & (turns > limit)).sum().item()),
                          episodes_still_running=int((turns > limit).sum().item()))
-        for limit in [512, 640, 768, 896, 1024, 1280, 1536]}
+        for limit in [512, 640, 768, 896, 1024, 1280, 1536, 2048]}
     return result
 
 
