@@ -90,3 +90,89 @@ control remains results/autoregressive-turn-cost.json. Full validation is 1024
 placements, with zero/500K/1M evaluations; disk cap 2 GiB and 10 GiB reserve.
 No improvement claim should be inferred merely from preserving imitation; compare
 clear rate, successful-clear turns and original objective. One training seed.
+
+## Original streaming PPO: prevention through 1M decisions
+
+Same seed, source imitation weights, rewards, 512x64 rollout/GAE and 1024 final
+validation placements as the historical tiny-turn-cost control. Changed only the
+listed intervention. Each condition reached 1,000,448 decisions.
+
+| Condition | Sampled clears | Greedy clears | Sampled clear-only turns |
+|---|---:|---:|---:|
+| Initial imitation | 992/1024 (96.88%) | 967/1024 (94.43%) | 680.28 |
+| Existing unchanged PPO control | 975/1024 (95.21%) | 351/1024 (34.28%) | 707.77 |
+| Freeze first affine encoder layer | 997/1024 (97.36%) | 967/1024 (94.43%) | 678.84 |
+| All layers train, learning rate .00003 instead of .0003 | 995/1024 (97.17%) | 962/1024 (93.95%) | 680.91 |
+| Drop negative MOVE actor terms | 84/1024 (8.20%) | 4/1024 (.39%) | 861.30 |
+
+The frozen layer was verified bit-identical to initialization. Other parameters
+changed, including second encoder layer L2 displacement 1.385 (versus 1.172 in
+control), so preservation did not simply freeze the whole model. First-layer
+L2 displacement at 1M: control 2.946, lower LR .316, frozen 0. Actor-only first
+update first-layer weight displacement was .528 versus original norm 22.307;
+bias displacement .0267 versus original norm .1419.
+
+These independently support excessive actor-driven first-layer representation
+changes as a cause of degradation. The negative-credit ablation is a causal probe
+of the first update, not a viable general training objective: it fails badly over
+longer training, predominantly by death. Preservation through 1M is not evidence
+of guaranteed long-run stability or significant improvement beyond imitation.
+
+## Cross-check: repair independent degraded checkpoints without training
+
+Use saved 1M policies, retain every trained parameter except replacing body.0
+weights/bias with the original imitation layer. Same 128-case validation panel,
+original reward/native evaluation environment (physics unchanged across reward
+variants). No optimization, new demonstrations or action overrides:
+
+| Source policy | Sampled clears before -> after graft | Greedy clears before -> after graft |
+|---|---:|---:|
+| Original tiny-turn-cost 1M | 125 -> 122 | 48 -> 122 |
+| Small kill-reward 1M | 122 -> 125 | 34 -> 122 |
+| Full-episode-return ~1M | 115 -> 122 | 0 -> 120 |
+
+These are 128-case diagnostics and must not be confused with prior 1024-case
+final percentages. The graft recovers the greedy behavior across all three
+training variants; it is not uniformly an improvement to sampled performance.
+This strengthens the mechanism beyond the isolated first update. It does not
+claim every remaining death or all longer-run deterioration has the same cause.
+
+The fixed-state loop probe captures both endpoints in eight cases after the
+first actor-only update. Example, episode 83: at (54,44), known-frontier route
+points SE. Original MOVE probabilities give SE .999; after update SE falls to
+.111 and W rises to .408 (largest), so greedy moves to (53,44). There the updated
+policy assigns E .916 and returns to (54,44). Restoring just body.0 restores
+SE .998 at the first endpoint, breaking the cycle. Identical observations and
+action masks are passed to each policy; this is a changed map-to-direction
+computation, not changed simulator geometry or frontier selection.
+
+## Additional control and conclusion
+
+Omitting advantage-mean subtraction preserved the first isolated update but
+failed in streaming training: at 1M both sampled and greedy clears were zero
+(sampled deaths/timeouts 30/994; greedy 19/1005). Thus centering is not itself
+the general root cause or a simple switch to disable permanently. Likewise
+negative-MOVE gradient suppression was an explanatory intervention, not a fix.
+
+The experimentally established mechanism is actor-driven destruction of the
+pretrained first-layer navigation representation under our PPO update settings.
+Negative navigation advantages drive the reproduced first damaging step; shared
+first-layer changes carry its behavioral effect. Critic-only training does not
+reproduce that step; detaching the critic does not prevent it. First-layer grafts
+reproduce AND reverse the damage. Freezing this layer or lowering the learning
+rate tenfold prevents the large loss of competence through 1M in the original
+streaming setup, while other policy/value parameters still train.
+
+This identifies a concrete representation/optimization failure, not a discovered
+indexing bug or proof that sparse reward is adequate for all learning. Standard
+PPO clipping constrains sampled action-ratio terms, not all first-layer feature
+changes or downstream greedy trajectories. Preserving competence is established
+here; reliable improvement past imitation and long-run stability are not. A
+reasonable next baseline is the lower learning rate, with the frozen-layer model
+as a control. No additional training was launched beyond these diagnostics.
+
+Primary artifacts: results/autoregressive-update-{cause,trace,credit-intervention,
+prevention,parameter-drift,loop-probe,repair}.json and
+results/autoregressive-no-centering.json. Prevention screen training times were
+23.65s (frozen layer), 25.39s (lower LR), 25.72s (drop negative MOVE); total screen
+wall time 272.79s including all evaluations. No-centering wall time 88.87s.

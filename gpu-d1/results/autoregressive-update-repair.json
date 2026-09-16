@@ -1,0 +1,275 @@
+{
+  "results": {
+    "turn_cost": {
+      "none": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 125,
+          "deaths": 3,
+          "timeouts": 0,
+          "turns": 693.1796875,
+          "reward": 0.9696307182312012,
+          "loop_episodes": 36,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 422.8984375,
+            "attack": 145.859375,
+            "wait": 26.265625,
+            "rest": 8.7734375
+          },
+          "turns_by_outcome": {
+            "clear": 707.2880249023438,
+            "death": 105.33333587646484,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 48,
+          "deaths": 2,
+          "timeouts": 78,
+          "turns": 1567.21875,
+          "reward": 0.35932785272598267,
+          "loop_episodes": 92,
+          "loop_timeouts": 77,
+          "actions": {
+            "move": 1378.3203125,
+            "attack": 102.4921875,
+            "wait": 18.4921875,
+            "rest": 6.3203125
+          },
+          "turns_by_outcome": {
+            "clear": 850.4791870117188,
+            "death": 18.5,
+            "timeout": 2048.0
+          }
+        }
+      },
+      "first_layer": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 122,
+          "deaths": 6,
+          "timeouts": 0,
+          "turns": 661.9140625,
+          "reward": 0.9465059041976929,
+          "loop_episodes": 2,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 371.2890625,
+            "attack": 143.453125,
+            "wait": 56.1796875,
+            "rest": 8.984375
+          },
+          "turns_by_outcome": {
+            "clear": 683.6557006835938,
+            "death": 219.83334350585938,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 122,
+          "deaths": 2,
+          "timeouts": 4,
+          "turns": 719.2265625,
+          "reward": 0.9459327459335327,
+          "loop_episodes": 4,
+          "loop_timeouts": 4,
+          "actions": {
+            "move": 422.4921875,
+            "attack": 144.7109375,
+            "wait": 58.0234375,
+            "rest": 9.203125
+          },
+          "turns_by_outcome": {
+            "clear": 684.5901489257812,
+            "death": 174.5,
+            "timeout": 2048.0
+          }
+        }
+      }
+    },
+    "kill_reward": {
+      "none": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 122,
+          "deaths": 6,
+          "timeouts": 0,
+          "turns": 660.5390625,
+          "reward": 0.9465196132659912,
+          "loop_episodes": 30,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 384.2578125,
+            "attack": 143.0703125,
+            "wait": 35.59375,
+            "rest": 8.75
+          },
+          "turns_by_outcome": {
+            "clear": 688.6802978515625,
+            "death": 88.33333587646484,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 34,
+          "deaths": 1,
+          "timeouts": 93,
+          "turns": 1696.609375,
+          "reward": 0.2486589252948761,
+          "loop_episodes": 104,
+          "loop_timeouts": 93,
+          "actions": {
+            "move": 1507.1015625,
+            "attack": 96.296875,
+            "wait": 26.5234375,
+            "rest": 6.0546875
+          },
+          "turns_by_outcome": {
+            "clear": 767.11767578125,
+            "death": 620.0,
+            "timeout": 2048.0
+          }
+        }
+      },
+      "first_layer": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 125,
+          "deaths": 3,
+          "timeouts": 0,
+          "turns": 672.015625,
+          "reward": 0.9698423743247986,
+          "loop_episodes": 2,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 372.5703125,
+            "attack": 145.421875,
+            "wait": 58.0,
+            "rest": 9.1875
+          },
+          "turns_by_outcome": {
+            "clear": 684.3280029296875,
+            "death": 159.0,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 122,
+          "deaths": 2,
+          "timeouts": 4,
+          "turns": 717.796875,
+          "reward": 0.9459470510482788,
+          "loop_episodes": 4,
+          "loop_timeouts": 4,
+          "actions": {
+            "move": 422.21875,
+            "attack": 144.1328125,
+            "wait": 57.9921875,
+            "rest": 9.0859375
+          },
+          "turns_by_outcome": {
+            "clear": 685.7704467773438,
+            "death": 11.0,
+            "timeout": 2048.0
+          }
+        }
+      }
+    },
+    "episode_return": {
+      "none": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 115,
+          "deaths": 3,
+          "timeouts": 10,
+          "turns": 1287.6640625,
+          "reward": 0.8855609893798828,
+          "loop_episodes": 78,
+          "loop_timeouts": 6,
+          "actions": {
+            "move": 986.3984375,
+            "attack": 145.2421875,
+            "wait": 58.7109375,
+            "rest": 9.34375
+          },
+          "turns_by_outcome": {
+            "clear": 1248.39990234375,
+            "death": 258.3333435058594,
+            "timeout": 2048.0
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 0,
+          "deaths": 2,
+          "timeouts": 126,
+          "turns": 2016.203125,
+          "reward": -0.020162031054496765,
+          "loop_episodes": 125,
+          "loop_timeouts": 125,
+          "actions": {
+            "move": 1984.3359375,
+            "attack": 16.5625,
+            "wait": 5.2578125,
+            "rest": 0.9921875
+          },
+          "turns_by_outcome": {
+            "clear": null,
+            "death": 13.0,
+            "timeout": 2048.0
+          }
+        }
+      },
+      "first_layer": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 122,
+          "deaths": 5,
+          "timeouts": 1,
+          "turns": 678.0,
+          "reward": 0.9463449716567993,
+          "loop_episodes": 4,
+          "loop_timeouts": 1,
+          "actions": {
+            "move": 380.6796875,
+            "attack": 143.84375,
+            "wait": 57.8046875,
+            "rest": 9.0859375
+          },
+          "turns_by_outcome": {
+            "clear": 685.958984375,
+            "death": 209.8000030517578,
+            "timeout": 2048.0
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 120,
+          "deaths": 3,
+          "timeouts": 5,
+          "turns": 725.375,
+          "reward": 0.9302462935447693,
+          "loop_episodes": 5,
+          "loop_timeouts": 5,
+          "actions": {
+            "move": 432.6328125,
+            "attack": 143.53125,
+            "wait": 57.71875,
+            "rest": 9.0078125
+          },
+          "turns_by_outcome": {
+            "clear": 685.3500366210938,
+            "death": 122.0,
+            "timeout": 2048.0
+          }
+        }
+      }
+    }
+  },
+  "seconds": 56.2702437560074
+}
