@@ -60,3 +60,22 @@ one latest optimizer checkpoint per condition are retained; no trajectory dumps.
 2 GiB output cap and 10 GiB free reserve. Latest checkpoints are diagnostic
 artifacts, not a promise of exact mid-experiment resumption. Source/checkpoint
 hashes and the reference job are included in results. One seed, preliminary test.
+
+## First launch interrupted and restarted
+
+The first full launch stopped collecting its second training batch: reverse MC
+summation differed from forward reward accumulation by 2.115965e-5, exceeding
+the 2e-5 assertion tolerance. This is float32 accumulation-order error across a
+long successful episode, not evidence of incorrect terminal rewards. The native
+reward-versus-physical-turn check had passed. Preserved partial results:
+results/autoregressive-episode-credit-interrupted.json.
+
+The restart changes only that comparison tolerance to 1e-4; it does not change
+reward calculation, target calculation, PPO settings or either estimator. A
+2048-step synthetic success test now explicitly checks reverse/forward sums
+against each other and against a float64 reference. Other assertions remain.
+
+Before interruption, the first GAE control update (33,733 decisions) reduced
+greedy clears on 128 diagnostic placements from 120 to 6; sampled clears changed
+124 to 125, and successful sampled completion time rose from 687.7 to 808.7 turns.
+There was no full-return result yet, so this is not an estimator comparison.

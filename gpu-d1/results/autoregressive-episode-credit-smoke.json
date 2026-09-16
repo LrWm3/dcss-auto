@@ -1,7 +1,7 @@
 {
   "status": "complete",
   "checkpoint_sha256": "f493b83526140026e7ad04623f8ebcefd9d32cdf6eeb0d7b0c17fc3ab7d58b9d",
-  "script_sha256": "f3e961c58619bd7fbf006fb334a79ba1d91803e7ddefcf8728a46e8c649bad9a",
+  "script_sha256": "6daa036010ca244c6da24824ef6c98f111703eb2673b928e8d7d9f457ca7957d",
   "reference_job": {
     "name": "turn-cost",
     "seed": 0,
@@ -92,7 +92,7 @@
           "negative_advantage_mean_logprob_change": -0.003691277001053095,
           "reversal_mean_logprob_change": -0.0006283091497607529,
           "approx_kl": 0.0015236452454701066,
-          "train_seconds": 2.359112055040896,
+          "train_seconds": 2.3751584889832884,
           "evaluation": {
             "sampled": {
               "episodes": 32,
@@ -173,7 +173,7 @@
           "negative_advantage_mean_logprob_change": -0.1822315752506256,
           "reversal_mean_logprob_change": -0.03210941329598427,
           "approx_kl": 0.05991923063993454,
-          "train_seconds": 1.971487486967817,
+          "train_seconds": 2.013463302049786,
           "evaluation": {
             "sampled": {
               "episodes": 32,
@@ -223,5 +223,5 @@
     }
   },
   "notes": "Both conditions collect full episodes with frozen policy, same 64-world batches; differ only targets: GAE .95 reset each 64 decisions with value bootstrap, versus full remaining return minus old value. Gamma=1, entropy=0, same original tiny turn cost. Reset to fresh training placements every update. Updates use all valid decisions, no partial-episode truncation. This collection differs from the historical streaming PPO control. Final budget can overshoot to finish an episode batch. MC is a noisy sampled return, not counterfactual action quality.",
-  "wall_seconds": 21.60025440203026
+  "wall_seconds": 21.387885089963675
 }

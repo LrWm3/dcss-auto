@@ -1,0 +1,191 @@
+{
+  "status": "failed",
+  "checkpoint_sha256": "f493b83526140026e7ad04623f8ebcefd9d32cdf6eeb0d7b0c17fc3ab7d58b9d",
+  "script_sha256": "f3e961c58619bd7fbf006fb334a79ba1d91803e7ddefcf8728a46e8c649bad9a",
+  "reference_job": {
+    "name": "turn-cost",
+    "seed": 0,
+    "maps": 256,
+    "width": 128,
+    "no_xy": false,
+    "no_ring": false,
+    "frontier": true,
+    "route_cue": true,
+    "explore_milli": 0,
+    "gamma": 1.0,
+    "awake": false,
+    "frames": 1,
+    "death_milli": 0,
+    "performance": "fast",
+    "steps": 1000000,
+    "batch": 512,
+    "horizon": 64,
+    "eval_per_map": 32,
+    "validation_maps": 32,
+    "checkpoint_every": 250000,
+    "lr": 0.0003,
+    "epochs": 4,
+    "minibatch": 4096,
+    "entropy": 0.0,
+    "gae_lambda": 0.95,
+    "enemies": 24,
+    "turn_limit": 2048,
+    "terrain_los": 1,
+    "global_enemies": 0,
+    "vision_radius": 7,
+    "ogres": 0,
+    "frontier_travel": false,
+    "ogre_features": 0,
+    "optional_label": false,
+    "monster_wake_los": true,
+    "clump_mode": 1,
+    "kill_milli": 0,
+    "clear_milli": 1000,
+    "progress_input": 2,
+    "id": "turn-cost-seed0",
+    "architecture": "d4_exact",
+    "curriculum": false,
+    "train_library": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-turn-cost-assets/autoregressive-clump1.so",
+    "eval_library": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-turn-cost-assets/autoregressive-clump0.so",
+    "rest_action": 1,
+    "sleep_status": "visible_encounter_slot_signed",
+    "budget_unit": "physical_turns",
+    "action_interface": "move_attack_wait_rest_conditioned_direction",
+    "discount_unit": "physical_turns",
+    "turn_milli": -0.01,
+    "reward_scheme": "clear_minus_turn_cost",
+    "initial_model": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-imitation/imitation.pt",
+    "initial_model_sha256": "f493b83526140026e7ad04623f8ebcefd9d32cdf6eeb0d7b0c17fc3ab7d58b9d",
+    "turn_reward": -1e-05
+  },
+  "variants": {
+    "gae64": {
+      "history": [
+        {
+          "update": 1,
+          "decisions": 33733,
+          "rollout": {
+            "episodes": 64,
+            "clears": 55,
+            "deaths": 9,
+            "timeouts": 0,
+            "turns": 602.65625,
+            "reward": 0.8533484935760498,
+            "decisions": 33733,
+            "physical_turns": 38570,
+            "loop_episodes": 0,
+            "loop_timeouts": 0,
+            "turns_by_outcome": {
+              "clear": 671.7999877929688,
+              "death": 180.11111450195312,
+              "timeout": null
+            }
+          },
+          "value_mean": 0.0,
+          "mc_return_mean": 0.9547895789146423,
+          "gae_target_mse_vs_mc": 0.919599711894989,
+          "normalized_advantage_sign_agreement": 0.0969080701470375,
+          "reversal_decisions": 382,
+          "gae_positive_reversal_advantage_fraction": 0.020942408591508865,
+          "mc_positive_reversal_advantage_fraction": 0.9581152200698853,
+          "positive_advantage_mean_logprob_change": -0.04909427464008331,
+          "negative_advantage_mean_logprob_change": -0.11912417411804199,
+          "reversal_mean_logprob_change": -0.30543234944343567,
+          "approx_kl": 0.04227504879236221,
+          "train_seconds": 3.3076669918373227,
+          "evaluation": {
+            "sampled": {
+              "episodes": 128,
+              "clears": 125,
+              "deaths": 2,
+              "timeouts": 1,
+              "turns": 805.8984375,
+              "reward": 0.9685035347938538,
+              "loop_episodes": 68,
+              "loop_timeouts": 1,
+              "actions": {
+                "move": 508.734375,
+                "attack": 144.65625,
+                "wait": 58.9765625,
+                "rest": 8.9765625
+              },
+              "turns_by_outcome": {
+                "clear": 808.7040405273438,
+                "death": 9.5,
+                "timeout": 2048.0
+              }
+            },
+            "greedy": {
+              "episodes": 128,
+              "clears": 6,
+              "deaths": 2,
+              "timeouts": 120,
+              "turns": 1959.7109375,
+              "reward": 0.02727789431810379,
+              "loop_episodes": 120,
+              "loop_timeouts": 118,
+              "actions": {
+                "move": 1830.1015625,
+                "attack": 62.25,
+                "wait": 23.9140625,
+                "rest": 4.109375
+              },
+              "turns_by_outcome": {
+                "clear": 842.5,
+                "death": 14.0,
+                "timeout": 2048.0
+              }
+            }
+          }
+        }
+      ],
+      "initial": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 124,
+          "deaths": 4,
+          "timeouts": 0,
+          "turns": 671.8828125,
+          "reward": 0.9620311856269836,
+          "loop_episodes": 2,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 373.875,
+            "attack": 144.9140625,
+            "wait": 58.0390625,
+            "rest": 9.1171875
+          },
+          "turns_by_outcome": {
+            "clear": 687.7177124023438,
+            "death": 181.0,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 120,
+          "deaths": 3,
+          "timeouts": 5,
+          "turns": 722.6484375,
+          "reward": 0.9302735328674316,
+          "loop_episodes": 5,
+          "loop_timeouts": 5,
+          "actions": {
+            "move": 430.5859375,
+            "attack": 142.3984375,
+            "wait": 57.5546875,
+            "rest": 8.9765625
+          },
+          "turns_by_outcome": {
+            "clear": 685.2083740234375,
+            "death": 11.333333969116211,
+            "timeout": 2048.0
+          }
+        }
+      }
+    }
+  },
+  "notes": "Both conditions collect full episodes with frozen policy, same 64-world batches; differ only targets: GAE .95 reset each 64 decisions with value bootstrap, versus full remaining return minus old value. Gamma=1, entropy=0, same original tiny turn cost. Reset to fresh training placements every update. Updates use all valid decisions, no partial-episode truncation. This collection differs from the historical streaming PPO control. Final budget can overshoot to finish an episode batch. MC is a noisy sampled return, not counterfactual action quality.",
+  "wall_seconds": 25.85534300818108,
+  "failure": "Forward/backward float32 reward summation discrepancy 2.1159648895263672e-5 exceeded 2e-5 tolerance. No episode_return run executed. Restart uses 1e-4 tolerance only; target calculations unchanged."
+}

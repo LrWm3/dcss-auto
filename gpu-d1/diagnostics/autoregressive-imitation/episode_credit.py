@@ -34,7 +34,13 @@ def selftest():
    nxt=v[k+1] if k+1<130 else torch.zeros(2)
    ref+=weight*(r[k]+(1-done[k])*nxt-v[k]);weight*=.95*(1-done[k])
   torch.testing.assert_close(ref,gae[t],atol=1e-6,rtol=1e-5)
- print('Target recurrence and terminal/chunk boundary tests passed',flush=True)
+ # Long success exposes forward/backward float32 summation differences.
+ r=torch.full((2048,1),-.00001);r[-1]+=1;v=torch.zeros_like(r);done=torch.zeros_like(r);done[-1]=1
+ mc,_=targets(r,v,done);forward=torch.zeros(1)
+ for reward in r:forward+=reward
+ torch.testing.assert_close(mc[0],forward,atol=1e-4,rtol=0)
+ torch.testing.assert_close(mc[0].double(),r.double().sum(0),atol=1e-4,rtol=0)
+ print('Target recurrence, terminal/chunk boundaries and long-episode rounding tests passed',flush=True)
 
 @torch.no_grad()
 def collect(model,env,seed,greedy=False):
@@ -59,7 +65,9 @@ def collect(model,env,seed,greedy=False):
  stats=dict(episodes=B,clears=int(terminal[:,2].sum()),deaths=int(terminal[:,6].sum()),timeouts=int(terminal[:,7].sum()),turns=float(turns.mean()),reward=float(ret.mean()),decisions=int(sel.sum()),physical_turns=int(turns.sum()),loop_episodes=int((maxstreak>=8).sum()),loop_timeouts=int(((maxstreak>=8)&(terminal[:,7]>0)).sum()),turns_by_outcome={name:float(terminal[terminal[:,col]>0,5].mean()) if (terminal[:,col]>0).any() else None for name,col in [('clear',2),('death',6),('timeout',7)]})
  data=dict(o=o[:T][sel],mask=mask[:T][sel],a=a[:T][sel],v=v[:T][sel],lp=lp[:T][sel],mc=mc[sel],gae=gae[sel],reverse=rev[:T][sel].bool())
  # Every start-of-episode MC return must equal its observed whole-episode reward.
- torch.testing.assert_close(mc[0],ret,atol=2e-5,rtol=0)
+ # Reverse accumulation starts near +1 and has different float32 rounding
+ # than the forward sum of tiny penalties. Up to 2048 additions occur.
+ torch.testing.assert_close(mc[0],ret,atol=1e-4,rtol=0)
  return data,stats
 
 @torch.no_grad()
@@ -132,4 +140,11 @@ def main():
   del env,model,opt
  assert result['variants']['gae64']['history'][0]['rollout']==result['variants']['episode_return']['history'][0]['rollout'], 'First batch must match exactly'
  result['status']='complete';save();print('Episode credit experiment complete',flush=True)
-if __name__=='__main__':main()
+if __name__=='__main__':
+ try:main()
+ except Exception as exc:
+  name='autoregressive-episode-credit'+('-smoke' if '--smoke' in sys.argv else '')
+  path=ROOT/'results'/f'{name}.json'
+  if path.exists() and not isinstance(exc,BlockingIOError):
+   result=json.loads(path.read_text());result.update(status='failed',failure=f'{type(exc).__name__}: {exc}',failed_at=time.time());path.write_text(json.dumps(result,indent=2)+'\n')
+  raise
