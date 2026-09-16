@@ -4,8 +4,9 @@ import torch
 from local_policy import LocalPolicy,ROOT
 EVENTS=['starts','arrivals','enemy_blocks','hold_waits','retreat_steps','adjacent_resumptions','visibility_resets','no_hall_decisions','route_aborts','lockout_decisions','inferred_enemy_blocks']
 class RetreatPolicy:
- def __init__(self,env,privileged=False,enabled=True):
+ def __init__(self,env,privileged=False,enabled=True,wait_for_awake=False):
   if env.obs.shape[1]!=999:raise ValueError('Retreat requires the 15x15 visible sleep-status observation')
+  self.wait_for_awake=wait_for_awake
   self.env,self.privileged,self.enabled=env,privileged,enabled;self.base=LocalPolicy(env,15,True)
   source=pathlib.Path(__file__).with_suffix('.cu');digest=hashlib.sha256(source.read_bytes()).hexdigest()
   target=ROOT/'learning-runs/seek-destroy-los-assets'/f'retreat-{digest[:16]}.so'
@@ -21,9 +22,19 @@ class RetreatPolicy:
  def __call__(self,active):
   actions=self.base(active).clone() # Also updates observed terrain memory.
   if self.privileged:actions=torch.where(self.env.mask[:,9]>0,9,self.env.heuristic()).clone()
+  self.approach_wait=torch.zeros_like(active)
+  if self.wait_for_awake:
+   records=self.env.obs[:,450:650].reshape(-1,40,5)
+   visible=records[:,:,4]>0
+   awake=visible&(self.env.obs[:,959:999]<0)
+   dx=(records[:,:,0]*80).round();dy=(records[:,:,1]*70).round()
+   adjacent=(visible&(dx.abs()<=1)&(dy.abs()<=1)&((dx!=0)|(dy!=0))).any(-1)
+   self.approach_wait=active&awake.any(-1)&~adjacent
+   actions=torch.where(self.approach_wait,8,actions)
   self.before=self.env.obs[:,652:654].clone()
   if self.enabled:actions=self.overlay(actions,active)
   self.pending=(self.events[:,4]>0)&active if self.enabled else torch.zeros_like(active)
+  self.approach_wait&=actions==8
   return actions
  def after_step(self,ended):
   # A failed step into known static floor implies enemy occupancy, even if
