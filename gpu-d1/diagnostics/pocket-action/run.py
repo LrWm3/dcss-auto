@@ -10,7 +10,7 @@ import numpy as np
 import torch
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'diagnostics'))
-from model_selection import select_models, result_path
+from model_selection import select_models, result_path, load_policy
 spec=importlib.util.spec_from_file_location('symmetry',ROOT/'diagnostics/pocket-symmetry/run.py')
 sym=importlib.util.module_from_spec(spec);spec.loader.exec_module(sym)
 Env,Policy,digest=sym.Env,sym.Policy,sym.digest
@@ -27,7 +27,7 @@ def main():
  paths=select_models({'ordinary':ROOT/'learning-runs/vision15-seen-death4-30m/runs/tiles_seen_death4-seed0/snapshots/000030015488.pt','mixed':ROOT/'learning-runs/vision15-clumps-30m/runs/clumps_third-seed0/snapshots/000030015488.pt'})
  models={}
  for name,path in paths.items():
-  model=Policy().cuda().eval();model.load_state_dict(torch.load(path,weights_only=False,map_location='cpu')['model']);models[name]=model
+  model=load_policy(path,Policy);models[name]=model
  report={'training_performed':False,'simulation_steps':0,'checkpoint_sha256':{k:digest(v) for k,v in paths.items()},'cases':[]}
  reference={}
  for mirror in [0,1]:

@@ -1,0 +1,5 @@
+{
+  "scripted_controls_exact": true,
+  "ordinary": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/tactical-next-smoke/runs/enemy_set_ordinary-seed0/snapshots/000000000256.pt",
+  "clumped": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/tactical-next-smoke/runs/d4_exact_ordinary-seed0/snapshots/000000000256.pt"
+}

@@ -1,0 +1,20 @@
+{
+  "states": 3072,
+  "sha256": "f57c945db124ac90e55754f594ba1520e61d3bd841d1a75ba80e857f54acde01",
+  "capture_models": [
+    "ordinary_seed0",
+    "mixed_seed0",
+    "ordinary_seed1",
+    "mixed_seed1",
+    "ordinary_seed2",
+    "mixed_seed2"
+  ],
+  "phases": [
+    "route_0",
+    "route_2",
+    "route_4",
+    "route_6",
+    "first_contact"
+  ],
+  "training_use": false
+}

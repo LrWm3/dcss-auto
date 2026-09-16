@@ -1,0 +1,18 @@
+{
+  "legacy_initial_weights_exact": true,
+  "enemy_set_permutation_invariant": true,
+  "d4_actor_equivariant_and_critic_invariant": true,
+  "all_architecture_gradients_finite": true,
+  "curriculum_episode_switching_and_resume_exact": true,
+  "curriculum_counts": [
+    32683.0,
+    85.0,
+    25.0,
+    3.0,
+    0.0,
+    0.0,
+    25.0,
+    3.0
+  ],
+  "geometry_disjoint": true
+}

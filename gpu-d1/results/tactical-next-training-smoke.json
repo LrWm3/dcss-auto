@@ -1,0 +1,25 @@
+{
+  "ppo_and_resume_passed": true,
+  "jobs": [
+    {
+      "job": "enemy_set_ordinary-seed0",
+      "decisions": 256,
+      "additional_train_seconds": 0.18986778799444437
+    },
+    {
+      "job": "d4_exact_ordinary-seed0",
+      "decisions": 256,
+      "additional_train_seconds": 0.1390864779241383
+    },
+    {
+      "job": "targeted_ordinary-seed0",
+      "decisions": 30048256,
+      "additional_train_seconds": 0.4768803520128131
+    },
+    {
+      "job": "continue_ordinary-seed0",
+      "decisions": 30048256,
+      "additional_train_seconds": 0.3112088388297707
+    }
+  ]
+}

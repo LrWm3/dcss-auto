@@ -14,7 +14,7 @@ from torch import nn
 from torch.distributions import Categorical
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'diagnostics'))
-from model_selection import select_models, result_path
+from model_selection import select_models, result_path, load_policy
 sys.path.insert(0,str(ROOT/'branches/vision15-clumps-v1/scripts'))
 from learn_env_ring_multi import Env
 from run_ring_ablations import digest
@@ -105,7 +105,7 @@ def main():
   pocket_contact=torch.zeros(env.batch,device='cuda');pocket_attack=torch.zeros_like(pocket_contact);pocket_wait=torch.zeros_like(pocket_contact)
   first=None;checkpoint=None
   if arm not in ['hold_fight','retreat_fight']:
-   path=paths[arm.split('_')[0]];model=Policy().cuda().eval();model.load_state_dict(torch.load(path,weights_only=False,map_location='cpu')['model']);checkpoint=digest(path)
+   path=paths[arm.split('_')[0]];model=load_policy(path,Policy);checkpoint=digest(path)
    with torch.no_grad():
     dist=model(env.obs,env.mask);first=dict(retreat_probability=dist.probs.gather(1,back[:,None]).reshape(24,512).mean(1).tolist(),greedy_retreat=(dist.probs.argmax(1)==back).reshape(24,512).float().mean(1).tolist(),away_probability=torch.stack([dist.probs[j,[2,5,6] if (j//512)%4==0 else [3,6,7] if (j//512)%4==1 else [0,4,7] if (j//512)%4==2 else [1,4,5]].sum() for j in range(env.batch)]).reshape(24,512).mean(1).tolist())
   torch.manual_seed(900000)

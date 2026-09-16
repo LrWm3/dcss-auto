@@ -31,3 +31,19 @@ def select_models(defaults):
 def result_path(root,name):
     config=configuration()
     return root/'results'/((config['result_prefix'] if config else '')+name)
+
+def load_policy(path, default_factory):
+    """Keep legacy checkpoint behavior; load explicitly labeled architecture screens."""
+    import torch
+    checkpoint=torch.load(path,weights_only=False,map_location='cpu')
+    architecture=checkpoint.get('job',{}).get('architecture','mlp')
+    if architecture=='mlp':
+        model=default_factory().cuda().eval();model.load_state_dict(checkpoint['model']);return model
+    if architecture not in ['enemy_set','d4_exact']:raise ValueError(f'Unknown architecture {architecture}')
+    import sys
+    scripts=pathlib.Path(__file__).resolve().parents[1]/'branches/vision15-tactical-next-v1/scripts'
+    sys.path.insert(0,str(scripts))
+    from tactical_models import Policy, ActorOnly
+    model=Policy(architecture,checkpoint['job']['width']).cuda().eval()
+    model.load_state_dict(checkpoint['model'])
+    return ActorOnly(model).eval()

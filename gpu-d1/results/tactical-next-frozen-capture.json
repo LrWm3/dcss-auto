@@ -1,0 +1,1565 @@
+{
+  "training_performed": false,
+  "intervention": "Observation only; actual rollouts always use full observation",
+  "distance": 6,
+  "mirror": 0,
+  "rollouts_per_condition": 512,
+  "rollout_limit": 256,
+  "models": {
+    "ordinary_seed0": {
+      "checkpoint_sha256": "140305dee9e6633f10df57f447904a924e871c21bff4cb56e9594d3002b54cf0",
+      "native_trajectory_matches_reference": true,
+      "only_enemy_features_changed": true,
+      "adjacent_enemy_slot_preserved": true,
+      "summary": {
+        "all_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 30364,
+            "episodes": 512,
+            "mean_wait_full": 0.41566572752291076,
+            "mean_wait_adjacent_only": 0.1732046777650443,
+            "mean_wait_adjacent_slot0": 0.2119012210332127,
+            "mean_rear_enemies_visible": 2.7420629693057568,
+            "greedy_wait_full": 0.2450270056646028,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 20622,
+            "episodes": 512,
+            "mean_wait_full": 0.022357638090866543,
+            "mean_wait_adjacent_only": 0.0016449346312056184,
+            "mean_wait_adjacent_slot0": 0.0017263081344451674,
+            "mean_rear_enemies_visible": 2.385413635922801,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 36727,
+            "episodes": 512,
+            "mean_wait_full": 0.6315340365028065,
+            "mean_wait_adjacent_only": 0.48100467304035427,
+            "mean_wait_adjacent_slot0": 0.4816405781033959,
+            "mean_rear_enemies_visible": 3.201486644702807,
+            "greedy_wait_full": 0.8765758161570507,
+            "greedy_wait_adjacent_only": 0.24450676613935252,
+            "greedy_wait_adjacent_slot0": 0.4262803931712364
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 21044,
+            "episodes": 512,
+            "mean_wait_full": 0.06064581936066859,
+            "mean_wait_adjacent_only": 0.010547828122347131,
+            "mean_wait_adjacent_slot0": 0.009274102841948956,
+            "mean_rear_enemies_visible": 2.4784736742064246,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 27183,
+            "episodes": 512,
+            "mean_wait_full": 0.44525957491872536,
+            "mean_wait_adjacent_only": 0.17442533227770296,
+            "mean_wait_adjacent_slot0": 0.21452567780396756,
+            "mean_rear_enemies_visible": 3.062943751609462,
+            "greedy_wait_full": 0.2737004745613067,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 16886,
+            "episodes": 512,
+            "mean_wait_full": 0.02695171783444548,
+            "mean_wait_adjacent_only": 0.001656362468562699,
+            "mean_wait_adjacent_slot0": 0.0017839421343075887,
+            "mean_rear_enemies_visible": 2.9131825180623,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 34230,
+            "episodes": 512,
+            "mean_wait_full": 0.6464106629074508,
+            "mean_wait_adjacent_only": 0.4849005260402753,
+            "mean_wait_adjacent_slot0": 0.4852564469393394,
+            "mean_rear_enemies_visible": 3.4350277534326614,
+            "greedy_wait_full": 0.9364592462751972,
+            "greedy_wait_adjacent_only": 0.25828220858895706,
+            "greedy_wait_adjacent_slot0": 0.45401694420099326
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 17489,
+            "episodes": 512,
+            "mean_wait_full": 0.07077955898336065,
+            "mean_wait_adjacent_only": 0.010498118108955646,
+            "mean_wait_adjacent_slot0": 0.00946865461714959,
+            "mean_rear_enemies_visible": 2.982274572588484,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "without_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 3181,
+            "episodes": 347,
+            "mean_wait_full": 0.16277369553283563,
+            "mean_wait_adjacent_only": 0.1627736649962294,
+            "mean_wait_adjacent_slot0": 0.1894741199959827,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 3736,
+            "episodes": 463,
+            "mean_wait_full": 0.0015932830185769339,
+            "mean_wait_adjacent_only": 0.0015932830087185565,
+            "mean_wait_adjacent_slot0": 0.0014658135622618578,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 2497,
+            "episodes": 199,
+            "mean_wait_full": 0.42759854518082985,
+            "mean_wait_adjacent_only": 0.4275985664375123,
+            "mean_wait_adjacent_slot0": 0.4320726204524768,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.05566680016019223,
+            "greedy_wait_adjacent_only": 0.05566680016019223,
+            "greedy_wait_adjacent_slot0": 0.0460552663195835
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 3555,
+            "episodes": 449,
+            "mean_wait_full": 0.010792381312493785,
+            "mean_wait_adjacent_only": 0.010792379015231434,
+            "mean_wait_adjacent_slot0": 0.00831699566994224,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "high_wait_with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 7440,
+            "episodes": 496,
+            "mean_wait_full": 0.5498644518916325,
+            "mean_wait_adjacent_only": 0.22638425041410712,
+            "mean_wait_adjacent_slot0": 0.2755427334237323,
+            "mean_rear_enemies_visible": 3.0735215053763443,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 32055,
+            "episodes": 512,
+            "mean_wait_full": 0.6596390358781763,
+            "mean_wait_adjacent_only": 0.4896621415310504,
+            "mean_wait_adjacent_slot0": 0.4899615735554729,
+            "mean_rear_enemies_visible": 3.570051474029013,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.27443456559039153,
+            "greedy_wait_adjacent_slot0": 0.4837622835751053
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          }
+        ],
+        "first_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.441781081201043,
+            "mean_wait_adjacent_only": 0.13323367928387597,
+            "mean_wait_adjacent_slot0": 0.16077405578107573,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.078125,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.04810274724877672,
+            "mean_wait_adjacent_only": 0.00036747010801718716,
+            "mean_wait_adjacent_slot0": 0.0006163013949276319,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.7282581821782514,
+            "mean_wait_adjacent_only": 0.49208608246408403,
+            "mean_wait_adjacent_slot0": 0.5034522691275924,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.390625,
+            "greedy_wait_adjacent_slot0": 0.8359375
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.16369746773852967,
+            "mean_wait_adjacent_only": 0.00809367028887209,
+            "mean_wait_adjacent_slot0": 0.007431745994836092,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ]
+      }
+    },
+    "mixed_seed0": {
+      "checkpoint_sha256": "a1f8894d76146e31ff69de4a3b88e502fad1e8c5df7fb20cdc651c2be8183363",
+      "native_trajectory_matches_reference": true,
+      "only_enemy_features_changed": true,
+      "adjacent_enemy_slot_preserved": true,
+      "summary": {
+        "all_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 20730,
+            "episodes": 512,
+            "mean_wait_full": 0.03498856599348428,
+            "mean_wait_adjacent_only": 0.005673966810609957,
+            "mean_wait_adjacent_slot0": 0.004283341673259869,
+            "mean_rear_enemies_visible": 2.4557645923781957,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 20886,
+            "episodes": 512,
+            "mean_wait_full": 0.045882391066072926,
+            "mean_wait_adjacent_only": 0.016154738301651168,
+            "mean_wait_adjacent_slot0": 0.014295466418303053,
+            "mean_rear_enemies_visible": 2.407976635066552,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 20045,
+            "episodes": 512,
+            "mean_wait_full": 0.008968969616356213,
+            "mean_wait_adjacent_only": 0.003968422656957116,
+            "mean_wait_adjacent_slot0": 0.0043240815380518015,
+            "mean_rear_enemies_visible": 2.383636817161387,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 47944,
+            "episodes": 512,
+            "mean_wait_full": 0.8451724483526033,
+            "mean_wait_adjacent_only": 0.5196113344107862,
+            "mean_wait_adjacent_slot0": 0.3532040840070449,
+            "mean_rear_enemies_visible": 4.017729017186718,
+            "greedy_wait_full": 0.981457533789421,
+            "greedy_wait_adjacent_only": 0.559611213081929,
+            "greedy_wait_adjacent_slot0": 0.0596529284164859
+          }
+        ],
+        "with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 17170,
+            "episodes": 512,
+            "mean_wait_full": 0.04115404525923477,
+            "mean_wait_adjacent_only": 0.005761404658329278,
+            "mean_wait_adjacent_slot0": 0.0042225692273932846,
+            "mean_rear_enemies_visible": 2.964938846825859,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 17197,
+            "episodes": 512,
+            "mean_wait_full": 0.05164082035308164,
+            "mean_wait_adjacent_only": 0.015536165346832926,
+            "mean_wait_adjacent_slot0": 0.014106853197613012,
+            "mean_rear_enemies_visible": 2.92452171890446,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 16461,
+            "episodes": 512,
+            "mean_wait_full": 0.009920381031417628,
+            "mean_wait_adjacent_only": 0.0038310811777614038,
+            "mean_wait_adjacent_slot0": 0.004364637567751774,
+            "mean_rear_enemies_visible": 2.902618309944718,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 47353,
+            "episodes": 512,
+            "mean_wait_full": 0.8509660660635241,
+            "mean_wait_adjacent_only": 0.521341712088632,
+            "mean_wait_adjacent_slot0": 0.3540184285233744,
+            "mean_rear_enemies_visible": 4.067873207610922,
+            "greedy_wait_full": 0.9910248558697443,
+            "greedy_wait_adjacent_only": 0.5639135852005153,
+            "greedy_wait_adjacent_slot0": 0.06027073258294089
+          }
+        ],
+        "without_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 3560,
+            "episodes": 449,
+            "mean_wait_full": 0.005252251669625866,
+            "mean_wait_adjacent_only": 0.00525225112371649,
+            "mean_wait_adjacent_slot0": 0.004576449228183816,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 3689,
+            "episodes": 457,
+            "mean_wait_full": 0.019038338897818956,
+            "mean_wait_adjacent_only": 0.019038337950338984,
+            "mean_wait_adjacent_slot0": 0.015174724091441206,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 3584,
+            "episodes": 461,
+            "mean_wait_full": 0.004599219810740708,
+            "mean_wait_adjacent_only": 0.004599220114836758,
+            "mean_wait_adjacent_slot0": 0.004137811224187057,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 591,
+            "episodes": 50,
+            "mean_wait_full": 0.38096740695627407,
+            "mean_wait_adjacent_only": 0.38096738486927373,
+            "mean_wait_adjacent_slot0": 0.28795593530696056,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.21489001692047377,
+            "greedy_wait_adjacent_only": 0.21489001692047377,
+            "greedy_wait_adjacent_slot0": 0.01015228426395939
+          }
+        ],
+        "high_wait_with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 46928,
+            "episodes": 512,
+            "mean_wait_full": 0.855019427265653,
+            "mean_wait_adjacent_only": 0.5230544016830194,
+            "mean_wait_adjacent_slot0": 0.35478936815986833,
+            "mean_rear_enemies_visible": 4.095316229116945,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.5684878963518581,
+            "greedy_wait_adjacent_slot0": 0.06081657006478009
+          }
+        ],
+        "first_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.1254152898909524,
+            "mean_wait_adjacent_only": 0.008104068050670321,
+            "mean_wait_adjacent_slot0": 0.004678714475630841,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.07654888543765992,
+            "mean_wait_adjacent_only": 0.011561412526134518,
+            "mean_wait_adjacent_slot0": 0.01328373387332249,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.009677874350927596,
+            "mean_wait_adjacent_only": 0.003961772658385598,
+            "mean_wait_adjacent_slot0": 0.0055799035744712455,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.872415985330008,
+            "mean_wait_adjacent_only": 0.6948933474486694,
+            "mean_wait_adjacent_slot0": 0.4708951422944665,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.984375,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ]
+      }
+    },
+    "ordinary_seed1": {
+      "checkpoint_sha256": "1395f249c0760b995f0ffaebfe2b62c74079e1f8b06379e92ed9a11acaa1ab1c",
+      "native_trajectory_matches_reference": true,
+      "only_enemy_features_changed": true,
+      "adjacent_enemy_slot_preserved": true,
+      "summary": {
+        "all_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 26648,
+            "episodes": 512,
+            "mean_wait_full": 0.372108572571251,
+            "mean_wait_adjacent_only": 0.0295630284970442,
+            "mean_wait_adjacent_slot0": 0.018002739624917552,
+            "mean_rear_enemies_visible": 3.013096667667367,
+            "greedy_wait_full": 0.4073851696187331,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 39134,
+            "episodes": 512,
+            "mean_wait_full": 0.7020805148673549,
+            "mean_wait_adjacent_only": 0.0276623037834474,
+            "mean_wait_adjacent_slot0": 0.036953497955315426,
+            "mean_rear_enemies_visible": 3.8581029283998567,
+            "greedy_wait_full": 0.8445086114376246,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 53383,
+            "episodes": 512,
+            "mean_wait_full": 0.917255663487624,
+            "mean_wait_adjacent_only": 0.03551332125299852,
+            "mean_wait_adjacent_slot0": 0.06546853499007381,
+            "mean_rear_enemies_visible": 4.578611168349474,
+            "greedy_wait_full": 0.9761534570930821,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 24067,
+            "episodes": 512,
+            "mean_wait_full": 0.2452359487539505,
+            "mean_wait_adjacent_only": 0.005704644780122743,
+            "mean_wait_adjacent_slot0": 0.005643130066348659,
+            "mean_rear_enemies_visible": 2.841691943324885,
+            "greedy_wait_full": 0.10599576183155358,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 24058,
+            "episodes": 512,
+            "mean_wait_full": 0.4089295894494956,
+            "mean_wait_adjacent_only": 0.02950679156248512,
+            "mean_wait_adjacent_slot0": 0.01782278656951288,
+            "mean_rear_enemies_visible": 3.3374760994263863,
+            "greedy_wait_full": 0.45124282982791586,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 37524,
+            "episodes": 512,
+            "mean_wait_full": 0.7304059616038364,
+            "mean_wait_adjacent_only": 0.027051248385600926,
+            "mean_wait_adjacent_slot0": 0.036759725266968475,
+            "mean_rear_enemies_visible": 4.023638204882209,
+            "greedy_wait_full": 0.8807429911523291,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 53036,
+            "episodes": 512,
+            "mean_wait_full": 0.9230972337077139,
+            "mean_wait_adjacent_only": 0.03558589321980337,
+            "mean_wait_adjacent_slot0": 0.06569985876582494,
+            "mean_rear_enemies_visible": 4.6085677652915,
+            "greedy_wait_full": 0.9825401613998039,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 21078,
+            "episodes": 512,
+            "mean_wait_full": 0.2789686124071607,
+            "mean_wait_adjacent_only": 0.005470182917897174,
+            "mean_wait_adjacent_slot0": 0.005388241275874439,
+            "mean_rear_enemies_visible": 3.24466268146883,
+            "greedy_wait_full": 0.12102666287124016,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "without_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 2590,
+            "episodes": 325,
+            "mean_wait_full": 0.030085397259742165,
+            "mean_wait_adjacent_only": 0.030085402308481397,
+            "mean_wait_adjacent_slot0": 0.01967428812180002,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 1610,
+            "episodes": 197,
+            "mean_wait_full": 0.04190407801037712,
+            "mean_wait_adjacent_only": 0.04190406946592635,
+            "mean_wait_adjacent_slot0": 0.04146972550657688,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 347,
+            "episodes": 40,
+            "mean_wait_full": 0.02442131711100295,
+            "mean_wait_adjacent_only": 0.02442131309316464,
+            "mean_wait_adjacent_slot0": 0.030112662451926845,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 2989,
+            "episodes": 385,
+            "mean_wait_full": 0.007358034909064092,
+            "mean_wait_adjacent_only": 0.0073580362595441415,
+            "mean_wait_adjacent_slot0": 0.0074405693188128955,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "high_wait_with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 10856,
+            "episodes": 502,
+            "mean_wait_full": 0.6094930089993694,
+            "mean_wait_adjacent_only": 0.04788279499894306,
+            "mean_wait_adjacent_slot0": 0.030693708002421792,
+            "mean_rear_enemies_visible": 3.8470891672807666,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 33049,
+            "episodes": 512,
+            "mean_wait_full": 0.7912396643106875,
+            "mean_wait_adjacent_only": 0.026624100080187785,
+            "mean_wait_adjacent_slot0": 0.03716502612935571,
+            "mean_rear_enemies_visible": 4.3172259372446975,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 52110,
+            "episodes": 512,
+            "mean_wait_full": 0.9351134287077962,
+            "mean_wait_adjacent_only": 0.036031257750422145,
+            "mean_wait_adjacent_slot0": 0.06657981217582,
+            "mean_rear_enemies_visible": 4.655018230665899,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 2551,
+            "episodes": 353,
+            "mean_wait_full": 0.5460712426038687,
+            "mean_wait_adjacent_only": 0.007569825072104337,
+            "mean_wait_adjacent_slot0": 0.008071608638342708,
+            "mean_rear_enemies_visible": 4.301450411603293,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "first_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.563359908061102,
+            "mean_wait_adjacent_only": 0.010210215457846061,
+            "mean_wait_adjacent_slot0": 0.004557062129606493,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.908203125,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.8797048843698576,
+            "mean_wait_adjacent_only": 0.011824458795672399,
+            "mean_wait_adjacent_slot0": 0.019322439777170075,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.9537890582578257,
+            "mean_wait_adjacent_only": 0.012899379849841353,
+            "mean_wait_adjacent_slot0": 0.024738255131524056,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.470962826104369,
+            "mean_wait_adjacent_only": 0.0036588741036212014,
+            "mean_wait_adjacent_slot0": 0.0030480171226372477,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.322265625,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ]
+      }
+    },
+    "mixed_seed1": {
+      "checkpoint_sha256": "a4b4b43664c06e640131f5bef5ec16897f0bd9348a01175426083bddb18f8087",
+      "native_trajectory_matches_reference": true,
+      "only_enemy_features_changed": true,
+      "adjacent_enemy_slot_preserved": true,
+      "summary": {
+        "all_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 22222,
+            "episodes": 512,
+            "mean_wait_full": 0.12946170320675793,
+            "mean_wait_adjacent_only": 0.056425455407918525,
+            "mean_wait_adjacent_slot0": 0.07010477318224523,
+            "mean_rear_enemies_visible": 2.5500855008550087,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 20563,
+            "episodes": 512,
+            "mean_wait_full": 0.020261645396422126,
+            "mean_wait_adjacent_only": 0.008260668522589725,
+            "mean_wait_adjacent_slot0": 0.01229381605429141,
+            "mean_rear_enemies_visible": 2.3811214316977094,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 21169,
+            "episodes": 512,
+            "mean_wait_full": 0.06940402439891123,
+            "mean_wait_adjacent_only": 0.01590609832301351,
+            "mean_wait_adjacent_slot0": 0.011343367689799622,
+            "mean_rear_enemies_visible": 2.4657754263309557,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 38686,
+            "episodes": 512,
+            "mean_wait_full": 0.682141973428035,
+            "mean_wait_adjacent_only": 0.40219009922163407,
+            "mean_wait_adjacent_slot0": 0.23937815536093404,
+            "mean_rear_enemies_visible": 3.494028847645143,
+            "greedy_wait_full": 0.8403556842268521,
+            "greedy_wait_adjacent_only": 0.1943080184045908,
+            "greedy_wait_adjacent_slot0": 0.001602646952385876
+          }
+        ],
+        "with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 18710,
+            "episodes": 512,
+            "mean_wait_full": 0.14114783893994895,
+            "mean_wait_adjacent_only": 0.05440216739721724,
+            "mean_wait_adjacent_slot0": 0.07000268914182792,
+            "mean_rear_enemies_visible": 3.0287546766435063,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 16829,
+            "episodes": 512,
+            "mean_wait_full": 0.02273603289679515,
+            "mean_wait_adjacent_only": 0.008072292482154396,
+            "mean_wait_adjacent_slot0": 0.012623986824900903,
+            "mean_rear_enemies_visible": 2.90944203458316,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 17529,
+            "episodes": 512,
+            "mean_wait_full": 0.07999788753434797,
+            "mean_wait_adjacent_only": 0.01539080268182989,
+            "mean_wait_adjacent_slot0": 0.010315705134646885,
+            "mean_rear_enemies_visible": 2.9778082035484057,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 36304,
+            "episodes": 512,
+            "mean_wait_full": 0.6967668691849104,
+            "mean_wait_adjacent_only": 0.39844662738235814,
+            "mean_wait_adjacent_slot0": 0.23704888315689937,
+            "mean_rear_enemies_visible": 3.723281181137065,
+            "greedy_wait_full": 0.8661029087703834,
+            "greedy_wait_adjacent_only": 0.17766637285147643,
+            "greedy_wait_adjacent_slot0": 0.0014323490524460114
+          }
+        ],
+        "without_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 3512,
+            "episodes": 427,
+            "mean_wait_full": 0.06720441403591386,
+            "mean_wait_adjacent_only": 0.067204418585658,
+            "mean_wait_adjacent_slot0": 0.07064862067547069,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 3734,
+            "episodes": 463,
+            "mean_wait_full": 0.009109672379877516,
+            "mean_wait_adjacent_only": 0.009109672374889178,
+            "mean_wait_adjacent_slot0": 0.010805748593502133,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 3640,
+            "episodes": 461,
+            "mean_wait_full": 0.018387588437078623,
+            "mean_wait_adjacent_only": 0.018387586590680446,
+            "mean_wait_adjacent_slot0": 0.016292240472566746,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 2382,
+            "episodes": 181,
+            "mean_wait_full": 0.45924431786228886,
+            "mean_wait_adjacent_only": 0.459244256086904,
+            "mean_wait_adjacent_slot0": 0.27487853239505455,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.44794290512174645,
+            "greedy_wait_adjacent_only": 0.44794290512174645,
+            "greedy_wait_adjacent_slot0": 0.0041981528127623844
+          }
+        ],
+        "high_wait_with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 31443,
+            "episodes": 512,
+            "mean_wait_full": 0.7480014768378659,
+            "mean_wait_adjacent_only": 0.40648556314450246,
+            "mean_wait_adjacent_slot0": 0.2402994597656325,
+            "mean_rear_enemies_visible": 3.950895270807493,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.18519225264764813,
+            "greedy_wait_adjacent_slot0": 0.0016537862163279586
+          }
+        ],
+        "first_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.23608138627605513,
+            "mean_wait_adjacent_only": 0.07666669615719002,
+            "mean_wait_adjacent_slot0": 0.11870124303095508,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.06096405805146787,
+            "mean_wait_adjacent_only": 0.007089427307619189,
+            "mean_wait_adjacent_slot0": 0.014871180554109742,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.1653112301864894,
+            "mean_wait_adjacent_only": 0.021221864506514976,
+            "mean_wait_adjacent_slot0": 0.008972904852271313,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.8026860400568694,
+            "mean_wait_adjacent_only": 0.40349992812843993,
+            "mean_wait_adjacent_slot0": 0.22108420374570414,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ]
+      }
+    },
+    "ordinary_seed2": {
+      "checkpoint_sha256": "a4d596940dfed1db707225c67f0434a9d34219d76ed673996c5717477672b2f8",
+      "native_trajectory_matches_reference": true,
+      "only_enemy_features_changed": true,
+      "adjacent_enemy_slot_preserved": true,
+      "summary": {
+        "all_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 22175,
+            "episodes": 512,
+            "mean_wait_full": 0.10039763685786234,
+            "mean_wait_adjacent_only": 0.012841529283890965,
+            "mean_wait_adjacent_slot0": 0.0194328882265941,
+            "mean_rear_enemies_visible": 2.5474633596392335,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 20239,
+            "episodes": 512,
+            "mean_wait_full": 0.012951435086485054,
+            "mean_wait_adjacent_only": 0.0008294730961130529,
+            "mean_wait_adjacent_slot0": 0.0008436457021666655,
+            "mean_rear_enemies_visible": 2.3865309550867138,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 27509,
+            "episodes": 512,
+            "mean_wait_full": 0.32644034080374457,
+            "mean_wait_adjacent_only": 0.23811946732372835,
+            "mean_wait_adjacent_slot0": 0.17934213480114689,
+            "mean_rear_enemies_visible": 2.730633610818278,
+            "greedy_wait_full": 0.08019193718419426,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 20422,
+            "episodes": 512,
+            "mean_wait_full": 0.017996406473615226,
+            "mean_wait_adjacent_only": 0.002144785005758224,
+            "mean_wait_adjacent_slot0": 0.001941854719476585,
+            "mean_rear_enemies_visible": 2.3947703457056115,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 18572,
+            "episodes": 512,
+            "mean_wait_full": 0.11732317636326785,
+            "mean_wait_adjacent_only": 0.012781032236952285,
+            "mean_wait_adjacent_slot0": 0.019716311333712648,
+            "mean_rear_enemies_visible": 3.0416756407495154,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 16608,
+            "episodes": 512,
+            "mean_wait_full": 0.015597682898976976,
+            "mean_wait_adjacent_only": 0.0008255015130672853,
+            "mean_wait_adjacent_slot0": 0.0008492899172339437,
+            "mean_rear_enemies_visible": 2.9082972061657033,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 23843,
+            "episodes": 512,
+            "mean_wait_full": 0.34862882814929874,
+            "mean_wait_adjacent_only": 0.24672810628823336,
+            "mean_wait_adjacent_slot0": 0.18395739996705246,
+            "mean_rear_enemies_visible": 3.1504844189070167,
+            "greedy_wait_full": 0.09252191418865076,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 16741,
+            "episodes": 512,
+            "mean_wait_full": 0.02148274084802406,
+            "mean_wait_adjacent_only": 0.0021456753605032975,
+            "mean_wait_adjacent_slot0": 0.001921195471215713,
+            "mean_rear_enemies_visible": 2.921330864345021,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "without_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 3603,
+            "episodes": 449,
+            "mean_wait_full": 0.013153362726751853,
+            "mean_wait_adjacent_only": 0.013153366962421397,
+            "mean_wait_adjacent_slot0": 0.01797195735082233,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 3631,
+            "episodes": 456,
+            "mean_wait_full": 0.0008476389780119538,
+            "mean_wait_adjacent_only": 0.0008476389047674474,
+            "mean_wait_adjacent_slot0": 0.0008178293640126149,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 3666,
+            "episodes": 398,
+            "mean_wait_full": 0.1821304379723076,
+            "mean_wait_adjacent_only": 0.1821304387283403,
+            "mean_wait_adjacent_slot0": 0.14932528609664988,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 3681,
+            "episodes": 461,
+            "mean_wait_full": 0.0021407357966311655,
+            "mean_wait_adjacent_only": 0.0021407357178507887,
+            "mean_wait_adjacent_slot0": 0.002035811925435634,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "high_wait_with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 2206,
+            "episodes": 410,
+            "mean_wait_full": 0.5281782434782113,
+            "mean_wait_adjacent_only": 0.33990728352573496,
+            "mean_wait_adjacent_slot0": 0.2095805501746029,
+            "mean_rear_enemies_visible": 4.795104261106074,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          }
+        ],
+        "first_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.3040647621091921,
+            "mean_wait_adjacent_only": 0.012229622329869017,
+            "mean_wait_adjacent_slot0": 0.023380886706945603,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.03589691662273253,
+            "mean_wait_adjacent_only": 0.0006096208747408127,
+            "mean_wait_adjacent_slot0": 0.0006042956341616446,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.48884534620447084,
+            "mean_wait_adjacent_only": 0.35863763696397655,
+            "mean_wait_adjacent_slot0": 0.23474996286677197,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.439453125,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.04641448482288979,
+            "mean_wait_adjacent_only": 0.0010984318371356494,
+            "mean_wait_adjacent_slot0": 0.0009257524927761551,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ]
+      }
+    },
+    "mixed_seed2": {
+      "checkpoint_sha256": "f1bab1bb96ef9f15e729ce165f73af803cb0a4dda6e6cbe83af19bace8938201",
+      "native_trajectory_matches_reference": true,
+      "only_enemy_features_changed": true,
+      "adjacent_enemy_slot_preserved": true,
+      "summary": {
+        "all_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 22815,
+            "episodes": 512,
+            "mean_wait_full": 0.12953673562464807,
+            "mean_wait_adjacent_only": 0.059017967849556756,
+            "mean_wait_adjacent_slot0": 0.040287133137104206,
+            "mean_rear_enemies_visible": 2.4608371685294763,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 23654,
+            "episodes": 512,
+            "mean_wait_full": 0.1889018952294364,
+            "mean_wait_adjacent_only": 0.0604441971501169,
+            "mean_wait_adjacent_slot0": 0.04590617430385275,
+            "mean_rear_enemies_visible": 2.594952227952989,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 23677,
+            "episodes": 512,
+            "mean_wait_full": 0.19199884875978868,
+            "mean_wait_adjacent_only": 0.08215717311465354,
+            "mean_wait_adjacent_slot0": 0.09276843952453936,
+            "mean_rear_enemies_visible": 2.483211555518013,
+            "greedy_wait_full": 8.447016091565654e-05,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 34107,
+            "episodes": 512,
+            "mean_wait_full": 0.4961802585259463,
+            "mean_wait_adjacent_only": 0.4397014953541414,
+            "mean_wait_adjacent_slot0": 0.43479075148226765,
+            "mean_rear_enemies_visible": 2.3385228838654823,
+            "greedy_wait_full": 0.5126220423959891,
+            "greedy_wait_adjacent_only": 0.2177558858885273,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 18982,
+            "episodes": 512,
+            "mean_wait_full": 0.14255086286174992,
+            "mean_wait_adjacent_only": 0.05779237045989205,
+            "mean_wait_adjacent_slot0": 0.039522950878739124,
+            "mean_rear_enemies_visible": 2.957749446844379,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 20070,
+            "episodes": 512,
+            "mean_wait_full": 0.21272841826847866,
+            "mean_wait_adjacent_only": 0.061331388023860595,
+            "mean_wait_adjacent_slot0": 0.04642762197877638,
+            "mean_rear_enemies_visible": 3.0583457897359243,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 19958,
+            "episodes": 512,
+            "mean_wait_full": 0.21175294870781164,
+            "mean_wait_adjacent_only": 0.08144323311235428,
+            "mean_wait_adjacent_slot0": 0.09390088598788836,
+            "mean_rear_enemies_visible": 2.9459364665798176,
+            "greedy_wait_full": 0.0001002104419280489,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 29998,
+            "episodes": 512,
+            "mean_wait_full": 0.4997415133776828,
+            "mean_wait_adjacent_only": 0.43552652174146567,
+            "mean_wait_adjacent_slot0": 0.434801448887885,
+            "mean_rear_enemies_visible": 2.6588439229281953,
+            "greedy_wait_full": 0.5389692646176412,
+            "greedy_wait_adjacent_only": 0.20371358090539368,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "without_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 3833,
+            "episodes": 453,
+            "mean_wait_full": 0.06508743658612276,
+            "mean_wait_adjacent_only": 0.06508744075605702,
+            "mean_wait_adjacent_slot0": 0.04407155985985036,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 3584,
+            "episodes": 440,
+            "mean_wait_full": 0.05547602542096034,
+            "mean_wait_adjacent_only": 0.05547602727399083,
+            "mean_wait_adjacent_slot0": 0.042986125521565555,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 3719,
+            "episodes": 424,
+            "mean_wait_full": 0.08598854309626566,
+            "mean_wait_adjacent_only": 0.08598852954538447,
+            "mean_wait_adjacent_slot0": 0.08669116968976678,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 4109,
+            "episodes": 314,
+            "mean_wait_full": 0.47018110470691715,
+            "mean_wait_adjacent_only": 0.4701811396551991,
+            "mean_wait_adjacent_slot0": 0.434712654433421,
+            "mean_rear_enemies_visible": 0.0,
+            "greedy_wait_full": 0.3202725724020443,
+            "greedy_wait_adjacent_only": 0.3202725724020443,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "high_wait_with_rear": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 0,
+            "episodes": 0,
+            "mean_wait_full": null,
+            "mean_wait_adjacent_only": null,
+            "mean_wait_adjacent_slot0": null,
+            "mean_rear_enemies_visible": null,
+            "greedy_wait_full": null,
+            "greedy_wait_adjacent_only": null,
+            "greedy_wait_adjacent_slot0": null
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 2,
+            "episodes": 1,
+            "mean_wait_full": 0.5355903506278992,
+            "mean_wait_adjacent_only": 0.13377203792333603,
+            "mean_wait_adjacent_slot0": 0.13246774673461914,
+            "mean_rear_enemies_visible": 2.5,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 16168,
+            "episodes": 462,
+            "mean_wait_full": 0.6442456810169737,
+            "mean_wait_adjacent_only": 0.4519985238996135,
+            "mean_wait_adjacent_slot0": 0.4341465781255266,
+            "mean_rear_enemies_visible": 1.806036615536863,
+            "greedy_wait_full": 1.0,
+            "greedy_wait_adjacent_only": 0.2743691241959426,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ],
+        "first_contact": [
+          {
+            "pocket_direction": "SE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.19503965895273723,
+            "mean_wait_adjacent_only": 0.07833036471129162,
+            "mean_wait_adjacent_slot0": 0.052459430051385425,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "SW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.3540359780890867,
+            "mean_wait_adjacent_only": 0.08946807172469562,
+            "mean_wait_adjacent_slot0": 0.06126486932771513,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NW",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.24778739310568199,
+            "mean_wait_adjacent_only": 0.10410761812818237,
+            "mean_wait_adjacent_slot0": 0.11954631630214863,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.0,
+            "greedy_wait_adjacent_only": 0.0,
+            "greedy_wait_adjacent_slot0": 0.0
+          },
+          {
+            "pocket_direction": "NE",
+            "contact_states": 512,
+            "episodes": 512,
+            "mean_wait_full": 0.31623809738084674,
+            "mean_wait_adjacent_only": 0.47857924277195707,
+            "mean_wait_adjacent_slot0": 0.47331272898009047,
+            "mean_rear_enemies_visible": 5.0,
+            "greedy_wait_full": 0.01171875,
+            "greedy_wait_adjacent_only": 0.478515625,
+            "greedy_wait_adjacent_slot0": 0.0
+          }
+        ]
+      }
+    }
+  },
+  "source_hashes": {
+    "branches/vision15-tactical-next-v1/scripts/capture_frozen.py": "d209bb1a1e56c5d259f13f77ac51646af4bab529804067683ee96010e1f20482",
+    "diagnostics/pocket-symmetry/probe.cu": "712f88d1a1a82f5587cc9b586aa2e9f37e815252765b71c6b18f78aa408bc447",
+    "diagnostics/pocket-symmetry/run.py": "40956a6ebe7c81d1667b2f4cf38e1263030cd4dd674ddd9d9c51637bff93cd08",
+    "branches/vision15-clumps-v1/src/learn.cu": "1cb8a0d22bc395c54cf22d7c75a20fd75758554fa03a9535158d37c767a06367"
+  },
+  "elapsed_seconds": 16.413025547983125
+}
