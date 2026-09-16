@@ -1,5 +1,8 @@
 // Read-only analysis extension; original dynamics and observation code included unchanged.
-#include "../../branches/vision15-curriculum-v1/src/learn.cu"
+#ifndef DEATHS_SIMULATOR
+#define DEATHS_SIMULATOR "../../branches/vision15-curriculum-v1/src/learn.cu"
+#endif
+#include DEATHS_SIMULATOR
 constexpr int D=24;
 HD int empty_neighbors(const State &s,const Tables &t,int origin,int exclude=-1){
  int n=0;
