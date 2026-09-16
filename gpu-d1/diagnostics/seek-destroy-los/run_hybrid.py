@@ -1,5 +1,5 @@
 """Frozen learned LOS navigation plus observation-only encounter heuristics."""
-import hashlib,json,pathlib,time
+import argparse,hashlib,json,pathlib,time
 import torch
 from run_retreat import ROOT,Env,RetreatPolicy
 from tactical_models import Policy
@@ -10,6 +10,14 @@ def gate_encounter(obs,engaged,active,trigger):
  start=(visible&(obs[:,959:999]<0)).any(-1) if trigger=='awake' else visible.any(-1)
  return torch.where(active,(engaged|start)&visible.any(-1),engaged)
 
+def waiting_override(obs,active):
+ records=obs[:,450:650].reshape(-1,40,5)
+ visible=records[:,:,4]>0
+ awake=(visible&(obs[:,959:999]<0)).any(-1)
+ dx=(records[:,:,0]*80).round();dy=(records[:,:,1]*70).round()
+ adjacent=(visible&(dx.abs()<=1)&(dy.abs()<=1)&((dx!=0)|(dy!=0))).any(-1)
+ return active&awake&~adjacent
+
 def test_gate():
  obs=torch.zeros(4,999);active=torch.tensor([True,True,True,False]);engaged=torch.tensor([False,False,True,True])
  obs[:2,454]=1;obs[0,959]=-1;obs[1,959]=1
@@ -17,9 +25,17 @@ def test_gate():
  assert gate_encounter(obs,engaged,active,'visible').tolist()==[True,True,False,True]
  engaged[1]=True
  assert gate_encounter(obs,engaged,active,'awake')[1] # Sleeping remainder keeps encounter active.
+ obs.zero_();obs[:,454]=1;obs[:,450]=3/80;obs[:,959]=-1
+ assert waiting_override(obs,active).tolist()==[True,True,True,False]
+ obs[0,450]=1/80;obs[1,959]=1;obs[2,454]=0
+ assert not waiting_override(obs,active).any()
+ # A second, adjacent sleeping enemy releases control to the model too.
+ obs[0,450]=3/80;obs[0,459]=1;obs[0,455]=1/80;obs[0,960]=1
+ assert not waiting_override(obs,active)[0]
 
 @torch.no_grad()
 def main():
+ parser=argparse.ArgumentParser();parser.add_argument('--waiting-only',action='store_true');args=parser.parse_args()
  test_gate();torch.set_num_threads(1);torch.distributions.Distribution.set_default_validate_args(False)
  suite=ROOT/'learning-runs/vision15-rest-sleep';manifest=json.loads((suite/'manifest.json').read_text());job=next(j for j in manifest['jobs'] if j['id']=='rest-seed0')
  lib=pathlib.Path(job['eval_library']);assert hashlib.sha256(lib.read_bytes()).hexdigest()==lib.with_suffix('.sha256').read_text().strip()
@@ -29,7 +45,8 @@ def main():
  previous=json.loads((suite/'runs/rest-seed0/result.json').read_text())['final']
  old_heuristic=json.loads((ROOT/'results/los-hallway-wait-awake.json').read_text())['results']['local-retreat']
  arms=[('learned','sampled'),('learned','greedy'),('awake','sampled'),('visible','sampled'),('awake','greedy'),('visible','greedy'),('heuristic','none')]
- report=dict(checkpoint=str(checkpoint),checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),trained_decisions=saved['decisions'],job=job,library_sha256=hashlib.sha256(lib.read_bytes()).hexdigest(),seed=900000,episodes_per_arm=1024,information='LOS observations only; no native privileged pursuit',source_sha256={name:hashlib.sha256(pathlib.Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['run_hybrid.py','retreat_policy.py','retreat_policy.cu','local_policy.cu']},results={})
+ if args.waiting_only:arms=[('learned','sampled'),('learned','greedy'),('waiting','sampled'),('waiting','greedy')]
+ report=dict(waiting_only=args.waiting_only,checkpoint=str(checkpoint),checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),trained_decisions=saved['decisions'],job=job,library_sha256=hashlib.sha256(lib.read_bytes()).hexdigest(),seed=900000,episodes_per_arm=1024,information='LOS observations only; no native privileged pursuit',source_sha256={name:hashlib.sha256(pathlib.Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['run_hybrid.py','retreat_policy.py','retreat_policy.cu','local_policy.cu']},results={})
  for trigger,mode in arms:
   name=f'{trigger}-{mode}';env.reset(900000);torch.manual_seed(900000)
   policy=RetreatPolicy(env,False,True,wait_for_awake=True)
@@ -40,6 +57,7 @@ def main():
    if not active.any():break
    if trigger=='heuristic':use=active.clone()
    elif trigger=='learned':use=torch.zeros_like(active)
+   elif trigger=='waiting':use=waiting_override(env.obs,active)
    else:
     new=gate_encounter(env.obs,engaged,active,trigger);counts[:,2]+=(new&~engaged&active);engaged=new;use=engaged&active
    if trigger!='heuristic':
@@ -48,7 +66,8 @@ def main():
    # Update terrain memory and retreat state only when their ownership permits it.
    # Memory is always observed; no retreat may silently start during learned navigation.
    policy.base(active)
-   heuristic=policy(use)
+   heuristic=policy(use if trigger!='waiting' else torch.zeros_like(active))
+   if trigger=='waiting':heuristic=torch.full_like(learned,8)
    actions=heuristic if trigger=='heuristic' else torch.where(use,heuristic,learned)
    policy.pending&=use
    # No-visible-enemy handoff resets retreat lockout, even when the heuristic is inactive.
@@ -66,5 +85,5 @@ def main():
    for k in ['clear_rate','death_rate','timeout_rate','turns','kills']:assert metrics[k]==old_heuristic['metrics'][k],(name,k)
   report['results'][name]=dict(metrics=metrics,episodes=[dict(map_seed=env.metadata[i%32]['seed'],clear=bool(clear[i]),death=bool(terminal[i,6]),timeout=bool(terminal[i,7]),kills=int(terminal[i,3]),turns=int(terminal[i,5])) for i in range(1024)])
   print(name,json.dumps(metrics),flush=True)
-  (ROOT/'results/los-navigation-heuristic-combat.json').write_text(json.dumps(report,separators=(',',':'))+'\n')
+  (ROOT/('results/los-model-waiting-only.json' if args.waiting_only else 'results/los-navigation-heuristic-combat.json')).write_text(json.dumps(report,separators=(',',':'))+'\n')
 if __name__=='__main__':main()
