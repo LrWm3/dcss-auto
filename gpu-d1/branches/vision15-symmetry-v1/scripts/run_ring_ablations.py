@@ -318,7 +318,7 @@ def worker(store, manifest, job):
         model.load_state_dict(saved['model']); opt.load_state_dict(saved['optimizer'])
         env.state.copy_(saved['env_state'])
         env.restore(saved['symmetry_state'])
-        assert torch.equal(env.obs, saved['env_obs']) and torch.equal(env.mask, saved['env_mask'])
+        assert torch.equal(env.obs, saved['env_obs'].to(env.device)) and torch.equal(env.mask, saved['env_mask'].to(env.device))
         if job.get('frames', 1) > 1:
             env.restore_raw_observation()
         total, updates = saved['decisions'], saved['updates']
