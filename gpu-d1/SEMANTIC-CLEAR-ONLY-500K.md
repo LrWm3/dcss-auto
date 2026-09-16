@@ -57,3 +57,18 @@ RNG and simulator state, with no reward or learning changes. The original suite
 is preserved. New artifacts go to learning-runs/semantic-clear-only-1m; target
 1,000,448 total decisions. Results go to results/semantic-clear-only-1m.json.
 Additional training time is recorded separately from cumulative training time.
+
+### Completed 1M continuation
+
+Finished at 1,000,448 decisions and 2,389,809 physical training turns. Additional
+training took 69.46 seconds; cumulative training took 123.73 seconds. Continuation
+including validation took 116.71 seconds.
+
+Sampled validation: 982 clears, 35 deaths, 7 timeouts out of 1,024 (95.90% clears),
+7.99 rests, 91.75 waits and 696.87 physical turns per episode. This improves on
+931/87/6 at 500K. Shaped gamma=1 at 1M achieved 978/39/7: the four-clear difference
+is too small to establish superiority from this one-seed screen.
+
+Greedy validation: 0 clears, 16 deaths, 1,008 timeouts, with 1,992.78 waits per
+episode. Sampled improvement therefore does not fix the greedy waiting failure.
+Reward still equals the binary clear outcome in every evaluated episode.
