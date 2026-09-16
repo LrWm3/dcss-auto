@@ -94,3 +94,27 @@ checkpoint. Do not extrapolate this intermediate result to the final policy.
 
 Initial completion estimate: 16:15–16:25 Halifax time, dependent on macro lengths.
 The run remains bounded at approximately 10M decisions (whole PPO rollouts).
+
+## Completed 10M result
+
+Completed 10,027,008 policy decisions / 24,855,155 physical turns. Training-only
+time 1,518.87 seconds (25.31 minutes); total runner time including validation and
+checkpointing 1,754.16 seconds (29.24 minutes).
+
+| Policy | Clears / 1024 | Deaths | Timeouts |
+|---|---|---|---|
+| 5M sampled | 948 | 66 | 10 |
+| 10M sampled | 950 (92.77%) | 64 | 10 |
+| 10M greedy | 961 (93.85%) | 57 | 6 |
+| Deterministic reference | 986 (96.29%) | 27 | 11 |
+
+Sampled REST usage remains two selections across 1,024 episodes; greedy REST
+usage is zero. Mean sampled game turns 524.25, policy decisions 215.30, raw
+shaped return 26.75, versus reference 681.00 / 260.46 / 27.30. The reference
+rests 8.89 times per episode. A plateau is apparent on this validation panel:
+doubling training from 5M to 10M adds only two sampled clears. This is one seed,
+not evidence of an absolute performance ceiling. Discounting per physical turn
+may discourage long recovery, but that causal explanation remains untested.
+
+Final machine-readable summary: `results/semantic-actions-training.json`.
+The autoregressive successor was cancelled while queued and did not train.
