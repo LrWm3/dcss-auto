@@ -40,19 +40,27 @@ def main():
   b.lib.learn_progress_counts.argtypes=[C.c_void_p,C.c_int,C.c_void_p,C.c_void_p]
   raw_counts=torch.empty((64,2),dtype=torch.int32,device='cuda')
   active=torch.ones(64,dtype=torch.bool,device='cuda');previous=torch.zeros(64,device='cuda');counts=torch.zeros(3,device='cuda');torch.manual_seed(900000)
+  max_scalar_error=0.
   with torch.no_grad():
    for step in range(2048):
     assert torch.equal(a.obs,b.obs[:,:958]) and torch.equal(a.mask,b.mask)
     b.check(b.lib.learn_progress_counts(b.state.data_ptr(),64,raw_counts.data_ptr(),b.stream))
     expected=raw_counts[:,0].float()/24 if job['progress_input']==1 else raw_counts[:,1].float()/1024
-    assert torch.equal(b.obs[:,958],expected)
+    # CUDA and Torch may implement division by 24 with different rounding.
+    # Validate the represented integer exactly and allow <=1 float32 ULP.
+    scale=24 if job['progress_input']==1 else 1024
+    column=0 if job['progress_input']==1 else 1
+    assert torch.equal(torch.round(b.obs[:,958]*scale).int(),raw_counts[:,column])
+    error=(b.obs[:,958]-expected).abs().max().item()
+    max_scalar_error=max(max_scalar_error,error)
+    assert error<=1e-7,(job['name'],step,error)
     action=model(a.obs,a.mask).sample();a.step(action,active=active);b.step(action,active=active)
     assert torch.equal(a.state,b.state) and torch.equal(a.out[active],b.out[active])
     kills=a.out[:,3]-previous
     counts+=torch.stack((kills[active].sum(),a.out[active,2].sum(),a.out[active,6].sum()))
     previous=a.out[:,3].clone();active &= a.out[:,1]==0
    assert not active.any();assert (counts>0).all()
-  report['validation'][job['name']]=dict(full_state_original_observation_mask_all_outputs_equal=True,progress_values_checked_against_state_arrays=True,synthetic_counter_tests=True,kills=int(counts[0]),clears=int(counts[1]),deaths=int(counts[2]),episodes=64)
+  report['validation'][job['name']]=dict(full_state_original_observation_mask_all_outputs_equal=True,progress_values_checked_against_state_arrays=True,synthetic_counter_tests=True,encoded_integer_count_exact=True,max_scalar_reference_difference=max_scalar_error,kills=int(counts[0]),clears=int(counts[1]),deaths=int(counts[2]),episodes=64)
   curve=json.loads((suite/'runs'/job['id']/'curve.json').read_text());assert [r['decisions'] for r in curve]==[r['decisions'] for r in original['checkpoints']]
   for row in curve:row['checkpoint_sha256']=digest(suite/'runs'/job['id']/'snapshots'/f"{row['decisions']:012d}.pt")
   init=torch.load(suite/'runs'/job['id']/'snapshots/000000000000.pt',weights_only=False,map_location='cpu')['model']

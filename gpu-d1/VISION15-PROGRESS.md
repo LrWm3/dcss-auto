@@ -54,3 +54,59 @@ or the seen-floor bitmap. Require coverage of kills, clears and deaths.
 Retention uses existing bounded latest/best and compact milestone snapshots,
 2 GiB suite cap and 5 GiB free-space reserve. Existing ignores cover weights,
 compiled libraries and runtime logs. Compact JSON summaries are tracked.
+
+## Completed results
+
+Both variants reached 10,027,008 decisions. Sampled policy, same 1,024 validation
+episodes per checkpoint, 2048-turn evaluation limit.
+
+| Added progress input | Clear | Death | Timeout | Mean turns | Mean kills | Training seconds |
+|---|---:|---:|---:|---:|---:|---:|
+| None (reused baseline) | 61.52% | 37.40% | 1.07% | 473.4 | 18.35 | 69.55 |
+| Enemies remaining | 68.26% | 30.76% | 0.98% | 499.2 | 19.42 | 71.19 |
+| Unique floor tiles seen | 69.53% | 29.20% | 1.27% | 508.6 | 19.75 | 73.32 |
+
+Clear-rate learning curves:
+
+| Decisions | None | Enemies remaining | Floor tiles seen |
+|---|---:|---:|---:|
+| 0 | 0.00% | 0.00% | 0.00% |
+| 131,072 | 0.00% | 0.00% | 0.00% |
+| 327,680 | 0.00% | 0.00% | 0.00% |
+| 1,015,808 | 0.00% | 0.00% | 0.20% |
+| 2,031,616 | 40.72% | 44.82% | 43.07% |
+| 3,014,656 | 46.09% | 54.30% | 45.61% |
+| 5,013,504 | 54.88% | 59.77% | 55.57% |
+| 7,503,872 | 58.20% | 64.45% | 61.23% |
+| 10,027,008 | 61.52% | 68.26% | 69.53% |
+
+Remaining-enemy count improves final clear rate by 6.74 percentage points over
+the baseline; seen-floor count improves it by 8.01 points. Most of the difference
+comes from fewer deaths, with timeouts near 1%. Seen-floor count trails enemy
+count at intermediate milestones and finishes 1.27 points higher; one seed is
+insufficient to rank these inputs reliably or establish robustness.
+
+The results are consistent with useful progress information being absent from
+the baseline. They do not establish that the policies understand the clear
+condition, nor that missing progress caused the previous +21/+84 reward failures.
+The new scalar could affect exploration, combat risk or state-value estimation.
+Reward-by-observation interactions require a separate experiment. All earlier
+reward experiments remain valid measurements of those observation/reward setups.
+
+Both variants passed the paired 64-episode checks: full state, original 958 input
+values, masks, rewards and outputs matched the unchanged simulator exactly.
+Each comparison included 1,202 kills, 39 clears and 23 deaths. Counts were checked
+against actual living-enemy arrays and the seen-floor bitmap; encoded integers
+matched exactly, including resets. Synthetic counter tests, initial model weight
+and outcome equality, corpus hashes and source hashes all passed.
+
+The first validation attempt used bit-exact comparison between CUDA and Torch
+division by 24. It rejected a 5.96e-8 rounding difference. Validation now requires
+exact recovery of the integer count and a normalized-value difference <=1e-7;
+the floor-count input matches exactly. No simulator or trained policy changed,
+and completed training was reused when rerunning validation. The result's
+wall_seconds measures this final orchestrator pass, not original training plus
+validation wall time. Training times above retain the full measured training.
+
+Artifact: `results/vision15-progress-10m.json`, with complete sampled/greedy
+curves, per-map outcomes, checkpoint hashes and validation results.
