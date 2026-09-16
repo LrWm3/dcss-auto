@@ -422,12 +422,20 @@ def worker(store, manifest, job):
                 gae = delta+discount*job['gae_lambda']*live*gae
                 advantages[t], nextv = gae, values[t]
             returns = (advantages[:T]+values[:T]).flatten()
-            adv = advantages[:T].flatten(); adv = (adv-adv.mean())/(adv.std()+1e-8)
+            adv = advantages[:T].flatten()
+            center = 0 if job.get('diagnostic_no_advantage_centering') else adv.mean()
+            adv = (adv-center)/(adv.std()+1e-8)
         for _ in range(job['epochs']):
             for inds in torch.randperm(T*B, device='cuda').split(job['minibatch']):
                 dist, v = model(observations[:T].flatten(0, 1)[inds], masks[:T].flatten(0, 1)[inds])
                 ratio = (dist.log_prob(actions[:T].flatten()[inds])-oldlp[:T].flatten()[inds]).exp()
-                pg = -torch.minimum(ratio*adv[inds], ratio.clamp(.8, 1.2)*adv[inds]).mean()
+                policy_terms = -torch.minimum(ratio*adv[inds], ratio.clamp(.8, 1.2)*adv[inds])
+                if job.get('diagnostic_drop_negative_move_advantage'):
+                    # Causal intervention only: remove this actor gradient, retain
+                    # all transitions/critic targets and the original denominator.
+                    keep = ~((actions[:T].flatten()[inds] < 8) & (adv[inds] < 0))
+                    policy_terms = policy_terms * keep
+                pg = policy_terms.mean()
                 loss = pg+.25*(v-returns[inds]).square().mean()-job['entropy']*dist.entropy().mean()
                 if not torch.isfinite(loss).item():
                     raise RuntimeError('Non-finite PPO loss')

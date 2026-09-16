@@ -1,0 +1,219 @@
+{
+  "rollout": {
+    "episodes": 64,
+    "clears": 55,
+    "deaths": 9,
+    "timeouts": 0,
+    "turns": 602.65625,
+    "reward": 0.8533484935760498,
+    "decisions": 33733,
+    "physical_turns": 38570,
+    "loop_episodes": 0,
+    "loop_timeouts": 0,
+    "turns_by_outcome": {
+      "clear": 671.7999877929688,
+      "death": 180.11111450195312,
+      "timeout": null
+    }
+  },
+  "variants": {
+    "without_negative_nav": {
+      "evaluation": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 123,
+          "deaths": 5,
+          "timeouts": 0,
+          "turns": 661.6015625,
+          "reward": 0.9543215036392212,
+          "loop_episodes": 3,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 368.390625,
+            "attack": 142.890625,
+            "wait": 57.625,
+            "rest": 8.9296875
+          },
+          "turns_by_outcome": {
+            "clear": 682.6747436523438,
+            "death": 143.1999969482422,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 121,
+          "deaths": 2,
+          "timeouts": 5,
+          "turns": 728.6484375,
+          "reward": 0.9380260109901428,
+          "loop_episodes": 5,
+          "loop_timeouts": 5,
+          "actions": {
+            "move": 434.5625,
+            "attack": 143.71875,
+            "wait": 57.5859375,
+            "rest": 8.9296875
+          },
+          "turns_by_outcome": {
+            "clear": 686.0164794921875,
+            "death": 9.5,
+            "timeout": 2048.0
+          }
+        }
+      },
+      "parameter_change_norm": {
+        "body": 0.324912802892566,
+        "actor": 0.06281782517331155,
+        "direction": 0.06141897439168947,
+        "type_embedding": 0.0027396396642646054,
+        "critic": 0.0
+      },
+      "approx_kl": 0.0011177260894328356
+    },
+    "without_centering": {
+      "evaluation": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 124,
+          "deaths": 4,
+          "timeouts": 0,
+          "turns": 669.8359375,
+          "reward": 0.9620516300201416,
+          "loop_episodes": 3,
+          "loop_timeouts": 0,
+          "actions": {
+            "move": 373.828125,
+            "attack": 144.4375,
+            "wait": 58.296875,
+            "rest": 8.921875
+          },
+          "turns_by_outcome": {
+            "clear": 685.6047973632812,
+            "death": 181.0,
+            "timeout": null
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 119,
+          "deaths": 2,
+          "timeouts": 7,
+          "turns": 751.7890625,
+          "reward": 0.9221696853637695,
+          "loop_episodes": 7,
+          "loop_timeouts": 7,
+          "actions": {
+            "move": 458.375,
+            "attack": 143.1171875,
+            "wait": 57.234375,
+            "rest": 8.921875
+          },
+          "turns_by_outcome": {
+            "clear": 688.0000610351562,
+            "death": 10.5,
+            "timeout": 2048.0
+          }
+        }
+      },
+      "parameter_change_norm": {
+        "body": 0.30226490058484207,
+        "actor": 0.10702526151260969,
+        "direction": 0.06384781540516332,
+        "type_embedding": 0.003326665908281344,
+        "critic": 0.0
+      },
+      "approx_kl": 0.000975493632722646
+    },
+    "shuffled_advantages": {
+      "evaluation": {
+        "sampled": {
+          "episodes": 128,
+          "clears": 121,
+          "deaths": 5,
+          "timeouts": 2,
+          "turns": 690.3671875,
+          "reward": 0.9384088516235352,
+          "loop_episodes": 16,
+          "loop_timeouts": 2,
+          "actions": {
+            "move": 400.546875,
+            "attack": 143.3203125,
+            "wait": 56.625,
+            "rest": 8.8828125
+          },
+          "turns_by_outcome": {
+            "clear": 690.8677368164062,
+            "death": 135.1999969482422,
+            "timeout": 2048.0
+          }
+        },
+        "greedy": {
+          "episodes": 128,
+          "clears": 80,
+          "deaths": 4,
+          "timeouts": 44,
+          "turns": 1149.7578125,
+          "reward": 0.6135024428367615,
+          "loop_episodes": 46,
+          "loop_timeouts": 44,
+          "actions": {
+            "move": 894.25,
+            "attack": 123.890625,
+            "wait": 48.7890625,
+            "rest": 7.859375
+          },
+          "turns_by_outcome": {
+            "clear": 707.5,
+            "death": 114.25,
+            "timeout": 2048.0
+          }
+        }
+      },
+      "parameter_change_norm": {
+        "body": 0.45196065960664106,
+        "actor": 0.03964751643926082,
+        "direction": 0.1243026776251325,
+        "type_embedding": 0.005745219670627768,
+        "critic": 0.0
+      },
+      "approx_kl": 0.027203915640711784
+    }
+  },
+  "credit": {
+    "move": {
+      "count": 21243,
+      "positive_fraction": 0.04203737527132034,
+      "raw_advantage_mean": 0.011935069225728512,
+      "normalized_advantage_mean": -0.09542722254991531,
+      "mean_chosen_probability": 0.9946550130844116,
+      "successful_episode_fraction": 0.9705314636230469
+    },
+    "attack": {
+      "count": 8770,
+      "positive_fraction": 0.08129988610744476,
+      "raw_advantage_mean": 0.04694286361336708,
+      "normalized_advantage_mean": 0.20468297600746155,
+      "mean_chosen_probability": 0.9819236397743225,
+      "successful_episode_fraction": 0.9334093332290649
+    },
+    "wait": {
+      "count": 3212,
+      "positive_fraction": 0.07036114484071732,
+      "raw_advantage_mean": 0.03264249488711357,
+      "normalized_advantage_mean": 0.08209063857793808,
+      "mean_chosen_probability": 0.9963288903236389,
+      "successful_episode_fraction": 0.9458281397819519
+    },
+    "rest": {
+      "count": 508,
+      "positive_fraction": 0.04921259731054306,
+      "raw_advantage_mean": 0.01581413485109806,
+      "normalized_advantage_mean": -0.06217329949140549,
+      "mean_chosen_probability": 0.9993575811386108,
+      "successful_episode_fraction": 0.9448819160461426
+    }
+  },
+  "seconds": 31.320215141866356,
+  "status": "complete"
+}
