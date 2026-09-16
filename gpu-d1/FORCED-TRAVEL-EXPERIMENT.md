@@ -100,3 +100,48 @@ gpu-d1/.venv/bin/python gpu-d1/branches/vision15-forced-travel-v1/scripts/evalua
 
 The result artifact includes sampled and greedy outcomes and per-map metrics,
 checkpoint/library/script hashes, and evaluation time.
+
+## Applying forced travel to previously trained policies
+
+`scripts/evaluate_policy_transfer.py` evaluates the optional-travel 30M model,
+the no-travel 30M model, and its 42.66M time-matched continuation. All use the
+same 15x15 observation schema and no-ogre enemy statistics. No weights change.
+Each model is evaluated under its original rules, forced travel with 512 game
+turns, forced travel with 512 decisions, and the latter with its original
+physical-turn clock input retained as a control.
+
+For nine-action no-travel models, an external controller supplies action 9 when
+the forced environment enables it. The original actor handles all other states.
+Implementation appends a fixed travel logit to the original nine logits, with
+the mutually exclusive forced-action mask; it adds no learned parameters. For
+the ten-action optional-travel model, the forced mask is applied directly.
+
+Validation reproduces the original sampled and greedy outcome rates, kills,
+and episode turns, with a 1e-7 tolerance for floor coverage due to CPU/GPU mean
+rounding. Corpus and library hashes are verified, source checkpoint hashes are
+checked unchanged after evaluation, and both modes/per-map metrics are retained.
+Nine-to-ten action adaptation can change sampled RNG trajectories, so individual
+episodes are not claimed to be paired counterfactuals.
+
+```sh
+gpu-d1/.venv/bin/python gpu-d1/branches/vision15-forced-travel-v1/scripts/evaluate_policy_transfer.py \
+  --output gpu-d1/results/vision15-forced-travel-policy-transfer.json
+```
+
+Completed sampled validation (clear rates):
+
+| Fixed source model | Original rules | Forced, 512 turns | Forced, 512 decisions | Decision deadline, physical clock |
+|---|---:|---:|---:|---:|
+| Optional travel, 30M | 19.73% | 21.19% | 85.16% | 83.40% |
+| No travel, 30M | 20.02% | 18.85% | 77.54% | 75.20% |
+| No travel, 42.66M | 19.73% | 21.78% | 80.66% | 79.88% |
+
+Forced travel with the same physical deadline has small, mixed effects. Adding
+the decision deadline produces large gains even for policies never trained with
+travel. Thus training with the macro is not necessary to obtain most of this
+completion gain in this toy task. The optional-travel policy remains stronger
+than these no-travel policies under the new controller/budget in this seed.
+These comparisons do not isolate automatic travel from the added game time in
+the decision-budget columns; optional control with an extended physical deadline
+would be a separate experiment. Aggregate original evaluations reproduce as
+specified above, and all checkpoint immutability checks passed.
