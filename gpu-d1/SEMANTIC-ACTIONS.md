@@ -72,3 +72,25 @@ underlying game turns, action counts, rest/explore durations, clear/death/timeou
 rates, and sampled/greedy validation. Completion writes the compact tracked result
 to `results/semantic-actions-training.json`. Training status remains in
 `learning-runs/semantic-actions/status.json`.
+
+## First checkpoint (run still in progress)
+
+Launched September 16, 2026, approximately 15:49 Halifax time. Background launcher
+PID 1567351; worker PID 1567382. Process IDs are historical, not resumable handles.
+
+| Policy | Clears / 1024 | Deaths | Timeouts |
+|---|---|---|---|
+| Untrained, sampled | 668 | 348 | 8 |
+| 1,015,808 decisions, sampled | 911 | 104 | 9 |
+| 1,015,808 decisions, greedy | 922 | 95 | 7 |
+| Deterministic reference | 986 | 27 | 11 |
+
+First checkpoint training time: 140.93 seconds, excluding validation; 2,482,782
+underlying game turns. Sampled mean episode length 508.13 game turns / 207.76
+policy decisions. Mean action selections: attack 137.75, explore 22.80, engage
+41.24, wait 5.96, rest 0.02. Thus learning improves over the already capable
+restricted-action initialization, but resting is almost absent at this early
+checkpoint. Do not extrapolate this intermediate result to the final policy.
+
+Initial completion estimate: 16:15–16:25 Halifax time, dependent on macro lengths.
+The run remains bounded at approximately 10M decisions (whole PPO rollouts).
