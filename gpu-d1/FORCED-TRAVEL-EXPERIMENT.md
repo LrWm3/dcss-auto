@@ -145,3 +145,35 @@ These comparisons do not isolate automatic travel from the added game time in
 the decision-budget columns; optional control with an extended physical deadline
 would be a separate experiment. Aggregate original evaluations reproduce as
 specified above, and all checkpoint immutability checks passed.
+
+## Estimating a less restrictive physical-turn limit
+
+Replayed the five fixed policies under forced travel, 512 outer decisions and
+the decision clock. Each replay reproduces its earlier sampled clear rate
+exactly; no training occurs. Turns below are conditional on successful clearing:
+
+| Source policy | Median | 95th percentile | 99th percentile | Maximum |
+|---|---:|---:|---:|---:|
+| Optional travel, 30M | 589 | 769 | 898 | 976 |
+| No travel, 30M | 602 | 758 | 855 | 950 |
+| No travel, 42.66M | 591 | 780 | 878 | 980 |
+| Forced, turn-trained | 597 | 768 | 899 | 961 |
+| Forced, decision-trained | 592 | 760 | 870 | 986 |
+
+A 768-game-turn cutoff would truncate 33-47 observed successful episodes per
+1,024 evaluation episodes, depending on policy. At 896, 4-10 successful episodes
+would be truncated; at 1,024, none. Thus 1,024 turns is a reasonable candidate
+for a mostly non-limiting budget for these policies on this validation set.
+1,280 would add margin, but its benefit is not demonstrated by these traces.
+
+These are retrospective cutoffs of trajectories produced with a different clock,
+not direct evaluations under a new physical deadline. Changing the normalized
+clock may change behavior. Episodes already censored by the 512-decision limit
+(0.1-1.6%, depending on policy) do not tell us how long eventual clears might
+take, and unseen maps can have longer tails. This is not a universal guarantee.
+
+Script: `scripts/evaluate_turn_distribution.py --output <path>`.
+Artifact: `results/vision15-forced-travel-turn-distribution.json` includes full
+metrics, all-episode and clear-only turn distributions, and counts of successful
+clears/ongoing episodes at candidate cutoffs. Source/checkpoint/library hashes
+are recorded and original checkpoints remain unchanged.

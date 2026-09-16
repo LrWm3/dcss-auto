@@ -65,6 +65,21 @@ def evaluate(model, env, mode, physical_clock):
     result = metrics(slice(None))
     result['maps'] = {str(m['seed']): metrics(slice(i, None, len(env.metadata)))
                       for i, m in enumerate(env.metadata)}
+    cleared = terminal[:, 2] > 0
+    def turn_summary(values):
+        if not values.numel():
+            return None
+        return dict(count=values.numel(), mean=values.mean().item(),
+                    **{name: torch.quantile(values, q).item() for name, q in
+                       [('median', .5), ('p90', .9), ('p95', .95), ('p99', .99)]},
+                    maximum=values.max().item())
+    result['turn_distribution'] = dict(all_episodes=turn_summary(turns),
+                                      clears=turn_summary(turns[cleared]))
+    result['clear_turn_thresholds'] = {
+        str(limit): dict(clears_by_turn=int((cleared & (turns <= limit)).sum().item()),
+                         clears_after_turn=int((cleared & (turns > limit)).sum().item()),
+                         episodes_still_running=int((turns > limit).sum().item()))
+        for limit in [512, 640, 768, 896, 1024, 1280, 1536]}
     return result
 
 

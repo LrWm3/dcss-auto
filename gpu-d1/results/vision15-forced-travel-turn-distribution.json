@@ -1,0 +1,2293 @@
+{
+  "training_performed": false,
+  "deadline": "512 outer decisions",
+  "clock": "decisions/512",
+  "library_sha256": "28cbd97e0f6a4977510939ca5a42eb1bc8c6f0744e01b92e2116a29a84b7026b",
+  "sources": {
+    "evaluate_turn_distribution.py": "e6570ad41b144fd9707b4deebedd8d536f5b9526c4dc787957bc1f3037e2db38",
+    "evaluate_deadline_transfer.py": "9bc9d5994736b10df6a4582e705c317a17965af9060f956bd3f589c5bcbc122c",
+    "evaluate_policy_transfer.py": "261e224c73fdeca91ec3858fc378a05a83785acd7da1a4fee5c83d3b28f40f84"
+  },
+  "policies": {
+    "optional_travel_30m": {
+      "checkpoint_sha256": "09847bf3e4914f54a8cb2f816bcc0bcd553b572397f32516e2221a68e3bd3f7f",
+      "clear_rate": 0.8515625,
+      "death_rate": 0.1474609375,
+      "timeout_rate": 0.0009765625,
+      "kills": 21.7470703125,
+      "floor_coverage": 0.8914822340011597,
+      "turns": 528.2216796875,
+      "policy_decisions": 290.1171875,
+      "shaped_return": 25.368335723876953,
+      "travel_turns": 318.7001953125,
+      "travel_uses": 80.595703125,
+      "maps": {
+        "62655": {
+          "clear_rate": 0.75,
+          "death_rate": 0.25,
+          "timeout_rate": 0.0,
+          "kills": 20.40625,
+          "floor_coverage": 0.8527078628540039,
+          "turns": 404.75,
+          "policy_decisions": 232.375,
+          "shaped_return": 22.6998233795166,
+          "travel_turns": 219.15625,
+          "travel_uses": 46.78125
+        },
+        "63315": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 19.8125,
+          "floor_coverage": 0.8126368522644043,
+          "turns": 504.40625,
+          "policy_decisions": 273.34375,
+          "shaped_return": 23.306047439575195,
+          "travel_turns": 308.5625,
+          "travel_uses": 77.5
+        },
+        "63391": {
+          "clear_rate": 0.625,
+          "death_rate": 0.375,
+          "timeout_rate": 0.0,
+          "kills": 18.46875,
+          "floor_coverage": 0.7739396095275879,
+          "turns": 398.75,
+          "policy_decisions": 255.59375,
+          "shaped_return": 21.237388610839844,
+          "travel_turns": 205.53125,
+          "travel_uses": 62.375
+        },
+        "63453": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.40625,
+          "floor_coverage": 0.9167593717575073,
+          "turns": 462.5625,
+          "policy_decisions": 284.59375,
+          "shaped_return": 26.317455291748047,
+          "travel_turns": 244.71875,
+          "travel_uses": 66.75
+        },
+        "63913": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 20.46875,
+          "floor_coverage": 0.8252907991409302,
+          "turns": 475.5625,
+          "policy_decisions": 279.625,
+          "shaped_return": 24.180953979492188,
+          "travel_turns": 266.53125,
+          "travel_uses": 70.59375
+        },
+        "64026": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.0625,
+          "floor_coverage": 0.9207750558853149,
+          "turns": 562.3125,
+          "policy_decisions": 299.71875,
+          "shaped_return": 26.955638885498047,
+          "travel_turns": 347.1875,
+          "travel_uses": 84.59375
+        },
+        "64106": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.03125,
+          "kills": 23.1875,
+          "floor_coverage": 0.9467076063156128,
+          "turns": 617.90625,
+          "policy_decisions": 310.90625,
+          "shaped_return": 27.056922912597656,
+          "travel_turns": 397.5625,
+          "travel_uses": 90.5625
+        },
+        "64379": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 20.96875,
+          "floor_coverage": 0.8775539398193359,
+          "turns": 365.1875,
+          "policy_decisions": 257.5625,
+          "shaped_return": 24.242198944091797,
+          "travel_turns": 150.9375,
+          "travel_uses": 43.3125
+        },
+        "64869": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.75,
+          "floor_coverage": 0.9365977048873901,
+          "turns": 624.375,
+          "policy_decisions": 310.59375,
+          "shaped_return": 26.482513427734375,
+          "travel_turns": 404.65625,
+          "travel_uses": 90.875
+        },
+        "64952": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.375,
+          "floor_coverage": 0.9083288908004761,
+          "turns": 571.3125,
+          "policy_decisions": 289.46875,
+          "shaped_return": 26.066139221191406,
+          "travel_turns": 362.0625,
+          "travel_uses": 80.21875
+        },
+        "65051": {
+          "clear_rate": 0.46875,
+          "death_rate": 0.53125,
+          "timeout_rate": 0.0,
+          "kills": 15.3125,
+          "floor_coverage": 0.6865047812461853,
+          "turns": 254.6875,
+          "policy_decisions": 191.0625,
+          "shaped_return": 17.257383346557617,
+          "travel_turns": 90.5625,
+          "travel_uses": 26.9375
+        },
+        "65650": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 20.34375,
+          "floor_coverage": 0.8327314257621765,
+          "turns": 509.90625,
+          "policy_decisions": 266.71875,
+          "shaped_return": 23.397294998168945,
+          "travel_turns": 317.78125,
+          "travel_uses": 74.59375
+        },
+        "65772": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.4375,
+          "floor_coverage": 0.9492007493972778,
+          "turns": 560.90625,
+          "policy_decisions": 307.125,
+          "shaped_return": 27.32942008972168,
+          "travel_turns": 345.78125,
+          "travel_uses": 92.0
+        },
+        "65838": {
+          "clear_rate": 1.0,
+          "death_rate": 0.0,
+          "timeout_rate": 0.0,
+          "kills": 24.0,
+          "floor_coverage": 0.9687225818634033,
+          "turns": 694.53125,
+          "policy_decisions": 350.6875,
+          "shaped_return": 28.432796478271484,
+          "travel_turns": 470.21875,
+          "travel_uses": 126.375
+        },
+        "66008": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 21.8125,
+          "floor_coverage": 0.890869140625,
+          "turns": 609.4375,
+          "policy_decisions": 292.1875,
+          "shaped_return": 25.179767608642578,
+          "travel_turns": 396.84375,
+          "travel_uses": 79.59375
+        },
+        "66179": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.53125,
+          "floor_coverage": 0.924548864364624,
+          "turns": 582.96875,
+          "policy_decisions": 336.21875,
+          "shaped_return": 27.02086639404297,
+          "travel_turns": 359.03125,
+          "travel_uses": 112.28125
+        },
+        "66384": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 21.875,
+          "floor_coverage": 0.9048926830291748,
+          "turns": 457.125,
+          "policy_decisions": 283.46875,
+          "shaped_return": 25.30270767211914,
+          "travel_turns": 237.03125,
+          "travel_uses": 63.375
+        },
+        "70377": {
+          "clear_rate": 0.59375,
+          "death_rate": 0.40625,
+          "timeout_rate": 0.0,
+          "kills": 18.6875,
+          "floor_coverage": 0.8027328252792358,
+          "turns": 361.09375,
+          "policy_decisions": 238.34375,
+          "shaped_return": 21.582420349121094,
+          "travel_turns": 162.5625,
+          "travel_uses": 39.8125
+        },
+        "71260": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.03125,
+          "floor_coverage": 0.8968307971954346,
+          "turns": 573.03125,
+          "policy_decisions": 295.75,
+          "shaped_return": 25.662919998168945,
+          "travel_turns": 371.65625,
+          "travel_uses": 94.375
+        },
+        "71314": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 21.9375,
+          "floor_coverage": 0.906589150428772,
+          "turns": 376.1875,
+          "policy_decisions": 257.15625,
+          "shaped_return": 24.875823974609375,
+          "travel_turns": 170.125,
+          "travel_uses": 51.09375
+        },
+        "71555": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.1875,
+          "floor_coverage": 0.9478697776794434,
+          "turns": 604.875,
+          "policy_decisions": 333.90625,
+          "shaped_return": 27.37133026123047,
+          "travel_turns": 385.84375,
+          "travel_uses": 114.875
+        },
+        "71600": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.75,
+          "floor_coverage": 0.9588514566421509,
+          "turns": 704.09375,
+          "policy_decisions": 335.21875,
+          "shaped_return": 27.750043869018555,
+          "travel_turns": 480.6875,
+          "travel_uses": 111.8125
+        },
+        "71651": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.03125,
+          "floor_coverage": 0.8972417712211609,
+          "turns": 595.09375,
+          "policy_decisions": 310.03125,
+          "shaped_return": 25.90398406982422,
+          "travel_turns": 388.21875,
+          "travel_uses": 103.15625
+        },
+        "71831": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.21875,
+          "floor_coverage": 0.9430387020111084,
+          "turns": 647.6875,
+          "policy_decisions": 323.4375,
+          "shaped_return": 27.28226661682129,
+          "travel_turns": 431.1875,
+          "travel_uses": 106.9375
+        },
+        "72094": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 21.46875,
+          "floor_coverage": 0.8918598294258118,
+          "turns": 373.15625,
+          "policy_decisions": 242.65625,
+          "shaped_return": 24.437292098999023,
+          "travel_turns": 178.375,
+          "travel_uses": 47.875
+        },
+        "72244": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.8125,
+          "floor_coverage": 0.9089890718460083,
+          "turns": 645.5625,
+          "policy_decisions": 317.75,
+          "shaped_return": 26.680892944335938,
+          "travel_turns": 438.9375,
+          "travel_uses": 111.125
+        },
+        "72250": {
+          "clear_rate": 0.75,
+          "death_rate": 0.25,
+          "timeout_rate": 0.0,
+          "kills": 20.125,
+          "floor_coverage": 0.8304063081741333,
+          "turns": 446.46875,
+          "policy_decisions": 261.21875,
+          "shaped_return": 23.869361877441406,
+          "travel_turns": 233.46875,
+          "travel_uses": 48.21875
+        },
+        "72288": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.84375,
+          "floor_coverage": 0.9288856983184814,
+          "turns": 514.8125,
+          "policy_decisions": 293.59375,
+          "shaped_return": 26.908390045166016,
+          "travel_turns": 302.78125,
+          "travel_uses": 81.5625
+        },
+        "72296": {
+          "clear_rate": 1.0,
+          "death_rate": 0.0,
+          "timeout_rate": 0.0,
+          "kills": 24.0,
+          "floor_coverage": 0.9683502912521362,
+          "turns": 573.6875,
+          "policy_decisions": 319.65625,
+          "shaped_return": 28.032949447631836,
+          "travel_turns": 350.625,
+          "travel_uses": 96.59375
+        },
+        "72423": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.46875,
+          "floor_coverage": 0.917125403881073,
+          "turns": 788.28125,
+          "policy_decisions": 355.875,
+          "shaped_return": 27.6232967376709,
+          "travel_turns": 563.03125,
+          "travel_uses": 130.625
+        },
+        "72475": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 23.21875,
+          "floor_coverage": 0.9423292875289917,
+          "turns": 601.09375,
+          "policy_decisions": 321.125,
+          "shaped_return": 27.058856964111328,
+          "travel_turns": 388.28125,
+          "travel_uses": 108.3125
+        },
+        "72581": {
+          "clear_rate": 0.78125,
+          "death_rate": 0.21875,
+          "timeout_rate": 0.0,
+          "kills": 20.90625,
+          "floor_coverage": 0.8575642108917236,
+          "turns": 441.28125,
+          "policy_decisions": 256.78125,
+          "shaped_return": 24.281543731689453,
+          "travel_turns": 228.46875,
+          "travel_uses": 43.96875
+        }
+      },
+      "turn_distribution": {
+        "all_episodes": {
+          "count": 1024,
+          "mean": 528.2216796875,
+          "median": 568.0,
+          "p90": 711.0,
+          "p95": 747.8499755859375,
+          "p99": 890.0,
+          "maximum": 976.0
+        },
+        "clears": {
+          "count": 872,
+          "mean": 589.1559448242188,
+          "median": 589.0,
+          "p90": 717.8999633789062,
+          "p95": 769.0,
+          "p99": 897.7697143554688,
+          "maximum": 976.0
+        }
+      },
+      "clear_turn_thresholds": {
+        "512": {
+          "clears_by_turn": 221,
+          "clears_after_turn": 651,
+          "episodes_still_running": 657
+        },
+        "640": {
+          "clears_by_turn": 587,
+          "clears_after_turn": 285,
+          "episodes_still_running": 287
+        },
+        "768": {
+          "clears_by_turn": 827,
+          "clears_after_turn": 45,
+          "episodes_still_running": 45
+        },
+        "896": {
+          "clears_by_turn": 863,
+          "clears_after_turn": 9,
+          "episodes_still_running": 9
+        },
+        "1024": {
+          "clears_by_turn": 872,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1280": {
+          "clears_by_turn": 872,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1536": {
+          "clears_by_turn": 872,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        }
+      }
+    },
+    "no_travel_30m": {
+      "checkpoint_sha256": "9765bbd9b09c4ec254602efb030dc2bea5c3b28a7d4d5a7a0bef795ce5753e8e",
+      "clear_rate": 0.775390625,
+      "death_rate": 0.208984375,
+      "timeout_rate": 0.015625,
+      "kills": 20.724609375,
+      "floor_coverage": 0.858435869216919,
+      "turns": 503.18359375,
+      "policy_decisions": 299.6591796875,
+      "shaped_return": 24.007383346557617,
+      "travel_turns": 269.8779296875,
+      "travel_uses": 66.353515625,
+      "maps": {
+        "62655": {
+          "clear_rate": 0.75,
+          "death_rate": 0.25,
+          "timeout_rate": 0.0,
+          "kills": 21.0625,
+          "floor_coverage": 0.873290479183197,
+          "turns": 416.71875,
+          "policy_decisions": 250.1875,
+          "shaped_return": 23.362918853759766,
+          "travel_turns": 209.40625,
+          "travel_uses": 42.875
+        },
+        "63315": {
+          "clear_rate": 0.78125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.03125,
+          "kills": 20.375,
+          "floor_coverage": 0.8306971788406372,
+          "turns": 510.96875,
+          "policy_decisions": 315.03125,
+          "shaped_return": 23.809494018554688,
+          "travel_turns": 262.375,
+          "travel_uses": 66.4375
+        },
+        "63391": {
+          "clear_rate": 0.46875,
+          "death_rate": 0.53125,
+          "timeout_rate": 0.0,
+          "kills": 16.46875,
+          "floor_coverage": 0.7250963449478149,
+          "turns": 353.09375,
+          "policy_decisions": 242.21875,
+          "shaped_return": 18.544042587280273,
+          "travel_turns": 156.0625,
+          "travel_uses": 45.1875
+        },
+        "63453": {
+          "clear_rate": 0.6875,
+          "death_rate": 0.3125,
+          "timeout_rate": 0.0,
+          "kills": 20.46875,
+          "floor_coverage": 0.8532392978668213,
+          "turns": 406.5625,
+          "policy_decisions": 280.125,
+          "shaped_return": 23.432514190673828,
+          "travel_turns": 175.53125,
+          "travel_uses": 49.09375
+        },
+        "63913": {
+          "clear_rate": 0.6875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.03125,
+          "kills": 18.5625,
+          "floor_coverage": 0.7768138647079468,
+          "turns": 486.40625,
+          "policy_decisions": 290.15625,
+          "shaped_return": 21.672176361083984,
+          "travel_turns": 257.25,
+          "travel_uses": 61.0
+        },
+        "64026": {
+          "clear_rate": 0.875,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.03125,
+          "kills": 22.21875,
+          "floor_coverage": 0.912040650844574,
+          "turns": 568.84375,
+          "policy_decisions": 316.96875,
+          "shaped_return": 25.869739532470703,
+          "travel_turns": 327.375,
+          "travel_uses": 75.5
+        },
+        "64106": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.125,
+          "timeout_rate": 0.03125,
+          "kills": 21.84375,
+          "floor_coverage": 0.887090802192688,
+          "turns": 558.53125,
+          "policy_decisions": 311.65625,
+          "shaped_return": 25.402360916137695,
+          "travel_turns": 315.5,
+          "travel_uses": 68.625
+        },
+        "64379": {
+          "clear_rate": 0.75,
+          "death_rate": 0.21875,
+          "timeout_rate": 0.03125,
+          "kills": 20.40625,
+          "floor_coverage": 0.8459137082099915,
+          "turns": 357.46875,
+          "policy_decisions": 271.84375,
+          "shaped_return": 23.41292381286621,
+          "travel_turns": 119.15625,
+          "travel_uses": 33.53125
+        },
+        "64869": {
+          "clear_rate": 0.75,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0625,
+          "kills": 20.75,
+          "floor_coverage": 0.8657663464546204,
+          "turns": 570.53125,
+          "policy_decisions": 314.03125,
+          "shaped_return": 23.951677322387695,
+          "travel_turns": 328.875,
+          "travel_uses": 72.375
+        },
+        "64952": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 21.875,
+          "floor_coverage": 0.9014651775360107,
+          "turns": 546.03125,
+          "policy_decisions": 309.3125,
+          "shaped_return": 25.453426361083984,
+          "travel_turns": 303.28125,
+          "travel_uses": 66.5625
+        },
+        "65051": {
+          "clear_rate": 0.4375,
+          "death_rate": 0.5625,
+          "timeout_rate": 0.0,
+          "kills": 14.5625,
+          "floor_coverage": 0.6730550527572632,
+          "turns": 240.90625,
+          "policy_decisions": 194.46875,
+          "shaped_return": 16.36660385131836,
+          "travel_turns": 63.125,
+          "travel_uses": 16.6875
+        },
+        "65650": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.0,
+          "kills": 19.40625,
+          "floor_coverage": 0.7962117195129395,
+          "turns": 466.34375,
+          "policy_decisions": 273.84375,
+          "shaped_return": 22.066421508789062,
+          "travel_turns": 249.5,
+          "travel_uses": 57.0
+        },
+        "65772": {
+          "clear_rate": 0.78125,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0625,
+          "kills": 20.78125,
+          "floor_coverage": 0.8525345325469971,
+          "turns": 524.96875,
+          "policy_decisions": 302.125,
+          "shaped_return": 23.853801727294922,
+          "travel_turns": 293.96875,
+          "travel_uses": 71.125
+        },
+        "65838": {
+          "clear_rate": 0.875,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.03125,
+          "kills": 22.09375,
+          "floor_coverage": 0.8956869840621948,
+          "turns": 626.375,
+          "policy_decisions": 344.90625,
+          "shaped_return": 25.959583282470703,
+          "travel_turns": 388.03125,
+          "travel_uses": 106.5625
+        },
+        "66008": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.65625,
+          "floor_coverage": 0.91778564453125,
+          "turns": 630.5,
+          "policy_decisions": 324.34375,
+          "shaped_return": 26.432584762573242,
+          "travel_turns": 378.90625,
+          "travel_uses": 72.75
+        },
+        "66179": {
+          "clear_rate": 0.625,
+          "death_rate": 0.375,
+          "timeout_rate": 0.0,
+          "kills": 18.1875,
+          "floor_coverage": 0.7852492332458496,
+          "turns": 456.25,
+          "policy_decisions": 297.75,
+          "shaped_return": 21.179391860961914,
+          "travel_turns": 233.03125,
+          "travel_uses": 74.53125
+        },
+        "66384": {
+          "clear_rate": 0.625,
+          "death_rate": 0.375,
+          "timeout_rate": 0.0,
+          "kills": 17.84375,
+          "floor_coverage": 0.7581760883331299,
+          "turns": 353.78125,
+          "policy_decisions": 253.8125,
+          "shaped_return": 20.341045379638672,
+          "travel_turns": 138.4375,
+          "travel_uses": 38.46875
+        },
+        "70377": {
+          "clear_rate": 0.4375,
+          "death_rate": 0.5625,
+          "timeout_rate": 0.0,
+          "kills": 14.375,
+          "floor_coverage": 0.6419198513031006,
+          "turns": 261.75,
+          "policy_decisions": 200.34375,
+          "shaped_return": 16.336761474609375,
+          "travel_turns": 81.09375,
+          "travel_uses": 19.6875
+        },
+        "71260": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.03125,
+          "kills": 21.90625,
+          "floor_coverage": 0.9058419466018677,
+          "turns": 593.8125,
+          "policy_decisions": 328.9375,
+          "shaped_return": 25.189956665039062,
+          "travel_turns": 349.71875,
+          "travel_uses": 84.84375
+        },
+        "71314": {
+          "clear_rate": 0.78125,
+          "death_rate": 0.21875,
+          "timeout_rate": 0.0,
+          "kills": 20.40625,
+          "floor_coverage": 0.8508236408233643,
+          "turns": 353.1875,
+          "policy_decisions": 256.0625,
+          "shaped_return": 23.170639038085938,
+          "travel_turns": 137.8125,
+          "travel_uses": 40.6875
+        },
+        "71555": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.34375,
+          "floor_coverage": 0.9457621574401855,
+          "turns": 593.34375,
+          "policy_decisions": 345.21875,
+          "shaped_return": 27.659423828125,
+          "travel_turns": 351.5,
+          "travel_uses": 103.375
+        },
+        "71600": {
+          "clear_rate": 0.875,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.03125,
+          "kills": 23.09375,
+          "floor_coverage": 0.9414974451065063,
+          "turns": 691.9375,
+          "policy_decisions": 355.84375,
+          "shaped_return": 26.728017807006836,
+          "travel_turns": 433.28125,
+          "travel_uses": 97.1875
+        },
+        "71651": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.03125,
+          "kills": 21.84375,
+          "floor_coverage": 0.8803697228431702,
+          "turns": 579.59375,
+          "policy_decisions": 328.71875,
+          "shaped_return": 25.352298736572266,
+          "travel_turns": 338.375,
+          "travel_uses": 87.5
+        },
+        "71831": {
+          "clear_rate": 0.875,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.03125,
+          "kills": 23.0625,
+          "floor_coverage": 0.9456331729888916,
+          "turns": 642.40625,
+          "policy_decisions": 352.8125,
+          "shaped_return": 26.918113708496094,
+          "travel_turns": 386.09375,
+          "travel_uses": 96.5
+        },
+        "72094": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.5,
+          "floor_coverage": 0.9247245788574219,
+          "turns": 384.40625,
+          "policy_decisions": 264.9375,
+          "shaped_return": 25.750547409057617,
+          "travel_turns": 162.4375,
+          "travel_uses": 42.96875
+        },
+        "72244": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.03125,
+          "kills": 22.6875,
+          "floor_coverage": 0.9187313318252563,
+          "turns": 656.28125,
+          "policy_decisions": 350.34375,
+          "shaped_return": 26.470989227294922,
+          "travel_turns": 406.21875,
+          "travel_uses": 100.28125
+        },
+        "72250": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.0,
+          "kills": 19.15625,
+          "floor_coverage": 0.8072701692581177,
+          "turns": 437.9375,
+          "policy_decisions": 282.125,
+          "shaped_return": 22.716957092285156,
+          "travel_turns": 194.0625,
+          "travel_uses": 38.25
+        },
+        "72288": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.3125,
+          "floor_coverage": 0.9455339908599854,
+          "turns": 529.28125,
+          "policy_decisions": 326.375,
+          "shaped_return": 27.396738052368164,
+          "travel_turns": 274.4375,
+          "travel_uses": 71.53125
+        },
+        "72296": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.03125,
+          "floor_coverage": 0.9288880825042725,
+          "turns": 541.71875,
+          "policy_decisions": 320.6875,
+          "shaped_return": 26.778295516967773,
+          "travel_turns": 302.28125,
+          "travel_uses": 81.25
+        },
+        "72423": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 22.21875,
+          "floor_coverage": 0.9026416540145874,
+          "turns": 746.59375,
+          "policy_decisions": 371.96875,
+          "shaped_return": 27.11104965209961,
+          "travel_turns": 483.8125,
+          "travel_uses": 109.1875
+        },
+        "72475": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.5625,
+          "floor_coverage": 0.9295239448547363,
+          "turns": 592.6875,
+          "policy_decisions": 333.75,
+          "shaped_return": 26.385330200195312,
+          "travel_turns": 355.46875,
+          "travel_uses": 96.53125
+        },
+        "72581": {
+          "clear_rate": 0.6875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.03125,
+          "kills": 20.125,
+          "floor_coverage": 0.8506717681884766,
+          "turns": 422.65625,
+          "policy_decisions": 278.1875,
+          "shaped_return": 23.160423278808594,
+          "travel_turns": 179.6875,
+          "travel_uses": 35.21875
+        }
+      },
+      "turn_distribution": {
+        "all_episodes": {
+          "count": 1024,
+          "mean": 503.18359375,
+          "median": 559.0,
+          "p90": 712.0,
+          "p95": 760.2498779296875,
+          "p99": 863.0,
+          "maximum": 954.0
+        },
+        "clears": {
+          "count": 794,
+          "mean": 588.3312377929688,
+          "median": 601.5,
+          "p90": 716.39990234375,
+          "p95": 757.7498779296875,
+          "p99": 854.6300659179688,
+          "maximum": 950.0
+        }
+      },
+      "clear_turn_thresholds": {
+        "512": {
+          "clears_by_turn": 215,
+          "clears_after_turn": 579,
+          "episodes_still_running": 598
+        },
+        "640": {
+          "clears_by_turn": 533,
+          "clears_after_turn": 261,
+          "episodes_still_running": 277
+        },
+        "768": {
+          "clears_by_turn": 761,
+          "clears_after_turn": 33,
+          "episodes_still_running": 45
+        },
+        "896": {
+          "clears_by_turn": 790,
+          "clears_after_turn": 4,
+          "episodes_still_running": 6
+        },
+        "1024": {
+          "clears_by_turn": 794,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1280": {
+          "clears_by_turn": 794,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1536": {
+          "clears_by_turn": 794,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        }
+      }
+    },
+    "no_travel_time_matched": {
+      "checkpoint_sha256": "2adca1cd7380bcc88b75d4a70f0bf68f70cb61c63714da2a6bd93d151acb6f62",
+      "clear_rate": 0.806640625,
+      "death_rate": 0.1806640625,
+      "timeout_rate": 0.0126953125,
+      "kills": 21.1201171875,
+      "floor_coverage": 0.8723543286323547,
+      "turns": 515.2392578125,
+      "policy_decisions": 297.875,
+      "shaped_return": 24.548377990722656,
+      "travel_turns": 288.44140625,
+      "travel_uses": 71.0771484375,
+      "maps": {
+        "62655": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 21.0,
+          "floor_coverage": 0.8960613012313843,
+          "turns": 422.75,
+          "policy_decisions": 248.78125,
+          "shaped_return": 23.565200805664062,
+          "travel_turns": 218.59375,
+          "travel_uses": 44.625
+        },
+        "63315": {
+          "clear_rate": 0.78125,
+          "death_rate": 0.21875,
+          "timeout_rate": 0.0,
+          "kills": 20.03125,
+          "floor_coverage": 0.8222690224647522,
+          "turns": 498.46875,
+          "policy_decisions": 290.21875,
+          "shaped_return": 23.427734375,
+          "travel_turns": 278.1875,
+          "travel_uses": 69.9375
+        },
+        "63391": {
+          "clear_rate": 0.625,
+          "death_rate": 0.375,
+          "timeout_rate": 0.0,
+          "kills": 17.375,
+          "floor_coverage": 0.7482861876487732,
+          "turns": 394.34375,
+          "policy_decisions": 261.71875,
+          "shaped_return": 20.088172912597656,
+          "travel_turns": 188.3125,
+          "travel_uses": 55.6875
+        },
+        "63453": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.03125,
+          "kills": 21.53125,
+          "floor_coverage": 0.8988624811172485,
+          "turns": 452.21875,
+          "policy_decisions": 299.75,
+          "shaped_return": 25.07286834716797,
+          "travel_turns": 207.90625,
+          "travel_uses": 55.4375
+        },
+        "63913": {
+          "clear_rate": 0.75,
+          "death_rate": 0.25,
+          "timeout_rate": 0.0,
+          "kills": 19.375,
+          "floor_coverage": 0.8065605163574219,
+          "turns": 472.15625,
+          "policy_decisions": 281.6875,
+          "shaped_return": 22.79311180114746,
+          "travel_turns": 258.0625,
+          "travel_uses": 67.59375
+        },
+        "64026": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.6875,
+          "floor_coverage": 0.9668413400650024,
+          "turns": 608.96875,
+          "policy_decisions": 322.125,
+          "shaped_return": 27.62298583984375,
+          "travel_turns": 371.03125,
+          "travel_uses": 84.1875
+        },
+        "64106": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.21875,
+          "timeout_rate": 0.0625,
+          "kills": 20.9375,
+          "floor_coverage": 0.8621341586112976,
+          "turns": 557.84375,
+          "policy_decisions": 303.03125,
+          "shaped_return": 23.977737426757812,
+          "travel_turns": 323.53125,
+          "travel_uses": 68.71875
+        },
+        "64379": {
+          "clear_rate": 0.65625,
+          "death_rate": 0.3125,
+          "timeout_rate": 0.03125,
+          "kills": 18.8125,
+          "floor_coverage": 0.804448127746582,
+          "turns": 336.6875,
+          "policy_decisions": 252.15625,
+          "shaped_return": 21.391889572143555,
+          "travel_turns": 119.0,
+          "travel_uses": 34.46875
+        },
+        "64869": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0625,
+          "kills": 22.15625,
+          "floor_coverage": 0.8896174430847168,
+          "turns": 576.1875,
+          "policy_decisions": 320.1875,
+          "shaped_return": 25.776836395263672,
+          "travel_turns": 334.03125,
+          "travel_uses": 78.03125
+        },
+        "64952": {
+          "clear_rate": 0.75,
+          "death_rate": 0.21875,
+          "timeout_rate": 0.03125,
+          "kills": 21.125,
+          "floor_coverage": 0.8721290826797485,
+          "turns": 539.5625,
+          "policy_decisions": 294.25,
+          "shaped_return": 24.185577392578125,
+          "travel_turns": 314.03125,
+          "travel_uses": 68.71875
+        },
+        "65051": {
+          "clear_rate": 0.65625,
+          "death_rate": 0.34375,
+          "timeout_rate": 0.0,
+          "kills": 17.96875,
+          "floor_coverage": 0.7803685069084167,
+          "turns": 296.0,
+          "policy_decisions": 227.6875,
+          "shaped_return": 20.82863998413086,
+          "travel_turns": 94.71875,
+          "travel_uses": 26.40625
+        },
+        "65650": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 20.1875,
+          "floor_coverage": 0.8432340621948242,
+          "turns": 512.625,
+          "policy_decisions": 278.75,
+          "shaped_return": 23.256139755249023,
+          "travel_turns": 303.3125,
+          "travel_uses": 69.4375
+        },
+        "65772": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.25,
+          "timeout_rate": 0.03125,
+          "kills": 19.875,
+          "floor_coverage": 0.8045434951782227,
+          "turns": 463.9375,
+          "policy_decisions": 277.65625,
+          "shaped_return": 22.644014358520508,
+          "travel_turns": 253.65625,
+          "travel_uses": 67.375
+        },
+        "65838": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.84375,
+          "floor_coverage": 0.922684371471405,
+          "turns": 661.40625,
+          "policy_decisions": 354.90625,
+          "shaped_return": 26.95479965209961,
+          "travel_turns": 415.9375,
+          "travel_uses": 109.4375
+        },
+        "66008": {
+          "clear_rate": 0.75,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0625,
+          "kills": 21.09375,
+          "floor_coverage": 0.85400390625,
+          "turns": 611.125,
+          "policy_decisions": 306.9375,
+          "shaped_return": 24.196334838867188,
+          "travel_turns": 375.5625,
+          "travel_uses": 71.375
+        },
+        "66179": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.0,
+          "kills": 18.34375,
+          "floor_coverage": 0.7759486436843872,
+          "turns": 463.03125,
+          "policy_decisions": 292.75,
+          "shaped_return": 21.67885971069336,
+          "travel_turns": 248.3125,
+          "travel_uses": 78.03125
+        },
+        "66384": {
+          "clear_rate": 0.6875,
+          "death_rate": 0.3125,
+          "timeout_rate": 0.0,
+          "kills": 20.0625,
+          "floor_coverage": 0.8374805450439453,
+          "turns": 388.40625,
+          "policy_decisions": 274.625,
+          "shaped_return": 22.928550720214844,
+          "travel_turns": 158.625,
+          "travel_uses": 44.84375
+        },
+        "70377": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.0,
+          "kills": 19.53125,
+          "floor_coverage": 0.8374605178833008,
+          "turns": 381.03125,
+          "policy_decisions": 262.3125,
+          "shaped_return": 22.994237899780273,
+          "travel_turns": 154.75,
+          "travel_uses": 36.03125
+        },
+        "71260": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.0,
+          "floor_coverage": 0.9313112497329712,
+          "turns": 607.75,
+          "policy_decisions": 318.59375,
+          "shaped_return": 26.78532600402832,
+          "travel_turns": 383.21875,
+          "travel_uses": 94.0625
+        },
+        "71314": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.0,
+          "kills": 19.34375,
+          "floor_coverage": 0.8360465168952942,
+          "turns": 343.03125,
+          "policy_decisions": 242.28125,
+          "shaped_return": 21.849231719970703,
+          "travel_turns": 142.125,
+          "travel_uses": 41.375
+        },
+        "71555": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.5,
+          "floor_coverage": 0.9161421060562134,
+          "turns": 557.90625,
+          "policy_decisions": 327.5,
+          "shaped_return": 26.410234451293945,
+          "travel_turns": 331.78125,
+          "travel_uses": 101.375
+        },
+        "71600": {
+          "clear_rate": 1.0,
+          "death_rate": 0.0,
+          "timeout_rate": 0.0,
+          "kills": 24.0,
+          "floor_coverage": 0.9642131924629211,
+          "turns": 711.1875,
+          "policy_decisions": 356.90625,
+          "shaped_return": 28.128517150878906,
+          "travel_turns": 457.0,
+          "travel_uses": 102.71875
+        },
+        "71651": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.3125,
+          "floor_coverage": 0.941138505935669,
+          "turns": 622.34375,
+          "policy_decisions": 341.375,
+          "shaped_return": 27.501487731933594,
+          "travel_turns": 378.0,
+          "travel_uses": 97.03125
+        },
+        "71831": {
+          "clear_rate": 1.0,
+          "death_rate": 0.0,
+          "timeout_rate": 0.0,
+          "kills": 24.0,
+          "floor_coverage": 0.9688957333564758,
+          "turns": 677.34375,
+          "policy_decisions": 351.5,
+          "shaped_return": 28.339298248291016,
+          "travel_turns": 427.3125,
+          "travel_uses": 101.46875
+        },
+        "72094": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.0,
+          "kills": 20.375,
+          "floor_coverage": 0.855053186416626,
+          "turns": 361.28125,
+          "policy_decisions": 237.34375,
+          "shaped_return": 22.93198013305664,
+          "travel_turns": 166.9375,
+          "travel_uses": 43.0
+        },
+        "72244": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 21.21875,
+          "floor_coverage": 0.8563557863235474,
+          "turns": 595.09375,
+          "policy_decisions": 312.21875,
+          "shaped_return": 24.65692138671875,
+          "travel_turns": 376.34375,
+          "travel_uses": 93.46875
+        },
+        "72250": {
+          "clear_rate": 0.59375,
+          "death_rate": 0.40625,
+          "timeout_rate": 0.0,
+          "kills": 18.0625,
+          "floor_coverage": 0.7636449337005615,
+          "turns": 404.1875,
+          "policy_decisions": 253.40625,
+          "shaped_return": 21.03026580810547,
+          "travel_turns": 188.125,
+          "travel_uses": 37.34375
+        },
+        "72288": {
+          "clear_rate": 1.0,
+          "death_rate": 0.0,
+          "timeout_rate": 0.0,
+          "kills": 24.0,
+          "floor_coverage": 0.9744012951850891,
+          "turns": 565.40625,
+          "policy_decisions": 323.46875,
+          "shaped_return": 28.357177734375,
+          "travel_turns": 325.6875,
+          "travel_uses": 83.75
+        },
+        "72296": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.78125,
+          "floor_coverage": 0.9194040894508362,
+          "turns": 533.25,
+          "policy_decisions": 306.15625,
+          "shaped_return": 26.270450592041016,
+          "travel_turns": 311.09375,
+          "travel_uses": 84.0
+        },
+        "72423": {
+          "clear_rate": 0.875,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0625,
+          "kills": 23.25,
+          "floor_coverage": 0.9599388837814331,
+          "turns": 833.78125,
+          "policy_decisions": 393.9375,
+          "shaped_return": 28.455991744995117,
+          "travel_turns": 564.6875,
+          "travel_uses": 124.84375
+        },
+        "72475": {
+          "clear_rate": 1.0,
+          "death_rate": 0.0,
+          "timeout_rate": 0.0,
+          "kills": 24.0,
+          "floor_coverage": 0.9680957198143005,
+          "turns": 616.0,
+          "policy_decisions": 342.09375,
+          "shaped_return": 28.25189208984375,
+          "travel_turns": 377.96875,
+          "travel_uses": 104.0625
+        },
+        "72581": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.25,
+          "timeout_rate": 0.03125,
+          "kills": 20.0625,
+          "floor_coverage": 0.8377628922462463,
+          "turns": 422.34375,
+          "policy_decisions": 275.6875,
+          "shaped_return": 23.195613861083984,
+          "travel_turns": 182.28125,
+          "travel_uses": 35.625
+        }
+      },
+      "turn_distribution": {
+        "all_episodes": {
+          "count": 1024,
+          "mean": 515.2392578125,
+          "median": 564.5,
+          "p90": 719.0,
+          "p95": 783.39990234375,
+          "p99": 909.7001953125,
+          "maximum": 1030.0
+        },
+        "clears": {
+          "count": 826,
+          "mean": 589.0980834960938,
+          "median": 591.0,
+          "p90": 725.0,
+          "p95": 779.5,
+          "p99": 878.25,
+          "maximum": 980.0
+        }
+      },
+      "clear_turn_thresholds": {
+        "512": {
+          "clears_by_turn": 216,
+          "clears_after_turn": 610,
+          "episodes_still_running": 625
+        },
+        "640": {
+          "clears_by_turn": 557,
+          "clears_after_turn": 269,
+          "episodes_still_running": 282
+        },
+        "768": {
+          "clears_by_turn": 779,
+          "clears_after_turn": 47,
+          "episodes_still_running": 58
+        },
+        "896": {
+          "clears_by_turn": 819,
+          "clears_after_turn": 7,
+          "episodes_still_running": 12
+        },
+        "1024": {
+          "clears_by_turn": 826,
+          "clears_after_turn": 0,
+          "episodes_still_running": 2
+        },
+        "1280": {
+          "clears_by_turn": 826,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1536": {
+          "clears_by_turn": 826,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        }
+      }
+    },
+    "forced_turn_trained": {
+      "checkpoint_sha256": "49a379f53f5b502692cbdc6bb44ffd1754dfca32e63ca141fa7f2aeb639652e7",
+      "clear_rate": 0.87109375,
+      "death_rate": 0.1259765625,
+      "timeout_rate": 0.0029296875,
+      "kills": 22.1708984375,
+      "floor_coverage": 0.9055478572845459,
+      "turns": 541.248046875,
+      "policy_decisions": 295.853515625,
+      "shaped_return": 25.893997192382812,
+      "travel_turns": 328.033203125,
+      "travel_uses": 82.638671875,
+      "maps": {
+        "62655": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.28125,
+          "floor_coverage": 0.921635627746582,
+          "turns": 446.0,
+          "policy_decisions": 247.5,
+          "shaped_return": 25.221574783325195,
+          "travel_turns": 249.28125,
+          "travel_uses": 50.78125
+        },
+        "63315": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.78125,
+          "floor_coverage": 0.9237905144691467,
+          "turns": 598.8125,
+          "policy_decisions": 313.96875,
+          "shaped_return": 26.934268951416016,
+          "travel_turns": 377.625,
+          "travel_uses": 92.78125
+        },
+        "63391": {
+          "clear_rate": 0.65625,
+          "death_rate": 0.34375,
+          "timeout_rate": 0.0,
+          "kills": 19.6875,
+          "floor_coverage": 0.8184714913368225,
+          "turns": 421.75,
+          "policy_decisions": 264.5,
+          "shaped_return": 22.66207504272461,
+          "travel_turns": 221.4375,
+          "travel_uses": 64.1875
+        },
+        "63453": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 21.53125,
+          "floor_coverage": 0.875834584236145,
+          "turns": 427.875,
+          "policy_decisions": 268.65625,
+          "shaped_return": 25.019390106201172,
+          "travel_turns": 222.21875,
+          "travel_uses": 63.0
+        },
+        "63913": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.0625,
+          "floor_coverage": 0.9321520328521729,
+          "turns": 571.9375,
+          "policy_decisions": 316.09375,
+          "shaped_return": 27.449329376220703,
+          "travel_turns": 341.34375,
+          "travel_uses": 85.5
+        },
+        "64026": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.125,
+          "floor_coverage": 0.9271156787872314,
+          "turns": 593.0,
+          "policy_decisions": 314.90625,
+          "shaped_return": 26.99970245361328,
+          "travel_turns": 368.9375,
+          "travel_uses": 90.84375
+        },
+        "64106": {
+          "clear_rate": 0.78125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.03125,
+          "kills": 21.5625,
+          "floor_coverage": 0.8728609085083008,
+          "turns": 566.09375,
+          "policy_decisions": 295.15625,
+          "shaped_return": 24.83485984802246,
+          "travel_turns": 353.3125,
+          "travel_uses": 82.375
+        },
+        "64379": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.03125,
+          "kills": 20.90625,
+          "floor_coverage": 0.8635783195495605,
+          "turns": 381.03125,
+          "policy_decisions": 258.0625,
+          "shaped_return": 24.170486450195312,
+          "travel_turns": 171.09375,
+          "travel_uses": 48.125
+        },
+        "64869": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.09375,
+          "floor_coverage": 0.8930763006210327,
+          "turns": 591.6875,
+          "policy_decisions": 300.40625,
+          "shaped_return": 25.89351463317871,
+          "travel_turns": 378.03125,
+          "travel_uses": 86.75
+        },
+        "64952": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.78125,
+          "floor_coverage": 0.9199775457382202,
+          "turns": 567.65625,
+          "policy_decisions": 291.78125,
+          "shaped_return": 26.498111724853516,
+          "travel_turns": 356.75,
+          "travel_uses": 80.875
+        },
+        "65051": {
+          "clear_rate": 0.59375,
+          "death_rate": 0.40625,
+          "timeout_rate": 0.0,
+          "kills": 18.375,
+          "floor_coverage": 0.7893824577331543,
+          "turns": 303.6875,
+          "policy_decisions": 226.03125,
+          "shaped_return": 20.997013092041016,
+          "travel_turns": 109.0,
+          "travel_uses": 31.34375
+        },
+        "65650": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 20.59375,
+          "floor_coverage": 0.8469560742378235,
+          "turns": 526.3125,
+          "policy_decisions": 271.25,
+          "shaped_return": 23.655014038085938,
+          "travel_turns": 333.28125,
+          "travel_uses": 78.21875
+        },
+        "65772": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.625,
+          "floor_coverage": 0.9248992204666138,
+          "turns": 551.96875,
+          "policy_decisions": 299.03125,
+          "shaped_return": 26.10866928100586,
+          "travel_turns": 343.25,
+          "travel_uses": 90.3125
+        },
+        "65838": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.375,
+          "floor_coverage": 0.914371132850647,
+          "turns": 652.25,
+          "policy_decisions": 326.875,
+          "shaped_return": 26.35126304626465,
+          "travel_turns": 442.15625,
+          "travel_uses": 116.78125
+        },
+        "66008": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.59375,
+          "floor_coverage": 0.958984375,
+          "turns": 677.34375,
+          "policy_decisions": 317.40625,
+          "shaped_return": 27.532608032226562,
+          "travel_turns": 450.75,
+          "travel_uses": 90.8125
+        },
+        "66179": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 21.53125,
+          "floor_coverage": 0.8976935148239136,
+          "turns": 562.15625,
+          "policy_decisions": 325.59375,
+          "shaped_return": 25.46949005126953,
+          "travel_turns": 346.0625,
+          "travel_uses": 109.5
+        },
+        "66384": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.40625,
+          "floor_coverage": 0.9580209255218506,
+          "turns": 482.78125,
+          "policy_decisions": 304.59375,
+          "shaped_return": 27.536056518554688,
+          "travel_turns": 245.90625,
+          "travel_uses": 67.71875
+        },
+        "70377": {
+          "clear_rate": 0.78125,
+          "death_rate": 0.21875,
+          "timeout_rate": 0.0,
+          "kills": 21.28125,
+          "floor_coverage": 0.8765292167663574,
+          "turns": 404.15625,
+          "policy_decisions": 271.53125,
+          "shaped_return": 25.070114135742188,
+          "travel_turns": 178.75,
+          "travel_uses": 46.125
+        },
+        "71260": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.46875,
+          "floor_coverage": 0.9196816682815552,
+          "turns": 594.75,
+          "policy_decisions": 304.0625,
+          "shaped_return": 25.99570083618164,
+          "travel_turns": 388.21875,
+          "travel_uses": 97.53125
+        },
+        "71314": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 21.5625,
+          "floor_coverage": 0.8888565897941589,
+          "turns": 380.96875,
+          "policy_decisions": 256.125,
+          "shaped_return": 24.72317123413086,
+          "travel_turns": 178.46875,
+          "travel_uses": 53.625
+        },
+        "71555": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.78125,
+          "floor_coverage": 0.9243761301040649,
+          "turns": 573.6875,
+          "policy_decisions": 316.8125,
+          "shaped_return": 26.944015502929688,
+          "travel_turns": 366.09375,
+          "travel_uses": 109.21875
+        },
+        "71600": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.53125,
+          "floor_coverage": 0.9603109359741211,
+          "turns": 706.53125,
+          "policy_decisions": 331.78125,
+          "shaped_return": 27.5317325592041,
+          "travel_turns": 489.09375,
+          "travel_uses": 114.34375
+        },
+        "71651": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.65625,
+          "floor_coverage": 0.9562206268310547,
+          "turns": 631.625,
+          "policy_decisions": 324.34375,
+          "shaped_return": 27.868078231811523,
+          "travel_turns": 416.46875,
+          "travel_uses": 109.1875
+        },
+        "71831": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.6875,
+          "floor_coverage": 0.9518132209777832,
+          "turns": 670.53125,
+          "policy_decisions": 335.125,
+          "shaped_return": 27.871986389160156,
+          "travel_turns": 443.875,
+          "travel_uses": 108.46875
+        },
+        "72094": {
+          "clear_rate": 0.6875,
+          "death_rate": 0.3125,
+          "timeout_rate": 0.0,
+          "kills": 19.96875,
+          "floor_coverage": 0.8558130860328674,
+          "turns": 355.96875,
+          "policy_decisions": 227.90625,
+          "shaped_return": 22.407039642333984,
+          "travel_turns": 173.53125,
+          "travel_uses": 45.46875
+        },
+        "72244": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.625,
+          "floor_coverage": 0.9101095795631409,
+          "turns": 651.59375,
+          "policy_decisions": 319.96875,
+          "shaped_return": 26.364608764648438,
+          "travel_turns": 446.4375,
+          "travel_uses": 114.8125
+        },
+        "72250": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 21.375,
+          "floor_coverage": 0.8779054880142212,
+          "turns": 482.96875,
+          "policy_decisions": 277.78125,
+          "shaped_return": 25.595800399780273,
+          "travel_turns": 258.3125,
+          "travel_uses": 53.125
+        },
+        "72288": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 21.65625,
+          "floor_coverage": 0.8815677165985107,
+          "turns": 494.46875,
+          "policy_decisions": 283.0625,
+          "shaped_return": 25.269420623779297,
+          "travel_turns": 290.1875,
+          "travel_uses": 78.78125
+        },
+        "72296": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.9375,
+          "floor_coverage": 0.9139534831047058,
+          "turns": 533.46875,
+          "policy_decisions": 300.09375,
+          "shaped_return": 26.66710662841797,
+          "travel_turns": 322.40625,
+          "travel_uses": 89.03125
+        },
+        "72423": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.03125,
+          "kills": 23.4375,
+          "floor_coverage": 0.9517991542816162,
+          "turns": 838.15625,
+          "policy_decisions": 373.34375,
+          "shaped_return": 28.827552795410156,
+          "travel_turns": 599.84375,
+          "travel_uses": 135.03125
+        },
+        "72475": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.84375,
+          "floor_coverage": 0.964917778968811,
+          "turns": 606.0625,
+          "policy_decisions": 326.53125,
+          "shaped_return": 27.974205017089844,
+          "travel_turns": 392.90625,
+          "travel_uses": 113.375
+        },
+        "72581": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.34375,
+          "floor_coverage": 0.9048773646354675,
+          "turns": 472.65625,
+          "policy_decisions": 277.03125,
+          "shaped_return": 26.163921356201172,
+          "travel_turns": 242.03125,
+          "travel_uses": 46.40625
+        }
+      },
+      "turn_distribution": {
+        "all_episodes": {
+          "count": 1024,
+          "mean": 541.248046875,
+          "median": 572.0,
+          "p90": 716.699951171875,
+          "p95": 758.8499755859375,
+          "p99": 898.31005859375,
+          "maximum": 1058.0
+        },
+        "clears": {
+          "count": 892,
+          "mean": 590.6390380859375,
+          "median": 596.5,
+          "p90": 721.7999267578125,
+          "p95": 767.4500122070312,
+          "p99": 899.360107421875,
+          "maximum": 961.0
+        }
+      },
+      "clear_turn_thresholds": {
+        "512": {
+          "clears_by_turn": 232,
+          "clears_after_turn": 660,
+          "episodes_still_running": 668
+        },
+        "640": {
+          "clears_by_turn": 589,
+          "clears_after_turn": 303,
+          "episodes_still_running": 306
+        },
+        "768": {
+          "clears_by_turn": 848,
+          "clears_after_turn": 44,
+          "episodes_still_running": 46
+        },
+        "896": {
+          "clears_by_turn": 882,
+          "clears_after_turn": 10,
+          "episodes_still_running": 11
+        },
+        "1024": {
+          "clears_by_turn": 892,
+          "clears_after_turn": 0,
+          "episodes_still_running": 1
+        },
+        "1280": {
+          "clears_by_turn": 892,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1536": {
+          "clears_by_turn": 892,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        }
+      }
+    },
+    "forced_decision_trained": {
+      "checkpoint_sha256": "857fdd9a85e817986b0197c379630d93173dfbb4c14c1aadd47e6fb98ce8f03f",
+      "clear_rate": 0.8828125,
+      "death_rate": 0.11328125,
+      "timeout_rate": 0.00390625,
+      "kills": 22.26953125,
+      "floor_coverage": 0.906133234500885,
+      "turns": 539.5341796875,
+      "policy_decisions": 292.4033203125,
+      "shaped_return": 26.042701721191406,
+      "travel_turns": 331.421875,
+      "travel_uses": 84.291015625,
+      "maps": {
+        "62655": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 20.84375,
+          "floor_coverage": 0.8506564497947693,
+          "turns": 406.96875,
+          "policy_decisions": 226.40625,
+          "shaped_return": 23.383230209350586,
+          "travel_turns": 228.0625,
+          "travel_uses": 47.5
+        },
+        "63315": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 21.625,
+          "floor_coverage": 0.8825525641441345,
+          "turns": 536.28125,
+          "policy_decisions": 292.375,
+          "shaped_return": 25.371360778808594,
+          "travel_turns": 331.09375,
+          "travel_uses": 87.1875
+        },
+        "63391": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.5,
+          "floor_coverage": 0.9195319414138794,
+          "turns": 484.84375,
+          "policy_decisions": 298.125,
+          "shaped_return": 26.52236557006836,
+          "travel_turns": 264.78125,
+          "travel_uses": 78.0625
+        },
+        "63453": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.84375,
+          "floor_coverage": 0.9259705543518066,
+          "turns": 455.03125,
+          "policy_decisions": 287.25,
+          "shaped_return": 26.906110763549805,
+          "travel_turns": 235.78125,
+          "travel_uses": 68.0
+        },
+        "63913": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 21.875,
+          "floor_coverage": 0.9116719365119934,
+          "turns": 541.25,
+          "policy_decisions": 297.28125,
+          "shaped_return": 25.86557960510254,
+          "travel_turns": 328.875,
+          "travel_uses": 84.90625
+        },
+        "64026": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.28125,
+          "floor_coverage": 0.8925983309745789,
+          "turns": 553.3125,
+          "policy_decisions": 286.40625,
+          "shaped_return": 26.003952026367188,
+          "travel_turns": 352.96875,
+          "travel_uses": 86.0625
+        },
+        "64106": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.5,
+          "floor_coverage": 0.9052889347076416,
+          "turns": 587.40625,
+          "policy_decisions": 286.59375,
+          "shaped_return": 26.16016960144043,
+          "travel_turns": 384.25,
+          "travel_uses": 83.4375
+        },
+        "64379": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.125,
+          "timeout_rate": 0.03125,
+          "kills": 21.71875,
+          "floor_coverage": 0.8983754515647888,
+          "turns": 393.21875,
+          "policy_decisions": 269.0,
+          "shaped_return": 25.15711212158203,
+          "travel_turns": 175.09375,
+          "travel_uses": 50.875
+        },
+        "64869": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.71875,
+          "floor_coverage": 0.9199049472808838,
+          "turns": 616.28125,
+          "policy_decisions": 302.9375,
+          "shaped_return": 26.549671173095703,
+          "travel_turns": 405.5625,
+          "travel_uses": 92.21875
+        },
+        "64952": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 22.71875,
+          "floor_coverage": 0.918954610824585,
+          "turns": 589.375,
+          "policy_decisions": 293.46875,
+          "shaped_return": 26.53695297241211,
+          "travel_turns": 379.53125,
+          "travel_uses": 83.625
+        },
+        "65051": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 20.78125,
+          "floor_coverage": 0.8633701205253601,
+          "turns": 351.3125,
+          "policy_decisions": 249.21875,
+          "shaped_return": 24.518266677856445,
+          "travel_turns": 142.0,
+          "travel_uses": 39.90625
+        },
+        "65650": {
+          "clear_rate": 0.8125,
+          "death_rate": 0.1875,
+          "timeout_rate": 0.0,
+          "kills": 20.5625,
+          "floor_coverage": 0.832362949848175,
+          "turns": 516.28125,
+          "policy_decisions": 265.75,
+          "shaped_return": 23.60904312133789,
+          "travel_turns": 328.5,
+          "travel_uses": 77.96875
+        },
+        "65772": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 23.15625,
+          "floor_coverage": 0.9223790168762207,
+          "turns": 544.59375,
+          "policy_decisions": 298.65625,
+          "shaped_return": 26.767919540405273,
+          "travel_turns": 336.625,
+          "travel_uses": 90.6875
+        },
+        "65838": {
+          "clear_rate": 1.0,
+          "death_rate": 0.0,
+          "timeout_rate": 0.0,
+          "kills": 24.0,
+          "floor_coverage": 0.9700943827629089,
+          "turns": 711.15625,
+          "policy_decisions": 346.71875,
+          "shaped_return": 28.419296264648438,
+          "travel_turns": 494.125,
+          "travel_uses": 129.6875
+        },
+        "66008": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.34375,
+          "floor_coverage": 0.93487548828125,
+          "turns": 655.5625,
+          "policy_decisions": 309.0,
+          "shaped_return": 27.380016326904297,
+          "travel_turns": 437.5,
+          "travel_uses": 90.9375
+        },
+        "66179": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 21.15625,
+          "floor_coverage": 0.872186541557312,
+          "turns": 533.21875,
+          "policy_decisions": 317.71875,
+          "shaped_return": 25.17986297607422,
+          "travel_turns": 321.46875,
+          "travel_uses": 105.96875
+        },
+        "66384": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.65625,
+          "floor_coverage": 0.9678127765655518,
+          "turns": 500.3125,
+          "policy_decisions": 301.65625,
+          "shaped_return": 27.662460327148438,
+          "travel_turns": 270.15625,
+          "travel_uses": 71.5
+        },
+        "70377": {
+          "clear_rate": 0.71875,
+          "death_rate": 0.28125,
+          "timeout_rate": 0.0,
+          "kills": 19.34375,
+          "floor_coverage": 0.7912884950637817,
+          "turns": 360.0,
+          "policy_decisions": 238.6875,
+          "shaped_return": 22.710765838623047,
+          "travel_turns": 161.71875,
+          "travel_uses": 40.40625
+        },
+        "71260": {
+          "clear_rate": 0.875,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0625,
+          "kills": 21.90625,
+          "floor_coverage": 0.8880577087402344,
+          "turns": 594.75,
+          "policy_decisions": 312.75,
+          "shaped_return": 25.437564849853516,
+          "travel_turns": 387.75,
+          "travel_uses": 105.75
+        },
+        "71314": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.53125,
+          "floor_coverage": 0.9263565540313721,
+          "turns": 387.34375,
+          "policy_decisions": 261.375,
+          "shaped_return": 25.733917236328125,
+          "travel_turns": 180.875,
+          "travel_uses": 54.90625
+        },
+        "71555": {
+          "clear_rate": 0.84375,
+          "death_rate": 0.15625,
+          "timeout_rate": 0.0,
+          "kills": 21.09375,
+          "floor_coverage": 0.8706159591674805,
+          "turns": 537.96875,
+          "policy_decisions": 290.59375,
+          "shaped_return": 24.79766845703125,
+          "travel_turns": 353.25,
+          "travel_uses": 105.875
+        },
+        "71600": {
+          "clear_rate": 0.9375,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.0,
+          "kills": 23.25,
+          "floor_coverage": 0.9340418577194214,
+          "turns": 672.59375,
+          "policy_decisions": 315.03125,
+          "shaped_return": 27.107666015625,
+          "travel_turns": 467.03125,
+          "travel_uses": 109.46875
+        },
+        "71651": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.8125,
+          "floor_coverage": 0.9726525545120239,
+          "turns": 660.9375,
+          "policy_decisions": 336.8125,
+          "shaped_return": 28.030014038085938,
+          "travel_turns": 441.875,
+          "travel_uses": 117.75
+        },
+        "71831": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.0625,
+          "timeout_rate": 0.03125,
+          "kills": 23.28125,
+          "floor_coverage": 0.9346723556518555,
+          "turns": 650.875,
+          "policy_decisions": 323.875,
+          "shaped_return": 27.22989273071289,
+          "travel_turns": 434.1875,
+          "travel_uses": 107.1875
+        },
+        "72094": {
+          "clear_rate": 0.65625,
+          "death_rate": 0.34375,
+          "timeout_rate": 0.0,
+          "kills": 20.25,
+          "floor_coverage": 0.8464095592498779,
+          "turns": 356.71875,
+          "policy_decisions": 228.09375,
+          "shaped_return": 22.55016326904297,
+          "travel_turns": 175.125,
+          "travel_uses": 46.5
+        },
+        "72244": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.84375,
+          "floor_coverage": 0.9088956713676453,
+          "turns": 653.40625,
+          "policy_decisions": 316.6875,
+          "shaped_return": 26.57910919189453,
+          "travel_turns": 449.625,
+          "travel_uses": 112.90625
+        },
+        "72250": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 21.53125,
+          "floor_coverage": 0.8866649270057678,
+          "turns": 501.5625,
+          "policy_decisions": 279.84375,
+          "shaped_return": 25.883895874023438,
+          "travel_turns": 279.0625,
+          "travel_uses": 57.34375
+        },
+        "72288": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.46875,
+          "floor_coverage": 0.9444037675857544,
+          "turns": 541.40625,
+          "policy_decisions": 298.53125,
+          "shaped_return": 27.663549423217773,
+          "travel_turns": 329.59375,
+          "travel_uses": 86.71875
+        },
+        "72296": {
+          "clear_rate": 0.90625,
+          "death_rate": 0.09375,
+          "timeout_rate": 0.0,
+          "kills": 22.90625,
+          "floor_coverage": 0.937390923500061,
+          "turns": 556.625,
+          "policy_decisions": 297.46875,
+          "shaped_return": 26.528013229370117,
+          "travel_turns": 355.0,
+          "travel_uses": 95.84375
+        },
+        "72423": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.59375,
+          "floor_coverage": 0.9194750189781189,
+          "turns": 772.53125,
+          "policy_decisions": 346.84375,
+          "shaped_return": 27.647796630859375,
+          "travel_turns": 557.25,
+          "travel_uses": 131.5625
+        },
+        "72475": {
+          "clear_rate": 0.96875,
+          "death_rate": 0.03125,
+          "timeout_rate": 0.0,
+          "kills": 23.3125,
+          "floor_coverage": 0.9369080066680908,
+          "turns": 585.53125,
+          "policy_decisions": 312.21875,
+          "shaped_return": 27.407299041748047,
+          "travel_turns": 382.4375,
+          "travel_uses": 109.125
+        },
+        "72581": {
+          "clear_rate": 0.875,
+          "death_rate": 0.125,
+          "timeout_rate": 0.0,
+          "kills": 22.21875,
+          "floor_coverage": 0.9098422527313232,
+          "turns": 456.4375,
+          "policy_decisions": 269.53125,
+          "shaped_return": 26.065765380859375,
+          "travel_turns": 234.34375,
+          "travel_uses": 47.4375
+        }
+      },
+      "turn_distribution": {
+        "all_episodes": {
+          "count": 1024,
+          "mean": 539.5341796875,
+          "median": 571.0,
+          "p90": 716.699951171875,
+          "p95": 755.0,
+          "p99": 864.31005859375,
+          "maximum": 986.0
+        },
+        "clears": {
+          "count": 904,
+          "mean": 584.9866943359375,
+          "median": 592.0,
+          "p90": 722.699951171875,
+          "p95": 759.8499755859375,
+          "p99": 869.76025390625,
+          "maximum": 986.0
+        }
+      },
+      "clear_turn_thresholds": {
+        "512": {
+          "clears_by_turn": 254,
+          "clears_after_turn": 650,
+          "episodes_still_running": 659
+        },
+        "640": {
+          "clears_by_turn": 612,
+          "clears_after_turn": 292,
+          "episodes_still_running": 296
+        },
+        "768": {
+          "clears_by_turn": 864,
+          "clears_after_turn": 40,
+          "episodes_still_running": 42
+        },
+        "896": {
+          "clears_by_turn": 898,
+          "clears_after_turn": 6,
+          "episodes_still_running": 6
+        },
+        "1024": {
+          "clears_by_turn": 904,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1280": {
+          "clears_by_turn": 904,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        },
+        "1536": {
+          "clears_by_turn": 904,
+          "clears_after_turn": 0,
+          "episodes_still_running": 0
+        }
+      }
+    }
+  }
+}
