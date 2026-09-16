@@ -74,3 +74,48 @@ Timing note: requested greedy retreat diagnostics ran on the same GPU during par
 of the clumped D4 run (roughly 02:06–02:10 local on September 16). Recorded training
 seconds include any contention during that overlap; do not interpret the two D4
 runs' throughput difference as a clean augmentation/placement benchmark.
+
+## Completed seed-0 results
+
+Both augmented policies reached 30,015,488 decisions. The full pipeline completed
+in 977.51 seconds (16.29 minutes); initialization, native-source and scripted-control
+parity checks passed. Sampled evaluation uses identity orientation, no ensembling.
+
+| Training placement | Ordinary clear rate before → D4 | Training seconds before → D4 |
+|---|---:|---:|
+| Ordinary | 78.71% → 80.96% | 220.03 → 229.62 |
+| One-third clumped | 78.03% → 77.34% | 267.63 → 300.22 |
+
+Timing caveat above applies. This single training seed cannot establish a robust
+performance advantage or isolate augmentation from training-run variation.
+
+Natural tactical clear rates, tough roster and player HP 12/18, pooled rotations:
+
+| Geometry | Ordinary before → D4 | Clumped before → D4 |
+|---|---:|---:|
+| One-step hallway (3 enemies) | 92.24% → 88.18% | 93.31% → 93.90% |
+| Three-step hallway (6 enemies) | 7.42% → 22.80% | 51.81% → 35.60% |
+| Two-step diagonal pocket | 35.01% → 33.54% | 56.40% → 52.20% |
+| Four-step diagonal pocket | 17.53% → 19.14% | 30.57% → 34.18% |
+| Six-step diagonal pocket | 5.96% → 9.18% | 19.29% → 21.83% |
+
+The clearest change is defending the six-step pocket after the full retreat is
+supplied. Ordinary-model clears rise 63.57% → 82.08%, with contact waiting falling
+34.55% → 5.12%. Rotational clear range narrows from 28.13–83.59% to 81.25–83.98%,
+close to the scripted retreat-and-fight control's 83.01% pooled clear rate.
+The model is much better at defending these pockets but still rarely reaches
+them on its own.
+
+Clumped-model forced-route clears rise 63.48% → 69.48%, with contact waiting
+38.76% → 30.47%. The worst pocket orientation changes from NE to SW: SW contact
+waiting is now 62.94%, and its clear rate 38.48%, versus 75.20–83.59% elsewhere.
+Augmentation therefore has not consistently removed directional behavior.
+
+The static one-enemy test looks improved: maximum waiting over orientations in
+the kind-3, full-enemy-HP, player-12-HP case falls 39.06% → 17.68% ordinary and
+40.27% → 9.23% clumped. That improvement does not guarantee reliable defense in
+multi-enemy rollout states; report both rather than treating the static test as
+sufficient evidence of a fix.
+
+Unaugmented training seeds 1 and 2 are queued/running separately, with the same
+complete tactical suite, to assess natural seed-to-seed directional variability.
