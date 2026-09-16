@@ -1,0 +1,3799 @@
+{
+  "selected": [
+    624,
+    135,
+    386,
+    787,
+    997,
+    1008
+  ],
+  "method": "Exact simulator RNG and policy snapshot; change one legal action then resume unchanged waiting+retreat policy. Baseline continuation must reproduce saved outcome. Hindsight-selected outcomes are not unbiased policy performance.",
+  "actions": [
+    "N",
+    "E",
+    "S",
+    "W",
+    "NE",
+    "SE",
+    "SW",
+    "NW",
+    "wait",
+    "rest"
+  ],
+  "outcomes": [
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": -1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 0,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 25
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 2,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 12
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 3,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 4,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 17
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 5,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 6,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 17
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 7,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 513
+    },
+    {
+      "episode": 624,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        46,
+        21
+      ],
+      "override": 8,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 12
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": -1,
+      "baseline_action": 2,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 0,
+      "baseline_action": 2,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 21
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 1,
+      "baseline_action": 2,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 411
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 2,
+      "baseline_action": 2,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 3,
+      "baseline_action": 2,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 12
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 4,
+      "baseline_action": 2,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 503
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 5,
+      "baseline_action": 2,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 422
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 6,
+      "baseline_action": 2,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 13
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 7,
+      "baseline_action": 2,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 408
+    },
+    {
+      "episode": 135,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        23,
+        35
+      ],
+      "override": 8,
+      "baseline_action": 2,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 21
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": -1,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 0,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 429
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 1,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 439
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 2,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 11
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 3,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 444
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 4,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 406
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 5,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 458
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 6,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 7,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 454
+    },
+    {
+      "episode": 386,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        50,
+        44
+      ],
+      "override": 8,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 426
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": -1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 0,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 363
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 2,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 17
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 3,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 16
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 4,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 437
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 5,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 421
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 6,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 6,
+      "turns": 47
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 7,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 407
+    },
+    {
+      "episode": 787,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        19,
+        40
+      ],
+      "override": 8,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 29
+    },
+    {
+      "episode": 997,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        61,
+        30
+      ],
+      "override": -1,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        61,
+        30
+      ],
+      "override": 1,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        61,
+        30
+      ],
+      "override": 3,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        61,
+        30
+      ],
+      "override": 4,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        61,
+        30
+      ],
+      "override": 5,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        61,
+        30
+      ],
+      "override": 8,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 1008,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        26,
+        34
+      ],
+      "override": -1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        26,
+        34
+      ],
+      "override": 0,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 437
+    },
+    {
+      "episode": 1008,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        26,
+        34
+      ],
+      "override": 1,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 514
+    },
+    {
+      "episode": 1008,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        26,
+        34
+      ],
+      "override": 3,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 497
+    },
+    {
+      "episode": 1008,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        26,
+        34
+      ],
+      "override": 4,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 514
+    },
+    {
+      "episode": 1008,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        26,
+        34
+      ],
+      "override": 7,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "initial",
+      "decision": 1,
+      "start_hp": 18,
+      "xy": [
+        26,
+        34
+      ],
+      "override": 8,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 437
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": -1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 0,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 9
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 13
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 2,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 11
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 3,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 15
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 4,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 13
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 5,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 6,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 16
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 7,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 17
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 8,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 9
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": -1,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 0,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 18
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 1,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 398
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 2,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 461
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 3,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 4,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 24
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 5,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 460
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 6,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 7,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 16
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 8,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 13
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": -1,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 0,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 449
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 1,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 2,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 450
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 3,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 448
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 4,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 5,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 426
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 6,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 7,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 397
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 8,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 462
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": -1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 0,
+      "baseline_action": 5,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 410
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 14
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 2,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 24
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 3,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 16
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 4,
+      "baseline_action": 5,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 426
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 5,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 6,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 35
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 7,
+      "baseline_action": 5,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 394
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_awake",
+      "decision": 2,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 8,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 20
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": -1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 0,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 15
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 11
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 2,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 12
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 3,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 13
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 4,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 15
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 5,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 6,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 13
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 7,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 26
+    },
+    {
+      "episode": 624,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 8,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 0,
+      "turns": 9
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": -1,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 0,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 23
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 1,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 28
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 2,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 14
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 3,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 13
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 4,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 17
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 5,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 6,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 7,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 12
+    },
+    {
+      "episode": 135,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 8,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 25
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": -1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 0,
+      "baseline_action": 5,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 342
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 1,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 24
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 2,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 17
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 3,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 17
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 4,
+      "baseline_action": 5,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 402
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 5,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 6,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 28
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 7,
+      "baseline_action": 5,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 417
+    },
+    {
+      "episode": 787,
+      "stage": "first_multiple_adjacent",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 8,
+      "baseline_action": 5,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 18
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": -1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 1,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 496
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 2,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 532
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 3,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 424
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 5,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 496
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 6,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 510
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 7,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_awake",
+      "decision": 3,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 8,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 497
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": -1,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 0,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 458
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 1,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 412
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 2,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 441
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 3,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 451
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 4,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 371
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 5,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 462
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 6,
+      "baseline_action": 6,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 7,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 462
+    },
+    {
+      "episode": 386,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 17,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 8,
+      "baseline_action": 6,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 461
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": -1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 1,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 492
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 2,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 532
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 3,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 520
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 5,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 492
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 6,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 532
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 7,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "first_multiple_adjacent",
+      "decision": 4,
+      "start_hp": 18,
+      "xy": [
+        25,
+        33
+      ],
+      "override": 8,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 497
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": -1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 0,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 2,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 3,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 14
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 4,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 5,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 13
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 6,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 12
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 7,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 10
+    },
+    {
+      "episode": 624,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 8,
+      "xy": [
+        47,
+        21
+      ],
+      "override": 8,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 1,
+      "turns": 11
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": -1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 0,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 436
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 2,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 475
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 3,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 496
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 4,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 458
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 5,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 19
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 6,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 17
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 7,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 444
+    },
+    {
+      "episode": 386,
+      "stage": "first_half_hp",
+      "decision": 9,
+      "start_hp": 9,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 8,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 458
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": -1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 0,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 30
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 17
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 2,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 3,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 4,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 426
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 5,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 6,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 7,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 20
+    },
+    {
+      "episode": 135,
+      "stage": "first_half_hp",
+      "decision": 11,
+      "start_hp": 8,
+      "xy": [
+        23,
+        36
+      ],
+      "override": 8,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 2,
+      "turns": 16
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": -1,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 0,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 26
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 1,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 23
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 2,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 26
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 3,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 24
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 4,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 34
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 5,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 5,
+      "turns": 32
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 6,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 26
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 7,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 26
+    },
+    {
+      "episode": 787,
+      "stage": "first_half_hp",
+      "decision": 17,
+      "start_hp": 9,
+      "xy": [
+        20,
+        40
+      ],
+      "override": 8,
+      "baseline_action": 4,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 4,
+      "turns": 24
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": -1,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 0,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 30
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 1,
+      "baseline_action": 3,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 440
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 2,
+      "baseline_action": 3,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 450
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 3,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 29
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 4,
+      "baseline_action": 3,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 458
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 5,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 27
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 6,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 26
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 7,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 30
+    },
+    {
+      "episode": 386,
+      "stage": "low_hp_sleepers_only",
+      "decision": 21,
+      "start_hp": 2,
+      "xy": [
+        49,
+        45
+      ],
+      "override": 8,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 3,
+      "turns": 30
+    },
+    {
+      "episode": 1008,
+      "stage": "first_half_hp",
+      "decision": 79,
+      "start_hp": 6,
+      "xy": [
+        26,
+        18
+      ],
+      "override": -1,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "first_half_hp",
+      "decision": 79,
+      "start_hp": 6,
+      "xy": [
+        26,
+        18
+      ],
+      "override": 0,
+      "baseline_action": 3,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 540
+    },
+    {
+      "episode": 1008,
+      "stage": "first_half_hp",
+      "decision": 79,
+      "start_hp": 6,
+      "xy": [
+        26,
+        18
+      ],
+      "override": 1,
+      "baseline_action": 3,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 549
+    },
+    {
+      "episode": 1008,
+      "stage": "first_half_hp",
+      "decision": 79,
+      "start_hp": 6,
+      "xy": [
+        26,
+        18
+      ],
+      "override": 3,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "first_half_hp",
+      "decision": 79,
+      "start_hp": 6,
+      "xy": [
+        26,
+        18
+      ],
+      "override": 4,
+      "baseline_action": 3,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 549
+    },
+    {
+      "episode": 1008,
+      "stage": "first_half_hp",
+      "decision": 79,
+      "start_hp": 6,
+      "xy": [
+        26,
+        18
+      ],
+      "override": 7,
+      "baseline_action": 3,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 96
+    },
+    {
+      "episode": 1008,
+      "stage": "first_half_hp",
+      "decision": 79,
+      "start_hp": 6,
+      "xy": [
+        26,
+        18
+      ],
+      "override": 8,
+      "baseline_action": 3,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 540
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": -1,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": 0,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": 2,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 483
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": 4,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": 5,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 440
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": 6,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 466
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": 7,
+      "baseline_action": 7,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_awake",
+      "decision": 85,
+      "start_hp": 18,
+      "xy": [
+        44,
+        61
+      ],
+      "override": 8,
+      "baseline_action": 7,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 449
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_adjacent",
+      "decision": 96,
+      "start_hp": 14,
+      "xy": [
+        39,
+        54
+      ],
+      "override": -1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_adjacent",
+      "decision": 96,
+      "start_hp": 14,
+      "xy": [
+        39,
+        54
+      ],
+      "override": 1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_adjacent",
+      "decision": 96,
+      "start_hp": 14,
+      "xy": [
+        39,
+        54
+      ],
+      "override": 3,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 484
+    },
+    {
+      "episode": 997,
+      "stage": "first_multiple_adjacent",
+      "decision": 96,
+      "start_hp": 14,
+      "xy": [
+        39,
+        54
+      ],
+      "override": 8,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 505
+    },
+    {
+      "episode": 997,
+      "stage": "first_half_hp",
+      "decision": 99,
+      "start_hp": 8,
+      "xy": [
+        39,
+        54
+      ],
+      "override": -1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_half_hp",
+      "decision": 99,
+      "start_hp": 8,
+      "xy": [
+        39,
+        54
+      ],
+      "override": 1,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 123
+    },
+    {
+      "episode": 997,
+      "stage": "first_half_hp",
+      "decision": 99,
+      "start_hp": 8,
+      "xy": [
+        39,
+        54
+      ],
+      "override": 3,
+      "baseline_action": 1,
+      "clear": false,
+      "death": true,
+      "timeout": false,
+      "kills": 7,
+      "turns": 119
+    },
+    {
+      "episode": 997,
+      "stage": "first_half_hp",
+      "decision": 99,
+      "start_hp": 8,
+      "xy": [
+        39,
+        54
+      ],
+      "override": 8,
+      "baseline_action": 1,
+      "clear": true,
+      "death": false,
+      "timeout": false,
+      "kills": 24,
+      "turns": 505
+    }
+  ]
+}

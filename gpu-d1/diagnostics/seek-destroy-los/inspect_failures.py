@@ -1,5 +1,5 @@
 """Replay selected matched evaluation episodes without changing their RNG streams."""
-import json,sys
+import argparse,json,sys
 import torch
 import numpy as np
 from collections import deque
@@ -28,23 +28,25 @@ def hall_diagnosis(terrain,player,enemies,halls):
  return dict(known=len(halls),reachable=len(reachable),destination_away=len(away),first_step_away=first_away)
 
 def main():
+ parser=argparse.ArgumentParser();parser.add_argument("--wait-for-awake",action="store_true");args=parser.parse_args()
+ selected=[624,135,386,787,997,1008] if args.wait_for_awake else SELECTED
  torch.set_num_threads(1)
  manifest=json.loads((ROOT/'learning-runs/vision15-rest-sleep/manifest.json').read_text())
  job=next(j for j in manifest['jobs'] if j['id']=='rest-seed0')
  env=Env(1024,24,seed=900000,corpus=__import__('pathlib').Path(manifest['corpus'])/'validation',map_limit=32,map_filter=-2,library_path=job['eval_library'],limit=2048)
- old=json.loads((ROOT/'results/los-hallway-retreat.json').read_text())['results']
+ old=json.loads((ROOT/('results/los-hallway-wait-awake.json' if args.wait_for_awake else 'results/los-hallway-retreat.json')).read_text())['results']
  traces={}
  for enabled in [False,True]:
-  name='privileged-'+('retreat' if enabled else 'control');env.reset(900000);policy=RetreatPolicy(env,True,enabled)
-  active=torch.zeros(1024,dtype=torch.bool,device='cuda');active[SELECTED]=True
-  rows={i:[] for i in SELECTED}
+  name='privileged-'+('retreat' if enabled else 'control');env.reset(900000);policy=RetreatPolicy(env,True,enabled,wait_for_awake=args.wait_for_awake)
+  active=torch.zeros(1024,dtype=torch.bool,device='cuda');active[selected]=True
+  rows={i:[] for i in selected}
   for step in range(2048):
    if not active.any():break
-   live=active[SELECTED].cpu().tolist();obs=env.obs[SELECTED].cpu().numpy();states=policy.state[SELECTED].cpu().tolist()
-   actions=policy(active);aa=actions[SELECTED].cpu().tolist();known=policy.base.memory[SELECTED].cpu().numpy();newstate=policy.state[SELECTED].cpu().tolist()
+   live=active[selected].cpu().tolist();obs=env.obs[selected].cpu().numpy();states=policy.state[selected].cpu().tolist()
+   actions=policy(active);aa=actions[selected].cpu().tolist();known=policy.base.memory[selected].cpu().numpy();newstate=policy.state[selected].cpu().tolist()
    env.step(actions,active=active);ended=active&(env.out[:,1]>0);policy.after_step(ended)
-   outs=env.out[SELECTED].cpu().tolist();events=policy.events[SELECTED].cpu().tolist()
-   for j,i in enumerate(SELECTED):
+   outs=env.out[selected].cpu().tolist();events=policy.events[selected].cpu().tolist()
+   for j,i in enumerate(selected):
     if not live[j]:continue
     o=obs[j];x,y=round(float(o[652])*80),round(float(o[653])*70)
     enemies=[dict(x=x+round(float(o[450+5*k])*80),y=y+round(float(o[451+5*k])*70),hp=round(float(o[452+5*k])*16,3),kind=round(float(o[453+5*k])*5),awake=bool(o[959+k]<0)) for k in range(40) if o[454+5*k]>0]
@@ -63,6 +65,6 @@ def main():
      assert (bool(out[2]),int(out[3]),int(out[5]))==(prior['clear'],prior['kills'],prior['turns']),(name,i,out,prior)
    active&=~ended
   traces[name]=rows
- dest=ROOT/'results/los-hallway-failure-traces.json';dest.write_text(json.dumps(dict(selected=SELECTED,traces=traces),separators=(',',':'))+'\n')
+ dest=ROOT/('results/los-hallway-wait-failure-traces.json' if args.wait_for_awake else 'results/los-hallway-failure-traces.json');dest.write_text(json.dumps(dict(selected=selected,traces=traces),separators=(',',':'))+'\n')
  print(dest)
 if __name__=='__main__':main()
