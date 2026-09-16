@@ -110,3 +110,35 @@ clear; inspect deaths, not just speed or reward. A successful short-run
 coefficient would still need longer training and additional seeds before claiming
 it fixes the instability. No coefficient succeeding would rule out only this
 reward range/settings, not prove a fundamental impossibility.
+
+### Sweep training completed
+
+All four new coefficients reached 1,000,448 decisions. Same seed and 1,024
+validation placements; n=0 and n=1 reused as planned. At 1M:
+
+| n | Cost/physical turn | Sampled clear % | Greedy clear % | Sampled clear-only turns | Sampled death % | Greedy timeout % |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0 | 0 | 95.70 | 7.62 | 759.20 | 4.10 | 89.65 |
+| 1 | 0.00001 | 95.21 | 34.28 | 707.77 | 4.39 | 63.28 |
+| 3 | 0.00003 | 95.90 | 18.36 | 764.69 | 3.71 | 78.61 |
+| 10 | 0.00010 | 95.90 | 25.88 | 723.83 | 3.22 | 71.19 |
+| 30 | 0.00030 | 95.51 | 11.72 | 740.65 | 3.71 | 85.55 |
+| 100 | 0.00100 | 95.80 | 30.96 | 707.09 | 3.81 | 67.09 |
+
+Starting imitation: 96.875% sampled clears, 94.434% greedy clears. None of the
+coefficients preserves greedy competence; there is no monotonic improvement
+with penalty strength. Sampled clears remain near 95–96% at this horizon, with
+no clear improvement over initialization. Some costs shorten successful sampled
+clears versus zero cost, so the turn reward has effects, but increasing it 100x
+does not solve the failure. Greedy failures are predominantly timeouts, not deaths.
+This weakens the simple hypothesis that navigation deteriorates only because the
+original penalty is too weak; it does not isolate an alternative cause or establish
+long-run stability. One training seed is insufficient to rank close coefficients.
+
+New runs took 24.90, 25.32, 25.35 and 25.35 seconds of training respectively;
+combined build/preflight/training/validation wall time was 431.69 seconds (7.2 min).
+Navigation replay is separately queued; completed n=0/1/3 replays reproduce the
+original sampled and greedy outcomes. Their greedy timeouts containing >=8
+consecutive movement reversals number 900/918, 640/648 and 776/805. Clear-only
+times for historical n=0/1 above come from that replay. Remaining n=10/30/100
+replays were still running when this summary was written.
