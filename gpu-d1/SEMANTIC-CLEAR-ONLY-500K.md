@@ -27,3 +27,25 @@ resume. Full validation also asserts episode reward equals its clear indicator.
 
 One seed on reused validation maps is an early learning screen, not evidence of
 robustness. Track physical turns and training seconds alongside decision count.
+
+## Completed results
+
+500,224 decisions, 1,118,784 physical training turns, 54.27 training seconds
+(excludes validation). Counts below are out of 1,024 held-out episodes.
+
+| Reward | Evaluation | Clears | Deaths | Timeouts | Rests/episode | Waits/episode | Turns/episode |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Clear-only | sampled | 931 | 87 | 6 | 4.97 | 57.01 | 621.31 |
+| Shaped, gamma=1, 500K | sampled | 930 | 86 | 8 | 3.71 | 37.75 | 590.13 |
+| Clear-only | greedy | 121 | 30 | 873 | 1.46 | 1689.24 | 1865.32 |
+| Shaped, gamma=1, 500K | greedy | 921 | 95 | 8 | .005 | 5.56 | 507.08 |
+
+Initial sampled clear rate was 65.23%, matching prior initialization. Final
+sampled clear rate reached 90.92%, essentially equal to the shaped control's
+90.82%. Greedy performance is poor: excessive waiting accompanies 85.25%
+timeouts. Removing dense rewards allows learning but has not yielded a reliable
+greedy policy in this short run. The experiment changes reward scale as well as
+reward components, while keeping entropy/value coefficients unchanged; therefore
+it does not isolate sparsity from their effective relative strengths. Sampled
+and greedy policy differences must remain visible in interpreting this result.
+All evaluated raw episode rewards equal their binary clear outcomes exactly.
