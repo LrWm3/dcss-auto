@@ -1,0 +1,13 @@
+{
+  "rest_matches_repeated_wait_state_and_reward": true,
+  "primitive_waits_for_3_to_18_hp": 66,
+  "full_hp_masked": true,
+  "visible_sleeping_enemy_masked": true,
+  "enemy_entry_interrupts": true,
+  "decision_deadline_resets": true,
+  "physical_turns_can_exceed_2048": true,
+  "inactive_worlds_unchanged": true,
+  "d4_rest_action_invariant": true,
+  "paired_initial_weights_equal": true,
+  "ppo_and_resume_passed": true
+}
