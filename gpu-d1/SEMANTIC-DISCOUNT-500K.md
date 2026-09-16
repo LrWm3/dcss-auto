@@ -67,3 +67,14 @@ and sampled improvement are consistent with the objective hypothesis, but one
 short run per condition does not establish robustness or eventual performance.
 Physical training exposure differs by only about 1.6% in this matched screen.
 No runs beyond the requested short budget were launched.
+
+## Continuation to 1M
+
+Authorized continuation uses `scripts/continue_1m.py` in the same branch, writing
+to `learning-runs/semantic-discount-1m`. It preserves the original 500K artifacts
+and resumes full optimizer, model, simulator and RNG state. Only the stopping
+budget and timing metadata change in copied checkpoints. Both conditions stop at
+1,000,448 decisions (the nearest 512-world batch boundary above one million).
+Final results go to `results/semantic-discount-1m.json`. No simulator rebuild or
+learning-rule change is involved. Historical elapsed training time is retained;
+additional training time is reported separately.
