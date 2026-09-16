@@ -69,7 +69,19 @@ def main():
   def group(ids):
    turns=np.arange(2048)[:,None]<end[None,:];turns &= ids[None,:]
    x=trace[turns];damage=x[:,6];total=float(damage.sum())
-   return {'episodes':int(ids.sum()),'mean_turns':float(end[ids].mean()),'mean_kills':float(term[ids,3].mean()),'mean_damage_taken':total/int(ids.sum()),'damage_fraction_by_pre_action_adjacent':{str(k):float(damage[x[:,1]==k].sum()/total) for k in range(9)},'multi_adjacent_turn_fraction':float((x[:,1]>=2).mean()),'low_hp_turn_fraction':float((x[:,0]<=maximum_hp*.25).mean()),'low_hp_attacks':int(((x[:,0]<=maximum_hp*.25)&(x[:,8]==2)).sum()),'low_hp_attacks_with_less_adjacent_move':int(((x[:,0]<=maximum_hp*.25)&(x[:,8]==2)&(x[:,10]>0)).sum()),'low_hp_moves_increasing_adjacency':int(((x[:,0]<=maximum_hp*.25)&(x[:,11]>0)).sum())}
+   encounters={}
+   for name,col in [('adjacent',1),('visible',3)]:
+    counts=x[:,col];contact=counts>0
+    single_bouts=multi_bouts=0
+    for episode in np.where(ids)[0]:
+     c=trace[:end[episode],episode,col]; present=c>0
+     edges=np.diff(np.r_[False,present,False].astype(np.int8))
+     for start,stop in zip(np.where(edges==1)[0],np.where(edges==-1)[0]):
+      if c[start:stop].max()>=2:multi_bouts+=1
+      else:single_bouts+=1
+    any_multi=((trace[:,:,col]>=2)&turns).any(axis=0)
+    encounters[name]={'single_turns':int((counts==1).sum()),'multi_turns':int((counts>=2).sum()),'contact_turns':int(contact.sum()),'all_turns':len(counts),'episodes_ever_multi':int(any_multi.sum()),'single_bouts':single_bouts,'multi_bouts':multi_bouts}
+   return {'encounters':encounters,'episodes':int(ids.sum()),'mean_turns':float(end[ids].mean()),'mean_kills':float(term[ids,3].mean()),'mean_damage_taken':total/int(ids.sum()),'damage_fraction_by_pre_action_adjacent':{str(k):float(damage[x[:,1]==k].sum()/total) for k in range(9)},'multi_adjacent_turn_fraction':float((x[:,1]>=2).mean()),'low_hp_turn_fraction':float((x[:,0]<=maximum_hp*.25).mean()),'low_hp_attacks':int(((x[:,0]<=maximum_hp*.25)&(x[:,8]==2)).sum()),'low_hp_attacks_with_less_adjacent_move':int(((x[:,0]<=maximum_hp*.25)&(x[:,8]==2)&(x[:,10]>0)).sum()),'low_hp_moves_increasing_adjacency':int(((x[:,0]<=maximum_hp*.25)&(x[:,11]>0)).sum())}
   records=[]
   for episode in np.where(deaths)[0]:
    n=end[episode];x=trace[:n,episode];last=x[-1];recent=x[max(0,n-20):];low=np.where(x[:,0]<=maximum_hp*.25)[0]

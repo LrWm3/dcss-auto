@@ -55,3 +55,22 @@ policy; all original fatal actions reproduced death. Geometry unit tests and
 neighbor partition checks passed. Evaluation took 27.14 seconds after compilation.
 Compact artifact: `results/vision15-seen-death4-death-diagnostics.json`; checkpoint
 and source hashes recorded. Numeric traces remain in memory and are discarded.
+
+## Single versus multi-enemy contact
+
+Counts are pre-action states across all episodes, including sleeping enemies.
+A contact bout is consecutive turns with at least one enemy adjacent (or visible,
+for the visible measure). Any turn with two or more makes that bout multi-enemy.
+A one-turn loss of contact splits bouts: these are not necessarily distinct fights.
+
+| Checkpoint / contact | Single-enemy turns | Multi-enemy turns | Multi share of contact turns | Single bouts | Multi bouts | Episodes ever multi |
+|---|---:|---:|---:|---:|---:|---:|
+| 10M / adjacent | 189,436 | 53,167 | 21.9% | 7,588 | 3,863 | 1023/1024 |
+| 10M / visible | 172,013 | 104,073 | 37.7% | 8,892 | 5,651 | 1024/1024 |
+| 30M / adjacent | 171,949 | 42,645 | 19.9% | 9,923 | 3,715 | 1020/1024 |
+| 30M / visible | 168,919 | 84,153 | 33.3% | 10,658 | 5,712 | 1024/1024 |
+
+At 30M, multi-enemy adjacency occupies 7.67% of all turns but 19.9% of
+turns with any adjacent enemy. Multi-enemy contact is nearly universal across
+episodes, despite single-enemy states accounting for most contact time.
+All earlier diagnostic parity and outcome reproduction checks passed again.
