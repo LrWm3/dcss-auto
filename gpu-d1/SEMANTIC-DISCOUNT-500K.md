@@ -78,3 +78,23 @@ budget and timing metadata change in copied checkpoints. Both conditions stop at
 Final results go to `results/semantic-discount-1m.json`. No simulator rebuild or
 learning-rule change is involved. Historical elapsed training time is retained;
 additional training time is reported separately.
+
+### Completed 1M continuation
+
+Both stopped at 1,000,448 decisions. Counts are out of 1,024 episodes.
+
+| Gamma | Evaluation | Clears | Deaths | Timeouts | Rests/episode | Waits/episode |
+|---|---|---:|---:|---:|---:|---:|
+| .99 | sampled | 909 | 107 | 8 | .054 | 6.10 |
+| .99 | greedy | 922 | 95 | 7 | 0 | 2.57 |
+| 1 | sampled | 978 | 39 | 7 | 6.48 | 165.57 |
+| 1 | greedy | 0 | 16 | 1008 | .30 | 1973.36 |
+
+Additional training took 73.11 seconds (.99) and 67.94 seconds (1), excluding
+validation; cumulative times were 137.68 and 128.59 seconds. Physical training
+turns were 2,427,209 and 2,416,808 respectively.
+
+Undiscounted sampled performance improved further, but greedy behavior collapsed
+into waiting. This is a substantial sampled/greedy discrepancy, not a reliable
+deterministic controller. It motivates reporting both modes for further reward
+experiments, rather than treating sampled improvement as universal improvement.
