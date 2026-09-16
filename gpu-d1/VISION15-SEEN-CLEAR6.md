@@ -34,3 +34,43 @@ synthetic counter checks. Require kills, clears and deaths in paired validation.
 Existing ignores exclude weights, build products and runtime logs. Retention
 uses latest/best plus small milestone snapshots, a 2 GiB suite cap and 5 GiB
 free-space reserve.
+
+## Completed results (2026-09-16)
+
+Reached 10,027,008 decisions. Same sampled evaluation on 1,024 episodes:
+
+| Seen-floor-input policy | Clear | Death | Timeout | Mean turns | Mean kills | Training seconds |
+|---|---:|---:|---:|---:|---:|---:|
+| +3 clear | 69.53% | 29.20% | 1.27% | 508.6 | 19.75 | 73.32 |
+| +6 clear | 63.96% | 34.47% | 1.56% | 491.3 | 18.73 | 71.83 |
+
+| Decisions | +3 clear rate | +6 clear rate |
+|---|---:|---:|
+| 0 | 0.00% | 0.00% |
+| 131,072 | 0.00% | 0.00% |
+| 327,680 | 0.00% | 0.00% |
+| 1,015,808 | 0.20% | 0.20% |
+| 2,031,616 | 43.07% | 43.36% |
+| 3,014,656 | 45.61% | 48.54% |
+| 5,013,504 | 55.57% | 54.30% |
+| 7,503,872 | 61.23% | 59.38% |
+| 10,027,008 | 69.53% | 63.96% |
+
+The +6 bonus finishes 5.57 percentage points below +3, with 5.27 points more
+deaths and 0.29 points more timeouts. It slightly leads at 2M and 3M, then trails
+at 5M, 7.5M and 10M. More clear reward did not improve this seed by 10M, even with
+the seen-floor progress input. This is not a multi-seed result or a general claim
+that increasing the bonus cannot help. It does not identify the behavioral or
+optimization mechanism. Lower mean turns include more deaths and should not be
+read as better completion efficiency.
+
+Validation passed with identical states, all 959 observations, action masks and
+non-reward outputs in the paired rollout. Reward changed only by the extra +3
+on clears. Coverage: 1,277 kills, 43 clears and 19 deaths across 64 episodes.
+Seen-floor counts, synthetic checks, initial weights/outcomes, map hashes,
+non-reward configuration and source hashes passed. Native source is byte-identical
+to the +3 progress branch; reward is set through the existing compile parameter.
+
+New training took 71.83 seconds, excluding setup, checkpoint I/O and evaluation.
+The +3 comparison was reused. Artifact: `results/vision15-seen-clear6-10m.json`,
+including sampled/greedy curves, per-map statistics, timing and validation.
