@@ -1,0 +1,5 @@
+{
+  "scripted_controls_exact": true,
+  "ordinary": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/vision15-tactical-next/runs/targeted_ordinary-seed1/snapshots/000075005952.pt",
+  "clumped": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/vision15-tactical-next/runs/targeted_clumped-seed1/snapshots/000075005952.pt"
+}

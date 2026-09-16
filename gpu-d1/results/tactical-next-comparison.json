@@ -1,0 +1,1094 @@
+[
+  {
+    "kind": "baseline",
+    "step": 30,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.787109375,
+        "hall": 0.07421875,
+        "pocket": 0.0595703125,
+        "forced": 0.6357421875,
+        "wait": 0.345476612999623,
+        "heldout": 0.58203125,
+        "frozen_wait": 0.3494596779346466,
+        "rotation_wait_range": 0.7091169953346252,
+        "training_seconds": 220.02506082807668,
+        "additional_train_seconds": 220.02506082807668
+      },
+      {
+        "seed": 1,
+        "clear": 0.7802734375,
+        "hall": 0.2412109375,
+        "pocket": 0.02294921875,
+        "forced": 0.43212890625,
+        "wait": 0.6453725424486149,
+        "heldout": 0.552734375,
+        "frozen_wait": 0.7212714552879333,
+        "rotation_wait_range": 0.5071214437484741,
+        "training_seconds": 221.1642802504357,
+        "additional_train_seconds": 221.1642802504357
+      },
+      {
+        "seed": 2,
+        "clear": 0.7802734375,
+        "hall": 0.2255859375,
+        "pocket": 0.259765625,
+        "forced": 0.7802734375,
+        "wait": 0.13203829763683658,
+        "heldout": 0.62890625,
+        "frozen_wait": 0.22033411264419556,
+        "rotation_wait_range": 0.4827100932598114,
+        "training_seconds": 220.3499420483131,
+        "additional_train_seconds": 220.3499420483131
+      }
+    ],
+    "mean": {
+      "clear": 0.7825520833333334,
+      "hall": 0.18033854166666666,
+      "pocket": 0.11409505208333333,
+      "forced": 0.6160481770833334,
+      "wait": 0.37429581769502485,
+      "heldout": 0.587890625,
+      "frozen_wait": 0.43035508195559186,
+      "rotation_wait_range": 0.566316177447637,
+      "training_seconds": 220.5130943756085,
+      "additional_train_seconds": 220.5130943756085
+    }
+  },
+  {
+    "kind": "baseline",
+    "step": 30,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.7802734375,
+        "hall": 0.51806640625,
+        "pocket": 0.19287109375,
+        "forced": 0.634765625,
+        "wait": 0.3875553122576525,
+        "heldout": 0.642578125,
+        "frozen_wait": 0.2721427083015442,
+        "rotation_wait_range": 0.8756340146064758,
+        "training_seconds": 267.63203951716423,
+        "additional_train_seconds": 267.63203951716423
+      },
+      {
+        "seed": 1,
+        "clear": 0.78515625,
+        "hall": 0.515625,
+        "pocket": 0.16650390625,
+        "forced": 0.6708984375,
+        "wait": 0.30422837100545597,
+        "heldout": 0.720703125,
+        "frozen_wait": 0.3144141435623169,
+        "rotation_wait_range": 0.795039713382721,
+        "training_seconds": 272.0415515417699,
+        "additional_train_seconds": 272.0415515417699
+      },
+      {
+        "seed": 2,
+        "clear": 0.75390625,
+        "hall": 0.62060546875,
+        "pocket": 0.37158203125,
+        "forced": 0.69580078125,
+        "wait": 0.2770567753445944,
+        "heldout": 0.6953125,
+        "frozen_wait": 0.28013095259666443,
+        "rotation_wait_range": 0.1989019364118576,
+        "training_seconds": 269.11557530961,
+        "additional_train_seconds": 269.11557530961
+      }
+    ],
+    "mean": {
+      "clear": 0.7731119791666666,
+      "hall": 0.5514322916666666,
+      "pocket": 0.24365234375,
+      "forced": 0.6671549479166666,
+      "wait": 0.32294681953590093,
+      "heldout": 0.6861979166666666,
+      "frozen_wait": 0.28889593482017517,
+      "rotation_wait_range": 0.6231918881336848,
+      "training_seconds": 269.5963887895147,
+      "additional_train_seconds": 269.5963887895147
+    }
+  },
+  {
+    "kind": "continue",
+    "step": 50,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8310546875,
+        "hall": 0.359375,
+        "pocket": 0.08740234375,
+        "forced": 0.83154296875,
+        "wait": 0.007472320142991907,
+        "heldout": 0.6015625,
+        "frozen_wait": 0.017061106860637665,
+        "rotation_wait_range": 0.032588303089141846,
+        "training_seconds": 369.0200348929502,
+        "additional_train_seconds": 148.99497406487353
+      },
+      {
+        "seed": 1,
+        "clear": 0.8173828125,
+        "hall": 0.41943359375,
+        "pocket": 0.10400390625,
+        "forced": 0.78759765625,
+        "wait": 0.11441564758985033,
+        "heldout": 0.583984375,
+        "frozen_wait": 0.2321014404296875,
+        "rotation_wait_range": 0.3420199453830719,
+        "training_seconds": 370.3273928449489,
+        "additional_train_seconds": 149.16311259451322
+      },
+      {
+        "seed": 2,
+        "clear": 0.8203125,
+        "hall": 0.3408203125,
+        "pocket": 0.10498046875,
+        "forced": 0.759765625,
+        "wait": 0.16715802205159772,
+        "heldout": 0.5390625,
+        "frozen_wait": 0.2369629591703415,
+        "rotation_wait_range": 0.6233100295066833,
+        "training_seconds": 367.989894769853,
+        "additional_train_seconds": 147.63995272153988
+      }
+    ],
+    "mean": {
+      "clear": 0.8229166666666666,
+      "hall": 0.3732096354166667,
+      "pocket": 0.09879557291666667,
+      "forced": 0.79296875,
+      "wait": 0.09634866326147998,
+      "heldout": 0.5748697916666666,
+      "frozen_wait": 0.16204183548688889,
+      "rotation_wait_range": 0.3326394259929657,
+      "training_seconds": 369.11244083591737,
+      "additional_train_seconds": 148.59934646030888
+    }
+  },
+  {
+    "kind": "continue",
+    "step": 50,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.814453125,
+        "hall": 0.53466796875,
+        "pocket": 0.1630859375,
+        "forced": 0.64111328125,
+        "wait": 0.311691769359501,
+        "heldout": 0.638671875,
+        "frozen_wait": 0.20444123446941376,
+        "rotation_wait_range": 0.47232556343078613,
+        "training_seconds": 451.07537477323785,
+        "additional_train_seconds": 183.44333525607362
+      },
+      {
+        "seed": 1,
+        "clear": 0.7978515625,
+        "hall": 0.62744140625,
+        "pocket": 0.2734375,
+        "forced": 0.82861328125,
+        "wait": 0.028513709216146817,
+        "heldout": 0.677734375,
+        "frozen_wait": 0.038632504642009735,
+        "rotation_wait_range": 0.12660115957260132,
+        "training_seconds": 456.88616987876594,
+        "additional_train_seconds": 184.84461833699606
+      },
+      {
+        "seed": 2,
+        "clear": 0.7998046875,
+        "hall": 0.6171875,
+        "pocket": 0.27587890625,
+        "forced": 0.73291015625,
+        "wait": 0.20117014108008086,
+        "heldout": 0.716796875,
+        "frozen_wait": 0.2908766567707062,
+        "rotation_wait_range": 0.668361246585846,
+        "training_seconds": 454.5081716531422,
+        "additional_train_seconds": 185.3925963435322
+      }
+    ],
+    "mean": {
+      "clear": 0.8040364583333334,
+      "hall": 0.5930989583333334,
+      "pocket": 0.23746744791666666,
+      "forced": 0.7342122395833334,
+      "wait": 0.18045853988524288,
+      "heldout": 0.677734375,
+      "frozen_wait": 0.1779834652940432,
+      "rotation_wait_range": 0.42242932319641113,
+      "training_seconds": 454.1565721017153,
+      "additional_train_seconds": 184.56018331220062
+    }
+  },
+  {
+    "kind": "continue",
+    "step": 75,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8466796875,
+        "hall": 0.431640625,
+        "pocket": 0.07177734375,
+        "forced": 0.703125,
+        "wait": 0.2911624859788964,
+        "heldout": 0.525390625,
+        "frozen_wait": 0.2519633173942566,
+        "rotation_wait_range": 0.7936676144599915,
+        "training_seconds": 556.2101139058359,
+        "additional_train_seconds": 336.1850530777592
+      },
+      {
+        "seed": 1,
+        "clear": 0.8466796875,
+        "hall": 0.439453125,
+        "pocket": 0.0771484375,
+        "forced": 0.82177734375,
+        "wait": 0.04629108543375442,
+        "heldout": 0.560546875,
+        "frozen_wait": 0.0870976448059082,
+        "rotation_wait_range": 0.15194155275821686,
+        "training_seconds": 556.6470551204402,
+        "additional_train_seconds": 335.4827748700045
+      },
+      {
+        "seed": 2,
+        "clear": 0.85546875,
+        "hall": 0.52490234375,
+        "pocket": 0.12548828125,
+        "forced": 0.77587890625,
+        "wait": 0.14166407534094444,
+        "heldout": 0.552734375,
+        "frozen_wait": 0.16233527660369873,
+        "rotation_wait_range": 0.6238016486167908,
+        "training_seconds": 558.329080227064,
+        "additional_train_seconds": 337.9791381787509
+      }
+    ],
+    "mean": {
+      "clear": 0.849609375,
+      "hall": 0.46533203125,
+      "pocket": 0.09147135416666667,
+      "forced": 0.7669270833333334,
+      "wait": 0.15970588225119842,
+      "heldout": 0.5462239583333334,
+      "frozen_wait": 0.16713207960128784,
+      "rotation_wait_range": 0.5231369386116663,
+      "training_seconds": 557.0620830844467,
+      "additional_train_seconds": 336.5489887088382
+    }
+  },
+  {
+    "kind": "continue",
+    "step": 75,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8671875,
+        "hall": 0.78955078125,
+        "pocket": 0.150390625,
+        "forced": 0.71142578125,
+        "wait": 0.28632886239443617,
+        "heldout": 0.65234375,
+        "frozen_wait": 0.23801980912685394,
+        "rotation_wait_range": 0.7624743580818176,
+        "training_seconds": 680.7690396532416,
+        "additional_train_seconds": 413.1370001360774
+      },
+      {
+        "seed": 1,
+        "clear": 0.830078125,
+        "hall": 0.7080078125,
+        "pocket": 0.31005859375,
+        "forced": 0.81884765625,
+        "wait": 0.05887240356083086,
+        "heldout": 0.681640625,
+        "frozen_wait": 0.133147194981575,
+        "rotation_wait_range": 0.20496512949466705,
+        "training_seconds": 685.3683891673572,
+        "additional_train_seconds": 413.32683762558736
+      },
+      {
+        "seed": 2,
+        "clear": 0.8544921875,
+        "hall": 0.78564453125,
+        "pocket": 0.2919921875,
+        "forced": 0.71826171875,
+        "wait": 0.2068624216430221,
+        "heldout": 0.64453125,
+        "frozen_wait": 0.1736101359128952,
+        "rotation_wait_range": 0.5868526697158813,
+        "training_seconds": 683.2075388950761,
+        "additional_train_seconds": 414.09196358546615
+      }
+    ],
+    "mean": {
+      "clear": 0.8505859375,
+      "hall": 0.7610677083333334,
+      "pocket": 0.2508138020833333,
+      "forced": 0.74951171875,
+      "wait": 0.1840212291994297,
+      "heldout": 0.6595052083333334,
+      "frozen_wait": 0.18159238000710806,
+      "rotation_wait_range": 0.518097385764122,
+      "training_seconds": 683.1149892385583,
+      "additional_train_seconds": 413.5186004490436
+    }
+  },
+  {
+    "kind": "continue",
+    "step": 100,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.869140625,
+        "hall": 0.5595703125,
+        "pocket": 0.19482421875,
+        "forced": 0.8232421875,
+        "wait": 0.02932705216139032,
+        "heldout": 0.55859375,
+        "frozen_wait": 0.08716887980699539,
+        "rotation_wait_range": 0.3120638132095337,
+        "training_seconds": 746.6954597251024,
+        "additional_train_seconds": 526.6703988970257
+      },
+      {
+        "seed": 1,
+        "clear": 0.853515625,
+        "hall": 0.56005859375,
+        "pocket": 0.08837890625,
+        "forced": 0.7900390625,
+        "wait": 0.12305127511940164,
+        "heldout": 0.544921875,
+        "frozen_wait": 0.2648172974586487,
+        "rotation_wait_range": 0.4956345558166504,
+        "training_seconds": 742.0776313894894,
+        "additional_train_seconds": 520.9133511390537
+      },
+      {
+        "seed": 2,
+        "clear": 0.8466796875,
+        "hall": 0.42529296875,
+        "pocket": 0.20703125,
+        "forced": 0.8203125,
+        "wait": 0.06339021294598787,
+        "heldout": 0.525390625,
+        "frozen_wait": 0.0473109595477581,
+        "rotation_wait_range": 0.16123805940151215,
+        "training_seconds": 747.2601298855152,
+        "additional_train_seconds": 526.9101878372021
+      }
+    ],
+    "mean": {
+      "clear": 0.8564453125,
+      "hall": 0.5149739583333334,
+      "pocket": 0.16341145833333334,
+      "forced": 0.8111979166666666,
+      "wait": 0.07192284674225995,
+      "heldout": 0.54296875,
+      "frozen_wait": 0.1330990456044674,
+      "rotation_wait_range": 0.32297880947589874,
+      "training_seconds": 745.3444070000356,
+      "additional_train_seconds": 524.8313126244271
+    }
+  },
+  {
+    "kind": "continue",
+    "step": 100,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.861328125,
+        "hall": 0.7587890625,
+        "pocket": 0.17041015625,
+        "forced": 0.56298828125,
+        "wait": 0.5014819872284028,
+        "heldout": 0.576171875,
+        "frozen_wait": 0.519997239112854,
+        "rotation_wait_range": 0.8310644626617432,
+        "training_seconds": 906.6862692839932,
+        "additional_train_seconds": 639.0542297668289
+      },
+      {
+        "seed": 1,
+        "clear": 0.853515625,
+        "hall": 0.80712890625,
+        "pocket": 0.251953125,
+        "forced": 0.83349609375,
+        "wait": 0.024697207138258195,
+        "heldout": 0.67578125,
+        "frozen_wait": 0.04399312660098076,
+        "rotation_wait_range": 0.10364145040512085,
+        "training_seconds": 913.1096912408248,
+        "additional_train_seconds": 641.0681396990549
+      },
+      {
+        "seed": 2,
+        "clear": 0.861328125,
+        "hall": 0.80712890625,
+        "pocket": 0.29638671875,
+        "forced": 0.58203125,
+        "wait": 0.4301908464393002,
+        "heldout": 0.7421875,
+        "frozen_wait": 0.3306773900985718,
+        "rotation_wait_range": 0.8835296630859375,
+        "training_seconds": 913.061203392921,
+        "additional_train_seconds": 643.945628083311
+      }
+    ],
+    "mean": {
+      "clear": 0.8587239583333334,
+      "hall": 0.791015625,
+      "pocket": 0.23958333333333334,
+      "forced": 0.6595052083333334,
+      "wait": 0.31879001360198705,
+      "heldout": 0.6647135416666666,
+      "frozen_wait": 0.2982225852708022,
+      "rotation_wait_range": 0.6060785253842672,
+      "training_seconds": 910.9523879725797,
+      "additional_train_seconds": 641.3559991830649
+    }
+  },
+  {
+    "kind": "targeted",
+    "step": 50,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8251953125,
+        "hall": 0.54345703125,
+        "pocket": 0.1630859375,
+        "forced": 0.83056640625,
+        "wait": 0.015259009701336547,
+        "heldout": 0.759765625,
+        "frozen_wait": 0.025015538558363914,
+        "rotation_wait_range": 0.03774112090468407,
+        "training_seconds": 395.25268343812786,
+        "additional_train_seconds": 175.22762261005118,
+        "tactical_decision_fraction": 0.0064916892129866805,
+        "tactical_episode_fraction": 0.10138996331694657
+      },
+      {
+        "seed": 1,
+        "clear": 0.794921875,
+        "hall": 0.58935546875,
+        "pocket": 0.1953125,
+        "forced": 0.82568359375,
+        "wait": 0.06140309492357048,
+        "heldout": 0.720703125,
+        "frozen_wait": 0.1417708843946457,
+        "rotation_wait_range": 0.25919848680496216,
+        "training_seconds": 396.23317234008573,
+        "additional_train_seconds": 175.06889208965003,
+        "tactical_decision_fraction": 0.006604754338498975,
+        "tactical_episode_fraction": 0.10021063065295502
+      },
+      {
+        "seed": 2,
+        "clear": 0.802734375,
+        "hall": 0.619140625,
+        "pocket": 0.189453125,
+        "forced": 0.82861328125,
+        "wait": 0.01301887490291322,
+        "heldout": 0.712890625,
+        "frozen_wait": 0.032120902091264725,
+        "rotation_wait_range": 0.0762430801987648,
+        "training_seconds": 393.8229890016373,
+        "additional_train_seconds": 173.47304695332423,
+        "tactical_decision_fraction": 0.006605404713114754,
+        "tactical_episode_fraction": 0.10147610708031023
+      }
+    ],
+    "mean": {
+      "clear": 0.8076171875,
+      "hall": 0.583984375,
+      "pocket": 0.1826171875,
+      "forced": 0.8282877604166666,
+      "wait": 0.02989365984260675,
+      "heldout": 0.7311197916666666,
+      "frozen_wait": 0.06630244168142478,
+      "rotation_wait_range": 0.12439422930280368,
+      "training_seconds": 395.1029482599503,
+      "additional_train_seconds": 174.5898538843418,
+      "tactical_decision_fraction": 0.006567282754866803,
+      "tactical_episode_fraction": 0.10102556701673727
+    }
+  },
+  {
+    "kind": "targeted",
+    "step": 50,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.810546875,
+        "hall": 0.58984375,
+        "pocket": 0.16064453125,
+        "forced": 0.80712890625,
+        "wait": 0.06954674220963172,
+        "heldout": 0.744140625,
+        "frozen_wait": 0.15508894622325897,
+        "rotation_wait_range": 0.300607830286026,
+        "training_seconds": 478.51265803026035,
+        "additional_train_seconds": 210.88061851309612,
+        "tactical_decision_fraction": 0.00717558313588627,
+        "tactical_episode_fraction": 0.10110414522316834
+      },
+      {
+        "seed": 1,
+        "clear": 0.8056640625,
+        "hall": 0.78857421875,
+        "pocket": 0.451171875,
+        "forced": 0.83203125,
+        "wait": 0.02197425313261719,
+        "heldout": 0.8125,
+        "frozen_wait": 0.03657371550798416,
+        "rotation_wait_range": 0.0701964870095253,
+        "training_seconds": 482.0176006250549,
+        "additional_train_seconds": 209.97604908328503,
+        "tactical_decision_fraction": 0.007169779793160861,
+        "tactical_episode_fraction": 0.09967469400173185
+      },
+      {
+        "seed": 2,
+        "clear": 0.8271484375,
+        "hall": 0.693359375,
+        "pocket": 0.45263671875,
+        "forced": 0.833984375,
+        "wait": 0.04059703638040705,
+        "heldout": 0.767578125,
+        "frozen_wait": 0.09087886661291122,
+        "rotation_wait_range": 0.20980577170848846,
+        "training_seconds": 479.77121861907654,
+        "additional_train_seconds": 210.65564330946654,
+        "tactical_decision_fraction": 0.007180936219262295,
+        "tactical_episode_fraction": 0.09902280130293159
+      }
+    ],
+    "mean": {
+      "clear": 0.814453125,
+      "hall": 0.6905924479166666,
+      "pocket": 0.3548177083333333,
+      "forced": 0.8243815104166666,
+      "wait": 0.04403934390755199,
+      "heldout": 0.7747395833333334,
+      "frozen_wait": 0.09418050944805145,
+      "rotation_wait_range": 0.19353669633467993,
+      "training_seconds": 480.10049242479727,
+      "additional_train_seconds": 210.50410363528258,
+      "tactical_decision_fraction": 0.007175433049436475,
+      "tactical_episode_fraction": 0.09993388017594393
+    }
+  },
+  {
+    "kind": "targeted",
+    "step": 75,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8603515625,
+        "hall": 0.73779296875,
+        "pocket": 0.21923828125,
+        "forced": 0.826171875,
+        "wait": 0.006731293697624833,
+        "heldout": 0.751953125,
+        "frozen_wait": 0.010910186916589737,
+        "rotation_wait_range": 0.028852395713329315,
+        "training_seconds": 619.0343931613024,
+        "additional_train_seconds": 399.00933233322576,
+        "tactical_decision_fraction": 0.006642563188501456,
+        "tactical_episode_fraction": 0.10186658949500796
+      },
+      {
+        "seed": 1,
+        "clear": 0.8349609375,
+        "hall": 0.65771484375,
+        "pocket": 0.23046875,
+        "forced": 0.828125,
+        "wait": 0.0029311613635513204,
+        "heldout": 0.736328125,
+        "frozen_wait": 0.008213100954890251,
+        "rotation_wait_range": 0.021451616659760475,
+        "training_seconds": 615.5932429360691,
+        "additional_train_seconds": 394.42896268563345,
+        "tactical_decision_fraction": 0.0065889073737937,
+        "tactical_episode_fraction": 0.09970580072162087
+      },
+      {
+        "seed": 2,
+        "clear": 0.849609375,
+        "hall": 0.66455078125,
+        "pocket": 0.25830078125,
+        "forced": 0.80029296875,
+        "wait": 0.07087070740539134,
+        "heldout": 0.73828125,
+        "frozen_wait": 0.1103990375995636,
+        "rotation_wait_range": 0.3641808331012726,
+        "training_seconds": 615.9636059848126,
+        "additional_train_seconds": 395.6136639364995,
+        "tactical_decision_fraction": 0.006560390219580754,
+        "tactical_episode_fraction": 0.1006983177903708
+      }
+    ],
+    "mean": {
+      "clear": 0.8483072916666666,
+      "hall": 0.6866861979166666,
+      "pocket": 0.23600260416666666,
+      "forced": 0.8181966145833334,
+      "wait": 0.02684438748885583,
+      "heldout": 0.7421875,
+      "frozen_wait": 0.04317410849034786,
+      "rotation_wait_range": 0.13816161515812078,
+      "training_seconds": 616.8637473607281,
+      "additional_train_seconds": 396.35065298511955,
+      "tactical_decision_fraction": 0.00659728692729197,
+      "tactical_episode_fraction": 0.10075690266899988
+    }
+  },
+  {
+    "kind": "targeted",
+    "step": 75,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8544921875,
+        "hall": 0.708984375,
+        "pocket": 0.32763671875,
+        "forced": 0.8076171875,
+        "wait": 0.06676990886890226,
+        "heldout": 0.78515625,
+        "frozen_wait": 0.11391893774271011,
+        "rotation_wait_range": 0.40062403678894043,
+        "training_seconds": 740.4417867162265,
+        "additional_train_seconds": 472.80974719906226,
+        "tactical_decision_fraction": 0.0071831888642002,
+        "tactical_episode_fraction": 0.10085062305784864
+      },
+      {
+        "seed": 1,
+        "clear": 0.78515625,
+        "hall": 0.82958984375,
+        "pocket": 0.47265625,
+        "forced": 0.80908203125,
+        "wait": 0.06617568703600649,
+        "heldout": 0.806640625,
+        "frozen_wait": 0.10925117880105972,
+        "rotation_wait_range": 0.2183753252029419,
+        "training_seconds": 743.705698521575,
+        "additional_train_seconds": 471.6641469798051,
+        "tactical_decision_fraction": 0.007082500860626821,
+        "tactical_episode_fraction": 0.09883222066425297
+      },
+      {
+        "seed": 2,
+        "clear": 0.8388671875,
+        "hall": 0.806640625,
+        "pocket": 0.4130859375,
+        "forced": 0.82470703125,
+        "wait": 0.027188231850117095,
+        "heldout": 0.76171875,
+        "frozen_wait": 0.06302354484796524,
+        "rotation_wait_range": 0.1339348405599594,
+        "training_seconds": 744.6921836601105,
+        "additional_train_seconds": 475.57660835050046,
+        "tactical_decision_fraction": 0.00706476376860661,
+        "tactical_episode_fraction": 0.09884339965343744
+      }
+    ],
+    "mean": {
+      "clear": 0.826171875,
+      "hall": 0.78173828125,
+      "pocket": 0.4044596354166667,
+      "forced": 0.8138020833333334,
+      "wait": 0.053377942585008616,
+      "heldout": 0.7845052083333334,
+      "frozen_wait": 0.09539788713057835,
+      "rotation_wait_range": 0.2509780675172806,
+      "training_seconds": 742.946556299304,
+      "additional_train_seconds": 473.3501675097893,
+      "tactical_decision_fraction": 0.007110151164477877,
+      "tactical_episode_fraction": 0.09950874779184635
+    }
+  },
+  {
+    "kind": "targeted",
+    "step": 100,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8662109375,
+        "hall": 0.7578125,
+        "pocket": 0.30419921875,
+        "forced": 0.8125,
+        "wait": 0.027241923448604877,
+        "heldout": 0.740234375,
+        "frozen_wait": 0.05410206317901611,
+        "rotation_wait_range": 0.1382988691329956,
+        "training_seconds": 844.7577483353671,
+        "additional_train_seconds": 624.7326875072904,
+        "tactical_decision_fraction": 0.006662590226877048,
+        "tactical_episode_fraction": 0.10196202032936727
+      },
+      {
+        "seed": 1,
+        "clear": 0.865234375,
+        "hall": 0.78564453125,
+        "pocket": 0.3193359375,
+        "forced": 0.82470703125,
+        "wait": 0.006589581002113639,
+        "heldout": 0.7421875,
+        "frozen_wait": 0.010951048694550991,
+        "rotation_wait_range": 0.025762313976883888,
+        "training_seconds": 833.6569642480463,
+        "additional_train_seconds": 612.4926839976106,
+        "tactical_decision_fraction": 0.006553778487644838,
+        "tactical_episode_fraction": 0.09935543937549238
+      },
+      {
+        "seed": 2,
+        "clear": 0.8642578125,
+        "hall": 0.787109375,
+        "pocket": 0.296875,
+        "forced": 0.83154296875,
+        "wait": 0.019264792608610182,
+        "heldout": 0.765625,
+        "frozen_wait": 0.0395151786506176,
+        "rotation_wait_range": 0.16193799674510956,
+        "training_seconds": 837.9020431691315,
+        "additional_train_seconds": 617.5521011208184,
+        "tactical_decision_fraction": 0.00662007135398379,
+        "tactical_episode_fraction": 0.10040511956404832
+      }
+    ],
+    "mean": {
+      "clear": 0.865234375,
+      "hall": 0.77685546875,
+      "pocket": 0.3068033854166667,
+      "forced": 0.8229166666666666,
+      "wait": 0.0176987656864429,
+      "heldout": 0.7493489583333334,
+      "frozen_wait": 0.0348560968413949,
+      "rotation_wait_range": 0.10866639328499635,
+      "training_seconds": 838.772251917515,
+      "additional_train_seconds": 618.2591575419065,
+      "tactical_decision_fraction": 0.006612146689501892,
+      "tactical_episode_fraction": 0.10057419308963599
+    }
+  },
+  {
+    "kind": "targeted",
+    "step": 100,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.875,
+        "hall": 0.81298828125,
+        "pocket": 0.431640625,
+        "forced": 0.82080078125,
+        "wait": 0.0071226315067297015,
+        "heldout": 0.814453125,
+        "frozen_wait": 0.0233810693025589,
+        "rotation_wait_range": 0.07129338383674622,
+        "training_seconds": 1003.977515086066,
+        "additional_train_seconds": 736.3454755689017,
+        "tactical_decision_fraction": 0.00715127152003599,
+        "tactical_episode_fraction": 0.10057430635507349
+      },
+      {
+        "seed": 1,
+        "clear": 0.8515625,
+        "hall": 0.84521484375,
+        "pocket": 0.5224609375,
+        "forced": 0.83251953125,
+        "wait": 0.021141029709738055,
+        "heldout": 0.80078125,
+        "frozen_wait": 0.0708284005522728,
+        "rotation_wait_range": 0.13684558868408203,
+        "training_seconds": 1005.3454847084358,
+        "additional_train_seconds": 733.303933166666,
+        "tactical_decision_fraction": 0.007109309850114115,
+        "tactical_episode_fraction": 0.09952878204652855
+      },
+      {
+        "seed": 2,
+        "clear": 0.8583984375,
+        "hall": 0.84912109375,
+        "pocket": 0.54931640625,
+        "forced": 0.83203125,
+        "wait": 0.0032821124869461434,
+        "heldout": 0.837890625,
+        "frozen_wait": 0.008078758604824543,
+        "rotation_wait_range": 0.013684038072824478,
+        "training_seconds": 1006.0474392853212,
+        "additional_train_seconds": 736.9318639757112,
+        "tactical_decision_fraction": 0.007030358475245787,
+        "tactical_episode_fraction": 0.09867475003881909
+      }
+    ],
+    "mean": {
+      "clear": 0.8616536458333334,
+      "hall": 0.8357747395833334,
+      "pocket": 0.5011393229166666,
+      "forced": 0.8284505208333334,
+      "wait": 0.010515257901137966,
+      "heldout": 0.8177083333333334,
+      "frozen_wait": 0.034096076153218746,
+      "rotation_wait_range": 0.07394100353121758,
+      "training_seconds": 1005.1234796932744,
+      "additional_train_seconds": 735.5270909037596,
+      "tactical_decision_fraction": 0.007096979948465297,
+      "tactical_episode_fraction": 0.09959261281347372
+    }
+  },
+  {
+    "kind": "enemy_set",
+    "step": 30,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.7744140625,
+        "hall": 0.2724609375,
+        "pocket": 0.14794921875,
+        "forced": 0.62451171875,
+        "wait": 0.38627920639942154,
+        "heldout": 0.6015625,
+        "frozen_wait": 0.4534268081188202,
+        "rotation_wait_range": 0.5657120943069458,
+        "training_seconds": 283.90479012485594,
+        "additional_train_seconds": 283.90479012485594
+      },
+      {
+        "seed": 1,
+        "clear": 0.8056640625,
+        "hall": 0.224609375,
+        "pocket": 0.0517578125,
+        "forced": 0.8154296875,
+        "wait": 0.053944835666718476,
+        "heldout": 0.548828125,
+        "frozen_wait": 0.11209499090909958,
+        "rotation_wait_range": 0.2533493936061859,
+        "training_seconds": 286.2729496581014,
+        "additional_train_seconds": 286.2729496581014
+      },
+      {
+        "seed": 2,
+        "clear": 0.80859375,
+        "hall": 0.30908203125,
+        "pocket": 0.02490234375,
+        "forced": 0.74658203125,
+        "wait": 0.238050865482979,
+        "heldout": 0.55078125,
+        "frozen_wait": 0.42353036999702454,
+        "rotation_wait_range": 0.5817813873291016,
+        "training_seconds": 284.31438943371177,
+        "additional_train_seconds": 284.31438943371177
+      }
+    ],
+    "mean": {
+      "clear": 0.7962239583333334,
+      "hall": 0.2687174479166667,
+      "pocket": 0.07486979166666667,
+      "forced": 0.7288411458333334,
+      "wait": 0.22609163584970635,
+      "heldout": 0.5670572916666666,
+      "frozen_wait": 0.3296840563416481,
+      "rotation_wait_range": 0.46694762508074444,
+      "training_seconds": 284.8307097388897,
+      "additional_train_seconds": 284.8307097388897
+    }
+  },
+  {
+    "kind": "enemy_set",
+    "step": 30,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.7958984375,
+        "hall": 0.58984375,
+        "pocket": 0.123046875,
+        "forced": 0.5966796875,
+        "wait": 0.461549417313863,
+        "heldout": 0.61328125,
+        "frozen_wait": 0.4736013114452362,
+        "rotation_wait_range": 0.7734220623970032,
+        "training_seconds": 335.9312098699156,
+        "additional_train_seconds": 335.9312098699156
+      },
+      {
+        "seed": 1,
+        "clear": 0.7958984375,
+        "hall": 0.4755859375,
+        "pocket": 0.05029296875,
+        "forced": 0.7197265625,
+        "wait": 0.254526763631182,
+        "heldout": 0.580078125,
+        "frozen_wait": 0.2585958242416382,
+        "rotation_wait_range": 0.7948319315910339,
+        "training_seconds": 331.62909158016555,
+        "additional_train_seconds": 331.62909158016555
+      },
+      {
+        "seed": 2,
+        "clear": 0.775390625,
+        "hall": 0.49072265625,
+        "pocket": 0.0537109375,
+        "forced": 0.76123046875,
+        "wait": 0.12884312235617,
+        "heldout": 0.578125,
+        "frozen_wait": 0.132721945643425,
+        "rotation_wait_range": 0.4384079873561859,
+        "training_seconds": 335.0900581369642,
+        "additional_train_seconds": 335.0900581369642
+      }
+    ],
+    "mean": {
+      "clear": 0.7890625,
+      "hall": 0.5187174479166666,
+      "pocket": 0.07568359375,
+      "forced": 0.6925455729166666,
+      "wait": 0.28163976776707167,
+      "heldout": 0.5904947916666666,
+      "frozen_wait": 0.2883063604434331,
+      "rotation_wait_range": 0.668887327114741,
+      "training_seconds": 334.2167865290151,
+      "additional_train_seconds": 334.2167865290151
+    }
+  },
+  {
+    "kind": "d4_exact",
+    "step": 30,
+    "placement": "ordinary",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.880859375,
+        "hall": 0.7255859375,
+        "pocket": 0.13818359375,
+        "forced": 0.82958984375,
+        "wait": 0.0056744809774510775,
+        "heldout": 0.6640625,
+        "frozen_wait": 0.00869134534150362,
+        "rotation_wait_range": 4.665707820095122e-09,
+        "training_seconds": 580.1909128865227,
+        "additional_train_seconds": 580.1909128865227
+      },
+      {
+        "seed": 1,
+        "clear": 0.8857421875,
+        "hall": 0.76318359375,
+        "pocket": 0.056640625,
+        "forced": 0.83251953125,
+        "wait": 0.029850202281590552,
+        "heldout": 0.6171875,
+        "frozen_wait": 0.03268560767173767,
+        "rotation_wait_range": 1.9936123862862587e-08,
+        "training_seconds": 582.5428089487832,
+        "additional_train_seconds": 582.5428089487832
+      },
+      {
+        "seed": 2,
+        "clear": 0.8798828125,
+        "hall": 0.7734375,
+        "pocket": 0.01123046875,
+        "forced": 0.83203125,
+        "wait": 0.009088997984344665,
+        "heldout": 0.50390625,
+        "frozen_wait": 0.017035692930221558,
+        "rotation_wait_range": 1.0388248483650386e-08,
+        "training_seconds": 582.1206405488774,
+        "additional_train_seconds": 582.1206405488774
+      }
+    ],
+    "mean": {
+      "clear": 0.8821614583333334,
+      "hall": 0.7540690104166666,
+      "pocket": 0.06868489583333333,
+      "forced": 0.8313802083333334,
+      "wait": 0.014871227081128764,
+      "heldout": 0.5950520833333334,
+      "frozen_wait": 0.01947088198115428,
+      "rotation_wait_range": 1.1663360055536032e-08,
+      "training_seconds": 581.6181207947278,
+      "additional_train_seconds": 581.6181207947278
+    }
+  },
+  {
+    "kind": "d4_exact",
+    "step": 30,
+    "placement": "clumped",
+    "seeds": [
+      {
+        "seed": 0,
+        "clear": 0.8994140625,
+        "hall": 0.7958984375,
+        "pocket": 0.43701171875,
+        "forced": 0.83251953125,
+        "wait": 0.0007974581022989222,
+        "heldout": 0.75390625,
+        "frozen_wait": 0.0005322587094269693,
+        "rotation_wait_range": 3.3168134905281477e-10,
+        "training_seconds": 631.0988242239691,
+        "additional_train_seconds": 631.0988242239691
+      },
+      {
+        "seed": 1,
+        "clear": 0.8779296875,
+        "hall": 0.8291015625,
+        "pocket": 0.4697265625,
+        "forced": 0.83642578125,
+        "wait": 0.02763776474579557,
+        "heldout": 0.771484375,
+        "frozen_wait": 0.07740416377782822,
+        "rotation_wait_range": 5.0364178605377674e-08,
+        "training_seconds": 632.5708604038227,
+        "additional_train_seconds": 632.5708604038227
+      },
+      {
+        "seed": 2,
+        "clear": 0.884765625,
+        "hall": 0.81591796875,
+        "pocket": 0.48291015625,
+        "forced": 0.83056640625,
+        "wait": 0.009993452991241832,
+        "heldout": 0.818359375,
+        "frozen_wait": 0.039244260638952255,
+        "rotation_wait_range": 2.508386387489736e-08,
+        "training_seconds": 631.5987334644888,
+        "additional_train_seconds": 631.5987334644888
+      }
+    ],
+    "mean": {
+      "clear": 0.8873697916666666,
+      "hall": 0.8136393229166666,
+      "pocket": 0.4632161458333333,
+      "forced": 0.8331705729166666,
+      "wait": 0.012809558613112108,
+      "heldout": 0.78125,
+      "frozen_wait": 0.039060227708735816,
+      "rotation_wait_range": 2.5259907943109283e-08,
+      "training_seconds": 631.7561393640935,
+      "additional_train_seconds": 631.7561393640935
+    }
+  }
+]
