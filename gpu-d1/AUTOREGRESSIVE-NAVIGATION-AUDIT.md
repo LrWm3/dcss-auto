@@ -54,3 +54,41 @@ small one-seed panel assesses mechanism, not full-validation superiority.
 Scripts: diagnostics/autoregressive-imitation/navigation_audit.py and
 conservative_audit.py. Results: results/autoregressive-navigation-audit.json and
 results/autoregressive-conservative-audit.json. Original checkpoints unchanged.
+
+## Conservative diagnostic results
+
+Each condition completed 30 updates (983,040 decisions), with entropy disabled.
+Fixed diagnostic panel: 128 placements. Starting imitation: 124 sampled clears,
+120 greedy clears.
+
+| Condition | Final sampled clears | Final greedy clears | Accepted optimizer epochs | Rejected epochs |
+|---|---:|---:|---:|---:|
+| KL restriction only | 124 | 58 | 93 | 12 |
+| Critic fitting only | 95 | 0 | 120 | 0 |
+| Critic fitting + KL restriction | 122 | 0 | 79 | 15 |
+
+The KL check held: maximum accepted post-update full-rollout KL was .009879
+(KL only) and .009985 (combined). Greedy deterioration is therefore not explained
+solely by a single unconstrained update; small per-update changes can accumulate
+and can alter a deterministic directional choice. This is not a cumulative bound
+against the original imitation policy, nor a bound at every individual state.
+
+Critic fitting used 279,340 states from 512 training-map episodes, 472 of which
+cleared. Held-out state-weighted MSE improved from .97926 to .02042. However,
+always predicting success would already have MSE .02074 on these states: this
+fit is mainly learning a strong success prior, not demonstrably accurate local
+advantages. All actor and shared-encoder tensors were verified unchanged by
+fitting. Fitting this linear critic does not improve the handoff here; the result
+does not rule out better value fitting with a richer critic or different targets.
+
+The combined test preserves sampled performance but not greedy navigation. The
+critic-only test eventually also hurts sampled clears (95/128). None establishes
+an improvement over imitation. Protocol duration: 338.24 seconds, including both
+sampled and greedy checks. All original checkpoints remain unchanged.
+
+Implication: temporal visit/action information would make repeated traversal
+observable, while the present clear-only objective gives no independent incentive
+to avoid it when sampling still clears. Those are separate representation and
+objective questions. A reference-policy or navigation imitation constraint would
+instead directly test preservation of the already learned navigation behavior.
+No new representation, reward, or further training run was introduced here.
