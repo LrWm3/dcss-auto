@@ -1,0 +1,22 @@
+{
+  "0": {
+    "episodes": 4096,
+    "clumped_fraction": 0.0,
+    "placement_checks_passed": true
+  },
+  "1": {
+    "episodes": 4096,
+    "clumped_fraction": 0.334228515625,
+    "placement_checks_passed": true
+  },
+  "2": {
+    "episodes": 4096,
+    "clumped_fraction": 1.0,
+    "placement_checks_passed": true
+  },
+  "ordinary_parity": {
+    "episodes": 64,
+    "steps": 128,
+    "all_observations_masks_outputs_exact": true
+  }
+}
