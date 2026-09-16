@@ -38,3 +38,34 @@ rollout and checkpoint resume. Evaluation asserts raw reward equals clear status
 Native/PPO gamma agreement is asserted. Artifacts stay under ignored
 learning-runs/autoregressive-imitation with a 2 GiB cap and 10 GiB free reserve.
 Tracked result: results/autoregressive-imitation.json.
+
+## Completed pilot
+
+All evaluations use 1,024 held-out placements. Teacher: 986 clears, 27 deaths,
+11 timeouts (96.29% clears). Final cloning training action agreement: 99.71%;
+this is training agreement, not held-out label accuracy.
+
+| Stage | Mode | Clears | Deaths | Timeouts | Turns/episode |
+|---|---|---:|---:|---:|---:|
+| Imitation only | sampled | 992 | 32 | 0 | 662.34 |
+| Imitation only | greedy | 967 | 32 | 25 | 695.40 |
+| PPO 500,224 | sampled | 0 | 41 | 983 | 1975.44 |
+| PPO 500,224 | greedy | 0 | 30 | 994 | 1988.62 |
+| PPO 1,000,448 | sampled | 0 | 46 | 978 | 1969.28 |
+| PPO 1,000,448 | greedy | 0 | 28 | 996 | 1992.62 |
+
+The imitation checkpoint is a successful low-level initialization. Its six-clear
+sampled advantage over the teacher does not establish superiority from one panel.
+PPO did not improve it: both modes lost all clears. At 1M, sampled averages
+1,528 movement actions, 363 waits, and 7.09 kills; greedy averages 1,866 movement
+actions, 107 waits, and 1.71 kills. Thus this is primarily timeout with ineffective
+movement, rather than the earlier semantic policy's almost-all-WAIT collapse.
+The exact mechanism has not been diagnosed. Possible contributors include a
+zero-initialized untrained critic, sparse delayed rewards, and entropy-induced
+drift from a confident cloned policy. Do not treat these as established causes.
+
+Demo generation: 5.84 seconds; eight cloning passes: 18.28 seconds; PPO training:
+21.72 seconds. Pipeline including teacher and policy validation: 128.57 seconds.
+The original imitation checkpoint remains at learning-runs/autoregressive-imitation/
+imitation.pt; PPO snapshots include decision 0, 500,224 and 1,000,448. No further
+training is launched as part of reporting these results.
