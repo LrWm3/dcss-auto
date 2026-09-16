@@ -254,7 +254,7 @@ def worker(store, manifest, job):
         assert not active.any().item()
         terminal, returns = torch.cat((terminal,waiting,action_counts),1).cpu(), returns.cpu()
         def metrics(t, r):
-            torch.testing.assert_close(r,t[:,2]+job.get('turn_reward',-.00001)*t[:,5],rtol=0,atol=1e-4)
+            torch.testing.assert_close(r,t[:,2]+.001*job.get('kill_milli',0)*t[:,3]+job.get('turn_reward',-.00001)*t[:,5],rtol=0,atol=1e-4)
             result = dict(clear_rate=t[:, 2].mean().item(), kills=t[:, 3].mean().item(),
                         death_rate=t[:, 6].mean().item(), timeout_rate=t[:, 7].mean().item(),
                         turns=t[:, 5].mean().item(), shaped_return=r.mean().item())
