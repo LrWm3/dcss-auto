@@ -49,3 +49,11 @@ reward components, while keeping entropy/value coefficients unchanged; therefore
 it does not isolate sparsity from their effective relative strengths. Sampled
 and greedy policy differences must remain visible in interpreting this result.
 All evaluated raw episode rewards equal their binary clear outcomes exactly.
+
+## Continuation to 1M
+
+Run scripts/continue_1m.py to resume the 500K checkpoint, including optimizer,
+RNG and simulator state, with no reward or learning changes. The original suite
+is preserved. New artifacts go to learning-runs/semantic-clear-only-1m; target
+1,000,448 total decisions. Results go to results/semantic-clear-only-1m.json.
+Additional training time is recorded separately from cumulative training time.
