@@ -40,3 +40,35 @@ The orchestrator checks that the old and new training jobs differ only in
 `turn_limit`, verifies identical corpus hashes, and writes a checkpoint-by-
 checkpoint comparison after training. Existing ignore rules keep weights,
 compiled libraries and runtime logs local. Disk cap: 2 GiB; reserve: 5 GiB.
+
+## Completed results
+
+All nine checkpoints are retained. Training reached 10,027,008 decisions in
+69.549 measured training seconds (excluding compilation/checkpoint/evaluation
+time). The earlier 512-turn-trained run took 60.557 training seconds. Both
+columns below validate at 2,048 game turns with elapsed turns / 2048 as input:
+
+| Actual decisions | Train 512: clear | Train 2048: clear | Train 2048: death | Train 2048: timeout |
+|---|---:|---:|---:|---:|
+| 0 | 0.00% | 0.00% | 39.75% | 60.25% |
+| 131,072 | 0.00% | 0.00% | 30.18% | 69.82% |
+| 327,680 | 0.00% | 0.00% | 26.17% | 73.83% |
+| 1,015,808 | 0.00% | 0.00% | 25.00% | 75.00% |
+| 2,031,616 | 49.22% | 40.72% | 58.20% | 1.07% |
+| 3,014,656 | 51.86% | 46.09% | 52.34% | 1.56% |
+| 5,013,504 | 60.06% | 54.88% | 43.75% | 1.37% |
+| 7,503,872 | 63.38% | 58.20% | 40.53% | 1.27% |
+| 10,027,008 | 65.43% | 61.52% | 37.40% | 1.07% |
+
+Increasing the training horizon did not improve this seed's completion rate by
+10M. It trails the shorter-horizon-trained model at every sampled milestone
+from 2M onward. At 10M the difference is 3.91 percentage points, with more deaths
+(37.40% vs 32.62%) and slightly fewer timeouts (1.07% vs 1.95%). This is not a
+multi-seed finding and does not establish that shorter training horizons are
+generally superior. The game budget limiting evaluation and the training horizon
+producing useful experience are distinct questions.
+
+Artifact: `results/vision15-no-travel-train2048-10m.json`, containing both sampled
+and greedy evaluations, per-map statistics, retained-checkpoint hashes, timings,
+and the matched baseline. Post-run checks confirm identical training jobs aside
+from `turn_limit`, identical corpus hashes, and all nine compact checkpoints.
