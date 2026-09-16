@@ -118,3 +118,35 @@ may discourage long recovery, but that causal explanation remains untested.
 
 Final machine-readable summary: `results/semantic-actions-training.json`.
 The autoregressive successor was cancelled while queued and did not train.
+
+## Post-training deterministic REST override
+
+Same 10M weights and 1,024 initial episodes. Draw the normal model action, then
+replace it with REST whenever the existing REST mask permits it (damaged player,
+regeneration, no visible awake enemy). All remaining actions stay policy-driven.
+No retraining or hidden information. Both baseline replays exactly reproduce the
+recorded clear/death/timeout counts. Greedy retains the original five-action argmax.
+
+| Policy | Clears | Deaths | Timeouts | Mean game turns | Mean REST uses |
+|---|---|---|---|---|---|
+| Sampled baseline | 950 | 64 | 10 | 524.25 | 0.002 |
+| Sampled + forced rest | 972 (94.92%) | 44 | 8 | 622.18 | 8.40 |
+| Greedy baseline | 961 | 57 | 6 | 519.58 | 0 |
+| Greedy + forced rest | 971 (94.82%) | 46 | 7 | 620.05 | 8.43 |
+| Deterministic reference | 986 (96.29%) | 27 | 11 | 681.00 | 8.89 |
+
+Sampled: 37 previously unsuccessful episodes become clears and 15 previously
+successful ones cease clearing, net +22. Greedy: +18/-8, net +10. Same starting
+scenarios do not imply identical future states/RNG consumption after intervention.
+REST averages 96.26 physical turns sampled, 97.16 greedy. Raw shaped return rises
+from 26.75 to 27.07 sampled, and 26.99 to 27.09 greedy.
+
+The clear-count gap to the deterministic reference shrinks from 36 to 14 sampled,
+and 25 to 15 greedy. Recovery neglect explains part of the observed performance
+gap under this intervention; it does not establish why PPO avoided REST, nor
+prove the remaining gap comes from any specific action. This is a single trained
+seed on the reused validation panel.
+
+Reproducer: `diagnostics/semantic-actions/rest_override.py`.
+Results, checkpoint/library hashes and per-episode outcomes:
+`results/semantic-actions-rest-override.json`.
