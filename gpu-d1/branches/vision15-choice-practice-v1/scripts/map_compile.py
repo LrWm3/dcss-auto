@@ -37,4 +37,3 @@ def compile_map(spec,path,seed):
         f.write(struct.pack('<3I4i',0x44325650,seed,len(cells),18,681,794,906))
         for a in [floor,padded,index,distances,masks]:f.write(a.tobytes())
     return hashlib.sha256(floor.tobytes()).hexdigest()
-
