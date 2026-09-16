@@ -1,0 +1,14 @@
+{
+  "native_semantics": true,
+  "cpu_gpu_48_step_parity": true,
+  "sleeping_enemy_does_not_block_rest": true,
+  "waking_or_approaching_awake_enemy_interrupts": true,
+  "rest_stops_at_2048_physical_turns": true,
+  "full_map_and_all_enemies": true,
+  "no_frontier_guidance": true,
+  "centering_extremes_and_d4": true,
+  "ppo_resume": true,
+  "benchmark_decisions": 32768,
+  "benchmark_train_seconds": 43.05120719294064,
+  "estimated_10m_train_seconds": 13138.18578886128
+}
