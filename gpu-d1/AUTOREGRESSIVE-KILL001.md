@@ -57,3 +57,16 @@ sampled differences versus control are small in this one-seed comparison.
 Under the new objective its sampled mean return fell from initial 1.196307 to
 1.181779. Reward degradation therefore persists even under the added feedback.
 This tests one kill coefficient, not the usefulness of all intermediate rewards.
+
+Navigation replay completed, reproducing greedy outcomes exactly. Total pipeline
+wall time including replay: 132.98 seconds. At 500K, all 985 greedy timeouts had
+>=8 consecutive immediate movement reversals; 96.25% of MOVE decisions were
+immediate reversals. At 1M, 757/758 timeouts had those loops, and 87.77% of MOVE
+decisions were reversals (control: 640/648 and 82.02%). Blocked/stationary MOVE
+attempts were zero. Of 1,363,350 reversals at 1M, 1,358,329 returned to observations
+identical to two decisions earlier except for elapsed time. Example loop states
+include full-health/no-visible-enemy situations by turns 8 and 12, with selected
+movement-direction probabilities 98.79% and 97.51% at the captured endpoint.
+These are examples, not prevalence estimates for HP, enemies or confidence.
+Thus failure remains repeated legal movement/navigation, not failed movement
+against walls. Replay identifies behavior, not the gradient mechanism causing it.

@@ -1,0 +1,402 @@
+{
+  "results": {
+    "500224_type_greedy": {
+      "clears": 6,
+      "deaths": 33,
+      "timeouts": 985,
+      "movement_decisions": 1919149,
+      "immediate_reversals": 1847162,
+      "blocked_or_stationary_move_decisions": 0,
+      "reversals_with_identical_observation_except_time": 1844887,
+      "episodes_with_at_least_8_consecutive_reversals": 985,
+      "timeout_episodes_with_at_least_8_reversals": 985,
+      "examples": [
+        {
+          "episode": 508,
+          "decision": 9,
+          "turn": 9,
+          "xy": [
+            47.0,
+            25.0
+          ],
+          "next_xy": [
+            48.0,
+            26.0
+          ],
+          "action": 5,
+          "type_probs": [
+            0.9999871253967285,
+            0.0,
+            1.2910265468235593e-05,
+            0.0
+          ],
+          "move_direction_probs": [
+            0.0035750402603298426,
+            0.004035336896777153,
+            0.001970680197700858,
+            0.0,
+            0.06955176591873169,
+            0.8957363963127136,
+            0.0,
+            0.025130797177553177
+          ],
+          "frontier_route": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "frontier_distance": 2.9999999329447746,
+          "seen_tiles": 54.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        },
+        {
+          "episode": 198,
+          "decision": 10,
+          "turn": 10,
+          "xy": [
+            24.0,
+            13.0
+          ],
+          "next_xy": [
+            25.0,
+            14.0
+          ],
+          "action": 5,
+          "type_probs": [
+            0.9999929666519165,
+            0.0,
+            7.025753347988939e-06,
+            0.0
+          ],
+          "move_direction_probs": [
+            0.014621883630752563,
+            0.0,
+            0.022772399708628654,
+            0.03667827323079109,
+            0.23711279034614563,
+            0.37508073449134827,
+            0.0,
+            0.31373393535614014
+          ],
+          "frontier_route": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "frontier_distance": 2.000000048428774,
+          "seen_tiles": 50.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        },
+        {
+          "episode": 757,
+          "decision": 10,
+          "turn": 10,
+          "xy": [
+            33.0,
+            12.0
+          ],
+          "next_xy": [
+            34.0,
+            11.0
+          ],
+          "action": 4,
+          "type_probs": [
+            0.999962568283081,
+            0.0,
+            3.740904503501952e-05,
+            0.0
+          ],
+          "move_direction_probs": [
+            0.005532096140086651,
+            0.0,
+            0.0,
+            0.00430705351755023,
+            0.9346669912338257,
+            0.0,
+            0.010144909843802452,
+            0.045349035412073135
+          ],
+          "frontier_route": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "frontier_distance": 2.9999999329447746,
+          "seen_tiles": 94.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        },
+        {
+          "episode": 953,
+          "decision": 10,
+          "turn": 10,
+          "xy": [
+            18.0,
+            28.0
+          ],
+          "next_xy": [
+            17.0,
+            27.0
+          ],
+          "action": 7,
+          "type_probs": [
+            0.9999822378158569,
+            0.0,
+            1.7717855371301994e-05,
+            0.0
+          ],
+          "move_direction_probs": [
+            0.002583423163741827,
+            0.0011232409160584211,
+            0.002408529631793499,
+            0.0,
+            0.022020073607563972,
+            0.0,
+            0.0,
+            0.9718647599220276
+          ],
+          "frontier_route": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "frontier_distance": 2.9999999329447746,
+          "seen_tiles": 43.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        }
+      ],
+      "turns_by_outcome": {
+        "clear": 555.1666870117188,
+        "death": 43.06060791015625,
+        "timeout": 2048.0
+      }
+    },
+    "1000448_type_greedy": {
+      "clears": 228,
+      "deaths": 38,
+      "timeouts": 758,
+      "movement_decisions": 1553245,
+      "immediate_reversals": 1363350,
+      "blocked_or_stationary_move_decisions": 0,
+      "reversals_with_identical_observation_except_time": 1358329,
+      "episodes_with_at_least_8_consecutive_reversals": 822,
+      "timeout_episodes_with_at_least_8_reversals": 757,
+      "examples": [
+        {
+          "episode": 289,
+          "decision": 8,
+          "turn": 8,
+          "xy": [
+            42.0,
+            41.0
+          ],
+          "next_xy": [
+            42.0,
+            40.0
+          ],
+          "action": 0,
+          "type_probs": [
+            0.9999762773513794,
+            0.0,
+            2.376612974330783e-05,
+            0.0
+          ],
+          "move_direction_probs": [
+            0.9879051446914673,
+            0.0,
+            0.0,
+            0.012094858102500439,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "frontier_route": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "frontier_distance": 2.000000048428774,
+          "seen_tiles": 30.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        },
+        {
+          "episode": 226,
+          "decision": 12,
+          "turn": 12,
+          "xy": [
+            13.0,
+            30.0
+          ],
+          "next_xy": [
+            12.0,
+            29.0
+          ],
+          "action": 7,
+          "type_probs": [
+            0.9999316930770874,
+            0.0,
+            6.834448140580207e-05,
+            0.0
+          ],
+          "move_direction_probs": [
+            0.00077862199395895,
+            0.0005111112259328365,
+            0.0006255931803025305,
+            0.0016180318780243397,
+            0.009751729667186737,
+            0.0016925742384046316,
+            0.009915754199028015,
+            0.9751064777374268
+          ],
+          "frontier_route": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "frontier_distance": 2.000000048428774,
+          "seen_tiles": 117.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        },
+        {
+          "episode": 887,
+          "decision": 16,
+          "turn": 16,
+          "xy": [
+            59.0,
+            18.0
+          ],
+          "next_xy": [
+            58.0,
+            19.0
+          ],
+          "action": 6,
+          "type_probs": [
+            0.9999645948410034,
+            0.0,
+            3.54047333530616e-05,
+            0.0
+          ],
+          "move_direction_probs": [
+            4.118204742553644e-05,
+            9.140367183135822e-05,
+            0.0,
+            0.0021662286017090082,
+            8.239179442171007e-05,
+            0.012039992958307266,
+            0.9836164712905884,
+            0.001962347887456417
+          ],
+          "frontier_route": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "frontier_distance": 2.9999999329447746,
+          "seen_tiles": 121.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        },
+        {
+          "episode": 956,
+          "decision": 16,
+          "turn": 16,
+          "xy": [
+            59.0,
+            47.0
+          ],
+          "next_xy": [
+            60.0,
+            46.0
+          ],
+          "action": 4,
+          "type_probs": [
+            0.9999697208404541,
+            0.0,
+            3.028276660188567e-05,
+            0.0
+          ],
+          "move_direction_probs": [
+            0.0,
+            0.00015752851322758943,
+            0.0,
+            2.062644671241287e-05,
+            0.9998218417167664,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "frontier_route": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "frontier_distance": 5.999999865889549,
+          "seen_tiles": 23.0,
+          "visible_enemies": 0,
+          "full_hp": true,
+          "observation_repeats_except_time": true
+        }
+      ],
+      "turns_by_outcome": {
+        "clear": 770.3552856445312,
+        "death": 138.55262756347656,
+        "timeout": 2048.0
+      }
+    }
+  },
+  "seconds": 25.10971850110218,
+  "definition": "Immediate reversal: MOVE returns to previous decision position; streak>=8 identifies repeated two-square oscillation. Observation equality excludes elapsed time only."
+}
