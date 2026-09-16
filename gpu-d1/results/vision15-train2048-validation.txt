@@ -1,0 +1,1 @@
+PASS: 17,600 CPU/CUDA transitions; original dynamics match exactly; rewards, active masks and normalized clock agree; explicit 512/2047/2048 boundary tests pass.
