@@ -1,4 +1,5 @@
 """Read-only six-enemy, three-step hallway retreat diagnostic for the two 30M policies."""
+import argparse
 import ctypes as C
 import collections
 import json
@@ -71,14 +72,15 @@ class Policy(nn.Module):
  def forward(self,o,m):return Categorical(logits=self.actor(self.body(o)).masked_fill(m==0,-1e9))
 
 def main():
+ ap=argparse.ArgumentParser();ap.add_argument('--greedy',action='store_true');greedy=ap.parse_args().greedy
  started=time.monotonic();torch.set_num_threads(1);torch.backends.cuda.matmul.allow_tf32=False
- folder=pathlib.Path(__file__).parent;build=folder/'build';build.mkdir(exist_ok=True);maps(build)
+ folder=pathlib.Path(__file__).parent;build=folder/'build'/('greedy' if greedy else 'sampled');build.mkdir(parents=True,exist_ok=True);maps(build)
  lib=build/'hallway_six.so'
  flags=['-DCLUMP_MODE=0','-DPROGRESS_INPUT=2','-DKILL_MILLI=1000','-DCLEAR_MILLI=3000','-DDEATH_MILLI=4000','-DFRONTIER_TRAVEL=0','-DOGRE_COUNT=0','-DMONSTER_WAKE_LOS=1','-DTERRAIN_LOS=1','-DGLOBAL_ENEMIES=0','-DLEARN_ENEMIES=40','-DMULTI_MAP','-DSLEEP_ON','-DEXPLORE_REWARD','-DMARK_WALLS','-DEXPLORE_MILLI=2','-DFRONTIER_RING_MEMORY_WALLS_OBS','-DKNOWN_FRONTIER','-DFRONTIER_ROUTE_CUE_OBS','-DFAST_FRONTIER','-DLEARN_BLOCK_SIZE=4','-DCLEAR_PER_ENEMY_MILLI=0']
  subprocess.run(['nvcc','-O3','-std=c++17','-arch=sm_75','-ccbin','/usr/bin/g++-12','-shared','-Xcompiler','-fPIC',*flags,str(folder/'probe.cu'),'-o',str(lib)],check=True)
  env=Env(24*512,24,seed=900000,corpus=build,map_limit=4,library_path=lib)
  p=C.c_void_p;i=C.c_int;env.lib.hall_init.argtypes=[p,i,p,p,C.c_uint64,p,p,p];env.lib.hall_control.argtypes=[p,i,p,p,i,p];env.lib.hall_status.argtypes=[p,i,p,p,p]
- report=dict(training_performed=False,rollouts_per_condition=512,rollout_limit=256,initial_tick=256,source_hashes={str(q.relative_to(ROOT)):digest(q) for q in [folder/'run.py',folder/'probe.cu',ROOT/'fixtures/native-1057.rays',ROOT/'branches/vision15-clumps-v1/src/learn.cu',ROOT/'branches/vision15-clumps-v1/src/sim.h']},conditions=[dict(kind='weak' if g<12 else 'tough',hp=[6,12,18][g//4%3],rotation=g%4) for g in range(24)],arms={})
+ report=dict(action_selection='greedy' if greedy else 'sampled',training_performed=False,rollouts_per_condition=512,rollout_limit=256,initial_tick=256,source_hashes={str(q.relative_to(ROOT)):digest(q) for q in [folder/'run.py',folder/'probe.cu',ROOT/'fixtures/native-1057.rays',ROOT/'branches/vision15-clumps-v1/src/learn.cu',ROOT/'branches/vision15-clumps-v1/src/sim.h']},conditions=[dict(kind='weak' if g<12 else 'tough',hp=[6,12,18][g//4%3],rotation=g%4) for g in range(24)],arms={})
  paths=select_models({'ordinary':ROOT/'learning-runs/vision15-seen-death4-30m/runs/tiles_seen_death4-seed0/snapshots/000030015488.pt','mixed':ROOT/'learning-runs/vision15-clumps-30m/runs/clumps_third-seed0/snapshots/000030015488.pt'})
  back=torch.tensor([(2+(j//512)%4)%4 for j in range(env.batch)],device='cuda')
  for arm in ['hold_fight','retreat_fight','ordinary','ordinary_force_retreat','mixed','mixed_force_retreat','ordinary_force_three','mixed_force_three']:
@@ -102,7 +104,8 @@ def main():
     if arm in ['hold_fight','retreat_fight']:
      env.check(env.lib.hall_control(env.state.data_ptr(),env.batch,C.byref(env.config),env.actions.data_ptr(),int(arm=='retreat_fight'),env.stream));actions=env.actions
     else:
-     actions=model(env.obs,env.mask).sample()
+     distribution=model(env.obs,env.mask)
+     actions=distribution.probs.argmax(-1) if greedy else distribution.sample()
      if step==0 and arm.endswith('force_retreat'):actions=back
      if step<3 and arm.endswith('force_three'):actions=back
     env.check(env.lib.hall_status(env.state.data_ptr(),env.batch,actions.data_ptr(),status.data_ptr(),env.stream))
@@ -116,6 +119,6 @@ def main():
   def means(x):return x.float().reshape(24,512).mean(1).tolist()
   report['arms'][arm]=dict(first=first,checkpoint_sha256=checkpoint,protected_contact_turns=means(protected_contact),protected_attack_turns=means(protected_attack),protected_wait_turns=means(protected_wait),win=means(won),death=means(dead),unresolved=means(active),turns=means(turns),reached_hallway=means(reached),attacked_before_hallway=means(attack_before),mean_first_reach_turn=[float(first_reach.reshape(24,512)[j][reached.reshape(24,512)[j]].mean()) if reached.reshape(24,512)[j].any() else None for j in range(24)])
   report['elapsed_seconds']=time.monotonic()-started
-  result_path(ROOT,'hallway-six-retreat.json').write_text(json.dumps(report,indent=2)+'\n')
+  result_path(ROOT,'hallway-six-retreat'+('-greedy' if greedy else '')+'.json').write_text(json.dumps(report,indent=2)+'\n')
   print(arm,'win',means(won),'unresolved',int(active.sum()),flush=True)
 if __name__=='__main__':main()

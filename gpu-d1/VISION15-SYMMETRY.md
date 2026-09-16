@@ -69,3 +69,8 @@ gpu-d1/.venv/bin/python gpu-d1/branches/vision15-symmetry-v1/scripts/run_experim
 Outputs: `learning-runs/vision15-symmetry-30m` (2 GiB budget, 5 GiB free reserve),
 `results/vision15-symmetry-*.json`, and `results/d4-*.json`. Existing ignore rules
 exclude checkpoints, compiled libraries, generated maps and logs. No corpus copies.
+
+Timing note: requested greedy retreat diagnostics ran on the same GPU during part
+of the clumped D4 run (roughly 02:06–02:10 local on September 16). Recorded training
+seconds include any contention during that overlap; do not interpret the two D4
+runs' throughput difference as a clean augmentation/placement benchmark.
