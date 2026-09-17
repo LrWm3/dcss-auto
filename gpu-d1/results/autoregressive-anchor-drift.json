@@ -1,6 +1,42 @@
 {
   "probe": "512 fixed training-buffer observations; no validation or test states",
   "results": {
+    "policy0.1-seed1": {
+      "layer_parameter_l2_change": {
+        "body.0.": 8.036011915958248,
+        "body.2.": 2.991815299846387,
+        "actor.": 0.48867563270821024,
+        "direction.": 1.7610428973335892,
+        "critic.": 0.23416328479114423
+      },
+      "first_layer_feature_mse": 0.1742967814207077,
+      "joint_policy_kl": 0.008709711022675037,
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-policy01-replicates/runs/policy0.1-seed1/snapshots/000010000384.pt"
+    },
+    "policy0.1-seed2": {
+      "layer_parameter_l2_change": {
+        "body.0.": 8.328528269783256,
+        "body.2.": 3.33591208682777,
+        "actor.": 0.499236353874814,
+        "direction.": 2.5461737801966495,
+        "critic.": 0.22313203818409694
+      },
+      "first_layer_feature_mse": 0.20299112796783447,
+      "joint_policy_kl": 0.0070759388618171215,
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-policy01-replicates/runs/policy0.1-seed2/snapshots/000010000384.pt"
+    },
+    "policy1-seed0": {
+      "layer_parameter_l2_change": {
+        "body.0.": 7.5670600262422845,
+        "body.2.": 3.3782634266961478,
+        "actor.": 0.4140308701108088,
+        "direction.": 2.175760072149949,
+        "critic.": 0.19167552436952967
+      },
+      "first_layer_feature_mse": 0.10292685776948929,
+      "joint_policy_kl": 0.0007529372232966125,
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-policy1/runs/policy1-seed0/snapshots/000010000384.pt"
+    },
     "feature10-seed0": {
       "layer_parameter_l2_change": {
         "body.0.": 1.8292304341810608,

@@ -82,3 +82,17 @@ parameter movement of 8.03 and feature MSE 0.170, while joint policy KL remains
 KL 0.0893 and poor greedy navigation. These are 512 training-buffer observations,
 not a universal bound. They support protecting behavior directly rather than
 assuming small feature drift guarantees policy stability.
+
+## Training-seed replication (completed)
+
+| PPO seed | Sampled clear rate | Greedy clear rate | Successful sampled turns | Successful greedy turns |
+|---|---:|---:|---:|---:|
+| policy0.1-seed1 | 97.17% | 95.21% | 682.6 | 693.4 |
+| policy0.1-seed2 | 96.48% | 94.14% | 683.2 | 682.4 |
+
+Together with seed 0, weight 0.1 averages 96.71% sampled clears and 94.43%
+greedy clears at 10M, compared with initial imitation 96.88%/94.43%. This is
+reliable preservation across these three PPO seeds, not a demonstrated average
+clear-rate improvement. Each additional 10M seed took about 300 seconds of
+training; the two-run continuation of the screen took 794.0 seconds including
+evaluation. The three policies share the same initial imitation checkpoint.
