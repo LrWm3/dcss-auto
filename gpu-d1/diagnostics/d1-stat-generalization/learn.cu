@@ -825,7 +825,12 @@ HD void primitive_transition(State &s, Config c, const Tables &t, int action, in
 #endif
     out[45]=s.profile_id;out[46]=s.player_max;out[47]=s.player_damage;out[48]=s.active_count;
     out[49]=s.w.s.damage;out[50]=s.w.s.attacks;out[51]=s.w.s.blocks;out[52]=s.w.s.dodges;
-    if(out[1]) { s.w.episode++; reset(s,c,t); }
+    if(out[1]) {
+        s.w.episode++;
+#ifndef EXTERNAL_EPISODE_RESET
+        reset(s,c,t);
+#endif
+    }
 }
 // Select the same nearest frontier/tie break as the observation. The route
 // is fixed at activation and uses only remembered floor, never hidden geometry.

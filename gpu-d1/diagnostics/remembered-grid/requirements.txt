@@ -1,0 +1,2 @@
+# In addition to gpu-d1/requirements-learning.txt
+scipy>=1.11
