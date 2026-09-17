@@ -1,6 +1,7 @@
-# Proposed D1 stat and quantity generalization experiment
+# D1 stat and quantity generalization experiment
 
-Status: design only. No simulator changes or training jobs launched.
+Status: implemented and running, 2026-09-17. The design below was committed
+before implementation. Execution details and results are appended at the end.
 
 ## Question and starting point
 
@@ -246,3 +247,56 @@ before giving a wall-clock ETA. Limit the first pass to those two jobs; only
 repeat promising results with additional training seeds or larger budgets.
 Keep four compact checkpoints per arm plus one resumable checkpoint and bounded
 aggregate diagnostics. Do not store every rollout. Retain existing disk guards.
+
+## Execution
+
+The experiment is isolated in this directory. `learn.cu` derives from the stairs
+simulator and keeps its original counterpart unchanged. The expanded policy has
+1098 inputs; the native output adds profile/count/stat and incoming-combat
+diagnostics. The actual frozen split and rounded stats are in `profiles.json`.
+Its 24 validation and 24 test combinations each contain exactly eight occurrences
+of each level in every dimension; all pairwise level combinations exist in the
+195 training configurations.
+
+`preflight.py` passed 2688 paired CPU/CUDA decisions, semantic checks on 21
+profiles, 1767 nonterminal decisions matching the old simulator from identical
+saved states, unchanged source-policy outputs, all eight D4 transformations,
+snapshot/RNG restoration, hidden-enemy observation checks, and terrain split
+checks. The sampler covered all 195 training profiles in 4096 worlds, with
+25.56% nominal episodes. Native compatibility is for identical states; initial
+placement intentionally uses the new common spawn-deck protocol.
+
+```sh
+gpu-d1/.venv/bin/python -u gpu-d1/diagnostics/d1-stat-generalization/preflight.py
+gpu-d1/.venv/bin/python -u gpu-d1/diagnostics/d1-stat-generalization/run.py
+gpu-d1/.venv/bin/python -u gpu-d1/diagnostics/d1-stat-generalization/post.py
+```
+
+`post.py` may be launched while the main run is active; it waits for completion.
+Before final test results, the evaluation plan was extended with 6400 nominal
+episodes per model/action mode (seed 992301). The main panel's 200 nominal
+episodes alone would give a weak retention estimate. This extra cohort does not
+select checkpoints or change training.
+
+Post-selection tactical probes use two valid geometry instances on test layouts
+for each of corridor retreat, adjacent-target selection, and a sleeping monster
+at distance seven. Each varies the four combat-stat factors one at a time plus
+nominal stats, at low/half/full HP: 162 saved states. Enemy count is excluded
+from these probes because the encounter intentionally contains only one to
+three living enemies. Full-floor evaluations test quantity generalization.
+The target-selection probe intentionally mixes a high-HP/low-damage enemy with
+a low-HP/high-damage enemy; this mixture is not trained here.
+
+Each legal first action is screened with 16 futures under the frozen source
+continuation, and the selected action is compared with the source action on
+64 independent paired futures. Every evaluated policy also runs its own full,
+unforced greedy continuation on 64 fresh futures. Geometry validity, not policy
+performance, selects the two instances per scenario type. Repeated futures and
+stat settings do not turn these six geometries into 162 independent scenarios.
+
+Generated libraries, checkpoints and state banks remain in ignored
+`learning-runs/d1-stat-generalization/` under a 4 GiB storage cap. Main training
+and post-processing have separate locks. The main manifest checks simulator,
+trainer, source checkpoint, policy dependencies and compiled-library hashes.
+Final tracked reports are `results/d1-stat-generalization.json` and
+`results/d1-stat-generalization-probes.json`. No checkpoint is promoted by default.
