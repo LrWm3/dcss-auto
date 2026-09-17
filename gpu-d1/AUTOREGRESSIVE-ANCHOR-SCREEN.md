@@ -165,3 +165,22 @@ Artifacts:
 Reproduce the final statistics with
 `gpu-d1/.venv/bin/python gpu-d1/diagnostics/autoregressive-imitation/anchor_summary.py`.
 The training/evaluation entry points are adjacent in that diagnostics directory.
+
+### Navigation-only continuation to 30M
+
+Launched September 16 at 22:40 Halifax time: continue `navigation1-seed0`
+from 10,000,384 decisions to 30,000,128, with validation at 20M and 30M.
+This retains the optimizer, environment and RNG states, the original imitation
+reference, weight-1 navigation-only KL, and all existing reward/PPO settings.
+All layers remain trainable. The question is whether the small efficiency gain
+persists or grows without loss of clear rate over longer training.
+
+The queue then repeats sampled and greedy evaluation on the same 100 test maps
+and 16 placements per map, paired with initial imitation. These are reused test
+scenarios, not a new untouched panel. Expected additional runtime is 12–14
+minutes, including validation and test evaluation.
+
+Launcher: `diagnostics/autoregressive-imitation/continue_navigation_30m.py`.
+Status and logs: `learning-runs/autoregressive-anchor-navigation-30m/`.
+Results will be written to `results/autoregressive-anchor-navigation-30m.json`
+and `results/autoregressive-anchor-navigation-30m-holdout.json`.
