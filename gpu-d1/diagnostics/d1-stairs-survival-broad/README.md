@@ -80,6 +80,7 @@ ordinary placements and that training and held-out map IDs are disjoint.
 
 ```sh
 gpu-d1/.venv/bin/python -u gpu-d1/diagnostics/d1-stairs-survival-broad/run.py
+gpu-d1/.venv/bin/python gpu-d1/diagnostics/d1-stairs-survival-broad/summarize.py
 ```
 
 The process holds a suite lock. Checkpoints, banks, and progress stay under
@@ -93,3 +94,6 @@ Final paired outcomes and verification reports are written compactly to
 `gpu-d1/results/d1-stairs-survival-broad.json`. Preparation time, collection
 decisions, PPO decisions, physical turns, and training time are recorded
 separately. No checkpoint is automatically promoted over the baseline.
+The summarizer writes `gpu-d1/results/d1-stairs-survival-broad-summary.json`,
+including death/timeout counts, verified example coverage, and the earlier
+corridor-retreat observation probe. The probe is not used to choose a model.
