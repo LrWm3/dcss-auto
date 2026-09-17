@@ -33,7 +33,8 @@ def paired(a,b):
 
 def main():
     result=json.loads((r.SUITE/'result.json').read_text())
-    summary=dict(selection=result['selection'],training={},panels={},comparisons={},main_wall_seconds=result['wall_seconds'],preflight=json.loads((r.SUITE/'preflight.json').read_text()))
+    summary=dict(selection=result['selection'],training={},panels={},comparisons={},main_wall_seconds=result['wall_seconds'],preflight=json.loads((r.SUITE/'preflight.json').read_text()),
+        profiles=[dict(**p,kind_counts=[sum(i%6==k for i in range(p['vector'][2])) for k in range(6)]) for p in r.SPEC['profiles']])
     for arm in ['fixed','varied']:
         curve=json.loads((r.SUITE/f'{arm}/curve.json').read_text())
         summary['training'][arm]=dict(decisions=curve[-1]['decisions'],training_seconds=curve[-1]['training_seconds'],physical_turns=curve[-1]['physical_turns'],
@@ -59,8 +60,30 @@ def main():
             ids=[i for i,x in enumerate(p['rows']) if x['kind']==kind]
             summary['probes']['by_kind'][kind]={name:dict(exit_rate=float(np.mean([model['rows'][i]['exit_rate'] for i in ids])),
                 stat_mask_changes_greedy=sum(model['rows'][i]['action']!=model['rows'][i]['masked_action'] for i in ids)) for name,model in p['models'].items()}
+        summary['probes']['stat_input_sensitivity']={name:dict(
+            greedy_changes=sum(x['action']!=x['masked_action'] for x in model['rows']),
+            mean_total_variation=float(np.mean([.5*np.abs(np.asarray(x['probabilities'])-np.asarray(x['masked_probabilities'])).sum() for x in model['rows']])))
+            for name,model in p['models'].items()}
+        # At half/full HP, a player-damage-only change modifies only appended inputs.
+        # This distinguishes old-feature reactions from use of the new power inputs.
+        lookup={(x['kind'],x['map_seed'],x['hp_percent'],x['profile']):i for i,x in enumerate(p['rows'])}
+        sensitivity={}
+        for name,model in p['models'].items():
+            comparisons=[]
+            for i,x in enumerate(p['rows']):
+                profile=r.SPEC['profiles'][x['profile']]
+                if profile['values'][1]==4 or sum(a!=1 for a in profile['code'])!=1:continue
+                j=lookup[(x['kind'],x['map_seed'],x['hp_percent'],0)]
+                a,b=model['rows'][i],model['rows'][j]
+                comparisons.append(dict(state=i,nominal_state=j,greedy_changes=a['action']!=b['action'],
+                    total_variation=float(.5*np.abs(np.asarray(a['probabilities'])-np.asarray(b['probabilities'])).sum())))
+            sensitivity[name]=dict(pairs=len(comparisons),greedy_changes=sum(x['greedy_changes'] for x in comparisons),mean_total_variation=float(np.mean([x['total_variation'] for x in comparisons])))
+        summary['probes']['player_damage_only_response']=sensitivity
+        verified=[x for x in p['verification']['reports'] if x['verified_better']]
+        summary['probes']['verified_alternatives_chosen']={name:sum(model['rows'][x['state']]['action']==x['screen_best_action'] for x in verified) for name,model in p['models'].items()}
         summary['probes']['per_state']=[dict(**row,verified=p['verification']['reports'][i],models={name:{k:v for k,v in model['rows'][i].items() if k not in ['state','probabilities','masked_probabilities']} for name,model in p['models'].items()}) for i,row in enumerate(p['rows'])]
     summary['caveats']=['One training seed; intervals describe map variation, not training-seed uncertainty.',
+        'The held-out test layouts have been used in earlier studies; this is not a newly collected test corpus.',
         'New spawn protocol, shared across arms; compare against the frozen source on this protocol, not earlier episode counts.',
         'Visible enemy stats are exact proxies. Hidden enemy count/strength are not exposed.',
         'Feature masking supplies misleading out-of-distribution inputs, not a separately trained feature ablation.']

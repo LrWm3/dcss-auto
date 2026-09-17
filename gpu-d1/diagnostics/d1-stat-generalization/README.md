@@ -1,6 +1,6 @@
 # D1 stat and quantity generalization experiment
 
-Status: implemented and running, 2026-09-17. The design below was committed
+Status: complete, 2026-09-17. The design below was committed
 before implementation. Execution details and results are appended at the end.
 
 ## Question and starting point
@@ -300,3 +300,114 @@ and post-processing have separate locks. The main manifest checks simulator,
 trainer, source checkpoint, policy dependencies and compiled-library hashes.
 Final tracked reports are `results/d1-stat-generalization.json` and
 `results/d1-stat-generalization-probes.json`. No checkpoint is promoted by default.
+
+## Completed results
+
+Both arms completed 5,000,192 PPO decisions, seed 0. Validation selected the
+3,000,320-decision checkpoint for each. Fixed-stat PPO used 293.0 training seconds
+and 6,068,704 physical turns; varied-stat PPO used 292.0 seconds and 6,009,513
+physical turns. The main pipeline took 852.4 seconds (14.2 minutes), with nominal
+retention and tactical checks adding roughly another 1.6 minutes. Tactical
+collection, action verification and three-policy evaluation took 30.6 seconds.
+
+### Full floors
+
+Success means descending alive, not killing every enemy. Held-out combinations
+below use 24 previously excluded configurations x 100 test layouts x two placements
+= 4800 episodes per policy/action mode. The larger nominal check uses 6400 episodes.
+
+| Evaluation | Frozen source | Fixed-stat PPO | Varied-stat PPO |
+| --- | --- | --- | --- |
+| All 43 main configurations, sampled | 96.62% | 97.03% | 97.02% |
+| All 43 main configurations, greedy | 96.08% | 96.41% | 96.35% |
+| Held-out combinations, sampled | 95.77% | 96.06% | 96.13% |
+| Held-out combinations, greedy | 95.40% | 95.81% | 95.48% |
+| Nominal retention, sampled | 98.11% | 98.83% | 98.75% |
+| Nominal retention, greedy | 97.56% | 97.80% | 97.70% |
+| Interpolation, sampled | 98.25% | 98.42% | 98.92% |
+| Interpolation, greedy | 96.75% | 96.67% | 97.67% |
+| Extrapolation, sampled | 95.60% | 95.50% | 96.20% |
+| Extrapolation, greedy | 94.35% | 94.50% | 95.45% |
+
+There is no established main-panel advantage for varied training over the matched
+control. On held-out combinations its sampled advantage is +0.0625 percentage
+points, paired map-cluster 95% interval [-0.542, +0.667]; greedy difference is
+-0.333 points [-0.938, +0.250]. Across all 43 configurations the differences are
+-0.012 sampled [-0.442, +0.407] and -0.058 greedy [-0.535, +0.453].
+
+The 6400-episode nominal check has 121/75/80 sampled deaths for source/fixed/varied,
+respectively, and no sampled timeouts. Varied's gain over the source is +0.641
+points [+0.297, +0.984], but its difference from fixed continuation is -0.078
+[-0.438, +0.250]. The ordinary capability survives this expansion; extra stat
+variation is not needed to explain the nominal improvement.
+
+Interpolation and extrapolation have favorable varied-training point estimates.
+Their greedy gains over the frozen source are +0.917 and +1.100 points, with
+intervals [+0.083,+2.000] and [+0.150,+2.200]. Against the fixed-stat control the
+intervals touch or include zero: [0.000,+2.167] and [-0.050,+2.100]. These are small
+exploratory panels among several comparisons, not independent confirmation that
+varied training is superior. No multiple-comparison adjustment was applied.
+
+On the 32 training-layout evaluation subset with fresh placements, varied PPO
+is worse than fixed PPO in sampled main-panel exits: 94.95% versus 96.04%, delta
+-1.09 points [-2.11,-0.18]. Greedy results are close (94.19% versus 94.00%). This
+regression also argues against claiming a consistent overall benefit.
+
+The range was not uniformly trivial: one validation combination (12 player HP,
+1..3 player damage, nominal enemy HP, 1.25x enemy damage, 36 enemies) gave the
+source only 41/64 sampled exits, versus 63/64 for nominal stats. However, a high
+average success rate leaves relatively little failure signal in ordinary PPO.
+
+### Tactical and observation interventions
+
+| Scenario family, full greedy continuations | Frozen source | Fixed-stat PPO | Varied-stat PPO |
+| --- | --- | --- | --- |
+| Corridor, 54 stat/HP/geometry states x 64 futures | 90.19% | 88.54% | 90.22% |
+| Adjacent target selection, same sweep size | 96.88% | 96.88% | 96.88% |
+| Sleeping enemy/rest, same sweep size | 100% | 100% | 100% |
+
+Replacing the appended inputs with nominal values changes the varied model's
+initial greedy action on only 1/162 states. Its average action-distribution total
+variation is 0.00446; the fixed-stat control is 0.00115 and the expanded frozen
+source is exactly zero. Across 36 paired player-damage-only comparisons, the
+varied model changes no greedy first action; mean total variation is 0.00157.
+These are weak responses, not proof that the new fields are entirely unused.
+
+On full floors, accurate rather than nominalized appended stats improves varied
+PPO exits by +0.105 sampled points [-0.233,+0.442] and +0.174 greedy points
+[-0.047,+0.407]. Neither interval excludes zero. This intervention supplies
+misleading inputs and is not equivalent to training without stats.
+
+Fresh verification finds eight corridor states where another first action is
+at least 20 points better and exits at least half the time. All are missed by
+both trained policies. For example, at 3/12 HP in map seed 72852, source ATTACK NW
+exits in 19/64 confirmation futures, while MOVE E followed by the unchanged source
+exits in 40/64. Both trained models still choose ATTACK NW. At nominal 5/18 HP in
+the same geometry, confirmation is 35/64 versus 54/64; again neither changes.
+These are two variants of one geometry, not independent discovered mechanisms.
+
+Target-selection and rest probes are largely solved already. Low/half-HP rest
+cases all select REST for all three policies, and all target-selection states
+select ATTACK E against the fragile, high-damage target. These probes do not
+establish learning a new stat-dependent tactical rule. The one greedy flip caused
+by restoring accurate stats is not one of the eight verified corrections.
+
+### Interpretation
+
+The existing policy is reasonably robust to these stat and density changes,
+including previously unseen combinations and moderate out-of-range values.
+This first 5M-decision screen does not establish that varied-stat PPO improves
+over ordinary continuation or learns useful new power-sensitive tactics. There
+are favorable secondary trends, but the main comparisons are inconclusive and
+the new inputs have little behavioral influence in the controlled probes.
+
+Robust survival must not be equated with understanding power: a conservative
+policy can work across several strengths without changing its decisions. The
+next informative diagnostic would verify situations where changing actual power
+reverses which action is better, then test whether the policy follows that
+reversal. The current target/rest probes often have the same sensible choice
+throughout the sweep. This run provides neither evidence that such learning is
+impossible nor a reason to promote the varied checkpoint over the control.
+
+All confidence intervals describe paired map variation for one training seed.
+The test layouts are disjoint from training but reused from earlier studies.
