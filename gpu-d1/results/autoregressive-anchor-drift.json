@@ -1,0 +1,53 @@
+{
+  "probe": "512 fixed training-buffer observations; no validation or test states",
+  "results": {
+    "feature10-seed0": {
+      "layer_parameter_l2_change": {
+        "body.0.": 1.8292304341810608,
+        "body.2.": 5.953073716631092,
+        "actor.": 1.3471017643587937,
+        "direction.": 4.312725338812538,
+        "critic.": 0.22355264185548257
+      },
+      "first_layer_feature_mse": 0.00029896985506638885,
+      "joint_policy_kl": 0.36921921372413635,
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/feature10-seed0/snapshots/000010000384.pt"
+    },
+    "feature100-seed0": {
+      "layer_parameter_l2_change": {
+        "body.0.": 1.2119733384939873,
+        "body.2.": 4.695480499181792,
+        "actor.": 0.39253430439245873,
+        "direction.": 2.6643755090705095,
+        "critic.": 0.22007832318397932
+      },
+      "first_layer_feature_mse": 2.5517343601677567e-05,
+      "joint_policy_kl": 0.08929213136434555,
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/feature100-seed0/snapshots/000010000384.pt"
+    },
+    "policy001-seed0": {
+      "layer_parameter_l2_change": {
+        "body.0.": 8.555786451425083,
+        "body.2.": 3.4146246632760398,
+        "actor.": 0.4284391706409735,
+        "direction.": 2.418603740149416,
+        "critic.": 0.18942244855291146
+      },
+      "first_layer_feature_mse": 0.2731633186340332,
+      "joint_policy_kl": 0.17767879366874695,
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/policy001-seed0/snapshots/000010000384.pt"
+    },
+    "policy01-seed0": {
+      "layer_parameter_l2_change": {
+        "body.0.": 8.03181880008667,
+        "body.2.": 3.3687561335445895,
+        "actor.": 0.45768832009344584,
+        "direction.": 2.2449681765755476,
+        "critic.": 0.2100382550232289
+      },
+      "first_layer_feature_mse": 0.16953414678573608,
+      "joint_policy_kl": 0.01142672635614872,
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/policy01-seed0/snapshots/000010000384.pt"
+    }
+  }
+}
