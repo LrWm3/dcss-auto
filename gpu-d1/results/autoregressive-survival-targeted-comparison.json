@@ -1,0 +1,173 @@
+{
+  "comparisons": {
+    "tactics": {
+      "sampled": {
+        "control": {
+          "delta_pp": 4.1015625,
+          "geometry_bootstrap_95_pp": [
+            -5.6640625,
+            14.2578125
+          ],
+          "per_geometry_delta_pp": [
+            1.5625,
+            -7.8125,
+            20.3125,
+            3.125,
+            29.6875,
+            6.25,
+            0.0,
+            -20.3125
+          ],
+          "rescued": 62,
+          "regressed": 41
+        },
+        "source": {
+          "delta_pp": 0.1953125,
+          "geometry_bootstrap_95_pp": [
+            -6.640625,
+            6.640625
+          ],
+          "per_geometry_delta_pp": [
+            0.0,
+            0.0,
+            17.1875,
+            0.0,
+            4.6875,
+            1.5625,
+            -3.125,
+            -18.75
+          ],
+          "rescued": 35,
+          "regressed": 34
+        }
+      },
+      "greedy": {
+        "control": {
+          "delta_pp": 3.3203125,
+          "geometry_bootstrap_95_pp": [
+            -8.0078125,
+            14.0625
+          ],
+          "per_geometry_delta_pp": [
+            1.5625,
+            -7.8125,
+            26.5625,
+            6.25,
+            21.875,
+            7.8125,
+            -1.5625,
+            -28.125
+          ],
+          "rescued": 62,
+          "regressed": 45
+        },
+        "source": {
+          "delta_pp": -3.125,
+          "geometry_bootstrap_95_pp": [
+            -10.7421875,
+            1.7578125
+          ],
+          "per_geometry_delta_pp": [
+            0.0,
+            0.0,
+            1.5625,
+            -1.5625,
+            4.6875,
+            1.5625,
+            -3.125,
+            -28.125
+          ],
+          "rescued": 28,
+          "regressed": 44
+        }
+      }
+    },
+    "target_tactics": {
+      "sampled": {
+        "control": {
+          "delta_pp": 36.5234375,
+          "geometry_bootstrap_95_pp": [
+            32.8125,
+            41.6015625
+          ],
+          "per_geometry_delta_pp": [
+            35.9375,
+            40.625,
+            31.25,
+            35.9375,
+            32.8125,
+            32.8125,
+            31.25,
+            51.5625
+          ],
+          "rescued": 195,
+          "regressed": 8
+        },
+        "source": {
+          "delta_pp": 32.6171875,
+          "geometry_bootstrap_95_pp": [
+            28.125,
+            37.5
+          ],
+          "per_geometry_delta_pp": [
+            25.0,
+            34.375,
+            28.125,
+            45.3125,
+            23.4375,
+            31.25,
+            34.375,
+            39.0625
+          ],
+          "rescued": 178,
+          "regressed": 11
+        }
+      },
+      "greedy": {
+        "control": {
+          "delta_pp": 32.421875,
+          "geometry_bootstrap_95_pp": [
+            26.7578125,
+            37.890625
+          ],
+          "per_geometry_delta_pp": [
+            17.1875,
+            37.5,
+            35.9375,
+            37.5,
+            29.6875,
+            28.125,
+            28.125,
+            45.3125
+          ],
+          "rescued": 178,
+          "regressed": 12
+        },
+        "source": {
+          "delta_pp": 26.3671875,
+          "geometry_bootstrap_95_pp": [
+            16.015625,
+            36.71875
+          ],
+          "per_geometry_delta_pp": [
+            21.875,
+            42.1875,
+            18.75,
+            39.0625,
+            1.5625,
+            14.0625,
+            23.4375,
+            50.0
+          ],
+          "rescued": 152,
+          "regressed": 17
+        }
+      }
+    }
+  },
+  "additional_train_seconds": {
+    "control-seed0": 163.97241958323866,
+    "targeted-seed0": 166.81569716404192
+  },
+  "caveat": "One training seed; eight base-geometry clusters per tactical panel. Original panel informed the curriculum design."
+}
