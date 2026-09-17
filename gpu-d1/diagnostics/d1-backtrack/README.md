@@ -175,3 +175,7 @@ check also exercises the unknown-stairs path using the updated native library.
 Follow-up: [known stairs beyond the dangerous sleeper](BEYOND.md) tests the
 opposite alignment, with both stair and frontier guides pointing through the
 threat, at four enemy-to-stair distances.
+
+Additional follow-up: [awake enemy and room to pass it](AWAKE-PASSING.md), with
+separate counts for exiting after a kill versus leaving the enemy alive, and a
+fixed-route feasibility witness through the widened room.

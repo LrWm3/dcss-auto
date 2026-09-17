@@ -12,7 +12,7 @@ def xy(x,y,g):
     for _ in range(g%4):x,y=-y,x
     return x+40,y+35
 
-def generate(folder,stairs_beyond=False):
+def generate(folder,stairs_beyond=False,passable=False):
     folder.mkdir(parents=True,exist_ok=True)
     lines=iter((ROOT/'fixtures/native-1057.rays').read_text().splitlines())
     ends=[tuple(map(int,next(lines).split())) for _ in range(int(next(lines)))];blockers=[]
@@ -29,6 +29,9 @@ def generate(folder,stairs_beyond=False):
             if stairs_beyond:
                 end=7+length
                 geometry=[(x,0) for x in range(-8,end+1)]+[(end,y) for y in range(-2,13)]
+            if passable:
+                assert stairs_beyond
+                geometry += [(x,y) for x in range(4,11) for y in range(-2,3)]
             for x,y in geometry:
                 px,py=xy(x,y,group);floor[py*80+px]=1
             # Disconnected, invisible reset-only rooms ensure the unmodified
