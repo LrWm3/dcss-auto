@@ -1,5 +1,8 @@
 # Calibrated anonymous-enemy power experiment
 
+Completed post-training [behavior diagnostics](BEHAVIOR.md) distinguish learned
+power sensitivity and local escape from full-floor exploration stalls.
+
 Calibration and preflight complete, 2026-09-17. First training run: seed 0,
 5M additional policy decisions, checkpoints at 0.5M/1M/3M/5M.
 
