@@ -33,3 +33,19 @@ cap and 10GiB free-space reserve; the shared reference buffer is about 255MiB.
 Success requires separating preservation (clear rates/navigation remain intact)
 from improvement (better clear rate or efficiency without sacrificing survival).
 Any promising single-seed result needs independent training-seed confirmation.
+
+## Initial seed-0 screen (completed)
+
+| Constraint | Sampled clears at 10M | Greedy clears at 10M | Sampled successful turns | Greedy successful turns | Training seconds |
+|---|---:|---:|---:|---:|---:|
+| feature10-seed0 | 81.74% | 0.00% | 1559.4 | 0.0 | 253.5 |
+| feature100-seed0 | 97.17% | 24.12% | 781.6 | 1655.3 | 261.2 |
+| policy001-seed0 | 95.51% | 63.28% | 880.5 | 1636.0 | 297.7 |
+| policy01-seed0 | 96.48% | 93.95% | 685.0 | 681.4 | 299.1 |
+
+Initial imitation: 96.88% sampled, 94.43% greedy, successful turns 680.3/680.8.
+Feature anchoring at either tested strength does not protect greedy navigation.
+Policy KL weight 0.01 also degrades. Policy KL weight 0.1 retains navigation and
+clear rate through 10M with all layers trainable, but does not demonstrate an
+improvement beyond imitation. Stronger policy KL and training-seed replications
+are being checked separately. The screen took 1514.7 seconds including evaluation.
