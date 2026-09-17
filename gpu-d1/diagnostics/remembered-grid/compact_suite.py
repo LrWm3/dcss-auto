@@ -24,6 +24,7 @@ def quality(kind):
     return result
 
 def benchmark(kind,iterations=30):
+    torch.manual_seed(991);train_batch=1024
     other=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid,process_name','--format=csv,noheader'],text=True).strip().splitlines();other=[x for x in other if x.split(',')[0].strip()!=str(os.getpid())]
     if other:raise RuntimeError('Refusing contended benchmark: '+str(other))
     m=load(kind,True).to(memory_format=torch.channels_last);warm=[]
@@ -49,7 +50,7 @@ def benchmark(kind,iterations=30):
     del g,mask,s,memory
     rows=[]
     for frozen in [False,True]:
-        m=load(kind,True).to(memory_format=torch.channels_last);m.encoder.requires_grad_(not frozen);g,mask,s=inputs(256)
+        m=load(kind,True).to(memory_format=torch.channels_last);m.encoder.requires_grad_(not frozen);g,mask,s=inputs(train_batch)
         with torch.no_grad(),torch.autocast('cuda',dtype=torch.float16):
             memory=m.encode_map(m.terrain(g));logits,oldv=m.read_map(g,mask,s,memory,critic=True);d=torch.distributions.Categorical(logits=logits);a=d.sample();lp=d.log_prob(a);adv=torch.randn_like(oldv);ret=oldv+adv
         opt=torch.optim.Adam([p for p in m.parameters() if p.requires_grad],lr=1e-5);scaler=torch.amp.GradScaler('cuda')
@@ -60,10 +61,11 @@ def benchmark(kind,iterations=30):
             d=torch.distributions.Categorical(logits=logits);ratio=(d.log_prob(a)-lp).exp();loss=-torch.minimum(ratio*adv,ratio.clamp(.8,1.2)*adv).mean()+.25*(v-ret).square().mean()-.001*d.entropy().mean()
             scaler.scale(loss).backward();scaler.unscale_(opt);torch.nn.utils.clip_grad_norm_(m.parameters(),.5);scaler.step(opt);scaler.update()
         sec=timed(train);assert all(torch.isfinite(p).all() for p in m.parameters())
-        rows.append(dict(frozen_encoder=frozen,training_ms=sec*1000,network_only_four_epoch_decisions_per_second={str(i):1/(inf/512+enc/512/i+4*sec/256) for i in [1,4,8]}))
+        rows.append(dict(frozen_encoder=frozen,training_ms=sec*1000,network_only_four_epoch_decisions_per_second={str(i):1/(inf/512+enc/512/i+4*sec/train_batch) for i in [1,4,8]}))
     # Check AMP navigation, since compute numbers use AMP but training was FP32.
     m=load(kind,True).to(memory_format=torch.channels_last);regression=evaluate(ExactCache(m),'test')
-    result=dict(kind=kind,device=torch.cuda.get_device_name(),torch=torch.__version__,shape=[70,80],inference_batch=512,training_batch=256,encoder_ms=enc*1000,reader_ms=inf*1000,map_cache_bytes_per_world=memory_bytes,warmup_seconds=warm,rows=rows,amp_test=regression,scope='Synthetic network-only PPO cost; no simulator, cache detection, buffer or GAE. Refresh intervals are hypothetical cost scenarios, not tested stale-map quality. Fully trainable and frozen encoders are reported separately. Count pooling has no learned encoder parameters.',provenance=provenance(kind))
+    result=dict(kind=kind,device=torch.cuda.get_device_name(),torch=torch.__version__,shape=[70,80],inference_batch=512,training_batch=train_batch,encoder_ms=enc*1000,reader_ms=inf*1000,map_cache_bytes_per_world=memory_bytes,warmup_seconds=warm,rows=rows,amp_test=regression,scope='Synthetic network-only PPO cost; no simulator, cache detection, buffer or GAE. Refresh intervals are hypothetical cost scenarios, not tested stale-map quality. Fully trainable and frozen encoders are reported separately. Count pooling has no learned encoder parameters.',provenance=provenance(kind))
+    result['parameters']=sum(p.numel() for p in m.parameters());result['other_gpu_processes_at_end']=[x for x in subprocess.check_output(['nvidia-smi','--query-compute-apps=pid,process_name','--format=csv,noheader'],text=True).strip().splitlines() if x.split(',')[0].strip()!=str(os.getpid())]
     save_json(ROOT/'results'/f'remembered-grid-compact-{kind}-performance.json',result);print('performance',kind,rows,flush=True)
 
 def main():
