@@ -184,3 +184,41 @@ Launcher: `diagnostics/autoregressive-imitation/continue_navigation_30m.py`.
 Status and logs: `learning-runs/autoregressive-anchor-navigation-30m/`.
 Results will be written to `results/autoregressive-anchor-navigation-30m.json`
 and `results/autoregressive-anchor-navigation-30m-holdout.json`.
+
+Completed: 30,000,128 decisions, including both validation checkpoints and the
+paired test evaluation. The additional 20M took 598.5 seconds of training and
+720.4 seconds overall (12.0 minutes). Cumulative training time is 900.6 seconds.
+
+| Checkpoint | Validation sampled clears | Validation greedy clears | Successful turns sampled / greedy |
+|---|---:|---:|---:|
+| 10M | 96.29% | 94.53% | 672.7 / 672.9 |
+| 20M | 95.31% | 93.95% | 671.8 / 657.4 |
+| 30M | 96.39% | 94.82% | 672.3 / 664.2 |
+
+On the repeated test panel (1,600 episodes per evaluation):
+
+| Checkpoint | Sampled clears | Greedy clears | Successful turns sampled / greedy |
+|---|---:|---:|---:|
+| Initial imitation | 96.75% | 93.56% | 675.3 / 675.0 |
+| Navigation-only 10M | 96.88% | 93.75% | 674.3 / 668.2 |
+| Navigation-only 30M | 96.44% | 93.56% | 669.8 / 663.4 |
+
+Comparing only episodes both policies clear, 30M saves 6.24 sampled turns
+relative to imitation (95% map-bootstrap interval 2.77–9.83 saved, 1,512 common
+clears), and 12.41 greedy turns (9.36–15.45 saved, 1,451 common clears).
+Relative to 10M, it saves 4.22 sampled turns (0.40–8.14) and 5.36 greedy turns
+(1.61–9.21). These intervals resample the 100 map clusters 10,000 times with
+seed 713, using the ratio of summed paired turn differences to common-clear
+counts, preserving all placements for each sampled map.
+
+Clear-rate differences versus imitation remain inconclusive: sampled -0.31
+percentage points (95% interval -1.38 to +0.69), greedy 0.00 points (-1.13 to
++1.13). Overall return differences also include zero. At 30M, sampled test
+deaths/timeouts are 3.13%/0.44%; greedy deaths/timeouts are 3.13%/3.31%.
+
+This extends the evidence for preventing catastrophic degradation through
+30M with all layers trainable. The modest efficiency improvement grows, but
+there is still no demonstrated clear-rate or overall-return improvement.
+Common-clear efficiency is conditional on success, not a measure of total
+policy quality; one training seed and reused test scenarios remain limitations.
+No jobs remain running or queued in this continuation.
