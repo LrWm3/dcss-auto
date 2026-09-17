@@ -1,0 +1,167 @@
+{
+  "scope": "One-seed equal-supervised-budget synthetic navigation representation screen. No PPO learning runs. Network benchmark is 80x70, quality is 32x32.",
+  "rows": [
+    {
+      "kind": "attn",
+      "selected_update": 12000,
+      "training_seconds": 415.20363804744557,
+      "collected_decisions": 968329,
+      "supervised_examples": 3072000,
+      "main": {
+        "known_stairs": 0.5703125,
+        "exploration": 0.92578125,
+        "threat_backtrack": 1.0
+      },
+      "long": {
+        "known_stairs": 0.15625,
+        "exploration": 0.6875,
+        "threat_backtrack": 0.625
+      },
+      "sampled": {
+        "known_stairs": 0.7265625,
+        "exploration": 0.953125,
+        "threat_backtrack": 1.0
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "amp": {
+        "known_stairs": 0.5703125,
+        "exploration": 0.92578125,
+        "threat_backtrack": 1.0
+      },
+      "compute": [
+        {
+          "frozen_encoder": false,
+          "training_ms": 197.07331203389913,
+          "network_only_four_epoch_decisions_per_second": {
+            "1": 1192.796351772598,
+            "4": 1257.5107873849504,
+            "8": 1268.9854588784765
+          }
+        },
+        {
+          "frozen_encoder": true,
+          "training_ms": 37.3605691595003,
+          "network_only_four_epoch_decisions_per_second": {
+            "1": 4662.26164622429,
+            "4": 5836.215780391587,
+            "8": 6091.870552047299
+          }
+        }
+      ],
+      "encoder_ms": 29.45315643834571,
+      "reader_ms": 5.643651735348006,
+      "cache_bytes": 179200,
+      "parameters": 387252,
+      "other_gpu_processes": []
+    },
+    {
+      "kind": "coarse",
+      "selected_update": 12000,
+      "training_seconds": 184.05141674145125,
+      "collected_decisions": 1129133,
+      "supervised_examples": 3072000,
+      "main": {
+        "known_stairs": 0.40625,
+        "exploration": 0.65234375,
+        "threat_backtrack": 1.0
+      },
+      "long": {
+        "known_stairs": 0.109375,
+        "exploration": 0.3515625,
+        "threat_backtrack": 0.625
+      },
+      "sampled": {
+        "known_stairs": 0.671875,
+        "exploration": 0.6796875,
+        "threat_backtrack": 1.0
+      },
+      "paired": 21,
+      "paired_erased": 0,
+      "amp": {
+        "known_stairs": 0.40625,
+        "exploration": 0.6484375,
+        "threat_backtrack": 1.0
+      },
+      "compute": [
+        {
+          "frozen_encoder": false,
+          "training_ms": 18.091024931830667,
+          "network_only_four_epoch_decisions_per_second": {
+            "1": 12511.327738951191,
+            "4": 12883.16585435151,
+            "8": 12947.298389993222
+          }
+        },
+        {
+          "frozen_encoder": true,
+          "training_ms": 13.33456403420617,
+          "network_only_four_epoch_decisions_per_second": {
+            "1": 16300.544821666688,
+            "4": 16937.45498784325,
+            "8": 17048.477335579224
+          }
+        }
+      ],
+      "encoder_ms": 1.5748406061902642,
+      "reader_ms": 3.166024402404825,
+      "cache_bytes": 17280,
+      "parameters": 392188,
+      "other_gpu_processes": []
+    },
+    {
+      "kind": "counts",
+      "selected_update": 12000,
+      "training_seconds": 183.14623893564567,
+      "collected_decisions": 1142554,
+      "supervised_examples": 3072000,
+      "main": {
+        "known_stairs": 0.375,
+        "exploration": 0.63671875,
+        "threat_backtrack": 1.0
+      },
+      "long": {
+        "known_stairs": 0.1171875,
+        "exploration": 0.3359375,
+        "threat_backtrack": 0.65625
+      },
+      "sampled": {
+        "known_stairs": 0.6171875,
+        "exploration": 0.66796875,
+        "threat_backtrack": 1.0
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "amp": {
+        "known_stairs": 0.375,
+        "exploration": 0.6328125,
+        "threat_backtrack": 1.0
+      },
+      "compute": [
+        {
+          "frozen_encoder": false,
+          "training_ms": 14.164481428451836,
+          "network_only_four_epoch_decisions_per_second": {
+            "1": 15777.772870014087,
+            "4": 16461.724826563925,
+            "8": 16581.523796679987
+          }
+        },
+        {
+          "frozen_encoder": true,
+          "training_ms": 10.946207532348732,
+          "network_only_four_epoch_decisions_per_second": {
+            "1": 19681.583858021695,
+            "4": 20757.3986979962,
+            "8": 20948.240623256792
+          }
+        }
+      ],
+      "encoder_ms": 1.7976835990945499,
+      "reader_ms": 2.324067863325278,
+      "cache_bytes": 7200,
+      "parameters": 385540,
+      "other_gpu_processes": []
+    }
+  ]
+}

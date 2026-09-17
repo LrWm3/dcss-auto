@@ -146,3 +146,5 @@ The trained spatial checkpoint can be reused without reducing the observation
 or model capacity. Packed and narrower variants are experimental controls.
 
 The [cached map encoder experiment](CACHED.md) separates player-independent terrain encoding from a small actor, compares refresh intervals, and tests frozen-encoder PPO. It is faster in network benchmarks but currently weaker at known-stair navigation.
+
+The [position-aware compact representation screen](COMPACT.md) compares cached-map attention, learned coarse blocks, and a five-count-per-block global summary, including equal-budget navigation results and full-map compute estimates.
