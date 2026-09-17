@@ -97,6 +97,16 @@
             "move": 0.4423918128013611,
             "action": 16
           },
+          "enemy_appears_awake": {
+            "wait": 0.997875452041626,
+            "move": 0.00212461338378489,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9917469024658203,
+            "move": 0.008253066800534725,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.8381628394126892,
             "move": 0.1618371456861496,
@@ -173,6 +183,16 @@
           "enemy_damage_cap_1": {
             "wait": 0.9438085556030273,
             "move": 0.056191492825746536,
+            "action": 16
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9998223185539246,
+            "move": 0.0001777463185135275,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9994124174118042,
+            "move": 0.0005875841598026454,
             "action": 16
           },
           "player_30hp_damage6": {
@@ -253,6 +273,16 @@
             "move": 0.9997009634971619,
             "action": 3
           },
+          "enemy_appears_awake": {
+            "wait": 0.9995183944702148,
+            "move": 0.0004816419677808881,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9971434473991394,
+            "move": 0.002856539562344551,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.8616609573364258,
             "move": 0.1383390873670578,
@@ -332,6 +362,16 @@
             "wait": 0.06545598059892654,
             "move": 0.9345439672470093,
             "action": 3
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9966844916343689,
+            "move": 0.0033155193086713552,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9851074814796448,
+            "move": 0.014892498031258583,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.870938777923584,
@@ -415,6 +455,16 @@
             "move": 0.6097283959388733,
             "action": 3
           },
+          "enemy_appears_awake": {
+            "wait": 0.9988394379615784,
+            "move": 0.0011605676263570786,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9896036386489868,
+            "move": 0.010396342724561691,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.7641712427139282,
             "move": 0.23582875728607178,
@@ -494,6 +544,16 @@
             "wait": 0.1179204136133194,
             "move": 0.8820796608924866,
             "action": 3
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9987512826919556,
+            "move": 0.0012487492058426142,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9878495335578918,
+            "move": 0.012150444090366364,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.5724049210548401,
@@ -577,6 +637,16 @@
             "move": 0.9476884603500366,
             "action": 3
           },
+          "enemy_appears_awake": {
+            "wait": 0.9988526105880737,
+            "move": 0.0011473922058939934,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9947736859321594,
+            "move": 0.005226297304034233,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.8848706483840942,
             "move": 0.11512938141822815,
@@ -654,6 +724,16 @@
             "wait": 0.3293219804763794,
             "move": 0.6706779599189758,
             "action": 1
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9985690116882324,
+            "move": 0.0014309700345620513,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9838939309120178,
+            "move": 0.016106078401207924,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.7760377526283264,
@@ -734,6 +814,16 @@
             "wait": 0.06574276834726334,
             "move": 0.9342572689056396,
             "action": 2
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9977841973304749,
+            "move": 0.0022157758940011263,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9874382615089417,
+            "move": 0.012561718933284283,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.8682023286819458,
@@ -817,6 +907,16 @@
             "move": 0.9991065859794617,
             "action": 6
           },
+          "enemy_appears_awake": {
+            "wait": 0.9997208714485168,
+            "move": 0.00027915716054849327,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9981943964958191,
+            "move": 0.001805584877729416,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.6102606654167175,
             "move": 0.3897392451763153,
@@ -895,6 +995,16 @@
             "move": 0.006124531384557486,
             "action": 16
           },
+          "enemy_appears_awake": {
+            "wait": 0.9997939467430115,
+            "move": 0.0002060730184894055,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9994103908538818,
+            "move": 0.0005896048387512565,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.9959094524383545,
             "move": 0.00409052474424243,
@@ -971,6 +1081,16 @@
           "enemy_damage_cap_1": {
             "wait": 0.9628797173500061,
             "move": 0.03712029755115509,
+            "action": 16
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9995403289794922,
+            "move": 0.0004596562939696014,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9988390803337097,
+            "move": 0.001160954823717475,
             "action": 16
           },
           "player_30hp_damage6": {
@@ -1055,6 +1175,16 @@
             "move": 0.9758095145225525,
             "action": 3
           },
+          "enemy_appears_awake": {
+            "wait": 0.9978081583976746,
+            "move": 0.0021917996928095818,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9892773628234863,
+            "move": 0.010722621344029903,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.8848267793655396,
             "move": 0.11517320573329926,
@@ -1134,6 +1264,16 @@
             "wait": 0.08522222936153412,
             "move": 0.9147778153419495,
             "action": 4
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9979522228240967,
+            "move": 0.0020477408543229103,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9892510175704956,
+            "move": 0.010749027132987976,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.8698253631591797,
@@ -1217,6 +1357,16 @@
             "move": 0.3842083215713501,
             "action": 16
           },
+          "enemy_appears_awake": {
+            "wait": 0.9983697533607483,
+            "move": 0.0016302266158163548,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9969685673713684,
+            "move": 0.0030315022449940443,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.9515204429626465,
             "move": 0.0484795905649662,
@@ -1293,6 +1443,16 @@
           "enemy_damage_cap_1": {
             "wait": 0.8052148222923279,
             "move": 0.19478516280651093,
+            "action": 16
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9990289211273193,
+            "move": 0.0009711162419989705,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9969706535339355,
+            "move": 0.0030292735900729895,
             "action": 16
           },
           "player_30hp_damage6": {
@@ -1373,6 +1533,16 @@
             "move": 0.17533445358276367,
             "action": 16
           },
+          "enemy_appears_awake": {
+            "wait": 0.9992018342018127,
+            "move": 0.0007981280796229839,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9975563287734985,
+            "move": 0.0024436148814857006,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.9934043288230896,
             "move": 0.006595743354409933,
@@ -1451,6 +1621,16 @@
             "wait": 0.35754910111427307,
             "move": 0.6424508094787598,
             "action": 3
+          },
+          "enemy_appears_awake": {
+            "wait": 0.993065595626831,
+            "move": 0.006934328470379114,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9654014706611633,
+            "move": 0.03459848836064339,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.7894081473350525,
@@ -1533,6 +1713,16 @@
             "move": 0.8352161645889282,
             "action": 3
           },
+          "enemy_appears_awake": {
+            "wait": 0.9987519979476929,
+            "move": 0.0012480119476094842,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9953171014785767,
+            "move": 0.0046829162165522575,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.9579023122787476,
             "move": 0.04209766536951065,
@@ -1610,6 +1800,16 @@
             "wait": 0.0001691278157522902,
             "move": 0.9998309016227722,
             "action": 2
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9990596175193787,
+            "move": 0.0009403636213392019,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9934722185134888,
+            "move": 0.006527772638946772,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.6578233242034912,
@@ -1692,6 +1892,16 @@
             "move": 0.4288642406463623,
             "action": 16
           },
+          "enemy_appears_awake": {
+            "wait": 0.9963101744651794,
+            "move": 0.0036897840909659863,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9827516674995422,
+            "move": 0.017248323187232018,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.8512140512466431,
             "move": 0.14878593385219574,
@@ -1771,6 +1981,16 @@
             "move": 0.7377551794052124,
             "action": 4
           },
+          "enemy_appears_awake": {
+            "wait": 0.9986353516578674,
+            "move": 0.0013646309962496161,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9930410385131836,
+            "move": 0.006958910264074802,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.8335773944854736,
             "move": 0.1664225459098816,
@@ -1849,6 +2069,16 @@
             "wait": 0.06177157908678055,
             "move": 0.9382283687591553,
             "action": 3
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9204221963882446,
+            "move": 0.07957778871059418,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.935206413269043,
+            "move": 0.06479356437921524,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.9431333541870117,
@@ -1931,6 +2161,16 @@
             "move": 0.2782023251056671,
             "action": 16
           },
+          "enemy_appears_awake": {
+            "wait": 0.9990602135658264,
+            "move": 0.0009397675166837871,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9943693280220032,
+            "move": 0.005630684085190296,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.9622311592102051,
             "move": 0.03776879236102104,
@@ -2009,6 +2249,16 @@
             "wait": 0.08366068452596664,
             "move": 0.9163393378257751,
             "action": 7
+          },
+          "enemy_appears_awake": {
+            "wait": 0.9983959794044495,
+            "move": 0.0016040557529777288,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.992790699005127,
+            "move": 0.0072092521004378796,
+            "action": 16
           },
           "player_30hp_damage6": {
             "wait": 0.9658768773078918,
@@ -2091,6 +2341,16 @@
             "move": 0.9523037672042847,
             "action": 7
           },
+          "enemy_appears_awake": {
+            "wait": 0.9920692443847656,
+            "move": 0.007930734194815159,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9776575565338135,
+            "move": 0.02234238013625145,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.8085747361183167,
             "move": 0.19142523407936096,
@@ -2169,6 +2429,16 @@
             "move": 0.018940044566988945,
             "action": 16
           },
+          "enemy_appears_awake": {
+            "wait": 0.9992203712463379,
+            "move": 0.0007796242134645581,
+            "action": 16
+          },
+          "zero_sleep_status": {
+            "wait": 0.9990850687026978,
+            "move": 0.0009149837424047291,
+            "action": 16
+          },
           "player_30hp_damage6": {
             "wait": 0.9973874688148499,
             "move": 0.002612561685964465,
@@ -2200,6 +2470,14 @@
         "mean_wait": 0.37360526297804125,
         "greedy_waits": 10
       },
+      "enemy_appears_awake": {
+        "mean_wait": 0.9953001472685072,
+        "greedy_waits": 27
+      },
+      "zero_sleep_status": {
+        "mean_wait": 0.9893529503433792,
+        "greedy_waits": 27
+      },
       "player_30hp_damage6": {
         "mean_wait": 0.8701634694028784,
         "greedy_waits": 27
@@ -2217,6 +2495,278 @@
       "Observation changes are diagnostic counterfactuals, not simulator changes.",
       "Safe routes use exact monster wake LOS; hidden safe-exit counts are oracle diagnostics only.",
       "27 selected WAIT stalls, not all timeout cases."
+    ],
+    "runner_up_actions": [
+      {
+        "episode": 793,
+        "action": 1,
+        "probability": 0.32569706439971924,
+        "move_type_probability": 0.3267854521627669,
+        "conditional_direction_probability": 0.9966694118240443,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 821,
+        "action": 1,
+        "probability": 0.00821088720113039,
+        "move_type_probability": 0.008250540839071618,
+        "conditional_direction_probability": 0.9951938135069349,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1221,
+        "action": 1,
+        "probability": 0.19927823543548584,
+        "move_type_probability": 0.1994818699749885,
+        "conditional_direction_probability": 0.998979182722078,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 948,
+        "action": 5,
+        "probability": 0.14347316324710846,
+        "move_type_probability": 0.2612287563388236,
+        "conditional_direction_probability": 0.5492242326530787,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 1173,
+        "action": 3,
+        "probability": 0.18998989462852478,
+        "move_type_probability": 0.34630440475939395,
+        "conditional_direction_probability": 0.5486210744576764,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 1548,
+        "action": 3,
+        "probability": 0.3524179458618164,
+        "move_type_probability": 0.4708373659814242,
+        "conditional_direction_probability": 0.7484918813255791,
+        "avoids_waking_sleeper": false,
+        "follows_original_frontier": true,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 1573,
+        "action": 7,
+        "probability": 0.05318782478570938,
+        "move_type_probability": 0.13526376266236184,
+        "conditional_direction_probability": 0.39321562359960355,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 443,
+        "action": 1,
+        "probability": 0.23678945004940033,
+        "move_type_probability": 0.4762109564617276,
+        "conditional_direction_probability": 0.4972364596748432,
+        "avoids_waking_sleeper": false,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 481,
+        "action": 4,
+        "probability": 0.2853940427303314,
+        "move_type_probability": 0.3367482199682854,
+        "conditional_direction_probability": 0.8474997811635337,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1730,
+        "action": 4,
+        "probability": 0.2307925522327423,
+        "move_type_probability": 0.38973953071035794,
+        "conditional_direction_probability": 0.5921712683650251,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 1765,
+        "action": 0,
+        "probability": 0.003517298959195614,
+        "move_type_probability": 0.004090528527740389,
+        "conditional_direction_probability": 0.8598641802257696,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1421,
+        "action": 1,
+        "probability": 0.004783697426319122,
+        "move_type_probability": 0.004791844254214084,
+        "conditional_direction_probability": 0.9982998554496431,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 773,
+        "action": 7,
+        "probability": 0.14092479646205902,
+        "move_type_probability": 0.26857932216807967,
+        "conditional_direction_probability": 0.5247045652079904,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 881,
+        "action": 4,
+        "probability": 0.21983973681926727,
+        "move_type_probability": 0.2805542016867548,
+        "conditional_direction_probability": 0.7835909620941032,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1712,
+        "action": 4,
+        "probability": 0.04089111462235451,
+        "move_type_probability": 0.04847957076117382,
+        "conditional_direction_probability": 0.8434710534834865,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 165,
+        "action": 0,
+        "probability": 0.020511986687779427,
+        "move_type_probability": 0.02058796866913326,
+        "conditional_direction_probability": 0.9963093988253562,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 365,
+        "action": 0,
+        "probability": 0.016300702467560768,
+        "move_type_probability": 0.016356400858057896,
+        "conditional_direction_probability": 0.9965947037505083,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 706,
+        "action": 5,
+        "probability": 0.2170671671628952,
+        "move_type_probability": 0.4645994130987674,
+        "conditional_direction_probability": 0.46721360605065965,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1026,
+        "action": 5,
+        "probability": 0.05067320540547371,
+        "move_type_probability": 0.08301207180451797,
+        "conditional_direction_probability": 0.6104317637656623,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1365,
+        "action": 0,
+        "probability": 0.45945432782173157,
+        "move_type_probability": 0.46075876930262893,
+        "conditional_direction_probability": 0.9971689275000198,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1185,
+        "action": 6,
+        "probability": 0.12439756840467453,
+        "move_type_probability": 0.24104244229573624,
+        "conditional_direction_probability": 0.5160815963358457,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 1316,
+        "action": 4,
+        "probability": 0.11333512514829636,
+        "move_type_probability": 0.21869967877864838,
+        "conditional_direction_probability": 0.518222641117849,
+        "avoids_waking_sleeper": false,
+        "follows_original_frontier": true,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 138,
+        "action": 5,
+        "probability": 0.17463544011116028,
+        "move_type_probability": 0.17586928248965705,
+        "conditional_direction_probability": 0.9929843213036971,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 26,
+        "action": 5,
+        "probability": 0.1419733315706253,
+        "move_type_probability": 0.15685697439857904,
+        "conditional_direction_probability": 0.9051132862595329,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 229,
+        "action": 1,
+        "probability": 0.1122351735830307,
+        "move_type_probability": 0.1322713689878583,
+        "conditional_direction_probability": 0.8485220531234783,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      },
+      {
+        "episode": 446,
+        "action": 4,
+        "probability": 0.29864025115966797,
+        "move_type_probability": 0.42161783686606213,
+        "conditional_direction_probability": 0.7083197745605312,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": false
+      },
+      {
+        "episode": 227,
+        "action": 0,
+        "probability": 0.004343656823039055,
+        "move_type_probability": 0.0057230034144595265,
+        "conditional_direction_probability": 0.758982042901553,
+        "avoids_waking_sleeper": true,
+        "follows_original_frontier": false,
+        "follows_safe_frontier": true
+      }
     ]
   }
 }

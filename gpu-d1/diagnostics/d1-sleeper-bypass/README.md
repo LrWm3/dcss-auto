@@ -27,6 +27,8 @@ Paired observation interventions, leaving the real state and action mask intact:
 | Original |77.95%|27/27|
 | Hide visible enemy information |0.023%|0/27|
 | Only enemy damage cap changed to1 |37.36%|10/27|
+| Change enemy sleep observation to awake |99.53%|27/27|
+| Zero enemy sleep-status observation |98.94%|27/27|
 | Player changed to30HP / damage cap6 |87.02%|27/27|
 | Zero frontier fields |70.15%|22/27|
 | Redirect frontier to safe alternative, when available |69.95%|21/27|
@@ -36,6 +38,9 @@ usually points into immediate danger, but correcting that cue alone does not
 reliably produce movement. The stronger-player result also warns against
 interpreting this as a consistently calibrated risk model. Removing the enemy
 is an artificial observation intervention, not a safe deployment strategy.
+The sleep flag does affect probabilities: it lowers waiting compared with the
+awake counterfactual. Thus this is not simply complete blindness to sleep state;
+the effect is insufficient to change the greedy action in these selected stalls.
 
 The safe-frontier replacement updates target, distance, unknown-neighbor fields,
 and next-step direction together. It uses only known terrain and exact visible
@@ -61,7 +66,7 @@ The one state without a reachable safe frontier is unchanged in that variant.
 - Reward remains +1 exit and -0.00001 per physical turn; no avoidance labels,
   demonstration actions, special practice reward, or forced policy decisions.
 - Reuse audited PPO and replay anchors. Both arms initialize model and optimizer
-  identically; both retain the same navigation replay and source-policy nominal
+  identically from5M weights with a fresh Adam optimizer; both retain the same navigation replay and source-policy nominal
   replay targets, now anchored to the common5M starting checkpoint.
 
 This is a curriculum pilot, not an isolation of every mechanism. It adds easier
@@ -97,3 +102,38 @@ Artifacts use the existing4GiB storage budget /10GiB free-space floor. Only two
 checkpoints plus latest resume state per arm are retained. Native builds, raw
 banks, checkpoints and logs are ignored; compact diagnostics and reports are
 tracked. Generated samples retain no information from held-out maps in training.
+
+## Completed pilot and runner-up actions
+
+Both arms completed1,000,448 additional decisions. Control training took52.3s
+and1,162,912 physical turns; practice took55.5s and1,186,543 turns. The whole
+pipeline, including evaluation, took557.6s. Practice completed1,543 curriculum
+episodes and3,786 ordinary episodes; control completed4,729 ordinary episodes.
+
+Held-out ordinary-floor exits:
+
+| Panel / policy mode | Starting5M | Control +1M | Practice +1M |
+| --- | ---: | ---: | ---: |
+| test_seen_sampled | 24.28% | 23.28% | 24.67% |
+| test_seen_greedy | 14.67% | 12.44% | 13.00% |
+| test_unseen_enemies_sampled | 28.89% | 26.44% | 27.11% |
+| test_unseen_enemies_greedy | 19.11% | 16.11% | 16.61% |
+| ordinary_sampled | 99.50% | 99.25% | 99.12% |
+| ordinary_greedy | 96.13% | 94.50% | 93.88% |
+
+Practice has small advantages over control on the dangerous panels, but all
+paired map-bootstrap95% intervals include zero. There is no convincing ordinary
+floor improvement from this one-seed1M pilot, and greedy performance remains
+below the starting checkpoint. These intervals exclude training-seed variation.
+
+In the original27 WAIT stalls, the second-highest joint action is MOVE in all27.
+Its preferred direction avoids waking the visible sleeper in24/27, matches the
+safe-frontier first step in16/27, and follows the original frontier in only2/27.
+Mean action-type probabilities are77.95% WAIT and22.05% MOVE. Mean probability of
+the single best directional move is15.44%; conditional on MOVE, its mean share
+is75.90%. Thus a useful directional alternative often already exists below the
+MOVE-versus-WAIT choice. A safe first step is not proof of a successful detour;
+the earlier repeated no-idle-WAIT intervention still timed out in79.63% of futures.
+
+Compact final results: `results/d1-sleeper-bypass-training.json`. Regenerate with
+`gpu-d1/.venv/bin/python gpu-d1/diagnostics/d1-sleeper-bypass/summarize.py`.
