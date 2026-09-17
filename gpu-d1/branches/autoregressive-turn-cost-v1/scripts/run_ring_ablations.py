@@ -312,6 +312,11 @@ def worker(store, manifest, job):
     if job.get('initial_model'):
         initial=pathlib.Path(job['initial_model']);assert digest(initial)==job['initial_model_sha256']
         model.load_state_dict(torch.load(initial,map_location='cpu',weights_only=False)['model'])
+    anchor = None
+    if job.get('anchor_kind'):
+        from imitation_anchor import ImitationAnchor
+        assert digest(pathlib.Path(job['anchor_buffer'])) == job['anchor_buffer_sha256']
+        anchor = ImitationAnchor(model, job)
     opt = torch.optim.Adam(model.parameters(), lr=job['lr'], eps=1e-5)
     folder = pathlib.Path('runs') / job['id']
     latest = store.root / folder / 'latest.pt'
@@ -437,6 +442,8 @@ def worker(store, manifest, job):
                     policy_terms = policy_terms * keep
                 pg = policy_terms.mean()
                 loss = pg+.25*(v-returns[inds]).square().mean()-job['entropy']*dist.entropy().mean()
+                if anchor is not None:
+                    loss = loss + anchor.loss(model, observations[:T].flatten(0, 1)[inds], masks[:T].flatten(0, 1)[inds])
                 if not torch.isfinite(loss).item():
                     raise RuntimeError('Non-finite PPO loss')
                 opt.zero_grad(set_to_none=True); loss.backward()
