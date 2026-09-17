@@ -171,3 +171,7 @@ Tracked outcomes: `results/d1-backtrack-known-stairs.json`. Generated artifacts
 are isolated under ignored `learning-runs/d1-backtrack-known-stairs/`; the
 unknown-stairs results and default runner behavior are preserved. A setup smoke
 check also exercises the unknown-stairs path using the updated native library.
+
+Follow-up: [known stairs beyond the dangerous sleeper](BEYOND.md) tests the
+opposite alignment, with both stair and frontier guides pointing through the
+threat, at four enemy-to-stair distances.

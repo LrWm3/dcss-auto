@@ -12,7 +12,7 @@ def xy(x,y,g):
     for _ in range(g%4):x,y=-y,x
     return x+40,y+35
 
-def generate(folder):
+def generate(folder,stairs_beyond=False):
     folder.mkdir(parents=True,exist_ok=True)
     lines=iter((ROOT/'fixtures/native-1057.rays').read_text().splitlines())
     ends=[tuple(map(int,next(lines).split())) for _ in range(int(next(lines)))];blockers=[]
@@ -25,7 +25,11 @@ def generate(folder):
     for length in LENGTHS:
         for group in range(8):
             mid=len(manifest);floor=np.zeros(5600,np.uint8)
-            for x,y in [(x,0) for x in range(-length,15)]+[(-length,y) for y in range(-20,1)]:
+            geometry=[(x,0) for x in range(-length,15)]+[(-length,y) for y in range(-20,1)]
+            if stairs_beyond:
+                end=7+length
+                geometry=[(x,0) for x in range(-8,end+1)]+[(end,y) for y in range(-2,13)]
+            for x,y in geometry:
                 px,py=xy(x,y,group);floor[py*80+px]=1
             # Disconnected, invisible reset-only rooms ensure the unmodified
             # terminal autoreset can place its ordinary40 spawn slots/3 stairs.
@@ -60,5 +64,5 @@ def generate(folder):
             with (folder/f'map-{mid:03d}.bin').open('wb') as f:
                 f.write(struct.pack('<3I4i',0x44325650,mid,len(cells),18,681,794,906))
                 for a in [floor,padded,index,ds,masks]:f.write(a.tobytes())
-            manifest.append(dict(map=mid,backtrack=length,symmetry=group))
+            manifest.append(dict(map=mid,**{("stairs_beyond_enemy" if stairs_beyond else "backtrack"):length},symmetry=group))
     (folder/'manifest.json').write_text(json.dumps(manifest,indent=2));return manifest
