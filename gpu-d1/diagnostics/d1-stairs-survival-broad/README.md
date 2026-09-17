@@ -96,4 +96,95 @@ decisions, PPO decisions, physical turns, and training time are recorded
 separately. No checkpoint is automatically promoted over the baseline.
 The summarizer writes `gpu-d1/results/d1-stairs-survival-broad-summary.json`,
 including death/timeout counts, verified example coverage, and the earlier
-corridor-retreat observation probe. The probe is not used to choose a model.
+corridor-retreat probe with fresh continuations. The probe is not used to choose
+a model.
+
+## Completed preparation
+
+Collected 512 training deaths from 202 maps, balanced equally between early
+and later deaths. Their 2,467 distinct snapshots yielded 169 independently
+confirmed corrections across 97 maps: 164 moves, three attacks, and two waits.
+The accepted offsets were 22 at the fatal decision, 27 at minus two, 23 at
+minus eight, 42 at minus 16, and 55 at minus 32. No map supplied more than six
+accepted corrections. Thus the additional examples mainly teach positioning,
+including choices substantially before the fatal moment.
+
+The separate validation collection yielded 44 verified encounters across 18
+maps. These are excluded from training and checkpoint selection. Map-seed
+checks and SHA256 comparisons of terrain bytes found no layout overlap among
+the 256 training, 32 validation, and 100 test layouts. The active-row rollout
+implementation matched all 16 outcome triples in the compatibility check.
+
+Training completed all 5,000,192 decisions; ordinary validation selected the
+3,000,320-decision checkpoint. Held-out encounter differences additionally use
+a paired map-cluster bootstrap, retaining state weighting when maps contribute
+different numbers of scenes. These intervals reflect map variation within the
+selected challenging scenes, not uncertainty over training seeds or all possible
+failure situations.
+
+## Results
+
+On 6,400 fresh full-floor episodes per action mode (test seed 790021):
+
+| Model | Sampled exits / deaths / timeouts | Greedy exits / deaths / timeouts |
+| --- | --- | --- |
+| Original adapted model | 6269 / 131 / 0 | 6208 / 104 / 88 |
+| Previous 20-example practice | 6283 / 117 / 0 | 6235 / 88 / 77 |
+| Ordinary PPO control | 6267 / 133 / 0 | 6228 / 89 / 83 |
+| Broader practice, selected 3M | **6310 / 90 / 0** | 6216 / 96 / 88 |
+
+Sampled exits improve by 0.641 percentage points versus the original model
+(paired map-cluster 95% interval +0.250 to +1.047), a 31.3% relative reduction
+in deaths. The gain over ordinary PPO is +0.672 points (+0.313 to +1.063).
+The gain over the previous 20-example model is +0.422 points, but its interval
+includes zero (-0.031 to +0.891). Greedy full-floor gains are inconclusive:
++0.125 points versus the original (-0.297 to +0.531), with worse point estimates
+than either trained comparison. No evidence here supports an across-the-board
+improvement in both action modes.
+
+In paired sampled episodes, broader practice turns 87 original deaths into
+exits but introduces 46 deaths elsewhere. Mean physical turns remain similar:
+183.35 original versus 182.15 broader. This is an improvement with regressions,
+not elimination of the avoidable-death problem.
+
+On verified encounters, each model runs its own complete greedy continuation
+with 64 fresh RNGs per state and no forced corrective action:
+
+| Model | 64 training situations: exits / 4096 | 44 held-out situations: exits / 2816 |
+| --- | --- | --- |
+| Original | 1796 (43.85%) | 1197 (42.51%) |
+| Previous 20-example practice | 2451 (59.84%) | 1700 (60.37%) |
+| Ordinary PPO control | 2243 (54.76%) | 1588 (56.39%) |
+| Broader practice | **3233 (78.93%)** | **1855 (65.87%)** |
+
+Held-out improvement versus the original is +23.37 points (map-cluster interval
++16.29 to +29.13), with 36 states improving, four worsening, and four unchanged.
+The gain over ordinary PPO is +9.48 points (+1.75 to +15.96); the gain over the
+20-example model is +5.50 points (-1.07 to +12.19). Thus there is evidence of
+generalized encounter improvement beyond ordinary PPO, but the incremental
+benefit over the smaller correction set remains uncertain.
+
+The broader model matches all 64 sampled training labels, versus 11 of 44
+held-out labels. Matching the original verified action is not required for a
+successful exit: the trained continuation can solve a situation differently.
+
+The previously audited episode-1607 corridor trap was not part of training.
+Both the original and 20-example models still choose ATTACK NW there; the
+broader model chooses MOVE E into the corridor with 99.875% probability.
+Unforced greedy continuations on 64 fresh paired RNGs (seed 850311) exit in
+24/64 cases for each earlier model and 56/64 for the broader model. This is a
+specific, successful transfer of retreat behavior, not proof that all corridor
+traps are solved. It was checked after checkpoint selection.
+
+PPO took 218.2 seconds for 5,000,192 decisions and 6,296,628 physical turns;
+1,250,048 decisions occurred in practice worlds. The selected checkpoint used
+130.9 seconds of PPO. Collecting and verifying the training examples took
+598.6 seconds; held-out preparation took another 145.5 seconds. The main
+pipeline, including all comparisons, took 22.4 minutes. Additional summary and
+corridor diagnostics are outside that pipeline timer.
+
+The useful conclusion is that verified positioning practice can improve
+held-out survival and sampled ordinary-floor exits. It still does not establish
+that increasing example count alone caused the gain, that the gain repeats
+across training seeds, or that greedy deployment improves. Rewards and policy
+observations remain unchanged.
