@@ -176,3 +176,22 @@ prevention,parameter-drift,loop-probe,repair}.json and
 results/autoregressive-no-centering.json. Prevention screen training times were
 23.65s (frozen layer), 25.39s (lower LR), 25.72s (drop negative MOVE); total screen
 wall time 272.79s including all evaluations. No-centering wall time 88.87s.
+
+## Authorized continuation to 10M
+
+Continue the lower-LR policy first, then the frozen-first-layer control, each from
+its existing 1,000,448-decision checkpoint. Preserve model, optimizer, simulator,
+RNG, training counters/history and original reward/PPO settings. Only the stopping
+budget, evaluation milestones and source timing metadata change. Evaluate sampled
+and greedy on 1024 placements at 5,000,192 and 10,000,384 decisions. No fresh
+imitation or additional reward changes. Check first-layer bit equality against
+original imitation at both frozen-condition milestones. Report cumulative and
+additional training time separately.
+
+Launcher: diagnostics/autoregressive-imitation/continue_prevention_10m.py. Separate
+suite learning-runs/autoregressive-update-prevention-10m keeps original 1M artifacts
+intact; 2 GiB cap and 10 GiB reserve. Source checkpoint and script hashes recorded.
+Incremental summary: results/autoregressive-update-prevention-10m.json. Suite status
+records active condition, completion or failure. This tests whether the 1M rescue
+persists, merely delays damage, or enables improvement. Existing original-rate
+10M control ended with zero sampled and greedy clears.
