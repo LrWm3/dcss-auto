@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": [
+    "native descent semantics for each of three stairs",
+    "killing all enemies does not terminate",
+    "standing on stairs does not descend",
+    "invalid descent waits and physical deadline terminates",
+    "unseen stairs do not affect observations",
+    "remembered stair route uses revealed floor",
+    "4096 paired CPU/CUDA decisions",
+    "zero-extended checkpoint preserves masked original action probabilities and values",
+    "D4 covariance includes stair coordinates and routes",
+    "all split smoke resets begin with hidden stairs"
+  ],
+  "files": {
+    "gpu-d1/branches/d1-stairs-v2/scripts/preflight.py": "4954442f4546fce799cf84ca245878155c5c07c2c94480d486381f63ce11c8a5",
+    "gpu-d1/branches/d1-stairs-v2/src/tests.cu": "fa7e7420d4756ec719fb733b76dc80755f6c559da144cc183b17953939b856fa",
+    "gpu-d1/branches/d1-stairs-v2/src/learn.cu": "dab9d1d4f3c7e49d4937d42214efc159257ed7cb17d953ce142fc36c1d73fbba"
+  }
+}
