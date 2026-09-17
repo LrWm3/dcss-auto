@@ -14,6 +14,7 @@ def evaluate(model,split='validation',limit=None,teacher=False,intervene=None,mo
     start=time.monotonic();proto=Env(split,1);n=len(proto.scenes);e=Env(split,128);rows=[]
     for offset in range(0,n,128):
         ids=torch.arange(offset,offset+128,device='cuda')%n;valid=min(128,n-offset);e.reset(ids,seed=812+offset,labels=teacher)
+        if hasattr(model,'reset_cache'):model.reset_cache()
         initial=e.meta.clone();yy,xx=torch.meshgrid(torch.arange(32,device='cuda'),torch.arange(32,device='cuda'),indexing='ij');near=(xx[None]-e.stats[:,2,None,None]).abs().le(7)&(yy[None]-e.stats[:,3,None,None]).abs().le(7);far=(e.grid[:,4].sum((1,2))>0)&~((e.grid[:,4]>0)&near).any((1,2));terminal=torch.zeros(128,5,device='cuda');reversals=torch.zeros(128,device='cuda');pp=e.meta[:,0].clone();prev=pp.clone();woke=torch.zeros(128,device='cuda',dtype=torch.bool)
         for tick in range(limit):
             active=e.active.clone();p=e.meta[:,0].clone();woke|=active&e.meta[:,2].bool()
@@ -68,12 +69,14 @@ def collect(e,b,model=None,kinds=(0,1,2),beta=1,steps=128):
     return decisions
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['memory','terrain','local'],default='memory');p.add_argument('--architecture',choices=['conv','spatial','packed','packed2','cropped','thin'],default='conv');p.add_argument('--updates',type=int,default=3000);p.add_argument('--resume',action='store_true');p.add_argument('--evaluate',action='store_true');p.add_argument('--preflight',action='store_true');p.add_argument('--compile',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['memory','terrain','local'],default='memory');p.add_argument('--architecture',choices=['conv','spatial','packed','packed2','cropped','thin','cached'],default='conv');p.add_argument('--updates',type=int,default=3000);p.add_argument('--resume',action='store_true');p.add_argument('--evaluate',action='store_true');p.add_argument('--preflight',action='store_true');p.add_argument('--compile',action='store_true');args=p.parse_args()
+    if args.architecture=='cached' and args.arm!='terrain':p.error('cached currently supports only --arm terrain')
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True
     if shutil.disk_usage(HERE).free<10*1024**3:raise RuntimeError('Need 10GiB free')
     build();folder=OUT/(args.arm if args.architecture=='conv' else args.arm+'-'+args.architecture);folder.mkdir(exist_ok=True)
     lock=(folder/'training.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    model={'conv':Policy,'spatial':SpatialPolicy,'packed':PackedPolicy,'packed2':Packed2Policy,'cropped':CroppedSpatialPolicy,'thin':ThinSpatialPolicy}[args.architecture](args.arm).cuda();
+    from cached_policy import CachedMapPolicy
+    model=CachedMapPolicy().cuda() if args.architecture=='cached' else {'conv':Policy,'spatial':SpatialPolicy,'packed':PackedPolicy,'packed2':Packed2Policy,'cropped':CroppedSpatialPolicy,'thin':ThinSpatialPolicy}[args.architecture](args.arm).cuda();
     if args.architecture in ('packed','packed2','cropped','thin'):model.to(memory_format=torch.channels_last)
     scaler=torch.amp.GradScaler('cuda',enabled=args.architecture in ('packed','packed2','cropped','thin'))
     optimizer=torch.optim.Adam(model.parameters(),lr=.0003);start_step=0;decisions=0
