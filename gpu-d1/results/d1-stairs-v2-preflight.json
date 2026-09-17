@@ -10,7 +10,8 @@
     "4096 paired CPU/CUDA decisions",
     "zero-extended checkpoint preserves masked original action probabilities and values",
     "D4 covariance includes stair coordinates and routes",
-    "all split smoke resets begin with hidden stairs"
+    "all split smoke resets begin with hidden stairs",
+    "2048 nonterminal CPU steps match original simulator observations, action masks and all original outcome fields"
   ],
   "files": {
     "gpu-d1/branches/d1-stairs-v2/scripts/preflight.py": "4954442f4546fce799cf84ca245878155c5c07c2c94480d486381f63ce11c8a5",

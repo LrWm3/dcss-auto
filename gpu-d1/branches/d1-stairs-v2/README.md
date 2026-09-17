@@ -127,3 +127,72 @@ one live resume checkpoint, and three compact endpoint checkpoints. Training
 and evaluation run sequentially; logs/status live in that directory. The final
 tracked report is `results/d1-stairs-v2.json`. Generated binaries, checkpoints,
 and replay data remain ignored by git.
+
+## Completed first pass
+
+The interface demonstration collection produced 4,926 eligible observations:
+4,172 MOVE and 754 DESCEND examples. Collection took 3.68 seconds and supervised
+fitting took 4.43 seconds. The 500 minibatches repeatedly sampled this fixed set;
+256,000 fitted examples does not mean 256,000 distinct simulator decisions.
+
+Validation used 1,024 episodes per mode, seed 950001:
+
+| Checkpoint | Sampled exit rate | Greedy exit rate | PPO training time |
+|---|---:|---:|---:|
+| Expanded source, before interface fitting | 52.44% | Not evaluated | — |
+| Frozen interface-adapted source | 97.46% | 96.58% | — |
+| +500,224 PPO decisions | 97.46% | 96.48% | 18.18 s |
+| +1,000,448 PPO decisions | 98.54% | 96.58% | 36.43 s |
+| +3,000,320 PPO decisions | 97.85% | 96.68% | 110.13 s |
+| Observation-limited native controller | 97.85% | N/A | — |
+
+The 1M PPO checkpoint won the predeclared validation selection rule. On the test
+panel of 100 layouts x 32 placements, seed 950991:
+
+| Policy / mode | Exits | Deaths | Timeouts | Exit rate | Mean turns | Enemies alive on exit |
+|---|---:|---:|---:|---:|---:|---:|
+| Adapted, sampled | 3,141 | 58 | 1 | **98.16%** | 188.07 | 15.70 |
+| PPO 1M, sampled | 3,139 | 61 | 0 | 98.09% | 187.86 | 15.62 |
+| Adapted, greedy | 3,113 | 48 | 39 | **97.28%** | 210.49 | 15.68 |
+| PPO 1M, greedy | 3,106 | 51 | 43 | 97.06% | 210.32 | 15.69 |
+
+PPO's sampled difference is -0.063 percentage points with a paired map-cluster
+95% interval of [-0.563, +0.438]. Greedy difference is -0.219 points
+[-0.781, +0.313]. **The short PPO continuation did not establish an improvement
+over the adapted baseline.** The apparently promising 1M validation gain did
+not carry through to the test comparison. There is only one training seed.
+
+The initial stairs capability is strong. The adapted sampled policy discovers
+its first stair at turn 172.73 on episodes with discovery; successful episodes
+then take another 17.11 turns to descend. It leaves about two-thirds of enemies
+alive. Fifty of its 58 deaths occur before discovering stairs. For greedy play,
+38 of 39 timeouts also occur before discovery. This shows that most remaining
+failure occurs during exploration/encounters before the exit is known.
+
+The PPO sampled policy has 60 deaths before discovery and one afterwards,
+versus 50 and eight for the adapted baseline. These are descriptive trajectory
+counts, not matched-state proof of which deaths were individually avoidable.
+Neither sampled policy moved away from a stair during the test episodes.
+
+This demonstrates **transfer plus a small amount of interface supervision to a
+D1 exit objective**. It does not demonstrate discovering the new interface from
+sparse PPO reward alone, or a further improvement from PPO. The known-map route
+helper already chooses the nearest discovered exit; autonomous choice between
+multiple distant staircases was not tested.
+
+PPO generated 3,634,312 physical turns from 3,000,320 decisions. Total measured
+fitting/training time was 114.56 seconds, plus 3.68 seconds collecting interface
+demonstrations. The full sequential pipeline, including validation/test, took
+288.22 seconds (4.80 minutes). No jobs remain running.
+
+Retained local checkpoints:
+
+- `learning-runs/d1-stairs/adapted.pt`: frozen adapted baseline.
+- `learning-runs/d1-stairs/checkpoints/1000448.pt`: validation-selected PPO model.
+- `learning-runs/d1-stairs/checkpoints/3000320.pt`: final continuation.
+- `learning-runs/d1-stairs/latest.pt`: resumable final PPO state.
+
+The native compatibility audit additionally checked 2,048 nonterminal world
+steps against the original simulator: the first 999 observations, original
+18-action masks, and original 42 outcome fields matched exactly under identical
+actions. This is separate from the CPU/CUDA and task-semantic preflight checks.
