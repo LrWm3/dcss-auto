@@ -110,3 +110,86 @@ jobs are resumable; storage has a 4 GiB run cap and 10 GiB free-space reserve.
 Generated assets are about 136 MiB and use existing ignore rules. Only milestone
 snapshots plus latest/best checkpoints are retained. Training seconds and total
 pipeline time are reported separately.
+
+## Completed 5M results
+
+All three arms finished at 35,000,320 cumulative decisions (5,000,192 additional
+per arm). Total additional training was 480.6 seconds; the full queue including
+nine checkpoints' evaluations took 708.3 seconds (11.8 minutes).
+
+The practice-plus-exploration arm learned a large improvement on held-out
+encounters, evaluated at normal temperature with no forced actions. Practice
+alone helped considerably less, and ordinary training alone regressed on these
+constructed encounters despite retaining ordinary-floor performance.
+
+| Arm | Tactical sampled clear | Tactical greedy clear | Ordinary sampled clear | Ordinary greedy clear |
+|---|---:|---:|---:|---:|
+| Starting 30M checkpoint | 29.69% | 33.59% | 96.39% | 94.82% |
+| Ordinary continuation | 24.22% | 23.44% | 96.00% | 94.43% |
+| Practice | 37.30% | 38.48% | 96.09% | 93.75% |
+| Practice + exploration | **79.88%** | **80.86%** | **96.09%** | **94.34%** |
+
+Tactical evaluation uses 512 episodes, ordinary evaluation 1,024. The original
+deterministic teacher scores 38.09% on these tactical cases; the cover-first
+diagnostic controller scores 87.30%. Thus the strongest arm exceeds both its
+neural initialization and the original teacher on this constructed held-out
+problem distribution. This does not establish a gain on ordinary floors.
+
+Practice-plus-exploration tactical clears continued improving:
+
+| Additional decisions | Sampled | Greedy |
+|---|---:|---:|
+| 500k | 53.91% | 51.37% |
+| 1M | 59.38% | 55.86% |
+| 5M | 79.88% | 80.86% |
+
+At 1M, ordinary sampled/greedy clears dipped to 93.07%/92.29%, then recovered
+to the final values above. The final ordinary greedy score is one clear below
+the control out of 1,024 episodes; sampled is one clear above. This is reassuring
+for retention, not proof of statistical equivalence or no possible regression.
+
+Final greedy tactical clears by family:
+
+| Family | Ordinary continuation | Practice | Practice + exploration |
+|---|---:|---:|---:|
+| Hallway | 28.91% | 39.84% | **85.16%** |
+| Diagonal pocket | 21.09% | 36.72% | **65.63%** |
+| Passing enemy | 17.97% | 33.59% | **82.81%** |
+| Separated groups | 25.78% | 43.75% | **89.84%** |
+
+The effect is not explained by succeeding only on the easy cases. On the 404
+multi-enemy episodes, greedy clears increase from 15.84% at initialization to
+75.74% with practice plus exploration. On 108 single-enemy episodes the final
+policy clears 100%.
+
+Behavioral diagnostics are consistent with learning useful positioning:
+- Initial MOVE probability on held-out starts rises from 7.18% to 90.80%.
+- Mean turns with multiple adjacent enemies fall from 9.67 to 3.55 in greedy
+  evaluation, despite mean encounter duration increasing from 12.55 to 31.08.
+- Reaching the designated cover tile rises from 0% to 25.20%.
+- WAIT with an adjacent enemy falls from 30.85% of such decisions to zero.
+
+These aggregate metrics do not establish exactly which routes or strategies
+were learned. Designated cover is one endpoint, not every potentially useful
+position; the agent can survive without reaching it. The diagonal-pocket family
+remains noticeably weaker than the other three. Detailed trajectories and older
+independent probes would help establish the breadth of tactical transfer.
+
+Each practice arm collected 498,066 tactical decisions and 4,502,126 ordinary
+decisions. Practice alone completed 41,089 tactical episodes; exploration
+completed 19,873. Longer encounters and differing behavior therefore change the
+number of training episodes despite matched total and tactical decision counts.
+There was no survival/cover shaping reward and no new demonstration training.
+
+The sampled clear gain over initialization is +50.20 percentage points; greedy
+is +47.27 points. A paired bootstrap that clusters all eight orientations and
+all combat seeds of each of the eight base geometries gives respective 95%
+intervals of +40.82 to +56.64 and +36.52 to +55.66 points (10,000 draws, seed 713).
+These intervals describe the selected geometry panel, not variation across
+training seeds or arbitrary Crawl encounters. This is one training seed, four
+hand-designed families, and fully remembered local terrain. Replication and
+broader transfer evaluation remain necessary.
+
+Completed results: `gpu-d1/results/autoregressive-survival.json`.
+Paired comparisons: `gpu-d1/results/autoregressive-survival-comparison.json`.
+No jobs remain running or queued in this experiment.

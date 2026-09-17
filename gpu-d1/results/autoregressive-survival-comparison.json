@@ -1,0 +1,51 @@
+{
+  "method": "Paired clear differences; eight base geometries as clusters, preserving eight orientations and eight combat seeds. 10000 bootstrap draws, RNG 713. Conditional on one training seed and these four families; exploratory.",
+  "comparisons": {
+    "sampled": {
+      "initial": {
+        "mean_difference": 0.501953125,
+        "geometry_bootstrap_95ci": [
+          0.408203125,
+          0.56640625
+        ]
+      },
+      "control": {
+        "mean_difference": 0.556640625,
+        "geometry_bootstrap_95ci": [
+          0.45703125,
+          0.634765625
+        ]
+      },
+      "practice": {
+        "mean_difference": 0.42578125,
+        "geometry_bootstrap_95ci": [
+          0.33984375,
+          0.49609375
+        ]
+      }
+    },
+    "greedy": {
+      "initial": {
+        "mean_difference": 0.47265625,
+        "geometry_bootstrap_95ci": [
+          0.365234375,
+          0.556640625
+        ]
+      },
+      "control": {
+        "mean_difference": 0.57421875,
+        "geometry_bootstrap_95ci": [
+          0.4609375,
+          0.654296875
+        ]
+      },
+      "practice": {
+        "mean_difference": 0.423828125,
+        "geometry_bootstrap_95ci": [
+          0.33203125,
+          0.48046875
+        ]
+      }
+    }
+  }
+}
