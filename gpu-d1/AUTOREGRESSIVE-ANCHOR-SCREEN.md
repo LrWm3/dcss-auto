@@ -38,7 +38,7 @@ Any promising single-seed result needs independent training-seed confirmation.
 
 | Constraint | Sampled clears at 10M | Greedy clears at 10M | Sampled successful turns | Greedy successful turns | Training seconds |
 |---|---:|---:|---:|---:|---:|
-| feature10-seed0 | 81.74% | 0.00% | 1559.4 | 0.0 | 253.5 |
+| feature10-seed0 | 81.74% | 0.00% | 1559.4 | n/a | 253.5 |
 | feature100-seed0 | 97.17% | 24.12% | 781.6 | 1655.3 | 261.2 |
 | policy001-seed0 | 95.51% | 63.28% | 880.5 | 1636.0 | 297.7 |
 | policy01-seed0 | 96.48% | 93.95% | 685.0 | 681.4 | 299.1 |
@@ -96,3 +96,72 @@ reliable preservation across these three PPO seeds, not a demonstrated average
 clear-rate improvement. Each additional 10M seed took about 300 seconds of
 training; the two-run continuation of the screen took 794.0 seconds including
 evaluation. The three policies share the same initial imitation checkpoint.
+
+## Final test results and interpretation
+
+All eight fresh training jobs completed 10M decisions. The independent test panel
+used 100 layouts not used to select these settings, 16 placements per layout,
+with identical initial scenarios and sampling seed for every policy. Each cell
+below is an evaluation of 1,600 episodes; the weight-0.1 row averages three PPO
+seeds on the same episode panel, not 4,800 distinct scenarios.
+
+| Model at 10M (except imitation) | Sampled clears | Greedy clears | Sampled successful turns | Greedy successful turns |
+|---|---:|---:|---:|---:|
+| Initial imitation | 96.75% | 93.56% | 675.3 | 675.0 |
+| Frozen first layer, seed 0 | 96.88% | 93.38% | 698.1 | 727.9 |
+| Full-policy KL 0.1, three-seed mean | 96.27% | 93.54% | 679.3 | 680.2 |
+| Full-policy KL 1, seed 0 | 96.63% | 93.63% | 677.9 | 673.5 |
+| Navigation-only KL 1, seed 0 | 96.88% | 93.75% | 674.3 | 668.2 |
+
+Full-policy KL 0.1 preserves competence across three training seeds, but does
+not beat imitation on this test: sampled clear difference -0.48 percentage
+points (map-bootstrap 95% interval -1.31 to +0.37), greedy -0.02 points (-0.94
+to +0.94). Common-success episodes are slightly slower, by 3.46 sampled turns
+(interval +0.92 to +5.89) and 4.65 greedy turns (+2.20 to +7.23). Absence of a
+significant clear difference is not proof of equivalence or noninferiority.
+
+The navigation-only variant is a small, exploratory efficiency result. Among
+1,464 greedy episodes both policies clear, it saves 8.10 turns relative to
+imitation (map-bootstrap 95% interval 5.56 to 10.58 turns saved). This is about
+1.2% of a typical successful run. Sampled common-success improvement is only
+1.78 turns, with interval -1.46 to +4.94 turns saved, so is not established.
+Clear-rate gains are just 2/1,600 sampled and 3/1,600 greedy episodes; their
+intervals include zero. Overall reward superiority is therefore not established.
+This variant has one training seed; the interval reflects map variation only,
+and the several screened settings make the efficiency finding exploratory.
+
+On validation, navigation-only anchoring gave 96.29% sampled and 94.53% greedy
+clears, with 672.7/672.9 successful turns. It reduced WAIT usage (sampled 57.2 to
+42.0 actions per episode) while MOVE usage rose (368.3 to 373.8); sampled deaths
+rose from 3.13% to 3.71%. These aggregate action counts describe the change,
+not a causal proof that individual waits were unnecessary. Its penalty is
+normalized over eligible noncombat states, so it is not an exactly matched
+auxiliary-gradient-magnitude ablation of the full-policy loss.
+
+Practical conclusion: continuous policy anchoring is a promising replacement
+for hard first-layer freezing. It permits substantial encoder changes while
+preserving behavior through 10M, and avoids the navigation slowdown seen with
+the frozen-layer control. The strongest evidence is prevention of catastrophic
+forgetting, not autonomous improvement beyond imitation. The navigation-only
+variant offers a modest greedy-efficiency lead to replicate, not a demonstrated
+clear-rate breakthrough. No default training configuration was silently changed.
+
+Compute: 80,003,072 new decisions across eight runs; 2,313.8 seconds (38.6 minutes)
+of measured training. Training plus scheduled evaluations took 3,098.3 seconds;
+the final test panel took another 222.2 seconds, about 55.3 minutes in total.
+Individual anchored 10M runs take about 300 seconds of training versus roughly
+249 seconds for the earlier unanchored control. No jobs remain queued.
+
+Artifacts:
+- `results/autoregressive-anchor-screen.json`: feature and policy-strength screen.
+- `results/autoregressive-anchor-policy1.json`: stronger policy constraint.
+- `results/autoregressive-anchor-policy01-replicates.json`: PPO seeds 1 and 2.
+- `results/autoregressive-anchor-navigation.json`: protection outside combat.
+- `results/autoregressive-anchor-holdout.json`: all paired test episode outcomes.
+- `results/autoregressive-anchor-summary.json`: three-seed aggregate and compute.
+- `results/autoregressive-anchor-efficiency.json`: paired common-success intervals.
+- `results/autoregressive-anchor-drift.json`: fixed-observation function/weight audit.
+
+Reproduce the final statistics with
+`gpu-d1/.venv/bin/python gpu-d1/diagnostics/autoregressive-imitation/anchor_summary.py`.
+The training/evaluation entry points are adjacent in that diagnostics directory.

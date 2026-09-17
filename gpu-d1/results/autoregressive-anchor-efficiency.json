@@ -1,0 +1,110 @@
+{
+  "policy01-seed0": {
+    "sampled": {
+      "common_clear_turn_difference": 3.127968337730871,
+      "map_bootstrap_95ci": [
+        -0.028342737707093533,
+        6.060355619843565
+      ],
+      "common_success_episodes": 1516
+    },
+    "greedy": {
+      "common_clear_turn_difference": 1.428669882839421,
+      "map_bootstrap_95ci": [
+        -1.425637811716979,
+        4.36210341233136
+      ],
+      "common_success_episodes": 1451
+    }
+  },
+  "policy0.1-seed1": {
+    "sampled": {
+      "common_clear_turn_difference": 4.379310344827586,
+      "map_bootstrap_95ci": [
+        1.4364223359422035,
+        7.25479014241941
+      ],
+      "common_success_episodes": 1508
+    },
+    "greedy": {
+      "common_clear_turn_difference": 10.34761575673808,
+      "map_bootstrap_95ci": [
+        5.848639965948477,
+        15.350380982144737
+      ],
+      "common_success_episodes": 1447
+    }
+  },
+  "policy0.1-seed2": {
+    "sampled": {
+      "common_clear_turn_difference": 2.8701384311140408,
+      "map_bootstrap_95ci": [
+        -0.020419811760320556,
+        5.760585258603551
+      ],
+      "common_success_episodes": 1517
+    },
+    "greedy": {
+      "common_clear_turn_difference": 2.2144808743169397,
+      "map_bootstrap_95ci": [
+        -0.3968434859845902,
+        5.206409177170791
+      ],
+      "common_success_episodes": 1464
+    }
+  },
+  "policy1-seed0": {
+    "sampled": {
+      "common_clear_turn_difference": 2.1590612777053453,
+      "map_bootstrap_95ci": [
+        -0.44005765223063237,
+        4.7655134904835155
+      ],
+      "common_success_episodes": 1534
+    },
+    "greedy": {
+      "common_clear_turn_difference": -0.6923076923076923,
+      "map_bootstrap_95ci": [
+        -1.8829967802384382,
+        0.48891121707538565
+      ],
+      "common_success_episodes": 1482
+    }
+  },
+  "frozen-first-layer-seed0": {
+    "sampled": {
+      "common_clear_turn_difference": 23.182774490466798,
+      "map_bootstrap_95ci": [
+        19.28555768511593,
+        27.105030123213965
+      ],
+      "common_success_episodes": 1521
+    },
+    "greedy": {
+      "common_clear_turn_difference": 53.180798878766645,
+      "map_bootstrap_95ci": [
+        36.92685906515581,
+        71.13330983305562
+      ],
+      "common_success_episodes": 1427
+    }
+  },
+  "navigation1-seed0": {
+    "sampled": {
+      "common_clear_turn_difference": -1.778580814717477,
+      "map_bootstrap_95ci": [
+        -4.936292314186961,
+        1.4611925662025105
+      ],
+      "common_success_episodes": 1522
+    },
+    "greedy": {
+      "common_clear_turn_difference": -8.100409836065573,
+      "map_bootstrap_95ci": [
+        -10.583827301054649,
+        -5.557823545634259
+      ],
+      "common_success_episodes": 1464
+    }
+  }
+}

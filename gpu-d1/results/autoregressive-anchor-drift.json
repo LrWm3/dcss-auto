@@ -1,6 +1,30 @@
 {
   "probe": "512 fixed training-buffer observations; no validation or test states",
   "results": {
+    "navigation1-seed0": {
+      "layer_parameter_l2_change": {
+        "body.0.": 9.605552327128713,
+        "body.2.": 3.4636547425701307,
+        "actor.": 0.5774327476875812,
+        "direction.": 2.7297111046499194,
+        "critic.": 0.23151379904407818
+      },
+      "first_layer_feature_mse": 0.13939978182315826,
+      "joint_policy_kl": 0.04522175341844559,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.0008987791952677071,
+          "greedy_action_agreement": 0.9936102032661438
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.11493577063083649,
+          "greedy_action_agreement": 0.9547738432884216
+        }
+      },
+      "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-navigation/runs/navigation1-seed0/snapshots/000010000384.pt"
+    },
     "policy0.1-seed1": {
       "layer_parameter_l2_change": {
         "body.0.": 8.036011915958248,
@@ -11,6 +35,18 @@
       },
       "first_layer_feature_mse": 0.1742967814207077,
       "joint_policy_kl": 0.008709711022675037,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.006912090349942446,
+          "greedy_action_agreement": 0.9936102032661438
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.01153712160885334,
+          "greedy_action_agreement": 1.0
+        }
+      },
       "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-policy01-replicates/runs/policy0.1-seed1/snapshots/000010000384.pt"
     },
     "policy0.1-seed2": {
@@ -23,6 +59,18 @@
       },
       "first_layer_feature_mse": 0.20299112796783447,
       "joint_policy_kl": 0.0070759388618171215,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.006012719124555588,
+          "greedy_action_agreement": 0.9936102032661438
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.00874823983758688,
+          "greedy_action_agreement": 1.0
+        }
+      },
       "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-policy01-replicates/runs/policy0.1-seed2/snapshots/000010000384.pt"
     },
     "policy1-seed0": {
@@ -35,6 +83,18 @@
       },
       "first_layer_feature_mse": 0.10292685776948929,
       "joint_policy_kl": 0.0007529372232966125,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.0005973288789391518,
+          "greedy_action_agreement": 0.9936102032661438
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.0009976879227906466,
+          "greedy_action_agreement": 1.0
+        }
+      },
       "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-policy1/runs/policy1-seed0/snapshots/000010000384.pt"
     },
     "feature10-seed0": {
@@ -47,6 +107,18 @@
       },
       "first_layer_feature_mse": 0.00029896985506638885,
       "joint_policy_kl": 0.36921921372413635,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.5844432711601257,
+          "greedy_action_agreement": 0.8146964907646179
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.030700961127877235,
+          "greedy_action_agreement": 0.9949748516082764
+        }
+      },
       "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/feature10-seed0/snapshots/000010000384.pt"
     },
     "feature100-seed0": {
@@ -59,6 +131,18 @@
       },
       "first_layer_feature_mse": 2.5517343601677567e-05,
       "joint_policy_kl": 0.08929213136434555,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.14344966411590576,
+          "greedy_action_agreement": 0.9680511355400085
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.004109683446586132,
+          "greedy_action_agreement": 0.9899497628211975
+        }
+      },
       "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/feature100-seed0/snapshots/000010000384.pt"
     },
     "policy001-seed0": {
@@ -71,6 +155,18 @@
       },
       "first_layer_feature_mse": 0.2731633186340332,
       "joint_policy_kl": 0.17767879366874695,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.272270530462265,
+          "greedy_action_agreement": 0.9073482155799866
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.028898833319544792,
+          "greedy_action_agreement": 0.9849246144294739
+        }
+      },
       "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/policy001-seed0/snapshots/000010000384.pt"
     },
     "policy01-seed0": {
@@ -83,6 +179,18 @@
       },
       "first_layer_feature_mse": 0.16953414678573608,
       "joint_policy_kl": 0.01142672635614872,
+      "regions": {
+        "no_visible_awake": {
+          "states": 313,
+          "joint_policy_kl": 0.007625448051840067,
+          "greedy_action_agreement": 0.9936102032661438
+        },
+        "visible_awake": {
+          "states": 199,
+          "joint_policy_kl": 0.017405621707439423,
+          "greedy_action_agreement": 0.979899525642395
+        }
+      },
       "checkpoint": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-anchor-screen/runs/policy01-seed0/snapshots/000010000384.pt"
     }
   }

@@ -1,0 +1,245 @@
+{
+  "source_sha256": "52f7df420b2b3c261c139c91f73a642e898f648ad7f31e41a14392fb6c87c8f3",
+  "maps": 100,
+  "placements_per_map": 16,
+  "training_seeds": [
+    0,
+    1,
+    2
+  ],
+  "uncertainty": "Map-cluster bootstrap conditional on these three training seeds; not a confidence interval over new training seeds",
+  "modes": {
+    "sampled": {
+      "clear": {
+        "baseline_mean": 0.9675,
+        "candidate_mean": 0.9627083333333334,
+        "candidate_seed_means": [
+          0.965,
+          0.95875,
+          0.964375
+        ],
+        "paired_mean_difference": -0.00479166666666667,
+        "map_bootstrap_95ci": [
+          -0.013130208333333334,
+          0.0037499999999999973
+        ]
+      },
+      "returns": {
+        "baseline_mean": 0.9608729684159971,
+        "candidate_mean": 0.9560444832678164,
+        "candidate_seed_means": [
+          0.9583422749758711,
+          0.9520369812446734,
+          0.9577541935829049
+        ],
+        "paired_mean_difference": -0.004828485148180638,
+        "map_bootstrap_95ci": [
+          -0.013204107459806472,
+          0.003701922224746756
+        ]
+      },
+      "common_clear_turn_difference": {
+        "mean": 3.457388240475666,
+        "map_bootstrap_95ci": [
+          0.9223474760915892,
+          5.894703818254707
+        ]
+      }
+    },
+    "greedy": {
+      "clear": {
+        "baseline_mean": 0.935625,
+        "candidate_mean": 0.9354166666666667,
+        "candidate_seed_means": [
+          0.935625,
+          0.9325,
+          0.938125
+        ],
+        "paired_mean_difference": -0.00020833333333333703,
+        "map_bootstrap_95ci": [
+          -0.009375000000000005,
+          0.009374999999999996
+        ]
+      },
+      "returns": {
+        "baseline_mean": 0.9285353681666811,
+        "candidate_mean": 0.928297957862901,
+        "candidate_seed_means": [
+          0.9285000183437114,
+          0.9253336808572703,
+          0.9310601743877214
+        ],
+        "paired_mean_difference": -0.00023741030378005124,
+        "map_bootstrap_95ci": [
+          -0.009510987107786681,
+          0.009412950364577342
+        ]
+      },
+      "common_clear_turn_difference": {
+        "mean": 4.651077487391105,
+        "map_bootstrap_95ci": [
+          2.196958949355143,
+          7.230474751682288
+        ]
+      }
+    }
+  },
+  "individual_efficiency": {
+    "policy01-seed0": {
+      "sampled": {
+        "common_clear_turn_difference": 3.127968337730871,
+        "map_bootstrap_95ci": [
+          -0.028342737707093533,
+          6.060355619843565
+        ],
+        "common_success_episodes": 1516
+      },
+      "greedy": {
+        "common_clear_turn_difference": 1.428669882839421,
+        "map_bootstrap_95ci": [
+          -1.425637811716979,
+          4.36210341233136
+        ],
+        "common_success_episodes": 1451
+      }
+    },
+    "policy0.1-seed1": {
+      "sampled": {
+        "common_clear_turn_difference": 4.379310344827586,
+        "map_bootstrap_95ci": [
+          1.4364223359422035,
+          7.25479014241941
+        ],
+        "common_success_episodes": 1508
+      },
+      "greedy": {
+        "common_clear_turn_difference": 10.34761575673808,
+        "map_bootstrap_95ci": [
+          5.848639965948477,
+          15.350380982144737
+        ],
+        "common_success_episodes": 1447
+      }
+    },
+    "policy0.1-seed2": {
+      "sampled": {
+        "common_clear_turn_difference": 2.8701384311140408,
+        "map_bootstrap_95ci": [
+          -0.020419811760320556,
+          5.760585258603551
+        ],
+        "common_success_episodes": 1517
+      },
+      "greedy": {
+        "common_clear_turn_difference": 2.2144808743169397,
+        "map_bootstrap_95ci": [
+          -0.3968434859845902,
+          5.206409177170791
+        ],
+        "common_success_episodes": 1464
+      }
+    },
+    "policy1-seed0": {
+      "sampled": {
+        "common_clear_turn_difference": 2.1590612777053453,
+        "map_bootstrap_95ci": [
+          -0.44005765223063237,
+          4.7655134904835155
+        ],
+        "common_success_episodes": 1534
+      },
+      "greedy": {
+        "common_clear_turn_difference": -0.6923076923076923,
+        "map_bootstrap_95ci": [
+          -1.8829967802384382,
+          0.48891121707538565
+        ],
+        "common_success_episodes": 1482
+      }
+    },
+    "frozen-first-layer-seed0": {
+      "sampled": {
+        "common_clear_turn_difference": 23.182774490466798,
+        "map_bootstrap_95ci": [
+          19.28555768511593,
+          27.105030123213965
+        ],
+        "common_success_episodes": 1521
+      },
+      "greedy": {
+        "common_clear_turn_difference": 53.180798878766645,
+        "map_bootstrap_95ci": [
+          36.92685906515581,
+          71.13330983305562
+        ],
+        "common_success_episodes": 1427
+      }
+    },
+    "navigation1-seed0": {
+      "sampled": {
+        "common_clear_turn_difference": -1.778580814717477,
+        "map_bootstrap_95ci": [
+          -4.936292314186961,
+          1.4611925662025105
+        ],
+        "common_success_episodes": 1522
+      },
+      "greedy": {
+        "common_clear_turn_difference": -8.100409836065573,
+        "map_bootstrap_95ci": [
+          -10.583827301054649,
+          -5.557823545634259
+        ],
+        "common_success_episodes": 1464
+      }
+    }
+  },
+  "compute": {
+    "jobs": [
+      {
+        "job": "feature10-seed0",
+        "decisions": 10000384,
+        "train_seconds": 253.47134164511226
+      },
+      {
+        "job": "feature100-seed0",
+        "decisions": 10000384,
+        "train_seconds": 261.2155633177608
+      },
+      {
+        "job": "policy001-seed0",
+        "decisions": 10000384,
+        "train_seconds": 297.73172688670456
+      },
+      {
+        "job": "policy01-seed0",
+        "decisions": 10000384,
+        "train_seconds": 299.09547480219044
+      },
+      {
+        "job": "policy1-seed0",
+        "decisions": 10000384,
+        "train_seconds": 299.9698399794288
+      },
+      {
+        "job": "policy0.1-seed1",
+        "decisions": 10000384,
+        "train_seconds": 300.31976690213196
+      },
+      {
+        "job": "policy0.1-seed2",
+        "decisions": 10000384,
+        "train_seconds": 299.9541338284034
+      },
+      {
+        "job": "navigation1-seed0",
+        "decisions": 10000384,
+        "train_seconds": 302.08955770661123
+      }
+    ],
+    "total_decisions": 80003072,
+    "training_seconds": 2313.8474050683435,
+    "training_pipeline_wall_seconds": 3098.277528357925,
+    "test_panel_wall_seconds": 222.2443556659855
+  }
+}
