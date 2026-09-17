@@ -142,3 +142,77 @@ Run `diagnostics/survival-targeted/confirm.py --balanced --panel far` for evalua
 on the additional geometry panel and four fresh encounter seeds. `--panel novel`
 and `--panel original` check the earlier panels. All use greedy model actions at
 normal temperature and the same initial state distribution for every checkpoint.
+
+## Balanced follow-up completed
+
+The broader practice distribution produced the best overall tactical checkpoint:
+`learning-runs/autoregressive-survival-balanced/runs/balanced-seed0/latest.pt`,
+at **40,000,512 cumulative decisions**, +5,000,192 from the shared source.
+
+The following are greedy results on **2,048 fresh encounter episodes per panel**
+(four seeds × 512 episodes), with no policy action overrides:
+
+| Panel | Source 35M | Matched control +5M | First targeted +5M | Balanced +5M | Cover controller |
+|---|---:|---:|---:|---:|---:|
+| Original tactical layouts | 77.20% | 72.02% | 73.00% | **83.89%** | 83.25% |
+| First new approach layouts | 54.54% | 47.95% | **84.13%** | 79.20% | 85.11% |
+| Further held-out farther-shelter layouts | 52.98% | 43.36% | 54.74% | **85.06%** | 85.11% |
+
+The balanced model improves over the shared source and matched control on all
+three panels. It trades about five points on the first new family for large gains
+on the original and farther-shelter panels. It does not dominate the specialist
+on every geometry. On the fresh farther-shelter panel, its +41.70-point advantage
+over control has a geometry-cluster bootstrap interval [37.74, 45.80]. Its gain
+over the source is +32.08 points [22.12, 42.58]. These gains appear on all eight
+base geometries. Its difference from the privileged cover controller is effectively
+zero (-0.05 points; interval [-0.78, 0.73]).
+
+On the fresh original panel, balanced-minus-control is +11.87 points [1.51, 24.85];
+balanced-minus-source is +6.69 [1.22, 15.28]. Improvements are concentrated in
+pocket handling, rather than uniformly distributed across every geometry:
+
+| Original family, fresh seeds | Source | Balanced |
+|---|---:|---:|
+| Hallway | 84.38% | 86.33% |
+| Diagonal pocket | 65.63% | **84.96%** |
+| Passing an enemy | 74.41% | 79.49% |
+| Separated enemy groups | 84.38% | 84.77% |
+
+The original concrete failure examples **24 and 29 now both clear**. On the
+original diagnostic seed, hallway and pocket residual deaths all occur after
+reaching cover, and the cover controller also loses each of those episodes.
+That is evidence that this controller no longer repairs those residual losses,
+not proof they are unavoidable. Sixteen of the eighteen pocket deaths start at
+6 HP. Passing-enemy and separated-group episodes still have 7 and 12 deaths,
+respectively, that the cover controller survives. Those remain useful candidates
+for a later diagnostic study.
+
+Behavior also changes on the untouched farther-shelter panel: shelter arrival
+rises from 35.89% to 81.01%, and mean turns with multiple adjacent enemies drop
+from 12.98 to 1.60. The first specialist has only 31.54% arrival there. This is why
+an additional geometry panel was valuable: its success on the first new family
+had not yet established the broader skill.
+
+Ordinary-floor validation remains approximately at baseline, with **no established
+improvement**. Balanced clears 96.19% sampled / 93.85% greedy, versus source
+96.09% / 94.34% and control 96.68% / 94.43%. The greedy difference from control is
+-0.59 percentage points, with a paired 32-map bootstrap interval [-1.95, 0.68].
+These tactical gains should not be presented as an ordinary-floor clear-rate gain.
+
+Training took 165.70 seconds for the balanced arm. All three +5M continuations
+used **496.48 seconds (8.27 minutes) of training**, excluding evaluation and asset
+preparation. The balanced pipeline took 223.67 seconds after asset preparation.
+No jobs remain queued or running.
+
+`results/autoregressive-survival-balanced-summary.json` provides the compact final
+comparison and checkpoint hash. Raw fresh-seed results are the three
+`results/autoregressive-survival-targeted-confirmation-balanced-*.json` files;
+`results/autoregressive-survival-balanced-remaining.json` records residual failures.
+Regenerate the compact summary with `diagnostics/survival-targeted/final_report.py`.
+
+This remains an adaptive, one-training-seed experiment on a toy simulator. The
+newest geometry panel was fixed before the balanced arm and was not used for
+checkpoint selection; earlier panels informed curriculum development. All tactical
+scenarios begin with remembered local terrain, unlike ordinary exploration. The
+result supports targeted practice improving learned retreat decisions, with some
+transfer across geometry; it does not establish general Crawl survival competence.
