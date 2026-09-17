@@ -1,0 +1,2222 @@
+{
+  "preflight": {
+    "train": {
+      "attempts": 512,
+      "accepted": 332,
+      "maps": 190,
+      "verified_no_wake_no_damage_exits": 332
+    },
+    "validation": {
+      "attempts": 512,
+      "accepted": 322,
+      "maps": 32,
+      "verified_no_wake_no_damage_exits": 322
+    },
+    "test": {
+      "attempts": 512,
+      "accepted": 348,
+      "maps": 99,
+      "verified_no_wake_no_damage_exits": 348
+    },
+    "mixed_completed": [
+      [
+        86.0,
+        15.0,
+        71.0,
+        0.0
+      ],
+      [
+        28.0,
+        22.0,
+        6.0,
+        0.0
+      ]
+    ],
+    "source_sha256": "092886fcfaf48301e2127257da9b59286940ad851a2364d65ce84edaa72a443f"
+  },
+  "stall_inspection": {
+    "rows": [
+      {
+        "episode": 793,
+        "profile": 3,
+        "tick_fraction": 0.03125,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.32569706439971924,
+          0.0,
+          0.0010742919985204935,
+          0.0,
+          0.0,
+          0.0,
+          1.4095764527155552e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6732145547866821,
+          0.0,
+          0.0
+        ],
+        "player": 2773,
+        "enemy": 2766,
+        "frontier": 2851,
+        "frontier_distance": 2,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": -1,
+        "safe_frontier_direction": -1,
+        "safe_frontier_distance": -1,
+        "hidden_safe_exit_count": 0,
+        "legal_moves": 3,
+        "safe_legal_moves": [
+          1
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.6732144355773926,
+            "move": 0.3267855644226074,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 8.694348798599094e-05,
+            "move": 0.9999131560325623,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.5576081275939941,
+            "move": 0.4423918128013611,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8381628394126892,
+            "move": 0.1618371456861496,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.5041306614875793,
+            "move": 0.49586939811706543,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.6732144355773926,
+            "move": 0.3267855644226074,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 821,
+        "profile": 4,
+        "tick_fraction": 0.03515625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.00821088720113039,
+          0.0,
+          3.9653637941228226e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9917495250701904,
+          0.0,
+          0.0
+        ],
+        "player": 2230,
+        "enemy": 2223,
+        "frontier": 2148,
+        "frontier_distance": 2,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 2312,
+        "safe_frontier_direction": 1,
+        "safe_frontier_distance": 2,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          1
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.9917495250701904,
+            "move": 0.008250541053712368,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00011972022184636444,
+            "move": 0.9998803734779358,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.9438085556030273,
+            "move": 0.056191492825746536,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9956539869308472,
+            "move": 0.00434598745778203,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.9887623190879822,
+            "move": 0.01123770885169506,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.972513735294342,
+            "move": 0.027486199513077736,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1221,
+        "profile": 6,
+        "tick_fraction": 0.03515625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.19927823543548584,
+          0.0,
+          0.00020363453950267285,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8005181550979614,
+          0.0,
+          0.0
+        ],
+        "player": 2230,
+        "enemy": 2223,
+        "frontier": 2148,
+        "frontier_distance": 2,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 2312,
+        "safe_frontier_direction": 1,
+        "safe_frontier_distance": 2,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          1
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.8005184531211853,
+            "move": 0.1994815617799759,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00020941814000252634,
+            "move": 0.999790608882904,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.0002990510256495327,
+            "move": 0.9997009634971619,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8616609573364258,
+            "move": 0.1383390873670578,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.8666613101959229,
+            "move": 0.13333871960639954,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.7450679540634155,
+            "move": 0.25493207573890686,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 948,
+        "profile": 4,
+        "tick_fraction": 0.0380859375,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.0006989732501097023,
+          0.0,
+          0.005625877995043993,
+          0.11143074184656143,
+          0.14347316324710846,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.7387712001800537,
+          0.0,
+          0.0
+        ],
+        "player": 2021,
+        "enemy": 1934,
+        "frontier": 1938,
+        "frontier_distance": 3,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1788,
+        "safe_frontier_direction": 4,
+        "safe_frontier_distance": 7,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 4,
+        "safe_legal_moves": [
+          1,
+          4,
+          5
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.7387714385986328,
+            "move": 0.2612285614013672,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0001666774187469855,
+            "move": 0.9998332262039185,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.06545598059892654,
+            "move": 0.9345439672470093,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.870938777923584,
+            "move": 0.12906119227409363,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.44258439540863037,
+            "move": 0.5574156045913696,
+            "action": 5
+          },
+          "safe_frontier": {
+            "wait": 0.6203885078430176,
+            "move": 0.3796114921569824,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1173,
+        "profile": 5,
+        "tick_fraction": 0.03369140625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0001694920501904562,
+          1.5215794519463088e-05,
+          0.00042735476745292544,
+          0.18998989462852478,
+          0.0,
+          0.0,
+          0.0031100567430257797,
+          0.15259239077568054,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6536955833435059,
+          0.0,
+          0.0
+        ],
+        "player": 3571,
+        "enemy": 3098,
+        "frontier": 3493,
+        "frontier_distance": 2,
+        "frontier_direction": 1,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 4046,
+        "safe_frontier_direction": 6,
+        "safe_frontier_distance": 6,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 6,
+        "safe_legal_moves": [
+          0,
+          2,
+          3,
+          6,
+          7
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.6536955833435059,
+            "move": 0.34630441665649414,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00017901482351589948,
+            "move": 0.9998209476470947,
+            "action": 1
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.3902715742588043,
+            "move": 0.6097283959388733,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.7641712427139282,
+            "move": 0.23582875728607178,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.47665268182754517,
+            "move": 0.5233473777770996,
+            "action": 3
+          },
+          "safe_frontier": {
+            "wait": 0.49572858214378357,
+            "move": 0.504271388053894,
+            "action": 7
+          }
+        }
+      },
+      {
+        "episode": 1548,
+        "profile": 7,
+        "tick_fraction": 0.0380859375,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.00032601520069874823,
+          0.0,
+          0.3524179458618164,
+          0.05958409607410431,
+          0.058509308844804764,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.5291626453399658,
+          0.0,
+          0.0
+        ],
+        "player": 2021,
+        "enemy": 1934,
+        "frontier": 1938,
+        "frontier_distance": 3,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1788,
+        "safe_frontier_direction": 4,
+        "safe_frontier_distance": 7,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 4,
+        "safe_legal_moves": [
+          1,
+          4,
+          5
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.5291621685028076,
+            "move": 0.4708378314971924,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00028434439445845783,
+            "move": 0.9997156262397766,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.1179204136133194,
+            "move": 0.8820796608924866,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.5724049210548401,
+            "move": 0.4275951087474823,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.29883864521980286,
+            "move": 0.70116126537323,
+            "action": 5
+          },
+          "safe_frontier": {
+            "wait": 0.40417370200157166,
+            "move": 0.595826268196106,
+            "action": 3
+          }
+        }
+      },
+      {
+        "episode": 1573,
+        "profile": 7,
+        "tick_fraction": 0.03369140625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.00012216910545248538,
+          4.909522976959124e-05,
+          0.0006583757349289954,
+          0.05234352871775627,
+          0.0,
+          0.0,
+          0.028902769088745117,
+          0.05318782478570938,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8647361993789673,
+          0.0,
+          0.0
+        ],
+        "player": 3571,
+        "enemy": 3098,
+        "frontier": 3493,
+        "frontier_distance": 2,
+        "frontier_direction": 1,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 4046,
+        "safe_frontier_direction": 6,
+        "safe_frontier_distance": 6,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 6,
+        "safe_legal_moves": [
+          0,
+          2,
+          3,
+          6,
+          7
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.8647361993789673,
+            "move": 0.13526375591754913,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0002600383886601776,
+            "move": 0.9997398853302002,
+            "action": 1
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.05231150612235069,
+            "move": 0.9476884603500366,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8848706483840942,
+            "move": 0.11512938141822815,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.7550585865974426,
+            "move": 0.24494139850139618,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.7999556064605713,
+            "move": 0.2000443935394287,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 443,
+        "profile": 2,
+        "tick_fraction": 0.0341796875,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.23678945004940033,
+          0.0,
+          0.0020002825185656548,
+          0.011205310001969337,
+          0.2262159138917923,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.5237890481948853,
+          0.0,
+          0.0
+        ],
+        "player": 2213,
+        "enemy": 2300,
+        "frontier": 2131,
+        "frontier_distance": 2,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": false,
+        "safe_frontier": 2131,
+        "safe_frontier_direction": 3,
+        "safe_frontier_distance": 2,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 4,
+        "safe_legal_moves": [
+          3
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.5237890481948853,
+            "move": 0.47621095180511475,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 6.264288822421804e-05,
+            "move": 0.9999373555183411,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.3293219804763794,
+            "move": 0.6706779599189758,
+            "action": 1
+          },
+          "player_30hp_damage6": {
+            "wait": 0.7760377526283264,
+            "move": 0.22396230697631836,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.713653028011322,
+            "move": 0.286346971988678,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.5237890481948853,
+            "move": 0.47621095180511475,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 481,
+        "profile": 2,
+        "tick_fraction": 0.0341796875,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.04823669046163559,
+          0.0024066634941846132,
+          0.0003153553116135299,
+          0.0,
+          0.2853940427303314,
+          0.0,
+          0.00039546797052025795,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6632518172264099,
+          0.0,
+          0.0
+        ],
+        "player": 1191,
+        "enemy": 1753,
+        "frontier": 1270,
+        "frontier_distance": 1,
+        "frontier_direction": 6,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 552,
+        "safe_frontier_direction": 4,
+        "safe_frontier_distance": 8,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 5,
+        "safe_legal_moves": [
+          0,
+          1,
+          4
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.6632513999938965,
+            "move": 0.3367486298084259,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00011148605699418113,
+            "move": 0.9998884797096252,
+            "action": 6
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.06574276834726334,
+            "move": 0.9342572689056396,
+            "action": 2
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8682023286819458,
+            "move": 0.1317977011203766,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.7344022393226624,
+            "move": 0.26559779047966003,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.6983071565628052,
+            "move": 0.3016928434371948,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1730,
+        "profile": 8,
+        "tick_fraction": 0.03515625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.01585608534514904,
+          0.1416705846786499,
+          0.0,
+          0.00037444860208779573,
+          0.2307925522327423,
+          0.0,
+          3.9112372178351507e-05,
+          0.0010067474795505404,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6102604269981384,
+          0.0,
+          0.0
+        ],
+        "player": 936,
+        "enemy": 1495,
+        "frontier": 1015,
+        "frontier_distance": 1,
+        "frontier_direction": 6,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 770,
+        "safe_frontier_direction": 7,
+        "safe_frontier_distance": 6,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 6,
+        "safe_legal_moves": [
+          0,
+          1,
+          3,
+          4,
+          7
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.6102606654167175,
+            "move": 0.3897392451763153,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0009860824793577194,
+            "move": 0.9990139603614807,
+            "action": 6
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.0008933702483773232,
+            "move": 0.9991065859794617,
+            "action": 6
+          },
+          "player_30hp_damage6": {
+            "wait": 0.6102606654167175,
+            "move": 0.3897392451763153,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.6157230138778687,
+            "move": 0.38427698612213135,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.5730072259902954,
+            "move": 0.426992803812027,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1765,
+        "profile": 8,
+        "tick_fraction": 0.0341796875,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.003517298959195614,
+          0.0,
+          0.0005732295685447752,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9959094524383545,
+          0.0,
+          0.0
+        ],
+        "player": 2095,
+        "enemy": 2655,
+        "frontier": 2655,
+        "frontier_distance": 7,
+        "frontier_direction": 2,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1866,
+        "safe_frontier_direction": 0,
+        "safe_frontier_distance": 12,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          0
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.9959094524383545,
+            "move": 0.00409052474424243,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00016036376473493874,
+            "move": 0.9998396635055542,
+            "action": 2
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.9938754439353943,
+            "move": 0.006124531384557486,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9959094524383545,
+            "move": 0.00409052474424243,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.9951128363609314,
+            "move": 0.004887209739536047,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.9941788911819458,
+            "move": 0.005821123719215393,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1421,
+        "profile": 7,
+        "tick_fraction": 0.05810546875,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.004783697426319122,
+          0.0,
+          8.146827894961461e-06,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.995208203792572,
+          0.0,
+          0.0
+        ],
+        "player": 2230,
+        "enemy": 2223,
+        "frontier": 2148,
+        "frontier_distance": 2,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 2872,
+        "safe_frontier_direction": 1,
+        "safe_frontier_distance": 9,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          1
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.995208203792572,
+            "move": 0.0047918506897985935,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00016192746988963336,
+            "move": 0.9998379945755005,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.9628797173500061,
+            "move": 0.03712029755115509,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9960300326347351,
+            "move": 0.003969962242990732,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.9900179505348206,
+            "move": 0.009982082061469555,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.9859495759010315,
+            "move": 0.014050410129129887,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 773,
+        "profile": 3,
+        "tick_fraction": 0.03515625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0002676439471542835,
+          9.460109140491113e-05,
+          0.0006316803628578782,
+          0.08698517084121704,
+          0.0,
+          0.0,
+          0.039675429463386536,
+          0.14092479646205902,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.731420636177063,
+          0.0,
+          0.0
+        ],
+        "player": 3571,
+        "enemy": 3098,
+        "frontier": 3493,
+        "frontier_distance": 2,
+        "frontier_direction": 1,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 4046,
+        "safe_frontier_direction": 6,
+        "safe_frontier_distance": 6,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 6,
+        "safe_legal_moves": [
+          0,
+          2,
+          3,
+          6,
+          7
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.7314204573631287,
+            "move": 0.26857954263687134,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00014530078624375165,
+            "move": 0.9998546242713928,
+            "action": 1
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.024190427735447884,
+            "move": 0.9758095145225525,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8848267793655396,
+            "move": 0.11517320573329926,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.5293401479721069,
+            "move": 0.47065985202789307,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.5989105105400085,
+            "move": 0.40108948945999146,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 881,
+        "profile": 4,
+        "tick_fraction": 0.0673828125,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0580449178814888,
+          0.001964927650988102,
+          0.0002773047308437526,
+          0.0,
+          0.21983973681926727,
+          0.0,
+          0.00042731460416689515,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.7194458246231079,
+          0.0,
+          0.0
+        ],
+        "player": 1191,
+        "enemy": 1753,
+        "frontier": 1270,
+        "frontier_distance": 1,
+        "frontier_direction": 6,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 552,
+        "safe_frontier_direction": 4,
+        "safe_frontier_distance": 8,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 5,
+        "safe_legal_moves": [
+          0,
+          1,
+          4
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.7194456458091736,
+            "move": 0.2805543839931488,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0001417163002770394,
+            "move": 0.9998582005500793,
+            "action": 6
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.08522222936153412,
+            "move": 0.9147778153419495,
+            "action": 4
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8698253631591797,
+            "move": 0.13017457723617554,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.7822642922401428,
+            "move": 0.21773570775985718,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.7487043142318726,
+            "move": 0.25129571557044983,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1712,
+        "profile": 8,
+        "tick_fraction": 0.03515625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          6.237329944269732e-05,
+          0.0007271822541952133,
+          0.00020147157192695886,
+          0.0005928025930188596,
+          0.04089111462235451,
+          3.097391982009867e-06,
+          2.0253710317774676e-06,
+          0.005999503657221794,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9515204429626465,
+          0.0,
+          0.0
+        ],
+        "player": 2374,
+        "enemy": 2934,
+        "frontier": 2291,
+        "frontier_distance": 3,
+        "frontier_direction": 7,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": false,
+        "safe_frontier": 2291,
+        "safe_frontier_direction": 7,
+        "safe_frontier_distance": 3,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 8,
+        "safe_legal_moves": [
+          0,
+          1,
+          3,
+          4,
+          7
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.9515204429626465,
+            "move": 0.0484795905649662,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0006418321863748133,
+            "move": 0.999358057975769,
+            "action": 7
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.6157916188240051,
+            "move": 0.3842083215713501,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9515204429626465,
+            "move": 0.0484795905649662,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.9630984663963318,
+            "move": 0.0369015596807003,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.9515204429626465,
+            "move": 0.0484795905649662,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 165,
+        "profile": 0,
+        "tick_fraction": 0.03564453125,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.020511986687779427,
+          0.0,
+          7.598198135383427e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9794120192527771,
+          0.0,
+          0.0
+        ],
+        "player": 2095,
+        "enemy": 2655,
+        "frontier": 2655,
+        "frontier_distance": 7,
+        "frontier_direction": 2,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1866,
+        "safe_frontier_direction": 0,
+        "safe_frontier_distance": 12,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          0
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.9794120192527771,
+            "move": 0.02058797888457775,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 4.377013101475313e-05,
+            "move": 0.9999562501907349,
+            "action": 2
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.8052148222923279,
+            "move": 0.19478516280651093,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9934043288230896,
+            "move": 0.006595743354409933,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.9647248983383179,
+            "move": 0.03527507930994034,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.9376482367515564,
+            "move": 0.0623517781496048,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 365,
+        "profile": 1,
+        "tick_fraction": 0.03564453125,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.016300702467560768,
+          0.0,
+          5.569839049712755e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9836435914039612,
+          0.0,
+          0.0
+        ],
+        "player": 2095,
+        "enemy": 2655,
+        "frontier": 2655,
+        "frontier_distance": 7,
+        "frontier_direction": 2,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1866,
+        "safe_frontier_direction": 0,
+        "safe_frontier_distance": 12,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          0
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.9836435914039612,
+            "move": 0.01635640114545822,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 4.7913887101458386e-05,
+            "move": 0.9999521374702454,
+            "action": 2
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.8246656060218811,
+            "move": 0.17533445358276367,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9934043288230896,
+            "move": 0.006595743354409933,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.9726717472076416,
+            "move": 0.02732829377055168,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.9518734216690063,
+            "move": 0.04812661558389664,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 706,
+        "profile": 3,
+        "tick_fraction": 0.0361328125,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.0,
+          0.10880923271179199,
+          0.13825035095214844,
+          0.0,
+          0.2170671671628952,
+          0.00047266227193176746,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.5354006290435791,
+          0.0,
+          0.0
+        ],
+        "player": 2043,
+        "enemy": 1876,
+        "frontier": 1961,
+        "frontier_distance": 2,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 2445,
+        "safe_frontier_direction": 5,
+        "safe_frontier_distance": 5,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 4,
+        "safe_legal_moves": [
+          2,
+          5
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.5354005098342896,
+            "move": 0.46459951996803284,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00035351357655599713,
+            "move": 0.9996465444564819,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.35754910111427307,
+            "move": 0.6424508094787598,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.7894081473350525,
+            "move": 0.2105918675661087,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.41788357496261597,
+            "move": 0.582116425037384,
+            "action": 5
+          },
+          "safe_frontier": {
+            "wait": 0.36437395215034485,
+            "move": 0.6356261372566223,
+            "action": 5
+          }
+        }
+      },
+      {
+        "episode": 1026,
+        "profile": 5,
+        "tick_fraction": 0.03662109375,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.0035869355779141188,
+          0.0005878488882444799,
+          0.00013408137601800263,
+          0.0280283372849226,
+          0.05067320540547371,
+          1.3716536386709777e-06,
+          2.916183063916833e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9169878959655762,
+          0.0,
+          0.0
+        ],
+        "player": 4113,
+        "enemy": 4106,
+        "frontier": 4350,
+        "frontier_distance": 3,
+        "frontier_direction": 6,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 4517,
+        "safe_frontier_direction": 5,
+        "safe_frontier_distance": 5,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 7,
+        "safe_legal_moves": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.9169878959655762,
+            "move": 0.083012156188488,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00046548564569093287,
+            "move": 0.9995344281196594,
+            "action": 6
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.16478385031223297,
+            "move": 0.8352161645889282,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9579023122787476,
+            "move": 0.04209766536951065,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.7683199048042297,
+            "move": 0.23168011009693146,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.8604353666305542,
+            "move": 0.139564648270607,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1365,
+        "profile": 6,
+        "tick_fraction": 0.037109375,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.45945432782173157,
+          0.0,
+          0.001304441480897367,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.5392412543296814,
+          0.0,
+          0.0
+        ],
+        "player": 2095,
+        "enemy": 2655,
+        "frontier": 2655,
+        "frontier_distance": 7,
+        "frontier_direction": 2,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1866,
+        "safe_frontier_direction": 0,
+        "safe_frontier_distance": 12,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          0
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.539240837097168,
+            "move": 0.4607592523097992,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00013326310727279633,
+            "move": 0.9998667240142822,
+            "action": 2
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.0001691278157522902,
+            "move": 0.9998309016227722,
+            "action": 2
+          },
+          "player_30hp_damage6": {
+            "wait": 0.6578233242034912,
+            "move": 0.342176616191864,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.684110701084137,
+            "move": 0.31588929891586304,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.4667069911956787,
+            "move": 0.5332930088043213,
+            "action": 0
+          }
+        }
+      },
+      {
+        "episode": 1185,
+        "profile": 5,
+        "tick_fraction": 0.03759765625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          6.864262900307949e-07,
+          0.0,
+          0.11125051230192184,
+          1.151008291344624e-05,
+          0.001217538258060813,
+          0.12439756840467453,
+          0.004164626821875572,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.7589575052261353,
+          0.0,
+          0.0
+        ],
+        "player": 1252,
+        "enemy": 1739,
+        "frontier": 1493,
+        "frontier_distance": 3,
+        "frontier_direction": 5,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1493,
+        "safe_frontier_direction": 6,
+        "safe_frontier_distance": 3,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 6,
+        "safe_legal_moves": [
+          3,
+          4,
+          6,
+          7
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.7589575052261353,
+            "move": 0.24104245007038116,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0003206224355380982,
+            "move": 0.9996793270111084,
+            "action": 5
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.5711357593536377,
+            "move": 0.4288642406463623,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8512140512466431,
+            "move": 0.14878593385219574,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.5209195017814636,
+            "move": 0.4790804982185364,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.6178632974624634,
+            "move": 0.382136732339859,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 1316,
+        "profile": 6,
+        "tick_fraction": 0.07275390625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.01658262312412262,
+          0.0,
+          0.0887819305062294,
+          0.0,
+          0.11333512514829636,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.7813003063201904,
+          0.0,
+          0.0
+        ],
+        "player": 1159,
+        "enemy": 1006,
+        "frontier": 1085,
+        "frontier_distance": 6,
+        "frontier_direction": 4,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1724,
+        "safe_frontier_direction": 2,
+        "safe_frontier_distance": 7,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 3,
+        "safe_legal_moves": [
+          0,
+          2
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.7813001275062561,
+            "move": 0.21869981288909912,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0003592501161620021,
+            "move": 0.999640703201294,
+            "action": 4
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.26224491000175476,
+            "move": 0.7377551794052124,
+            "action": 4
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8335773944854736,
+            "move": 0.1664225459098816,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.5643039345741272,
+            "move": 0.4356961250305176,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.4627890884876251,
+            "move": 0.5372108817100525,
+            "action": 2
+          }
+        }
+      },
+      {
+        "episode": 138,
+        "profile": 0,
+        "tick_fraction": 0.04052734375,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.0012252851156517863,
+          0.0,
+          8.557262844988145e-06,
+          0.0,
+          0.17463544011116028,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8241307139396667,
+          0.0,
+          0.0
+        ],
+        "player": 2664,
+        "enemy": 2657,
+        "frontier": 2742,
+        "frontier_distance": 2,
+        "frontier_direction": 3,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 2904,
+        "safe_frontier_direction": 5,
+        "safe_frontier_distance": 3,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 3,
+        "safe_legal_moves": [
+          1,
+          5
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.8241307139396667,
+            "move": 0.17586928606033325,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00010070689313579351,
+            "move": 0.9998992681503296,
+            "action": 3
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.06177157908678055,
+            "move": 0.9382283687591553,
+            "action": 3
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9431333541870117,
+            "move": 0.056866604834795,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.6589279174804688,
+            "move": 0.34107208251953125,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.8009313344955444,
+            "move": 0.19906865060329437,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 26,
+        "profile": 0,
+        "tick_fraction": 0.0439453125,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.0005096356617286801,
+          0.004460232798010111,
+          0.005498339422047138,
+          0.004391190130263567,
+          0.1419733315706253,
+          2.3699562007095665e-05,
+          5.452538971439935e-07,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8431430459022522,
+          0.0,
+          0.0
+        ],
+        "player": 4113,
+        "enemy": 4106,
+        "frontier": 4350,
+        "frontier_distance": 3,
+        "frontier_direction": 6,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 4517,
+        "safe_frontier_direction": 5,
+        "safe_frontier_distance": 5,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 7,
+        "safe_legal_moves": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.8431430459022522,
+            "move": 0.1568569839000702,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.00029650304350070655,
+            "move": 0.9997034072875977,
+            "action": 6
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.7217977046966553,
+            "move": 0.2782023251056671,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9622311592102051,
+            "move": 0.03776879236102104,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.6530197262763977,
+            "move": 0.3469802439212799,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.7113814353942871,
+            "move": 0.2886185646057129,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 229,
+        "profile": 1,
+        "tick_fraction": 0.041015625,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.0,
+          0.1122351735830307,
+          0.0,
+          0.011211208999156952,
+          0.0,
+          0.0,
+          0.0,
+          0.008824986405670643,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8677286505699158,
+          0.0,
+          0.0
+        ],
+        "player": 2259,
+        "enemy": 1697,
+        "frontier": 2178,
+        "frontier_distance": 1,
+        "frontier_direction": 7,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 2739,
+        "safe_frontier_direction": 1,
+        "safe_frontier_distance": 7,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 3,
+        "safe_legal_moves": [
+          1,
+          3
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.8677286505699158,
+            "move": 0.13227136433124542,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 6.228644633665681e-05,
+            "move": 0.9999375939369202,
+            "action": 7
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.08366068452596664,
+            "move": 0.9163393378257751,
+            "action": 7
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9658768773078918,
+            "move": 0.034123048186302185,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.750410258769989,
+            "move": 0.249589741230011,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.701517641544342,
+            "move": 0.29848238825798035,
+            "action": 16
+          }
+        }
+      },
+      {
+        "episode": 446,
+        "profile": 2,
+        "tick_fraction": 0.04248046875,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.01902696304023266,
+          0.0,
+          0.0009200630593113601,
+          0.0,
+          0.29864025115966797,
+          0.007598717696964741,
+          0.0,
+          0.0954318419098854,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.578382134437561,
+          0.0,
+          0.0
+        ],
+        "player": 1642,
+        "enemy": 1475,
+        "frontier": 1479,
+        "frontier_distance": 3,
+        "frontier_direction": 7,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1961,
+        "safe_frontier_direction": 2,
+        "safe_frontier_distance": 4,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 5,
+        "safe_legal_moves": [
+          0,
+          2,
+          4,
+          5
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.578382134437561,
+            "move": 0.42161786556243896,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 0.0003373224171809852,
+            "move": 0.9996626377105713,
+            "action": 7
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.04769622161984444,
+            "move": 0.9523037672042847,
+            "action": 7
+          },
+          "player_30hp_damage6": {
+            "wait": 0.8085747361183167,
+            "move": 0.19142523407936096,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.33506160974502563,
+            "move": 0.6649383902549744,
+            "action": 5
+          },
+          "safe_frontier": {
+            "wait": 0.2437964379787445,
+            "move": 0.7562035918235779,
+            "action": 4
+          }
+        }
+      },
+      {
+        "episode": 227,
+        "profile": 1,
+        "tick_fraction": 0.04296875,
+        "hp_fraction": 1.0,
+        "visible_enemies": 1,
+        "awake_enemies": 0,
+        "adjacent_attack_available": false,
+        "known_stairs": 0.0,
+        "probs": [
+          0.004343656823039055,
+          0.0,
+          0.0013793465914204717,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.9942770600318909,
+          0.0,
+          0.0
+        ],
+        "player": 598,
+        "enemy": 1158,
+        "frontier": 919,
+        "frontier_distance": 4,
+        "frontier_direction": 2,
+        "frontier_move_legal": true,
+        "frontier_route_wakes": true,
+        "safe_frontier": 1074,
+        "safe_frontier_direction": 0,
+        "safe_frontier_distance": 15,
+        "hidden_safe_exit_count": 3,
+        "legal_moves": 2,
+        "safe_legal_moves": [
+          0
+        ],
+        "interventions": {
+          "original": {
+            "wait": 0.9942770600318909,
+            "move": 0.005723003298044205,
+            "action": 16
+          },
+          "hide_enemy_observation": {
+            "wait": 7.855871081119403e-05,
+            "move": 0.999921441078186,
+            "action": 2
+          },
+          "enemy_damage_cap_1": {
+            "wait": 0.9810599684715271,
+            "move": 0.018940044566988945,
+            "action": 16
+          },
+          "player_30hp_damage6": {
+            "wait": 0.9973874688148499,
+            "move": 0.002612561685964465,
+            "action": 16
+          },
+          "zero_frontier": {
+            "wait": 0.9946596026420593,
+            "move": 0.005340380594134331,
+            "action": 16
+          },
+          "safe_frontier": {
+            "wait": 0.9806652665138245,
+            "move": 0.019334731623530388,
+            "action": 16
+          }
+        }
+      }
+    ],
+    "summary": {
+      "original": {
+        "mean_wait": 0.7794539707678335,
+        "greedy_waits": 27
+      },
+      "hide_enemy_observation": {
+        "mean_wait": 0.00023395204509681747,
+        "greedy_waits": 0
+      },
+      "enemy_damage_cap_1": {
+        "mean_wait": 0.37360526297804125,
+        "greedy_waits": 10
+      },
+      "player_30hp_damage6": {
+        "mean_wait": 0.8701634694028784,
+        "greedy_waits": 27
+      },
+      "zero_frontier": {
+        "mean_wait": 0.701530146378058,
+        "greedy_waits": 22
+      },
+      "safe_frontier": {
+        "mean_wait": 0.6994589688601317,
+        "greedy_waits": 21
+      }
+    },
+    "notes": [
+      "Observation changes are diagnostic counterfactuals, not simulator changes.",
+      "Safe routes use exact monster wake LOS; hidden safe-exit counts are oracle diagnostics only.",
+      "27 selected WAIT stalls, not all timeout cases."
+    ]
+  }
+}
