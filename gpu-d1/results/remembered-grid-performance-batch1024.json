@@ -1,0 +1,36 @@
+{
+  "source_hashes": {
+    "performance.py": "08b6a855eadc65bd53de094b9aa95467cda99d31ae1f60559c93bc33083740bd",
+    "runtime.py": "188338d17e60234871e806fd9a5ab005ed6b9a85ba58c876463b503c990de76c"
+  },
+  "other_gpu_processes_at_end": [],
+  "other_gpu_processes_at_start": [],
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "map_shape": [
+    70,
+    80
+  ],
+  "iterations": 30,
+  "rows": [
+    {
+      "warmup_seconds": [
+        3.7793330140411854,
+        7.065725798020139
+      ],
+      "name": "cropped_compile",
+      "inference_batch": 512,
+      "training_batch": 1024,
+      "inference_ms": 7.563130068592727,
+      "training_ms": 54.795560566708446,
+      "inference_per_second": 67696.83918648618,
+      "training_examples_per_second": 18687.645302092973,
+      "network_only_four_epoch_decisions_per_second": 4370.306623505758,
+      "peak_allocated_bytes": 1225196032,
+      "final_loss": 0.20501816272735596,
+      "amp_scale": 65536.0
+    }
+  ],
+  "scope": "Synthetic network-only PPO cost; excludes simulator, observation export, rollout storage, GAE and replay anchoring. Includes Adam, clipping and AMP scaling.",
+  "source_sha256": "08b6a855eadc65bd53de094b9aa95467cda99d31ae1f60559c93bc33083740bd"
+}

@@ -1,0 +1,104 @@
+{
+  "source_hashes": {
+    "performance.py": "08b6a855eadc65bd53de094b9aa95467cda99d31ae1f60559c93bc33083740bd",
+    "runtime.py": "188338d17e60234871e806fd9a5ab005ed6b9a85ba58c876463b503c990de76c"
+  },
+  "other_gpu_processes_at_end": [],
+  "other_gpu_processes_at_start": [],
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "map_shape": [
+    70,
+    80
+  ],
+  "iterations": 30,
+  "rows": [
+    {
+      "warmup_seconds": [
+        1.8939775959588587,
+        2.6877812119200826
+      ],
+      "name": "original_fp32",
+      "inference_batch": 512,
+      "training_batch": 256,
+      "inference_ms": 57.38513886462897,
+      "training_ms": 97.99416253808886,
+      "inference_per_second": 8922.17061995447,
+      "training_examples_per_second": 2612.400508045534,
+      "network_only_four_epoch_decisions_per_second": 608.5541515320538,
+      "peak_allocated_bytes": 1261055488,
+      "final_loss": 0.24255666136741638,
+      "amp_scale": 1.0
+    },
+    {
+      "warmup_seconds": [
+        0.7957746938336641,
+        0.8867968649137765
+      ],
+      "name": "original_amp",
+      "inference_batch": 512,
+      "training_batch": 256,
+      "inference_ms": 39.91795633143435,
+      "training_ms": 46.726741696087025,
+      "inference_per_second": 12826.3079339263,
+      "training_examples_per_second": 5478.661483932185,
+      "network_only_four_epoch_decisions_per_second": 1237.5164025272263,
+      "peak_allocated_bytes": 930923520,
+      "final_loss": 0.23836296796798706,
+      "amp_scale": 65536.0
+    },
+    {
+      "warmup_seconds": [
+        0.22089177882298827,
+        0.2656349269673228
+      ],
+      "name": "cropped_amp",
+      "inference_batch": 512,
+      "training_batch": 256,
+      "inference_ms": 19.889942766167223,
+      "training_ms": 24.07002813027551,
+      "inference_per_second": 25741.65275482399,
+      "training_examples_per_second": 10635.633602687849,
+      "network_only_four_epoch_decisions_per_second": 2409.976914971518,
+      "peak_allocated_bytes": 388521984,
+      "final_loss": 0.28181421756744385,
+      "amp_scale": 65536.0
+    },
+    {
+      "warmup_seconds": [
+        11.524113225983456,
+        28.98255821596831
+      ],
+      "name": "cropped_compile",
+      "inference_batch": 512,
+      "training_batch": 256,
+      "inference_ms": 7.599297701381147,
+      "training_ms": 15.255254763178527,
+      "inference_per_second": 67374.64698967454,
+      "training_examples_per_second": 16781.102903499515,
+      "network_only_four_epoch_decisions_per_second": 3949.357639780717,
+      "peak_allocated_bytes": 324000768,
+      "final_loss": 0.22065013647079468,
+      "amp_scale": 65536.0
+    },
+    {
+      "warmup_seconds": [
+        16.073430408956483,
+        33.023808220168576
+      ],
+      "name": "thin_compile",
+      "inference_batch": 512,
+      "training_batch": 256,
+      "inference_ms": 6.357662930774192,
+      "training_ms": 12.114668994521102,
+      "inference_per_second": 80532.73751297353,
+      "training_examples_per_second": 21131.40690148256,
+      "network_only_four_epoch_decisions_per_second": 4957.636661301821,
+      "peak_allocated_bytes": 191279104,
+      "final_loss": 0.30724576115608215,
+      "amp_scale": 65536.0
+    }
+  ],
+  "scope": "Synthetic network-only PPO cost; excludes simulator, observation export, rollout storage, GAE and replay anchoring. Includes Adam, clipping and AMP scaling.",
+  "source_sha256": "08b6a855eadc65bd53de094b9aa95467cda99d31ae1f60559c93bc33083740bd"
+}

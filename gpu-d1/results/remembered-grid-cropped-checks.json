@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "pool_tie_gradients_match": true,
+  "rows": [
+    {
+      "shape": [
+        32,
+        32
+      ],
+      "positions": 8,
+      "max_logit_error": 1.4901161193847656e-08,
+      "max_gradient_error": 1.862645149230957e-09,
+      "max_amp_logit_error": 6.754696369171143e-05
+    },
+    {
+      "shape": [
+        70,
+        80
+      ],
+      "positions": 8,
+      "max_logit_error": 1.4901161193847656e-08,
+      "max_gradient_error": 1.4901161193847656e-08,
+      "max_amp_logit_error": 7.055699825286865e-05
+    },
+    {
+      "shape": [
+        31,
+        37
+      ],
+      "positions": 8,
+      "max_logit_error": 1.4901161193847656e-08,
+      "max_gradient_error": 3.725290298461914e-09,
+      "max_amp_logit_error": 6.186962127685547e-05
+    }
+  ]
+}

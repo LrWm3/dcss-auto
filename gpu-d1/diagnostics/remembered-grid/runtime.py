@@ -111,3 +111,121 @@ class SpatialPolicy(Policy):
             read=F.grid_sample(fine,(self.read_xy+pos[:,None,None,:])/(G-1)*2-1,mode='nearest',align_corners=True).flatten(1)
             gl=self.readout(read)
         return self.head(torch.cat([lo,gl,stats[:,:2]],1)).masked_fill(mask==0,-1e9)
+
+class PackedPolicy(SpatialPolicy):
+    """Lossless 4x4 input packing, learned coarse U-net, full-resolution local view.
+
+    Packing keeps every tile in a distinct channel; subsequent learned feature
+    compression is not lossless. No routing or distance computation is used.
+    Supports arbitrary rectangular maps with unknown-valued right/bottom padding.
+    """
+    def __init__(self,arm='memory',amp=True,factor=4):
+        super().__init__(arm)
+        self.amp=amp;self.factor=factor
+        self.pack_project=nn.Sequential(nn.Conv2d(13*factor*factor,16,1),nn.ReLU())
+        self.fine=nn.Sequential(nn.Conv2d(16,16,3,padding=1),nn.ReLU(),nn.Conv2d(16,16,3,padding=1),nn.ReLU())
+        self.readout=nn.Sequential(nn.Linear(16*9+2,128),nn.ReLU())
+
+    def forward(self,grid,mask,stats,intervene=None):
+        with torch.autocast(device_type=grid.device.type,dtype=torch.float16,enabled=self.amp and grid.is_cuda):
+            return self._forward(grid,mask,stats,intervene)
+
+    def _forward(self,grid,mask,stats,intervene):
+        h,w=grid.shape[-2:];pos=stats[:,2:4];g=grid.float().contiguous(memory_format=torch.channels_last)/255.
+        scale=stats.new_tensor([w-1,h-1]);size=stats.new_tensor([w,h])
+        if self.arm=='terrain' or intervene=='erase_memory':g=torch.cat([g[:,:6],g[:,6:]*g[:,3:4]],1)
+        local=F.grid_sample(g,(self.crop_xy+pos[:,None,None,:])/scale*2-1,mode='nearest',align_corners=True);lo=self.local(local)
+        if self.arm=='local' or intervene=='erase_global':gl=torch.zeros(len(g),128,device=g.device)
+        else:
+            yy,xx=torch.meshgrid(torch.arange(h,device=g.device),torch.arange(w,device=g.device),indexing='ij')
+            xy=torch.stack([xx,yy]).float()[None]
+            whole=torch.cat([g,(xy-pos[:,:,None,None])/size[None,:,None,None]],1)
+            whole=F.pad(whole,(0,(-w)%(self.factor*4),0,(-h)%(self.factor*4)))
+            fine=self.fine(self.pack_project(F.pixel_unshuffle(whole,self.factor)))
+            middle=self.middle(F.max_pool2d(fine,2));coarse=self.coarse(F.max_pool2d(middle,2));context=self.context(coarse)
+            middle=self.up_middle(torch.cat([middle,F.interpolate(context,size=middle.shape[-2:],mode='nearest')],1))
+            fine=self.up_fine(torch.cat([fine,F.interpolate(middle,size=fine.shape[-2:],mode='nearest')],1))
+            blockpos=torch.floor(pos/self.factor);blockscale=stats.new_tensor([fine.shape[-1]-1,fine.shape[-2]-1])
+            read=F.grid_sample(fine,(self.read_xy+blockpos[:,None,None,:])/blockscale*2-1,mode='nearest',align_corners=True).flatten(1)
+            gl=self.readout(torch.cat([read,(pos%self.factor)/(self.factor-1)],1))
+        return self.head(torch.cat([lo,gl,stats[:,:2]],1)).float().masked_fill(mask==0,-1e9)
+
+class Packed2Policy(PackedPolicy):
+    def __init__(self,arm='memory',amp=True):
+        super().__init__(arm,amp,factor=2)
+
+class CroppedSpatialPolicy(SpatialPolicy):
+    """Same weights/computation as SpatialPolicy, cropping the last decoder.
+
+    Only the 3x3 readout is needed. Two 3x3 decoder convolutions require a 7x7
+    input patch. Intermediate masking reproduces full-map zero padding even
+    when the player is on the boundary. AMP is optional; FP32 is equivalent.
+    """
+    def __init__(self,arm='terrain',amp=True):
+        super().__init__(arm);self.amp=amp;self.fast_pool=False
+        yy,xx=torch.meshgrid(torch.arange(-3,4),torch.arange(-3,4),indexing='ij')
+        self.register_buffer('patch_xy',torch.stack([xx,yy],-1)[None],persistent=False)
+        yy,xx=torch.meshgrid(torch.arange(-4,5),torch.arange(-4,5),indexing='ij')
+        self.register_buffer('middle_patch_xy',torch.stack([xx,yy],-1)[None],persistent=False)
+
+    def pool(self,x):
+        if not self.fast_pool:return F.max_pool2d(x,2)
+        # Same 2x2 max and first-index tie rule, exposing fusion to Inductor.
+        h,w=x.shape[-2:];h=h//2*2;w=w//2*2
+        a=x[:,:,0:h:2,0:w:2];b=x[:,:,0:h:2,1:w:2]
+        c=x[:,:,1:h:2,0:w:2];d=x[:,:,1:h:2,1:w:2]
+        ab=torch.where(a>=b,a,b);cd=torch.where(c>=d,c,d)
+        return torch.where(ab>=cd,ab,cd)
+
+    def forward(self,grid,mask,stats,intervene=None):
+        with torch.autocast(device_type=grid.device.type,dtype=torch.float16,enabled=self.amp and grid.is_cuda):
+            return self._forward(grid,mask,stats,intervene)
+
+    def _forward(self,grid,mask,stats,intervene):
+        h,w=grid.shape[-2:];pos=stats[:,2:4];g=grid.float()/255.
+        if self.amp:g=g.contiguous(memory_format=torch.channels_last)
+        size=stats.new_tensor([w,h]);scale=size-1
+        if self.arm=='terrain' or intervene=='erase_memory':g=torch.cat([g[:,:6],g[:,6:]*g[:,3:4]],1)
+        lo=self.local(F.grid_sample(g,(self.crop_xy+pos[:,None,None,:])/scale*2-1,mode='nearest',align_corners=True))
+        if self.arm=='local' or intervene=='erase_global':gl=torch.zeros(len(g),128,device=g.device)
+        else:
+            yy,xx=torch.meshgrid(torch.arange(h,device=g.device),torch.arange(w,device=g.device),indexing='ij');xy=torch.stack([xx,yy]).float()[None]
+            fine=self.fine(torch.cat([g,(xy-pos[:,:,None,None])/size[None,:,None,None]],1))
+            middle=self.middle(self.pool(fine));coarse=self.coarse(self.pool(middle));context=self.context(coarse)
+            # Decode only the middle-layer region needed by the final patch.
+            mh,mw=middle.shape[-2:];ch,cw=context.shape[-2:]
+            center=torch.stack([torch.div(pos[:,0].long()*mw,w,rounding_mode='floor'),torch.div(pos[:,1].long()*mh,h,rounding_mode='floor')],1)
+            qp=self.middle_patch_xy+center[:,None,None,:];qx,qy=qp[...,0],qp[...,1]
+            mv=((qx>=0)&(qx<mw)&(qy>=0)&(qy<mh))[:,None]
+            qi=(qy.clamp(0,mh-1)*mw+qx.clamp(0,mw-1)).flatten(1)
+            skip=torch.gather(middle.flatten(2),2,qi[:,None].expand(-1,middle.shape[1],-1)).reshape(-1,middle.shape[1],9,9)*mv
+            ci=(torch.div(qy.clamp(0,mh-1)*ch,mh,rounding_mode='floor')*cw+torch.div(qx.clamp(0,mw-1)*cw,mw,rounding_mode='floor')).flatten(1)
+            lower=torch.gather(context.flatten(2),2,ci[:,None].expand(-1,context.shape[1],-1)).reshape(-1,context.shape[1],9,9)*mv
+            decoded=self.up_middle[1](self.up_middle[0](torch.cat([skip,lower],1)))*mv
+            decoded=self.up_middle[3](self.up_middle[2](decoded))*mv
+            # Read the required 7x7 input without constructing a full-res decoder.
+            pp=self.patch_xy+pos.long()[:,None,None,:];px,py=pp[...,0],pp[...,1]
+            valid=((px>=0)&(px<w)&(py>=0)&(py<h))[:,None]
+            ix=(py.clamp(0,h-1)*w+px.clamp(0,w-1)).flatten(1)
+            fp=torch.gather(fine.flatten(2),2,ix[:,None].expand(-1,fine.shape[1],-1)).reshape(-1,fine.shape[1],7,7)*valid
+            mx=torch.div(px.clamp(0,w-1)*mw,w,rounding_mode='floor');my=torch.div(py.clamp(0,h-1)*mh,h,rounding_mode='floor')
+            mi=((my-center[:,1,None,None]+4)*9+mx-center[:,0,None,None]+4).flatten(1)
+            mp=torch.gather(decoded.flatten(2),2,mi[:,None].expand(-1,decoded.shape[1],-1)).reshape(-1,decoded.shape[1],7,7)*valid
+            patch=torch.cat([fp,mp],1)
+            patch=self.up_fine[1](self.up_fine[0](patch))*valid
+            patch=self.up_fine[3](self.up_fine[2](patch))*valid
+            gl=self.readout(patch[:,:,2:5,2:5].flatten(1))
+        return self.head(torch.cat([lo,gl,stats[:,:2]],1)).float().masked_fill(mask==0,-1e9)
+
+class ThinSpatialPolicy(CroppedSpatialPolicy):
+    """Full-resolution spatial encoder with fewer channels; requires retraining."""
+    def __init__(self,arm='terrain',amp=True):
+        super().__init__(arm,amp)
+        def block(a,b):return nn.Sequential(nn.Conv2d(a,b,3,padding=1),nn.ReLU(),nn.Conv2d(b,b,3,padding=1),nn.ReLU())
+        self.fine=block(13,8);self.middle=block(8,16);self.coarse=block(16,24)
+        self.context=nn.Sequential(nn.Conv2d(24,24,3,padding=2,dilation=2),nn.ReLU(),nn.Conv2d(24,24,3,padding=2,dilation=2),nn.ReLU())
+        self.up_middle=block(40,16);self.up_fine=block(24,8)
+        self.readout=nn.Sequential(nn.Linear(8*9,128),nn.ReLU())
+
+POLICIES={'conv':Policy,'spatial':SpatialPolicy,'packed':PackedPolicy,
+          'packed2':Packed2Policy,'cropped':CroppedSpatialPolicy,'thin':ThinSpatialPolicy}

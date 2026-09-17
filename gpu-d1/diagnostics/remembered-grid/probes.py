@@ -3,7 +3,7 @@ import hashlib,json
 import numpy as np
 import torch
 from maps import encode,G,X0,Y0
-from runtime import OUT,Env,Policy,SpatialPolicy
+from runtime import OUT,Env,Policy,SpatialPolicy,POLICIES
 
 def generate(split='probe'):
     rng=np.random.default_rng(118122 if split=='probe' else 219155);arrays=[];scenes=[];records=[]
@@ -49,6 +49,6 @@ if __name__=='__main__':
     import argparse
     p=argparse.ArgumentParser();p.add_argument('--folder',default='memory-spatial');p.add_argument('--split',default='probe');args=p.parse_args();torch.set_num_threads(1)
     generate(args.split);folder=OUT/args.folder;ck=torch.load(folder/('best.pt' if (folder/'best.pt').exists() else 'latest.pt'),weights_only=False)
-    model=(SpatialPolicy if ck.get('architecture')=='spatial' else Policy)(ck['arm']).cuda();model.load_state_dict(ck['model'])
+    model=POLICIES[ck.get('architecture','conv')](ck['arm']).cuda();model.load_state_dict(ck['model'])
     out={key:evaluate(model,args.split,value) for key,value in [('normal',None),('global_removed','erase_global')]}
     (folder/(args.split+'.json')).write_text(json.dumps(out,indent=2));print(json.dumps(out))

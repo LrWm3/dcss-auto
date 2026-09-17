@@ -3,7 +3,7 @@ import argparse,json,time,shutil,hashlib,fcntl
 import numpy as np
 import torch
 from torch.nn import functional as F
-from runtime import OUT,HERE,Env,Policy,SpatialPolicy,build
+from runtime import OUT,HERE,Env,Policy,SpatialPolicy,PackedPolicy,Packed2Policy,CroppedSpatialPolicy,ThinSpatialPolicy,build
 
 def save_json(path,x):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(x,indent=2));tmp.replace(path)
@@ -68,14 +68,21 @@ def collect(e,b,model=None,kinds=(0,1,2),beta=1,steps=128):
     return decisions
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['memory','terrain','local'],default='memory');p.add_argument('--architecture',choices=['conv','spatial'],default='conv');p.add_argument('--updates',type=int,default=3000);p.add_argument('--resume',action='store_true');p.add_argument('--evaluate',action='store_true');p.add_argument('--preflight',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['memory','terrain','local'],default='memory');p.add_argument('--architecture',choices=['conv','spatial','packed','packed2','cropped','thin'],default='conv');p.add_argument('--updates',type=int,default=3000);p.add_argument('--resume',action='store_true');p.add_argument('--evaluate',action='store_true');p.add_argument('--preflight',action='store_true');p.add_argument('--compile',action='store_true');args=p.parse_args()
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True
     if shutil.disk_usage(HERE).free<10*1024**3:raise RuntimeError('Need 10GiB free')
-    build();folder=OUT/(args.arm if args.architecture=='conv' else args.arm+'-spatial');folder.mkdir(exist_ok=True)
+    build();folder=OUT/(args.arm if args.architecture=='conv' else args.arm+'-'+args.architecture);folder.mkdir(exist_ok=True)
     lock=(folder/'training.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    model=(Policy if args.architecture=='conv' else SpatialPolicy)(args.arm).cuda();optimizer=torch.optim.Adam(model.parameters(),lr=.0003);start_step=0;decisions=0
+    model={'conv':Policy,'spatial':SpatialPolicy,'packed':PackedPolicy,'packed2':Packed2Policy,'cropped':CroppedSpatialPolicy,'thin':ThinSpatialPolicy}[args.architecture](args.arm).cuda();
+    if args.architecture in ('packed','packed2','cropped','thin'):model.to(memory_format=torch.channels_last)
+    scaler=torch.amp.GradScaler('cuda',enabled=args.architecture in ('packed','packed2','cropped','thin'))
+    optimizer=torch.optim.Adam(model.parameters(),lr=.0003);start_step=0;decisions=0
     if args.resume or args.evaluate:
         ck=torch.load(folder/('best.pt' if args.evaluate and (folder/'best.pt').exists() else 'latest.pt'),weights_only=False);model.load_state_dict(ck['model']);optimizer.load_state_dict(ck['optimizer']);start_step=ck['step'];decisions=ck['decisions']
+        if 'scaler' in ck:scaler.load_state_dict(ck['scaler'])
+    if args.compile:
+        if hasattr(model,'fast_pool'):model.fast_pool=True
+        model.compile(fullgraph=True)
     if args.preflight:
         result=evaluate(model,teacher=True);save_json(OUT/'preflight.json',result);print('teacher',result['summary'],flush=True);return
     if args.evaluate:
@@ -84,21 +91,22 @@ def main():
             for mode in ['greedy','sampled']:
                 z=evaluate(model,split,mode=mode);report[split+'_'+mode]=z;print(split,mode,z['summary'],flush=True);save_json(folder/'test.json',report)
         return
-    manifest=dict(seed=0,arm=args.arm,architecture=args.architecture,updates=args.updates,resume=args.resume,source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.glob('*.py')},native=json.loads((OUT/'build.json').read_text()),map_manifest_sha256=hashlib.sha256((OUT/'maps/manifest.json').read_bytes()).hexdigest())
+    manifest=dict(compiled=args.compile,seed=0,arm=args.arm,architecture=args.architecture,updates=args.updates,resume=args.resume,source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in HERE.glob('*.py')},native=json.loads((OUT/'build.json').read_text()),map_manifest_sha256=hashlib.sha256((OUT/'maps/manifest.json').read_bytes()).hexdigest())
     save_json(folder/('resume-manifest.json' if args.resume else 'manifest.json'),manifest)
     buffer=Buffer();expert=Buffer(65536);e=Env();t0=time.monotonic();history=json.loads((folder/'training.json').read_text()) if args.resume else [];prior_seconds=history[-1]['training_seconds'] if history else 0;best=max([sum(v['exit'] for v in h['validation'].values())/3 for h in history],default=-1)
     for _ in range(16):decisions+=collect(e,expert,kinds=(0,1,2))
     decisions+=collect(e,buffer,kinds=(0,1,2))
     print('buffer',buffer.n,'decisions',decisions,flush=True)
     for step in range(start_step+1,args.updates+1):
-        optimizer.zero_grad(set_to_none=True);loss=.5*(buffer.loss(model)+expert.loss(model));loss.backward();torch.nn.utils.clip_grad_norm_(model.parameters(),1);optimizer.step()
+        optimizer.zero_grad(set_to_none=True);loss=.5*(buffer.loss(model)+expert.loss(model));scaler.scale(loss).backward();scaler.unscale_(optimizer);torch.nn.utils.clip_grad_norm_(model.parameters(),1);scaler.step(optimizer);scaler.update()
+        if step%500==0:print('progress',step,'seconds',round(time.monotonic()-t0,1),'loss_scale',scaler.get_scale(),flush=True)
         if step%100==0:
             decisions+=collect(e,buffer,model,beta=max(.1,.8-step/5000))
         if step%500==0:decisions+=collect(e,expert)
         if step%2000==0 or step==args.updates:
             torch.cuda.synchronize();trained=prior_seconds+time.monotonic()-t0
             result=evaluate(model);record=dict(step=step,supervised_examples=step*256,decisions=decisions,training_seconds=trained,loss=float(loss),validation=result['summary']);history.append(record);print(json.dumps(record),flush=True)
-            torch.save(dict(model=model.state_dict(),optimizer=optimizer.state_dict(),step=step,decisions=decisions,arm=args.arm,architecture=args.architecture),folder/'latest.tmp');(folder/'latest.tmp').replace(folder/'latest.pt')
+            torch.save(dict(model=model.state_dict(),optimizer=optimizer.state_dict(),scaler=scaler.state_dict(),step=step,decisions=decisions,arm=args.arm,architecture=args.architecture),folder/'latest.tmp');(folder/'latest.tmp').replace(folder/'latest.pt')
             score=sum(v['exit'] for v in result['summary'].values())/3
             if score>best:
                 best=score;shutil.copyfile(folder/'latest.pt',folder/'best.tmp');(folder/'best.tmp').replace(folder/'best.pt');save_json(folder/'selection.json',record)
