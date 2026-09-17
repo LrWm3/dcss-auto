@@ -1,0 +1,36 @@
+{
+  "scope": "Synthetic full-map network cost, not end-to-end PPO. Includes local/query extraction, action sampling, optimizer/clipping/scaling; excludes simulator, cache change detection, storage and GAE.",
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "map_shape": [
+    70,
+    80
+  ],
+  "amp": true,
+  "inference_batch": 512,
+  "training_batch": 1024,
+  "encoder_ms": 28.57842370091627,
+  "actor_inference_ms": 1.6553434000040095,
+  "actor_training_ms": 3.886888734996319,
+  "warmup_seconds": [
+    0.7461566459387541,
+    0.21587427402846515,
+    0.18708894192241132
+  ],
+  "network_only_four_epoch_decisions_per_second": {
+    "1": 13471.00965822013,
+    "4": 30892.26740164973,
+    "8": 39380.30223395701
+  },
+  "cached_feature_bytes_per_world": 179200,
+  "replay_input_bytes_per_decision": 2851,
+  "source_sha256": "c2a958e155b5b829f3d45d9d5eddc71345e30230f56d3da96167877e4dd2e6f7",
+  "provenance": {
+    "source_sha256": {
+      "cached_experiment.py": "c2a958e155b5b829f3d45d9d5eddc71345e30230f56d3da96167877e4dd2e6f7",
+      "cached_policy.py": "46676ff0595b03c23aa69ecd9c036db761eb441c916d2304df6aaa7779c0b147",
+      "runtime.py": "188338d17e60234871e806fd9a5ab005ed6b9a85ba58c876463b503c990de76c"
+    },
+    "checkpoint_sha256": "7e68adf300bd744d71d2a0b898bae6c9e283e80c9a761a80828c57cef137996c",
+    "map_manifest_sha256": "9e0e0d9ea56c9edf62c44eb37922c9dfee32f326623fec42594fa0a9472f1d4c"
+  }
+}

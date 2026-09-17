@@ -144,3 +144,5 @@ See [the optimization report](PERFORMANCE.md) for the cropped-decoder, mixed-pre
 and compiled execution path, full-map compute measurements, and navigation regressions.
 The trained spatial checkpoint can be reused without reducing the observation
 or model capacity. Packed and narrower variants are experimental controls.
+
+The [cached map encoder experiment](CACHED.md) separates player-independent terrain encoding from a small actor, compares refresh intervals, and tests frozen-encoder PPO. It is faster in network benchmarks but currently weaker at known-stair navigation.

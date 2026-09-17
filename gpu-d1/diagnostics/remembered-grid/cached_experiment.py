@@ -41,6 +41,12 @@ def quality():
     result['sampled']=cached_eval(m,interval,'test',mode='sampled')
     result['provenance']=provenance();save_json(FOLDER/'quality.json',result);save_json(ROOT/'results/remembered-grid-cached-quality.json',result)
 
+def amp_quality():
+    m,_=load();m.amp=True;m.to(memory_format=torch.channels_last)
+    interval=json.loads((FOLDER/'quality.json').read_text())['selected_interval']
+    result=dict(interval=interval,test=cached_eval(m,interval,'test'),paired=probes.evaluate(FeatureCache(m,interval)),provenance=provenance())
+    save_json(ROOT/'results/remembered-grid-cached-amp-quality.json',result);print(json.dumps(result['test']['summary']),flush=True)
+
 def benchmark(iterations=30):
     other=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid,process_name','--format=csv,noheader'],text=True).strip().splitlines()
     other=[x for x in other if x.split(',')[0].strip()!=str(os.getpid())]
@@ -115,9 +121,10 @@ def ppo(target=250000):
     result['provenance']=provenance();torch.save(dict(model=m.state_dict(),decisions=decisions,interval=interval),FOLDER/'ppo.pt');save_json(FOLDER/'ppo.json',result);save_json(ROOT/'results/remembered-grid-cached-ppo.json',result)
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['quality','benchmark','ppo']);ap.add_argument('--decisions',type=int,default=250000);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['quality','benchmark','ppo','amp_quality']);ap.add_argument('--decisions',type=int,default=250000);args=ap.parse_args()
     torch.set_num_threads(1);torch.manual_seed(991);torch.backends.cudnn.benchmark=True
     if args.mode=='quality':quality()
     elif args.mode=='benchmark':benchmark()
+    elif args.mode=='amp_quality':amp_quality()
     else:ppo(args.decisions)
 if __name__=='__main__':main()
