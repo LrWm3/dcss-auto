@@ -195,3 +195,40 @@ Incremental summary: results/autoregressive-update-prevention-10m.json. Suite st
 records active condition, completion or failure. This tests whether the 1M rescue
 persists, merely delays damage, or enables improvement. Existing original-rate
 10M control ended with zero sampled and greedy clears.
+
+## 10M continuation: first-layer protection survives, lower LR does not
+
+Both seed-0 continuations completed, preserving the optimizer and simulator state
+from their existing 1M checkpoints. Same 1,024 validation episodes per mode;
+rewards and environment unchanged. Total continuation/evaluation wall time was
+551.5 seconds. Cumulative training time was 249.2 seconds for lower LR and 240.7
+seconds for frozen first layer.
+
+| Condition | Decisions | Sampled clears | Greedy clears |
+|---|---:|---:|---:|
+| Initial imitation | 0 | 96.88% | 94.43% |
+| LR / 10 | 1M | 97.17% | 93.95% |
+| LR / 10 | 5M | 96.19% | 3.22% |
+| LR / 10 | 10M | 22.85% | 0.00% |
+| Frozen first layer | 1M | 97.36% | 94.43% |
+| Frozen first layer | 5M | 95.41% | 94.53% |
+| Frozen first layer | 10M | 95.90% | 95.02% |
+
+At 10M, lower-LR sampled failures were 75.10% timeouts and 2.05% deaths;
+greedy failures were 97.75% timeouts and 2.25% deaths. Its sampled successful
+runs took 1,701 turns versus 680 initially. These outcomes show navigation
+breakdown, though this continuation has not yet been replayed to classify loops.
+
+Frozen-first-layer sampled failures were 4.00% deaths and 0.10% timeouts;
+greedy failures were 2.73% deaths and 2.25% timeouts. Successful sampled runs
+took 699 turns; greedy successes took 716 versus 681 initially.
+
+Conclusion: reducing the learning rate delayed collapse; it did not prevent it.
+Protecting the first layer preserved performance through 10M while the remaining
+layers trained at the original LR. This strengthens the earlier intervention
+evidence for damaging encoder updates. It does not demonstrate improvement
+beyond imitation: sampled performance and efficiency are slightly worse, and
+this remains one training seed. Prefer the frozen-first-layer condition over
+lower LR alone as the next stable starting point.
+
+Raw results: `results/autoregressive-update-prevention-10m.json`.
