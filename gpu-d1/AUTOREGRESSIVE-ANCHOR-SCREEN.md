@@ -49,3 +49,36 @@ Policy KL weight 0.01 also degrades. Policy KL weight 0.1 retains navigation and
 clear rate through 10M with all layers trainable, but does not demonstrate an
 improvement beyond imitation. Stronger policy KL and training-seed replications
 are being checked separately. The screen took 1514.7 seconds including evaluation.
+
+## Follow-ups
+
+Policy KL weight 1, seed 0, also completed 10M: 97.17% sampled clears,
+94.53% greedy clears, with 679.8/680.3 turns per successful episode. Training
+cost 300.0 seconds. Weight 0.1 is being replicated with training seeds 1 and 2;
+all start from the same imitation checkpoint, so these vary PPO randomness,
+not imitation training.
+
+An additional seed-0, 10M experiment uses policy KL weight 1 only when the
+observation contains no visible awake enemy. It normalizes by eligible states,
+leaves combat decisions unconstrained by imitation, and still permits all layers
+to train. Signed sleep slots are audited from native code: -1 awake, +1 asleep,
+0 nonvisible/dead/unused. Tests verify the absence of combat gradients and
+correct treatment of sleeping and nonvisible enemies. The experiment uses the
+same reward, simulator, PPO settings and reference buffer as the full-policy
+constraint; no heuristic action override is introduced.
+
+The final comparison was queued in advance on all 100 test maps, 16 placements
+per map, seed 1930017, sampled and greedy. It includes original imitation, all
+three weight-0.1 PPO seeds, weight 1, the frozen-first-layer control, and the
+navigation-only variant. Paired clear/return differences use a map-cluster
+bootstrap; common-success turn differences avoid comparing different success
+subsets. These intervals quantify test-map uncertainty, not training-seed
+uncertainty. Results are not used to choose among further hyperparameters.
+
+A fixed training-observation probe also shows why parameter movement alone is
+not a diagnosis. At 10M, weight-0.1 policy anchoring permits first-layer L2
+parameter movement of 8.03 and feature MSE 0.170, while joint policy KL remains
+0.0114. Feature weight 100 has much smaller feature MSE (0.0000255), but policy
+KL 0.0893 and poor greedy navigation. These are 512 training-buffer observations,
+not a universal bound. They support protecting behavior directly rather than
+assuming small feature drift guarantees policy stability.
