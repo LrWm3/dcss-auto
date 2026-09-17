@@ -12,14 +12,17 @@ def main():
     data=torch.load(ROOT/'learning-runs/autoregressive-anchor-buffer.pt',map_location='cpu',weights_only=False)
     ids=torch.randperm(len(data['obs']))[:512];x=data['obs'][ids];mask=data['mask'][ids];del data
     rotated=D4('cpu').observation(x,torch.randint(8,(len(x),)))
-    target=ref(x,mask)[0].probs;features=ref.body[:2](rotated);out={}
+    refdist=ref(x,mask)[0];target=refdist.probs;features=ref.body[:2](rotated);out={}
     for suite in sorted((ROOT/'learning-runs').glob('autoregressive-anchor-*')):
         if not suite.is_dir():continue
         for cp in sorted(suite.glob('runs/*/snapshots/000010000384.pt')):
             state=torch.load(cp,map_location='cpu',weights_only=False)['model'];model=Policy('d4_exact',128);model.load_state_dict(state)
-            p=model(x,mask)[0].probs
+            dist=model(x,mask)[0];p=dist.probs
             delta={prefix:sum(float((state[k]-v).square().sum()) for k,v in base.items() if k.startswith(prefix))**.5 for prefix in ['body.0.','body.2.','actor.','direction.','critic.']}
-            out[cp.parent.parent.name]=dict(layer_parameter_l2_change=delta,first_layer_feature_mse=float((model.body[:2](rotated)-features).square().mean()),joint_policy_kl=float((target*(target.clamp_min(1e-30).log()-p.clamp_min(1e-30).log())).sum(-1).mean()),checkpoint=str(cp))
+            kl=(target*(target.clamp_min(1e-30).log()-p.clamp_min(1e-30).log())).sum(-1)
+            safe=(x[:,959:999]>=0).all(-1)
+            regions={name:dict(states=int(selected.sum()),joint_policy_kl=float(kl[selected].mean()),greedy_action_agreement=float((dist.greedy()[selected]==refdist.greedy()[selected]).float().mean())) for name,selected in [('no_visible_awake',safe),('visible_awake',~safe)] if selected.any()}
+            out[cp.parent.parent.name]=dict(layer_parameter_l2_change=delta,first_layer_feature_mse=float((model.body[:2](rotated)-features).square().mean()),joint_policy_kl=float(kl.mean()),regions=regions,checkpoint=str(cp))
     (ROOT/'results/autoregressive-anchor-drift.json').write_text(json.dumps(dict(probe='512 fixed training-buffer observations; no validation or test states',results=out),indent=2)+'\n')
     print(json.dumps(out,indent=2))
 if __name__=='__main__':main()
