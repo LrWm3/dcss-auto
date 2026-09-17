@@ -1,4 +1,4 @@
-"""Paired goal tests: identical local observation/history, different distant stairs."""
+"""Paired goal tests: identical local observation and walked history, different distant stairs."""
 import hashlib,json
 import numpy as np
 import torch

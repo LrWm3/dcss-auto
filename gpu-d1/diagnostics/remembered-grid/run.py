@@ -9,7 +9,8 @@ def save_json(path,x):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(x,indent=2));tmp.replace(path)
 
 @torch.no_grad()
-def evaluate(model,split='validation',limit=256,teacher=False,intervene=None,mode='greedy'):
+def evaluate(model,split='validation',limit=None,teacher=False,intervene=None,mode='greedy'):
+    if limit is None:limit=512 if split=='long' else 256
     start=time.monotonic();proto=Env(split,1);n=len(proto.scenes);e=Env(split,128);rows=[]
     for offset in range(0,n,128):
         ids=torch.arange(offset,offset+128,device='cuda')%n;valid=min(128,n-offset);e.reset(ids,seed=812+offset,labels=teacher)
@@ -31,7 +32,7 @@ def evaluate(model,split='validation',limit=256,teacher=False,intervene=None,mod
     for k,name in enumerate(['known_stairs','exploration','threat_backtrack']):
         rs=[r for r in rows if r['kind']==k];summary[name]={key:float(np.mean([r[key] for r in rs])) for key in ['exit','death','timeout','turns','kills','reversals','woke']};summary[name]['episodes']=len(rs)
     far_rows=[r for r in rows if r['kind']==0 and r['goal_outside_local']]
-    return dict(summary=summary,known_stairs_outside_crop=dict(episodes=len(far_rows),exit=float(np.mean([r['exit'] for r in far_rows])) if far_rows else None),rows=rows,seconds=time.monotonic()-start)
+    return dict(deadline=limit,summary=summary,known_stairs_outside_crop=dict(episodes=len(far_rows),exit=float(np.mean([r['exit'] for r in far_rows])) if far_rows else None),rows=rows,seconds=time.monotonic()-start)
 
 class Buffer:
     def __init__(self,capacity=32768):

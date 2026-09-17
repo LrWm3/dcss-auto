@@ -61,8 +61,10 @@ Each maze supplies four placements, each in two conditions:
    tiles with native LOS. No threat labels or actual hidden positions are inputs.
 
 All three stairs work, and only explicit DESCEND exits. Evaluation uses a
-256-physical-turn deadline including history. Longer runs can change this in
-`evaluate`; the history/remaining budget must still be counted.
+256-physical-turn deadline including history on validation and the main test.
+The longer-route panel uses 512 turns because its setup walk plus return can
+exceed 256; this is a length-generalization test with an ample budget, not a
+matched-deadline comparison.
 
 ## Teaching and reporting
 
@@ -82,10 +84,10 @@ Reset kinds are sampled uniformly; trajectory lengths differ, so state counts
 are not balanced by kind. Mixed-rollout teacher probability declines to 0.1.
 
 The frozen checkpoint with highest mean validation exit rate across the three
-conditions is selected before test. Evaluation includes greedy and sampled
+conditions is selected before test for the spatial arms; the simple CNN uses its final checkpoint. Evaluation includes greedy and sampled
 policies. Layout clustering matters: different placements on the same map are
 not independent map samples. One training seed does not establish cross-seed
-reliability. A separate paired-goal probe keeps local observation/history
+reliability. A separate paired-goal probe keeps local observation and walked path
 identical but changes which distant branch contains remembered stairs. First
 branch choice is more diagnostic than eventual exit on that probe.
 

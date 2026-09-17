@@ -6,11 +6,11 @@ import torch,json,hashlib,time
 
 def main():
     torch.set_num_threads(1);torch.manual_seed(11977);torch.backends.cudnn.benchmark=True
-    report=dict(schema=1,seed=0,deadline=256,time_input_scale=2048,semantics=json.loads((OUT/'semantics.json').read_text()),arms={},default_reset_check=json.loads((OUT/'default-reset-check.json').read_text()),notes=[
+    report=dict(schema=1,seed=0,deadlines=dict(validation=256,test=256,long=512),time_input_scale=2048,semantics=json.loads((OUT/'semantics.json').read_text()),arms={},default_reset_check=json.loads((OUT/'default-reset-check.json').read_text()),notes=[
         'Supervised imitation plus corrective labels, no PPO.',
         '32x32 synthetic floors, production movement/LOS/combat. Not ordinary D1 performance.',
         'No frontier/stair arrows, route distances, or teacher actions at learned-policy evaluation.',
-        '256 physical turns including real observation history.',
+        '256 physical turns for validation/test; 512 for long routes; both include real observation history.',
         'One seed; geometry/placement uncertainty is not training-seed uncertainty.',
         'Simple pressure fixtures alone may be solvable without enemy memory; inspect controls.',
         'Early CNN/U-net timing included validation environment setup overhead; later arms exclude it.'
