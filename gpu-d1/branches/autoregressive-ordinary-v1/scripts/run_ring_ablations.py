@@ -467,7 +467,11 @@ def worker(store, manifest, job):
                     teacher=teacher_actions[:T].flatten()[inds]
                     eligible=torch.ones(len(inds),device='cuda',dtype=torch.bool)
                     if job['correction_scope']=='wait':
-                        eligible=(x[:,959:999]<0).any(1)&~(m[:,8:16]>0).any(1)
+                        awake_count=(x[:,959:999]<0).sum(1)
+                        eligible=(awake_count>0)&~(m[:,8:16]>0).any(1)
+                        eligible &= awake_count<=job.get('correction_max_awake',40)
+                    if job.get('correction_ordinary_only'):
+                        eligible &= ~env.is_tactical[inds%B]
                     correction=-(dist.log_prob(teacher)*eligible).sum()/eligible.sum().clamp_min(1)
                     loss=loss+job['correction_weight']*correction
                 if anchor is not None:

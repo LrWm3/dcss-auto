@@ -1,0 +1,297 @@
+{
+  "conclusion": "Ordinary-only waiting supervision improved sampled clears beyond the 35M source, with tactical regression and no greedy improvement. The bounded tactical-retention follow-up did not establish a clear gain over its source.",
+  "additional_training_seconds": {
+    "screen": {
+      "control-seed0": 29.482998937834054,
+      "wait-seed0": 30.323607945349067,
+      "teacher-seed0": 35.18665084661916
+    },
+    "retain": {
+      "control-seed0": 38.17262971983291,
+      "wait-seed0": 34.19436893425882
+    }
+  },
+  "initial_confirmation": {
+    "comparisons": {
+      "sampled": {
+        "source": {
+          "delta_pp": 0.9062499999999999,
+          "map_bootstrap_95_pp": [
+            0.1875,
+            1.65625
+          ],
+          "rescued": 83,
+          "regressed": 54
+        },
+        "control": {
+          "delta_pp": 2.0625,
+          "map_bootstrap_95_pp": [
+            1.25,
+            2.90625
+          ],
+          "rescued": 115,
+          "regressed": 49
+        }
+      },
+      "greedy": {
+        "source": {
+          "delta_pp": -0.34375,
+          "map_bootstrap_95_pp": [
+            -1.15625,
+            0.46875
+          ],
+          "rescued": 102,
+          "regressed": 113
+        },
+        "control": {
+          "delta_pp": -0.34375,
+          "map_bootstrap_95_pp": [
+            -1.15625,
+            0.46875
+          ],
+          "rescued": 111,
+          "regressed": 122
+        }
+      }
+    },
+    "selection": {
+      "selected": "wait-seed0",
+      "rule": "Highest mean sampled/greedy validation clear at the 1M endpoint, among the two assisted arms; selected before test evaluation.",
+      "checkpoints": {
+        "source": {
+          "path": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-survival/runs/exploration-seed0/latest.pt",
+          "sha256": "2ab24b3198d942fef5e565aa23282c9110c85c32ae584f347342c8c9b4522c02"
+        },
+        "control": {
+          "path": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-ordinary/runs/control-seed0/latest.pt",
+          "sha256": "59aba6eb954d0c7b6d7224eae57fa01607ed30174e6282a586a32cc1aced2186"
+        },
+        "selected": {
+          "path": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-ordinary/runs/wait-seed0/latest.pt",
+          "sha256": "6a45951fdc399a383a3eb2599cd5f50104eb0a73ac0e6b4f068c4fa75219f3be"
+        }
+      },
+      "test_seed": 940021,
+      "test_maps": 100,
+      "episodes_per_map": 32
+    },
+    "outcomes": {
+      "source": {
+        "sampled": {
+          "clear": 0.9668750166893005,
+          "death": 0.029062500223517418,
+          "timeout": 0.004062499850988388,
+          "turns": 706.0984497070312,
+          "reward": 0.9598139524459839,
+          "loop_timeouts": 11
+        },
+        "greedy": {
+          "clear": 0.9487500190734863,
+          "death": 0.025937499478459358,
+          "timeout": 0.025312500074505806,
+          "turns": 745.3953247070312,
+          "reward": 0.9412960410118103,
+          "loop_timeouts": 80
+        }
+      },
+      "control": {
+        "sampled": {
+          "clear": 0.9553124904632568,
+          "death": 0.040312498807907104,
+          "timeout": 0.0043750000186264515,
+          "turns": 711.1012573242188,
+          "reward": 0.9482014775276184,
+          "loop_timeouts": 14
+        },
+        "greedy": {
+          "clear": 0.9487500190734863,
+          "death": 0.029062500223517418,
+          "timeout": 0.022187499329447746,
+          "turns": 752.0097045898438,
+          "reward": 0.9412299394607544,
+          "loop_timeouts": 71
+        }
+      },
+      "selected": {
+        "sampled": {
+          "clear": 0.9759374856948853,
+          "death": 0.02250000089406967,
+          "timeout": 0.0015625000232830644,
+          "turns": 668.1868896484375,
+          "reward": 0.9692556262016296,
+          "loop_timeouts": 5
+        },
+        "greedy": {
+          "clear": 0.9453125,
+          "death": 0.022812500596046448,
+          "timeout": 0.03187499940395355,
+          "turns": 708.0296630859375,
+          "reward": 0.9382322430610657,
+          "loop_timeouts": 101
+        }
+      }
+    }
+  },
+  "retention_confirmation": {
+    "comparisons": {
+      "sampled": {
+        "original_source": {
+          "delta_pp": 0.34375,
+          "map_bootstrap_95_pp": [
+            -0.46875,
+            1.1875
+          ],
+          "rescued": 91,
+          "regressed": 80
+        },
+        "source": {
+          "delta_pp": 0.1875,
+          "map_bootstrap_95_pp": [
+            -0.53125,
+            0.9062499999999999
+          ],
+          "rescued": 74,
+          "regressed": 68
+        },
+        "control": {
+          "delta_pp": 0.6875,
+          "map_bootstrap_95_pp": [
+            0.09375,
+            1.28125
+          ],
+          "rescued": 78,
+          "regressed": 56
+        }
+      },
+      "greedy": {
+        "original_source": {
+          "delta_pp": -0.6875,
+          "map_bootstrap_95_pp": [
+            -1.59375,
+            0.21875000000000003
+          ],
+          "rescued": 124,
+          "regressed": 146
+        },
+        "source": {
+          "delta_pp": -0.65625,
+          "map_bootstrap_95_pp": [
+            -1.5625,
+            0.25
+          ],
+          "rescued": 107,
+          "regressed": 128
+        },
+        "control": {
+          "delta_pp": -1.21875,
+          "map_bootstrap_95_pp": [
+            -2.25,
+            -0.25
+          ],
+          "rescued": 97,
+          "regressed": 136
+        }
+      }
+    },
+    "selection": {
+      "selected": "wait-seed0",
+      "rule": "Evaluate the single predeclared small-encounter correction candidate at +1M; follow-up motivated by tactical regression. Same held-out test layouts as first confirmation, with fresh placements; no model updates use these results.",
+      "checkpoints": {
+        "original_source": {
+          "path": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-survival/runs/exploration-seed0/latest.pt",
+          "sha256": "2ab24b3198d942fef5e565aa23282c9110c85c32ae584f347342c8c9b4522c02"
+        },
+        "source": {
+          "path": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-survival-balanced/runs/balanced-seed0/latest.pt",
+          "sha256": "db64431a76fec47cb3906f7cc1e9eaa22652aa2a0fc873a1f7ebbc9c88bf43fd"
+        },
+        "control": {
+          "path": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-ordinary-retain/runs/control-seed0/latest.pt",
+          "sha256": "2119129b68c2ce140afd61a2a6089dec75703149d4abf4c60b909fe00426cca2"
+        },
+        "selected": {
+          "path": "/home/reeldata/wk/exp/dcss/gpu-d1/learning-runs/autoregressive-ordinary-retain/runs/wait-seed0/latest.pt",
+          "sha256": "8dd6ae0a8d004fc43250364bb5c9e3a09a346097b68adced7a2b63b1581eef2f"
+        }
+      },
+      "test_seed": 940121,
+      "test_maps": 100,
+      "episodes_per_map": 32
+    },
+    "outcomes": {
+      "original_source": {
+        "sampled": {
+          "clear": 0.9653124809265137,
+          "death": 0.03125,
+          "timeout": 0.0034374999813735485,
+          "turns": 703.0025024414062,
+          "reward": 0.958282470703125,
+          "loop_timeouts": 11
+        },
+        "greedy": {
+          "clear": 0.9459375143051147,
+          "death": 0.027499999850988388,
+          "timeout": 0.02656250074505806,
+          "turns": 745.8953247070312,
+          "reward": 0.9384785294532776,
+          "loop_timeouts": 84
+        }
+      },
+      "source": {
+        "sampled": {
+          "clear": 0.9668750166893005,
+          "death": 0.030937500298023224,
+          "timeout": 0.0021875000093132257,
+          "turns": 726.7525024414062,
+          "reward": 0.9596075415611267,
+          "loop_timeouts": 7
+        },
+        "greedy": {
+          "clear": 0.9456250071525574,
+          "death": 0.029374999925494194,
+          "timeout": 0.02500000037252903,
+          "turns": 766.1134643554688,
+          "reward": 0.9379639029502869,
+          "loop_timeouts": 79
+        }
+      },
+      "control": {
+        "sampled": {
+          "clear": 0.9618750214576721,
+          "death": 0.03500000014901161,
+          "timeout": 0.0031250000465661287,
+          "turns": 731.99560546875,
+          "reward": 0.9545550346374512,
+          "loop_timeouts": 10
+        },
+        "greedy": {
+          "clear": 0.9512500166893005,
+          "death": 0.028750000521540642,
+          "timeout": 0.019999999552965164,
+          "turns": 760.3721923828125,
+          "reward": 0.9436463117599487,
+          "loop_timeouts": 62
+        }
+      },
+      "selected": {
+        "sampled": {
+          "clear": 0.96875,
+          "death": 0.028750000521540642,
+          "timeout": 0.0024999999441206455,
+          "turns": 665.127197265625,
+          "reward": 0.9620986580848694,
+          "loop_timeouts": 6
+        },
+        "greedy": {
+          "clear": 0.9390624761581421,
+          "death": 0.0234375,
+          "timeout": 0.03750000149011612,
+          "turns": 712.6865844726562,
+          "reward": 0.9319356083869934,
+          "loop_timeouts": 117
+        }
+      }
+    }
+  },
+  "training_seed_count": 1
+}

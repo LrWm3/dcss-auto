@@ -13,7 +13,7 @@
       "reward": 0.9539108872413635,
       "loop_timeouts": 0,
       "behavior": {
-        "moves_toward_visible_combat": 76.41796875,
+        "moves_with_awake_enemy_not_adjacent": 76.41796875,
         "moves_while_adjacent": 0.7353515625,
         "waits_while_adjacent": 0.0166015625,
         "nonweakest_attacks": 3.6142578125,
@@ -5054,7 +5054,7 @@
       "reward": 0.9358848333358765,
       "loop_timeouts": 24,
       "behavior": {
-        "moves_toward_visible_combat": 84.2607421875,
+        "moves_with_awake_enemy_not_adjacent": 84.2607421875,
         "moves_while_adjacent": 0.6025390625,
         "waits_while_adjacent": 0.017578125,
         "nonweakest_attacks": 2.0693359375,
@@ -9963,7 +9963,7 @@
       "reward": 0.9378072023391724,
       "loop_timeouts": 25,
       "behavior": {
-        "moves_toward_visible_combat": 84.396484375,
+        "moves_with_awake_enemy_not_adjacent": 84.396484375,
         "moves_while_adjacent": 0.0,
         "waits_while_adjacent": 0.0,
         "nonweakest_attacks": 0.0,
@@ -14806,7 +14806,7 @@
       "reward": 0.9490572810173035,
       "loop_timeouts": 24,
       "behavior": {
-        "moves_toward_visible_combat": 0.0,
+        "moves_with_awake_enemy_not_adjacent": 0.0,
         "moves_while_adjacent": 0.5185546875,
         "waits_while_adjacent": 0.0,
         "nonweakest_attacks": 1.4453125,
@@ -19429,7 +19429,7 @@
       "reward": 0.9422745704650879,
       "loop_timeouts": 24,
       "behavior": {
-        "moves_toward_visible_combat": 0.0,
+        "moves_with_awake_enemy_not_adjacent": 0.0,
         "moves_while_adjacent": 0.0,
         "waits_while_adjacent": 0.0,
         "nonweakest_attacks": 0.0,
@@ -24206,7 +24206,7 @@
       "reward": 0.9737893342971802,
       "loop_timeouts": 1,
       "behavior": {
-        "moves_toward_visible_combat": 0.0,
+        "moves_with_awake_enemy_not_adjacent": 0.0,
         "moves_while_adjacent": 0.0,
         "waits_while_adjacent": 0.0,
         "nonweakest_attacks": 0.0,

@@ -12,7 +12,7 @@
       "reward": 0.955548882484436,
       "loop_timeouts": 9,
       "behavior": {
-        "moves_toward_visible_combat": 85.7275390625,
+        "moves_with_awake_enemy_not_adjacent": 85.7275390625,
         "moves_while_adjacent": 0.62109375,
         "waits_while_adjacent": 0.0185546875,
         "nonweakest_attacks": 1.916015625,
@@ -4811,7 +4811,7 @@
       "reward": 0.9560806155204773,
       "loop_timeouts": 11,
       "behavior": {
-        "moves_toward_visible_combat": 0.0,
+        "moves_with_awake_enemy_not_adjacent": 0.0,
         "moves_while_adjacent": 0.0,
         "waits_while_adjacent": 0.0,
         "nonweakest_attacks": 0.0,
