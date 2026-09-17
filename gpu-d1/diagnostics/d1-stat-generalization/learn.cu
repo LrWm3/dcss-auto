@@ -156,6 +156,9 @@ struct Tables {
 #endif
 };
 HD Config episode_config(const State &s, Config c) {
+#ifdef ANONYMOUS_POWER
+    for(int i=0;i<6;i++){c.kinds[i].speed=10;c.kinds[i].tohit=19;c.kinds[i].bypass=15;}
+#endif
     c.hp=s.player_max; c.count=s.active_count; return c;
 }
 HD Kind monster_kind(const State &s, const Config &c, int id) {
@@ -360,7 +363,11 @@ HD int nearest_stair(const State &s,const uint16_t *ds) {
 }
 HD bool is_stair(const State &s,int p) {return p==s.stairs[0] || p==s.stairs[1] || p==s.stairs[2];}
 HD void reset(State &s, Config c, const Tables &t) {
+#ifdef ANONYMOUS_POWER
+    s.profile_id=t.varied ? s.parameter_rng.r(t.profile_count) : t.assignments[s.world_id];
+#else
     s.profile_id=t.varied ? (s.parameter_rng.r(4)==0 ? 0 : 1+s.parameter_rng.r(t.profile_count-1)) : t.assignments[s.world_id];
+#endif
     assert(s.profile_id>=0 && s.profile_id<t.profile_count);
     const int *v=t.profiles+s.profile_id*15;
     s.player_max=v[0];s.player_damage=v[1];s.active_count=v[2];
@@ -418,7 +425,11 @@ HD void reset(State &s, Config c, const Tables &t) {
     }
     for(int i=0;i<ENEMIES;i++) {
         s.enemy_slot[i]=-1;s.encountered[i]=0;s.awake[i]=0;
-        s.max_hp[i]=i<c.count?v[3+i%6]:0;s.damage_cap[i]=i<c.count?v[9+i%6]:0;
+        int stat_slot=i%6;
+#ifdef ANONYMOUS_POWER
+        stat_slot=s.parameter_rng.r(6);
+#endif
+        s.max_hp[i]=i<c.count?v[3+stat_slot]:0;s.damage_cap[i]=i<c.count?v[9+stat_slot]:0;
         s.hp[i]=s.max_hp[i];int en=70+energy.r(10);s.energy[i]=i<c.count?en:-30000;
         if(i>=c.count)s.occ[s.pos[i]]=-1;
     }
@@ -482,6 +493,9 @@ HD void observe(State &s, Config c, const Tables &t, float *o, float *mask) {
         if(in_view(s,t,s.pos[i])) o[SLEEP_OBS+s.enemy_slot[i]]=s.awake[i] ? -1.f : 1.f;
         o[OLD_OBS+3+s.enemy_slot[i]*2]=s.max_hp[i]/16.f; o[OLD_OBS+4+s.enemy_slot[i]*2]=s.damage_cap[i]/5.f;
         o[j+2]=s.hp[i]/16.f; o[j+3]=i>=c.count ? 1.2f : (i%6)/5.f; o[j+4]=1;
+#ifdef ANONYMOUS_POWER
+        o[j+3]=0; // No type identity; only the observed individual stats remain.
+#endif
     }
     // Fixed scales: never divide coverage by the hidden map's floor count.
     o[ORIGINAL_OBS]=PROGRESS_INPUT==1 ? (c.count-s.killed)/24.f :
