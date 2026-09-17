@@ -3,6 +3,9 @@
 Status: complete, 2026-09-17. The design below was committed
 before implementation. Execution details and results are appended at the end.
 
+Follow-up: [isolated enemy danger, healing, and escape](SINGLE-ENEMY.md)
+confirms avoidable single-enemy deaths and tests whether the policies retreat.
+
 ## Question and starting point
 
 Can the D1 exit policy adjust its behavior to player strength, enemy strength,
