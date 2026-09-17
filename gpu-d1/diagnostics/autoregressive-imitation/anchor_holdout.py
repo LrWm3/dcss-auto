@@ -32,9 +32,18 @@ def evaluate(cp,job,corpus,seed,mode,batch,maps):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--suite',default='autoregressive-anchor-screen');ap.add_argument('--jobs',required=True);ap.add_argument('--stage',type=int,default=10000384);ap.add_argument('--output',default='autoregressive-anchor-holdout');ap.add_argument('--maps',type=int,default=100);ap.add_argument('--per-map',type=int,default=16);args=ap.parse_args()
     torch.set_num_threads(1);torch.backends.cuda.matmul.allow_tf32=False
-    suite=ROOT/'learning-runs'/args.suite;m=json.loads((suite/'manifest.json').read_text());jobs=[next(j for j in m['jobs'] if j['id']==s) for s in args.jobs.split(',')]
-    corpus=pathlib.Path(m['corpus'])/'test';assert len(list(corpus.glob('*.bin')))>=args.maps
-    variants=[('imitation',pathlib.Path(jobs[0]['initial_model']),jobs[0])]+[(j['id'],suite/'runs'/j['id']/'snapshots'/f'{args.stage:012d}.pt',j) for j in jobs]
+    variants=[];corpus=None
+    for spec in args.jobs.split(','):
+        suite_name,ident=spec.split(':',1) if ':' in spec else (args.suite,spec)
+        suite=ROOT/'learning-runs'/suite_name;m=json.loads((suite/'manifest.json').read_text())
+        j=next(j for j in m['jobs'] if j['id']==ident)
+        current_corpus=pathlib.Path(m['corpus'])/'test'
+        assert corpus is None or corpus==current_corpus
+        corpus=current_corpus
+        if not variants:variants.append(('imitation',pathlib.Path(j['initial_model']),j))
+        variants.append((ident,suite/'runs'/ident/'snapshots'/f'{args.stage:012d}.pt',j))
+    assert len({v[0] for v in variants})==len(variants),'Duplicate output names'
+    assert len(list(corpus.glob('*.bin')))>=args.maps
     results={};start=time.monotonic()
     for name,cp,j in variants:
         results[name]={}
