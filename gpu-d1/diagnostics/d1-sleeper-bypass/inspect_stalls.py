@@ -32,7 +32,7 @@ def main():
     results={}
     for name,obs in variants.items():
         d=m(obs,mask)[0];p=d.probs.cpu();actions=d.greedy().cpu()
-        results[name]=[dict(wait=float(p[i,16]),move=float(p[i,:8].sum()),action=int(actions[i])) for i in range(n)]
+        results[name]=[dict(wait=float(p[i,16]),move=float(p[i,:8].sum()),action=int(actions[i]),move_probabilities=p[i,:8].tolist()) for i in range(n)]
     rows=[]
     for i,z in enumerate(raw):
         direction=int(z[4]);legal=direction>=0 and bool(mask[i,direction]);alt=int(z[10])

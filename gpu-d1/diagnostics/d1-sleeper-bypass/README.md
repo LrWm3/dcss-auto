@@ -137,3 +137,24 @@ the earlier repeated no-idle-WAIT intervention still timed out in79.63% of futur
 
 Compact final results: `results/d1-sleeper-bypass-training.json`. Regenerate with
 `gpu-d1/.venv/bin/python gpu-d1/diagnostics/d1-sleeper-bypass/summarize.py`.
+
+### Does the damage-cap1 intervention encourage approach or bypass?
+
+On the same27 captured states, changing only the visible enemy damage cap to1
+makes greedy choose MOVE in17 and WAIT in10. Of those17 moves,13 reduce
+Chebyshev distance to the sleeper and wake it; four increase distance. Ten
+follow the original frontier, and one follows the safe alternative frontier.
+Across all27 states, the preferred conditional MOVE direction changes in16.
+
+The probability mass breakdown is particularly clear:
+
+| Immediate action category | Original damage | Damage cap1 observation |
+| --- | ---: | ---: |
+| WAIT |77.95%|37.36%|
+| MOVE that wakes sleeper |4.45%|43.83%|
+| MOVE that does not wake sleeper |17.60%|18.81%|
+
+Thus almost all additional movement probability goes to approaching/waking the
+now-apparently-weak enemy. It is not mainly increased commitment to the previous
+bypass direction. These are first-action counterfactuals: actual simulator damage
+was not changed and no complete detour or fight outcome is established here.
