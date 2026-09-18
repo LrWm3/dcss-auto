@@ -1,0 +1,63 @@
+{
+  "manifest": {
+    "seed": 0,
+    "source_sha256": "8bb1a33d52e5be768c1e60095a8125dff9087fcbf81fd6f6ef4b198be0824f6f",
+    "script_sha256": "c5b50a67a07a0141ce1f9592462914d35cf44eeb59e42aa1759b57e33afb35d6",
+    "bands": [
+      [
+        4,
+        12
+      ],
+      [
+        12,
+        24
+      ],
+      [
+        24,
+        128
+      ]
+    ],
+    "max_updates_per_stage": 2000,
+    "lr": 0.0001,
+    "map_manifest_sha256": "6cee42efa95370ae4a13c7008985f81929259d80f9bdb0ebab5aeb13c30a1117",
+    "deadline": 1024,
+    "collection_cap": 512,
+    "burn_in": 16,
+    "learn_steps": 16,
+    "batch_sequences_per_buffer": 16,
+    "buffer_capacity": 1024,
+    "scope": "Native 80x70 maps, 15x15 local,16x16 global, no monsters. Sequence imitation/DAgger, not PPO; controller labels are targets only. No augmentation. Fixed split geometries; validation selects stage checkpoints. Distances define fixtures only."
+  },
+  "stages": [
+    {
+      "stage": 0,
+      "band": [
+        4,
+        12
+      ],
+      "history": [
+        {
+          "step": 1,
+          "training_seconds": 20.563624954083934,
+          "decisions": 2588,
+          "loss": 1.138216257095337,
+          "validation": {}
+        }
+      ],
+      "baseline": {},
+      "passed": false,
+      "selected": {
+        "step": 1,
+        "training_seconds": 20.563624954083934,
+        "decisions": 2588,
+        "loss": 1.138216257095337,
+        "validation": {}
+      }
+    }
+  ],
+  "training_seconds": 20.589058611774817,
+  "decisions": 2588,
+  "supervised_examples": 452,
+  "finished": true,
+  "all_stages_passed": false
+}

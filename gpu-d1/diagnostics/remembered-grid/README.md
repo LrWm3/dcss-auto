@@ -174,3 +174,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Symbolic PPO degradation investigation](SYMBOLIC-PPO-DEGRADATION.md) separates shared critic gradients, policy updates, and bootstrapped advantage targets, with checkpoint and same-data gradient audits.
 
 [Durability and full-size progression](SYMBOLIC-PPO-SCALE.md) tests corrected PPO through 3M across two seeds and gates progression to native 80x70 navigation layouts.
+
+[Native-scale demonstration curriculum](NATIVE-CURRICULUM.md) trains progressively longer routes on native geometry before a conditional PPO handoff.
