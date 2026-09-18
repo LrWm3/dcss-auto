@@ -16,3 +16,11 @@ s=sequences(x)
 for env in range(3):
  for chunk in range(2):torch.testing.assert_close(s[env*2+chunk],x[chunk*16:(chunk+1)*16,env])
 print('PASS terminal GAE, inactive padding, chronological per-environment sequences')
+# Lambda=1 must give complete discounted episode returns, independent of
+# inaccurate value predictions (the diagnostic deliberately varies them).
+_,mc=gae_returns(r,v,d,a,gamma=.9,lam=1.)
+_,mc2=gae_returns(r,v*7-3,d,a,gamma=.9,lam=1.)
+expected=torch.tensor([.9,-1.,1.])
+torch.testing.assert_close(mc[a],expected)
+torch.testing.assert_close(mc2[a],expected)
+print('PASS lambda=1 returns independent of value predictions')

@@ -28,7 +28,7 @@ def sequences(x):
 
 
 @torch.no_grad()
-def collect(env, model, policy, seed):
+def collect(env, model, policy, seed, gae_lambda=.95):
     env.reset(seed=seed,labels=False);policy.reset_cache();rows=[];prepared=[];starts=[]
     for t in range(256):
         if t%16==0:
@@ -44,7 +44,7 @@ def collect(env, model, policy, seed):
         rows.append((mask,action,logp,value,reward,done,active))
     assert not env.active.any(), 'Complete-episode GAE requires all episodes terminal'
     mask,action,logp,value,reward,done,active=[torch.stack(z) for z in zip(*rows)]
-    adv,ret=gae_returns(reward,value,done,active)
+    adv,ret=gae_returns(reward,value,done,active,lam=gae_lambda)
     mean=adv[active].mean();std=adv[active].std().clamp_min(1e-8);adv=(adv-mean)/std
     data=[sequences(torch.stack(z)) for z in zip(*prepared)]
     data += [sequences(z) for z in (mask,action,logp,adv,ret,active)]
@@ -54,7 +54,7 @@ def collect(env, model, policy, seed):
     return data,hidden,count,summary
 
 
-def minibatch(model, execution, data, hidden, ix):
+def minibatch(model, execution, data, hidden, ix, mode="joint"):
     valid_sequences=len(ix)
     if valid_sequences<128:ix=torch.cat([ix,ix[:1].expand(128-valid_sequences)])
     p=[z[ix].flatten(0,1) for z in data[:4]]
@@ -64,23 +64,26 @@ def minibatch(model, execution, data, hidden, ix):
         x=execution.encode(p).reshape(len(ix),16,-1)
         z,_=model.sequence(x,hidden[ix])
         logits,value=execution.heads(z,mask)
+        if mode=="detached_critic":value=model.value(z.detach()).float().squeeze(-1)
     d=torch.distributions.Categorical(logits=logits,validate_args=False)
     logratio=d.log_prob(action)-oldlp;ratio=logratio.exp()
     n=valid.sum().clamp_min(1)
     avg=lambda x:(x*valid).sum()/n
-    loss=avg(-torch.minimum(ratio*adv,ratio.clamp(.8,1.2)*adv))+.25*avg((value-ret).square())-.001*avg(d.entropy())
+    actor=avg(-torch.minimum(ratio*adv,ratio.clamp(.8,1.2)*adv))-.001*avg(d.entropy())
+    critic=.25*avg((value-ret).square())
+    loss=(0 if mode=="critic_only" else 1)*actor+(0 if mode=="actor_only" else 1)*critic
     return loss,avg((ratio-1)-logratio),logratio[valid]
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--decisions',type=int,default=1000000);ap.add_argument('--name',default='symbolic-ppo-seed0');ap.add_argument('--smoke',action='store_true');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--decisions',type=int,default=1000000);ap.add_argument('--name',default='symbolic-ppo-seed0');ap.add_argument('--smoke',action='store_true');ap.add_argument('--mode',choices=['joint','detached_critic','critic_only','actor_only'],default='joint');ap.add_argument('--gae-lambda',type=float,default=.95);args=ap.parse_args()
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True;build()
     folder=OUT/args.name;folder.mkdir(exist_ok=True);lock=(folder/'run.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     if (folder/'latest.pt').exists():raise RuntimeError('Refusing to overwrite checkpoint')
     model=load(True).configure_encoder(True,True);execution=PolicyExecution(model,compiled=True)
     policy=StaticInference(execution,amp=True,graphed=True)
     opt=torch.optim.Adam(model.parameters(),lr=1e-5);scaler=torch.amp.GradScaler('cuda')
-    manifest=dict(seed=0,target=args.decisions,map_size=[32,32],envs=128,deadline=256,sequence_length=16,sequence_batch=128,epochs=4,lr=1e-5,gamma=.999,gae_lambda=.95,entropy=.001,value_coefficient=.25,clip=.2,rewards=dict(exit=1,death=-1,timeout=0),source_sha256=hashlib.sha256((OUT/'symbolic-gru/best.pt').read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),scope='Actual recurrent PPO, all layers trainable; stored initial hidden state, no burn-in. Compiled encoders/heads, cuDNN sequence, graphed inference, eager optimizer/backward. Synthetic navigation, not ordinary Crawl floors.')
+    manifest=dict(mode=args.mode,seed=0,target=args.decisions,map_size=[32,32],envs=128,deadline=256,sequence_length=16,sequence_batch=128,epochs=4,lr=1e-5,gamma=.999,gae_lambda=args.gae_lambda,entropy=.001,value_coefficient=.25,clip=.2,rewards=dict(exit=1,death=-1,timeout=0),source_sha256=hashlib.sha256((OUT/'symbolic-gru/best.pt').read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),scope='Actual recurrent PPO, all layers trainable; stored initial hidden state, no burn-in. Compiled encoders/heads, cuDNN sequence, graphed inference, eager optimizer/backward. Synthetic navigation, not ordinary Crawl floors.')
     save_json(folder/'manifest.json',manifest)
     def assess():
         result={}
@@ -92,28 +95,31 @@ def main():
     report=dict(manifest=manifest,baseline={} if args.smoke else assess(),history=[],checkpoints=[])
     save_json(folder/'progress.json',report);env=Env('train',128);decisions=0;wave=0;training=0.;milestones=[100000,500000,args.decisions]
     while decisions<args.decisions:
-        start=time.monotonic();data,h,n,summary=collect(env,model,policy,1000+wave)
+        start=time.monotonic();data,h,n,summary=collect(env,model,policy,1000+wave,args.gae_lambda)
         torch.cuda.synchronize();collection=time.monotonic()-start;optimization_start=time.monotonic()
         # Before updates, sequence replay must reproduce behavior log-probabilities.
         with torch.no_grad():
             _,_,delta=minibatch(model,execution,data,h,torch.arange(min(128,len(h)),device='cuda'))
             mismatch=float(delta.abs().max()) if len(delta) else 0.
             assert mismatch<.03, f'Rollout/replay mismatch {mismatch}'
-        losses=[];kls=[];stop=False
+        losses=[];kls=[];stop=False;overflow_skips=0
         for epoch in range(4):
             for ix in torch.randperm(len(h),device='cuda').split(128):
                 if not data[-1][ix].any():continue
-                opt.zero_grad(set_to_none=True);loss,kl,_=minibatch(model,execution,data,h,ix)
+                opt.zero_grad(set_to_none=True);loss,kl,_=minibatch(model,execution,data,h,ix,args.mode)
                 # Conservative early stop before applying a large policy update.
                 if float(kl)>.02:stop=True;break
+                assert torch.isfinite(loss), "Nonfinite PPO loss"
                 scaler.scale(loss).backward();scaler.unscale_(opt)
                 assert all(p.grad is not None for p in model.parameters())
-                assert torch.stack([torch.isfinite(p.grad).all() for p in model.parameters()]).all()
+                if not torch.stack([torch.isfinite(p.grad).all() for p in model.parameters()]).all():
+                    # Expected AMP overflow: GradScaler skips Adam and lowers scale.
+                    scaler.step(opt);scaler.update();overflow_skips+=1;continue
                 torch.nn.utils.clip_grad_norm_(model.parameters(),.5);scaler.step(opt);scaler.update()
                 losses.append(float(loss.detach()));kls.append(float(kl.detach()))
             if stop:break
         torch.cuda.synchronize();optimization=time.monotonic()-optimization_start;training+=time.monotonic()-start;decisions+=n;wave+=1
-        row=dict(wave=wave,decisions=decisions,training_seconds=training,decisions_per_second=decisions/training,collection_seconds=collection,optimization_seconds=optimization,rollout_replay_max_logprob_difference=mismatch,loss=sum(losses)/max(1,len(losses)),approx_kl=sum(kls)/max(1,len(kls)),updates=len(losses),kl_early_stop=stop,**summary)
+        row=dict(wave=wave,decisions=decisions,training_seconds=training,decisions_per_second=decisions/training,collection_seconds=collection,optimization_seconds=optimization,rollout_replay_max_logprob_difference=mismatch,loss=sum(losses)/max(1,len(losses)),approx_kl=sum(kls)/max(1,len(kls)),updates=len(losses),overflow_skips=overflow_skips,kl_early_stop=stop,**summary)
         report['history'].append(row);print(json.dumps(row),flush=True)
         del data,h
         crossed=[v for v in milestones if v<=decisions]

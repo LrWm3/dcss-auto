@@ -105,3 +105,9 @@ interference, or stale recurrent states as the cause; those remain hypotheses.
 Original and milestone checkpoints are retained.
 
 [Raw final report](../../results/symbolic-ppo-seed0.json).
+
+[Subsequent causal investigation](SYMBOLIC-PPO-DEGRADATION.md) identifies shared
+critic representation damage and inaccurate bootstrap targets, and tests a
+detached-critic/complete-return correction. The default `joint` configuration
+remains available as the original control; use `--mode detached_critic
+--gae-lambda 1` to select the tested correction explicitly.

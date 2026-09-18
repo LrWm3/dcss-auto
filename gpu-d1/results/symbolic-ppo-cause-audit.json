@@ -1,0 +1,240 @@
+{
+  "weights": {
+    "symbolic-ppo-seed0": {
+      "local.": 0.27038276093644514,
+      "global_net.": 0.35024582799909615,
+      "tactical.": 0.17230660660699448,
+      "core.": 0.6299995622814901,
+      "policy.": 0.08714573175564137,
+      "value.": 0.13543095302224314
+    },
+    "symbolic-ppo-cause-critic_only": {
+      "local.": 0.7379278093531391,
+      "global_net.": 0.6269346435740354,
+      "tactical.": 0.4033694791678403,
+      "core.": 1.0504285875784367,
+      "policy.": 0.0,
+      "value.": 0.04731974694269216
+    },
+    "symbolic-ppo-cause-detached_critic": {
+      "local.": 0.15902116558232907,
+      "global_net.": 0.1473368386387711,
+      "tactical.": 0.09485676374909185,
+      "core.": 0.2840939043905499,
+      "policy.": 0.10408271731420138,
+      "value.": 0.11609001671786519
+    },
+    "symbolic-ppo-cause-actor_only_retry": {
+      "local.": 0.13638473610268448,
+      "global_net.": 0.1488672767708417,
+      "tactical.": 0.08772166487069591,
+      "core.": 0.26774486272596043,
+      "policy.": 0.10507019970965666,
+      "value.": 0.0
+    }
+  },
+  "evaluations": {
+    "original": {
+      "known_stairs": {
+        "exit": 0.91796875,
+        "death": 0.0,
+        "timeout": 0.08203125,
+        "turns": 56.8515625,
+        "kills": 0.0,
+        "reversals": 5.5390625,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "exploration": {
+        "exit": 0.9453125,
+        "death": 0.0,
+        "timeout": 0.0546875,
+        "turns": 78.546875,
+        "kills": 0.0,
+        "reversals": 2.89453125,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "threat_backtrack": {
+        "exit": 1.0,
+        "death": 0.0,
+        "timeout": 0.0,
+        "turns": 20.09375,
+        "kills": 0.0,
+        "reversals": 0.0,
+        "woke": 0.0,
+        "episodes": 32
+      }
+    },
+    "ppo_eager": {
+      "known_stairs": {
+        "exit": 0.58984375,
+        "death": 0.0,
+        "timeout": 0.41015625,
+        "turns": 119.5,
+        "kills": 0.0,
+        "reversals": 48.8125,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "exploration": {
+        "exit": 0.859375,
+        "death": 0.0,
+        "timeout": 0.140625,
+        "turns": 92.6875,
+        "kills": 0.0,
+        "reversals": 23.5546875,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "threat_backtrack": {
+        "exit": 1.0,
+        "death": 0.0,
+        "timeout": 0.0,
+        "turns": 20.09375,
+        "kills": 0.0,
+        "reversals": 0.0,
+        "woke": 0.0,
+        "episodes": 32
+      }
+    },
+    "ppo_restore_policy_head": {
+      "known_stairs": {
+        "exit": 0.58984375,
+        "death": 0.0,
+        "timeout": 0.41015625,
+        "turns": 120.78125,
+        "kills": 0.0,
+        "reversals": 49.53515625,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "exploration": {
+        "exit": 0.859375,
+        "death": 0.0,
+        "timeout": 0.140625,
+        "turns": 92.296875,
+        "kills": 0.0,
+        "reversals": 22.078125,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "threat_backtrack": {
+        "exit": 1.0,
+        "death": 0.0,
+        "timeout": 0.0,
+        "turns": 20.09375,
+        "kills": 0.0,
+        "reversals": 0.0,
+        "woke": 0.0,
+        "episodes": 32
+      }
+    },
+    "original_with_ppo_policy_head": {
+      "known_stairs": {
+        "exit": 0.9140625,
+        "death": 0.0,
+        "timeout": 0.0859375,
+        "turns": 57.7578125,
+        "kills": 0.0,
+        "reversals": 6.18359375,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "exploration": {
+        "exit": 0.9453125,
+        "death": 0.0,
+        "timeout": 0.0546875,
+        "turns": 78.02734375,
+        "kills": 0.0,
+        "reversals": 3.3359375,
+        "woke": 0.0,
+        "episodes": 256
+      },
+      "threat_backtrack": {
+        "exit": 1.0,
+        "death": 0.0,
+        "timeout": 0.0,
+        "turns": 20.09375,
+        "kills": 0.0,
+        "reversals": 0.0,
+        "woke": 0.0,
+        "episodes": 32
+      }
+    }
+  },
+  "gradient": {
+    "local.": {
+      "actor_norm": 0.17414997518062592,
+      "critic_norm": 0.00857361126691103,
+      "cosine": 0.4379827380180359
+    },
+    "global_net.": {
+      "actor_norm": 0.05996089428663254,
+      "critic_norm": 0.0029213465750217438,
+      "cosine": 0.26915186643600464
+    },
+    "tactical.": {
+      "actor_norm": 0.24326327443122864,
+      "critic_norm": 0.008344118483364582,
+      "cosine": -0.022320019081234932
+    },
+    "core.": {
+      "actor_norm": 0.3656483292579651,
+      "critic_norm": 0.013634135015308857,
+      "cosine": 0.03777799755334854
+    },
+    "policy.": {
+      "actor_norm": 0.11542410403490067,
+      "critic_norm": 0.0,
+      "cosine": 0.0
+    },
+    "value.": {
+      "actor_norm": 0.0,
+      "critic_norm": 0.516723096370697,
+      "cosine": 0.0
+    }
+  },
+  "initial_advantages": {
+    "0.95": {
+      "decisions": 7658,
+      "summary": {
+        "exit": 0.9453125,
+        "death": 0.0,
+        "active_fraction": 0.23370361328125
+      },
+      "successful_decisions": 6137,
+      "negative_advantage_on_success_fraction": 0.5325077176094055,
+      "low_return_success_count": 2076,
+      "negative_low_return_success_fraction": 1.0,
+      "near_success_count": 1688,
+      "return_min_success": 2.2130222987470916e-06,
+      "return_mean_success": 0.31350213289260864
+    },
+    "1.0": {
+      "decisions": 7658,
+      "summary": {
+        "exit": 0.9453125,
+        "death": 0.0,
+        "active_fraction": 0.23370361328125
+      },
+      "successful_decisions": 6137,
+      "negative_advantage_on_success_fraction": 0.0,
+      "low_return_success_count": 0,
+      "negative_low_return_success_fraction": null,
+      "near_success_count": 6137,
+      "return_min_success": 0.7794852256774902,
+      "return_mean_success": 0.9587952494621277
+    }
+  },
+  "value_at_100k": {
+    "decisions": 6123,
+    "mean_prediction": 0.10146044194698334,
+    "mean_actual_discounted_return": 0.861092209815979,
+    "mse": 0.6698935031890869,
+    "explained_variance": -0.010211944580078125,
+    "gae_target_mean": 0.38749223947525024,
+    "gae_target_mse_to_full": 0.3154652416706085,
+    "normalized_advantage_sign_disagreement": 0.4314878284931183
+  }
+}

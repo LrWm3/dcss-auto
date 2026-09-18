@@ -170,3 +170,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Compiled execution and CUDA graphs](EXECUTION-OPTIMIZATION.md) separates encoder/head compilation from graph capture, checks live input and recurrent-state handling, and benchmarks both factors against the optimized GRU.
 
 [First symbolic recurrent PPO run](SYMBOLIC-PPO.md) continues the supervised GRU with actual on-policy learning, sparse exit/death rewards, sequence-preserving updates, and measured pipeline throughput.
+
+[Symbolic PPO degradation investigation](SYMBOLIC-PPO-DEGRADATION.md) separates shared critic gradients, policy updates, and bootstrapped advantage targets, with checkpoint and same-data gradient audits.
