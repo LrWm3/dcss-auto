@@ -1,0 +1,216 @@
+{
+  "rows": [
+    {
+      "arm": "eager",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "first_update_seconds": 0.5312039260752499,
+      "first_inference_seconds": 0.04168666782788932,
+      "graph_setup_seconds": 0.0,
+      "optimizer": {
+        "ms": 7.992345800933739,
+        "samples_ms": [
+          8.067752762387196,
+          7.970164995640516,
+          7.992345800933739
+        ]
+      },
+      "inference": {
+        "ms": 3.075411504444977,
+        "samples_ms": [
+          3.064738167449832,
+          3.075411504444977,
+          3.0901788656289377
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7640.174302712266
+    },
+    {
+      "arm": "compiled",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "first_update_seconds": 9.047568963142112,
+      "first_inference_seconds": 2.01514894887805,
+      "graph_setup_seconds": 0.0,
+      "optimizer": {
+        "ms": 8.10200406704098,
+        "samples_ms": [
+          8.10200406704098,
+          8.063241296137372,
+          8.139022098233303
+        ]
+      },
+      "inference": {
+        "ms": 2.8590218008806305,
+        "samples_ms": [
+          2.8955776322012143,
+          2.8590218008806305,
+          2.8548533019299307
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7565.564668021211
+    },
+    {
+      "arm": "graphs",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "first_update_seconds": 0.14005820406600833,
+      "first_inference_seconds": 0.12742288690060377,
+      "graph_setup_seconds": 0.13521148799918592,
+      "optimizer": {
+        "ms": 5.271885132727524,
+        "samples_ms": [
+          5.299938772805035,
+          5.271395800324778,
+          5.271885132727524
+        ]
+      },
+      "inference": {
+        "ms": 3.2617716972405715,
+        "samples_ms": [
+          3.285821232323845,
+          3.2617716972405715,
+          3.2521239714697003
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 11268.38609872467
+    },
+    {
+      "arm": "compiled_graphs",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "first_update_seconds": 0.146977833006531,
+      "first_inference_seconds": 0.11910791089758277,
+      "graph_setup_seconds": 0.14235086413100362,
+      "optimizer": {
+        "ms": 5.059231367583076,
+        "samples_ms": [
+          5.0940542326619225,
+          5.044696860325834,
+          5.059231367583076
+        ]
+      },
+      "inference": {
+        "ms": 3.034375631250441,
+        "samples_ms": [
+          3.0636110032598176,
+          3.034375631250441,
+          3.0288362332309284
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 11767.889439338827
+    },
+    {
+      "arm": "eager",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "first_update_seconds": 0.3542205900885165,
+      "first_inference_seconds": 0.03622755408287048,
+      "graph_setup_seconds": 0.0,
+      "optimizer": {
+        "ms": 15.59956877026707,
+        "samples_ms": [
+          15.504383932178218,
+          15.59956877026707,
+          16.09090983401984
+        ]
+      },
+      "inference": {
+        "ms": 3.492038130449752,
+        "samples_ms": [
+          3.497722636287411,
+          3.492038130449752,
+          3.4902211977168918
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 45342.54760853831
+    },
+    {
+      "arm": "compiled",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "first_update_seconds": 10.601287060184404,
+      "first_inference_seconds": 2.8992104278877378,
+      "graph_setup_seconds": 0.0,
+      "optimizer": {
+        "ms": 13.257261326846978,
+        "samples_ms": [
+          13.256727197828392,
+          13.297717265474299,
+          13.257261326846978
+        ]
+      },
+      "inference": {
+        "ms": 2.4980903059865036,
+        "samples_ms": [
+          2.4980903059865036,
+          2.4763480372106037,
+          2.505132330891987
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 56099.008802402204
+    },
+    {
+      "arm": "graphs",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "first_update_seconds": 0.23855446185916662,
+      "first_inference_seconds": 0.15355788613669574,
+      "graph_setup_seconds": 0.22324706707149744,
+      "optimizer": {
+        "ms": 15.315586266418299,
+        "samples_ms": [
+          15.315586266418299,
+          15.337751603995759,
+          15.284297064257164
+        ]
+      },
+      "inference": {
+        "ms": 2.5103655721371374,
+        "samples_ms": [
+          2.5265872944146395,
+          2.5103655721371374,
+          2.509150297070543
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 50353.26599798221
+    },
+    {
+      "arm": "compiled_graphs",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "first_update_seconds": 0.22946829884313047,
+      "first_inference_seconds": 0.14458475704304874,
+      "graph_setup_seconds": 0.2160711761098355,
+      "optimizer": {
+        "ms": 12.989222661902506,
+        "samples_ms": [
+          12.989222661902506,
+          13.00360809545964,
+          12.920096097514033
+        ]
+      },
+      "inference": {
+        "ms": 2.3202239613359175,
+        "samples_ms": [
+          2.344579265142481,
+          2.3202239613359175,
+          2.314045497526725
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 58083.89868021598
+    }
+  ],
+  "reverse_order": false,
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "scope": "80x70 network only; optimized channels-last/pooling GRU, 16 burn+16 learn, four PPO-shaped passes. Compile encoder/heads; explicit graph forward/backward, optimizer/scaler/clipping outside. Graph inference includes live input copies and carries hidden state. All gradients finite. Setup excluded from steady-state timing; no simulator/GAE/actual PPO."
+}

@@ -166,3 +166,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Fused minGRU scan](MINGRU-SCAN.md) validates a custom forward/backward GPU scan, separates recurrent versus whole-policy cost, and corrects the earlier AMP benchmark that omitted encoder/core gradients.
 
 [Encoder optimization](ENCODER-OPTIMIZATION.md) tests bypassing identity pooling and channels-last CNN execution, using complete training gradients and unchanged saved GRU weights.
+
+[Compiled execution and CUDA graphs](EXECUTION-OPTIMIZATION.md) separates encoder/head compilation from graph capture, checks live input and recurrent-state handling, and benchmarks both factors against the optimized GRU.
