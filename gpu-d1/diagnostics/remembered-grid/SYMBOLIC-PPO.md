@@ -66,3 +66,42 @@ directory. It writes bounded checkpoints (latest plus three milestones), no
 rollout datasets. Live manifest, progress, and checkpoints are in ignored
 `learning-runs/remembered-grid/symbolic-ppo-seed0/`; log is the adjacent
 `symbolic-ppo-seed0.log`. Final report is `results/symbolic-ppo-seed0.json`.
+
+## Completed seed-0 result
+
+The run completed 1,005,735 active decisions in **112.25 training seconds**,
+including compilation startup and excluding evaluation/checkpoint writes:
+**8,960 active decisions/s**. This is a measured end-to-end training loop for
+these fixtures, not the full-size network-only estimate. Rollout/replay maximum
+log-probability discrepancy remained below .00575, all gradients were finite
+and present, and the .02 KL early-stop threshold was never reached.
+
+| Greedy held-out success | Starting checkpoint | 103,030 | 507,121 | 1,005,735 |
+|---|---:|---:|---:|---:|
+| Main known stairs | 91.80% | 92.97% | 83.20% | 58.59% |
+| Main exploration | 94.53% | 93.36% | 92.97% | 85.55% |
+| Long known stairs | 77.34% | 81.25% | 54.69% | 34.38% |
+| Long exploration | 81.25% | 82.03% | 80.47% | 71.88% |
+| Main/long threat backtrack | 100% | 100% | 100% | 100% |
+
+Main known-stair and exploration sets contain 256 episodes each; long sets
+contain 128 each. Threat sets contain 32 each. No held-out deaths occurred;
+all failures are timeouts. Main known-stair mean turns rose from 56.84 to
+119.51, and long known-stair mean turns from 157.19 to 330.49, including failures.
+
+Sampled main known-stair success changed 82.42% -> 90.62% -> 78.52% -> 63.28%;
+sampled exploration changed 92.58% -> 93.75% -> 97.66% -> 94.92%. Therefore the
+known-goal decline is not just greedy decoding. Validation also degraded
+(known stairs 89.84% -> 54.69%, exploration 87.50% -> 75.78%).
+
+**Conclusion:** the optimized recurrent PPO pipeline runs quickly, but this
+unanchored all-layer fine-tune does not improve the original navigation policy
+reliably and loses substantial competence by 1M. The early checkpoint is a
+mixed small change, not established improvement from one seed. Small individual
+PPO KL values did not prevent cumulative degradation. The checks rule out the
+specific sequence/terminal/gradient failures tested, not every implementation
+or algorithmic issue. This run does not isolate sparse rewards, shared-critic
+interference, or stale recurrent states as the cause; those remain hypotheses.
+Original and milestone checkpoints are retained.
+
+[Raw final report](../../results/symbolic-ppo-seed0.json).
