@@ -1,0 +1,36 @@
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg    # of Calls
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------
+                             aten::convolution_backward         1.97%       1.620ms         4.96%       4.076ms      90.567us      21.000ms        29.34%      23.525ms     522.783us            45
+                                aten::cudnn_convolution         2.30%       1.888ms         3.21%       2.638ms      29.312us      12.017ms        16.79%      12.017ms     133.521us            90
+                                             aten::add_         1.03%     845.044us         1.69%       1.393ms       4.975us      10.589ms        14.80%      10.589ms      37.818us           280
+void at::native::elementwise_kernel<128, 4, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us      10.523ms        14.71%      10.523ms     116.927us            90
+                                        aten::clamp_min         1.29%       1.059ms         2.10%       1.727ms      14.391us       8.033ms        11.23%       8.033ms      66.944us           120
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       8.033ms        11.23%       8.033ms      66.944us           120
+sm75_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16...         0.00%       0.000us         0.00%       0.000us       0.000us       6.714ms         9.38%       6.714ms     111.899us            60
+                               aten::threshold_backward         0.73%     597.329us         1.17%     963.879us      16.065us       5.967ms         8.34%       5.967ms      99.451us            60
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       5.486ms         7.67%       5.486ms     121.913us            45
+                                            aten::copy_         3.88%       3.190ms         8.31%       6.833ms      10.594us       5.342ms         7.46%       5.342ms       8.282us           645
+sm75_xmma_dgrad_implicit_gemm_indexed_f16f16_f16f32_...         0.00%       0.000us         0.00%       0.000us       0.000us       4.515ms         6.31%       4.515ms     451.476us            10
+sm75_xmma_wgrad_implicit_gemm_indexed_wo_smem_f16f16...         0.00%       0.000us         0.00%       0.000us       0.000us       3.660ms         5.11%       3.660ms     366.029us            10
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       3.515ms         4.91%       3.515ms       9.902us           355
+sm75_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16...         0.00%       0.000us         0.00%       0.000us       0.000us       3.251ms         4.54%       3.251ms     162.555us            20
+sm75_xmma_wgrad_implicit_gemm_indexed_wo_smem_f16f16...         0.00%       0.000us         0.00%       0.000us       0.000us       2.946ms         4.12%       2.946ms     589.185us             5
+                                              aten::sum         1.48%       1.215ms         2.34%       1.924ms      22.640us       2.871ms         4.01%       2.871ms      33.781us            85
+sm75_xmma_dgrad_implicit_gemm_f16f16_f16f32_f32_nhwc...         0.00%       0.000us         0.00%       0.000us       0.000us       2.730ms         3.81%       2.730ms     181.999us            15
+void at::native::reduce_kernel<128, 4, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us       2.652ms         3.71%       2.652ms      44.196us            60
+                               Optimizer.step#Adam.step         0.00%       0.000us         0.00%       0.000us       0.000us       2.480ms         3.47%       2.480ms     496.052us             5
+sm75_xmma_wgrad_implicit_gemm_indexed_f16f16_f16f32_...         0.00%       0.000us         0.00%       0.000us       0.000us       2.435ms         3.40%       2.435ms     243.530us            10
+sm75_xmma_wgrad_implicit_gemm_indexed_f16f16_f16f32_...         0.00%       0.000us         0.00%       0.000us       0.000us       2.183ms         3.05%       2.183ms     109.155us            20
+sm75_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16...         0.00%       0.000us         0.00%       0.000us       0.000us       2.052ms         2.87%       2.052ms     205.187us            10
+sm75_xmma_dgrad_implicit_gemm_indexed_f16f16_f16f32_...         0.00%       0.000us         0.00%       0.000us       0.000us       1.836ms         2.56%       1.836ms     367.104us             5
+                              aten::_cudnn_rnn_backward         1.55%       1.276ms         2.80%       2.301ms     460.245us       1.284ms         1.79%       1.508ms     301.665us             5
+void at::native::elementwise_kernel<128, 4, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us       1.042ms         1.46%       1.042ms      16.025us            65
+                                       aten::_cudnn_rnn         2.23%       1.831ms         5.90%       4.846ms     242.277us     929.861us         1.30%       2.291ms     114.573us            20
+                                               aten::mm         1.13%     930.789us         1.61%       1.322ms      26.450us     716.480us         1.00%     716.480us      14.330us            50
+                                            aten::addmm         1.33%       1.092ms         1.82%       1.498ms      37.451us     576.510us         0.81%     576.510us      14.413us            40
+void at::native::unrolled_elementwise_kernel<at::nat...         0.00%       0.000us         0.00%       0.000us       0.000us     542.207us         0.76%     542.207us       3.012us           180
+void RNN_blockPersist_fp_GRU_HMMA<__half, __half, fl...         0.00%       0.000us         0.00%       0.000us       0.000us     502.178us         0.70%     502.178us      50.218us            10
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------
+Self CPU time total: 82.193ms
+Self CUDA time total: 71.562ms

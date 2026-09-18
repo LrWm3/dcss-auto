@@ -4,14 +4,29 @@ from torch import nn
 from symbolic_policy import SymbolicPolicy,categories
 from compact_policy import crop
 
+class SkipIdentityPool(nn.AdaptiveAvgPool2d):
+    """Avoid a copy/reduction when adaptive pooling requests the current size."""
+    def forward(self,x):
+        if self.output_size==4 and x.shape[-2:]==(4,4):return x
+        return super().forward(x)
+
 class FastSymbolicPolicy(SymbolicPolicy):
-    def __init__(self,recurrent=True):
+    def __init__(self,recurrent=True,skip_identity_pool=False,channels_last=False):
         super().__init__(recurrent);self._bins={}
         if recurrent:
             self.sequence_core=nn.GRU(194,128,batch_first=True)
             # Share the original parameters: no frozen layers or extra capacity.
             for name in ['weight_ih','weight_hh','bias_ih','bias_hh']:
                 setattr(self.sequence_core,name+'_l0',getattr(self.core,name))
+        self.configure_encoder(skip_identity_pool,channels_last)
+    def configure_encoder(self,skip_identity_pool=False,channels_last=False):
+        self.channels_last=channels_last
+        for cnn in (self.local,self.global_net,self.tactical):
+            cnn[6]=SkipIdentityPool(4) if skip_identity_pool else nn.AdaptiveAvgPool2d(4)
+            cnn.to(memory_format=torch.channels_last if channels_last else torch.contiguous_format)
+        return self
+    def _layout(self,x):
+        return x.contiguous(memory_format=torch.channels_last) if self.channels_last else x
     def prepare(self,g,s):
         n,_,h,w=g.shape;raw=crop(g,s[:,2:4],self.offsets)
         nav=torch.cat([categories(raw),(raw[:,4:5]>0).float()],1)
@@ -29,11 +44,11 @@ class FastSymbolicPolicy(SymbolicPolicy):
         vals=torch.cat([categories(g),(g[:,4:5]>0).float()],1).flatten(2);glob=vals.new_zeros(n,6,256)
         glob[:,:5].scatter_add_(2,bins[None,None].expand(n,5,-1),vals);glob[:,:4]/=counts[None,None];glob[:,4].clamp_(0,1)
         bx=(s[:,2].long()*16//w).clamp(0,15);by=(s[:,3].long()*16//h).clamp(0,15);glob[:,5].scatter_(1,(by*16+bx)[:,None],1)
-        return nav,glob.reshape(n,6,16,16),tactical,s[:,:2]
+        return self._layout(nav),self._layout(glob.reshape(n,6,16,16)),self._layout(tactical),s[:,:2]
     def encode_prepared(self,inputs,intervene=None):
-        nav,glob,tactical,stats=inputs;glob=self.global_net(glob)
+        nav,glob,tactical,stats=inputs;glob=self.global_net(self._layout(glob))
         if intervene=='erase_global':glob=torch.zeros_like(glob)
-        return torch.cat([self.local(nav),glob,self.tactical(tactical),stats],1)
+        return torch.cat([self.local(self._layout(nav)),glob,self.tactical(self._layout(tactical)),stats],1)
     def encode(self,g,s,intervene=None):return self.encode_prepared(self.prepare(g,s),intervene)
     def sequence(self,x,h=None):
         # Input is [batch,time,features]. Padding must be handled by the caller.

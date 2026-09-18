@@ -164,3 +164,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [minGRU screen](MINGRU.md) replaces the symbolic policy's recurrent core with a numerically checked affine-scan minGRU, comparing navigation behavior and full-map network cost with the optimized GRU.
 
 [Fused minGRU scan](MINGRU-SCAN.md) validates a custom forward/backward GPU scan, separates recurrent versus whole-policy cost, and corrects the earlier AMP benchmark that omitted encoder/core gradients.
+
+[Encoder optimization](ENCODER-OPTIMIZATION.md) tests bypassing identity pooling and channels-last CNN execution, using complete training gradients and unchanged saved GRU weights.

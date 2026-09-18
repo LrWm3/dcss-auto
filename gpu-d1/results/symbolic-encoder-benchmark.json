@@ -1,0 +1,192 @@
+{
+  "rows": [
+    {
+      "arm": "reference",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "optimizer": {
+        "ms": 8.326526273352403,
+        "samples_ms": [
+          8.656890667043626,
+          8.326526273352403,
+          8.022962665806213
+        ]
+      },
+      "inference": {
+        "ms": 3.514496671656768,
+        "samples_ms": [
+          3.5171857724587126,
+          3.514496671656768,
+          3.5096761692936225
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7301.070062127353
+    },
+    {
+      "arm": "skip_pool",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "optimizer": {
+        "ms": 8.029109130923947,
+        "samples_ms": [
+          11.264729934434095,
+          8.029109130923947,
+          7.990894233807921
+        ]
+      },
+      "inference": {
+        "ms": 3.3307345351204276,
+        "samples_ms": [
+          3.3307345351204276,
+          3.286688798107207,
+          3.349475166760385
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7578.044132334414
+    },
+    {
+      "arm": "channels_last",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "optimizer": {
+        "ms": 8.328295832810303,
+        "samples_ms": [
+          8.328295832810303,
+          8.309268633214135,
+          8.371192635968328
+        ]
+      },
+      "inference": {
+        "ms": 3.6391602673878274,
+        "samples_ms": [
+          3.7673812359571457,
+          3.6391602673878274,
+          3.6231838632375
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7286.645704813552
+    },
+    {
+      "arm": "both",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "optimizer": {
+        "ms": 8.144536932619909,
+        "samples_ms": [
+          8.159615697028737,
+          8.144536932619909,
+          7.985856267623603
+        ]
+      },
+      "inference": {
+        "ms": 3.5823462375750146,
+        "samples_ms": [
+          3.5903663374483585,
+          3.5823462375750146,
+          3.5717619971061745
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7448.503306851311
+    },
+    {
+      "arm": "reference",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "optimizer": {
+        "ms": 31.82464403410753,
+        "samples_ms": [
+          31.780182166645922,
+          31.82464403410753,
+          31.89876686471204
+        ]
+      },
+      "inference": {
+        "ms": 3.323776895801226,
+        "samples_ms": [
+          3.323776895801226,
+          3.33585636690259,
+          3.32011926608781
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 26616.623376678705
+    },
+    {
+      "arm": "skip_pool",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "optimizer": {
+        "ms": 25.831912496748068,
+        "samples_ms": [
+          25.831912496748068,
+          26.01905066985637,
+          25.791887698384624
+        ]
+      },
+      "inference": {
+        "ms": 3.113164434519907,
+        "samples_ms": [
+          3.1719658989459276,
+          3.113164434519907,
+          3.107528737746179
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 31941.864443406397
+    },
+    {
+      "arm": "channels_last",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "optimizer": {
+        "ms": 16.747002994331222,
+        "samples_ms": [
+          16.74664889772733,
+          16.747002994331222,
+          16.9128410362949
+        ]
+      },
+      "inference": {
+        "ms": 3.6633913327629366,
+        "samples_ms": [
+          3.1776450652008252,
+          3.6970419033120074,
+          3.6633913327629366
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 42535.894207428886
+    },
+    {
+      "arm": "both",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "optimizer": {
+        "ms": 16.918771527707577,
+        "samples_ms": [
+          16.84097656980157,
+          16.918771527707577,
+          16.96139162716766
+        ]
+      },
+      "inference": {
+        "ms": 3.599000939478477,
+        "samples_ms": [
+          3.6173666982601085,
+          3.599000939478477,
+          3.5952499990041056
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 42460.074684660074
+    }
+  ],
+  "reverse_order": false,
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "scope": "80x70 whole-network benchmark, optimized GRU, 16 burn+16 learn, four PPO-shaped passes, no simulator/GAE. All parameters receive finite gradients. AMP burn/learn contexts separate. Medians of three rounds after warmup."
+}
