@@ -39,8 +39,9 @@ updates. All policy parameters remain trainable.
 cached/uncached rollout parity, movement-only cache reuse, invalidation after
 encoder updates, reset, and nonzero map-encoder gradients. On 96 steps × 32
 worlds, cached and uncached policies had zero greedy action disagreements;
-maximum logit difference was 0.001953125 with AMP and varying convolution batch
-sizes. The teacher-driven replay refreshed 38.54% of map slots.
+maximum logit difference in the final check was 0.0078125 with AMP and varying
+convolution batch sizes (within the relative/absolute comparison tolerance).
+The teacher-driven replay refreshed 38.54% of map slots.
 
 The initial eager AMP policy-only replay measured approximately 2,147 decisions/s
 uncached and 2,103 cached. This is **not a speed improvement**. It includes
@@ -60,6 +61,59 @@ imitation/DAgger experiment, **not PPO**. It retains the known short recurrent
 burn-in limitation to match that control.
 
 Two checkpoints per run are retained (latest and validation-selected), not every
-intermediate checkpoint. Evaluation uses held-out layouts. Results and timing
-will be recorded after completion, including selected-policy evaluation with
-the exact-map residual erased to check whether the new branch contributes.
+intermediate checkpoint. Evaluation uses held-out layouts.
+
+## Completed result
+
+The first attempt was interrupted by machine shutdown before saving a checkpoint;
+the restarted experiment completed all 2,000 updates. The selected checkpoint
+was at 500 updates. No AMP overflow updates were skipped. Training plus data
+collection took 262.1 seconds, excluding evaluation, versus 188.5 seconds for
+the historical balanced coarse-only screen (approximately 39% longer).
+
+Test success percentages, 128 episodes per category on 32 held-out layouts:
+
+| Policy | Middle known stairs | Middle exploration | Longer known stairs | Longer exploration |
+|---|---:|---:|---:|---:|
+| Starting curriculum checkpoint | 64.84 | 69.53 | 31.25 | 56.25 |
+| Coarse-only balanced continuation | 62.50 | 69.53 | 35.16 | 50.78 |
+| Cached exact-map addition | 68.75 | 52.34 | 34.38 | 35.94 |
+| Same selected model, exact residual erased | 68.75 | 60.94 | 40.62 | 43.75 |
+
+This implementation did not improve overall navigation. Removing the learned
+exact-map contribution improves three of four test categories. That is evidence
+that its learned contribution is harmful in this screen; it does not establish
+that exact remembered geometry cannot support a better policy. This is one seed,
+and the erased-input intervention is not a separately trained alternative.
+
+The initial 61.46% apparent reuse included finished environment slots. Among
+active decisions on the benchmark teacher trajectories, **85.86% require a map
+refresh**, leaving only 14.14% that can reuse the map encoding. Discovery and
+first-time visitation both invalidate this exact cache. Thus substantial savings
+were unlikely on this trajectory distribution, even with free cache management.
+
+Final performance numbers are in `results/native-cached-exact-seed0.json`, under
+`replay_benchmark`. The benchmark warms each policy and repeats the same
+96-step, 32-environment trajectory 20 times. The exact variants use a compiled
+readout; the coarse reference uses its established CUDA-graph implementation.
+Consequently the coarse/exact comparison includes implementation differences,
+whereas exact cached/uncached measures the cache tradeoff directly. None of these
+are PPO decisions/second. The cache has not demonstrated a throughput win.
+
+| Policy-only replay | Decisions/second |
+|---|---:|
+| Coarse reference, optimized CUDA graph | 73,236 |
+| Exact addition, compiled readout, uncached | 12,696 |
+| Exact addition, compiled readout, cached | 10,520 |
+
+Caching was about 17% slower than uncached exact processing in this replay.
+
+Before the final benchmark, redundant coarse-map preprocessing was removed from
+the new policy. A parity check verifies identical prepared inputs to the version
+used for training; this change does not require retraining. The final correctness
+check also retains zero greedy disagreements between cached and uncached paths.
+
+The result argues against adopting this implementation. A next design would need
+to address both learning useful global spatial features and the low reuse rate,
+for example by separating persistent terrain geometry from rapidly changing
+visit information. That alternative has not been tested here.

@@ -5,8 +5,9 @@ frontiers, hidden terrain, or enemy locations enter the new map branch.
 """
 import torch
 from torch import nn
-from torch.nn import functional as F
 from native_remedies import ExactPolicy, SOURCE
+from symbolic_policy import categories
+from compact_policy import crop
 
 
 class SpatialMap(nn.Module):
@@ -31,6 +32,19 @@ class CachedExactPolicy(ExactPolicy):
         nn.init.zeros_(self.map_readout[-1].weight);nn.init.zeros_(self.map_readout[-1].bias)
         dy,dx=torch.meshgrid(torch.arange(-1,2),torch.arange(-1,2),indexing='ij')
         self.register_buffer('read_offsets',torch.stack([dx,dy],-1).reshape(1,9,2),persistent=False)
+
+    def prepare(self,g,s):
+        # Avoid constructing a coarse map here only to discard it. The readout
+        # constructs the retained coarse branch directly from this exact input.
+        n,_,h,w=g.shape;raw=crop(g,s[:,2:4],self.offsets)
+        local=torch.cat([categories(raw),(raw[:,4:5]>0).float()],1)
+        xy=s[:,None,None,2:4].long()+self.offsets
+        valid=((xy[...,0]>=0)&(xy[...,0]<w)&(xy[...,1]>=0)&(xy[...,1]<h))[:,None]
+        local[:,0:1]*=valid;local[:,1:2]=torch.where(valid,local[:,1:2],1.)
+        visible=raw[:,3:4].float()/255
+        tactical=torch.cat([visible,raw[:,6:].float()/255*visible],1)
+        exact=torch.cat([categories(g),(g[:,4:6]>0).float()],1)
+        return self._layout(local),self._layout(exact),self._layout(tactical),s[:,:2]
 
     def map_features(self,exact):
         return self.map_encoder(self._layout(exact[:,:5]))

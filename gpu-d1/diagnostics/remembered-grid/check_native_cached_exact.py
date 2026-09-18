@@ -3,7 +3,7 @@ import time
 import torch
 from run import save_json
 from native_cached_exact import make_model,CachedInference
-from native_remedies import make_model as base_model
+from native_remedies import make_model as base_model,ExactPolicy
 from native_curriculum import factory
 from fullsize_navigation import build_full
 from runtime import ROOT
@@ -16,6 +16,8 @@ def main():
         torch.testing.assert_close(model.encode(env.grid,env.stats),base.encode(env.grid,env.stats),rtol=1e-5,atol=1e-6)
         # Known terrain and stairs only; player location is read separately.
         p=model.prepare(env.grid,env.stats);assert (p[1][:,:4].sum(1)==1).all()
+        for a,b in zip(p,ExactPolicy.prepare(model,env.grid,env.stats)):
+            assert torch.equal(a,b)
         packed=torch.nn.functional.pixel_unshuffle(p[1][:,:5],2)
         assert torch.equal(torch.nn.functional.pixel_shuffle(packed,2),p[1][:,:5])
         # Activate the new branch before checking cache parity.

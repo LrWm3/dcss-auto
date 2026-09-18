@@ -2,12 +2,12 @@
   "passed": true,
   "initial_source_parity": true,
   "lossless_space_to_depth": true,
-  "cache_max_logit_error": 0.001953125,
+  "cache_max_logit_error": 0.0078125,
   "greedy_disagreements": 0,
   "trajectory_refresh_fraction": 0.3854166666666667,
   "position_only_reuses_cache": true,
   "weight_update_invalidates": true,
-  "encoder_gradient_l1": 1.8456808074843138,
+  "encoder_gradient_l1": 1.8456813979428262,
   "batch": 32,
   "map_shape": [
     70,
@@ -16,12 +16,12 @@
   "timing_scope": "Eager AMP policy-only teacher-trajectory replay, includes preprocessing and cache checks; excludes environment and gradient updates. Not PPO throughput.",
   "timings": {
     "uncached": {
-      "seconds": 2.862256133928895,
-      "decisions_per_second": 2146.558418434201
+      "seconds": 0.6583983279999757,
+      "decisions_per_second": 9331.736942078363
     },
     "cached": {
-      "seconds": 2.9210256598889828,
-      "decisions_per_second": 2103.3707729337475
+      "seconds": 0.6872984850000421,
+      "decisions_per_second": 8939.347509255202
     }
   }
 }
