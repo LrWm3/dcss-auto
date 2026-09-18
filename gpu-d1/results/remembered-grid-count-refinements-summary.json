@@ -1,0 +1,416 @@
+{
+  "scope": "One seed; synthetic 32x32 navigation, supervised plus learner-state demonstrations. Network-only PPO cost on 80x70, not a PPO learning run.",
+  "rows": [
+    {
+      "kind": "counts",
+      "selected_update": 12000,
+      "training_seconds": 183.14623893564567,
+      "collected_decisions": 1142554,
+      "main": {
+        "known_stairs": {
+          "exit": 0.375,
+          "death": 0.0,
+          "timeout": 0.625,
+          "turns": 145.54296875,
+          "kills": 0.0,
+          "reversals": 124.58984375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.63671875,
+          "death": 0.0,
+          "timeout": 0.36328125,
+          "turns": 127.33203125,
+          "kills": 0.0,
+          "reversals": 76.7265625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.34375,
+          "kills": 0.0,
+          "reversals": 0.03125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "long": {
+        "known_stairs": {
+          "exit": 0.1171875,
+          "death": 0.0,
+          "timeout": 0.8828125,
+          "turns": 397.7109375,
+          "kills": 0.0,
+          "reversals": 379.1640625,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "exploration": {
+          "exit": 0.3359375,
+          "death": 0.0,
+          "timeout": 0.6640625,
+          "turns": 366.96875,
+          "kills": 0.0,
+          "reversals": 297.1328125,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "threat_backtrack": {
+          "exit": 0.65625,
+          "death": 0.0,
+          "timeout": 0.34375,
+          "turns": 188.3125,
+          "kills": 0.0,
+          "reversals": 169.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "sampled": {
+        "known_stairs": {
+          "exit": 0.6171875,
+          "death": 0.0,
+          "timeout": 0.3828125,
+          "turns": 115.5859375,
+          "kills": 0.0,
+          "reversals": 61.58203125,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.66796875,
+          "death": 0.0,
+          "timeout": 0.33203125,
+          "turns": 132.73828125,
+          "kills": 0.0,
+          "reversals": 46.375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.78125,
+          "kills": 0.0,
+          "reversals": 0.375,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "network_decisions_per_second": 19681.583858021695,
+      "amp": {
+        "known_stairs": {
+          "exit": 0.375,
+          "death": 0.0,
+          "timeout": 0.625,
+          "turns": 145.54296875,
+          "kills": 0.0,
+          "reversals": 124.58984375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.6328125,
+          "death": 0.0,
+          "timeout": 0.3671875,
+          "turns": 127.7734375,
+          "kills": 0.0,
+          "reversals": 77.4296875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.34375,
+          "kills": 0.0,
+          "reversals": 0.03125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      }
+    },
+    {
+      "kind": "counts2",
+      "selected_update": 12000,
+      "training_seconds": 190.4248908329755,
+      "collected_decisions": 1065225,
+      "main": {
+        "known_stairs": {
+          "exit": 0.4921875,
+          "death": 0.0,
+          "timeout": 0.5078125,
+          "turns": 123.3046875,
+          "kills": 0.0,
+          "reversals": 99.35546875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.7578125,
+          "death": 0.0,
+          "timeout": 0.2421875,
+          "turns": 105.8671875,
+          "kills": 0.0,
+          "reversals": 50.046875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.53125,
+          "kills": 0.0,
+          "reversals": 0.0625,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "long": {
+        "known_stairs": {
+          "exit": 0.1640625,
+          "death": 0.0,
+          "timeout": 0.8359375,
+          "turns": 378.9609375,
+          "kills": 0.0,
+          "reversals": 357.046875,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "exploration": {
+          "exit": 0.546875,
+          "death": 0.0,
+          "timeout": 0.453125,
+          "turns": 290.625,
+          "kills": 0.0,
+          "reversals": 199.0625,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "threat_backtrack": {
+          "exit": 0.78125,
+          "death": 0.0,
+          "timeout": 0.21875,
+          "turns": 127.40625,
+          "kills": 0.0,
+          "reversals": 108.875,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "sampled": {
+        "known_stairs": {
+          "exit": 0.7421875,
+          "death": 0.0,
+          "timeout": 0.2578125,
+          "turns": 92.83984375,
+          "kills": 0.0,
+          "reversals": 45.29296875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.89453125,
+          "death": 0.0,
+          "timeout": 0.10546875,
+          "turns": 92.0390625,
+          "kills": 0.0,
+          "reversals": 18.109375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.40625,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "network_decisions_per_second": 8250.304810842177,
+      "amp": {
+        "known_stairs": {
+          "exit": 0.4921875,
+          "death": 0.0,
+          "timeout": 0.5078125,
+          "turns": 123.3046875,
+          "kills": 0.0,
+          "reversals": 99.35546875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.7578125,
+          "death": 0.0,
+          "timeout": 0.2421875,
+          "turns": 105.734375,
+          "kills": 0.0,
+          "reversals": 50.046875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.53125,
+          "kills": 0.0,
+          "reversals": 0.0625,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      }
+    },
+    {
+      "kind": "count_edges",
+      "selected_update": 12000,
+      "training_seconds": 231.2081988051068,
+      "collected_decisions": 1153686,
+      "main": {
+        "known_stairs": {
+          "exit": 0.3671875,
+          "death": 0.0,
+          "timeout": 0.6328125,
+          "turns": 147.11328125,
+          "kills": 0.0,
+          "reversals": 126.65625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.5234375,
+          "death": 0.0,
+          "timeout": 0.4765625,
+          "turns": 150.875,
+          "kills": 0.0,
+          "reversals": 103.4140625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.09375,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "long": {
+        "known_stairs": {
+          "exit": 0.046875,
+          "death": 0.0,
+          "timeout": 0.953125,
+          "turns": 427.8359375,
+          "kills": 0.0,
+          "reversals": 413.109375,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "exploration": {
+          "exit": 0.375,
+          "death": 0.0,
+          "timeout": 0.625,
+          "turns": 350.6875,
+          "kills": 0.0,
+          "reversals": 286.609375,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "threat_backtrack": {
+          "exit": 0.34375,
+          "death": 0.0,
+          "timeout": 0.65625,
+          "turns": 335.59375,
+          "kills": 0.0,
+          "reversals": 326.625,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "sampled": {
+        "known_stairs": {
+          "exit": 0.625,
+          "death": 0.0,
+          "timeout": 0.375,
+          "turns": 116.16796875,
+          "kills": 0.0,
+          "reversals": 61.3046875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.61328125,
+          "death": 0.0,
+          "timeout": 0.38671875,
+          "turns": 144.65625,
+          "kills": 0.0,
+          "reversals": 53.109375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.71875,
+          "kills": 0.0,
+          "reversals": 0.3125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "network_decisions_per_second": 17623.339295944712,
+      "amp": {
+        "known_stairs": {
+          "exit": 0.3671875,
+          "death": 0.0,
+          "timeout": 0.6328125,
+          "turns": 147.11328125,
+          "kills": 0.0,
+          "reversals": 126.65625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.51953125,
+          "death": 0.0,
+          "timeout": 0.48046875,
+          "turns": 151.87890625,
+          "kills": 0.0,
+          "reversals": 104.453125,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.09375,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      }
+    }
+  ]
+}
