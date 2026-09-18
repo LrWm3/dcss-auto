@@ -25,7 +25,7 @@ def main():
             for x,y in zip(aa,bb):assert (x['scenario'],x['map'],x['kind'])==(y['scenario'],y['map'],y['kind'])
             pair[split]={name:{'rescued':sum(x['exit']==0 and y['exit']==1 for x,y in zip(aa,bb) if x['kind']==k),'lost':sum(x['exit']==1 and y['exit']==0 for x,y in zip(aa,bb) if x['kind']==k)} for k,name in enumerate(['known_stairs','exploration','threat_backtrack'])}
         paired[base+' -> '+new]=pair
-    summary=dict(scope='One training seed per arm; equal supervised budget, synthetic 32x32 navigation. Reuses previous no-global-visit arms. Network-only PPO estimates at 80x70, no PPO learning.',rows=rows,paired_episode_outcomes=paired)
+    summary=dict(scope='One training seed per arm; equal supervised budget, synthetic 32x32 navigation. Reuses previously completed comparison arms. Network-only PPO estimates at 80x70, no PPO learning.',rows=rows,paired_episode_outcomes=paired)
     (RESULTS/f'remembered-grid-{stem}-summary.json').write_text(json.dumps(summary,indent=2)+'\n')
     lines=['## Results','', '| Global summary | Known stairs | Exploration | Long known stairs | Long exploration |','|---|---:|---:|---:|---:|']
     for r in rows:lines.append(f"| {r['kind']} | {r['main']['known_stairs']['exit']:.2%} | {r['main']['exploration']['exit']:.2%} | {r['long']['known_stairs']['exit']:.2%} | {r['long']['exploration']['exit']:.2%} |")

@@ -154,3 +154,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Finer count blocks and observed boundary crossings](COUNT-REFINEMENTS.md) reports the completed seed-0 comparison, full-size compute estimates, and a diagnostic of the original model's dependence on global visited history.
 
 [Visited-tile count follow-up](VISIT-COUNTS.md) tests a sixth global count channel at both 4x4 and 2x2 resolution. Both seed-0 runs and their held-out/compute evaluations are complete.
+
+[Exact visited-bit follow-up](VISIT-BITS.md) preserves the four within-block visited positions at 2x2 resolution. The completed seed-0 run improves known-stair navigation but remains mixed on longer exploration.
