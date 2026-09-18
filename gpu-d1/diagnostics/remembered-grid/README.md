@@ -180,3 +180,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Middle-distance remedies](NATIVE-REMEDIES.md) audits demonstration coverage and compares mixed-controller training, balanced pure-learner DAgger, and an exact remembered-map residual encoder.
 
 - [Full-history recurrent replay comparison](NATIVE-HISTORY-REPLAY.md)
+
+- [Observation-restricted deterministic teacher](OBSERVATION-TEACHER.md)

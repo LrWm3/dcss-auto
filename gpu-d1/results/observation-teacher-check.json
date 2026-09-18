@@ -1,0 +1,8 @@
+{
+  "local_stair_path": true,
+  "masked_action_fallback": true,
+  "exit_action": true,
+  "reset_reproducible": true,
+  "world_isolation": true,
+  "interface": "Only local categorical crop, coarse global map and mask. No other inputs or simulator callbacks."
+}
