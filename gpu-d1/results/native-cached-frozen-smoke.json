@@ -1,0 +1,128 @@
+{
+  "arm": "exact",
+  "configuration": {
+    "seed": 0,
+    "updates": 1,
+    "smoke": true,
+    "lr": 0.0001,
+    "amp_initial_scale": 1024,
+    "burn_in": 16,
+    "replay_history": "legacy",
+    "learn_steps": 16,
+    "sequences_per_buffer_batch": 16,
+    "buffer_capacity": 1024,
+    "expert_loss_fraction": 0.5,
+    "learner_teacher_probability": 0,
+    "deadline": 1024,
+    "collection_cap": 512
+  },
+  "groups": [
+    "no_known_stairs",
+    "known_stairs_in_crop",
+    "known_stairs_outside_crop"
+  ],
+  "source_sha256": "c458d7c6bd0be430fbb26dbb56a2be2deceff6c0a544800246bdb9ff84730ca5",
+  "script_sha256": "c69e5c485b6bcda9c6f44d5c800d786aff730ad9607606f7ca367a2d813123ed",
+  "parameters": 975372,
+  "history": [
+    {
+      "step": 1,
+      "training_seconds": 21.637882139000112,
+      "decisions": 7668,
+      "examples": 470,
+      "overflow_skips": 0,
+      "loss": 1.0444107055664062,
+      "validation": {},
+      "expert": {
+        "collected": [
+          2520,
+          223,
+          100
+        ],
+        "retained": [
+          2520,
+          223,
+          100
+        ],
+        "sampled": [
+          110,
+          61,
+          53
+        ],
+        "sequences": 190
+      },
+      "learner": {
+        "collected": [
+          1295,
+          1290,
+          2240
+        ],
+        "retained": [
+          1295,
+          1290,
+          2240
+        ],
+        "sampled": [
+          80,
+          70,
+          96
+        ],
+        "sequences": 314
+      }
+    }
+  ],
+  "scope": "Only exact-map encoder/readout train; original local/global/tactical encoders, GRU, policy and value heads remain frozen. Same middle-band balanced DAgger screen; not PPO.",
+  "initial_feature_parity": true,
+  "baseline": {},
+  "selected": {
+    "step": 1,
+    "training_seconds": 21.637882139000112,
+    "decisions": 7668,
+    "examples": 470,
+    "overflow_skips": 0,
+    "loss": 1.0444107055664062,
+    "validation": {},
+    "expert": {
+      "collected": [
+        2520,
+        223,
+        100
+      ],
+      "retained": [
+        2520,
+        223,
+        100
+      ],
+      "sampled": [
+        110,
+        61,
+        53
+      ],
+      "sequences": 190
+    },
+    "learner": {
+      "collected": [
+        1295,
+        1290,
+        2240
+      ],
+      "retained": [
+        1295,
+        1290,
+        2240
+      ],
+      "sampled": [
+        80,
+        70,
+        96
+      ],
+      "sequences": 314
+    }
+  },
+  "frozen_base": true,
+  "frozen_parameters_unchanged": true,
+  "new_branch_changed": true,
+  "trainable_parameters": 745896,
+  "training_seconds": 21.65995669499989,
+  "finished": true
+}

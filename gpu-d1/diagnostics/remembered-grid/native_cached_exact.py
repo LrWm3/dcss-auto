@@ -65,6 +65,10 @@ class CachedExactPolicy(ExactPolicy):
         glob=exact.new_zeros(n,6,256)
         glob.scatter_add_(2,self.exact_bins[None,None].expand(n,6,-1),exact.flatten(2))
         glob=torch.cat([glob[:,:4]/self.exact_counts[None,None],glob[:,4:].clamp(0,1)],1).reshape(n,6,16,16)
+        if intervene=='shuffle_exact':
+            # Diagnostic only: give each world another world's encoded map.
+            # Keep the original local/coarse observations and player position.
+            features=tuple(x.roll(1,0) for x in features)
         residual=self.read_map(exact,features)
         if intervene=='erase_exact':residual=torch.zeros_like(residual)
         global_features=self.global_net(self._layout(glob))+residual

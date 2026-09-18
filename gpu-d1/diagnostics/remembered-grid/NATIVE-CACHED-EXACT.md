@@ -117,3 +117,32 @@ The result argues against adopting this implementation. A next design would need
 to address both learning useful global spatial features and the low reuse rate,
 for example by separating persistent terrain geometry from rapidly changing
 visit information. That alternative has not been tested here.
+
+## Frozen-base follow-up
+
+`native_cached_screen.py --freeze-base --name native-cached-frozen-seed0
+--updates 2000` starts from the same original curriculum checkpoint with the
+same zero-initialized map residual. Only `map_encoder` and `map_readout` train;
+all original encoders, recurrent weights, policy and value heads stay frozen.
+Gradients still pass through the frozen recurrent network into the new branch.
+Every saved report checks that original parameters remain bitwise unchanged.
+The smoke run passed and updated the new readout without changing the base.
+Its first step cannot update the encoder because the residual output layer
+starts at zero; module-level change checks are recorded in the full run.
+
+The 2,000-update experiment and `native_frozen_analysis.py` are queued together.
+Diagnostics compare source, joint-trained and frozen-branch policies on the
+training layouts; normal held-out evaluation remains validation-selected.
+Erasing the frozen variant's residual must restore source features and should
+restore source rollout success. A separate validation intervention substitutes
+another environment's spatial features only in the new branch, preserving
+the current world's local/coarse observations and player position. This is an
+inconsistent-observation sensitivity test, not proof of geometric reasoning.
+
+Interpretation: training-only gains suggest overfitting; frozen-base gains where
+joint training failed implicate interference with the existing policy; failure
+even with a frozen base leaves feature processing, training objective, and
+compatibility with the fixed recurrent network unresolved. Freezing also reduces
+adaptability, so a negative result would not isolate one cause. Controlled
+barrier/detour/dead-end and symmetry tests are proposed follow-ups, not part of
+this initial queued screen.
