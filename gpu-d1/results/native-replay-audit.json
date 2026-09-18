@@ -1,0 +1,105 @@
+{
+  "scope": "Read-only probe of greedy middle-band training trajectories, fixed parameters. Compare live cell execution against 16/31/64-step burn-in and full-history fused replay; measured every16 steps after64. All share identical encoded observations. This is not a longer-memory training experiment.",
+  "source": {
+    "16": {
+      "states": 480,
+      "action_disagreements": 174,
+      "kl": 0.3429050792008638,
+      "teacher_nll": 1.657566879192988,
+      "live_teacher_nll": 1.8211292952299118,
+      "action_disagreement_fraction": 0.3625
+    },
+    "31": {
+      "states": 480,
+      "action_disagreements": 156,
+      "kl": 0.22809995294859012,
+      "teacher_nll": 1.6377505342165628,
+      "live_teacher_nll": 1.8211292952299118,
+      "action_disagreement_fraction": 0.325
+    },
+    "64": {
+      "states": 480,
+      "action_disagreements": 137,
+      "kl": 0.1423330371859876,
+      "teacher_nll": 1.644854042927424,
+      "live_teacher_nll": 1.8211292952299118,
+      "action_disagreement_fraction": 0.28541666666666665
+    },
+    "full": {
+      "states": 480,
+      "action_disagreements": 0,
+      "kl": 8.947370472670949e-08,
+      "teacher_nll": 1.8210078448057174,
+      "live_teacher_nll": 1.8211292952299118,
+      "action_disagreement_fraction": 0.0
+    }
+  },
+  "balanced": {
+    "16": {
+      "states": 497,
+      "action_disagreements": 164,
+      "kl": 0.2945666703539835,
+      "teacher_nll": 1.8787289251024335,
+      "live_teacher_nll": 1.8413885028309505,
+      "action_disagreement_fraction": 0.3299798792756539
+    },
+    "31": {
+      "states": 497,
+      "action_disagreements": 133,
+      "kl": 0.21092198243443394,
+      "teacher_nll": 1.7827734160471251,
+      "live_teacher_nll": 1.8413885028309505,
+      "action_disagreement_fraction": 0.2676056338028169
+    },
+    "64": {
+      "states": 497,
+      "action_disagreements": 111,
+      "kl": 0.13421757189037506,
+      "teacher_nll": 1.7607290509720923,
+      "live_teacher_nll": 1.8413885028309505,
+      "action_disagreement_fraction": 0.22334004024144868
+    },
+    "full": {
+      "states": 497,
+      "action_disagreements": 0,
+      "kl": 8.916737995855008e-08,
+      "teacher_nll": 1.84143666434336,
+      "live_teacher_nll": 1.8413885028309505,
+      "action_disagreement_fraction": 0.0
+    }
+  },
+  "exact": {
+    "16": {
+      "states": 550,
+      "action_disagreements": 173,
+      "kl": 0.1728987536647103,
+      "teacher_nll": 2.1979055907509544,
+      "live_teacher_nll": 2.1704347003589977,
+      "action_disagreement_fraction": 0.3145454545454546
+    },
+    "31": {
+      "states": 550,
+      "action_disagreements": 147,
+      "kl": 0.11017561523751779,
+      "teacher_nll": 2.185825498754328,
+      "live_teacher_nll": 2.1704347003589977,
+      "action_disagreement_fraction": 0.2672727272727273
+    },
+    "64": {
+      "states": 550,
+      "action_disagreements": 88,
+      "kl": 0.057729953147266894,
+      "teacher_nll": 2.178206402171742,
+      "live_teacher_nll": 2.1704347003589977,
+      "action_disagreement_fraction": 0.16
+    },
+    "full": {
+      "states": 550,
+      "action_disagreements": 1,
+      "kl": 1.0254011310838574e-07,
+      "teacher_nll": 2.1703853225708007,
+      "live_teacher_nll": 2.1704347003589977,
+      "action_disagreement_fraction": 0.0018181818181818182
+    }
+  }
+}
