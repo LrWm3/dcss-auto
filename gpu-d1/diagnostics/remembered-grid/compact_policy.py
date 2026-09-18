@@ -11,8 +11,8 @@ def crop(x,pos,offsets):
     out=x.flatten(2).gather(2,ix[:,None].expand(-1,x.shape[1],-1))
     return out.reshape(len(x),x.shape[1],*offsets.shape[1:3])*valid[:,None]
 
-def count_map(terrain):
-    """4x4 counts / 16. Frontier = known floor with an unknown 8-neighbor.
+def count_map(terrain,block=4,boundary=False):
+    """Block counts / block area. Frontier = known floor with an unknown 8-neighbor.
 
     Uses only observed floor/wall/stairs. Outside-array padding is not an
     unknown neighbor, and padded block cells contribute zero to all counts.
@@ -20,11 +20,39 @@ def count_map(terrain):
     floor=terrain[:,0:1]>0;wall=terrain[:,1:2]>0;seen=floor|wall
     frontier=floor&(F.max_pool2d((~seen).float(),3,1,1)>0)
     channels=torch.cat([seen,frontier,floor,wall,terrain[:,2:3]>0],1).float()
-    h,w=terrain.shape[-2:];return F.avg_pool2d(F.pad(channels,(0,(-w)%4,0,(-h)%4)),4)
+    h,w=terrain.shape[-2:];counts=F.avg_pool2d(F.pad(channels,(0,(-w)%block,0,(-h)%block)),block)
+    return torch.cat([counts,boundary_map(floor,block)],1) if boundary else counts
+
+def boundary_map(floor,block=4):
+    """Known-floor legal crossing counts to each of eight neighboring blocks.
+
+    Cardinal neighbors admit up to 3*block-2 crossings (including diagonals
+    crossing that edge); diagonal blocks admit one corner-to-corner crossing.
+    Does not compute reachability between entrances inside a block.
+    """
+    n,_,h,w=floor.shape;gh=(h+block-1)//block;gw=(w+block-1)//block
+    tiles=F.pad(floor,(0,(-w)%block,0,(-h)%block)).reshape(n,gh,block,gw,block).permute(0,1,3,2,4)
+    def neighbor(x,dx,dy):
+        out=torch.roll(x,shifts=(-dy,-dx),dims=(1,2))
+        if dy<0:out[:,0]=False
+        if dy>0:out[:,-1]=False
+        if dx<0:out[:,:,0]=False
+        if dx>0:out[:,:,-1]=False
+        return out
+    sides=[tiles[...,0,:],tiles[...,:,-1],tiles[...,-1,:],tiles[...,:,0]]
+    directions=[(0,-1),(1,0),(0,1),(-1,0)];edges=[]
+    for i,(dx,dy) in enumerate(directions):
+        src=sides[i];dst=neighbor(sides[(i+2)%4],dx,dy)
+        total=(src&dst).sum(-1)+(src[...,1:]&dst[...,:-1]).sum(-1)+(src[...,:-1]&dst[...,1:]).sum(-1)
+        edges.append(total.float()/(3*block-2))
+    for dx,dy in [(1,-1),(1,1),(-1,1),(-1,-1)]:
+        sy=0 if dy<0 else -1;sx=0 if dx<0 else -1;ty=-1 if dy<0 else 0;tx=-1 if dx<0 else 0
+        edges.append((tiles[...,sy,sx]&neighbor(tiles[...,ty,tx],dx,dy)).float())
+    return torch.stack(edges,1)
 
 class CompactPolicy(nn.Module):
     def __init__(self,kind='attn',amp=False):
-        super().__init__();self.kind=kind;self.amp=amp
+        super().__init__();self.kind=kind;self.amp=amp;self.block=2 if kind=='counts2' else 4
         self.local=nn.Sequential(nn.Conv2d(11,16,3,padding=1),nn.ReLU(),nn.Conv2d(16,16,3,padding=1),nn.ReLU(),nn.Flatten(),nn.Linear(16*15*15,64),nn.ReLU())
         for name,r in [('local_xy',7),('read_xy',1)]:
             yy,xx=torch.meshgrid(torch.arange(-r,r+1),torch.arange(-r,r+1),indexing='ij');self.register_buffer(name,torch.stack([xx,yy],-1)[None],persistent=False)
@@ -36,7 +64,7 @@ class CompactPolicy(nn.Module):
             width=194
         else:
             self.encoder=nn.Sequential(nn.Conv2d(48,24,1),nn.ReLU()) if kind=='coarse' else nn.Identity()
-            channels=24 if kind=='coarse' else 5
+            channels=24 if kind=='coarse' else 13 if kind=='count_edges' else 5
             self.dynamic=nn.Sequential(nn.Conv2d(channels+3,32,3,padding=1),nn.ReLU(),nn.Conv2d(32,32,3,padding=2,dilation=2),nn.ReLU(),nn.Conv2d(32,32,3,padding=4,dilation=4),nn.ReLU())
             self.readout=nn.Sequential(nn.Linear(32*25,128),nn.ReLU());width=196
         self.shared=nn.Sequential(nn.Linear(width,128),nn.ReLU());self.policy=nn.Linear(128,19);self.value=nn.Linear(128,1)
@@ -45,7 +73,7 @@ class CompactPolicy(nn.Module):
     def terrain(grid):return grid[:,[0,1,4]].contiguous()
     def encode_map(self,terrain):
         if self.kind=='attn':return self.encoder(terrain)
-        if self.kind=='counts':return count_map(terrain)
+        if self.kind in ('counts','counts2','count_edges'):return count_map(terrain,self.block,self.kind=='count_edges')
         h,w=terrain.shape[-2:];packed=F.pixel_unshuffle(F.pad(terrain.float()/255.,(0,(-w)%4,0,(-h)%4)),4)
         return self.encoder(packed)
     def read_map(self,grid,mask,stats,memory,intervene=None,critic=False):
@@ -56,7 +84,7 @@ class CompactPolicy(nn.Module):
             pooled=F.avg_pool2d(memory,4,ceil_mode=True);gh,gw=pooled.shape[-2:]
         else:pooled=memory;gh,gw=memory.shape[-2:]
         yy,xx=torch.meshgrid(torch.arange(gh,device=grid.device),torch.arange(gw,device=grid.device),indexing='ij')
-        centers=torch.stack([xx*4+1.5,yy*4+1.5]).float()[None];relative=(centers-pos[:,:,None,None])/stats.new_tensor([w,h])[None,:,None,None]
+        centers=torch.stack([xx*self.block+(self.block-1)/2,yy*self.block+(self.block-1)/2]).float()[None];relative=(centers-pos[:,:,None,None])/stats.new_tensor([w,h])[None,:,None,None]
         if self.kind=='attn':
             tokens=torch.cat([pooled.float(),relative],1).flatten(2).transpose(1,2)
             k=self.keys(tokens);v=self.values(tokens);q=self.query(torch.cat([lo,patch,stats[:,:2],pos/stats.new_tensor([w,h])],1))[:,None]
@@ -65,12 +93,12 @@ class CompactPolicy(nn.Module):
             if intervene=='erase_global':gl=torch.zeros_like(gl)
             z=torch.cat([lo,gl,stats[:,:2]],1)
         else:
-            player=((xx[None]==(pos[:,0]/4).long()[:,None,None])&(yy[None]==(pos[:,1]/4).long()[:,None,None])).float()[:,None]
+            player=((xx[None]==(pos[:,0]/self.block).long()[:,None,None])&(yy[None]==(pos[:,1]/self.block).long()[:,None,None])).float()[:,None]
             mixed=self.dynamic(torch.cat([memory.float(),relative,player],1))
-            near=crop(mixed,(pos/4).floor(),self.read_xy).flatten(1);whole=F.adaptive_avg_pool2d(mixed,(4,4)).flatten(1)
+            near=crop(mixed,(pos/self.block).floor(),self.read_xy).flatten(1);whole=F.adaptive_avg_pool2d(mixed,(4,4)).flatten(1)
             gl=self.readout(torch.cat([near,whole],1))
             if intervene=='erase_global':gl=torch.zeros_like(gl)
-            z=torch.cat([lo,gl,stats[:,:2],(pos%4)/3],1)
+            z=torch.cat([lo,gl,stats[:,:2],(pos%self.block)/(self.block-1)],1)
         hidden=self.shared(z);logits=self.policy(hidden).float().masked_fill(mask==0,-1e9)
         return (logits,self.value(hidden).float().squeeze(-1)) if critic else logits
     def forward(self,grid,mask,stats,intervene=None):

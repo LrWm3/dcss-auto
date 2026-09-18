@@ -7,7 +7,7 @@ from runtime import OUT,ROOT,Env,HERE
 from compact_policy import CompactPolicy,ExactCache
 import probes
 
-KINDS=['attn','coarse','counts']
+KINDS=['attn','coarse','counts','counts2','count_edges']
 def provenance(kind):
     folder=OUT/('terrain-'+kind)
     return dict(seed=0,selected_update=json.loads((folder/'selection.json').read_text())['step'],training=json.loads((folder/'training.json').read_text()),source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),HERE/'compact_policy.py',HERE/'run.py']},checkpoint_sha256=hashlib.sha256((folder/'best.pt').read_bytes()).hexdigest(),map_manifest_sha256=hashlib.sha256((OUT/'maps/manifest.json').read_bytes()).hexdigest())
@@ -69,11 +69,13 @@ def benchmark(kind,iterations=30):
     save_json(ROOT/'results'/f'remembered-grid-compact-{kind}-performance.json',result);print('performance',kind,rows,flush=True)
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['remaining','quality','benchmark']);ap.add_argument('--kind',choices=KINDS);args=ap.parse_args();torch.set_num_threads(1);torch.backends.cudnn.benchmark=True
-    if args.mode=='remaining':
-        for kind in ['coarse','counts']:
+    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['remaining','refine_counts','quality','benchmark']);ap.add_argument('--kind',choices=KINDS);args=ap.parse_args();torch.set_num_threads(1);torch.backends.cudnn.benchmark=True
+    if args.mode in ('remaining','refine_counts'):
+        trained=['counts2','count_edges'] if args.mode=='refine_counts' else ['coarse','counts']
+        evaluated=trained if args.mode=='refine_counts' else ['attn','coarse','counts']
+        for kind in trained:
             with (OUT/f'compact-{kind}-training.log').open('w') as log:subprocess.run([str(ROOT/'.venv/bin/python'),str(HERE/'run.py'),'--arm','terrain','--architecture',kind,'--updates','12000'],stdout=log,stderr=subprocess.STDOUT,check=True)
-        for kind in KINDS:
+        for kind in evaluated:
             quality(kind);benchmark(kind);torch.cuda.empty_cache()
     elif args.mode=='quality':quality(args.kind)
     else:benchmark(args.kind)

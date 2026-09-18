@@ -69,15 +69,15 @@ def collect(e,b,model=None,kinds=(0,1,2),beta=1,steps=128):
     return decisions
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['memory','terrain','local'],default='memory');p.add_argument('--architecture',choices=['conv','spatial','packed','packed2','cropped','thin','cached','attn','coarse','counts'],default='conv');p.add_argument('--updates',type=int,default=3000);p.add_argument('--resume',action='store_true');p.add_argument('--evaluate',action='store_true');p.add_argument('--preflight',action='store_true');p.add_argument('--compile',action='store_true');args=p.parse_args()
-    if args.architecture in ('cached','attn','coarse','counts') and args.arm!='terrain':p.error('cached currently supports only --arm terrain')
+    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['memory','terrain','local'],default='memory');p.add_argument('--architecture',choices=['conv','spatial','packed','packed2','cropped','thin','cached','attn','coarse','counts','counts2','count_edges'],default='conv');p.add_argument('--updates',type=int,default=3000);p.add_argument('--resume',action='store_true');p.add_argument('--evaluate',action='store_true');p.add_argument('--preflight',action='store_true');p.add_argument('--compile',action='store_true');args=p.parse_args()
+    if args.architecture in ('cached','attn','coarse','counts','counts2','count_edges') and args.arm!='terrain':p.error('cached currently supports only --arm terrain')
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True
     if shutil.disk_usage(HERE).free<10*1024**3:raise RuntimeError('Need 10GiB free')
     build();folder=OUT/(args.arm if args.architecture=='conv' else args.arm+'-'+args.architecture);folder.mkdir(exist_ok=True)
     lock=(folder/'training.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     from cached_policy import CachedMapPolicy
     from compact_policy import CompactPolicy
-    model=CompactPolicy(args.architecture).cuda() if args.architecture in ('attn','coarse','counts') else CachedMapPolicy().cuda() if args.architecture=='cached' else {'conv':Policy,'spatial':SpatialPolicy,'packed':PackedPolicy,'packed2':Packed2Policy,'cropped':CroppedSpatialPolicy,'thin':ThinSpatialPolicy}[args.architecture](args.arm).cuda();
+    model=CompactPolicy(args.architecture).cuda() if args.architecture in ('attn','coarse','counts','counts2','count_edges') else CachedMapPolicy().cuda() if args.architecture=='cached' else {'conv':Policy,'spatial':SpatialPolicy,'packed':PackedPolicy,'packed2':Packed2Policy,'cropped':CroppedSpatialPolicy,'thin':ThinSpatialPolicy}[args.architecture](args.arm).cuda();
     if args.architecture in ('packed','packed2','cropped','thin'):model.to(memory_format=torch.channels_last)
     scaler=torch.amp.GradScaler('cuda',enabled=args.architecture in ('packed','packed2','cropped','thin'))
     optimizer=torch.optim.Adam(model.parameters(),lr=.0003);start_step=0;decisions=0
