@@ -1,0 +1,30 @@
+{
+  "rows": [
+    {
+      "kind": "ff",
+      "parameters": 130020,
+      "inference_batch": 512,
+      "learning_decisions_per_batch": 256,
+      "inference_ms": 6.611932705466947,
+      "optimizer_ms": 6.420012734209498,
+      "network_only_four_pass_decisions_per_second": 8831.844590533077
+    },
+    {
+      "kind": "gru",
+      "parameters": 229476,
+      "inference_batch": 512,
+      "learning_decisions_per_batch": 256,
+      "inference_ms": 5.7733298279345036,
+      "optimizer_ms": 21.4203111284102,
+      "network_only_four_pass_decisions_per_second": 2890.4374242822614
+    }
+  ],
+  "shape": [
+    70,
+    80
+  ],
+  "precision": "FP32",
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "scope": "Network-only synthetic cost, not PPO learning or end-to-end speed. Includes per-call symbolic preprocessing, four optimizer passes, and GRU 16-step burn-in plus 16-step truncated gradients. Synthetic advantages/returns; no meaningful learning claim. Previous compact benchmarks used AMP and batch 1024, so raw speed is not a matched benchmark comparison.",
+  "other_gpu_processes_at_end": []
+}

@@ -156,3 +156,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Visited-tile count follow-up](VISIT-COUNTS.md) tests a sixth global count channel at both 4x4 and 2x2 resolution. Both seed-0 runs and their held-out/compute evaluations are complete.
 
 [Exact visited-bit follow-up](VISIT-BITS.md) preserves the four within-block visited positions at 2x2 resolution. The completed seed-0 run improves known-stair navigation but remains mixed on longer exploration.
+
+[Two-scale symbolic maps and recurrence](SYMBOLIC.md) compares a 15x15 categorical local crop plus a 16x16 fractional global map, with feed-forward versus GRU sequence training. The GRU navigates much better but paired-goal and erasure tests show weak reliance on its global map.

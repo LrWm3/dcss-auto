@@ -32,3 +32,56 @@ gpu-d1/.venv/bin/python gpu-d1/diagnostics/remembered-grid/symbolic_suite.py
 ```
 
 The suite trains and evaluates feed-forward then GRU, sequentially. Logs: ignored `learning-runs/remembered-grid/symbolic-{ff,gru}.log`. Reports: `results/remembered-grid-symbolic-{ff,gru}.json`. Existing completed experiments remain unchanged.
+
+## Interpretation and follow-up diagnostics
+
+The recurrent arm is a strong navigation result on this fixture distribution: 91.80% main known-stair and 94.53% exploration success, versus 27.73%/58.98% for the feed-forward control. The GRU reaches 77.34%/81.25% on longer routes and 32/32 on longer threat backtracking. Feed-forward fails all 32 longer threat cases by waking the enemy and dying; the GRU has no deaths in these main/long tests. Remaining GRU failures are timeouts. Immediate reversals fall from 145/88 per main known-stair/exploration episode to 5.75/2.90. Training took 3.59 minutes for feed-forward and 9.07 minutes for GRU, excluding validation, with about 2.72M/2.63M valid supervised examples.
+
+**The gain is not evidence that the coarse global map has been learned well.** Resetting the GRU before every action produces zero success in all three main task groups and large reversal counts. In contrast, zeroing only its encoded global map while retaining recurrent state yields 92.97% known stairs, 92.58% exploration and 96.88% threat backtracking, close to normal performance. These are post-training observation/state interventions, not retraining; they demonstrate dependence under the tested conditions and do not establish what alternative training could learn.
+
+A more targeted check uses 24 pairs with identical local crops and player statistics, but different remembered stairs outside the crop. With fresh hidden state, the GRU chooses the teacher's correct initial direction in 56.25% of cases, solving both members of only **3/24 pairs**. Global erasure gives 50% and 0/24. Earlier compact models solved 24/24, though trained under a different replay/architecture protocol. Thus this policy shows little use of distant goal location on this diagnostic. Its main improvement is consistent with learned temporal control over local exploration/backtracking, rather than demonstrated global route selection. It has not solved the original representation problem in full.
+
+A useful next test would train on paired distant-goal examples that require different actions despite identical local histories, then check whether the GRU can learn to use the global information while retaining its navigation performance. Another control would retrain the GRU without global input. Neither is included in this run.
+
+The feed-forward and recurrent arms share inputs, CNN branches and replay protocol, but GRU has more parameters (229,476 vs 130,020), different initialization and policy-dependent replay. A single seed does not isolate every architectural or optimization effect. Comparison against older models also changes the sequence-training protocol. These remain supervised synthetic navigation demonstrations, not evidence of PPO improvement or full-size Crawl generalization.
+
+[Global-map erasure and paired-goal diagnostics](../../results/remembered-grid-symbolic-interventions.json).
+
+## Full-size compute measurement
+
+On 80x70 synthetic inputs, FP32, batch 512 inference and 256 learning decisions per optimizer batch:
+
+| Model | Inference batch ms | Optimizer batch ms | Four-pass network-only decisions/s |
+|---|---:|---:|---:|
+| Feed-forward | 6.61 | 6.42 | 8,832 |
+| GRU | 5.77 | 21.42 | 2,890 |
+
+The recurrent optimizer timing includes 16 no-gradient burn-in steps and 16 learning steps for 16 sequences. The estimate includes symbolic preprocessing each forward pass, action sampling, value evaluation, clipped PPO-shaped loss, gradients and Adam; synthetic advantages/returns are used purely to measure compute, not to train a useful PPO policy. It excludes the simulator, rollout buffer, GAE and full pipeline overhead. There were no competing GPU jobs. Both models use FP32; prior compact estimates used AMP and batch 1024, so do not interpret raw differences as a matched speed comparison. This is an unoptimized first recurrent implementation; it does not establish a speed advantage over earlier models.
+
+[Raw benchmark](../../results/remembered-grid-symbolic-performance.json). Reproduce with `symbolic_benchmark.py` only after training jobs have finished. `symbolic_interventions.py` reproduces the post-training checks; `symbolic_report.py` renders the result tables below.
+
+<!-- measured-results -->
+## Results
+
+| Model | Known stairs | Exploration | Long known stairs | Long exploration |
+|---|---:|---:|---:|---:|
+| ff | 27.73% | 58.98% | 10.94% | 38.28% |
+| gru | 91.80% | 94.53% | 77.34% | 81.25% |
+
+Greedy held-out exits: 256 episodes each main task, 128 each long task.
+
+| Model | Sampled known stairs | Sampled exploration | Main threat backtrack | Long threat backtrack |
+|---|---:|---:|---:|---:|
+| ff | 59.38% | 71.09% | 100.00% | 0.00% |
+| gru | 82.42% | 92.58% | 100.00% | 100.00% |
+
+| Model | Training seconds | Valid supervised examples | Collected decisions | Selected update |
+|---|---:|---:|---:|---:|
+| ff | 215.6 | 2,717,636 | 612,239 | 12,000 |
+| gru | 544.1 | 2,634,245 | 450,574 | 12,000 |
+
+Training time includes collection and optimization, excludes validation. Different valid-example counts result from terminal padding and policy-dependent trajectories; both arms receive 12,000 optimizer updates.
+
+Resetting GRU state before every evaluation action gives known_stairs: 0.00%, exploration: 0.00%, threat_backtrack: 0.00%. This post-training intervention measures reliance, not the performance of a retrained memoryless model.
+
+[Raw summary and provenance](../../results/remembered-grid-symbolic-summary.json).
