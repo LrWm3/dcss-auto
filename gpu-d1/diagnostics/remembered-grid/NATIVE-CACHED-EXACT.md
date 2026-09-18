@@ -146,3 +146,14 @@ compatibility with the fixed recurrent network unresolved. Freezing also reduces
 adaptability, so a negative result would not isolate one cause. Controlled
 barrier/detour/dead-end and symmetry tests are proposed follow-ups, not part of
 this initial queued screen.
+
+The frozen follow-up has now completed: selected at 1500 updates, with training
+and collection taking 236.3 seconds. Held-out middle success was 59.38% known
+stairs / 54.69% exploration; longer-route success was 21.88% / 32.03%.
+Training-layout success also declined relative to the source (69.92% / 54.30%
+versus 75.78% / 74.61%). Thus holding the original policy fixed did not rescue
+this branch; simple overfitting or damage to original weights is not a complete
+explanation. Frozen-parameter equality and source-feature restoration after
+erasure passed. AMP rollout outcomes after erasure differ slightly from earlier
+source runs despite FP32 feature parity, so exact trajectory identity is not
+claimed. Full diagnostics are in `native-cached-frozen-seed0.json`.

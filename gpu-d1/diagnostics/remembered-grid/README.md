@@ -184,3 +184,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 - [Observation-restricted deterministic teacher](OBSERVATION-TEACHER.md)
 
 - [Cached exact remembered geometry](NATIVE-CACHED-EXACT.md)
+
+- [Spatial processing versus analytical routing](ROUTE-COMPARISON.md)

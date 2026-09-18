@@ -1,0 +1,32 @@
+{
+  "arm": "recurrent",
+  "seed": 0,
+  "deadline": 1024,
+  "updates": 2000,
+  "history": [
+    {
+      "step": 1,
+      "training_seconds": 1.4491228700007923,
+      "decisions": 1813,
+      "loss": 1.6550209522247314,
+      "validation": {}
+    },
+    {
+      "step": 2,
+      "training_seconds": 1.4909664010010601,
+      "decisions": 1813,
+      "loss": 1.6140727996826172,
+      "validation": {}
+    }
+  ],
+  "scope": "From scratch; enemy-free native80x70; exact remembered terrain only. One physical step/decision. Planner alone receives frontier-region/stair candidate mask and persistent selected-goal marker. Analytical routing and different supervision are part of treatment. 1 vs 20 spatial updates; same parameter shapes. Not PPO.",
+  "source_sha256": "edd260ea79a942ecafb1839849c8c0a093a7f476a774c789bf918ccaaf4b1594",
+  "selected": {
+    "step": 1,
+    "training_seconds": 1.4491228700007923,
+    "decisions": 1813,
+    "loss": 1.6550209522247314,
+    "validation": {}
+  },
+  "finished": true
+}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "straight": true,
+  "detour": true,
+  "unknown_not_traversed": true,
+  "unreachable_stairs_excluded": true,
+  "continuation": true,
+  "spatial_recurrence_gradient": true
+}
