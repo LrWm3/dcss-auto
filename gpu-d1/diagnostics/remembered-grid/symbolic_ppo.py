@@ -28,9 +28,9 @@ def sequences(x):
 
 
 @torch.no_grad()
-def collect(env, model, policy, seed, gae_lambda=.95):
+def collect(env, model, policy, seed, gae_lambda=.95, limit=256):
     env.reset(seed=seed,labels=False);policy.reset_cache();rows=[];prepared=[];starts=[]
-    for t in range(256):
+    for t in range(limit):
         if t%16==0:
             starts.append(torch.zeros(env.batch,128,device='cuda') if policy.hidden is None else policy.hidden.clone())
         p=model.prepare(env.grid,env.stats);prepared.append(tuple(z.clone() for z in p))
@@ -39,7 +39,7 @@ def collect(env, model, policy, seed, gae_lambda=.95):
         # Graph outputs alias storage: save values before the next replay.
         value=value.clone();dist=torch.distributions.Categorical(logits=logits,validate_args=False)
         action=dist.sample();logp=dist.log_prob(action)
-        env.step(action,limit=256,labels=False)
+        env.step(action,limit=limit,labels=False)
         done=active & ~env.active;reward=(env.out[:,2]-env.out[:,6])*done
         rows.append((mask,action,logp,value,reward,done,active))
     assert not env.active.any(), 'Complete-episode GAE requires all episodes terminal'
@@ -76,26 +76,35 @@ def minibatch(model, execution, data, hidden, ix, mode="joint"):
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--decisions',type=int,default=1000000);ap.add_argument('--name',default='symbolic-ppo-seed0');ap.add_argument('--smoke',action='store_true');ap.add_argument('--mode',choices=['joint','detached_critic','critic_only','actor_only'],default='joint');ap.add_argument('--gae-lambda',type=float,default=.95);args=ap.parse_args()
-    torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True;build()
+    ap=argparse.ArgumentParser();ap.add_argument('--decisions',type=int,default=1000000);ap.add_argument('--name',default='symbolic-ppo-seed0');ap.add_argument('--smoke',action='store_true');ap.add_argument('--mode',choices=['joint','detached_critic','critic_only','actor_only'],default='joint');ap.add_argument('--gae-lambda',type=float,default=.95);ap.add_argument('--seed',type=int,default=0);ap.add_argument('--checkpoints',type=int,nargs='*',default=[100000,500000,1000000]);ap.add_argument('--fullsize',action='store_true');ap.add_argument('--source',type=Path);ap.add_argument('--limit',type=int,default=256);args=ap.parse_args()
+    if args.limit%16:ap.error('--limit must be divisible by 16')
+    torch.set_num_threads(1);torch.manual_seed(args.seed);torch.backends.cudnn.benchmark=True
+    env_class=Env
+    if args.fullsize:
+        from fullsize_navigation import build_full,FullEnv
+        build_full();env_class=FullEnv
+    else:build()
     folder=OUT/args.name;folder.mkdir(exist_ok=True);lock=(folder/'run.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     if (folder/'latest.pt').exists():raise RuntimeError('Refusing to overwrite checkpoint')
-    model=load(True).configure_encoder(True,True);execution=PolicyExecution(model,compiled=True)
+    model=load(True).configure_encoder(True,True)
+    source=args.source or OUT/'symbolic-gru/best.pt'
+    if args.source:model.load_state_dict(torch.load(source,weights_only=False)['model'])
+    execution=PolicyExecution(model,compiled=True)
     policy=StaticInference(execution,amp=True,graphed=True)
     opt=torch.optim.Adam(model.parameters(),lr=1e-5);scaler=torch.amp.GradScaler('cuda')
-    manifest=dict(mode=args.mode,seed=0,target=args.decisions,map_size=[32,32],envs=128,deadline=256,sequence_length=16,sequence_batch=128,epochs=4,lr=1e-5,gamma=.999,gae_lambda=args.gae_lambda,entropy=.001,value_coefficient=.25,clip=.2,rewards=dict(exit=1,death=-1,timeout=0),source_sha256=hashlib.sha256((OUT/'symbolic-gru/best.pt').read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),scope='Actual recurrent PPO, all layers trainable; stored initial hidden state, no burn-in. Compiled encoders/heads, cuDNN sequence, graphed inference, eager optimizer/backward. Synthetic navigation, not ordinary Crawl floors.')
+    manifest=dict(mode=args.mode,seed=args.seed,target=args.decisions,map_size=[80,70] if args.fullsize else [32,32],envs=128,deadline=args.limit,sequence_length=16,sequence_batch=128,epochs=4,lr=1e-5,gamma=.999,gae_lambda=args.gae_lambda,entropy=.001,value_coefficient=.25,clip=.2,rewards=dict(exit=1,death=-1,timeout=0),source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),fullsize=args.fullsize,scope=('Native D1 geometry navigation; no enemies. ' if args.fullsize else 'Synthetic navigation. ')+'Actual recurrent PPO, all layers trainable; stored initial hidden state, no burn-in. Compiled encoders/heads, cuDNN sequence, graphed inference, eager optimizer/backward. Navigation fixture dynamics, not a full Crawl game.')
     save_json(folder/'manifest.json',manifest)
     def assess():
         result={}
         # Evaluation must not alter training RNG or optimizer state.
         with torch.random.fork_rng(devices=[0]):
-            for split,mode in [('validation','greedy'),('test','greedy'),('long','greedy'),('test','sampled')]:
-                torch.manual_seed(11812);result[split+'_'+mode]=evaluate(policy,split,mode=mode)['summary']
+            for split,mode in ([('validation','greedy'),('test','greedy'),('test','sampled')] if args.fullsize else [('validation','greedy'),('test','greedy'),('long','greedy'),('test','sampled')]):
+                torch.manual_seed(11812);result[split+'_'+mode]=evaluate(policy,split,mode=mode,env_class=env_class,limit=args.limit if args.fullsize else None)['summary']
         return result
     report=dict(manifest=manifest,baseline={} if args.smoke else assess(),history=[],checkpoints=[])
-    save_json(folder/'progress.json',report);env=Env('train',128);decisions=0;wave=0;training=0.;milestones=[100000,500000,args.decisions]
+    save_json(folder/'progress.json',report);env=env_class('train',128);decisions=0;wave=0;training=0.;milestones=sorted(set(v for v in [*args.checkpoints,args.decisions] if 0<v<=args.decisions))
     while decisions<args.decisions:
-        start=time.monotonic();data,h,n,summary=collect(env,model,policy,1000+wave,args.gae_lambda)
+        start=time.monotonic();data,h,n,summary=collect(env,model,policy,1000+args.seed*100000+wave,args.gae_lambda,args.limit)
         torch.cuda.synchronize();collection=time.monotonic()-start;optimization_start=time.monotonic()
         # Before updates, sequence replay must reproduce behavior log-probabilities.
         with torch.no_grad():
@@ -125,7 +134,7 @@ def main():
         crossed=[v for v in milestones if v<=decisions]
         if crossed or args.smoke:
             metrics={} if args.smoke else assess();entry=dict(decisions=decisions,milestones=crossed,metrics=metrics);report['checkpoints'].append(entry)
-            payload=dict(model=model.state_dict(),optimizer=opt.state_dict(),scaler=scaler.state_dict(),decisions=decisions)
+            payload=dict(model=model.state_dict(),optimizer=opt.state_dict(),scaler=scaler.state_dict(),decisions=decisions,wave=wave,training_seconds=training,cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state_all(),manifest=manifest)
             torch.save(payload,folder/'latest.pt')
             if crossed:torch.save(payload,folder/('checkpoint-'+str(max(crossed))+'.pt'))
             milestones=[v for v in milestones if v>decisions];print('EVALUATION '+json.dumps(entry),flush=True)

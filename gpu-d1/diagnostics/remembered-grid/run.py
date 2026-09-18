@@ -9,13 +9,13 @@ def save_json(path,x):
     tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(x,indent=2));tmp.replace(path)
 
 @torch.no_grad()
-def evaluate(model,split='validation',limit=None,teacher=False,intervene=None,mode='greedy'):
+def evaluate(model,split='validation',limit=None,teacher=False,intervene=None,mode='greedy',env_class=Env):
     if limit is None:limit=512 if split=='long' else 256
-    start=time.monotonic();proto=Env(split,1);n=len(proto.scenes);e=Env(split,128);rows=[]
+    start=time.monotonic();proto=env_class(split,1);n=len(proto.scenes);e=env_class(split,128);rows=[]
     for offset in range(0,n,128):
         ids=torch.arange(offset,offset+128,device='cuda')%n;valid=min(128,n-offset);e.reset(ids,seed=812+offset,labels=teacher)
         if hasattr(model,'reset_cache'):model.reset_cache()
-        initial=e.meta.clone();yy,xx=torch.meshgrid(torch.arange(32,device='cuda'),torch.arange(32,device='cuda'),indexing='ij');near=(xx[None]-e.stats[:,2,None,None]).abs().le(7)&(yy[None]-e.stats[:,3,None,None]).abs().le(7);far=(e.grid[:,4].sum((1,2))>0)&~((e.grid[:,4]>0)&near).any((1,2));terminal=torch.zeros(128,5,device='cuda');reversals=torch.zeros(128,device='cuda');pp=e.meta[:,0].clone();prev=pp.clone();woke=torch.zeros(128,device='cuda',dtype=torch.bool)
+        initial=e.meta.clone();yy,xx=torch.meshgrid(torch.arange(e.grid.shape[-2],device='cuda'),torch.arange(e.grid.shape[-1],device='cuda'),indexing='ij');near=(xx[None]-e.stats[:,2,None,None]).abs().le(7)&(yy[None]-e.stats[:,3,None,None]).abs().le(7);far=(e.grid[:,4].sum((1,2))>0)&~((e.grid[:,4]>0)&near).any((1,2));terminal=torch.zeros(128,5,device='cuda');reversals=torch.zeros(128,device='cuda');pp=e.meta[:,0].clone();prev=pp.clone();woke=torch.zeros(128,device='cuda',dtype=torch.bool)
         for tick in range(limit):
             active=e.active.clone();p=e.meta[:,0].clone();woke|=active&e.meta[:,2].bool()
             if teacher:a=e.labels.clone()
@@ -31,7 +31,9 @@ def evaluate(model,split='validation',limit=None,teacher=False,intervene=None,mo
             rows.append(dict(goal_outside_local=bool(far[j]),initial_known_stairs=int(initial[j,1]),scenario=int(ids[j]),kind=int(e.scenes[ids[j],1]),map=int(e.scenes[ids[j],0]),exit=int(terminal[j,0]),death=int(terminal[j,1]),timeout=int(terminal[j,2]),turns=float(terminal[j,3]-initial[j,5]),kills=float(terminal[j,4]),reversals=int(reversals[j]),woke=bool(woke[j])))
     summary={}
     for k,name in enumerate(['known_stairs','exploration','threat_backtrack']):
-        rs=[r for r in rows if r['kind']==k];summary[name]={key:float(np.mean([r[key] for r in rs])) for key in ['exit','death','timeout','turns','kills','reversals','woke']};summary[name]['episodes']=len(rs)
+        rs=[r for r in rows if r['kind']==k]
+        if not rs:continue
+        summary[name]={key:float(np.mean([r[key] for r in rs])) for key in ['exit','death','timeout','turns','kills','reversals','woke']};summary[name]['episodes']=len(rs)
     far_rows=[r for r in rows if r['kind']==0 and r['goal_outside_local']]
     return dict(deadline=limit,summary=summary,known_stairs_outside_crop=dict(episodes=len(far_rows),exit=float(np.mean([r['exit'] for r in far_rows])) if far_rows else None),rows=rows,seconds=time.monotonic()-start)
 

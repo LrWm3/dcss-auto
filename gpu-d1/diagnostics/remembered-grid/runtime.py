@@ -23,13 +23,15 @@ def build():
 _CACHE={}
 _CONFIG=None
 class Env:
-    def __init__(self,split='train',batch=128):
+    def __init__(self,split='train',batch=128,map_dir=None,grid_shape=(G,G),library=None):
         self.split=split;self.batch=batch
-        if split not in _CACHE:
-            z=np.load(OUT/'maps'/f'{split}.npz')
+        map_dir=Path(map_dir) if map_dir is not None else OUT/'maps'
+        key=(str(map_dir),split)
+        if key not in _CACHE:
+            z=np.load(map_dir/f'{split}.npz')
             arr={k:torch.from_numpy(z[k].view(np.int16) if z[k].dtype==np.uint16 else z[k]).cuda() for k in z.files}
-            _CACHE[split]=arr
-        self.arrays=_CACHE[split];a=self.arrays
+            _CACHE[key]=arr
+        self.arrays=_CACHE[key];a=self.arrays
         self.scenes=a['scenarios'];self.profiles=torch.tensor([[18,4,1]+[24]*6+[20]*6],device='cuda',dtype=torch.int32)
         self.assign=torch.zeros(batch,device='cuda',dtype=torch.int32)
         self.tables=old.Tables(self.profiles.data_ptr(),self.assign.data_ptr(),1,0,batch,*[a[k].data_ptr() for k in ['floor','cells','index','distance']],int(a['ncells'][0]),a['ncells'].data_ptr(),a['offsets'].data_ptr(),len(a['floor']),-1,a['los'].data_ptr())
@@ -38,13 +40,13 @@ class Env:
             from learn_env import load_map
             header,kinds,_=load_map();ac=header[2]//100;gdr=[int((65536*(ac+j))**.25) for j in range(2)];_CONFIG=[1,*header[:7],1,*gdr,*kinds]
         values=_CONFIG
-        self.config=(C.c_int*len(values))(*values);self.lib=C.CDLL(str(OUT/'grid.so'));p=C.c_void_p;i=C.c_int
+        self.config=(C.c_int*len(values))(*values);self.lib=C.CDLL(str(library if library is not None else OUT/'grid.so'));p=C.c_void_p;i=C.c_int
         self.lib.grid_init.argtypes=[p,p,i,p,p,p,p,C.c_uint64,p]
         self.lib.grid_export.argtypes=[p,p,i,p,p,p,p,p,p,i,p]
         self.lib.grid_step.argtypes=[p,p,i,p,p,p,p,i,p,p]
         self.state=torch.empty(batch,self.lib.learn_state_bytes(),device='cuda',dtype=torch.uint8)
         self.memory=torch.empty(batch,self.lib.grid_memory_bytes(),device='cuda',dtype=torch.uint8)
-        self.grid=torch.empty(batch,11,G,G,device='cuda',dtype=torch.uint8)
+        self.grid=torch.empty(batch,11,*grid_shape,device='cuda',dtype=torch.uint8)
         self.mask=torch.empty(batch,19,device='cuda');self.stats=torch.empty(batch,4,device='cuda')
         self.labels=torch.empty(batch,device='cuda',dtype=torch.long);self.meta=torch.empty(batch,6,device='cuda',dtype=torch.int32)
         self.out=torch.zeros(batch,53,device='cuda');self.active=torch.ones(batch,device='cuda',dtype=torch.bool)

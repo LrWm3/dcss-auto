@@ -172,3 +172,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [First symbolic recurrent PPO run](SYMBOLIC-PPO.md) continues the supervised GRU with actual on-policy learning, sparse exit/death rewards, sequence-preserving updates, and measured pipeline throughput.
 
 [Symbolic PPO degradation investigation](SYMBOLIC-PPO-DEGRADATION.md) separates shared critic gradients, policy updates, and bootstrapped advantage targets, with checkpoint and same-data gradient audits.
+
+[Durability and full-size progression](SYMBOLIC-PPO-SCALE.md) tests corrected PPO through 3M across two seeds and gates progression to native 80x70 navigation layouts.

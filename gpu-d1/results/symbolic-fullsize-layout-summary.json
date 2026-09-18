@@ -1,0 +1,32 @@
+{
+  "train": {
+    "maps": 64,
+    "scenarios": 512,
+    "floor_cells_min": 750,
+    "floor_cells_mean": 1067.6875,
+    "floor_cells_max": 1388,
+    "known_history_steps_min": 24,
+    "known_history_steps_mean": 38.47265625,
+    "known_history_steps_max": 110
+  },
+  "validation": {
+    "maps": 16,
+    "scenarios": 128,
+    "floor_cells_min": 457,
+    "floor_cells_mean": 949.875,
+    "floor_cells_max": 1452,
+    "known_history_steps_min": 24,
+    "known_history_steps_mean": 41.125,
+    "known_history_steps_max": 95
+  },
+  "test": {
+    "maps": 32,
+    "scenarios": 256,
+    "floor_cells_min": 745,
+    "floor_cells_mean": 1142.6875,
+    "floor_cells_max": 1953,
+    "known_history_steps_min": 24,
+    "known_history_steps_mean": 39.453125,
+    "known_history_steps_max": 97
+  }
+}

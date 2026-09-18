@@ -1,0 +1,38 @@
+{
+  "rows": [
+    {
+      "seed": 0,
+      "checks": {
+        "test_greedy/known_stairs": true,
+        "test_greedy/exploration": true,
+        "test_greedy/threat": true,
+        "long_greedy/known_stairs": true,
+        "long_greedy/exploration": true,
+        "long_greedy/threat": true,
+        "test_sampled/known_stairs": true,
+        "test_sampled/exploration": true,
+        "test_sampled/threat": true,
+        "long_known_gain": true
+      },
+      "passed": true
+    },
+    {
+      "seed": 1,
+      "checks": {
+        "test_greedy/known_stairs": true,
+        "test_greedy/exploration": true,
+        "test_greedy/threat": true,
+        "long_greedy/known_stairs": true,
+        "long_greedy/exploration": true,
+        "long_greedy/threat": true,
+        "test_sampled/known_stairs": true,
+        "test_sampled/exploration": true,
+        "test_sampled/threat": true,
+        "long_known_gain": true
+      },
+      "passed": true
+    }
+  ],
+  "complete": true,
+  "passed": true
+}
