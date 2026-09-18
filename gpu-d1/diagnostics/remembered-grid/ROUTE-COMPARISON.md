@@ -79,3 +79,39 @@ before being attributed to learned strategic selection. Recurrent gains over
 one-pass suggest benefits from wider/repeated spatial processing. Failure on
 unknown stairs despite success on known stairs isolates exploration selection
 as a remaining problem. No result yet establishes combat competence or retreat.
+
+## Completed screen (2026-09-18)
+
+All jobs completed. Each test category contains 128 episodes on held-out native
+80×70 layouts. All failures were timeouts; these fixtures contain no enemies.
+
+| Approach | Middle known stairs | Middle exploration | Longer known stairs | Longer exploration |
+|---|---:|---:|---:|---:|
+| Deterministic observed-map controller | 100% | 100% | 100% | 100% |
+| Random destinations + committed BFS | 100% | 97.66% | 100% | 71.09% |
+| One-pass direct actions | 18.75% | 31.25% | 10.16% | 10.94% |
+| Recurrent spatial direct actions | 9.38% | 20.31% | 2.34% | 8.59% |
+| Learned destinations + BFS | 98.44% | 92.97% | 98.44% | 90.63% |
+
+Longer exploration averaged 210 turns for the deterministic controller, 713 for
+random destinations, and 440 for learned destinations, including failed episodes.
+Learned selection produced 116/128 exits versus 91/128 for random destinations.
+It did not beat random selection on every category. The random controller commits
+to a destination, while the learned policy can change it every step; this is not
+an isolated comparison of destination quality alone. Learned routing still had
+65 mean reversals in longer exploration, versus 18 random and 4 deterministic.
+
+Training and collection, excluding evaluation, took 83.6 seconds for one-pass,
+151.2 seconds for recurrent spatial, and 160.0 seconds for learned destinations.
+The complete serial suite including evaluation took 17m55s. All learned arms ran
+2000 updates; validation selected updates 2000, 1500, and 500 respectively.
+These are imitation/DAgger times, not PPO throughput measurements.
+
+Analytical routing is promising in this screen, with learned selection adding
+benefit on harder exploration beyond random committed routing. Repeated spatial
+computation alone did not solve direct navigation at this training budget. This
+does not rule out that approach with further training or other architectures.
+The fresh direct policies are not equivalent to the older trained coarse/global
+checkpoint, and the planner gains also include candidate masks and destination
+memory. One seed, enemy-free fixtures, and validation-selected checkpoints do not
+establish reproducibility, combat competence, or eventual PPO improvement.
