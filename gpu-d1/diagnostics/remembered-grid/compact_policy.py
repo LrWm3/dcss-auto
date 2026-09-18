@@ -53,7 +53,7 @@ def boundary_map(floor,block=4):
 
 class CompactPolicy(nn.Module):
     def __init__(self,kind='attn',amp=False):
-        super().__init__();self.kind=kind;self.amp=amp;self.block=2 if kind in ('counts2','counts2_visits') else 4;self.visits=kind in ('counts_visits','counts2_visits')
+        super().__init__();self.kind=kind;self.amp=amp;self.block=2 if kind in ('counts2','counts2_visits','counts2_visit_bits') else 4;self.visits=kind in ('counts_visits','counts2_visits','counts2_visit_bits')
         self.local=nn.Sequential(nn.Conv2d(11,16,3,padding=1),nn.ReLU(),nn.Conv2d(16,16,3,padding=1),nn.ReLU(),nn.Flatten(),nn.Linear(16*15*15,64),nn.ReLU())
         for name,r in [('local_xy',7),('read_xy',1)]:
             yy,xx=torch.meshgrid(torch.arange(-r,r+1),torch.arange(-r,r+1),indexing='ij');self.register_buffer(name,torch.stack([xx,yy],-1)[None],persistent=False)
@@ -65,7 +65,7 @@ class CompactPolicy(nn.Module):
             width=194
         else:
             self.encoder=nn.Sequential(nn.Conv2d(48,24,1),nn.ReLU()) if kind=='coarse' else nn.Identity()
-            channels=24 if kind=='coarse' else 13 if kind=='count_edges' else 6 if self.visits else 5
+            channels=24 if kind=='coarse' else 13 if kind=='count_edges' else 9 if kind=='counts2_visit_bits' else 6 if self.visits else 5
             self.dynamic=nn.Sequential(nn.Conv2d(channels+3,32,3,padding=1),nn.ReLU(),nn.Conv2d(32,32,3,padding=2,dilation=2),nn.ReLU(),nn.Conv2d(32,32,3,padding=4,dilation=4),nn.ReLU())
             self.readout=nn.Sequential(nn.Linear(32*25,128),nn.ReLU());width=196
         self.shared=nn.Sequential(nn.Linear(width,128),nn.ReLU());self.policy=nn.Linear(128,19);self.value=nn.Linear(128,1)
@@ -73,6 +73,10 @@ class CompactPolicy(nn.Module):
     def terrain(self,grid):return grid[:,[0,1,4,2] if self.visits else [0,1,4]].contiguous()
     def encode_map(self,terrain):
         if self.kind=='attn':return self.encoder(terrain)
+        if self.kind=='counts2_visit_bits':
+            h,w=terrain.shape[-2:]
+            bits=F.pixel_unshuffle(F.pad((terrain[:,3:4]>0).float(),(0,(-w)%2,0,(-h)%2)),2)
+            return torch.cat([count_map(terrain[:,:3],2),bits],1)
         if self.kind in ('counts','counts2','count_edges','counts_visits','counts2_visits'):return count_map(terrain,self.block,self.kind=='count_edges',self.visits)
         h,w=terrain.shape[-2:];packed=F.pixel_unshuffle(F.pad(terrain.float()/255.,(0,(-w)%4,0,(-h)%4)),4)
         return self.encoder(packed)
