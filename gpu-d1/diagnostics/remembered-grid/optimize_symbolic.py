@@ -24,13 +24,15 @@ def workload(fast=False,amp=False,batch=256,prepared=False,model_factory=None):
     def enc(g,s,p=None):return m.encode_prepared(p) if p is not None else m.encode(g,s)
     def train():
         opt.zero_grad(set_to_none=True)
+        # Separate autocast contexts: otherwise no-grad burn-in caches detached
+        # casts of shared weights, silently disabling encoder/core gradients.
+        with torch.no_grad(), torch.autocast('cuda',enabled=amp,dtype=torch.float16):
+            burn=enc(gb,sb,pb if prepared else None).reshape(n,16,-1)
+            if fast:_,h=m.sequence(burn)
+            else:
+                h=burn.new_zeros(n,128)
+                for t in range(16):_,h=m.step_features(burn[:,t],mb.reshape(n,16,19)[:,t],h)
         with torch.autocast('cuda',enabled=amp,dtype=torch.float16):
-            with torch.no_grad():
-                burn=enc(gb,sb,pb if prepared else None).reshape(n,16,-1)
-                if fast:_,h=m.sequence(burn)
-                else:
-                    h=burn.new_zeros(n,128)
-                    for t in range(16):_,h=m.step_features(burn[:,t],mb.reshape(n,16,19)[:,t],h)
             x=enc(g,s,p if prepared else None).reshape(n,16,-1)
             if fast:z,_=m.sequence(x,h)
             else:
@@ -62,6 +64,7 @@ def main():
         torch.cuda.synchronize();return (time.monotonic()-t)/30
     for fast,amp,batch,prepared in [(False,False,256,False),(True,False,256,False),(True,True,256,False),(True,True,1024,False),(True,True,1024,True),(True,True,2048,True),(True,True,4096,True)]:
         m,train=workload(fast,amp,batch,prepared);trainsec=timed(train)
+        assert all(p.grad is not None and torch.isfinite(p.grad).all() for p in m.parameters()), 'Incomplete or nonfinite training gradients'
         g,mask,s=inputs(512)
         @torch.no_grad()
         def infer():

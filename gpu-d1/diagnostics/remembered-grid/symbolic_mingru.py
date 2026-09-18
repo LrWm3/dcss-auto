@@ -9,8 +9,11 @@ from symbolic_fast import FastSymbolicPolicy
 
 
 class MinGRU(nn.Module):
-    def __init__(self, input_dim, hidden_dim):
+    def __init__(self, input_dim, hidden_dim, scan_backend="eager"):
         super().__init__()
+        if scan_backend not in ("eager", "triton"):
+            raise ValueError(scan_backend)
+        self.scan_backend = scan_backend
         self.hidden_dim = hidden_dim
         self.linear = nn.Linear(input_dim, 2 * hidden_dim, bias=False)
 
@@ -22,6 +25,9 @@ class MinGRU(nn.Module):
         return candidate, gate
 
     def forward(self, x, h=None):
+        if self.scan_backend == "triton":
+            from mingru_scan import scan
+            return scan(self.linear(x[:, None]), None if h is None else h.float())[:, 0]
         candidate, gate = self._project(x)
         candidate = torch.where(candidate >= 0, candidate + .5, candidate.sigmoid())
         if h is None:
@@ -32,6 +38,10 @@ class MinGRU(nn.Module):
     def sequence(self, x, h=None):
         if x.ndim != 3 or x.shape[1] == 0:
             raise ValueError('Expected a nonempty [batch, time, features] sequence')
+        if self.scan_backend == "triton":
+            from mingru_scan import scan
+            states = scan(self.linear(x), h)
+            return states, states[:, -1]
         candidate, gate = self._project(x)
         # Inclusive affine prefix scan. Composing (a,b) with (c,d) gives
         # (a*c, b+a*d). Unlike the log-cumsum-exp formulation, this never
@@ -49,10 +59,10 @@ class MinGRU(nn.Module):
 
 
 class MinSymbolicPolicy(FastSymbolicPolicy):
-    def __init__(self):
+    def __init__(self, scan_backend="eager"):
         super().__init__(True)
         del self.sequence_core
-        self.core = MinGRU(194, 128)
+        self.core = MinGRU(194, 128, scan_backend)
 
     def sequence(self, x, h=None):
         return self.core.sequence(x, h)

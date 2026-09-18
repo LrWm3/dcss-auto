@@ -1,0 +1,347 @@
+{
+  "reverse_order": false,
+  "recurrent": [
+    {
+      "kind": "gru",
+      "batch": 16,
+      "length": 16,
+      "amp": false,
+      "forward": {
+        "ms": 0.12151135015301406,
+        "samples_ms": [
+          0.12064464972354472,
+          0.12433999800123274,
+          0.12151135015301406
+        ]
+      },
+      "forward_backward": {
+        "ms": 0.7542866980656981,
+        "samples_ms": [
+          0.7738472253549844,
+          0.7463182497303933,
+          0.7542866980656981
+        ]
+      }
+    },
+    {
+      "kind": "mingru_eager",
+      "batch": 16,
+      "length": 16,
+      "amp": false,
+      "forward": {
+        "ms": 0.5233898526057601,
+        "samples_ms": [
+          0.5140840483363718,
+          0.5468991002999246,
+          0.5233898526057601
+        ]
+      },
+      "forward_backward": {
+        "ms": 2.8404821234289557,
+        "samples_ms": [
+          2.8404821234289557,
+          2.7932046505156904,
+          2.872072602622211
+        ]
+      }
+    },
+    {
+      "kind": "mingru_fused",
+      "batch": 16,
+      "length": 16,
+      "amp": false,
+      "forward": {
+        "ms": 0.1330747501924634,
+        "samples_ms": [
+          0.1370373007375747,
+          0.1330747501924634,
+          0.12889544595964253
+        ]
+      },
+      "forward_backward": {
+        "ms": 0.6095056247431785,
+        "samples_ms": [
+          0.609237072058022,
+          0.6095056247431785,
+          0.6164737744256854
+        ]
+      }
+    },
+    {
+      "kind": "gru",
+      "batch": 256,
+      "length": 16,
+      "amp": true,
+      "forward": {
+        "ms": 0.28805247275158763,
+        "samples_ms": [
+          0.29898647335357964,
+          0.285388994961977,
+          0.28805247275158763
+        ]
+      },
+      "forward_backward": {
+        "ms": 1.1362163233570755,
+        "samples_ms": [
+          1.1192055011633784,
+          1.1362163233570755,
+          1.1977067741099745
+        ]
+      }
+    },
+    {
+      "kind": "mingru_eager",
+      "batch": 256,
+      "length": 16,
+      "amp": true,
+      "forward": {
+        "ms": 0.6115253025200218,
+        "samples_ms": [
+          0.6490952742751688,
+          0.6115253025200218,
+          0.5781107756774873
+        ]
+      },
+      "forward_backward": {
+        "ms": 2.977713174186647,
+        "samples_ms": [
+          2.9730069742072374,
+          2.977713174186647,
+          2.9943901754450053
+        ]
+      }
+    },
+    {
+      "kind": "mingru_fused",
+      "batch": 256,
+      "length": 16,
+      "amp": true,
+      "forward": {
+        "ms": 0.1514541741926223,
+        "samples_ms": [
+          0.1539957243949175,
+          0.1514541741926223,
+          0.15130015090107918
+        ]
+      },
+      "forward_backward": {
+        "ms": 0.699622102547437,
+        "samples_ms": [
+          0.7121286529581994,
+          0.6987365486565977,
+          0.699622102547437
+        ]
+      }
+    },
+    {
+      "kind": "gru",
+      "batch": 16,
+      "length": 128,
+      "amp": true,
+      "forward": {
+        "ms": 0.3183441993314773,
+        "samples_ms": [
+          0.3183357010129839,
+          0.3183441993314773,
+          0.31835234840400517
+        ]
+      },
+      "forward_backward": {
+        "ms": 1.1214690282940865,
+        "samples_ms": [
+          1.1214690282940865,
+          1.109934551641345,
+          1.2168672226835042
+        ]
+      }
+    },
+    {
+      "kind": "mingru_eager",
+      "batch": 16,
+      "length": 128,
+      "amp": true,
+      "forward": {
+        "ms": 0.8164444006979465,
+        "samples_ms": [
+          0.806296948576346,
+          0.8198986295610666,
+          0.8164444006979465
+        ]
+      },
+      "forward_backward": {
+        "ms": 4.480023245560005,
+        "samples_ms": [
+          4.480023245560005,
+          4.459335847059265,
+          4.499292373657227
+        ]
+      }
+    },
+    {
+      "kind": "mingru_fused",
+      "batch": 16,
+      "length": 128,
+      "amp": true,
+      "forward": {
+        "ms": 0.1557168026920408,
+        "samples_ms": [
+          0.15808382304385304,
+          0.1557168026920408,
+          0.15339860110543668
+        ]
+      },
+      "forward_backward": {
+        "ms": 0.7202331034932286,
+        "samples_ms": [
+          0.7258116966113448,
+          0.7202331034932286,
+          0.717282120604068
+        ]
+      }
+    }
+  ],
+  "whole_network": [
+    {
+      "kind": "gru",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "optimizer": {
+        "ms": 8.142879139631987,
+        "samples_ms": [
+          8.200754101077715,
+          8.142879139631987,
+          8.0238357031097
+        ]
+      },
+      "inference": {
+        "ms": 3.5155467689037323,
+        "samples_ms": [
+          3.505553165450692,
+          3.5155467689037323,
+          3.5215925658121705
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7457.18890268952
+    },
+    {
+      "kind": "mingru_eager",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "optimizer": {
+        "ms": 10.779282993947465,
+        "samples_ms": [
+          11.078148731030524,
+          10.779282993947465,
+          10.326677102906007
+        ]
+      },
+      "inference": {
+        "ms": 3.5147570306435227,
+        "samples_ms": [
+          3.542792502169808,
+          3.5147570306435227,
+          3.5113986659174166
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 5704.797605551739
+    },
+    {
+      "kind": "mingru_fused",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "optimizer": {
+        "ms": 7.818218933728834,
+        "samples_ms": [
+          7.850172036948303,
+          7.770176798415681,
+          7.818218933728834
+        ]
+      },
+      "inference": {
+        "ms": 3.5373359685763717,
+        "samples_ms": [
+          3.6122462324177227,
+          3.5373359685763717,
+          3.5128766670823097
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 7747.822019926223
+    },
+    {
+      "kind": "gru",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "optimizer": {
+        "ms": 31.924176829246186,
+        "samples_ms": [
+          31.785500499730308,
+          31.924176829246186,
+          32.021668599918485
+        ]
+      },
+      "inference": {
+        "ms": 3.412885630192856,
+        "samples_ms": [
+          3.412885630192856,
+          3.463982402657469,
+          3.362299633833269
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 26425.841852262656
+    },
+    {
+      "kind": "mingru_eager",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "optimizer": {
+        "ms": 35.46789396399011,
+        "samples_ms": [
+          35.73875427246094,
+          35.079534530329205,
+          35.46789396399011
+        ]
+      },
+      "inference": {
+        "ms": 3.7650142330676317,
+        "samples_ms": [
+          3.7596997028837604,
+          3.7650142330676317,
+          3.8055798349281154
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 23815.104128904637
+    },
+    {
+      "kind": "mingru_fused",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "optimizer": {
+        "ms": 31.704001159717638,
+        "samples_ms": [
+          31.76999359857291,
+          31.704001159717638,
+          31.70194023599227
+        ]
+      },
+      "inference": {
+        "ms": 3.356464463286102,
+        "samples_ms": [
+          3.3663223730400205,
+          3.356464463286102,
+          3.3477546026309333
+        ]
+      },
+      "network_only_four_pass_decisions_per_second": 26654.91484353257
+    }
+  ],
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "other_gpu_processes": [],
+  "scope": "Median of three timing rounds, compilation/warmup excluded. Micro: projection plus recurrence, no CNN or optimizer. Whole: 80x70 observations, 16 burn + 16 learn, four PPO-shaped passes; no simulator/GAE/actual PPO."
+}

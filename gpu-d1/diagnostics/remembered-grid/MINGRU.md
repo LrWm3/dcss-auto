@@ -1,5 +1,7 @@
 # minGRU navigation screen
 
+**Benchmark correction:** the historical AMP optimizer timings below omitted encoder/core gradients because burn-in and learning shared an autocast cache. Their mixed-precision training throughput estimates (including ~40k decisions/s) are invalid. FP32 training and navigation results are unaffected. See [the corrected fused-scan benchmark](MINGRU-SCAN.md).
+
 This replaces only the recurrent core of the optimized symbolic policy. It keeps
 15x15 local terrain/tactical crops, the 16x16 global map, 128 hidden units,
 action masks, demonstrations, D4 augmentation, Adam settings, and the sequence

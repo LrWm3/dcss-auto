@@ -21,7 +21,9 @@ def main():
         for name,factory in [('gru',FastSymbolicPolicy),('mingru',MinSymbolicPolicy)]:
             torch.manual_seed(97)
             m,train=workload(True,amp,batch,prepared,model_factory=factory)
-            trainsec=timed(train);g,mask,s=inputs(512);h=torch.zeros(512,128,device='cuda')
+            trainsec=timed(train)
+            assert all(p.grad is not None and torch.isfinite(p.grad).all() for p in m.parameters()), 'Incomplete or nonfinite training gradients'
+            g,mask,s=inputs(512);h=torch.zeros(512,128,device='cuda')
             @torch.no_grad()
             def infer():
                 with torch.autocast('cuda',enabled=amp,dtype=torch.float16):

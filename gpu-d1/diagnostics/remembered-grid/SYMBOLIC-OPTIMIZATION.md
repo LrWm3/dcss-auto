@@ -1,5 +1,7 @@
 # Symbolic GRU optimization pass
 
+**Benchmark correction:** the historical AMP optimizer timings below omitted encoder/core gradients because burn-in and learning shared an autocast cache. Their mixed-precision training throughput estimates (including ~40k decisions/s) are invalid. FP32 training and navigation results are unaffected. See [the corrected fused-scan benchmark](MINGRU-SCAN.md).
+
 The implementation keeps the 15x15 local symbolic/tactical observations, 16x16 global summary, 128-unit GRU, all weights, masks, actions, and 16-burn-in/16-learning sequence lengths. The model still has 229,476 trainable parameters. No navigation hints or teacher overrides were added.
 
 ## Changes

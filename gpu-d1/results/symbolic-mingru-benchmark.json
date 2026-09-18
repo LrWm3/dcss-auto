@@ -43,5 +43,11 @@
   ],
   "device": "Quadro RTX 5000 with Max-Q Design",
   "torch": "2.6.0+cu124",
-  "scope": "80x70 network only; 16 burn + 16 learning steps; four PPO-shaped passes, no environment or real PPO training. Both networks freshly initialized; same workload, no competing GPU jobs."
+  "scope": "80x70 network only; 16 burn + 16 learning steps; four PPO-shaped passes, no environment or real PPO training. Both networks freshly initialized; same workload, no competing GPU jobs.",
+  "correction": {
+    "amp_training_timings_invalid": true,
+    "reason": "Shared autocast cache between no-grad burn-in and learning detached encoder/core weights; AMP optimizer measurements omitted those gradients. Historical timings retained, not endorsed. FP32 measurements and navigation training unaffected.",
+    "corrected_benchmark": "symbolic-mingru-scan-benchmark.json",
+    "repeat": "symbolic-mingru-scan-benchmark-reverse.json"
+  }
 }

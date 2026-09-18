@@ -77,15 +77,17 @@ def collect(e,buffer,model=None,beta=1,steps=128):
     return decisions
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--kind',choices=['ff','gru','mingru'],required=True);ap.add_argument('--updates',type=int,default=12000);ap.add_argument('--fast',action='store_true');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--kind',choices=['ff','gru','mingru'],required=True);ap.add_argument('--updates',type=int,default=12000);ap.add_argument('--fast',action='store_true');ap.add_argument('--scan-backend',choices=['eager','triton'],default='eager');args=ap.parse_args()
+    if args.scan_backend!='eager' and args.kind!='mingru':ap.error('--scan-backend triton requires --kind mingru')
+    suffix=('-fast' if args.fast else '')+('-triton' if args.scan_backend=='triton' else '')
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True
-    build();folder=OUT/('symbolic-'+args.kind+('-fast' if args.fast else ''));folder.mkdir(exist_ok=True)
+    build();folder=OUT/('symbolic-'+args.kind+suffix);folder.mkdir(exist_ok=True)
     lock=(folder/'training.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     if (folder/'latest.pt').exists():raise RuntimeError('Refusing to overwrite existing training')
     from symbolic_fast import FastSymbolicPolicy
     from symbolic_mingru import MinSymbolicPolicy
-    model=(MinSymbolicPolicy() if args.kind=='mingru' else FastSymbolicPolicy(args.kind=='gru') if args.fast else SymbolicPolicy(args.kind=='gru')).cuda();opt=torch.optim.Adam(model.parameters(),lr=.0003)
-    save_json(folder/'manifest.json',dict(kind=args.kind,fast=args.fast,seed=0,updates=args.updates,burn_in=16,learning_length=16,sequences_per_buffer=1024,batch_per_buffer=8,source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [HERE/'symbolic_policy.py',Path(__file__)]+([HERE/'symbolic_fast.py'] if args.fast or args.kind=='mingru' else [])+([HERE/'symbolic_mingru.py'] if args.kind=='mingru' else [])},maps=hashlib.sha256((OUT/'maps/manifest.json').read_bytes()).hexdigest()))
+    model=(MinSymbolicPolicy(args.scan_backend) if args.kind=='mingru' else FastSymbolicPolicy(args.kind=='gru') if args.fast else SymbolicPolicy(args.kind=='gru')).cuda();opt=torch.optim.Adam(model.parameters(),lr=.0003)
+    save_json(folder/'manifest.json',dict(kind=args.kind,fast=args.fast,scan_backend=args.scan_backend,seed=0,updates=args.updates,burn_in=16,learning_length=16,sequences_per_buffer=1024,batch_per_buffer=8,source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [HERE/'symbolic_policy.py',Path(__file__)]+([HERE/'symbolic_fast.py'] if args.fast or args.kind=='mingru' else [])+([HERE/'symbolic_mingru.py'] if args.kind=='mingru' else [])+([HERE/'mingru_scan.py'] if args.scan_backend=='triton' else [])},maps=hashlib.sha256((OUT/'maps/manifest.json').read_bytes()).hexdigest()))
     expert=Sequences();learner=Sequences();e=Env(batch=64);decisions=0;examples=0;history=[];best=-1;t0=time.monotonic()
     for _ in range(16):decisions+=collect(e,expert)
     decisions+=collect(e,learner)
@@ -104,6 +106,6 @@ def main():
     for split,mode in [('test','greedy'),('long','greedy'),('test','sampled')]:
         torch.manual_seed(11812);r=evaluate(Stateful(model),split,mode=mode);report[split+'_'+mode]=r;print(split,mode,r['summary'],flush=True)
     if args.kind in ('gru','mingru'):report['reset_memory_test']=evaluate(Stateful(model,True),'test')
-    save_json(ROOT/'results'/('remembered-grid-symbolic-'+args.kind+('-fast' if args.fast else '')+'.json'),report)
+    save_json(ROOT/'results'/('remembered-grid-symbolic-'+args.kind+suffix+'.json'),report)
 
 if __name__=='__main__':main()
