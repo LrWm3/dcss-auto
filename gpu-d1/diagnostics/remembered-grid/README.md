@@ -168,3 +168,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Encoder optimization](ENCODER-OPTIMIZATION.md) tests bypassing identity pooling and channels-last CNN execution, using complete training gradients and unchanged saved GRU weights.
 
 [Compiled execution and CUDA graphs](EXECUTION-OPTIMIZATION.md) separates encoder/head compilation from graph capture, checks live input and recurrent-state handling, and benchmarks both factors against the optimized GRU.
+
+[First symbolic recurrent PPO run](SYMBOLIC-PPO.md) continues the supervised GRU with actual on-policy learning, sparse exit/death rewards, sequence-preserving updates, and measured pipeline throughput.
