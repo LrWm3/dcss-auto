@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "hidden movement/damage/wake/death leave memory unchanged",
+    "visible empty square invalidates stale record",
+    "reobservation refreshes stats and age",
+    "visible identity reassociation removes duplicate",
+    "multiple enemies retained",
+    "reset clears memory",
+    "real retreat produces stale observation",
+    "visible-only ablation removes stale channels only",
+    "sleep allows destinations",
+    "awake encounter disables destinations but permits retreat",
+    "variable player stat normalization",
+    "new input channels receive gradients"
+  ]
+}

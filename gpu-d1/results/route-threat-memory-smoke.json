@@ -1,0 +1,37 @@
+{
+  "arm": "memory",
+  "seed": 0,
+  "updates": 2000,
+  "history": [
+    {
+      "update": 1,
+      "loss": 2.681717872619629,
+      "training_seconds": 1.278514384999653,
+      "decisions": 931,
+      "validation": {}
+    },
+    {
+      "update": 2,
+      "loss": 2.7732808589935303,
+      "training_seconds": 1.3171443639985227,
+      "decisions": 931,
+      "validation": {}
+    }
+  ],
+  "scope": "DAgger; warm-start navigation; 24 calibrated anonymous enemies, 2048 physical turns, 64/16/32 native layout split; tactical individual actions; known-terrain BFS only. Same memory-informed teacher labels both arms; no pressure training.",
+  "source_checkpoint_sha256": "30356b0924652bc9f7711f43fd42d4b41f450d02c3e086febd2f51c6196cefda",
+  "source_hashes": {
+    "route_threat.py": "2091f4bc48923925568cbb54fdd439daafaac3212685abd048c9cc0b542b7b2e",
+    "route_threat_env.py": "406a9208de4048541939367fa1610f5b3315e949d1672843d518e4d9982516aa",
+    "route_threat_native.cu": "7d88bb245c7b1d560876f2a4615442c6e73dd89f69141011e1bb041c3432e181",
+    "route_threat_teacher.cpp": "2e4b5ab81cdaa8b245dfc826a5951be7e0596cee4addecc00adebbad33dec9a1"
+  },
+  "selected": {
+    "update": 1,
+    "loss": 2.681717872619629,
+    "training_seconds": 1.278514384999653,
+    "decisions": 931,
+    "validation": {}
+  },
+  "finished": true
+}

@@ -186,3 +186,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 - [Cached exact remembered geometry](NATIVE-CACHED-EXACT.md)
 
 - [Spatial processing versus analytical routing](ROUTE-COMPARISON.md)
+
+Variable-strength follow-up: [destination routing with remembered enemies](ROUTE-THREAT.md).
