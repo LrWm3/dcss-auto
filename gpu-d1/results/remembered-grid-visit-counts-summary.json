@@ -1,0 +1,623 @@
+{
+  "scope": "One training seed per arm; equal supervised budget, synthetic 32x32 navigation. Reuses previous no-global-visit arms. Network-only PPO estimates at 80x70, no PPO learning.",
+  "rows": [
+    {
+      "kind": "counts",
+      "selected_update": 12000,
+      "training_seconds": 183.14623893564567,
+      "collected_decisions": 1142554,
+      "supervised_examples": 3072000,
+      "main": {
+        "known_stairs": {
+          "exit": 0.375,
+          "death": 0.0,
+          "timeout": 0.625,
+          "turns": 145.54296875,
+          "kills": 0.0,
+          "reversals": 124.58984375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.63671875,
+          "death": 0.0,
+          "timeout": 0.36328125,
+          "turns": 127.33203125,
+          "kills": 0.0,
+          "reversals": 76.7265625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.34375,
+          "kills": 0.0,
+          "reversals": 0.03125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "long": {
+        "known_stairs": {
+          "exit": 0.1171875,
+          "death": 0.0,
+          "timeout": 0.8828125,
+          "turns": 397.7109375,
+          "kills": 0.0,
+          "reversals": 379.1640625,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "exploration": {
+          "exit": 0.3359375,
+          "death": 0.0,
+          "timeout": 0.6640625,
+          "turns": 366.96875,
+          "kills": 0.0,
+          "reversals": 297.1328125,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "threat_backtrack": {
+          "exit": 0.65625,
+          "death": 0.0,
+          "timeout": 0.34375,
+          "turns": 188.3125,
+          "kills": 0.0,
+          "reversals": 169.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "sampled": {
+        "known_stairs": {
+          "exit": 0.6171875,
+          "death": 0.0,
+          "timeout": 0.3828125,
+          "turns": 115.5859375,
+          "kills": 0.0,
+          "reversals": 61.58203125,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.66796875,
+          "death": 0.0,
+          "timeout": 0.33203125,
+          "turns": 132.73828125,
+          "kills": 0.0,
+          "reversals": 46.375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.78125,
+          "kills": 0.0,
+          "reversals": 0.375,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "network_decisions_per_second": 19681.583858021695,
+      "amp": {
+        "known_stairs": {
+          "exit": 0.375,
+          "death": 0.0,
+          "timeout": 0.625,
+          "turns": 145.54296875,
+          "kills": 0.0,
+          "reversals": 124.58984375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.6328125,
+          "death": 0.0,
+          "timeout": 0.3671875,
+          "turns": 127.7734375,
+          "kills": 0.0,
+          "reversals": 77.4296875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.34375,
+          "kills": 0.0,
+          "reversals": 0.03125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "other_gpu_processes": []
+    },
+    {
+      "kind": "counts_visits",
+      "selected_update": 12000,
+      "training_seconds": 182.17248351220042,
+      "collected_decisions": 1152250,
+      "supervised_examples": 3072000,
+      "main": {
+        "known_stairs": {
+          "exit": 0.35546875,
+          "death": 0.0,
+          "timeout": 0.64453125,
+          "turns": 149.20703125,
+          "kills": 0.0,
+          "reversals": 128.98828125,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.60546875,
+          "death": 0.0,
+          "timeout": 0.39453125,
+          "turns": 132.6328125,
+          "kills": 0.0,
+          "reversals": 83.78125,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.09375,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "long": {
+        "known_stairs": {
+          "exit": 0.0625,
+          "death": 0.0,
+          "timeout": 0.9375,
+          "turns": 420.2734375,
+          "kills": 0.0,
+          "reversals": 405.3125,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "exploration": {
+          "exit": 0.3359375,
+          "death": 0.0,
+          "timeout": 0.6640625,
+          "turns": 366.8046875,
+          "kills": 0.0,
+          "reversals": 299.828125,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "threat_backtrack": {
+          "exit": 0.6875,
+          "death": 0.0,
+          "timeout": 0.3125,
+          "turns": 172.125,
+          "kills": 0.0,
+          "reversals": 153.375,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "sampled": {
+        "known_stairs": {
+          "exit": 0.65625,
+          "death": 0.0,
+          "timeout": 0.34375,
+          "turns": 109.328125,
+          "kills": 0.0,
+          "reversals": 55.8671875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.63671875,
+          "death": 0.0,
+          "timeout": 0.36328125,
+          "turns": 140.015625,
+          "kills": 0.0,
+          "reversals": 48.97265625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.71875,
+          "kills": 0.0,
+          "reversals": 0.3125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "network_decisions_per_second": 18818.831511822307,
+      "amp": {
+        "known_stairs": {
+          "exit": 0.35546875,
+          "death": 0.0,
+          "timeout": 0.64453125,
+          "turns": 149.20703125,
+          "kills": 0.0,
+          "reversals": 128.97265625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.60546875,
+          "death": 0.0,
+          "timeout": 0.39453125,
+          "turns": 132.640625,
+          "kills": 0.0,
+          "reversals": 83.9140625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.09375,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "other_gpu_processes": []
+    },
+    {
+      "kind": "counts2",
+      "selected_update": 12000,
+      "training_seconds": 190.4248908329755,
+      "collected_decisions": 1065225,
+      "supervised_examples": 3072000,
+      "main": {
+        "known_stairs": {
+          "exit": 0.4921875,
+          "death": 0.0,
+          "timeout": 0.5078125,
+          "turns": 123.3046875,
+          "kills": 0.0,
+          "reversals": 99.35546875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.7578125,
+          "death": 0.0,
+          "timeout": 0.2421875,
+          "turns": 105.8671875,
+          "kills": 0.0,
+          "reversals": 50.046875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.53125,
+          "kills": 0.0,
+          "reversals": 0.0625,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "long": {
+        "known_stairs": {
+          "exit": 0.1640625,
+          "death": 0.0,
+          "timeout": 0.8359375,
+          "turns": 378.9609375,
+          "kills": 0.0,
+          "reversals": 357.046875,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "exploration": {
+          "exit": 0.546875,
+          "death": 0.0,
+          "timeout": 0.453125,
+          "turns": 290.625,
+          "kills": 0.0,
+          "reversals": 199.0625,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "threat_backtrack": {
+          "exit": 0.78125,
+          "death": 0.0,
+          "timeout": 0.21875,
+          "turns": 127.40625,
+          "kills": 0.0,
+          "reversals": 108.875,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "sampled": {
+        "known_stairs": {
+          "exit": 0.7421875,
+          "death": 0.0,
+          "timeout": 0.2578125,
+          "turns": 92.83984375,
+          "kills": 0.0,
+          "reversals": 45.29296875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.89453125,
+          "death": 0.0,
+          "timeout": 0.10546875,
+          "turns": 92.0390625,
+          "kills": 0.0,
+          "reversals": 18.109375,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.40625,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "network_decisions_per_second": 8250.304810842177,
+      "amp": {
+        "known_stairs": {
+          "exit": 0.4921875,
+          "death": 0.0,
+          "timeout": 0.5078125,
+          "turns": 123.3046875,
+          "kills": 0.0,
+          "reversals": 99.35546875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.7578125,
+          "death": 0.0,
+          "timeout": 0.2421875,
+          "turns": 105.734375,
+          "kills": 0.0,
+          "reversals": 50.046875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.53125,
+          "kills": 0.0,
+          "reversals": 0.0625,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "other_gpu_processes": []
+    },
+    {
+      "kind": "counts2_visits",
+      "selected_update": 12000,
+      "training_seconds": 195.21929995389655,
+      "collected_decisions": 1024285,
+      "supervised_examples": 3072000,
+      "main": {
+        "known_stairs": {
+          "exit": 0.5078125,
+          "death": 0.0,
+          "timeout": 0.4921875,
+          "turns": 122.17578125,
+          "kills": 0.0,
+          "reversals": 97.5625,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.734375,
+          "death": 0.0,
+          "timeout": 0.265625,
+          "turns": 112.14453125,
+          "kills": 0.0,
+          "reversals": 55.63671875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.46875,
+          "kills": 0.0,
+          "reversals": 0.03125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "long": {
+        "known_stairs": {
+          "exit": 0.203125,
+          "death": 0.0,
+          "timeout": 0.796875,
+          "turns": 362.515625,
+          "kills": 0.0,
+          "reversals": 339.7421875,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "exploration": {
+          "exit": 0.4609375,
+          "death": 0.0,
+          "timeout": 0.5390625,
+          "turns": 321.4140625,
+          "kills": 0.0,
+          "reversals": 235.0859375,
+          "woke": 0.0,
+          "episodes": 128
+        },
+        "threat_backtrack": {
+          "exit": 0.875,
+          "death": 0.0,
+          "timeout": 0.125,
+          "turns": 83.125,
+          "kills": 0.0,
+          "reversals": 62.21875,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "sampled": {
+        "known_stairs": {
+          "exit": 0.765625,
+          "death": 0.0,
+          "timeout": 0.234375,
+          "turns": 86.5234375,
+          "kills": 0.0,
+          "reversals": 38.4296875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.89453125,
+          "death": 0.0,
+          "timeout": 0.10546875,
+          "turns": 92.38671875,
+          "kills": 0.0,
+          "reversals": 18.57421875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.46875,
+          "kills": 0.0,
+          "reversals": 0.03125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "paired": 24,
+      "paired_erased": 0,
+      "network_decisions_per_second": 7632.99191996786,
+      "amp": {
+        "known_stairs": {
+          "exit": 0.5078125,
+          "death": 0.0,
+          "timeout": 0.4921875,
+          "turns": 122.17578125,
+          "kills": 0.0,
+          "reversals": 97.54296875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "exploration": {
+          "exit": 0.734375,
+          "death": 0.0,
+          "timeout": 0.265625,
+          "turns": 112.14453125,
+          "kills": 0.0,
+          "reversals": 55.63671875,
+          "woke": 0.0,
+          "episodes": 256
+        },
+        "threat_backtrack": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 20.46875,
+          "kills": 0.0,
+          "reversals": 0.03125,
+          "woke": 0.0,
+          "episodes": 32
+        }
+      },
+      "other_gpu_processes": []
+    }
+  ],
+  "paired_episode_outcomes": {
+    "counts_visits": {
+      "test_greedy": {
+        "known_stairs": {
+          "rescued": 25,
+          "lost": 30
+        },
+        "exploration": {
+          "rescued": 42,
+          "lost": 50
+        },
+        "threat_backtrack": {
+          "rescued": 0,
+          "lost": 0
+        }
+      },
+      "long_greedy": {
+        "known_stairs": {
+          "rescued": 2,
+          "lost": 9
+        },
+        "exploration": {
+          "rescued": 24,
+          "lost": 24
+        },
+        "threat_backtrack": {
+          "rescued": 5,
+          "lost": 4
+        }
+      }
+    },
+    "counts2_visits": {
+      "test_greedy": {
+        "known_stairs": {
+          "rescued": 32,
+          "lost": 28
+        },
+        "exploration": {
+          "rescued": 37,
+          "lost": 43
+        },
+        "threat_backtrack": {
+          "rescued": 0,
+          "lost": 0
+        }
+      },
+      "long_greedy": {
+        "known_stairs": {
+          "rescued": 15,
+          "lost": 10
+        },
+        "exploration": {
+          "rescued": 19,
+          "lost": 30
+        },
+        "threat_backtrack": {
+          "rescued": 5,
+          "lost": 2
+        }
+      }
+    }
+  }
+}
