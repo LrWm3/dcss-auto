@@ -1,0 +1,54 @@
+{
+  "middle_test": {
+    "short": {
+      "0": {
+        "episodes": 128,
+        "gained": 27,
+        "lost": 7
+      },
+      "1": {
+        "episodes": 128,
+        "gained": 23,
+        "lost": 21
+      }
+    },
+    "source": {
+      "0": {
+        "episodes": 128,
+        "gained": 24,
+        "lost": 10
+      },
+      "1": {
+        "episodes": 128,
+        "gained": 15,
+        "lost": 22
+      }
+    }
+  },
+  "full_test": {
+    "short": {
+      "0": {
+        "episodes": 128,
+        "gained": 24,
+        "lost": 17
+      },
+      "1": {
+        "episodes": 128,
+        "gained": 26,
+        "lost": 39
+      }
+    },
+    "source": {
+      "0": {
+        "episodes": 128,
+        "gained": 29,
+        "lost": 23
+      },
+      "1": {
+        "episodes": 128,
+        "gained": 19,
+        "lost": 39
+      }
+    }
+  }
+}
