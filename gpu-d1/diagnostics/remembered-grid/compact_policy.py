@@ -11,15 +11,16 @@ def crop(x,pos,offsets):
     out=x.flatten(2).gather(2,ix[:,None].expand(-1,x.shape[1],-1))
     return out.reshape(len(x),x.shape[1],*offsets.shape[1:3])*valid[:,None]
 
-def count_map(terrain,block=4,boundary=False):
+def count_map(terrain,block=4,boundary=False,visits=False):
     """Block counts / block area. Frontier = known floor with an unknown 8-neighbor.
 
-    Uses only observed floor/wall/stairs. Outside-array padding is not an
+    Uses only observed floor/wall/stairs and optionally actual visited history. Outside-array padding is not an
     unknown neighbor, and padded block cells contribute zero to all counts.
     """
     floor=terrain[:,0:1]>0;wall=terrain[:,1:2]>0;seen=floor|wall
     frontier=floor&(F.max_pool2d((~seen).float(),3,1,1)>0)
     channels=torch.cat([seen,frontier,floor,wall,terrain[:,2:3]>0],1).float()
+    if visits:channels=torch.cat([channels,(terrain[:,3:4]>0).float()],1)
     h,w=terrain.shape[-2:];counts=F.avg_pool2d(F.pad(channels,(0,(-w)%block,0,(-h)%block)),block)
     return torch.cat([counts,boundary_map(floor,block)],1) if boundary else counts
 
@@ -52,7 +53,7 @@ def boundary_map(floor,block=4):
 
 class CompactPolicy(nn.Module):
     def __init__(self,kind='attn',amp=False):
-        super().__init__();self.kind=kind;self.amp=amp;self.block=2 if kind=='counts2' else 4
+        super().__init__();self.kind=kind;self.amp=amp;self.block=2 if kind in ('counts2','counts2_visits') else 4;self.visits=kind in ('counts_visits','counts2_visits')
         self.local=nn.Sequential(nn.Conv2d(11,16,3,padding=1),nn.ReLU(),nn.Conv2d(16,16,3,padding=1),nn.ReLU(),nn.Flatten(),nn.Linear(16*15*15,64),nn.ReLU())
         for name,r in [('local_xy',7),('read_xy',1)]:
             yy,xx=torch.meshgrid(torch.arange(-r,r+1),torch.arange(-r,r+1),indexing='ij');self.register_buffer(name,torch.stack([xx,yy],-1)[None],persistent=False)
@@ -64,16 +65,15 @@ class CompactPolicy(nn.Module):
             width=194
         else:
             self.encoder=nn.Sequential(nn.Conv2d(48,24,1),nn.ReLU()) if kind=='coarse' else nn.Identity()
-            channels=24 if kind=='coarse' else 13 if kind=='count_edges' else 5
+            channels=24 if kind=='coarse' else 13 if kind=='count_edges' else 6 if self.visits else 5
             self.dynamic=nn.Sequential(nn.Conv2d(channels+3,32,3,padding=1),nn.ReLU(),nn.Conv2d(32,32,3,padding=2,dilation=2),nn.ReLU(),nn.Conv2d(32,32,3,padding=4,dilation=4),nn.ReLU())
             self.readout=nn.Sequential(nn.Linear(32*25,128),nn.ReLU());width=196
         self.shared=nn.Sequential(nn.Linear(width,128),nn.ReLU());self.policy=nn.Linear(128,19);self.value=nn.Linear(128,1)
         nn.init.zeros_(self.value.weight);nn.init.zeros_(self.value.bias)
-    @staticmethod
-    def terrain(grid):return grid[:,[0,1,4]].contiguous()
+    def terrain(self,grid):return grid[:,[0,1,4,2] if self.visits else [0,1,4]].contiguous()
     def encode_map(self,terrain):
         if self.kind=='attn':return self.encoder(terrain)
-        if self.kind in ('counts','counts2','count_edges'):return count_map(terrain,self.block,self.kind=='count_edges')
+        if self.kind in ('counts','counts2','count_edges','counts_visits','counts2_visits'):return count_map(terrain,self.block,self.kind=='count_edges',self.visits)
         h,w=terrain.shape[-2:];packed=F.pixel_unshuffle(F.pad(terrain.float()/255.,(0,(-w)%4,0,(-h)%4)),4)
         return self.encoder(packed)
     def read_map(self,grid,mask,stats,memory,intervene=None,critic=False):
@@ -106,7 +106,7 @@ class CompactPolicy(nn.Module):
             return self.read_map(grid,mask,stats,self.encode_map(self.terrain(grid)),intervene)
 
 class ExactCache:
-    """Refresh each changed map, not each player move. Invalidate after updates.
+    """Refresh each changed map input (including visits when enabled). Invalidate after updates.
 
     For supervised training call the model directly, retaining encoder gradients.
     This wrapper is inference-only and must be reset after model or world resets.
