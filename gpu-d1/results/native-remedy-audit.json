@@ -1,0 +1,82 @@
+{
+  "arm": "audit",
+  "configuration": {
+    "seed": 0,
+    "updates": 2000,
+    "smoke": false,
+    "lr": 0.0001,
+    "amp_initial_scale": 1024,
+    "burn_in": 16,
+    "learn_steps": 16,
+    "sequences_per_buffer_batch": 16,
+    "buffer_capacity": 1024,
+    "expert_loss_fraction": 0.5,
+    "learner_teacher_probability": 0,
+    "deadline": 1024,
+    "collection_cap": 512
+  },
+  "groups": [
+    "no_known_stairs",
+    "known_stairs_in_crop",
+    "known_stairs_outside_crop"
+  ],
+  "source_sha256": "c458d7c6bd0be430fbb26dbb56a2be2deceff6c0a544800246bdb9ff84730ca5",
+  "script_sha256": "5739795205b5145e635959a9c8dc0f028f3060eb80f9c0ae84b7148cf038d8e5",
+  "parameters": 229476,
+  "history": [],
+  "scope": "One-seed matched additional training on middle band. Exact arm adds capacity and raw observed map detail; this is not a parameter-matched isolation of information loss. No route/distance hints.",
+  "expert": {
+    "collected": [
+      7569,
+      961,
+      667
+    ],
+    "retained": [
+      7569,
+      961,
+      667
+    ],
+    "sampled": [
+      0,
+      0,
+      0
+    ],
+    "sequences": 639
+  },
+  "mixed": {
+    "collected": [
+      13416,
+      1000,
+      4998
+    ],
+    "retained": [
+      10984,
+      755,
+      3953
+    ],
+    "sampled": [
+      0,
+      0,
+      0
+    ],
+    "sequences": 1024
+  },
+  "pure_learner": {
+    "collected": [
+      16699,
+      1289,
+      6253
+    ],
+    "retained": [
+      11353,
+      926,
+      3708
+    ],
+    "sampled": [
+      0,
+      0,
+      0
+    ],
+    "sequences": 1024
+  }
+}

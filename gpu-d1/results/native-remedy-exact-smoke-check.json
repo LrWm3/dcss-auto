@@ -1,0 +1,123 @@
+{
+  "arm": "exact",
+  "configuration": {
+    "seed": 0,
+    "updates": 2000,
+    "smoke": true,
+    "lr": 0.0001,
+    "amp_initial_scale": 1024,
+    "burn_in": 16,
+    "learn_steps": 16,
+    "sequences_per_buffer_batch": 16,
+    "buffer_capacity": 1024,
+    "expert_loss_fraction": 0.5,
+    "learner_teacher_probability": 0,
+    "deadline": 1024,
+    "collection_cap": 512
+  },
+  "groups": [
+    "no_known_stairs",
+    "known_stairs_in_crop",
+    "known_stairs_outside_crop"
+  ],
+  "source_sha256": "c458d7c6bd0be430fbb26dbb56a2be2deceff6c0a544800246bdb9ff84730ca5",
+  "script_sha256": "7547662780640152a3160ca39041d623618f1a2b927099c718b8a25f78fc1bb1",
+  "parameters": 786460,
+  "history": [
+    {
+      "step": 1,
+      "training_seconds": 16.536132214823738,
+      "decisions": 7686,
+      "examples": 463,
+      "overflow_skips": 0,
+      "loss": 1.288029670715332,
+      "validation": {},
+      "expert": {
+        "collected": [
+          1607,
+          259,
+          175
+        ],
+        "retained": [
+          1607,
+          259,
+          175
+        ],
+        "sampled": [
+          80,
+          68,
+          72
+        ],
+        "sequences": 145
+      },
+      "learner": {
+        "collected": [
+          2243,
+          583,
+          2819
+        ],
+        "retained": [
+          2243,
+          583,
+          2819
+        ],
+        "sampled": [
+          80,
+          53,
+          110
+        ],
+        "sequences": 365
+      }
+    }
+  ],
+  "scope": "One-seed matched additional training on middle band. Exact arm adds capacity and raw observed map detail; this is not a parameter-matched isolation of information loss. No route/distance hints.",
+  "initial_feature_parity": true,
+  "baseline": {},
+  "selected": {
+    "step": 1,
+    "training_seconds": 16.536132214823738,
+    "decisions": 7686,
+    "examples": 463,
+    "overflow_skips": 0,
+    "loss": 1.288029670715332,
+    "validation": {},
+    "expert": {
+      "collected": [
+        1607,
+        259,
+        175
+      ],
+      "retained": [
+        1607,
+        259,
+        175
+      ],
+      "sampled": [
+        80,
+        68,
+        72
+      ],
+      "sequences": 145
+    },
+    "learner": {
+      "collected": [
+        2243,
+        583,
+        2819
+      ],
+      "retained": [
+        2243,
+        583,
+        2819
+      ],
+      "sampled": [
+        80,
+        53,
+        110
+      ],
+      "sequences": 365
+    }
+  },
+  "training_seconds": 16.57010818575509,
+  "finished": true
+}
