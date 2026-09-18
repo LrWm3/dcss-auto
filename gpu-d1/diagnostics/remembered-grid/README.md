@@ -182,3 +182,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 - [Full-history recurrent replay comparison](NATIVE-HISTORY-REPLAY.md)
 
 - [Observation-restricted deterministic teacher](OBSERVATION-TEACHER.md)
+
+- [Cached exact remembered geometry](NATIVE-CACHED-EXACT.md)
