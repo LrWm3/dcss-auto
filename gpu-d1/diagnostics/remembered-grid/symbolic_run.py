@@ -35,11 +35,18 @@ class Sequences:
         if model.recurrent:
             with torch.no_grad():
                 x=model.encode(g[:,:16].reshape(-1,11,32,32),s[:,:16].reshape(-1,4)).reshape(batch,16,-1)
-                h=x.new_zeros(batch,128)
-                for t in range(16):
-                    _,new=model.step_features(x[:,t],m[:,t],h);h=torch.where(v[:,t,None],new,h)
+                if hasattr(model,'sequence'):
+                    # Stored burn-in is either all valid or the initial all-invalid prefix.
+                    _,h=model.sequence(x);h=h*v[:,15,None]
+                else:
+                    h=x.new_zeros(batch,128)
+                    for t in range(16):
+                        _,new=model.step_features(x[:,t],m[:,t],h);h=torch.where(v[:,t,None],new,h)
         x=model.encode(g[:,16:].reshape(-1,11,32,32),s[:,16:].reshape(-1,4)).reshape(batch,16,-1)
-        if model.recurrent:
+        if model.recurrent and hasattr(model,'sequence'):
+            # Learning padding is a terminal suffix; it cannot influence valid earlier outputs.
+            z,_=model.sequence(x,h);logits=model.policy(z).float().masked_fill(m[:,16:]==0,-1e9).reshape(-1,19)
+        elif model.recurrent:
             logits=[]
             for t in range(16):
                 z,new=model.step_features(x[:,t],m[:,t+16],h)
@@ -70,13 +77,14 @@ def collect(e,buffer,model=None,beta=1,steps=128):
     return decisions
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--kind',choices=['ff','gru'],required=True);ap.add_argument('--updates',type=int,default=12000);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--kind',choices=['ff','gru'],required=True);ap.add_argument('--updates',type=int,default=12000);ap.add_argument('--fast',action='store_true');args=ap.parse_args()
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True
-    build();folder=OUT/('symbolic-'+args.kind);folder.mkdir(exist_ok=True)
+    build();folder=OUT/('symbolic-'+args.kind+('-fast' if args.fast else ''));folder.mkdir(exist_ok=True)
     lock=(folder/'training.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     if (folder/'latest.pt').exists():raise RuntimeError('Refusing to overwrite existing training')
-    model=SymbolicPolicy(args.kind=='gru').cuda();opt=torch.optim.Adam(model.parameters(),lr=.0003)
-    save_json(folder/'manifest.json',dict(kind=args.kind,seed=0,updates=args.updates,burn_in=16,learning_length=16,sequences_per_buffer=1024,batch_per_buffer=8,source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [HERE/'symbolic_policy.py',Path(__file__)]},maps=hashlib.sha256((OUT/'maps/manifest.json').read_bytes()).hexdigest()))
+    from symbolic_fast import FastSymbolicPolicy
+    model=(FastSymbolicPolicy(args.kind=='gru') if args.fast else SymbolicPolicy(args.kind=='gru')).cuda();opt=torch.optim.Adam(model.parameters(),lr=.0003)
+    save_json(folder/'manifest.json',dict(kind=args.kind,fast=args.fast,seed=0,updates=args.updates,burn_in=16,learning_length=16,sequences_per_buffer=1024,batch_per_buffer=8,source_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [HERE/'symbolic_policy.py',Path(__file__)]+([HERE/'symbolic_fast.py'] if args.fast else [])},maps=hashlib.sha256((OUT/'maps/manifest.json').read_bytes()).hexdigest()))
     expert=Sequences();learner=Sequences();e=Env(batch=64);decisions=0;examples=0;history=[];best=-1;t0=time.monotonic()
     for _ in range(16):decisions+=collect(e,expert)
     decisions+=collect(e,learner)
@@ -95,6 +103,6 @@ def main():
     for split,mode in [('test','greedy'),('long','greedy'),('test','sampled')]:
         torch.manual_seed(11812);r=evaluate(Stateful(model),split,mode=mode);report[split+'_'+mode]=r;print(split,mode,r['summary'],flush=True)
     if args.kind=='gru':report['reset_memory_test']=evaluate(Stateful(model,True),'test')
-    save_json(ROOT/'results'/('remembered-grid-symbolic-'+args.kind+'.json'),report)
+    save_json(ROOT/'results'/('remembered-grid-symbolic-'+args.kind+('-fast' if args.fast else '')+'.json'),report)
 
 if __name__=='__main__':main()

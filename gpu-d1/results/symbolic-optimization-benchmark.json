@@ -1,0 +1,72 @@
+{
+  "rows": [
+    {
+      "fast": false,
+      "amp": false,
+      "batch": 256,
+      "precomputed_symbolic_inputs": false,
+      "optimizer_ms": 20.2331000007689,
+      "inference_ms": 5.68570353401204,
+      "network_only_four_pass_decisions_per_second": 3055.7950539209774
+    },
+    {
+      "fast": true,
+      "amp": false,
+      "batch": 256,
+      "precomputed_symbolic_inputs": false,
+      "optimizer_ms": 8.040261501446366,
+      "inference_ms": 3.728215768933296,
+      "network_only_four_pass_decisions_per_second": 7523.845471080781
+    },
+    {
+      "fast": true,
+      "amp": true,
+      "batch": 256,
+      "precomputed_symbolic_inputs": false,
+      "optimizer_ms": 7.80138213497897,
+      "inference_ms": 3.3460572361946106,
+      "network_only_four_pass_decisions_per_second": 7786.229753625534
+    },
+    {
+      "fast": true,
+      "amp": true,
+      "batch": 1024,
+      "precomputed_symbolic_inputs": false,
+      "optimizer_ms": 13.156094596100349,
+      "inference_ms": 3.357162132548789,
+      "network_only_four_pass_decisions_per_second": 17256.865321922338
+    },
+    {
+      "fast": true,
+      "amp": true,
+      "batch": 1024,
+      "precomputed_symbolic_inputs": true,
+      "optimizer_ms": 6.592041867164275,
+      "inference_ms": 3.3421448354298873,
+      "network_only_four_pass_decisions_per_second": 30981.05522617033
+    },
+    {
+      "fast": true,
+      "amp": true,
+      "batch": 2048,
+      "precomputed_symbolic_inputs": true,
+      "optimizer_ms": 10.748709132894874,
+      "inference_ms": 3.363153299627205,
+      "network_only_four_pass_decisions_per_second": 36281.53282022145
+    },
+    {
+      "fast": true,
+      "amp": true,
+      "batch": 4096,
+      "precomputed_symbolic_inputs": true,
+      "optimizer_ms": 18.724737828597426,
+      "inference_ms": 3.362671898988386,
+      "network_only_four_pass_decisions_per_second": 40235.62733609351
+    }
+  ],
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "source_sha256": "fdc4386f008df7ab8ddde181c02184bf07de83dd730e4206e188698fc992b5cd",
+  "other_gpu_processes_at_start": [],
+  "scope": "Network only, full80x70, four PPO-shaped optimizer passes; recurrent16burn+16learn; no simulator. Prepared mode caches only deterministic symbolic inputs, not learned features. Larger batches change update granularity."
+}
