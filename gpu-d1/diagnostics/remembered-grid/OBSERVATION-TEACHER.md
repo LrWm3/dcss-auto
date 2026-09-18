@@ -81,3 +81,68 @@ The C++ helper compiles with the local C++17 compiler and runs on CPU. The
 existing simulator and observation preprocessing run on GPU. Reports contain
 per-scenario outcomes and evaluation wall times. No demonstrations/checkpoints
 are produced, and no training job is queued by these scripts.
+
+## Results
+
+Both evaluations completed successfully, with the identical C++ source SHA256
+on validation and test. All interface/behavior checks passed. No training was
+performed and the policy's observation/action specification is unchanged.
+
+Validation success (known stairs / exploration):
+
+| Teacher | Middle routes | Longer routes |
+|---|---:|---:|
+| Current observation only | 89.06% / 60.94% | 71.88% / 26.56% |
+| Observation-history bookkeeping | 98.44% / 87.50% | 90.62% / 85.94% |
+| Exact remembered-map reference | 100% / 100% | 100% / 100% |
+
+Held-out test success, 128 cases per category:
+
+| Task | Last full-history trained model | Stateless teacher | History teacher | Exact reference |
+|---|---:|---:|---:|---:|
+| Middle known stairs | 75.78% | 93.75% | 100% | 100% |
+| Middle exploration | 64.06% | 56.25% | 94.53% | 100% |
+| Longer known stairs | 35.94% | 68.75% | 83.59% | 100% |
+| Longer exploration | 40.62% | 30.47% | 88.28% | 100% |
+
+The trained comparator is specifically `native-history-full/selected.pt`,
+reported in `results/native-history-full.json`, not a claim about the best
+model for every individual condition. All rows use the same held-out fixtures
+and deadline. Neither teacher saw test layouts during construction or tuning.
+
+On middle known stairs, history teacher mean additional turns are 19.40,
+versus 18.38 for the exact reference and 278.66 for the trained comparator.
+Reversals average 0.26 versus 179.38 for the trained model. On longer exploration,
+history teacher reversals average 46.16, versus 616.51 for the stateless teacher
+and 398.88 for the trained model. Thus simple bookkeeping removes many loops.
+The history arm bundles repeated-choice penalties with coarse-region visit
+counts; these two mechanisms have not been separately ablated.
+
+The history teacher still times out on 0 middle known-stair cases, 7 middle
+exploration cases, 21 longer known-stair cases, and 15 longer exploration cases.
+These are failures of this particular heuristic; they do not establish that
+those cases are impossible from the permitted observations. There are no deaths
+because there are no enemies in this navigation screen.
+
+Test evaluation wall times per 256-case band: stateless 34.68s/34.70s,
+history 31.19s/32.75s, exact reference 15.12s/16.30s (middle/longer).
+These include simulator, preprocessing, planner and reporting overhead. The
+new planner is CPU-based while the reference runs in the CUDA environment;
+these are not matched-compute comparisons or PPO throughput measurements.
+The complete held-out evaluation took about 165 seconds, excluding startup.
+
+## What this establishes
+
+The current observation supports substantially better behavior than our learned
+policy exhibits on these cases. Even a stateless controller routes to many
+known goals successfully. Explicit history bookkeeping particularly benefits
+exploration. This weakens an explanation that the model is primarily failing
+because information has been irretrievably discarded, for the cases solved by
+these teachers. It does not prove observation sufficiency for every layout,
+that the current network has adequate capacity, or that imitation will learn
+the planner efficiently. A hand-coded BFS/Dijkstra planner and a learned CNN/GRU
+have different inductive biases and computational/memory resources.
+
+A follow-up imitation experiment can now use a teacher with the same observation
+information, while separately studying current-observation routing and the
+history-dependent loop-escape behavior. No such training has been launched here.
