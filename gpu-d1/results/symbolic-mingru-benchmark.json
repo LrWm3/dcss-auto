@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "kind": "gru",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "parameters": 229476,
+      "optimizer_ms": 10.007300297729671,
+      "inference_ms": 3.697010160734256,
+      "network_only_four_pass_decisions_per_second": 6113.037766242964
+    },
+    {
+      "kind": "mingru",
+      "amp": false,
+      "batch": 256,
+      "prepared": false,
+      "parameters": 154724,
+      "optimizer_ms": 14.12749980421116,
+      "inference_ms": 3.72667049523443,
+      "network_only_four_pass_decisions_per_second": 4385.564099577948
+    },
+    {
+      "kind": "gru",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "parameters": 229476,
+      "optimizer_ms": 18.667663571735222,
+      "inference_ms": 3.318921895697713,
+      "network_only_four_pass_decisions_per_second": 40465.49967585067
+    },
+    {
+      "kind": "mingru",
+      "amp": true,
+      "batch": 4096,
+      "prepared": true,
+      "parameters": 154724,
+      "optimizer_ms": 18.625374766997993,
+      "inference_ms": 3.3769826715191202,
+      "network_only_four_pass_decisions_per_second": 40347.77876651963
+    }
+  ],
+  "device": "Quadro RTX 5000 with Max-Q Design",
+  "torch": "2.6.0+cu124",
+  "scope": "80x70 network only; 16 burn + 16 learning steps; four PPO-shaped passes, no environment or real PPO training. Both networks freshly initialized; same workload, no competing GPU jobs."
+}

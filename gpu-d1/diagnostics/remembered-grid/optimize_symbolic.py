@@ -15,8 +15,8 @@ def inputs(n):
     g=torch.zeros(n,11,70,80,device='cuda',dtype=torch.uint8);r=torch.randint(0,4,(n,70,80),device='cuda');g[:,0]=((r==2)|(r==3)).byte()*255;g[:,1]=(r==1).byte()*255;g[:,2]=(r==3).byte()*255;g[:,3]=255;g[:,4,10,10]=255
     return g,torch.ones(n,19,device='cuda'),torch.tensor([1.,.1,40.,35.],device='cuda').repeat(n,1)
 
-def workload(fast=False,amp=False,batch=256,prepared=False):
-    m=load(fast);opt=torch.optim.Adam(m.parameters(),lr=1e-5);scaler=torch.amp.GradScaler('cuda',enabled=amp)
+def workload(fast=False,amp=False,batch=256,prepared=False,model_factory=None):
+    m=load(fast) if model_factory is None else model_factory().cuda();opt=torch.optim.Adam(m.parameters(),lr=1e-5);scaler=torch.amp.GradScaler('cuda',enabled=amp)
     g,mask,s=inputs(batch);gb,mb,sb=inputs(batch);n=batch//16
     if prepared:
         with torch.no_grad():p=m.prepare(g,s);pb=m.prepare(gb,sb)

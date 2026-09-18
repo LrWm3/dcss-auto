@@ -160,3 +160,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Two-scale symbolic maps and recurrence](SYMBOLIC.md) compares a 15x15 categorical local crop plus a 16x16 fractional global map, with feed-forward versus GRU sequence training. The GRU navigates much better but paired-goal and erasure tests show weak reliance on its global map.
 
 [Symbolic GRU optimization](SYMBOLIC-OPTIMIZATION.md) profiles the network, adds equivalent crop-first preprocessing and fused recurrent sequence training, and measures optional mixed-precision/precomputed-input configurations.
+
+[minGRU screen](MINGRU.md) replaces the symbolic policy's recurrent core with a numerically checked affine-scan minGRU, comparing navigation behavior and full-map network cost with the optimized GRU.
