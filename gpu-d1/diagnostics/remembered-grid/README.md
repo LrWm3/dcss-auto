@@ -178,3 +178,5 @@ The [position-aware compact representation screen](COMPACT.md) compares cached-m
 [Native-scale demonstration curriculum](NATIVE-CURRICULUM.md) trains progressively longer routes on native geometry before a conditional PPO handoff.
 
 [Middle-distance remedies](NATIVE-REMEDIES.md) audits demonstration coverage and compares mixed-controller training, balanced pure-learner DAgger, and an exact remembered-map residual encoder.
+
+- [Full-history recurrent replay comparison](NATIVE-HISTORY-REPLAY.md)

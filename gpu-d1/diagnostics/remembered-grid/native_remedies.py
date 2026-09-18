@@ -95,14 +95,23 @@ class Buffer:
 
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--arm',choices=['audit','control','balanced','exact'],required=True);ap.add_argument('--updates',type=int,default=2000);ap.add_argument('--smoke',action='store_true');ap.add_argument('--name');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--arm',choices=['audit','control','balanced','exact'],required=True);ap.add_argument('--replay-history',choices=['legacy','short','full'],default='legacy');ap.add_argument('--updates',type=int,default=2000);ap.add_argument('--smoke',action='store_true');ap.add_argument('--name');args=ap.parse_args()
+    global Buffer,collect
+    if args.replay_history!='legacy':
+        assert args.arm=='balanced', 'History screen holds balanced training fixed'
+        from native_history_replay import HistoryBuffer,collect_history
+        from functools import partial
+        Buffer=partial(HistoryBuffer,full=args.replay_history=='full');collect=collect_history
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True;build_full()
     name=args.name or 'native-remedy-'+args.arm+('-smoke' if args.smoke else '')
     folder=OUT/name;folder.mkdir(exist_ok=True);lock=(folder/'run.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     if (folder/'latest.pt').exists():raise RuntimeError('Refusing to overwrite')
     model=make_model(args.arm=='exact');execution=PolicyExecution(model,compiled=True);policy=StaticInference(execution,amp=True,graphed=True)
     env=factory(1)('train',32)
-    report=dict(arm=args.arm,configuration=dict(seed=0,updates=args.updates,smoke=args.smoke,lr=1e-4,amp_initial_scale=1024,burn_in=16,learn_steps=16,sequences_per_buffer_batch=16,buffer_capacity=1024,expert_loss_fraction=.5,learner_teacher_probability=.1 if args.arm=='control' else 0,deadline=1024,collection_cap=512),groups=['no_known_stairs','known_stairs_in_crop','known_stairs_outside_crop'],source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),parameters=sum(p.numel() for p in model.parameters()),history=[],scope='One-seed matched additional training on middle band. Exact arm adds capacity and raw observed map detail; this is not a parameter-matched isolation of information loss. No route/distance hints.')
+    report=dict(arm=args.arm,configuration=dict(seed=0,updates=args.updates,smoke=args.smoke,lr=1e-4,amp_initial_scale=1024,burn_in='full_prefix' if args.replay_history=='full' else 16,replay_history=args.replay_history,learn_steps=16,sequences_per_buffer_batch=16,buffer_capacity=1024,expert_loss_fraction=.5,learner_teacher_probability=.1 if args.arm=='control' else 0,deadline=1024,collection_cap=512),groups=['no_known_stairs','known_stairs_in_crop','known_stairs_outside_crop'],source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),parameters=sum(p.numel() for p in model.parameters()),history=[],scope='One-seed matched additional training on middle band. Exact arm adds capacity and raw observed map detail; this is not a parameter-matched isolation of information loss. No route/distance hints.')
+    if args.replay_history!='legacy':
+        report['history_script_sha256']=hashlib.sha256(Path(__file__).with_name('native_history_replay.py').read_bytes()).hexdigest()
+        report['scope']='Matched coarse-model balanced DAgger: current-weight full-prefix reconstruction versus 16-step burn-in; same 16-step gradient window. No route hints or PPO.'
     if args.arm=='audit':
         for label,beta in [('expert',1),('mixed',.1),('pure_learner',0)]:
             buffer=Buffer();torch.manual_seed(8811)

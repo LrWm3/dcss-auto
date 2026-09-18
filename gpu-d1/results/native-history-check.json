@@ -1,0 +1,23 @@
+{
+  "decisions": 5965,
+  "retained_chunks": 383,
+  "buffer_parity": true,
+  "short_loss_old": 1.6907693147659302,
+  "short_loss_new": 1.6907693147659302,
+  "checks": [
+    {
+      "label": "initial_weights",
+      "max_kl": 1.0939256753772497e-05,
+      "action_disagreements": 0,
+      "states": 136
+    },
+    {
+      "label": "after_optimizer_update",
+      "max_kl": 2.1241838112473488e-05,
+      "action_disagreements": 0,
+      "states": 136
+    }
+  ],
+  "prefix_detached": true,
+  "encoder_and_recurrent_update": true
+}
