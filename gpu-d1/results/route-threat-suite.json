@@ -1,0 +1,248 @@
+{
+  "started_utc": "2026-09-18T19:47:37.392150+00:00",
+  "finished": true,
+  "jobs": [
+    {
+      "arm": "teacher",
+      "wall_seconds": 90.77313460199912,
+      "selected": null,
+      "ordinary": {
+        "all": {
+          "exit": 0.2890625,
+          "death": 0.6640625,
+          "timeout": 0.046875,
+          "turns": 199.03125,
+          "kills": 2.5234375,
+          "reversals": 0.9296875,
+          "waits": 94.2578125,
+          "stale_decisions": 94.171875
+        }
+      },
+      "pressure": {
+        "all": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 31.2890625,
+          "kills": 0.25,
+          "reversals": 0.25,
+          "waits": 1.0,
+          "stale_decisions": 18.0
+        },
+        "weak_unknown": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 50.15625,
+          "kills": 1.0,
+          "reversals": 1.0,
+          "waits": 4.0,
+          "stale_decisions": 0.0
+        },
+        "weak_known": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 25.0,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "waits": 0.0,
+          "stale_decisions": 24.0
+        },
+        "strong_unknown": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 25.0,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "waits": 0.0,
+          "stale_decisions": 24.0
+        },
+        "strong_known": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 25.0,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "waits": 0.0,
+          "stale_decisions": 24.0
+        }
+      }
+    },
+    {
+      "arm": "visible",
+      "wall_seconds": 540.4805153350007,
+      "selected": {
+        "update": 2000,
+        "loss": 1.123584270477295,
+        "training_seconds": 179.5305782029991,
+        "decisions": 84587,
+        "validation": {
+          "all": {
+            "exit": 0.125,
+            "death": 0.71875,
+            "timeout": 0.15625,
+            "turns": 393.9375,
+            "kills": 1.75,
+            "reversals": 169.25,
+            "waits": 136.6875,
+            "stale_decisions": 31.0625
+          }
+        }
+      },
+      "ordinary": {
+        "all": {
+          "exit": 0.1171875,
+          "death": 0.7421875,
+          "timeout": 0.140625,
+          "turns": 391.1328125,
+          "kills": 1.828125,
+          "reversals": 98.765625,
+          "waits": 208.359375,
+          "stale_decisions": 67.6015625
+        }
+      },
+      "pressure": {
+        "all": {
+          "exit": 0.953125,
+          "death": 0.046875,
+          "timeout": 0.0,
+          "turns": 29.7890625,
+          "kills": 0.1015625,
+          "reversals": 0.2265625,
+          "waits": 0.140625,
+          "stale_decisions": 19.7421875
+        },
+        "weak_unknown": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 41.28125,
+          "kills": 0.34375,
+          "reversals": 0.59375,
+          "waits": 0.34375,
+          "stale_decisions": 14.9375
+        },
+        "weak_known": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 25.0,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "waits": 0.0,
+          "stale_decisions": 24.0
+        },
+        "strong_unknown": {
+          "exit": 0.8125,
+          "death": 0.1875,
+          "timeout": 0.0,
+          "turns": 27.875,
+          "kills": 0.0625,
+          "reversals": 0.3125,
+          "waits": 0.21875,
+          "stale_decisions": 16.03125
+        },
+        "strong_known": {
+          "exit": 1.0,
+          "death": 0.0,
+          "timeout": 0.0,
+          "turns": 25.0,
+          "kills": 0.0,
+          "reversals": 0.0,
+          "waits": 0.0,
+          "stale_decisions": 24.0
+        }
+      }
+    },
+    {
+      "arm": "memory",
+      "wall_seconds": 695.0911268430009,
+      "selected": {
+        "update": 1000,
+        "loss": 0.8923976421356201,
+        "training_seconds": 95.03708127400023,
+        "decisions": 48920,
+        "validation": {
+          "all": {
+            "exit": 0.21875,
+            "death": 0.75,
+            "timeout": 0.03125,
+            "turns": 261.84375,
+            "kills": 2.34375,
+            "reversals": 75.09375,
+            "waits": 78.03125,
+            "stale_decisions": 20.09375
+          }
+        }
+      },
+      "ordinary": {
+        "all": {
+          "exit": 0.1171875,
+          "death": 0.7890625,
+          "timeout": 0.09375,
+          "turns": 349.109375,
+          "kills": 1.984375,
+          "reversals": 133.484375,
+          "waits": 125.6015625,
+          "stale_decisions": 80.8671875
+        }
+      },
+      "pressure": {
+        "all": {
+          "exit": 0.671875,
+          "death": 0.1953125,
+          "timeout": 0.1328125,
+          "turns": 415.1171875,
+          "kills": 0.234375,
+          "reversals": 141.4296875,
+          "waits": 246.6484375,
+          "stale_decisions": 137.7109375
+        },
+        "weak_unknown": {
+          "exit": 0.65625,
+          "death": 0.0,
+          "timeout": 0.34375,
+          "turns": 978.03125,
+          "kills": 0.59375,
+          "reversals": 192.125,
+          "waits": 750.53125,
+          "stale_decisions": 134.21875
+        },
+        "weak_known": {
+          "exit": 0.9375,
+          "death": 0.0,
+          "timeout": 0.0625,
+          "turns": 367.40625,
+          "kills": 0.28125,
+          "reversals": 124.15625,
+          "waits": 209.375,
+          "stale_decisions": 140.90625
+        },
+        "strong_unknown": {
+          "exit": 0.4375,
+          "death": 0.5,
+          "timeout": 0.0625,
+          "turns": 170.65625,
+          "kills": 0.0625,
+          "reversals": 125.3125,
+          "waits": 25.6875,
+          "stale_decisions": 134.8125
+        },
+        "strong_known": {
+          "exit": 0.65625,
+          "death": 0.28125,
+          "timeout": 0.0625,
+          "turns": 144.375,
+          "kills": 0.0,
+          "reversals": 124.125,
+          "waits": 1.0,
+          "stale_decisions": 140.90625
+        }
+      }
+    }
+  ],
+  "wall_seconds": 1326.346051210001
+}

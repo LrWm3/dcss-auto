@@ -95,3 +95,48 @@ gpu-d1/.venv/bin/python gpu-d1/diagnostics/remembered-grid/route_threat_suite.py
 The check exercises real LOS transitions, observation-only memory updates,
 multiple records, reset, sleeping/awake action availability, variable player
 normalization, identical ablation labels/masks and gradients in new input channels.
+
+## Completed results (2026-09-18)
+
+The suite finished in 22m06s. Both learned arms completed 2000 updates, with
+training/collection times of 179.5s (visible) and 181.6s (memory), excluding
+validation/test evaluation. Validation selected update 2000 for visible and 1000
+for memory; these are not equal-update selected checkpoints. Each ordinary test
+has 128 episodes. Each pressure category has 32 cases: four distances and eight
+orientations. Evaluations are greedy, with one training seed.
+
+| Policy | Ordinary exit | Ordinary death | Weak/unknown stairs exit | Weak/known stairs exit | Strong/unknown stairs exit | Strong/known stairs exit |
+|---|---:|---:|---:|---:|---:|---:|
+| Observation-limited teacher | 28.91% | 66.41% | 100% | 100% | 100% | 100% |
+| Visible-only learner | 11.72% | 74.22% | 100% | 100% | 81.25% | 100% |
+| Memory learner | 11.72% | 78.91% | 65.63% | 93.75% | 43.75% | 65.63% |
+| Memory learner, stale channels erased at evaluation | not tested | not tested | 68.75% | 93.75% | 46.88% | 65.63% |
+
+Strong/unknown successes at backtracking distances 4/8/16/24 were 7/6/6/7 of eight
+for visible-only, and 4/4/3/3 for memory. Visible-only escaped with the strong
+enemy alive in 24/32 cases; memory did so in 12/32. Visible-only's six failures
+were deaths, not timeouts. Memory had sixteen deaths and two timeouts.
+
+Both initial expanded policies had zero exits on the 32-case validation panel.
+The visible learner's final selected validation exit rate was 12.5%; memory's
+selected rate was 21.875%, falling to 9.375% at update 2000. That validation
+advantage did not transfer to the held-out ordinary test (both 15/128 exits).
+The memory learner also showed extensive waiting/reversals on pressure cases.
+
+Interpretation: destination routing plus training can solve many of the old
+backtracking failures without stale enemy channels. A persistent selected-goal
+marker is itself memory; visible-only is not a memoryless policy. This is not an
+isolated causal comparison against the older frontier-arrow policy, because the
+action interface, architecture, initialization and training all changed.
+
+Explicit enemy memory showed no benefit in this seed and budget. Erasing stale
+channels after training recovered only one strong/unknown case, so immediate
+interference from stale inputs alone does not explain the gap. Training dynamics,
+checkpoint selection, and learned tactical behavior remain possible causes; none
+is established by this screen. These results do not show that remembered threats
+are unnecessary in general or inherently harmful.
+
+The teacher solves every pressure case but only 37/128 ordinary floors, with 85
+ordinary deaths. Ordinary-floor teacher behavior is therefore a major limitation
+of the training setup, though its success rate is not a theoretical ceiling for
+a learner. Neither learner is a successful general variable-strength navigator.
