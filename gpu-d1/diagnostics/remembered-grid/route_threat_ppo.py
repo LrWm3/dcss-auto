@@ -20,7 +20,7 @@ class PPO(nn.Module):
             logits,features=self.actor(x,return_features=True);value=self.value(features.detach()).squeeze(-1)
         return logits.float().masked_fill(~mask,-1e9),value.float()
     def forward(self,x,mask):
-        logits,value=self.raw(x,mask)
+        logits,value=getattr(self,'compiled_raw',self.raw)(x,mask)
         return torch.distributions.Categorical(logits=logits,validate_args=False),value
 
 def gae(reward,value,done,bootstrap,lam=.95):
@@ -111,13 +111,14 @@ def checks():
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['visible','memory'],required=True);p.add_argument('--decisions',type=int,default=500000);p.add_argument('--smoke',action='store_true');p.add_argument('--tag',default='');p.add_argument('--resume',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['visible','memory'],required=True);p.add_argument('--decisions',type=int,default=500000);p.add_argument('--smoke',action='store_true');p.add_argument('--tag',default='');p.add_argument('--resume',action='store_true');p.add_argument('--compile-updates',action='store_true');p.add_argument('--hoist-inputs',action='store_true');args=p.parse_args()
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True;build();checks()
     name='route-threat-ppo-'+args.arm+('-smoke' if args.smoke else '')+args.tag;folder=FOLDER_OUT/name;folder.mkdir(exist_ok=True)
     lock=(folder/'run.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     if (folder/'latest.pt').exists() and not args.resume:raise RuntimeError('Refusing to overwrite')
     if args.resume and not (folder/'latest.pt').exists():raise RuntimeError('Missing resume checkpoint')
     source=FOLDER_OUT/f'route-threat-{args.arm}'/'selected.pt';model=PPO(source);agent=FastAgent(model.actor,args.arm=='memory');e=ThreatEnv('train',32);e.reset(40000)
+    model.actor.hoist_inputs=args.hoist_inputs
     # Critic gradients may never alter actor parameters.
     x,m,_,_=agent.prepare(e,labels=False);_,value=model(x.half(),m);value.sum().backward();assert all(p.grad is None for p in model.actor.parameters());model.zero_grad(set_to_none=True)
     if args.smoke:
@@ -125,6 +126,8 @@ def main():
         assert torch.equal(prior,e.state[1:]) and e.active.all() and agent.goal[0]==-1 and e.meta[0,5]==0
     from route_threat_fast import GraphInference
     model.inference=GraphInference(model)
+    # Keep rollout CUDA graphs on eager raw; compile only replay/update paths.
+    if args.compile_updates:model.compiled_raw=torch.compile(model.raw,fullgraph=True)
     opt=torch.optim.Adam([{'params':model.actor.parameters(),'lr':1e-5},{'params':model.value.parameters(),'lr':1e-4}]);scaler=torch.amp.GradScaler('cuda',init_scale=1024)
     report=dict(arm=args.arm,seed=0,target=args.decisions,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),config=dict(envs=32,rollout=64,epochs=4,minibatch=64,actor_lr=1e-5,critic_lr=1e-4,gamma=1,gae_lambda=.95,entropy=0,clip=.2,kl_stop=.01,critic_detached=True,exit_reward=1,turn_penalty=.00001,death_reward=0,deadline=2048,imitation_loss=False),history=[],evaluations=[],source_hashes={q.name:hashlib.sha256(q.read_bytes()).hexdigest() for q in [Path(__file__),HERE/'route_threat.py',HERE/'route_threat_native.cu',HERE/'route_threat_env.py',HERE/'route_threat_fast.py',HERE/'route_candidates_cuda.cu']})
     path=ROOT/'results'/f'{name}.json'
@@ -140,11 +143,11 @@ def main():
         if 'environment' in payload:
             saved=payload['environment'];e.state.copy_(saved['state']);e.memory.copy_(saved['memory']);e.active.copy_(saved['active']);agent.goal=saved['goal'].clone();e.observe()
         else:e.reset(40000+decisions);agent.reset_cache()
-        report.setdefault('restarts',[]).append(dict(decisions=decisions,environment_restored='environment' in payload,reason='Performance implementation update; same PPO hyperparameters; legacy checkpoint lacks environment snapshot so its 32 ongoing episodes restart.',source_hashes={q.name:hashlib.sha256(q.read_bytes()).hexdigest() for q in [Path(__file__),HERE/'route_threat_fast.py',HERE/'route_threat_native.cu',HERE/'route_candidates_cuda.cu']}))
+        report.setdefault('restarts',[]).append(dict(decisions=decisions,environment_restored='environment' in payload,reason=('Checkpoint and environment restored.' if 'environment' in payload else 'Legacy checkpoint lacks environment snapshot; 32 ongoing episodes restart.'),compiled_updates=args.compile_updates,hoisted_inputs=args.hoist_inputs,source_hashes={q.name:hashlib.sha256(q.read_bytes()).hexdigest() for q in [Path(__file__),HERE/'route_threat.py',HERE/'route_threat_fast.py',HERE/'route_threat_native.cu',HERE/'route_candidates_cuda.cu']}))
         print('resume',decisions,flush=True)
     elif not args.smoke:
         report['baseline']=assess(model,args.arm=='memory');save_json(path,report);print('baseline', {k:v['groups'] for k,v in report['baseline'].items()},flush=True)
-    report['performance']=dict(parallel_observation_export=True,one_export_per_step=True,cuda_graph_inference=True,channels_last_actor=True,gpu_routing=True)
+    report['performance']=dict(parallel_observation_export=True,one_export_per_step=True,cuda_graph_inference=True,channels_last_actor=True,gpu_routing=True,compiled_updates=args.compile_updates,hoisted_inputs=args.hoist_inputs)
     milestones=[v for v in [100000,500000] if v>decisions]
     while decisions<args.decisions:
         start=time.monotonic();data,metrics=collect(e,agent,model,64);collected=time.monotonic()-start

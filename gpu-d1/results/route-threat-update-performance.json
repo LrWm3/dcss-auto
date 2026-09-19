@@ -1,0 +1,374 @@
+{
+  "rollout": {
+    "episodes": 30,
+    "exits": 4,
+    "deaths": 26,
+    "timeouts": 0,
+    "rests": 16,
+    "physical_turns": 2645
+  },
+  "variants": {
+    "eager": {
+      "first_forward_backward_seconds": 0.19430256100167753,
+      "forward_backward_ms": 16.71745563338239,
+      "amp_max_valid_logit_error": 0.0,
+      "gradient_relative_l2_error": 0.0,
+      "trials": [
+        {
+          "seconds": 0.48831304800114594,
+          "replay_max_logprob_error": 0.002365589141845703,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013596418882823652
+        },
+        {
+          "seconds": 0.399856281997927,
+          "replay_max_logprob_error": 0.002365589141845703,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013596418882823652
+        },
+        {
+          "seconds": 0.39949416399758775,
+          "replay_max_logprob_error": 0.002365589141845703,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013596418882823652
+        }
+      ],
+      "end_to_end_rollouts": [
+        {
+          "seconds": 1.8038929399990593,
+          "episodes": 35,
+          "exits": 1,
+          "deaths": 34,
+          "timeouts": 0,
+          "rests": 11,
+          "physical_turns": 2415,
+          "replay_max_logprob_error": 0.002907991409301758,
+          "updates": 50,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.002460510057862848
+        },
+        {
+          "seconds": 1.6663250389974564,
+          "episodes": 23,
+          "exits": 2,
+          "deaths": 21,
+          "timeouts": 0,
+          "rests": 18,
+          "physical_turns": 2606,
+          "replay_max_logprob_error": 0.0027396678924560547,
+          "updates": 49,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0023017868171541058
+        },
+        {
+          "seconds": 1.983666379994247,
+          "episodes": 23,
+          "exits": 4,
+          "deaths": 19,
+          "timeouts": 0,
+          "rests": 11,
+          "physical_turns": 2599,
+          "replay_max_logprob_error": 0.003876209259033203,
+          "updates": 67,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0019633931997440645
+        },
+        {
+          "seconds": 1.2564920880031423,
+          "episodes": 29,
+          "exits": 1,
+          "deaths": 28,
+          "timeouts": 0,
+          "rests": 10,
+          "physical_turns": 2499,
+          "replay_max_logprob_error": 0.0031538009643554688,
+          "updates": 24,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.002115550722616414
+        }
+      ]
+    },
+    "hoisted": {
+      "first_forward_backward_seconds": 0.06393704500078456,
+      "forward_backward_ms": 15.871979933338784,
+      "amp_max_valid_logit_error": 0.00390625,
+      "gradient_relative_l2_error": 0.0018025232711806893,
+      "trials": [
+        {
+          "seconds": 0.3912619420007104,
+          "replay_max_logprob_error": 0.0036993026733398438,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013593521693514453
+        },
+        {
+          "seconds": 0.3842572410067078,
+          "replay_max_logprob_error": 0.0036993026733398438,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013593521693514453
+        },
+        {
+          "seconds": 0.38529305800329894,
+          "replay_max_logprob_error": 0.0036993026733398438,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013593521693514453
+        }
+      ],
+      "end_to_end_rollouts": [
+        {
+          "seconds": 1.8020817439974053,
+          "episodes": 35,
+          "exits": 1,
+          "deaths": 34,
+          "timeouts": 0,
+          "rests": 11,
+          "physical_turns": 2415,
+          "replay_max_logprob_error": 0.003383159637451172,
+          "updates": 50,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0023282321193255485
+        },
+        {
+          "seconds": 2.842362821000279,
+          "episodes": 23,
+          "exits": 2,
+          "deaths": 21,
+          "timeouts": 0,
+          "rests": 17,
+          "physical_turns": 2587,
+          "replay_max_logprob_error": 0.002437114715576172,
+          "updates": 101,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.003480681900562036
+        },
+        {
+          "seconds": 1.6500415289992816,
+          "episodes": 25,
+          "exits": 2,
+          "deaths": 23,
+          "timeouts": 0,
+          "rests": 13,
+          "physical_turns": 2465,
+          "replay_max_logprob_error": 0.003451824188232422,
+          "updates": 48,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0009249504122029369
+        },
+        {
+          "seconds": 1.243697798003268,
+          "episodes": 16,
+          "exits": 4,
+          "deaths": 12,
+          "timeouts": 0,
+          "rests": 17,
+          "physical_turns": 2562,
+          "replay_max_logprob_error": 0.0022150278091430664,
+          "updates": 34,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0037264565060682155
+        }
+      ]
+    },
+    "compiled": {
+      "first_forward_backward_seconds": 5.053759444002935,
+      "forward_backward_ms": 12.647209433149934,
+      "amp_max_valid_logit_error": 0.004485428333282471,
+      "gradient_relative_l2_error": 0.008130405098199844,
+      "trials": [
+        {
+          "seconds": 0.2732972689991584,
+          "replay_max_logprob_error": 0.003956794738769531,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013632821436557504
+        },
+        {
+          "seconds": 0.2921033489983529,
+          "replay_max_logprob_error": 0.003956794738769531,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013632821436557504
+        },
+        {
+          "seconds": 0.2901447370022652,
+          "replay_max_logprob_error": 0.003956794738769531,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013632821436557504
+        }
+      ],
+      "end_to_end_rollouts": [
+        {
+          "seconds": 1.6384273790026782,
+          "episodes": 35,
+          "exits": 1,
+          "deaths": 34,
+          "timeouts": 0,
+          "rests": 11,
+          "physical_turns": 2415,
+          "replay_max_logprob_error": 0.004112124443054199,
+          "updates": 50,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0024555402086116375
+        },
+        {
+          "seconds": 1.3406763459934155,
+          "episodes": 23,
+          "exits": 2,
+          "deaths": 21,
+          "timeouts": 0,
+          "rests": 18,
+          "physical_turns": 2606,
+          "replay_max_logprob_error": 0.004427433013916016,
+          "updates": 49,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0023599384181505565
+        },
+        {
+          "seconds": 0.8703448360029142,
+          "episodes": 24,
+          "exits": 3,
+          "deaths": 21,
+          "timeouts": 0,
+          "rests": 11,
+          "physical_turns": 2601,
+          "replay_max_logprob_error": 0.004347562789916992,
+          "updates": 17,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0025879367501201
+        },
+        {
+          "seconds": 0.9910528999971575,
+          "episodes": 14,
+          "exits": 0,
+          "deaths": 14,
+          "timeouts": 0,
+          "rests": 13,
+          "physical_turns": 2387,
+          "replay_max_logprob_error": 0.006485462188720703,
+          "updates": 31,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0018270148730446254
+        }
+      ]
+    },
+    "hoisted_compiled": {
+      "first_forward_backward_seconds": 3.1851530790008837,
+      "forward_backward_ms": 11.111716966843233,
+      "amp_max_valid_logit_error": 0.004485428333282471,
+      "gradient_relative_l2_error": 0.007510161027312279,
+      "trials": [
+        {
+          "seconds": 0.23800718299753498,
+          "replay_max_logprob_error": 0.004975795745849609,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013604281573659843
+        },
+        {
+          "seconds": 0.23708949600404594,
+          "replay_max_logprob_error": 0.004975795745849609,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013604281573659843
+        },
+        {
+          "seconds": 0.23786731300060637,
+          "replay_max_logprob_error": 0.004975795745849609,
+          "updates": 9,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0013604281573659843
+        }
+      ],
+      "end_to_end_rollouts": [
+        {
+          "seconds": 1.4994083199999295,
+          "episodes": 35,
+          "exits": 1,
+          "deaths": 34,
+          "timeouts": 0,
+          "rests": 11,
+          "physical_turns": 2415,
+          "replay_max_logprob_error": 0.004227638244628906,
+          "updates": 50,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0023293759766966106
+        },
+        {
+          "seconds": 1.90486910600157,
+          "episodes": 23,
+          "exits": 2,
+          "deaths": 21,
+          "timeouts": 0,
+          "rests": 17,
+          "physical_turns": 2587,
+          "replay_max_logprob_error": 0.0030465126037597656,
+          "updates": 101,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0034653136718760034
+        },
+        {
+          "seconds": 1.2474394890014082,
+          "episodes": 25,
+          "exits": 2,
+          "deaths": 23,
+          "timeouts": 0,
+          "rests": 13,
+          "physical_turns": 2465,
+          "replay_max_logprob_error": 0.0036635398864746094,
+          "updates": 48,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0009878429361075784
+        },
+        {
+          "seconds": 0.9873378800039063,
+          "episodes": 16,
+          "exits": 4,
+          "deaths": 12,
+          "timeouts": 0,
+          "rests": 17,
+          "physical_turns": 2562,
+          "replay_max_logprob_error": 0.006514310836791992,
+          "updates": 34,
+          "kl_early_stop": true,
+          "amp_skips": 0,
+          "mean_kl": 0.0037455311839413993
+        }
+      ]
+    }
+  },
+  "note": "Fixed rollout; identical initial weights, optimizer, RNG, and PPO settings. Compilation cost reported separately.",
+  "hoist_fp32_forward_and_gradients_pass": true
+}

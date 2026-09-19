@@ -225,3 +225,55 @@ continuation. The queued memory arm starts with the optimized implementation.
 Reproduce component checks with `check_route_threat_fast.py`; raw profiler traces
 stay in the ignored run directory. Tracked `route-threat-performance.json` and
 `route-threat-ppo-visible-smoke-optimized.json` contain the measurements.
+
+### PPO update optimization follow-up
+
+`route_threat_ppo.py` now accepts `--compile-updates --hoist-inputs`.
+These are opt-in so prior experiment commands retain their implementation.
+Compilation applies to replay/update forward and backward; collection retains
+its existing eager CUDA graph. Checkpoint parameter names are unchanged.
+Hoisting splits each recurrent convolution into an input-only projection,
+computed once per forward, and a hidden-state projection at each of 20 steps.
+The input projection remains attached to autograd, and biases are added once.
+No PPO hyperparameters, observation fields, reward, or action masks change.
+
+Measured on the Quadro RTX 5000 Max-Q, with 64-example update minibatches:
+
+| Implementation | Forward + backward | Fixed-rollout update, median |
+|---|---:|---:|
+| Eager reference | 16.72 ms | 0.400 s |
+| Hoisted input projections | 15.87 ms | 0.385 s |
+| Compiled reference | 12.65 ms | 0.290 s |
+| Compiled + hoisted | 11.11 ms | 0.238 s |
+
+All fixed-rollout cases perform nine optimizer updates before the same KL
+stopping rule fires. The update timing includes the full replay audit.
+The combined implementation takes approximately 40% less update time, not
+40% less total training time. Cold first forward/backward compilation was
+approximately 18–20 seconds; subsequent process starts with compiler caches
+were 3–5 seconds. Other shapes/grad modes can require additional compilation.
+
+Four end-to-end rollouts with hoisting alone versus hoisting plus compilation
+had identical update counts (50, 101, 48, 34), episode counts, exits/deaths,
+rest counts and physical-turn totals. They took 7.54 versus 5.64 seconds:
+1087 versus 1453 decisions/s, a 34% throughput gain. The non-hoisted variants
+subsequently diverged in KL stopping/trajectories, so their aggregate throughput
+is not a controlled speed comparison. These short tests do not establish
+long-run learning equivalence or sustained throughput at later checkpoints.
+
+Checks include FP32 forward and per-parameter gradient equivalence of hoisting;
+AMP output and aggregate gradient comparisons for every variant; full rollout
+log-probability replay checks; and actual optimizer updates. Maximum AMP logit
+difference was 0.00449, and gradient relative L2 differences were below 0.82%.
+No AMP updates were skipped. Floating-point changes can change later sampled
+trajectories and KL stopping; this is not a bitwise reproducibility guarantee.
+
+Reproduce with `benchmark_route_threat_updates.py`; measurements are in
+`results/route-threat-update-performance.json`. Compilation requires Python
+3.12 development headers, absent from the original machine. For this workspace,
+the distro headers were extracted without system installation into the ignored
+`learning-runs/remembered-grid/route-threat/compiler-headers/include` directory.
+Set `C_INCLUDE_PATH` to that absolute directory and its `python3.12` subdirectory
+when launching the benchmark or training with `--compile-updates`; an ordinary
+Python development-header installation also suffices. Compilation failures are
+reported, not silently replaced with eager execution.

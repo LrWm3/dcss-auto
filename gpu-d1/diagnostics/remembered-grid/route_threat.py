@@ -37,9 +37,20 @@ class ThreatPolicy(Spatial):
                 self.special.weight[new].copy_(prior.special.weight[old_index]);self.special.bias[new].copy_(prior.special.bias[old_index])
     def forward(self,x,return_features=False):
         inputs=self.input(F.pad(x,(0,0,0,2)));h=torch.zeros_like(inputs)
+        # Opt-in benchmark: retain checkpoint keys and differentiate through
+        # the cached input projections; never cache across policy forwards.
+        hoist=getattr(self,'hoist_inputs',False)
+        if hoist:
+            gi=F.conv2d(inputs,self.gates.weight[:,:16],self.gates.bias,padding=1)
+            ci=F.conv2d(inputs,self.candidate.weight[:,:16],self.candidate.bias,padding=1)
         for _ in range(self.iterations):
-            reset,update=self.gates(torch.cat([inputs,h],1)).sigmoid().chunk(2,1)
-            new=self.candidate(torch.cat([inputs,reset*h],1)).tanh();h=(1-update)*h+update*new
+            if hoist:
+                reset,update=(gi+F.conv2d(h,self.gates.weight[:,16:],padding=1)).sigmoid().chunk(2,1)
+                new=(ci+F.conv2d(reset*h,self.candidate.weight[:,16:],padding=1)).tanh()
+            else:
+                reset,update=self.gates(torch.cat([inputs,h],1)).sigmoid().chunk(2,1)
+                new=self.candidate(torch.cat([inputs,reset*h],1)).tanh()
+            h=(1-update)*h+update*new
         z=self.decode(torch.cat([x,F.interpolate(h,size=(70,80),mode='nearest')],1))
         pos=x[:,5].flatten(1).argmax(1);local=z.flatten(2).gather(2,pos[:,None,None].expand(-1,16,1)).squeeze(2)
         logits=torch.cat([self.dest(z).flatten(1),self.special(local)],1)

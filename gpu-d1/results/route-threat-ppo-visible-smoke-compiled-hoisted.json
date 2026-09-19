@@ -1,0 +1,102 @@
+{
+  "arm": "visible",
+  "seed": 0,
+  "target": 500000,
+  "source_sha256": "52e68f2cde34ce9d2545cb66fc4205843cf08fece956909005897579541828dc",
+  "config": {
+    "envs": 32,
+    "rollout": 64,
+    "epochs": 4,
+    "minibatch": 64,
+    "actor_lr": 1e-05,
+    "critic_lr": 0.0001,
+    "gamma": 1,
+    "gae_lambda": 0.95,
+    "entropy": 0,
+    "clip": 0.2,
+    "kl_stop": 0.01,
+    "critic_detached": true,
+    "exit_reward": 1,
+    "turn_penalty": 1e-05,
+    "death_reward": 0,
+    "deadline": 2048,
+    "imitation_loss": false
+  },
+  "history": [
+    {
+      "decisions": 2048,
+      "training_seconds": 13.801480260997778,
+      "decisions_per_second": 148.38988001798148,
+      "collection_seconds": 0.8193489990007947,
+      "episodes": 30,
+      "exits": 4,
+      "deaths": 26,
+      "timeouts": 0,
+      "rests": 16,
+      "physical_turns": 2638,
+      "replay_max_logprob_error": 0.00426483154296875,
+      "updates": 78,
+      "kl_early_stop": true,
+      "amp_skips": 0,
+      "mean_kl": 0.002686420404829849
+    },
+    {
+      "decisions": 4096,
+      "training_seconds": 22.995659221000096,
+      "decisions_per_second": 178.12057313231756,
+      "collection_seconds": 0.6121240829961607,
+      "episodes": 21,
+      "exits": 0,
+      "deaths": 21,
+      "timeouts": 0,
+      "rests": 9,
+      "physical_turns": 2573,
+      "replay_max_logprob_error": 0.004681587219238281,
+      "updates": 128,
+      "kl_early_stop": false,
+      "amp_skips": 0,
+      "mean_kl": 0.002469065806508297
+    }
+  ],
+  "evaluations": [
+    {
+      "decisions": 2048,
+      "metrics": {}
+    },
+    {
+      "decisions": 4096,
+      "metrics": {}
+    }
+  ],
+  "source_hashes": {
+    "route_threat_ppo.py": "03f7a44f9903c51011914926a509ef311ff01af5c1bce20835a372460245eeff",
+    "route_threat.py": "b3e4bdd4dc719a03c4fbc36b51572ab40f15856f3309fce15a73b54cc1822445",
+    "route_threat_native.cu": "d6596eac06ad7a273d959208f8f3a7e32fb5a0860f4847334a3a722a34c42c14",
+    "route_threat_env.py": "00a24431988aced4c7de64f7d44ccc02683297ffaa8c76f3179b2862ede56520",
+    "route_threat_fast.py": "7d9aa4fc2b06d209cfba847dd0bd4c0a21d634c669e0565f5e291610daa4387a",
+    "route_candidates_cuda.cu": "c6b47405aaca9e23512fd6e213ac8fa0414f8b18a693e9d6ba5dff584ebfe6d7"
+  },
+  "performance": {
+    "parallel_observation_export": true,
+    "one_export_per_step": true,
+    "cuda_graph_inference": true,
+    "channels_last_actor": true,
+    "gpu_routing": true,
+    "compiled_updates": true,
+    "hoisted_inputs": true
+  },
+  "finished": true,
+  "restarts": [
+    {
+      "decisions": 2048,
+      "environment_restored": true,
+      "reason": "Performance implementation update; same PPO hyperparameters; legacy checkpoint lacks environment snapshot so its 32 ongoing episodes restart.",
+      "source_hashes": {
+        "route_threat_ppo.py": "03f7a44f9903c51011914926a509ef311ff01af5c1bce20835a372460245eeff",
+        "route_threat_fast.py": "7d9aa4fc2b06d209cfba847dd0bd4c0a21d634c669e0565f5e291610daa4387a",
+        "route_threat_native.cu": "d6596eac06ad7a273d959208f8f3a7e32fb5a0860f4847334a3a722a34c42c14",
+        "route_candidates_cuda.cu": "c6b47405aaca9e23512fd6e213ac8fa0414f8b18a693e9d6ba5dff584ebfe6d7"
+      }
+    }
+  ]
+}
