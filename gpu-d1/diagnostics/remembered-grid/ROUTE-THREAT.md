@@ -140,3 +140,40 @@ The teacher solves every pressure case but only 37/128 ordinary floors, with 85
 ordinary deaths. Ordinary-floor teacher behavior is therefore a major limitation
 of the training setup, though its success rate is not a theoretical ceiling for
 a learner. Neither learner is a successful general variable-strength navigator.
+
+## PPO continuation
+
+`route_threat_ppo_suite.py` runs visible-only and memory sequentially from their
+respective validation-selected imitation checkpoints, seed 0, to 500,000 sampled
+policy decisions each (rounded up to the next 2048-decision rollout). The starting
+checkpoints are different and were selected at different imitation updates; this
+is a within-arm before/after PPO screen, not an isolated equal-initialization
+memory ablation. Evaluation occurs before training and at 100k/500k decisions:
+128 ordinary held-out episodes in greedy and sampled modes, plus greedy pressure
+cases. No checkpoint is selected using these test scores.
+
+Reward is +1 for exiting and -0.00001 per physical turn, with zero additional
+death, kill or reveal rewards. Gamma is 1, GAE lambda .95. REST accumulates its
+actual physical-turn cost; routing consumes one physical turn per step. PPO uses
+32 environments, 64-decision rollouts, minibatches of 64, four epochs, clip .2,
+actor LR 1e-5, value LR 1e-4, zero entropy bonus, and gradient norm .5. Stop the
+remaining updates in a rollout if pre-update minibatch approximate KL exceeds
+.01. This is an early-stop heuristic, not a guaranteed trust-region bound.
+
+The critic is a new 16→64→1 head with zero initial output. It consumes detached
+actor features, so value loss cannot directly damage the policy encoder. Actor
+updates can still change those features and the policy; this does not guarantee
+preservation of imitation performance. There is no imitation loss, teacher
+label computation during PPO collection, or frozen-policy anchor.
+
+Each finished episode resets independently, clearing its selected destination
+and enemy memory, while continuing episodes remain unchanged. Rollout cutoffs
+bootstrap from the next value; actual exits/deaths/deadline terminations do not.
+Replay stores exact FP16 observations (including selected destination), masks,
+actions and behavior log probabilities. A pre-update audit bounds log-probability
+replay error at .01; small AMP differences can arise from batch-32 collection
+versus batch-64 replay. Tests cover reset isolation, value-gradient isolation,
+terminal/cutoff GAE boundaries, physical-turn costs, and actual PPO updates.
+Evaluation preserves the training random-number streams. Reports include training
+time, decisions/s, physical turns, outcomes, KL stops and AMP skips. Checkpoints
+are limited to 100k, 500k and latest; no trajectory archive is retained.

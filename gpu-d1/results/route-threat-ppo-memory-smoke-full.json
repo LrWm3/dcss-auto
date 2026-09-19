@@ -1,0 +1,56 @@
+{
+  "arm": "memory",
+  "seed": 0,
+  "target": 500000,
+  "source_sha256": "22fd16ec2b49550c3b984f4225c689790c45dbded64dc975f174c793f5c47313",
+  "config": {
+    "envs": 32,
+    "rollout": 64,
+    "epochs": 4,
+    "minibatch": 64,
+    "actor_lr": 1e-05,
+    "critic_lr": 0.0001,
+    "gamma": 1,
+    "gae_lambda": 0.95,
+    "entropy": 0,
+    "clip": 0.2,
+    "kl_stop": 0.01,
+    "critic_detached": true,
+    "exit_reward": 1,
+    "turn_penalty": 1e-05,
+    "death_reward": 0,
+    "deadline": 2048,
+    "imitation_loss": false
+  },
+  "history": [
+    {
+      "decisions": 2048,
+      "training_seconds": 3.0117804419969616,
+      "decisions_per_second": 679.996447098937,
+      "collection_seconds": 1.9322423639969202,
+      "episodes": 28,
+      "exits": 2,
+      "deaths": 26,
+      "timeouts": 0,
+      "rests": 20,
+      "physical_turns": 2610,
+      "replay_max_logprob_error": 0.0022635459899902344,
+      "updates": 30,
+      "kl_early_stop": true,
+      "amp_skips": 0,
+      "mean_kl": 0.002953103184700012
+    }
+  ],
+  "evaluations": [
+    {
+      "decisions": 2048,
+      "metrics": {}
+    }
+  ],
+  "source_hashes": {
+    "route_threat_ppo.py": "f95f39be50cd40cd042507aa3036ca04638a2ce089ea77a39324902fc30f9699",
+    "route_threat.py": "e36e7d482e6cacd9a67101273a3106bf2ac5db275de22f73622db6cae75dc2b1",
+    "route_threat_native.cu": "5739c602110d815706b26651b16023ccc84efe7efc4a95a5db4ca62dea390156"
+  },
+  "finished": true
+}

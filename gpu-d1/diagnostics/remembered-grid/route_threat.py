@@ -35,14 +35,15 @@ class ThreatPolicy(Spatial):
             self.special.weight[1:].copy_(prior.moves.weight[:,:,0,0]);self.special.bias[1:].copy_(prior.moves.bias)
             for new,old_index in [(0,0),(17,1),(19,2)]:
                 self.special.weight[new].copy_(prior.special.weight[old_index]);self.special.bias[new].copy_(prior.special.bias[old_index])
-    def forward(self,x):
+    def forward(self,x,return_features=False):
         inputs=self.input(F.pad(x,(0,0,0,2)));h=torch.zeros_like(inputs)
         for _ in range(self.iterations):
             reset,update=self.gates(torch.cat([inputs,h],1)).sigmoid().chunk(2,1)
             new=self.candidate(torch.cat([inputs,reset*h],1)).tanh();h=(1-update)*h+update*new
         z=self.decode(torch.cat([x,F.interpolate(h,size=(70,80),mode='nearest')],1))
         pos=x[:,5].flatten(1).argmax(1);local=z.flatten(2).gather(2,pos[:,None,None].expand(-1,16,1)).squeeze(2)
-        return torch.cat([self.dest(z).flatten(1),self.special(local)],1)
+        logits=torch.cat([self.dest(z).flatten(1),self.special(local)],1)
+        return (logits,local) if return_features else logits
 
 class Teacher:
     def __init__(self):
@@ -69,7 +70,7 @@ class Agent:
     def __init__(self,model=None,memory=True,teacher=None):
         self.model=model;self.memory=memory;self.router=Router();self.teacher=teacher or Teacher();self.reset_cache()
     def reset_cache(self):self.goal=None
-    def prepare(self,e):
+    def prepare(self,e,labels=True):
         g=e.grid;m=e.mask;s=e.stats;n=len(g)
         if self.goal is None:self.goal=torch.full((n,),-1,device='cuda',dtype=torch.long)
         first,cand,_,_=self.router(g[:,:11],m)
@@ -85,18 +86,21 @@ class Agent:
         awake=((g[:,12]>0)&(g[:,9]>0)).flatten(1).any(1)
         cont=(self.goal>=0)&(first.gather(1,self.goal.clamp_min(0)[:,None]).squeeze(1)>=0)&~awake
         mask=torch.cat([cand.bool()&~awake[:,None],cont[:,None],m.bool()],1)
-        label=self.teacher(g,m,s,first,cand)
-        label=torch.where((label==self.goal)&cont,S,label)
-        assert mask.gather(1,label[:,None]).all(), 'illegal teacher label'
+        label=None
+        if labels:
+            label=self.teacher(g,m,s,first,cand)
+            label=torch.where((label==self.goal)&cont,S,label)
+            assert mask.gather(1,label[:,None]).all(), 'illegal teacher label'
         return x,mask,label,first
     @torch.no_grad()
-    def decide(self,e,expert=False,erase_memory=False):
+    def decide(self,e,expert=False,erase_memory=False,sample=False):
         x,mask,label,first=self.prepare(e)
         if erase_memory:x[:,8:16]*=(e.grid[:,12:13]>0)
         if expert:choice=label
         else:
             with torch.autocast('cuda',dtype=torch.float16):logits=self.model(x)
-            choice=logits.float().masked_fill(~mask,-1e9).argmax(1)
+            logits=logits.float().masked_fill(~mask,-1e9)
+            choice=torch.distributions.Categorical(logits=logits,validate_args=False).sample() if sample else logits.argmax(1)
         dest=choice<S;self.goal=torch.where(dest,choice,self.goal)
         step=first.gather(1,self.goal.clamp_min(0)[:,None]).squeeze(1).long()
         action=torch.where(choice<=S,step,choice-(S+1))

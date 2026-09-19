@@ -81,3 +81,9 @@ __global__ void threat_check_kernel(State*s,ThreatMemory*m,Tables t,int*out){
  threat_clear(memory);for(int z=0;z<ENEMIES;z++)assert(memory.pos[z]==-1);out[5]=1;
 }
 extern "C" int threat_checks(State*s,ThreatMemory*m,Tables*t,int*out,void*stream){threat_check_kernel<<<1,1,0,(cudaStream_t)stream>>>(s,m,*t,out);return cudaGetLastError();}
+
+__global__ void threat_reset_done_kernel(State*s,ThreatMemory*m,int n,Config c,Tables t,bool*active){
+ int i=blockIdx.x*blockDim.x+threadIdx.x;if(i>=n||active[i])return;
+ reset(s[i],c,t);threat_clear(m[i]);threat_remember(s[i],m[i],t);active[i]=true;
+}
+extern "C" int threat_reset_done(State*s,ThreatMemory*m,int n,Config*c,Tables*t,bool*active,void*stream){threat_reset_done_kernel<<<(n+31)/32,32,0,(cudaStream_t)stream>>>(s,m,n,*c,*t,active);return cudaGetLastError();}
