@@ -1,0 +1,14 @@
+{
+  "router_ms": 0.9186081333609764,
+  "prepare_ms": 1.5954317666910356,
+  "actor_value_ms": 5.356579566675161,
+  "observe_ms": 0.0529293666962379,
+  "rollout": {
+    "episodes": 1,
+    "exits": 0,
+    "deaths": 1,
+    "timeouts": 0,
+    "rests": 1,
+    "physical_turns": 320
+  }
+}

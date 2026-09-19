@@ -177,3 +177,51 @@ terminal/cutoff GAE boundaries, physical-turn costs, and actual PPO updates.
 Evaluation preserves the training random-number streams. Reports include training
 time, decisions/s, physical turns, outcomes, KL stops and AMP skips. Checkpoints
 are limited to 100k, 500k and latest; no trajectory archive is retained.
+
+## Performance pass
+
+PyTorch CPU/CUDA profiling identified observation export as the dominant rollout
+GPU cost (76% in an eight-step trace). The serial export took about 8 ms for 32
+worlds and was unnecessarily called twice per PPO step. The optimized path:
+
+- uses one CUDA block per world to export terrain in parallel;
+- exports once after transition and any independent episode resets;
+- runs exact observed-grid routing on CUDA, avoiding CPU round trips;
+- captures inference in CUDA graphs, with fresh parameter casts every replay;
+- uses channels-last convolution weights and skips unused teacher labels in
+  learned-policy evaluation.
+
+The architecture still uses 20 spatial updates. Environment batch size, rollout
+length, rewards and PPO hyperparameters remain unchanged. Adam/backward remain
+eager: an attempted backward capture failed with a CUDA stream-dependency error
+and was not retained. Small AMP numerical differences from memory layout are
+possible; this is not a claim of bit-identical training trajectories.
+
+Checks found exact agreement with the reference observation exporter on 30
+32-world snapshots, and exact GPU/CPU route outputs on 960 state comparisons.
+Captured inference reacts to parameter updates and returns independent output
+buffers. Maximum channels-last logit difference in the check was 0.00293.
+
+| Measurement | Reference | Optimized |
+|---|---:|---:|
+| Observation export, 32 worlds | 8.15 ms | 0.032 ms |
+| Actor/value inference, 32 worlds | 5.69 ms | 2.97 ms |
+| Router, initial CPU timing / GPU timing | 0.92 ms | 0.60 ms |
+| Matched 2048-decision PPO smoke | 4.01 s | 2.76 s |
+
+The matched PPO smoke had the same 78 optimizer updates, 30 completed episodes,
+4 exits, 26 deaths, 17 rests and 2665 physical turns. A separate warmed timing
+with 55 updates achieved 990 decisions/s; it should not be compared as if update
+counts were identical. Initial capture costs are included in the smoke but not
+steady-state inference timings. End-to-end speed varies with KL early stopping.
+
+The running visible arm is resumed from its 100352-decision checkpoint, retaining
+actor, critic, optimizer, scaler and RNG state. That legacy checkpoint did not
+contain environment snapshots, so its 32 ongoing episodes restart. A small
+unsaved tail is archived in the report rather than counted as retained progress.
+New checkpoints include environment and selected-goal state for exact future
+continuation. The queued memory arm starts with the optimized implementation.
+
+Reproduce component checks with `check_route_threat_fast.py`; raw profiler traces
+stay in the ignored run directory. Tracked `route-threat-performance.json` and
+`route-threat-ppo-visible-smoke-optimized.json` contain the measurements.

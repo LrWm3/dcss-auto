@@ -1,0 +1,63 @@
+{
+  "arm": "visible",
+  "seed": 0,
+  "target": 500000,
+  "source_sha256": "52e68f2cde34ce9d2545cb66fc4205843cf08fece956909005897579541828dc",
+  "config": {
+    "envs": 32,
+    "rollout": 64,
+    "epochs": 4,
+    "minibatch": 64,
+    "actor_lr": 1e-05,
+    "critic_lr": 0.0001,
+    "gamma": 1,
+    "gae_lambda": 0.95,
+    "entropy": 0,
+    "clip": 0.2,
+    "kl_stop": 0.01,
+    "critic_detached": true,
+    "exit_reward": 1,
+    "turn_penalty": 1e-05,
+    "death_reward": 0,
+    "deadline": 2048,
+    "imitation_loss": false
+  },
+  "history": [
+    {
+      "decisions": 2048,
+      "training_seconds": 2.7569310830003815,
+      "decisions_per_second": 742.8549856136235,
+      "collection_seconds": 0.7727952249988448,
+      "episodes": 30,
+      "exits": 4,
+      "deaths": 26,
+      "timeouts": 0,
+      "rests": 17,
+      "physical_turns": 2665,
+      "replay_max_logprob_error": 0.002365589141845703,
+      "updates": 78,
+      "kl_early_stop": true,
+      "amp_skips": 0,
+      "mean_kl": 0.00270660121131163
+    }
+  ],
+  "evaluations": [
+    {
+      "decisions": 2048,
+      "metrics": {}
+    }
+  ],
+  "source_hashes": {
+    "route_threat_ppo.py": "e94fff9fc70e1b385340ee92704bad98362562874594c7a43204286d4f3fbc07",
+    "route_threat.py": "e36e7d482e6cacd9a67101273a3106bf2ac5db275de22f73622db6cae75dc2b1",
+    "route_threat_native.cu": "d6596eac06ad7a273d959208f8f3a7e32fb5a0860f4847334a3a722a34c42c14"
+  },
+  "performance": {
+    "parallel_observation_export": true,
+    "one_export_per_step": true,
+    "cuda_graph_inference": true,
+    "channels_last_actor": true,
+    "gpu_routing": true
+  },
+  "finished": true
+}

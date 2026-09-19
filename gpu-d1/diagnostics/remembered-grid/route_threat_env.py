@@ -16,7 +16,9 @@ def build():
     signature=hashlib.sha256(b''.join(p.read_bytes() for p in paths)).hexdigest()
     lib=FOLDER_OUT/'threat.so';stamp=FOLDER_OUT/'build.sha256'
     if not lib.exists() or not stamp.exists() or stamp.read_text()!=signature:
-        subprocess.run(['nvcc','-O3','-std=c++17','-arch=sm_75','-ccbin','/usr/bin/g++-12','-shared','-Xcompiler','-fPIC',*old.FLAGS,'-DCLUMP_MODE=1',str(paths[0]),'-o',str(lib)],check=True)
+        tmp=lib.with_suffix('.tmp.so')
+        subprocess.run(['nvcc','-O3','-std=c++17','-arch=sm_75','-ccbin','/usr/bin/g++-12','-shared','-Xcompiler','-fPIC',*old.FLAGS,'-DCLUMP_MODE=1',str(paths[0]),'-o',str(tmp)],check=True)
+        tmp.replace(lib)
         stamp.write_text(signature)
     return lib
 
@@ -43,9 +45,10 @@ class ThreatEnv(Env):
         self.observe()
     def observe(self,labels=False):
         self.check(self.lib.threat_export(self.state.data_ptr(),self.memory.data_ptr(),self.batch,C.byref(self.tables),self.grid.data_ptr(),self.mask.data_ptr(),self.stats.data_ptr(),self.meta.data_ptr(),self.stream))
-    def step(self,actions,limit=2048,labels=False):
+    def step(self,actions,limit=2048,labels=False,observe=True):
         self.check(self.lib.threat_step(self.state.data_ptr(),self.memory.data_ptr(),self.batch,C.byref(self.config),C.byref(self.tables),actions.long().contiguous().data_ptr(),self.active.data_ptr(),limit,self.out.data_ptr(),self.stream))
-        self.active &= ~self.out[:,1].bool();self.observe()
+        self.active &= ~self.out[:,1].bool()
+        if observe:self.observe()
 
 def pressure_maps():
     """Reuse exact previous held-out backtracking geometry; no training exposure."""

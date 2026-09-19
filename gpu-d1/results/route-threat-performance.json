@@ -1,0 +1,23 @@
+{
+  "gpu_router_ms": 0.5956259666466698,
+  "gpu_router_exact_cases": 960,
+  "export_bitwise_equal_states": 30,
+  "graph_parameter_updates_visible": true,
+  "graph_outputs_do_not_alias": true,
+  "eager_ms": 5.689397633371603,
+  "graph_ms": 3.2391922332559866,
+  "channels_last_graph_ms": 2.9677561333907456,
+  "channels_last_max_logit_difference": 0.0029296875,
+  "fast_export_ms": 0.032391599961556494,
+  "reference_export_ms": 8.14898830006617,
+  "collection_seconds": 0.5569892460007395,
+  "update": {
+    "replay_max_logprob_error": 0.0,
+    "updates": 55,
+    "kl_early_stop": true,
+    "amp_skips": 0,
+    "mean_kl": 0.0035527241627939725
+  },
+  "full_rollout_and_update_seconds": 2.0691475439998612,
+  "decisions_per_second": 989.7795862546462
+}

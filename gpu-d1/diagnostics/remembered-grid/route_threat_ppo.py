@@ -12,13 +12,16 @@ from route_threat import ThreatPolicy,Agent,ThreatEnv,build,evaluate,S,ROOT,HERE
 
 class PPO(nn.Module):
     def __init__(self,source):
-        super().__init__();self.actor=ThreatPolicy().cuda();self.actor.load_state_dict(torch.load(source,weights_only=False)['model'])
+        super().__init__();self.actor=ThreatPolicy().cuda();self.actor.load_state_dict(torch.load(source,weights_only=False)['model']);self.actor.to(memory_format=torch.channels_last)
         self.value=nn.Sequential(nn.Linear(16,64),nn.Tanh(),nn.Linear(64,1)).cuda()
         nn.init.zeros_(self.value[-1].weight);nn.init.zeros_(self.value[-1].bias)
-    def forward(self,x,mask):
-        with torch.autocast('cuda',dtype=torch.float16):
+    def raw(self,x,mask):
+        with torch.autocast('cuda',dtype=torch.float16,cache_enabled=False):
             logits,features=self.actor(x,return_features=True);value=self.value(features.detach()).squeeze(-1)
-        return torch.distributions.Categorical(logits=logits.float().masked_fill(~mask,-1e9),validate_args=False),value.float()
+        return logits.float().masked_fill(~mask,-1e9),value.float()
+    def forward(self,x,mask):
+        logits,value=self.raw(x,mask)
+        return torch.distributions.Categorical(logits=logits,validate_args=False),value
 
 def gae(reward,value,done,bootstrap,lam=.95):
     adv=torch.zeros_like(value);carry=torch.zeros_like(bootstrap);following=bootstrap
@@ -37,17 +40,17 @@ def collect(e,agent,model,steps=64):
     for _ in range(steps):
         x,mask,_,first=agent.prepare(e,labels=False)
         # Store exactly the precision replay will use, including fractional time.
-        x=x.half();dist,value=model(x,mask);choice=dist.sample();logp=dist.log_prob(choice)
+        x=x.half();dist,value=getattr(model,'inference',model)(x,mask);choice=dist.sample();logp=dist.log_prob(choice)
         agent.goal=torch.where(choice<S,choice,agent.goal)
         step=first.gather(1,agent.goal.clamp_min(0)[:,None]).squeeze(1).long();action=torch.where(choice<=S,step,choice-(S+1))
         assert (action>=0).all() and e.mask.gather(1,action[:,None]).all()
-        before=e.meta[:,5].clone();e.step(action);done=~e.active;turns=(e.meta[:,5]-before).float();assert (turns>=1).all()
+        before=e.meta[:,5].clone();e.step(action,observe=False);done=~e.active;turns=e.out[:,5]-before.float();assert (turns>=1).all()
         reward=done.float()*e.out[:,2]-1e-5*turns
         counts[:3]+=torch.stack([(done*e.out[:,j]).sum() for j in [2,6,7]])
         counts[3]+=(action==17).sum();counts[4]+=turns.sum();elapsed+=done.sum()
         rows.append((x,mask,choice,logp,value,reward,done))
         reset_done(e,agent,done)
-    x,mask,_,_=agent.prepare(e,labels=False);_,bootstrap=model(x.half(),mask)
+    x,mask,_,_=agent.prepare(e,labels=False);_,bootstrap=getattr(model,'inference',model)(x.half(),mask)
     x,mask,action,lp,v,r,done=[torch.stack(z) for z in zip(*rows)]
     adv,ret=gae(r,v,done,bootstrap)
     adv=(adv-adv.mean())/adv.std(unbiased=False).clamp_min(1e-8)
@@ -55,7 +58,16 @@ def collect(e,agent,model,steps=64):
     metrics=dict(episodes=int(elapsed),exits=int(counts[0]),deaths=int(counts[1]),timeouts=int(counts[2]),rests=int(counts[3]),physical_turns=int(counts[4]))
     return data,metrics
 
-class SampledAgent(Agent):
+class FastAgent(Agent):
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        from route_threat_fast import GPURouter
+        self.router=GPURouter()
+
+class EvalAgent(FastAgent):
+    def prepare(self,e,labels=False):return super().prepare(e,labels=False)
+
+class SampledAgent(EvalAgent):
     def decide(self,e,expert=False,erase_memory=False):
         return super().decide(e,expert,erase_memory,sample=True)
 
@@ -63,10 +75,12 @@ class SampledAgent(Agent):
 def assess(model,memory,small=False):
     result={}
     with torch.random.fork_rng(devices=[0]):
-        torch.manual_seed(80000);agent=Agent(model.actor,memory)
+        torch.manual_seed(80000)
+        from route_threat_fast import GraphForward
+        actor=GraphForward(model.actor);agent=EvalAgent(actor,memory)
         result['ordinary']=evaluate(agent,split='test',small=small)
         torch.manual_seed(80000)
-        result['ordinary_sampled']=evaluate(SampledAgent(model.actor,memory),split='test',small=small)
+        result['ordinary_sampled']=evaluate(SampledAgent(actor,memory),split='test',small=small)
         if not small:result['pressure']=evaluate(agent,pressure=True)
     return result
 
@@ -79,8 +93,8 @@ def update(model,opt,scaler,data,epochs=4):
     for epoch in range(epochs):
         for ix in torch.randperm(n,device='cuda').split(64):
             dist,value=model(x[ix],mask[ix]);delta=dist.log_prob(action[ix])-oldlp[ix];ratio=delta.exp();kl=((ratio-1)-delta).mean()
-            if float(kl)>.01:stopped=True;break
             actor=-torch.minimum(ratio*adv[ix],ratio.clamp(.8,1.2)*adv[ix]).mean();critic=.25*(value-ret[ix]).square().mean();loss=actor+critic
+            if float(kl)>.01:stopped=True;break
             assert torch.isfinite(loss);opt.zero_grad(set_to_none=True);scaler.scale(loss).backward();scaler.unscale_(opt)
             norm=nn.utils.clip_grad_norm_(model.parameters(),.5);oldscale=scaler.get_scale();scaler.step(opt);scaler.update();skipped+=scaler.get_scale()<oldscale
             stats.append((float(actor.detach()),float(critic.detach()),float(kl.detach()),float(norm)))
@@ -97,22 +111,41 @@ def checks():
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['visible','memory'],required=True);p.add_argument('--decisions',type=int,default=500000);p.add_argument('--smoke',action='store_true');p.add_argument('--tag',default='');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--arm',choices=['visible','memory'],required=True);p.add_argument('--decisions',type=int,default=500000);p.add_argument('--smoke',action='store_true');p.add_argument('--tag',default='');p.add_argument('--resume',action='store_true');args=p.parse_args()
     torch.set_num_threads(1);torch.manual_seed(0);torch.backends.cudnn.benchmark=True;build();checks()
     name='route-threat-ppo-'+args.arm+('-smoke' if args.smoke else '')+args.tag;folder=FOLDER_OUT/name;folder.mkdir(exist_ok=True)
     lock=(folder/'run.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    if (folder/'latest.pt').exists():raise RuntimeError('Refusing to overwrite')
-    source=FOLDER_OUT/f'route-threat-{args.arm}'/'selected.pt';model=PPO(source);agent=Agent(model.actor,args.arm=='memory');e=ThreatEnv('train',32);e.reset(40000)
+    if (folder/'latest.pt').exists() and not args.resume:raise RuntimeError('Refusing to overwrite')
+    if args.resume and not (folder/'latest.pt').exists():raise RuntimeError('Missing resume checkpoint')
+    source=FOLDER_OUT/f'route-threat-{args.arm}'/'selected.pt';model=PPO(source);agent=FastAgent(model.actor,args.arm=='memory');e=ThreatEnv('train',32);e.reset(40000)
     # Critic gradients may never alter actor parameters.
     x,m,_,_=agent.prepare(e,labels=False);_,value=model(x.half(),m);value.sum().backward();assert all(p.grad is None for p in model.actor.parameters());model.zero_grad(set_to_none=True)
     if args.smoke:
         prior=e.state[1:].clone();e.active[0]=False;done=~e.active.clone();reset_done(e,agent,done)
         assert torch.equal(prior,e.state[1:]) and e.active.all() and agent.goal[0]==-1 and e.meta[0,5]==0
+    from route_threat_fast import GraphInference
+    model.inference=GraphInference(model)
     opt=torch.optim.Adam([{'params':model.actor.parameters(),'lr':1e-5},{'params':model.value.parameters(),'lr':1e-4}]);scaler=torch.amp.GradScaler('cuda',init_scale=1024)
-    report=dict(arm=args.arm,seed=0,target=args.decisions,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),config=dict(envs=32,rollout=64,epochs=4,minibatch=64,actor_lr=1e-5,critic_lr=1e-4,gamma=1,gae_lambda=.95,entropy=0,clip=.2,kl_stop=.01,critic_detached=True,exit_reward=1,turn_penalty=.00001,death_reward=0,deadline=2048,imitation_loss=False),history=[],evaluations=[],source_hashes={q.name:hashlib.sha256(q.read_bytes()).hexdigest() for q in [Path(__file__),HERE/'route_threat.py',HERE/'route_threat_native.cu']})
+    report=dict(arm=args.arm,seed=0,target=args.decisions,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),config=dict(envs=32,rollout=64,epochs=4,minibatch=64,actor_lr=1e-5,critic_lr=1e-4,gamma=1,gae_lambda=.95,entropy=0,clip=.2,kl_stop=.01,critic_detached=True,exit_reward=1,turn_penalty=.00001,death_reward=0,deadline=2048,imitation_loss=False),history=[],evaluations=[],source_hashes={q.name:hashlib.sha256(q.read_bytes()).hexdigest() for q in [Path(__file__),HERE/'route_threat.py',HERE/'route_threat_native.cu',HERE/'route_threat_env.py',HERE/'route_threat_fast.py',HERE/'route_candidates_cuda.cu']})
     path=ROOT/'results'/f'{name}.json'
-    if not args.smoke:report['baseline']=assess(model,args.arm=='memory');save_json(path,report);print('baseline', {k:v['groups'] for k,v in report['baseline'].items()},flush=True)
-    decisions=0;training=0.;milestones=[100000,500000]
+    decisions=0;training=0.
+    if args.resume:
+        payload=torch.load(folder/'latest.pt',weights_only=False)
+        model.actor.load_state_dict(payload['model']);model.value.load_state_dict(payload['critic']);opt.load_state_dict(payload['optimizer']);scaler.load_state_dict(payload['scaler'])
+        report=json.loads(path.read_text());decisions=payload['decisions']
+        discarded=[r for r in report['history'] if r['decisions']>decisions]
+        report['history']=[r for r in report['history'] if r['decisions']<=decisions];training=report['history'][-1]['training_seconds']
+        if discarded:report.setdefault('discarded_after_checkpoint',[]).append(discarded)
+        torch.set_rng_state(payload['cpu_rng']);torch.cuda.set_rng_state_all(payload['cuda_rng'])
+        if 'environment' in payload:
+            saved=payload['environment'];e.state.copy_(saved['state']);e.memory.copy_(saved['memory']);e.active.copy_(saved['active']);agent.goal=saved['goal'].clone();e.observe()
+        else:e.reset(40000+decisions);agent.reset_cache()
+        report.setdefault('restarts',[]).append(dict(decisions=decisions,environment_restored='environment' in payload,reason='Performance implementation update; same PPO hyperparameters; legacy checkpoint lacks environment snapshot so its 32 ongoing episodes restart.',source_hashes={q.name:hashlib.sha256(q.read_bytes()).hexdigest() for q in [Path(__file__),HERE/'route_threat_fast.py',HERE/'route_threat_native.cu',HERE/'route_candidates_cuda.cu']}))
+        print('resume',decisions,flush=True)
+    elif not args.smoke:
+        report['baseline']=assess(model,args.arm=='memory');save_json(path,report);print('baseline', {k:v['groups'] for k,v in report['baseline'].items()},flush=True)
+    report['performance']=dict(parallel_observation_export=True,one_export_per_step=True,cuda_graph_inference=True,channels_last_actor=True,gpu_routing=True)
+    milestones=[v for v in [100000,500000] if v>decisions]
     while decisions<args.decisions:
         start=time.monotonic();data,metrics=collect(e,agent,model,64);collected=time.monotonic()-start
         diagnostic=update(model,opt,scaler,data,4);torch.cuda.synchronize();training+=time.monotonic()-start;decisions+=len(data[0]);del data
@@ -120,7 +153,7 @@ def main():
         crossed=[v for v in milestones if decisions>=v]
         if crossed or decisions>=args.decisions or args.smoke:
             metrics={} if args.smoke else assess(model,args.arm=='memory');report['evaluations'].append(dict(decisions=decisions,metrics=metrics))
-            payload=dict(model=model.actor.state_dict(),critic=model.value.state_dict(),optimizer=opt.state_dict(),scaler=scaler.state_dict(),decisions=decisions,cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state_all())
+            payload=dict(model=model.actor.state_dict(),critic=model.value.state_dict(),optimizer=opt.state_dict(),scaler=scaler.state_dict(),decisions=decisions,cpu_rng=torch.get_rng_state(),cuda_rng=torch.cuda.get_rng_state_all(),environment=dict(state=e.state,memory=e.memory,active=e.active,goal=agent.goal))
             torch.save(payload,folder/'latest.pt')
             if crossed:torch.save(payload,folder/f'checkpoint-{max(crossed)}.pt')
             milestones=[v for v in milestones if v>decisions];print('evaluation',decisions,{k:v['groups'] for k,v in metrics.items()},flush=True)

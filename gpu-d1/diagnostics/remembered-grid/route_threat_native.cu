@@ -37,6 +37,33 @@ __global__ void threat_export_kernel(State*s,ThreatMemory*m,int n,Tables t,unsig
  threat_export(s[i],m[i],t,g+i*14*N,mask+i*19,stats+i*7);
  int*z=meta+i*6;z[0]=s[i].player;z[1]=known_stairs(s[i]);z[2]=visible_awake(s[i],episode_config(s[i],Config{}),t);z[3]=s[i].killed;z[4]=s[i].profile_id;z[5]=s[i].ticks;
 }
+// One block per world: parallel terrain and zero fill, serial sparse records.
+__global__ void threat_export_parallel(State*s,ThreatMemory*m,int n,Tables t,unsigned char*all,float*allmask,float*allstats,int*allmeta){
+ int i=blockIdx.x;if(i>=n)return;State&q=s[i];ThreatMemory&mem=m[i];
+ auto g=all+i*14*N;auto mask=allmask+i*19;auto stats=allstats+i*7;
+ for(int k=threadIdx.x;k<14*N;k+=blockDim.x)g[k]=0;
+ __syncthreads();
+ for(int p=threadIdx.x;p<N;p+=blockDim.x){
+  if(q.viewed[p])g[(floor_at(t,q.map_id,p)?0:1)*N+p]=255;
+  g[2*N+p]=mem.terrain.visited[p]*255;g[3*N+p]=in_view(q,t,p)*255;
+  if(q.seen[p]&&is_stair(q,p))g[4*N+p]=255;
+ }
+ if(threadIdx.x==0){
+  g[5*N+q.player]=255;
+  for(int j=0;j<ENEMIES;j++)if(mem.pos[j]>=0){int p=mem.pos[j];
+   if(g[11*N+p]&&g[10*N+p]<mn(255,q.ticks-mem.stamp[j]))continue;
+   g[6*N+p]=mn(255,mem.hp[j]);g[7*N+p]=mn(255,mem.maxhp[j]);g[8*N+p]=mn(255,mem.damage[j]);g[9*N+p]=mem.awake[j]*255;
+   g[10*N+p]=mn(255,q.ticks-mem.stamp[j]);g[11*N+p]=255;g[12*N+p]=(mem.stamp[j]==q.ticks)*255;g[13*N+p]=(mem.stamp[j]!=q.ticks)*255;
+  }
+  for(int d=0;d<8;d++){int p=neighbor(q.player,d);bool enemy=p>=0&&in_view(q,t,p)&&q.occ[p]>=0;
+   mask[d]=p>=0&&(!q.viewed[p]||floor_at(t,q.map_id,p))&&!enemy;mask[8+d]=enemy;
+  }
+  bool awake=visible_awake(q,episode_config(q,Config{}),t);
+  mask[16]=1;mask[17]=q.w.hp<q.player_max&&!awake;mask[18]=stair_index(q)>0;
+  stats[0]=float(q.w.hp)/q.player_max;stats[1]=q.ticks/2048.f;stats[2]=q.player%W;stats[3]=q.player/W;stats[4]=q.player_max;stats[5]=q.player_damage;stats[6]=q.w.hp;
+  int*z=allmeta+i*6;z[0]=q.player;z[1]=known_stairs(q);z[2]=awake;z[3]=q.killed;z[4]=q.profile_id;z[5]=q.ticks;
+ }
+}
 __global__ void threat_step_kernel(State*s,ThreatMemory*m,int n,Config c,Tables t,const int64_t*a,const bool*active,int limit,float*out){
  int i=blockIdx.x*blockDim.x+threadIdx.x;if(i>=n||!active[i])return;
  transition(s[i],c,t,a[i],limit,out+i*OUT);threat_remember(s[i],m[i],t);
@@ -55,7 +82,8 @@ __global__ void threat_scene_kernel(State*s,ThreatMemory*m,int n,Config c,Tables
 extern "C" {
 int threat_memory_bytes(){return sizeof(ThreatMemory);}
 int threat_init(State*s,ThreatMemory*m,int n,Config*c,Tables*t,uint64_t seed,void*stream){threat_init_kernel<<<(n+31)/32,32,0,(cudaStream_t)stream>>>(s,m,n,*c,*t,seed);return cudaGetLastError();}
-int threat_export(State*s,ThreatMemory*m,int n,Tables*t,unsigned char*g,float*mask,float*stats,int*meta,void*stream){threat_export_kernel<<<(n+31)/32,32,0,(cudaStream_t)stream>>>(s,m,n,*t,g,mask,stats,meta);return cudaGetLastError();}
+int threat_export_reference(State*s,ThreatMemory*m,int n,Tables*t,unsigned char*g,float*mask,float*stats,int*meta,void*stream){threat_export_kernel<<<(n+31)/32,32,0,(cudaStream_t)stream>>>(s,m,n,*t,g,mask,stats,meta);return cudaGetLastError();}
+int threat_export(State*s,ThreatMemory*m,int n,Tables*t,unsigned char*g,float*mask,float*stats,int*meta,void*stream){threat_export_parallel<<<n,256,0,(cudaStream_t)stream>>>(s,m,n,*t,g,mask,stats,meta);return cudaGetLastError();}
 int threat_step(State*s,ThreatMemory*m,int n,Config*c,Tables*t,const int64_t*a,const bool*active,int limit,float*out,void*stream){threat_step_kernel<<<(n+31)/32,32,0,(cudaStream_t)stream>>>(s,m,n,*c,*t,a,active,limit,out);return cudaGetLastError();}
 int threat_scene(State*s,ThreatMemory*m,int n,Config*c,Tables*t,const int*rows,const int*ids,const int*power,uint64_t seed,void*stream){threat_scene_kernel<<<(n+31)/32,32,0,(cudaStream_t)stream>>>(s,m,n,*c,*t,rows,ids,power,seed);return cudaGetLastError();}
 }
