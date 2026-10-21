@@ -1,4 +1,4 @@
-i# DCSS autonomous policy experiments
+# DCSS autonomous policy experiments
 
 Research infrastructure for scripted Crawl play, reproducible tactical
 encounters and general semantic-action neural policies. General-policy
