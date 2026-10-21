@@ -8,6 +8,7 @@ improvement on held-out game score remains unproven.
 
 Overall the experiments & the existing body of research indicate it is outside of the scope of today's RL methods to get anything close to a bot that can convincingly play even a vastly simplifed `dcss` on consumer grade hardware. But the findings and issues encountered along the are still interesting.
 
+- [gpu-d1 experiment](https://github.com/LrWm3/dcss-auto/tree/main/gpu-d1): Where all of the interesting results and work occurred. Other folders are using the slower deterministic & decision based models.
 - [Experimental ledger](.webtiles/bench/EXPERIMENT-LEDGER.md): attempted approaches,
   results, failures, evidence and historical limitations.
 - [General-policy system](.webtiles/bench/autonomous/README.md): current training
